@@ -3,7 +3,7 @@ name: Sync Velog Posts to GitHub
 on:
   schedule:
     - cron: '0 0 * * *'  # 매일 자정(UTC) 실행 (한국 시간 오전 9시)
-  workflow_dispatch:  # 수동 실행 가능
+  workflow_dispatch:
 
 jobs:
   sync-posts:
@@ -12,29 +12,30 @@ jobs:
     steps:
       - name: 저장소 체크아웃
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: GitHub 인증 설정 (GITHUB_TOKEN 사용)
         run: |
-          git config --global user.name "hyungyugod"
-          git config --global user.email "hyungyugod@naver.com"
-          git config --global credential.helper store
-          echo "machine github.com login hyungyugod password ${{ secrets.GITHUB_TOKEN }}" > ~/.git-credentials
-          git pull origin main || true  # 충돌 방지를 위해 pull 수행
+          # GitHub Actions 전용 계정으로 설정
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          # GITHUB_TOKEN을 포함한 원격 URL로 설정하여 인증 문제 해결
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/hyungyugod/velog-posts.git
+          # 원격 저장소의 최신 변경 사항을 가져와 충돌 방지
+          git pull origin main --rebase || true
 
       - name: Velog RSS에서 최신 포스트 가져오기
         run: |
           mkdir -p posts
           RSS_URL="https://v2.velog.io/rss/@hyungyugod"
-
-          # Velog RSS에서 포스트 링크 가져오기
+          # RSS 피드에서 포스트 링크 추출
           curl -s "$RSS_URL" | grep -oP '(?<=<link>https://velog.io/@hyungyugod/).*?(?=</link>)' | while read -r post; do
-            # 파일명 변환 (URL 인코딩 처리)
+            # 안전한 파일명으로 변환 (특수문자 제거) 후 .md 확장자 추가
             filename=$(echo "$post" | sed 's/[^a-zA-Z0-9._-]/_/g').md
-
-            # Markdown 내용 가져오기 (HTML이 아닌 실제 Markdown 데이터)
+            # Markdown 형식의 파일 다운로드 (Velog에서 실제 Markdown 파일 제공하는 경우)
             curl -s "https://velog.io/@hyungyugod/$post.md" -o "posts/$filename"
-
-            # 파일 크기가 0이면 삭제 (다운로드 실패 방지)
+            # 다운로드 실패 시 (0바이트 파일) 삭제
             [ -s "posts/$filename" ] || rm -f "posts/$filename"
           done
 
