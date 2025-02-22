@@ -14,28 +14,18 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
+          persist-credentials: true
 
-      - name: GitHub 인증 설정 (GITHUB_TOKEN 사용)
-        run: |
-          # GitHub Actions 전용 계정으로 설정
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          # GITHUB_TOKEN을 포함한 원격 URL로 설정하여 인증 문제 해결
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/hyungyugod/velog-posts.git
-          # 원격 저장소의 최신 변경 사항을 가져와 충돌 방지
-          git pull origin main --rebase || true
+      - name: 최신 변경 사항 가져오기
+        run: git pull origin main --rebase || true
 
       - name: Velog RSS에서 최신 포스트 가져오기
         run: |
           mkdir -p posts
           RSS_URL="https://v2.velog.io/rss/@hyungyugod"
-          # RSS 피드에서 포스트 링크 추출
           curl -s "$RSS_URL" | grep -oP '(?<=<link>https://velog.io/@hyungyugod/).*?(?=</link>)' | while read -r post; do
-            # 안전한 파일명으로 변환 (특수문자 제거) 후 .md 확장자 추가
             filename=$(echo "$post" | sed 's/[^a-zA-Z0-9._-]/_/g').md
-            # Markdown 형식의 파일 다운로드 (Velog에서 실제 Markdown 파일 제공하는 경우)
             curl -s "https://velog.io/@hyungyugod/$post.md" -o "posts/$filename"
-            # 다운로드 실패 시 (0바이트 파일) 삭제
             [ -s "posts/$filename" ] || rm -f "posts/$filename"
           done
 
@@ -48,6 +38,5 @@ jobs:
             git commit -m "🔄 자동 동기화: Velog 포스트 업데이트"
             git push origin main
           fi
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 
