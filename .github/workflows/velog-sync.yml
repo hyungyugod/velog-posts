@@ -1,0 +1,45 @@
+name: Sync Velog Posts to GitHub
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # 매일 자정(UTC) 실행 (한국 시간 오전 9시)
+  workflow_dispatch:  # 수동 실행 가능
+
+jobs:
+  sync-posts:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 저장소 체크아웃
+        uses: actions/checkout@v3
+
+      - name: Velog RSS에서 최신 포스트 가져오기
+        run: |
+          mkdir -p posts
+          RSS_URL="https://v2.velog.io/rss/@hyungyugod"
+
+          # Velog RSS에서 포스트 링크 가져오기
+          curl -s "$RSS_URL" | grep -oP '(?<=<link>https://velog.io/@hyungyugod/).*?(?=</link>)' | while read -r post; do
+            # 파일명 변환 (URL 인코딩 처리)
+            filename=$(echo "$post" | sed 's/[^a-zA-Z0-9._-]/_/g').md
+
+            # Markdown 내용 가져오기 (HTML이 아닌 실제 Markdown 데이터)
+            curl -s "https://velog.io/@hyungyugod/$post.md" -o "posts/$filename"
+
+            # 파일 크기가 0이면 삭제 (다운로드 실패 방지)
+            [ -s "posts/$filename" ] || rm -f "posts/$filename"
+          done
+
+      - name: 변경 사항 커밋 및 푸시
+        run: |
+          git config --global user.name "hyungyugod"
+          git config --global user.email "hyungyugod@naver.com"
+
+          # 변경 사항 확인
+          git add posts/
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "🔄 자동 동기화: Velog 포스트 업데이트"
+            git push
+          fi
