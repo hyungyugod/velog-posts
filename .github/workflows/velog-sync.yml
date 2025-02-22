@@ -13,6 +13,14 @@ jobs:
       - name: 저장소 체크아웃
         uses: actions/checkout@v3
 
+      - name: GitHub 인증 설정 (GITHUB_TOKEN 사용)
+        run: |
+          git config --global user.name "hyungyugod"
+          git config --global user.email "hyungyugod@naver.com"
+          git config --global credential.helper store
+          echo "machine github.com login hyungyugod password ${{ secrets.GITHUB_TOKEN }}" > ~/.git-credentials
+          git pull origin main || true  # 충돌 방지를 위해 pull 수행
+
       - name: Velog RSS에서 최신 포스트 가져오기
         run: |
           mkdir -p posts
@@ -32,14 +40,13 @@ jobs:
 
       - name: 변경 사항 커밋 및 푸시
         run: |
-          git config --global user.name "hyungyugod"
-          git config --global user.email "hyungyugod@naver.com"
-
-          # 변경 사항 확인
           git add posts/
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
             git commit -m "🔄 자동 동기화: Velog 포스트 업데이트"
-            git push
+            git push origin main
           fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
