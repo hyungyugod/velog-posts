@@ -293,3 +293,19 @@ public static boolean[] sieve(int n) {
 - mkdirs(): 주어진 경로에서 없는 폴더는 전부 만들면서 오기
 - getName(): 현재 위치 리턴
 - getParent(): 현재 위치 이전의 모든 위치를 리턴
+
+### 12. 큐와 데크
+| 분류 | 자주 쓰는 메서드 | 예외 발생? | 설명 |
+|------|-----------------|-----------|------|
+| `Queue<E>` | `offer(e)` | ✖ | 뒤(꼬리)에 넣기, 자리 없으면 `false` |
+|              | `add(e)`   | ✔ | 뒤(꼬리)에 넣기, 자리 없으면 `IllegalStateException` |
+|              | `poll()`   | ✖ | 앞(머리)에서 꺼내기, 없으면 `null` |
+|              | `remove()` | ✔ | 앞(머리)에서 꺼내기, 없으면 `NoSuchElementException` |
+|              | `peek()`   | ✖ | 앞 요소 미리보기, 없으면 `null` |
+|              | `element()`| ✔ | 앞 요소 미리보기, 없으면 `NoSuchElementException` |
+| `Deque<E>` (Queue + 추가) | `addFirst(e)` / `addLast(e)` | ✔ | 앞/뒤 삽입, 자리 없으면 예외 |
+|                         | `offerFirst(e)` / `offerLast(e)` | ✖ | 앞/뒤 삽입, 자리 없으면 `false` |
+|                         | `pollFirst()` / `pollLast()` | ✖ | 앞/뒤 꺼내기, 없으면 `null` |
+|                         | `peekFirst()` / `peekLast()` | ✖ | 앞/뒤 미리보기, 없으면 `null` |
+|                         | `push(e)` | ✔ | = `addFirst(e)` (스택 용도) |
+|                         | `pop()`  | ✔ | = `removeFirst()` (스택 용도) 꺼내고 원래 있던 큐/데크에서는 값을 삭제한다. 앞에서 값을 뺀다. |
