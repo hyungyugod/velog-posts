@@ -196,6 +196,7 @@ public static int gcd(int a, int b) {
 - count(): 요소 개수 반환 -> stream.count(), intStream.count()
 - anyMatch: Arrays.stream(num_list).anyMatch(num -> num == n);
 - sorted(): 기본 오름차순 정렬에서 comparator를 통해 다양한 정렬기준을 세울 수 있음.
+- collect(Collectors.joining("")): 요소를 문자열로 합쳐주기 (문자 스트림이 아니라 문자열을 반환한다.)
 
 ##### comparator 내부 메서드 (안에서 람다식으로 정렬기준 정리 혹은 참조 활용)
 - comparing(): 문자열 기준 정렬 
@@ -309,3 +310,18 @@ public static boolean[] sieve(int n) {
 |                         | `peekFirst()` / `peekLast()` | ✖ | 앞/뒤 미리보기, 없으면 `null` |
 |                         | `push(e)` | ✔ | = `addFirst(e)` (스택 용도) |
 |                         | `pop()`  | ✔ | = `removeFirst()` (스택 용도) 꺼내고 원래 있던 큐/데크에서는 값을 삭제한다. 앞에서 값을 뺀다. |
+
+### 13. 정렬 알고리즘의 이해 (compare, compareTo)
+- compare(a,b) -> a - b
+- a.compareTo(b) -> a - b (Comparable 인터페이스를 구현한 객체끼리만(객체 스스로가 비교 로직을 가지고 있어야함.) -> 문자하나하나 유니코드 비교)
+
+| 비교 기준                        | 비교 결과            | 실생활 해석                           |
+|----------------------------------|----------------------|----------------------------------------|
+| a가 더 작다 (`a - b < 0`)        | a가 먼저 와야 한다   | “작은 번호 먼저”, “키 작은 아이 먼저” |
+| a와 b가 같다 (`a - b == 0`)      | 순서 유지            | “둘이 같으면 굳이 자리 안 바꿈”       |
+| a가 더 크다 (`a - b > 0`)        | b가 먼저 와야 한다   | “큰 번호는 뒤로”, “키 큰 아이는 뒤로” |
+
+| 방식                                | 사용 시점                          | 예시                                  | 지금 문제에 적합한가? |
+|-------------------------------------|-------------------------------------|----------------------------------------|------------------------|
+| `.sorted((a, b) -> ...)`            | 직접 비교식이 필요할 때            | `(b + a).compareTo(a + b)`             | ✅ 예                  |
+| `.sorted(Comparator.comparing(key))` | 단일 기준(key)을 추출할 수 있을 때 | `String::length`, `person -> person.age` | ❌ 불가                |
