@@ -4,17 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "b3bbea58e4e865d9",
+        "id": "bb21c8a802e1f55f",
         "type": "tabs",
         "children": [
           {
-            "id": "867358a3ef28397c",
+            "id": "335354a002474e7a",
             "type": "leaf",
             "state": {
-              "type": "empty",
+              "type": "graph",
               "state": {},
-              "icon": "lucide-file",
-              "title": "새 탭"
+              "icon": "lucide-git-fork",
+              "title": "그래프 뷰"
             }
           }
         ]
@@ -37,7 +37,7 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false
+                "autoReveal": true
               },
               "icon": "lucide-folder-closed",
               "title": "파일 탐색기"
@@ -162,8 +162,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -176,8 +175,15 @@
       "bases:새 베이스 생성하기": false
     }
   },
-  "active": "867358a3ef28397c",
+  "active": "335354a002474e7a",
   "lastOpenFiles": [
+    "무제 2.base",
+    "무제 1.base",
+    "무제 1.canvas",
+    "CODING/Node/2025-09-07-node.md",
+    "무제.canvas",
+    "2026-04-05.md",
+    "무제.base",
     "2026-03-13-공인중개사법-(공인중개사법령 총칙~중개사무소 개설등록).md",
     "2026-03-12-부동산공법-(도계법 총칙~도시군관리계획 기출 1회독).md",
     "2026-03-14-부동산공시법,공인중개사법-(부동산공시법 총칙 이론2, 기출1 회독, 공인중개사법 총칙 기출1회독).md",
