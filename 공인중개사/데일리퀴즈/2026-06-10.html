@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📚 데일리 문제지 · 2026-06-10</title>
+<style>
+  :root{
+    --bg:#0f1115; --card:#191c23; --card2:#20242d; --line:#2c313b;
+    --txt:#e7e9ee; --sub:#9aa3b2; --accent:#ffd24a; --accent2:#7c9cff;
+    --ok:#34d399; --no:#f87171; --okbg:#10261d; --nobg:#2a1414;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);
+    font-family:'Pretendard','Apple SD Gothic Neo',system-ui,-apple-system,sans-serif;
+    line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:760px;margin:0 auto;padding:32px 20px 80px}
+  header{margin-bottom:24px}
+  .eyebrow{color:var(--accent);font-weight:700;font-size:14px;letter-spacing:.04em}
+  h1{font-size:28px;margin:6px 0 4px;font-weight:800}
+  .meta{color:var(--sub);font-size:14px}
+  .tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px}
+  .tag{background:var(--card2);border:1px solid var(--line);color:var(--sub);
+    padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600}
+  .bar{position:sticky;top:0;z-index:5;background:rgba(15,17,21,.88);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--line);
+    padding:12px 0;margin:18px 0 24px}
+  .progress{height:8px;background:var(--card2);border-radius:999px;overflow:hidden}
+  .progress>i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));
+    border-radius:999px;transition:width .35s ease}
+  .pmeta{display:flex;justify-content:space-between;font-size:12.5px;color:var(--sub);margin-bottom:7px}
+  .sec{font-size:13px;font-weight:800;color:var(--accent2);margin:26px 0 10px;letter-spacing:.02em;
+    border-top:1px dashed var(--line);padding-top:18px}
+  .sec:first-of-type{border-top:none;padding-top:0}
+  .q{background:var(--card);border:1px solid var(--line);border-radius:16px;
+    padding:18px 18px 16px;margin-bottom:14px}
+  .qhead{display:flex;align-items:center;gap:9px;margin-bottom:11px}
+  .qno{background:var(--accent);color:#1a1a1a;font-weight:800;font-size:13px;
+    width:26px;height:26px;border-radius:8px;display:grid;place-items:center;flex:0 0 auto}
+  .qtype{font-size:11.5px;font-weight:700;color:var(--accent2);border:1px solid var(--accent2);
+    padding:1px 8px;border-radius:999px}
+  .qcat{font-size:12px;color:var(--sub);margin-left:auto}
+  .qtext{font-size:16px;font-weight:600;margin:2px 0 14px}
+  .opts{display:flex;flex-direction:column;gap:8px}
+  .opt{display:flex;align-items:center;gap:11px;padding:11px 13px;border:1px solid var(--line);
+    border-radius:11px;cursor:pointer;background:var(--card2);transition:.15s;user-select:none}
+  .opt:hover{border-color:var(--accent2)}
+  .opt.sel{border-color:var(--accent);background:#26261a}
+  .opt .mk{width:22px;height:22px;border-radius:50%;border:2px solid var(--line);flex:0 0 auto;
+    display:grid;place-items:center;font-size:12px;font-weight:800}
+  .opt.sel .mk{border-color:var(--accent);background:var(--accent);color:#1a1a1a}
+  .ox{flex-direction:row;gap:10px}
+  .ox .opt{flex:1;justify-content:center;font-size:18px;font-weight:800}
+  .opt.correct{border-color:var(--ok);background:var(--okbg)}
+  .opt.correct .mk{border-color:var(--ok);background:var(--ok);color:#06281c}
+  .opt.wrong{border-color:var(--no);background:var(--nobg)}
+  .opt.wrong .mk{border-color:var(--no);background:var(--no);color:#2a0d0d}
+  .expl{margin-top:12px;padding:12px 14px;border-radius:11px;background:var(--card2);
+    border-left:3px solid var(--accent2);font-size:13.5px;color:#d4d9e2;display:none}
+  .expl.show{display:block;animation:fade .3s ease}
+  .expl .verdict{font-weight:800;margin-right:6px}
+  .expl .src{display:block;margin-top:7px;color:var(--sub);font-size:12px}
+  @keyframes fade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+  .submit{width:100%;padding:16px;border:none;border-radius:14px;font-size:17px;font-weight:800;
+    background:linear-gradient(90deg,var(--accent),#ffb347);color:#1a1a1a;cursor:pointer;margin-top:10px}
+  .submit:disabled{opacity:.45;cursor:not-allowed}
+  .submit.retry{background:var(--card2);color:var(--txt);border:1px solid var(--line)}
+  #result{display:none;text-align:center;background:var(--card);border:1px solid var(--line);
+    border-radius:18px;padding:28px 20px;margin-bottom:18px}
+  #result.show{display:block;animation:fade .4s ease}
+  .ring{font-size:46px;font-weight:900;margin:4px 0}
+  .ring small{font-size:18px;color:var(--sub);font-weight:700}
+  #rmsg{color:var(--sub);font-size:15px;margin-top:4px}
+  #dlnote{font-size:12.5px;color:var(--accent);margin-top:12px}
+  .foot{text-align:center;margin-top:30px;color:var(--sub);font-size:12.5px;line-height:1.8}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">DAILY QUIZ · 공인중개사</div>
+    <h1>오늘의 복습 문제지</h1>
+    <div class="meta">2026년 6월 10일 (수) · 심화 30문항 · 오답 재도전 5문항(🔁) 포함</div>
+    <div class="tags">
+      <span class="tag">🔥 심화</span><span class="tag">🔁 오답 재도전 5</span><span class="tag">🎯 정답분산</span><span class="tag">부동산학개론</span>
+      <span class="tag">부동산공법</span><span class="tag">공인중개사법</span><span class="tag">부동산공시법</span><span class="tag">부동산세법</span><span class="tag">민법</span>
+    </div>
+  </header>
+
+  <div class="bar">
+    <div class="pmeta"><span id="pcount">0 / 30 선택</span><span>제출 시 오답이 자동 저장됩니다</span></div>
+    <div class="progress"><i id="pbar"></i></div>
+  </div>
+
+  <div id="result">
+    <div class="ring"><span id="score">0</span><small> / 30</small></div>
+    <div id="rmsg"></div>
+    <div id="dlnote"></div>
+  </div>
+
+  <form id="quiz"></form>
+
+  <button class="submit" id="submitBtn" disabled>제출하고 채점하기</button>
+
+  <div class="foot">
+    매일 새벽, 최근 7일 학습 노트로 자동 갱신됩니다.<br>
+    틀린 문제는 제출 시 결과파일로 저장 → 매주 월요일 오답노트로 자동 정리됩니다.
+  </div>
+</div>
+
+<script>
+const QUIZ_DATE = "2026-06-10";
+const QUESTIONS = [
+  { type:"OX", cat:"부동산학개론",
+    q:"사업주체가 일반인에게 공급하는 공동주택 중 공공택지에서 공급하는 도시형 생활주택에도 분양가상한제가 적용된다.",
+    opts:["O","X"], answer:1,
+    expl:"X. 공공택지에서 공급하는 '도시형 생활주택'은 분양가상한제 적용 예외다. 소형 주택 공급 촉진이 목적인 유형까지 분양가를 묶으면 공급 자체가 위축되기 때문 — '상한제 원칙 속 예외'를 찾는 함정.",
+    src:"2026-05-28 부동산학개론 1-2" },
+  { type:"객관식", cat:"부동산학개론",
+    q:"주택의 분류에 관한 설명으로 <b>옳지 않은</b> 것은?",
+    opts:["세대구분형 공동주택은 구분된 공간의 일부를 구분소유할 수 없는 주택이다","공공지원민간임대주택은 공공임대주택이 아니라 민간임대주택에 해당한다","장기전세주택은 국가·지자체의 재정이나 주택도시기금의 지원을 받아 전세계약 방식으로 공급하는 민간임대주택이다","기숙사가 공동주택에 해당하려면 1개 동의 공동취사시설 이용 세대 수가 전체의 50% 이상이어야 한다"], answer:2,
+    expl:"장기전세주택은 '공공'임대주택이다. 재원이 국가·지자체 재정·주택도시기금이면 공공 트랙. 반대로 공공'지원'민간임대주택은 지원만 받을 뿐 '민간'임대주택 — 이름과 실제 소속이 서로 엇갈리는 한 끗 차이 함정 쌍이다.",
+    src:"2026-05-28 부동산학개론 1-2" },
+  { type:"객관식", cat:"부동산학개론",
+    q:"어떤 부동산에 대한 수요의 가격탄력성은 1.2, 소득탄력성은 0.5이다. 이 부동산의 가격이 5% 상승하고 동시에 수요자의 소득이 4% 증가할 때, 전체 수요량의 변화는? (정상재이며 다른 조건은 동일)",
+    opts:["4% 감소","2% 감소","4% 증가","8% 감소"], answer:0,
+    expl:"가격효과 = 1.2 × 5% = 6% 감소(가격↔수요량은 반비례). 소득효과 = 0.5 × 4% = 2% 증가(정상재는 비례). 합치면 −6% + 2% = 4% 감소. '방향 판단(반비례·비례) → 곱하기 → 합산' 순서가 핵심이고, 두 효과를 더하지 않고 하나만 계산하면 보기 1·3에 걸린다.",
+    src:"2026-05-28 부동산학개론 1-4" },
+  { type:"객관식", cat:"부동산학개론",
+    q:"대출금 2억원을 원금균등상환방식(연 1회 상환, 만기 10년, 금리 연 5%)으로 상환할 때, 매년의 이자지급액은 전년 대비 얼마씩 감소하는가?",
+    opts:["50만원","100만원","200만원","1,000만원"], answer:1,
+    expl:"매년 상환원금 = 2억 ÷ 10년 = 2,000만원으로 일정. 이자 감소액 = 매기 상환원금 × 대출금리 = 2,000만 × 5% = 100만원. 원금균등은 잔금이 매년 '일정액'씩 줄어드는 구조라 이자도 '상환원금×금리'만큼 일정하게 감소한다.",
+    src:"2026-05-28 부동산학개론 1-6" },
+  { type:"객관식", cat:"부동산학개론",
+    q:"가능총소득(PGI) 1억 2,000만원, 공실·대손손실은 PGI의 10%, 영업경비는 유효총소득(EGI)의 30%, 부채서비스액 2,160만원일 때 채무불이행률(DR)은?",
+    opts:["45%","60%","50%","55%"], answer:2,
+    expl:"EGI = 1억 2,000만 × 0.9 = 1억 800만. 영업경비 = 1억 800만 × 30% = 3,240만. 채무불이행률 = (영업경비 + 부채서비스액) ÷ EGI = (3,240만 + 2,160만) ÷ 1억 800만 = 50%. 분모가 PGI가 아니라 'EGI'라는 점, 영업경비 기준이 EGI라는 점이 이중 함정.",
+    src:"2026-05-28 부동산학개론 1-5" },
+  { type:"객관식", cat:"부동산공법",
+    q:"🔁 도시개발구역의 토지면적이 9만㎡, 토지소유자가 120명일 때, 도시개발조합 설립인가에 필요한 최소 동의 요건은?",
+    opts:["토지면적 4만 5,000㎡ 이상 + 토지소유자 80명 이상","토지면적 6만㎡ 이상 + 토지소유자 60명 이상","토지면적 6만㎡ 이상 + 토지소유자 80명 이상","토지면적 4만 5,000㎡ 이상 + 토지소유자 60명 이상"], answer:1,
+    expl:"도시개발조합 = 토지면적의 3분의 2 이상 소유자 + 토지소유자 총수의 2분의 1 이상 동의. 9만 × 2/3 = 6만㎡, 120 × 1/2 = 60명. 비율을 '면적 1/2 + 총수 2/3'로 뒤집어 외우는 것이 지난 오답 포인트 — 면적 쪽이 더 무겁다(2/3).",
+    src:"오답노트 2026-05-20 #5 · 재도전" },
+  { type:"객관식", cat:"부동산공법",
+    q:"🔁 조합설립 동의 요건에 관한 설명으로 <b>옳지 않은</b> 것은?",
+    opts:["재개발사업은 토지등소유자의 4분의 3 이상 및 토지면적의 2분의 1 이상의 동의가 필요하다","주택단지에서 시행하는 재건축사업의 동의 요건에는 각 동별 구분소유자의 과반수 동의가 포함된다","도시개발조합(면적 2/3 이상)과 재개발조합(면적 1/2 이상)은 면적 동의 기준이 서로 다르다","주택단지에서 시행하는 재건축사업의 조합설립인가는 토지등소유자 전원의 동의가 필요하다"], answer:3,
+    expl:"재건축은 '전원 동의'가 아니라 전체 구분소유자 4분의 3 이상 + 토지면적 4분의 3 이상 + 동별 과반수 동의다. 전원 동의가 전제라면 반대자에 대한 매도청구 제도가 존재할 이유가 없다는 게 논리적 근거. '전원'은 지난 오답에서 틀렸던 함정.",
+    src:"오답노트 2026-05-20 #11·#12 · 재도전" },
+  { type:"객관식", cat:"부동산공법",
+    q:"🔁 개발행위허가 제한기간(원칙 3년)을 1회 2년 <b>연장할 수 없는</b> 곳은?",
+    opts:["도시·군기본계획이나 도시·군관리계획을 수립하고 있는 지역","지구단위계획구역","기반시설부담구역","개발밀도관리구역"], answer:3,
+    expl:"연장 가능 3곳 = 계획 수립 중인 지역 · 지구단위계획구역 · 기반시설부담구역('곧 새 판을 짤 곳'). 개발밀도관리구역은 기반시설 추가 설치가 곤란해 건폐율·용적률을 '강화'해 두는 장치라 연장 목록에 없다. 기반시설부담구역(비용 부과 장치)과 이름만 비슷하고 성격은 정반대 — 지난 오답의 핵심 함정.",
+    src:"오답노트 2026-05-20 #10 · 재도전" },
+  { type:"객관식", cat:"부동산공법",
+    q:"🔁 다음 중 건폐율 상한이 <b>가장 낮은</b> 것은?",
+    opts:["취락지구로 지정된 지역","자연공원으로 지정된 지역","자연녹지지역의 개발진흥지구","수산자원보호구역으로 지정된 지역"], answer:2,
+    expl:"취락지구 60% · 자연공원 60% · 자연녹지 개발진흥지구 30% · 수산자원보호구역 40% → 가장 낮은 것은 30%. 참고로 계획관리지역 산업·유통형 개발진흥지구 60%, 농공단지 70%(기반시설 충분 시 80%), 산업단지 80% — '산업·유통 개발진흥지구(60) ≠ 산업단지(80)' 구분이 지난 오답 포인트.",
+    src:"2026-06-03 부동산공법 1-5 · 오답 #7·#8 재도전" },
+  { type:"OX", cat:"부동산공법",
+    q:"🔁 복합용도지구는 일반주거지역·일반상업지역·계획관리지역에 지정할 수 있다.",
+    opts:["O","X"], answer:1,
+    expl:"X. 일일계 = 일반주거 · 일반'공업' · 계획관리. 상업지역은 이미 용도가 다 섞여 있어 '추가 허용' 장치인 복합용도지구를 지정할 실익이 없다. '일반공업'을 '일반상업'으로 바꿔치기한 것이 지난 오답에서 틀렸던 바로 그 함정.",
+    src:"오답노트 2026-05-20 #2·#6 · 재도전" },
+  { type:"OX", cat:"공인중개사법",
+    q:"개업공인중개사에게 미등기 부동산의 전매에 대한 중개를 의뢰한 거래당사자는 개업공인중개사와 공동정범으로 처벌된다.",
+    opts:["O","X"], answer:1,
+    expl:"X. 공인중개사법 벌칙 조항은 '중개업자'를 수범자로 설계된 법이므로, 거래당사자(의뢰인)는 정범으로도 공동정범으로도 처벌할 수 없다. 무등록중개업자에게 중개를 의뢰한 경우도 같은 논리로 처벌 불가.",
+    src:"2026-06-04 공인중개사법 1-2" },
+  { type:"객관식", cat:"공인중개사법",
+    q:"중개사무소의 표시·광고에 관한 설명으로 옳은 것은?",
+    opts:["법인 분사무소의 옥외광고물에는 대표자가 아니라 분사무소 책임자의 성명을 표시해야 한다","옥외광고물에는 성명 외에 중개사무소 명칭과 연락처도 반드시 표시해야 한다","인터넷 표시·광고에는 중개보조원에 관한 사항을 함께 명시할 수 있다","간판 등 옥외광고물도 「표시·광고의 공정화에 관한 법률」의 규율을 받는 일반 표시·광고에 포함된다"], answer:0,
+    expl:"옥외광고물의 의무는 '성명 표시'뿐이고, 주된 사무소는 대표자·분사무소는 책임자의 성명을 표기한다. 중개보조원 사항을 명시하면 100만원 이하 과태료. 일반 표시·광고(인터넷·신문, 표시광고공정화법)와 옥외광고물(간판·현수막, 옥외광고물법)은 근거 법률부터 다른 별개 트랙이다.",
+    src:"2026-06-04 공인중개사법 1-10" },
+  { type:"객관식", cat:"공인중개사법",
+    q:"인장의 등록에 관한 설명으로 <b>옳지 않은</b> 것은?",
+    opts:["소속공인중개사는 업무를 개시하기 전에 중개행위에 사용할 인장을 등록해야 한다","법인 분사무소에서 사용할 인장은 주된 사무소 소재지를 관할하는 등록관청에 등록한다","중개보조원도 업무를 개시하기 전에 중개업무에 사용할 인장을 등록해야 한다","등록한 인장을 변경한 경우 변경일부터 7일 이내에 등록관청에 등록해야 한다"], answer:2,
+    expl:"인장 등록 의무자는 '중개행위'를 하는 개업공인중개사와 소속공인중개사뿐이다. 중개보조원은 현장안내 등 보조 업무만 수행하고 서류에 서명·날인할 권한 자체가 없으므로 등록할 인장이 필요 없다 — 의무 주체를 슬쩍 넓히는 함정.",
+    src:"2026-06-04 공인중개사법 1-13" },
+  { type:"객관식", cat:"공인중개사법",
+    q:"중개사무소 개설등록의 결격사유에 <b>해당하지 않는</b> 것은?",
+    opts:["개인회생을 신청한 후 법원의 인가 여부가 결정되지 않은 자","파산선고를 받고 복권되지 아니한 자","금고 이상의 실형을 선고받고 그 집행이 면제된 날부터 3년이 지나지 아니한 자","금고 이상의 실형을 선고받고 그 집행이 종료된 날부터 3년이 지나지 아니한 자"], answer:0,
+    expl:"결격은 '파산이 확정된 상태(선고 후 미복권)'가 기준이다. 개인회생 신청 후 인가 여부가 결정되지 않은 단계는 아직 아무것도 확정되지 않았으므로 결격사유가 아니다. 집행 '면제'(형 집행을 면하고 나온 것)도 '종료'와 똑같이 3년을 센다.",
+    src:"2026-06-04 공인중개사법 1-7" },
+  { type:"객관식", cat:"공인중개사법",
+    q:"중개사무소 안의 보기 쉬운 곳에 게시할 의무가 <b>없는</b> 것은?",
+    opts:["중개사무소등록증 원본","사업자등록증","소속공인중개사의 공인중개사자격증 원본","중개보조원의 직무교육 수료증"], answer:3,
+    expl:"게시 대상은 중개사무소등록증과 공인중개사자격증의 '원본'(사본 불가 — 사본은 누구나 가질 수 있어 공시 기능이 없다), 그리고 사업자등록증 등이다. 중개보조원은 자격증이 없고, 직무교육 수료증은 게시 대상이 아니다.",
+    src:"2026-06-04 공인중개사법 1-10" },
+  { type:"객관식", cat:"부동산공시법",
+    q:"지목의 구분에 관한 연결로 옳은 것은?",
+    opts:["묘지공원으로 결정·고시된 토지 → 묘지","박물관·미술관 등 문화시설에 접속된 정원의 부지 → 공원","변전소·송신소·송유시설의 부지 → 대(垈)","모래·바람 등을 막기 위해 설치된 방사제·방파제의 부지 → 제방"], answer:3,
+    expl:"방조·방수·방사·방파 등 '막기 위한 시설'의 부지는 제방이다. 묘지공원은 묘지가 아니라 '공원', 문화시설(박물관 등)에 접속된 정원은 '대', 변전소·송신소는 '잡종지'. 명칭이 아니라 '시설의 기능'이 지목을 결정한다는 원리로 풀어야 한다.",
+    src:"2026-06-06 부동산공시법 1-3" },
+  { type:"객관식", cat:"부동산공시법",
+    q:"토지소유자의 신청으로 신규등록을 한 경우, 지적소관청이 등기관서에 등기촉탁을 할 필요가 없는 이유로 옳은 것은?",
+    opts:["등기부 자체가 개설되어 있지 않아 촉탁할 대상 등기가 존재하지 않기 때문","등기관서가 지적공부를 근거로 직권으로 소유권보존등기를 하기 때문","신규등록은 토지의 표시에 관한 사항의 변경에 해당하지 않기 때문","토지소유자가 30일 이내에 직접 등기를 신청할 의무를 지기 때문"], answer:0,
+    expl:"등기촉탁은 '이미 존재하는 등기'의 표시를 지적공부와 일치시키는 절차다. 지적공부에 처음 올라가는 신규등록 토지는 등기부에도 당연히 없으므로 일치시킬 대상 자체가 없다 — '없는 등기를 촉탁할 수 없다'는 구조를 묻는 원리 문제.",
+    src:"2026-06-06 부동산공시법 4-1" },
+  { type:"객관식", cat:"부동산공시법",
+    q:"면적측정과 측량에 관한 설명으로 옳은 것은?",
+    opts:["지목변경을 위한 세부측량을 하는 경우에는 반드시 필지마다 면적을 측정하여야 한다","경위의 측량방법으로 세부측량을 한 지역의 필지별 면적측정은 전자면적측정기에 의한다","지적공부 복구 시 자료상 면적과 조사된 면적의 증감이 허용범위를 초과하면 복구측량을 해야 한다","토지대장에 등록하는 면적은 어느 지역이든 모두 소수점 아래 첫째 자리까지 등록한다"], answer:2,
+    expl:"복구는 장부가 없어졌다가 다시 만드는 것이므로, 자료 간 면적 차이가 허용범위를 넘으면 실측(복구측량)으로 다시 확정해야 한다. 지목변경은 경계·면적이 변하지 않아 면적측정 불요(보기1), 경위의 측량 지역은 좌표면적계산법(보기2), 소수점 첫째 자리 등록은 경계점좌표등록부 지역 등에 한정(보기4).",
+    src:"2026-06-06 부동산공시법 2-3 · 4-4" },
+  { type:"OX", cat:"부동산공시법",
+    q:"바다로 되어 원상회복이 불가능한 토지에 대해 토지소유자의 등록말소 신청이 접수되면, 지적소관청은 지체 없이 등기관서에 그 등기의 말소를 촉탁하여야 한다.",
+    opts:["O","X"], answer:0,
+    expl:"O. 지적공부 말소는 소관청이 직권으로도 할 수 있지만(시·도지사 승인 불요), 등기부까지 함께 정리되어야 공시가 일치한다. 그래서 말소 신청이 오면 '지체 없이' 등기관서에 촉탁까지 이어지는 구조 — 지적공부(직권 가능)와 등기부(촉탁 필요)의 역할 분담을 기억.",
+    src:"2026-06-06 부동산공시법 4-3" },
+  { type:"객관식", cat:"부동산공시법",
+    q:"등록전환에 관한 설명으로 옳은 것은?",
+    opts:["임야대장의 면적과 등록전환될 면적의 차이가 오차 허용범위 이내인 경우, '임야대장의 면적'을 등록전환 면적으로 결정한다","임야대장의 면적과 등록전환될 면적의 차이가 오차 허용범위 이내인 경우, '등록전환될 면적'을 등록전환 면적으로 결정한다","오차 허용범위를 초과하는 경우, 토지소유자의 신청을 받아 임야대장의 면적을 정정한다","등록전환 후에도 종전 임야대장의 지번을 그대로 사용한다"], answer:1,
+    expl:"오차가 허용범위 '이내'면 새로 잰 값(등록전환될 면적)을 그대로 쓴다. '초과'면 기존 임야대장·임야도에 오류가 있다는 증거이므로 지적소관청 '직권'으로 정정한다(신청 ❌). 임야대장→토지대장은 별개 장부 간 이동이라 토지대장 체계에 맞는 새 지번을 부여한다.",
+    src:"2026-06-06 부동산공시법 4-1 · 1-2" },
+  { type:"객관식", cat:"부동산세법",
+    q:"다음 중 등록면허세가 <b>비과세</b>되는 것은?",
+    opts:["광업권의 등록","묘지인 토지에 관한 등기","어업권·양식업권의 등록","외국인 소유 물건을 연부(年賦)로 취득하는 경우의 등록"], answer:1,
+    expl:"비과세 = 묘지인 토지의 등기, 국가 등이 받는 등록. 광업권·어업권·양식업권과 외국인 소유 물건의 연부취득은 '취득세 대신 등록면허세가 부과되는' 특례(광어양식은 외국에서)이지 비과세가 아니다 — '부과 특례'와 '비과세'를 맞바꾸는 함정.",
+    src:"2026-06-07 부동산세법 8" },
+  { type:"객관식", cat:"부동산세법",
+    q:"기존 건축물을 증축하여 건축물의 면적이 증가한 경우, 그 증가된 부분에 적용되는 취득세 세율은?",
+    opts:["중과기준세율(1천분의 20)만 적용한다","표준세율에서 중과기준세율을 뺀 세율을 적용한다","유상승계취득의 표준세율을 적용한다","원시취득의 표준세율을 적용한다"], answer:3,
+    expl:"신축·재축 이외의 건축(증축·개축)이라도 '면적이 증가'하면 그 증가분은 세상에 새로 생긴 부분이므로 원시취득 세율을 적용한다. 비교: 면적 증가 없는 개수(종전 면적 이내)는 등기 없는 가치 증가라 중과기준세율만, 환매·합병 등 형식적 이전은 표준세율−중과기준세율 — 3단 구조로 묶어 기억.",
+    src:"2026-06-07 부동산세법 5 · 2026-05-30 세법 1-2" },
+  { type:"객관식", cat:"부동산세법",
+    q:"농지를 3억원에 유상으로 취득한 경우, 표준세율에 따른 취득세액은? (감면·중과 없음)",
+    opts:["300만원","600만원","1,200만원","900만원"], answer:3,
+    expl:"농지 유상취득의 표준세율 = 1천분의 30(3%). 3억 × 3% = 900만원. 농지 외 일반 부동산 유상취득은 1천분의 40(4%)이므로 1,200만원과 혼동 주의 — '농지도 삼(30), 그 외 사(40)'.",
+    src:"2026-06-07 부동산세법 5-1" },
+  { type:"객관식", cat:"부동산세법",
+    q:"갑이 특수관계인 을로부터 시가인정액 10억원인 상가를 6억원에 매수하였다. 이 거래가 부당행위계산에 해당할 때, 취득세 과세표준은?",
+    opts:["10억원","6억원","4억원","시가표준액"], answer:0,
+    expl:"시가인정액(10억) − 사실상취득가액(6억) = 4억 ≥ 3억이므로 부당행위계산 요건 충족 → 사실상취득가액이 아닌 '시가인정액 10억'을 과세표준으로 한다. 차액(4억)은 요건 판단용 숫자일 뿐 과세표준이 아니고, 시가표준액은 시가인정액 산정이 불가능할 때의 보충 수단이다.",
+    src:"2026-06-07 부동산세법 3-1" },
+  { type:"OX", cat:"부동산세법",
+    q:"주택분 재산세의 산출세액이 20만원 이하인 경우에는 납기를 7월로 하여 한꺼번에 부과·징수할 수 있다.",
+    opts:["O","X"], answer:0,
+    expl:"O. 주택 재산세는 원칙적으로 세액의 1/2씩 7월(16~30일)·9월(16~30일)에 나누어 내지만, 세액이 20만원 이하면 두 번 걷는 행정비용이 더 들어 7월에 일괄 부과징수할 수 있다 — '분납 원칙 + 소액 예외' 구조.",
+    src:"2026-05-30 부동산세법 3-3" },
+  { type:"객관식", cat:"민법",
+    q:"표현대리에 관한 설명으로 <b>옳지 않은</b> 것은?",
+    opts:["권한을 넘은 표현대리의 기본대리권은 대리행위와 같은 종류의 행위에 관한 것일 필요가 없다","사자(使者)의 권한도 권한을 넘은 표현대리의 기본대리권으로 인정될 수 있다","본인을 위한 것임을 현명(顯名)하지 않은 경우에는 표현대리가 성립하지 않는다","표현대리가 성립한 경우 상대방에게 과실이 있으면 과실상계의 법리를 유추적용하여 본인의 책임을 경감할 수 있다"], answer:3,
+    expl:"표현대리의 효과는 손해배상이 아니라 '계약 이행 그 자체'이므로, 배상액 조정 법리인 과실상계가 끼어들 자리가 없다. 상대방의 과실은 책임 경감 사유가 아니라 애초에 선의·무과실 요건 단계에서 표현대리 성립 자체를 부정하는 사유로 작동한다.",
+    src:"2026-06-08 민법 1-2" },
+  { type:"객관식", cat:"민법",
+    q:"명의신탁에 관한 설명으로 옳은 것은?",
+    opts:["계약명의신탁에서 등기를 이전받은 수탁자가 자의(自意)로 신탁자에게 이전등기를 해 준 경우, 신탁자는 소유권을 취득한다","무효인 명의신탁에서 수탁자가 제3자에게 적법하게 양도했다가 다시 소유권을 취득한 경우, 신탁자는 소유물반환을 청구할 수 있다","법령상 제한 회피 목적이 없더라도 배우자에 대한 명의신탁은 무효이다","명의신탁약정의 무효는 선의의 제3자에게는 대항할 수 없지만 악의의 제3자에게는 대항할 수 있다"], answer:0,
+    expl:"수탁자가 자의로 해 준 이전등기는 무효인 약정의 '이행'이 아니라 새로운 법률행위이므로 유효 — 신탁자가 소유권을 취득한다. 수탁자의 재취득은 명의신탁과 무관한 새 원인에 의한 취득이라 반환청구 불가(보기2), 배우자·종중 명의신탁은 회피 목적이 없으면 유효(보기3), 실명법은 민법 §108과 달리 선의·악의를 불문하고 제3자를 보호한다(보기4).",
+    src:"2026-06-02 민법 1-8" },
+  { type:"객관식", cat:"민법",
+    q:"무효등기의 유용(流用)에 관한 설명으로 옳은 것은?",
+    opts:["멸실된 건물의 소유권보존등기를 신축 건물에 유용하기로 한 합의는 유효하다","갑구·을구 사항란의 무효등기는 부동산이 동일하다면 새로운 법률관계를 위해 유용할 수 있다","무효등기의 유용 합의는 반드시 명시적으로 이루어져야 한다","무효인 가등기를 유효한 등기로 전용하기로 약정하면 그 가등기는 약정 시로부터 소급하여 유효하게 된다"], answer:1,
+    expl:"사항란(갑구·을구) 등기는 부동산이 같고 '권리관계만' 바꾸는 것이라 유용이 가능하다. 반면 보존등기 유용은 부동산 자체가 달라져 공시 기능이 무너지므로 불가(보기1). 유용 합의는 묵시적으로도 가능하고(보기3), 전용 약정은 무효임을 알고 한 새로운 법률행위(추인)라서 소급효가 없다(보기4).",
+    src:"2026-06-08 민법 8-2" },
+  { type:"OX", cat:"민법",
+    q:"착오·사기·강박을 이유로 소(訴)의 취하나 재판상 자백 같은 소송행위를 취소하는 것은 원칙적으로 허용되지 않는다.",
+    opts:["O","X"], answer:0,
+    expl:"O. 민법 §109·§110의 취소권은 '사적 자치' 영역의 법률행위를 전제로 한다. 소송행위는 국가의 사법(司法)절차 영역이라, 취소를 허용하면 확정된 자백·취하가 뒤집혀 소송절차 전체의 법적 안정성이 무너지므로 원칙적으로 취소할 수 없다.",
+    src:"2026-06-02 민법 1-6" },
+  { type:"객관식", cat:"민법",
+    q:"토지거래허가구역 내 매매계약(유동적 무효)에 관한 설명으로 옳은 것은?",
+    opts:["유동적 무효 상태에서는 사기를 이유로 한 취소권을 행사할 수 없다","매수인은 토지거래허가가 있을 것을 조건으로 소유권이전등기절차의 이행을 청구할 수 있다","사기에 의해 계약이 체결된 경우, 허가를 신청하기 전에 취소하여 허가신청절차 협력의무를 면할 수 있다","유동적 무효 상태에서도 채무불이행을 이유로 계약을 해제할 수 있다"], answer:2,
+    expl:"유동적 무효라도 협력의무 등 '구속력 있는 법률관계'는 존재하므로 취소권을 행사할 수 있고, 취소하면 협력의무까지 소멸한다. 이전등기청구권은 허가 후에야 발생하므로 조건부 청구 불가(보기2), 이행청구권이 없어 채무불이행 자체가 성립하지 않으므로 채무불이행 해제도 불가(보기4) — 해약금 해제만 가능.",
+    src:"2026-06-08 민법 2-1" },
+];
+
+const form = document.getElementById('quiz');
+const selected = new Array(QUESTIONS.length).fill(null);
+let graded = false;
+let lastCat = null;
+
+QUESTIONS.forEach((item, qi)=>{
+  if(item.cat !== lastCat){
+    const s = document.createElement('div');
+    s.className = 'sec';
+    s.textContent = '▍' + item.cat;
+    form.appendChild(s);
+    lastCat = item.cat;
+  }
+  const card = document.createElement('div');
+  card.className = 'q';
+  const isOX = item.type === 'OX';
+  card.innerHTML = `
+    <div class="qhead">
+      <span class="qno">${qi+1}</span>
+      <span class="qtype">${item.type}</span>
+      <span class="qcat">${item.cat}</span>
+    </div>
+    <div class="qtext">${item.q}</div>
+    <div class="opts ${isOX?'ox':''}" data-q="${qi}"></div>
+    <div class="expl" id="expl-${qi}"></div>`;
+  const optsEl = card.querySelector('.opts');
+  item.opts.forEach((o, oi)=>{
+    const el = document.createElement('div');
+    el.className = 'opt';
+    el.dataset.q = qi; el.dataset.o = oi;
+    el.innerHTML = isOX
+      ? `<span>${o}</span>`
+      : `<span class="mk">${String.fromCharCode(65+oi)}</span><span>${o}</span>`;
+    el.addEventListener('click', ()=>{
+      if(graded) return;
+      selected[qi] = oi;
+      optsEl.querySelectorAll('.opt').forEach(x=>x.classList.remove('sel'));
+      el.classList.add('sel');
+      updateProgress();
+    });
+    optsEl.appendChild(el);
+  });
+  form.appendChild(card);
+});
+
+function updateProgress(){
+  const done = selected.filter(s=>s!==null).length;
+  document.getElementById('pcount').textContent = `${done} / ${QUESTIONS.length} 선택`;
+  document.getElementById('pbar').style.width = (done/QUESTIONS.length*100)+'%';
+  document.getElementById('submitBtn').disabled = done !== QUESTIONS.length;
+}
+
+const btn = document.getElementById('submitBtn');
+btn.addEventListener('click', ()=>{ if(!graded){ grade(); } else { location.reload(); } });
+
+function grade(){
+  graded = true;
+  let score = 0;
+  const wrong = [];
+  QUESTIONS.forEach((item, qi)=>{
+    const opts = document.querySelectorAll(`.opt[data-q="${qi}"]`);
+    opts.forEach((el, oi)=>{
+      el.style.cursor='default';
+      if(oi === item.answer) el.classList.add('correct');
+      if(oi === selected[qi] && oi !== item.answer) el.classList.add('wrong');
+    });
+    const correct = selected[qi] === item.answer;
+    if(correct){ score++; }
+    else {
+      wrong.push({
+        id: `${QUIZ_DATE}-q${qi+1}`, cat:item.cat, type:item.type, q:item.q,
+        options:item.opts, myAnswer:item.opts[selected[qi]], correct:item.opts[item.answer],
+        expl:item.expl, src:item.src
+      });
+    }
+    const ex = document.getElementById('expl-'+qi);
+    ex.innerHTML = `<span class="verdict" style="color:${correct?'var(--ok)':'var(--no)'}">${correct?'정답!':'오답'}</span>${item.expl}<span class="src">📄 출처: ${item.src}</span>`;
+    ex.classList.add('show');
+  });
+  const r = document.getElementById('result');
+  document.getElementById('score').textContent = score;
+  document.getElementById('rmsg').textContent = msgFor(score);
+  r.classList.add('show');
+  btn.textContent = '🔄 다시 풀기';
+  btn.classList.add('retry');
+
+  // 결과 자동 다운로드 (월요일 오답 수거 작업이 읽는 파일)
+  downloadResult(score, wrong);
+
+  r.scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+function downloadResult(score, wrong){
+  const payload = {
+    subject:"공인중개사", date:QUIZ_DATE,
+    score:score, total:QUESTIONS.length, wrongCount:wrong.length,
+    wrong:wrong, generatedAt:new Date().toISOString()
+  };
+  try{
+    const blob = new Blob([JSON.stringify(payload,null,2)], {type:"application/json"});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `공인중개사_오답_${QUIZ_DATE}.json`;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url), 1500);
+    document.getElementById('dlnote').textContent =
+      wrong.length>0 ? `💾 오답 ${wrong.length}개 저장됨 — 다운로드 폴더 확인` : "💾 만점 기록 저장됨";
+  }catch(e){
+    document.getElementById('dlnote').textContent = "⚠️ 자동 저장 실패 — 브라우저에서 직접 열어 풀어주세요";
+  }
+}
+
+function msgFor(s){
+  const t = QUESTIONS.length;
+  const r = s/t;
+  if(s===t)   return "만점. 오늘 등록증 발급해도 되겠는데요? 🏆";
+  if(r>=0.8)  return "합격권. 틀린 거 해설만 한 번 더 보면 완벽합니다.";
+  if(r>=0.6)  return "절반은 넘었어요. 오답 노트행 직행하는 개념들이 보이네요.";
+  if(r>=0.4)  return "아직 흔들리는 개념이 있어요. 해설 정독하고 내일 재도전!";
+  return "괜찮아요, 회독이 쌓이면 올라갑니다. 해설부터 차근차근.";
+}
+</script>
+</body>
+</html>
