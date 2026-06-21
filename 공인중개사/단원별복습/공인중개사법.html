@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📚 단원별 복습 · 공인중개사법 · 2026-06-21</title>
+<style>
+  :root{
+    --bg:#0f1115; --card:#191c23; --card2:#20242d; --line:#2c313b;
+    --txt:#e7e9ee; --sub:#9aa3b2; --accent:#ffd24a; --accent2:#7c9cff;
+    --ok:#34d399; --no:#f87171; --okbg:#10261d; --nobg:#2a1414;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);
+    font-family:'Pretendard','Apple SD Gothic Neo',system-ui,-apple-system,sans-serif;
+    line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:760px;margin:0 auto;padding:32px 20px 80px}
+  header{margin-bottom:24px}
+  .eyebrow{color:var(--accent);font-weight:700;font-size:14px;letter-spacing:.04em}
+  h1{font-size:28px;margin:6px 0 4px;font-weight:800}
+  .meta{color:var(--sub);font-size:14px}
+  .tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px}
+  .tag{background:var(--card2);border:1px solid var(--line);color:var(--sub);
+    padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600}
+  .bar{position:sticky;top:0;z-index:5;background:rgba(15,17,21,.88);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--line);
+    padding:12px 0;margin:18px 0 24px}
+  .progress{height:8px;background:var(--card2);border-radius:999px;overflow:hidden}
+  .progress>i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));
+    border-radius:999px;transition:width .35s ease}
+  .pmeta{display:flex;justify-content:space-between;font-size:12.5px;color:var(--sub);margin-bottom:7px}
+  .sec{font-size:13px;font-weight:800;color:var(--accent2);margin:26px 0 10px;letter-spacing:.02em;
+    border-top:1px dashed var(--line);padding-top:18px}
+  .sec:first-of-type{border-top:none;padding-top:0}
+  .q{background:var(--card);border:1px solid var(--line);border-radius:16px;
+    padding:18px 18px 16px;margin-bottom:14px}
+  .qhead{display:flex;align-items:center;gap:9px;margin-bottom:11px}
+  .qno{background:var(--accent);color:#1a1a1a;font-weight:800;font-size:13px;
+    width:26px;height:26px;border-radius:8px;display:grid;place-items:center;flex:0 0 auto}
+  .qtype{font-size:11.5px;font-weight:700;color:var(--accent2);border:1px solid var(--accent2);
+    padding:1px 8px;border-radius:999px}
+  .qcat{font-size:12px;color:var(--sub);margin-left:auto}
+  .qtext{font-size:16px;font-weight:600;margin:2px 0 14px}
+  .opts{display:flex;flex-direction:column;gap:8px}
+  .opt{display:flex;align-items:center;gap:11px;padding:11px 13px;border:1px solid var(--line);
+    border-radius:11px;cursor:pointer;background:var(--card2);transition:.15s;user-select:none}
+  .opt:hover{border-color:var(--accent2)}
+  .opt.sel{border-color:var(--accent);background:#26261a}
+  .opt .mk{width:22px;height:22px;border-radius:50%;border:2px solid var(--line);flex:0 0 auto;
+    display:grid;place-items:center;font-size:12px;font-weight:800}
+  .opt.sel .mk{border-color:var(--accent);background:var(--accent);color:#1a1a1a}
+  .ox{flex-direction:row;gap:10px}
+  .ox .opt{flex:1;justify-content:center;font-size:18px;font-weight:800}
+  .opt.correct{border-color:var(--ok);background:var(--okbg)}
+  .opt.correct .mk{border-color:var(--ok);background:var(--ok);color:#06281c}
+  .opt.wrong{border-color:var(--no);background:var(--nobg)}
+  .opt.wrong .mk{border-color:var(--no);background:var(--no);color:#2a0d0d}
+  .expl{margin-top:12px;padding:12px 14px;border-radius:11px;background:var(--card2);
+    border-left:3px solid var(--accent2);font-size:13.5px;color:#d4d9e2;display:none}
+  .expl.show{display:block;animation:fade .3s ease}
+  .expl .verdict{font-weight:800;margin-right:6px}
+  .expl .src{display:block;margin-top:7px;color:var(--sub);font-size:12px}
+  @keyframes fade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+  .submit{width:100%;padding:16px;border:none;border-radius:14px;font-size:17px;font-weight:800;
+    background:linear-gradient(90deg,var(--accent),#ffb347);color:#1a1a1a;cursor:pointer;margin-top:10px}
+  .submit:disabled{opacity:.45;cursor:not-allowed}
+  .submit.retry{background:var(--card2);color:var(--txt);border:1px solid var(--line)}
+  #result{display:none;text-align:center;background:var(--card);border:1px solid var(--line);
+    border-radius:18px;padding:28px 20px;margin-bottom:18px}
+  #result.show{display:block;animation:fade .4s ease}
+  .ring{font-size:46px;font-weight:900;margin:4px 0}
+  .ring small{font-size:18px;color:var(--sub);font-weight:700}
+  #rmsg{color:var(--sub);font-size:15px;margin-top:4px}
+  #dlnote{font-size:12.5px;color:var(--accent);margin-top:12px}
+  .foot{text-align:center;margin-top:30px;color:var(--sub);font-size:12.5px;line-height:1.8}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">DAILY QUIZ · 공인중개사</div>
+    <h1>오늘의 복습 문제지</h1>
+    <div class="meta">공인중개사법 · wox 5회독 통합 · 실전형 30문항 · 개념 망라형</div>
+    <div class="tags">
+      <span class="tag">🔥 심화</span><span class="tag">📝 실전 4지선다</span><span class="tag">🧩 개념 망라</span><span class="tag">🎯 정답분산</span>
+      <span class="tag">공인중개사법</span><span class="tag">wox 5회독 통합(전 회차)</span>
+    </div>
+  </header>
+
+  <div class="bar">
+    <div class="pmeta"><span id="pcount">0 / 30 선택</span><span>제출 시 오답이 자동 저장됩니다</span></div>
+    <div class="progress"><i id="pbar"></i></div>
+  </div>
+
+  <div id="result">
+    <div class="ring"><span id="score">0</span><small> / 30</small></div>
+    <div id="rmsg"></div>
+    <div id="dlnote"></div>
+  </div>
+
+  <form id="quiz"></form>
+
+  <button class="submit" id="submitBtn" disabled>제출하고 채점하기</button>
+
+  <div class="foot">
+    매일 새벽, 최근 7일 학습 노트로 자동 갱신됩니다.<br>
+    틀린 문제는 제출 시 결과파일로 저장 → 매주 월요일 오답노트로 자동 정리됩니다.
+  </div>
+</div>
+
+<script>
+const QUIZ_DATE = "2026-06-21-공인중개사법";
+const QUESTIONS = [
+  { type:"객관식", cat:"공인중개사법",
+    q:"공인중개사법령상 '중개'와 중개행위에 관한 설명으로 옳은 것은?",
+    opts:["중개는 거래당사자 간 권리의 득실변경에 관한 행위를 알선하는 것이다","중개행위 여부는 공인중개사의 주관적 의사를 기준으로 판단한다","외국법에 의해 자격을 취득한 자도 공인중개사에 해당한다","저당권을 설정하는 것은 어떠한 경우에도 중개의 범위에 포함될 수 없다"], answer:0,
+    expl:"중개는 중개대상물에 대하여 거래당사자 간 권리의 득실변경에 관한 행위를 알선하는 것이다. 따라서 저당권 설정도 포함될 수 있고, 판단은 주관이 아닌 객관적 사회통념으로 한다. 공인중개사는 한국 공인중개사법에 의해 자격을 취득한 자만 해당한다.",
+    src:"2026-06-04 중개의 개념과 중개행위" },
+  { type:"객관식", cat:"공인중개사법",
+    q:"공인중개사법령상 중개대상물에 해당하는 것을 모두 고른 것은?<br>ㄱ. 건물<br>ㄴ. 미채굴광물<br>ㄷ. 아파트 분양예정자로 선정될 수 있는 지위<br>ㄹ. 명인방법을 갖추지 않은, 토지로부터 분리된 수목",
+    opts:["ㄱ","ㄱ, ㄴ","ㄴ, ㄷ","ㄷ, ㄹ"], answer:0,
+    expl:"중개대상물은 토지나 건물이 원칙이다. 미채굴광물은 국유재산으로 대상이 될 수 없고, 분양예정자 선정 지위는 대상으로 보지 않으며, 명인방법을 갖추지 않거나 입목법상 등기되지 않은 분리 수목도 대상이 아니다. 따라서 건물(ㄱ)만 해당한다.",
+    src:"2026-06-04 중개대상물" },
+  { type:"객관식", cat:"공인중개사법",
+    q:"거래당사자(의뢰인)의 처벌 여부에 관한 설명으로 '옳지 않은' 것은?",
+    opts:["벌칙 조항은 중개업자를 수범자로 설계된 법이다","무등록중개업자에게 중개를 의뢰한 거래당사자도 공동정범으로 처벌할 수 있다","미등기 부동산 전매를 중개의뢰한 행위는 공인중개사법 위반으로 처벌할 수 없다","무등록중개업자에게 중개를 의뢰한 거래당사자는 공인중개사법 위반으로 처벌할 수 없다"], answer:1,
+    expl:"거래당사자가 무등록중개업자에게 중개를 의뢰하거나 미등기 부동산 전매를 중개의뢰한 행위는 공인중개사법 위반으로 처벌할 수 없고 공동정범으로도 처벌할 수 없다. 벌칙은 중개업자를 수범자로 설계된 법이기 때문이다. 따라서 공동정범으로 처벌할 수 있다는 것은 틀렸다.",
+    src:"2026-06-04 거래당사자(의뢰인)의 처벌 여부" },
+  { type:"객관식", cat:"공인중개사법",
+    q:"공인중개사법령상 교육에 관한 설명으로 옳은 것은?",
+    opts:["중개보조원의 직무교육 시간은 3시간 이상 4시간 이하이다","개설등록을 신청하려는 법인의 공인중개사가 아닌 사원은 실무교육 대상이 아니다","예방교육 이수는 중개사무소 개설 등록기준에 해당한다","법인의 대표자는 실무교육 대상이 아니다"], answer:0,
+    expl:"중개보조원의 직무수행에 필요한 직업윤리 교육은 직무교육으로 3시간 이상 4시간 이하이다. 실무교육은 법인의 대표자 및 임원·사원 전원이 대상이며 공인중개사가 아닌 사원도 받아야 한다. 예방교육 이수는 개설 등록기준이 아니다.",
+    src:"2026-06-04 교육" },
+  { type:"객관식", cat:"공인중개사법",
+    q:"중개법인의 설립·등록 요건에 관한 설명으로 옳은 것은?",
+    opts:["대표자를 포함한 임원 또는 사원의 3분의 1 이상은 공인중개사이어야 한다","사회적협동조합(비영리)도 중개사무소 개설등록을 할 수 있다","대표자는 공인중개사가 아니어도 무방하다","상법상 회사는 자본금이 3천만원 이상이면 개설등록할 수 있다"], answer:0,
+    expl:"법인은 대표자가 공인중개사여야 하고, 대표자 포함 임원 또는 사원의 3분의 1 이상이 공인중개사여야 하며, 상법상 회사는 자본금이 5천만원 이상이어야 한다. 사회적협동조합 즉 비영리협동조합은 영리업종인 중개업의 본질과 모순되어 개설등록을 할 수 없다.",
+    src:"2026-06-04 법인 요건" },
+  { type:"객관식", cat:"공인중개사법",
+    q:"중개사무소 개설등록 절차에 관한 설명으로 '옳지 않은' 것은?",
+    opts:["등록 신청을 받은 등록관청은 등록 여부를 7일 안에 서면통지해야 한다","개설등록 시 공인중개사자격증 사본을 반드시 제출해야 한다","등록관청은 등록증 교부 전에 보증을 했는지 여부를 확인해야 한다","등록증을 재교부한 때는 등록관청이 협회에 통보하지 않아도 된다"], answer:1,
+    expl:"등록 신청을 받은 등록관청은 7일 안에 서면통지하고, 등록증 교부 전에 보증 여부를 확인하며, 재교부는 법적 지위 변동이 없어 협회 통보 의무가 없다. 등록관청이 자격확인을 요청하므로 자격증 사본은 제출하지 않아도 되어, 반드시 제출해야 한다는 것은 틀렸다.",
+    src:"2026-06-04 개설등록 절차·결격사유" },
+  { type:"객관식", cat:"공인중개사법",
+    q:"공인중개사법령상 결격사유에 관한 설명으로 옳은 것은?",
+    opts:["실형선고를 받고 집행이 면제된 날부터 3년이 지나지 않은 자는 결격사유에 해당한다","개인회생을 신청한 후 법원의 인가 여부가 결정되지 않은 자는 결격사유에 해당한다","실형선고 후 집행이 면제된 날부터 3년이 지난 자도 여전히 결격사유에 해당한다","개인회생 신청만으로 곧바로 파산이 확정된 것으로 본다"], answer:0,
+    expl:"실형선고를 받고 집행이 면제된 날부터 3년이 지나지 않은 자는 결격사유에 해당한다. 개인회생을 신청한 후 인가 여부가 결정되지 않은 것은 파산이 확정된 것이 아니므로 결격사유가 아니며, 집행면제 후 3년이 지나면 결격사유에서 벗어난다.",
+    src:"2026-06-04 개설등록 절차·결격사유" },
+  { type:"객관식", cat:"공인중개사법",
+    q:"공인중개사 정책심의위원회의 의결사항을 모두 고른 것은?<br>ㄱ. 심의위원회 위원에 대한 기피신청이 있는 경우<br>ㄴ. 국장이 직접 시험문제를 출제하거나 시험을 시행하려는 경우<br>ㄷ. 해당 연도의 시험을 시행하지 아니하고자 하는 경우<br>ㄹ. 공인중개사협회 지회의 설치를 승인하려는 경우",
+    opts:["ㄴ, ㄹ","ㄱ, ㄴ, ㄷ","ㄱ, ㄹ","ㄱ, ㄴ, ㄷ, ㄹ"], answer:1,
+    expl:"정책심의위원회 의결사항은 위원에 대한 기피신청이 있는 경우, 국장이 직접 시험문제를 출제하거나 시험을 시행하려는 경우, 해당 연도의 시험을 시행하지 아니하고자 하는 경우이다(ㄱ·ㄴ·ㄷ). 협회 지회 설치 승인(ㄹ)은 의결사항으로 정리되어 있지 않다.",
+    src:"2026-06-04 정책심의위원회" },
+  { type:"OX", cat:"공인중개사법",
+    q:"이중소속 금지에 따라 개업공인중개사는 다른 개업공인중개사의 중개보조원이 될 수 없고, 중개보조원도 이중소속할 수 없다.",
+    opts:["O","X"], answer:0,
+    expl:"O. 이중소속 금지는 개업공인중개사가 다른 개업공인중개사의 사무소에 소속될 수 없다는 뜻으로 중개보조원도 될 수 없으며, 중개보조원 역시 이중소속할 수 없다.",
+    src:"2026-06-04 이중소속 금지" },
+  { type:"객관식", cat:"공인중개사법",
+    q:"분사무소에 관한 설명으로 '옳지 않은' 것은?",
+    opts:["분사무소 설치신고서는 분사무소 소재지를 관할하는 등록관청에 제출한다","분사무소는 구마다 하나씩 설치할 수 있다","분사무소에서 사용할 인장도 주된 사무소 소재지 관할 등록관청에 등록한다","분사무소 설치신고를 하는 자는 지자체 조례로 정하는 수수료를 납부한다"], answer:0,
+    expl:"분사무소는 구마다 하나씩 설치할 수 있고, 설치신고서와 인장 등록은 모두 주된 사무소 소재지를 관할하는 등록관청에 제출·등록한다. 따라서 신고서를 분사무소 소재지 관할 등록관청에 제출한다는 것은 틀렸다. 수수료는 지자체 조례로 정한다.",
+    src:"2026-06-04 분사무소" },
+  { type:"객관식", cat:"공인중개사법",
+    q:"고용인 및 인장에 관한 설명으로 '옳지 않은' 것은?",
+    opts:["소속공인중개사 고용 시 업무개시 전까지 등록관청에 신고한다","중개보조원의 모든 행위를 그를 고용한 개업공인중개사의 행위로 본다","중개보조원과의 고용관계 종료는 종료 후 10일 이내에 등록관청에 신고한다","등록한 인장을 변경한 개업공인중개사는 변경일로부터 7일 이내에 등록해야 한다"], answer:1,
+    expl:"고용은 업무개시 전까지 사전신고하고 종료는 종료 후 10일 이내 사후신고하며, 인장 변경은 변경일로부터 7일 이내 등록한다. 중개보조원은 업무상 행위만 개업공인중개사의 행위로 보므로, 모든 행위를 그의 행위로 본다는 것은 틀렸다.",
+    src:"2026-06-04 고용·인장" },
+  { type:"OX", cat:"공인중개사법",
+    q:"3개월을 초과하는 휴업을 하고자 하는 경우 등록관청에 미리 신고해야 하며, 3개월 이하의 휴업은 신고의무가 없다.",
+    opts:["O","X"], answer:0,
+    expl:"O. 3개월을 초과하는 휴업만 등록관청에 사전신고 의무가 있고, 3개월을 포함한 3개월 이하의 휴업은 신고의무가 없다.",
+    src:"2026-06-04 휴업·서식" },
+  { type:"객관식", cat:"공인중개사법",
+    q:"확인·설명서 작성 시 항목별 포함 여부에 관한 설명으로 옳은 것은?",
+    opts:["비주거용 건축물에도 관리비에 대한 사항을 적는다","비선호시설에 관한 사항은 토지와 주거용건축물에만 적는다","환경조건은 비주거용 건축물에만 포함한다","비주거용 건축물에도 도배상태를 반드시 적는다"], answer:1,
+    expl:"비선호시설은 일하는 공간인 비주거용에는 적지 않고 토지와 주거용건축물만 포함한다. 비주거용 건물은 관리비에 대한 사항을 적지 않고, 환경조건은 주거용에만 포함하며, 비주거용은 도배상태를 굳이 적지 않는다.",
+    src:"2026-06-10 확인·설명서 작성 시 항목별 포함 여부" },
+  { type:"객관식", cat:"공인중개사법",
+    q:"중개대상물 확인·설명 시 확인 주체에 관한 설명으로 옳은 것을 모두 고른 것은?<br>ㄱ. 권리관계는 공인중개사가 직접 조사하는 기본 확인사항이다<br>ㄴ. 내부·외부 시설물의 상태는 매도(임대)의뢰인이 고지하는 세부 확인사항이다<br>ㄷ. 내진설계 적용 여부는 세부 확인사항이다<br>ㄹ. 비상벨과 승강기는 기본 확인사항이다",
+    opts:["ㄷ, ㄹ","ㄴ, ㄹ","ㄱ, ㄴ","ㄱ, ㄴ, ㄷ, ㄹ"], answer:2,
+    expl:"권리관계는 공인중개사가 직접 조사하는 기본 확인사항이고, 내부·외부 시설물 상태는 매도의뢰인이 고지하는 세부 확인사항이다(ㄱ·ㄴ). 내진설계 적용 여부는 기본 확인사항이고(ㄷ 오류), 비상벨·승강기는 세부 확인사항이다(ㄹ 오류).",
+    src:"2026-06-10 확인·설명의무" },
+  { type:"OX", cat:"공인중개사법",
+    q:"주택임대차계약의 신고를 한 경우 전입신고를 한 것으로 의제된다.",
+    opts:["O","X"], answer:1,
+    expl:"X. 의제 방향이 반대이다. 주택임대차계약 신고를 했다고 전입신고로 보는 것이 아니라, 전입신고를 한 경우에 주택임대차계약의 신고를 한 것으로 본다.",
+    src:"2026-06-17 주택임대차계약 신고" },
+  { type:"객관식", cat:"공인중개사법",
+    q:"전속중개계약에 관한 설명으로 옳은 것은?",
+    opts:["전속중개계약서는 1년간 보존의무가 있다","유효기간 내 의뢰인이 스스로 발견한 상대방과 거래하면 중개보수의 50%에 해당하는 범위에서 소요비용을 지불한다","정보공개는 계약체결 후 14일 이내에 해야 한다","처리상황 통지는 문서가 아닌 구두로도 할 수 있다"], answer:1,
+    expl:"전속중개계약 유효기간 내 의뢰인이 스스로 발견한 상대방과 거래하면 중개보수의 50%에 해당하는 범위에서 소요비용을 지불한다. 계약서는 3년 보존이고 정보공개는 체결 후 7일 이내이며, 처리상황 통지는 2주일에 1회 이상 무조건 문서로 해야 한다.",
+    src:"2026-06-10 전속중개계약의 운영 규칙" },
+  { type:"객관식", cat:"공인중개사법",
+    q:"부동산거래신고의 대상에 관한 설명으로 '옳지 않은' 것은?",
+    opts:["부동산을 취득할 수 있는 권리(공급계약·분양권·입주권)는 신고대상이다","매매계약만 신고하고 교환계약은 신고대상이 아니다","토지의 임대차 계약도 부동산거래신고 대상이다","입목·광업재단 및 공장재단은 신고대상이 아니다"], answer:2,
+    expl:"부동산거래신고 대상은 부동산과 부동산을 취득할 수 있는 권리(공급계약, 분양권 및 입주권)에 한정되며 매매계약만 신고한다. 토지의 임대차 계약은 부동산거래신고 대상이 아니므로 대상이라는 것은 틀렸다. 입목·광업재단·공장재단도 신고대상이 아니다.",
+    src:"2026-06-17 부동산거래신고 — 대상·절차" },
+  { type:"객관식", cat:"공인중개사법",
+    q:"손해배상·공탁 및 등록증 대여에 관한 설명으로 '옳지 않은' 것은?",
+    opts:["개업공인중개사가 직접 중개행위를 한 경우 자신의 고의·과실이 없으면 책임을 지지 않는다","폐업한 경우 폐업한 날부터 3년 이내에는 공탁금을 회수할 수 없다","자기 명의 사무소에 무자격자가 자금만 투자하고 이익을 분배받도록 한 것만으로도 등록증 대여가 성립한다","등록증 대여가 되려면 공인중개사의 업무를 수행하도록 해야 한다"], answer:2,
+    expl:"자기 명의 사무소에 무자격자가 자금을 투자해 이익을 분배받도록 한 것만으로는 등록증 대여가 아니며, 대여가 되려면 공인중개사의 업무를 수행하도록 해야 한다. 따라서 자금 투자만으로 성립한다는 것은 틀렸다. 직접 중개행위 시 고의·과실이 없으면 책임이 없고, 공탁금은 폐업일부터 3년 이내 회수가 제한된다.",
+    src:"2026-06-10 예치·손해배상·공탁·등록증 대여" },
+  { type:"객관식", cat:"공인중개사법",
+    q:"갑(개업공인중개사)이 일부 중도금만 납부된 분양권을 중개하였다. 다음 조건일 때 중개보수 산정의 기준이 되는 거래금액(거래가액)은? 계약금 5,000만원, 이미 납부한 중도금 3,000만원, 프리미엄 2,000만원, 아직 납부하지 않은 중도금·잔금 1억원 (다른 조건은 동일)",
+    opts:["2,000만원","2억원","1억 2,000만원","1억원"], answer:3,
+    expl:"분양권 중개보수의 기준 금액은 총 분양가가 아니라 계약금 더하기 이미 납부한 중도금 더하기 프리미엄으로 산정한다. 따라서 5,000만원 더하기 3,000만원 더하기 2,000만원은 1억원이다. 아직 납부하지 않은 중도금과 잔금은 포함하지 않는다.",
+    src:"2026-06-10 중개보수 산정" },
+  { type:"객관식", cat:"공인중개사법",
+    q:"부동산거래신고 의무자 및 기한에 관한 설명으로 '옳지 않은' 것은?",
+    opts:["거래당사자는 거래계약 체결일부터 30일 이내에 신고해야 한다","거래당사자 중 일방이 국가인 경우 국가가 신고를 해야 한다","토지거래계약 허가를 받으면 부동산거래신고는 따로 하지 않아도 된다","지자체가 중개 없이 토지를 매수하면 신고서에 단독으로 서명·날인하여 제출한다"], answer:2,
+    expl:"거래당사자는 체결일부터 30일 이내에 단독 또는 공동으로 신고하고, 일방이 국가면 국가가 신고하며, 지자체가 중개 없이 매수하면 단독으로 서명·날인해 제출한다. 토지거래계약 허가를 받더라도 거래 후 부동산거래신고는 따로 해야 하므로 하지 않아도 된다는 것은 틀렸다.",
+    src:"2026-06-17 부동산거래신고 — 대상·절차" },
+  { type:"OX", cat:"공인중개사법",
+    q:"공소제기(기소)가 되어 재판을 받은 이상, 무죄로 판결을 받았더라도 포상금 지급사유에 해당한다.",
+    opts:["O","X"], answer:0,
+    expl:"O. 판결을 받았다는 것은 공소제기가 되었다는 뜻이므로, 무죄로 판결을 받았어도 포상금 지급사유에 해당한다. 기소유예는 재판에 넘기지 않는 처분이라는 점과 구별된다.",
+    src:"2026-06-17 포상금" },
+  { type:"객관식", cat:"공인중개사법",
+    q:"거래정보사업자의 지정취소 사유(거운의차해1)에 해당하지 '않는' 것은?",
+    opts:["거짓이나 부정한 방법으로 지정받은 경우","운영규정을 위반한 경우","의뢰받은 정보를 다르게 공개한 경우","지정받고 3년 이내에 정보망을 설치·운영하지 않은 경우"], answer:3,
+    expl:"지정취소 사유는 거짓·부정 지정, 운영규정 위반, 의뢰받지 않은 정보 공개나 다르게 공개, 차별적 공개, 사업자 해산, 그리고 지정받고 1년 이내에 정보망을 설치·운영하지 않은 경우이다. 따라서 기간을 3년으로 한 설명은 틀렸다.",
+    src:"2026-06-10 거래정보사업자" },
+  { type:"객관식", cat:"공인중개사법",
+    q:"국장의 공제사업 개선명령 사유(변변변불손)에 해당하는 것을 모두 고른 것은?<br>ㄱ. 업무집행방법의 변경<br>ㄴ. 자산예탁기관의 변경<br>ㄷ. 불건전한 자산에 대한 적립금의 보유<br>ㄹ. 가치가 없다고 인정되는 자산의 손실처리",
+    opts:["ㄱ, ㄴ","ㄷ, ㄹ","ㄱ, ㄷ","ㄱ, ㄴ, ㄷ, ㄹ"], answer:3,
+    expl:"국장의 공제사업 개선명령(변변변불손)은 업무집행방법의 변경, 자산예탁기관의 변경, 자산의 장부가격의 변경, 불건전한 자산에 대한 적립금의 보유, 가치가 없다고 인정되는 자산의 손실처리이다. 따라서 ㄱ·ㄴ·ㄷ·ㄹ 모두 해당한다.",
+    src:"2026-06-17 공인중개사협회·공제사업" },
+  { type:"OX", cat:"공인중개사법",
+    q:"협회에 관해 공인중개사법령에 규정되지 않은 사항은 민법의 '조합'에 관한 규정을 적용한다.",
+    opts:["O","X"], answer:1,
+    expl:"X. 협회에 관해 규정되지 않은 사항은 민법의 '조합'이 아니라 '사단법인'에 관한 규정을 적용한다. 협회가 법인격을 가진 회원단체이기 때문이며, 조합은 재산을 조합원의 합유로 보는 개념이다.",
+    src:"2026-06-17 공인중개사협회·공제사업" },
+  { type:"객관식", cat:"공인중개사법",
+    q:"행정처분과 청문에 관한 설명으로 옳은 것은?",
+    opts:["자격정지는 청문을 실시해야 한다","업무정지처분 소멸시효는 5년이다","등록취소를 하는 경우는 청문을 실시해야 한다","자격취소는 청문 대상이 아니다"], answer:2,
+    expl:"등록취소와 자격취소는 청문 대상이므로 등록취소를 하는 경우 청문을 실시해야 한다. 자격정지와 업무정지는 청문 대상이 아니고, 업무정지처분 소멸시효는 3년이다.",
+    src:"2026-06-17 행정처분 — 자격취소·자격정지·업무정지" },
+  { type:"객관식", cat:"공인중개사법",
+    q:"갑은 공인중개사 자격취소처분을 받았다. 이에 관한 설명으로 '옳지 않은' 것은?",
+    opts:["부양지역형금에 해당하면 자격을 취소할 수 있는 것이 아니라 취소해야 한다","공인중개사 자격증을 대여한 경우는 자격취소 사유에 해당한다","갑은 자격취소 후 7일 이내에 자격증을 교부한 시·도지사에게 반납해야 한다","자격정지처분을 받은 경우에도 갑은 자격증을 반납해야 한다"], answer:3,
+    expl:"부양지역형금에 해당하면 자격을 취소해야 하는 기속처분이고, 자격증 대여는 부양지역형금의 '성명양도대여'로 자격취소 사유이다. 자격취소 시 7일 이내에 자격증을 교부한 시도지사에게 반납하지만, 자격정지의 경우에는 반납하지 않으므로 반납해야 한다는 것은 틀렸다.",
+    src:"2026-06-17 행정처분 — 자격취소·자격정지·업무정지" },
+  { type:"객관식", cat:"공인중개사법",
+    q:"포상금에 관한 설명으로 '옳지 않은' 것은?",
+    opts:["포상금 비용 중 국고 보조 비율은 100분의 50 이내이다","등록관청에 발각된 이후 늦게 신고한 건은 포상금을 받을 수 없다","공소제기되었다면 무죄로 판결받았어도 포상금 지급사유에 해당한다","포상금은 지급결정일부터 3개월 이내에 지급한다"], answer:3,
+    expl:"포상금 비용 중 국고 보조 비율은 100분의 50 이내이고, 발각 후 늦게 신고한 건은 받을 수 없으며, 공소제기되면 무죄여도 지급사유에 해당한다. 포상금은 지급결정일부터 1개월 이내에 지급하므로 3개월이라는 것은 틀렸다.",
+    src:"2026-06-17 포상금" },
+  { type:"객관식", cat:"공인중개사법",
+    q:"부동산거래계약 신고서 작성에 관한 설명으로 옳은 것을 모두 고른 것은?<br>ㄱ. 공급계약·전매계약은 거래가격에 부가가치세를 포함한 금액을 적는다<br>ㄴ. 일반 매매 등 그 외 거래는 부가가치세를 제외한 금액을 적는다<br>ㄷ. 전매는 분양권 또는 입주권에 표시한다<br>ㄹ. 투기과열지구에서 자금조달·입주계획서는 매도인이 제출한다",
+    opts:["ㄴ, ㄹ","ㄷ, ㄹ","ㄱ, ㄴ, ㄷ","ㄱ, ㄴ, ㄷ, ㄹ"], answer:2,
+    expl:"공급계약·전매계약은 부가가치세 포함 금액을, 그 외 거래는 제외 금액을 적고, 전매는 부동산을 취득할 수 있는 권리의 매매로서 분양권 또는 입주권에 표시한다(ㄱ·ㄴ·ㄷ). 투기과열지구의 자금조달·입주계획서는 매수인이 제출하므로 매도인이 제출한다는 ㄹ은 틀렸다.",
+    src:"2026-06-17 부동산거래신고 — 대상·절차" },
+  { type:"객관식", cat:"공인중개사법",
+    q:"부동산거래신고법상 과태료에 관한 설명으로 옳은 것은? (현행 기준 참고)",
+    opts:["거래신고를 아니한 자는 3,000만원 이하 과태료이다","거래신고를 조장·방조한 자는 3,000만원 이하 과태료이다","외국인이 교환·증여 계약 신고를 아니하면 100만원 이하 과태료이다","매매계약 체결이 없음에도 거짓으로 거래신고한 자는 3,000만원 이하 과태료이다"], answer:3,
+    expl:"매매계약 체결이 없음에도 거짓으로 거래신고하거나 해제되지 않았음에도 거짓 해제신고하는 등 '불불자'는 3,000만원 이하 과태료이다. 거래신고를 아니한 자나 조장·방조한 자는 500만원 이하이고, 외국인의 교환·증여 계약 미신고·거짓신고는 300만원 이하이다.",
+    src:"2026-06-17 부동산거래신고법상 과태료" },
+  { type:"객관식", cat:"공인중개사법",
+    q:"주택임대차계약 신고에 관한 설명으로 '옳지 않은' 것은?",
+    opts:["군 지역은 광역시 및 경기도의 관할구역에 있는 군인 경우에만 신고의무가 있다","보증금·차임의 증감 없이 임대차기간만 연장하는 갱신계약은 신고대상에서 제외된다","제외되는 갱신계약이라도 변경되거나 해제되면 30일 안에 공동신고해야 한다","행정구역상 모든 군 지역의 주택임대차는 신고의무가 있다"], answer:3,
+    expl:"군 지역은 광역시 및 경기도의 관할구역에 있는 군인 경우에만 신고의무가 있으므로 모든 군 지역에 신고의무가 있다는 것은 틀렸다. 증감 없이 기간만 연장하는 갱신은 신고대상에서 제외되나, 변경·해제되면 30일 안에 공동신고해야 한다.",
+    src:"2026-06-17 주택임대차계약 신고" }
+];
+
+const form = document.getElementById('quiz');
+const selected = new Array(QUESTIONS.length).fill(null);
+let graded = false;
+let lastCat = null;
+
+QUESTIONS.forEach((item, qi)=>{
+  if(item.cat !== lastCat){
+    const s = document.createElement('div');
+    s.className = 'sec';
+    s.textContent = '▍' + item.cat;
+    form.appendChild(s);
+    lastCat = item.cat;
+  }
+  const card = document.createElement('div');
+  card.className = 'q';
+  const isOX = item.type === 'OX';
+  card.innerHTML = `
+    <div class="qhead">
+      <span class="qno">${qi+1}</span>
+      <span class="qtype">${item.type}</span>
+      <span class="qcat">${item.cat}</span>
+    </div>
+    <div class="qtext">${item.q}</div>
+    <div class="opts ${isOX?'ox':''}" data-q="${qi}"></div>
+    <div class="expl" id="expl-${qi}"></div>`;
+  const optsEl = card.querySelector('.opts');
+  item.opts.forEach((o, oi)=>{
+    const el = document.createElement('div');
+    el.className = 'opt';
+    el.dataset.q = qi; el.dataset.o = oi;
+    el.innerHTML = isOX
+      ? `<span>${o}</span>`
+      : `<span class="mk">${String.fromCharCode(65+oi)}</span><span>${o}</span>`;
+    el.addEventListener('click', ()=>{
+      if(graded) return;
+      selected[qi] = oi;
+      optsEl.querySelectorAll('.opt').forEach(x=>x.classList.remove('sel'));
+      el.classList.add('sel');
+      updateProgress();
+    });
+    optsEl.appendChild(el);
+  });
+  form.appendChild(card);
+});
+
+function updateProgress(){
+  const done = selected.filter(s=>s!==null).length;
+  document.getElementById('pcount').textContent = `${done} / ${QUESTIONS.length} 선택`;
+  document.getElementById('pbar').style.width = (done/QUESTIONS.length*100)+'%';
+  document.getElementById('submitBtn').disabled = done !== QUESTIONS.length;
+}
+
+const btn = document.getElementById('submitBtn');
+btn.addEventListener('click', ()=>{ if(!graded){ grade(); } else { location.reload(); } });
+
+function grade(){
+  graded = true;
+  let score = 0;
+  const wrong = [];
+  QUESTIONS.forEach((item, qi)=>{
+    const opts = document.querySelectorAll(`.opt[data-q="${qi}"]`);
+    opts.forEach((el, oi)=>{
+      el.style.cursor='default';
+      if(oi === item.answer) el.classList.add('correct');
+      if(oi === selected[qi] && oi !== item.answer) el.classList.add('wrong');
+    });
+    const correct = selected[qi] === item.answer;
+    if(correct){ score++; }
+    else {
+      wrong.push({
+        id: `${QUIZ_DATE}-q${qi+1}`, cat:item.cat, type:item.type, q:item.q,
+        options:item.opts, myAnswer:item.opts[selected[qi]], correct:item.opts[item.answer],
+        expl:item.expl, src:item.src
+      });
+    }
+    const ex = document.getElementById('expl-'+qi);
+    ex.innerHTML = `<span class="verdict" style="color:${correct?'var(--ok)':'var(--no)'}">${correct?'정답!':'오답'}</span>${item.expl}<span class="src">📄 출처: ${item.src}</span>`;
+    ex.classList.add('show');
+  });
+  const r = document.getElementById('result');
+  document.getElementById('score').textContent = score;
+  document.getElementById('rmsg').textContent = msgFor(score);
+  r.classList.add('show');
+  btn.textContent = '🔄 다시 풀기';
+  btn.classList.add('retry');
+
+  // 결과 자동 다운로드 (월요일 오답 수거 작업이 읽는 파일)
+  downloadResult(score, wrong);
+
+  r.scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+function downloadResult(score, wrong){
+  const payload = {
+    subject:"공인중개사", date:QUIZ_DATE,
+    score:score, total:QUESTIONS.length, wrongCount:wrong.length,
+    wrong:wrong, generatedAt:new Date().toISOString()
+  };
+  try{
+    const blob = new Blob([JSON.stringify(payload,null,2)], {type:"application/json"});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `공인중개사_오답_${QUIZ_DATE}.json`;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url), 1500);
+    document.getElementById('dlnote').textContent =
+      wrong.length>0 ? `💾 오답 ${wrong.length}개 저장됨 — 다운로드 폴더 확인` : "💾 만점 기록 저장됨";
+  }catch(e){
+    document.getElementById('dlnote').textContent = "⚠️ 자동 저장 실패 — 브라우저에서 직접 열어 풀어주세요";
+  }
+}
+
+function msgFor(s){
+  const t = QUESTIONS.length;
+  const r = s/t;
+  if(s===t)   return "만점. 오늘 등록증 발급해도 되겠는데요? 🏆";
+  if(r>=0.8)  return "합격권. 틀린 거 해설만 한 번 더 보면 완벽합니다.";
+  if(r>=0.6)  return "절반은 넘었어요. 오답 노트행 직행하는 개념들이 보이네요.";
+  if(r>=0.4)  return "아직 흔들리는 개념이 있어요. 해설 정독하고 내일 재도전!";
+  return "괜찮아요, 회독이 쌓이면 올라갑니다. 해설부터 차근차근.";
+}
+</script>
+</body>
+</html>

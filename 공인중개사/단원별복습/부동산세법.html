@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📚 단원별 복습 · 부동산세법 · 2026-06-21</title>
+<style>
+  :root{
+    --bg:#0f1115; --card:#191c23; --card2:#20242d; --line:#2c313b;
+    --txt:#e7e9ee; --sub:#9aa3b2; --accent:#ffd24a; --accent2:#7c9cff;
+    --ok:#34d399; --no:#f87171; --okbg:#10261d; --nobg:#2a1414;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);
+    font-family:'Pretendard','Apple SD Gothic Neo',system-ui,-apple-system,sans-serif;
+    line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:760px;margin:0 auto;padding:32px 20px 80px}
+  header{margin-bottom:24px}
+  .eyebrow{color:var(--accent);font-weight:700;font-size:14px;letter-spacing:.04em}
+  h1{font-size:28px;margin:6px 0 4px;font-weight:800}
+  .meta{color:var(--sub);font-size:14px}
+  .tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px}
+  .tag{background:var(--card2);border:1px solid var(--line);color:var(--sub);
+    padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600}
+  .bar{position:sticky;top:0;z-index:5;background:rgba(15,17,21,.88);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--line);
+    padding:12px 0;margin:18px 0 24px}
+  .progress{height:8px;background:var(--card2);border-radius:999px;overflow:hidden}
+  .progress>i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));
+    border-radius:999px;transition:width .35s ease}
+  .pmeta{display:flex;justify-content:space-between;font-size:12.5px;color:var(--sub);margin-bottom:7px}
+  .sec{font-size:13px;font-weight:800;color:var(--accent2);margin:26px 0 10px;letter-spacing:.02em;
+    border-top:1px dashed var(--line);padding-top:18px}
+  .sec:first-of-type{border-top:none;padding-top:0}
+  .q{background:var(--card);border:1px solid var(--line);border-radius:16px;
+    padding:18px 18px 16px;margin-bottom:14px}
+  .qhead{display:flex;align-items:center;gap:9px;margin-bottom:11px}
+  .qno{background:var(--accent);color:#1a1a1a;font-weight:800;font-size:13px;
+    width:26px;height:26px;border-radius:8px;display:grid;place-items:center;flex:0 0 auto}
+  .qtype{font-size:11.5px;font-weight:700;color:var(--accent2);border:1px solid var(--accent2);
+    padding:1px 8px;border-radius:999px}
+  .qcat{font-size:12px;color:var(--sub);margin-left:auto}
+  .qtext{font-size:16px;font-weight:600;margin:2px 0 14px}
+  .opts{display:flex;flex-direction:column;gap:8px}
+  .opt{display:flex;align-items:center;gap:11px;padding:11px 13px;border:1px solid var(--line);
+    border-radius:11px;cursor:pointer;background:var(--card2);transition:.15s;user-select:none}
+  .opt:hover{border-color:var(--accent2)}
+  .opt.sel{border-color:var(--accent);background:#26261a}
+  .opt .mk{width:22px;height:22px;border-radius:50%;border:2px solid var(--line);flex:0 0 auto;
+    display:grid;place-items:center;font-size:12px;font-weight:800}
+  .opt.sel .mk{border-color:var(--accent);background:var(--accent);color:#1a1a1a}
+  .ox{flex-direction:row;gap:10px}
+  .ox .opt{flex:1;justify-content:center;font-size:18px;font-weight:800}
+  .opt.correct{border-color:var(--ok);background:var(--okbg)}
+  .opt.correct .mk{border-color:var(--ok);background:var(--ok);color:#06281c}
+  .opt.wrong{border-color:var(--no);background:var(--nobg)}
+  .opt.wrong .mk{border-color:var(--no);background:var(--no);color:#2a0d0d}
+  .expl{margin-top:12px;padding:12px 14px;border-radius:11px;background:var(--card2);
+    border-left:3px solid var(--accent2);font-size:13.5px;color:#d4d9e2;display:none}
+  .expl.show{display:block;animation:fade .3s ease}
+  .expl .verdict{font-weight:800;margin-right:6px}
+  .expl .src{display:block;margin-top:7px;color:var(--sub);font-size:12px}
+  @keyframes fade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+  .submit{width:100%;padding:16px;border:none;border-radius:14px;font-size:17px;font-weight:800;
+    background:linear-gradient(90deg,var(--accent),#ffb347);color:#1a1a1a;cursor:pointer;margin-top:10px}
+  .submit:disabled{opacity:.45;cursor:not-allowed}
+  .submit.retry{background:var(--card2);color:var(--txt);border:1px solid var(--line)}
+  #result{display:none;text-align:center;background:var(--card);border:1px solid var(--line);
+    border-radius:18px;padding:28px 20px;margin-bottom:18px}
+  #result.show{display:block;animation:fade .4s ease}
+  .ring{font-size:46px;font-weight:900;margin:4px 0}
+  .ring small{font-size:18px;color:var(--sub);font-weight:700}
+  #rmsg{color:var(--sub);font-size:15px;margin-top:4px}
+  #dlnote{font-size:12.5px;color:var(--accent);margin-top:12px}
+  .foot{text-align:center;margin-top:30px;color:var(--sub);font-size:12.5px;line-height:1.8}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">DAILY QUIZ · 공인중개사</div>
+    <h1>오늘의 복습 문제지</h1>
+    <div class="meta">부동산세법 · wox 5회독 통합 · 실전형 30문항 · 개념 망라형</div>
+    <div class="tags">
+      <span class="tag">🔥 심화</span><span class="tag">📝 실전 4지선다</span><span class="tag">🧩 개념 망라</span><span class="tag">🎯 정답분산</span>
+      <span class="tag">부동산세법</span><span class="tag">wox 5회독 통합(전 회차)</span>
+    </div>
+  </header>
+
+  <div class="bar">
+    <div class="pmeta"><span id="pcount">0 / 30 선택</span><span>제출 시 오답이 자동 저장됩니다</span></div>
+    <div class="progress"><i id="pbar"></i></div>
+  </div>
+
+  <div id="result">
+    <div class="ring"><span id="score">0</span><small> / 30</small></div>
+    <div id="rmsg"></div>
+    <div id="dlnote"></div>
+  </div>
+
+  <form id="quiz"></form>
+
+  <button class="submit" id="submitBtn" disabled>제출하고 채점하기</button>
+
+  <div class="foot">
+    매일 새벽, 최근 7일 학습 노트로 자동 갱신됩니다.<br>
+    틀린 문제는 제출 시 결과파일로 저장 → 매주 월요일 오답노트로 자동 정리됩니다.
+  </div>
+</div>
+
+<script>
+const QUIZ_DATE = "2026-06-21-부동산세법";
+const QUESTIONS = [
+  { type:"OX", cat:"부동산세법",
+    q:"취득세에서 법인 설립 시에 발행하는 주식을 취득하여 과점주주가 된 경우에는 취득으로 보지 아니한다.",
+    opts:["O","X"], answer:0,
+    expl:"O. 설립 시 과점주주는 리스크를 부담한 것이지 투기가 아니므로 간주취득 대상에서 제외된다.",
+    src:"2026-06-07 취득세 과점주주 간주취득" },
+  { type:"객관식", cat:"부동산세법",
+    q:"취득세 과점주주 간주취득에 관한 설명으로 옳지 않은 것은?",
+    opts:["법인 설립 시 발행 주식을 취득하여 과점주주가 된 경우는 취득으로 보지 않는다","감자에 따른 주식 총수 감소로 비율이 변동된 경우는 취득으로 보지 않는다","특수관계인 간 주식 이전으로 집단의 총주식 비율에 변동이 없으면 취득으로 보지 않는다","법인 설립 시 과점주주는 투기 목적이 인정되어 간주취득 대상에 포함된다"], answer:3,
+    expl:"설립 시 과점주주는 리스크를 부담한 것이지 투기가 아니므로 간주취득 대상에서 제외된다.",
+    src:"2026-06-07 취득세 과점주주 간주취득" },
+  { type:"객관식", cat:"부동산세법",
+    q:"취득세 사실상취득가격의 정의로 옳은 것은?",
+    opts:["인근 유사 거래 사례가액에서 부가가치세를 차감한 금액","인근 유사 거래 사례가액인 시가인정액으로 정한 금액","거래 상대방 또는 제3자에게 지급했거나 지급해야 할 직접비용과 간접비용의 합계액","계약금, 중도금, 잔금 등 직접비용만을 합산한 금액"], answer:2,
+    expl:"사실상취득가격은 거래 상대방 또는 제3자에게 지급했거나 지급해야 할 직접비용과 간접비용의 합계액이다.",
+    src:"2026-06-07 취득세 사실상 취득가격" },
+  { type:"OX", cat:"부동산세법",
+    q:"취득세 사실상취득가격을 산정할 때 판매를 위한 광고선전비와 부가가치세는 법인과 개인 모두 제외 항목이다.",
+    opts:["O","X"], answer:0,
+    expl:"O. 광고선전비, 전기, 가스, 열 공급 비용, 부가가치세, 할인금액 등은 법인과 개인 공통으로 제외한다.",
+    src:"2026-06-07 취득세 사실상 취득가격" },
+  { type:"객관식", cat:"부동산세법",
+    q:"갑이 특수관계인 을로부터 부동산을 유상승계취득하였다. 취득세 부당행위계산에 따라 사실상취득가액 대신 시가인정액으로 과세하는 경우에 해당하는 것을 모두 고른 것은?<br>ㄱ. 시가인정액과 사실상취득가액의 차이가 3억 원 이상인 경우<br>ㄴ. 시가인정액을 산정할 수 없어 시가표준액으로 과세하는 경우<br>ㄷ. 사실상취득가액이 시가인정액과 정확히 일치하는 경우<br>ㄹ. 시가인정액 산정이 가능한 경우",
+    opts:["ㄱ, ㄹ","ㄱ, ㄴ","ㄴ, ㄷ","ㄷ, ㄹ"], answer:0,
+    expl:"옳은 것은 ㄱ, ㄹ. 차이가 3억 원 이상이면 부당행위계산이 적용되고, 시가인정액 산정이 가능하면 시가인정액으로 과세한다. ㄴ은 시가표준액 과세 사유, ㄷ은 차이가 없어 해당하지 않는다.",
+    src:"2026-06-07 취득세 유상승계취득 과세표준" },
+  { type:"객관식", cat:"부동산세법",
+    q:"취득세 시가인정액에 관한 설명으로 옳지 않은 것은?",
+    opts:["시가인정액은 인근 유사 거래 사례가액을 의미한다","시가인정액의 산정 기간은 취득일 전 6개월부터 취득일 후 3개월 이내이다","시가인정액을 산정할 수 없는 경우에는 시가표준액으로 과세한다","시가인정액은 취득일 전 3개월부터 취득일 후 6개월 이내의 사례가액으로 한다"], answer:3,
+    expl:"시가인정액의 산정 기간은 취득일 전 6개월부터 취득일 후 3개월 이내이다.",
+    src:"2026-06-07 취득세 유상승계취득 과세표준" },
+  { type:"객관식", cat:"부동산세법",
+    q:"취득세 사실상취득가격 산정에서 법인에게만 포함되고 개인에게는 포함되지 않는 항목을 모두 고른 것은?<br>ㄱ. 건설자금이자<br>ㄴ. 할부 및 연부이자와 연체료<br>ㄷ. 중개보수<br>ㄹ. 계약금 및 중도금",
+    opts:["ㄱ, ㄴ","ㄱ, ㄴ, ㄷ","ㄴ, ㄷ, ㄹ","ㄱ, ㄷ, ㄹ"], answer:1,
+    expl:"옳은 것은 ㄱ, ㄴ, ㄷ. 법인 전용 항목은 건설자금이자, 할부 및 연부이자와 연체료, 중개보수이다. 계약금과 중도금은 개인도 포함한다.",
+    src:"2026-06-07 취득세 사실상 취득가격" },
+  { type:"객관식", cat:"부동산세법",
+    q:"취득세에서 신축, 재축 이외의 건축으로 건축물 면적이 증가한 경우의 세율 적용으로 옳은 것은?",
+    opts:["면적이 증가하면 전체에 대하여 승계취득 세율을 적용한다","면적 증가와 무관하게 중과기준세율만 적용한다","증가된 부분에 한정하여 원시취득 세율을 적용한다","증가된 부분에 표준세율에서 중과기준세율을 뺀 세율을 적용한다"], answer:2,
+    expl:"신축, 재축 이외의 건축으로 면적이 증가한 경우 증가된 부분에 한정하여 원시취득 세율을 적용한다.",
+    src:"2026-06-07 취득세 세율" },
+  { type:"객관식", cat:"부동산세법",
+    q:"취득세에서 중과기준세율만 부과하는 경우에 해당하는 것을 모두 고른 것은?<br>ㄱ. 종전 면적 이내 범위에 한정한 개수<br>ㄴ. 가액이 증가한 지목변경<br>ㄷ. 신축으로 인한 건축물 면적 증가<br>ㄹ. 형식적 소유권 이전인 환매",
+    opts:["ㄱ, ㄴ","ㄱ, ㄷ","ㄴ, ㄹ","ㄷ, ㄹ"], answer:0,
+    expl:"옳은 것은 ㄱ, ㄴ. 개수와 지목변경은 등기 없이 사실상 가치가 증가한 제2항으로 중과기준세율만 부과한다. ㄹ은 표준세율에서 중과기준세율을 뺀 세율을 적용한다.",
+    src:"2026-06-07 취득세 세율" },
+  { type:"객관식", cat:"부동산세법",
+    q:"취득세 세율 구조에서 등기는 하지만 실질은 형식적인 환매나 건축물 이전 등의 경우에 적용하는 세율은?",
+    opts:["중과기준세율만 적용","표준세율에 중과기준세율을 더한 세율","표준세율의 100분의 50 중과","표준세율에서 중과기준세율을 뺀 세율"], answer:3,
+    expl:"등기는 하지만 실질이 형식적인 경우는 제1항이 적용되어 표준세율에서 중과기준세율을 뺀 세율을 적용한다.",
+    src:"2026-06-07 취득세 세율" },
+  { type:"객관식", cat:"부동산세법",
+    q:"취득세 신고납부에 관한 설명으로 옳지 않은 것은?",
+    opts:["유상취득은 취득한 날부터 60일 이내에 신고, 납부한다","보통징수는 취득세의 원칙적인 징수 방법이다","취득세는 신고납부를 원칙으로 한다","취득세 납세지는 부동산 소재지 관할 지방자치단체이다"], answer:1,
+    expl:"취득세는 신고납부가 원칙이며, 보통징수는 신고 등 의무를 다하지 않은 경우의 방법으로 원칙적 방법이 아니다.",
+    src:"2026-06-07 취득세 신고납부" },
+  { type:"객관식", cat:"부동산세법",
+    q:"취득세에서 사용하는 추징의 의미로 옳은 것은?",
+    opts:["취득 전에 미리 세금을 예납받는 것","신고를 하지 않은 경우 가산세를 부과하는 것","이미 감면이나 경감을 받았으나 사후에 요건을 위반하여 원래 세금을 다시 거두는 것","과세표준을 시가인정액으로 재산정하는 것"], answer:2,
+    expl:"추징은 이미 감면, 경감을 받았으나 사후에 요건을 위반한 경우 원래 세금을 다시 거두는 것이다.",
+    src:"2026-06-07 취득세 신고납부" },
+  { type:"객관식", cat:"부동산세법",
+    q:"갑이 농지를 5억 원에 유상승계취득하였다. 취득세 표준세율이 1000분의 30일 때 산출세액은? (다른 조건은 동일하며 부가세는 고려하지 않음)",
+    opts:["500만 원","1,000만 원","1,500만 원","2,000만 원"], answer:2,
+    expl:"농지 유상취득 세율은 1000분의 30이므로 5억 원 곱하기 30 나누기 1000은 1,500만 원이다.",
+    src:"2026-06-07 취득세 세율" },
+  { type:"OX", cat:"부동산세법",
+    q:"취득세 과세표준이 50만 원 이하인 일반 취득은 면세점이 적용되어 취득세와 등록면허세가 모두 면제된다.",
+    opts:["O","X"], answer:1,
+    expl:"X. 면세점이 적용되어 취득세는 면제되지만 등록면허세는 부과된다.",
+    src:"2026-06-07 취득세 면세점" },
+  { type:"객관식", cat:"부동산세법",
+    q:"등록면허세에서 채권금액을 과세표준으로 하는 채권 관련 등기에 해당하는 것을 모두 고른 것은?<br>ㄱ. 경매신청<br>ㄴ. 가압류<br>ㄷ. 저당권<br>ㄹ. 가처분",
+    opts:["ㄱ, ㄴ","ㄱ, ㄴ, ㄷ, ㄹ","ㄴ, ㄷ, ㄹ","ㄱ, ㄷ, ㄹ"], answer:1,
+    expl:"옳은 것은 ㄱ, ㄴ, ㄷ, ㄹ 모두이다. 경매신청, 가압류, 저당권, 가처분은 모두 채권금액을 과세표준으로 한다.",
+    src:"2026-06-13 등록면허세" },
+  { type:"객관식", cat:"부동산세법",
+    q:"등록면허세에서 임대차 등기의 과세표준으로 옳은 것은?",
+    opts:["월임대차금액","임차보증금","임차보증금과 월임대차금액의 합계","임차인의 소득금액"], answer:0,
+    expl:"임대차 등기의 과세표준은 임차보증금이 아니라 월임대차금액을 기준으로 한다.",
+    src:"2026-06-13 등록면허세" },
+  { type:"OX", cat:"부동산세법",
+    q:"등록면허세에서 묘지인 토지에 관한 등기와 국가 등이 받는 등록은 비과세 항목이다.",
+    opts:["O","X"], answer:0,
+    expl:"O. 묘지인 토지에 관한 등기와 국가 등이 받는 등록은 등록면허세 비과세 항목이다.",
+    src:"2026-06-07 등록면허세 비과세 면세 특례" },
+  { type:"객관식", cat:"부동산세법",
+    q:"재산세 납세의무자에 관한 설명으로 옳은 것은?",
+    opts:["소유권변동신고를 하지 않은 경우 사용자를 납세의무자로 한다","공부상 소유자는 어떠한 경우에도 납세의무자가 될 수 없다","종중소유임을 신고하지 않은 경우 공부상 소유자를 납세의무자로 한다","소유권변동신고 여부와 무관하게 항상 사용자가 납세의무자이다"], answer:2,
+    expl:"소유권변동신고 또는 종중소유임을 신고하지 않은 경우 사용자를 추적할 수 없으므로 공부상 소유자를 납세의무자로 한다.",
+    src:"2026-06-13 재산세 납세의무자" },
+  { type:"객관식", cat:"부동산세법",
+    q:"재산세 과세대상의 주택 판정에 관한 설명으로 옳지 않은 것은?",
+    opts:["1동의 건물이 주거와 주거외의 용도로 사용되는 경우 주거용 부분만 주택으로 본다","1구의 건물에서 주거용 부분이 100분의 50 이상이면 주택으로 본다","주거와 주거외 용도가 혼합된 1동 건물은 주거용 부분만 주택으로 구분한다","1구의 건물에서 주거용 부분이 100분의 50 미만이어도 전부 주택으로 본다"], answer:3,
+    expl:"1구는 주거용 부분이 100분의 50 이상이면 주택으로 보므로 50 미만이면 주택으로 보지 않는다.",
+    src:"2026-06-13 재산세 과세대상의 구분" },
+  { type:"객관식", cat:"부동산세법",
+    q:"재산세 토지 과세방법에서 별도합산과세대상에 해당하는 것을 모두 고른 것은?<br>ㄱ. 영업용 건축물의 부속토지로서 기준면적 이내인 토지<br>ㄴ. 차고용 토지<br>ㄷ. 자동차운전학원용 토지<br>ㄹ. 회원제 골프장용 토지",
+    opts:["ㄱ, ㄴ, ㄷ","ㄱ, ㄹ","ㄴ, ㄷ, ㄹ","ㄱ, ㄷ, ㄹ"], answer:0,
+    expl:"옳은 것은 ㄱ, ㄴ, ㄷ. 영업용 건축물 부속토지(기준면적 이내), 차고, 자동차운전학원용 토지는 별도합산과세대상이다. 회원제 골프장용 토지는 고율 분리과세대상이다.",
+    src:"2026-06-13 재산세 토지에 대한 과세방법" },
+  { type:"객관식", cat:"부동산세법",
+    q:"재산세 토지 과세방법에 관한 설명으로 옳지 않은 것은?",
+    opts:["회원제 골프장용 토지와 고급오락장용 토지는 저율로 분리과세대상이다","공장용지가 기준면적 이내이고 군, 읍면, 산업단지, 공업지역에 있으면 분리과세대상이다","저율로 분리과세하여 봐주는 토지라도 비과세대상은 아니다","염전, 여객자동차터미널, 물류터미널은 공장용지와 동일하게 분리과세대상으로 본다"], answer:0,
+    expl:"회원제 골프장용 토지와 고급오락장용 토지는 높은 금리, 즉 고율로 분리과세대상이다.",
+    src:"2026-06-13 재산세 토지에 대한 과세방법" },
+  { type:"객관식", cat:"부동산세법",
+    q:"재산세 비과세에 관한 설명으로 옳지 않은 것은?",
+    opts:["국가가 1년 이상 공용으로 사용하는 토지는 일반적으로 비과세한다","유상이전을 약속한 경우라도 공용으로 사용하면 비과세한다","지방자치단체가 공공용으로 사용하더라도 유료로 사용 중이면 과세한다","철거명령을 받은 건축물은 비과세하나 그 토지는 과세한다"], answer:1,
+    expl:"공용으로 사용하더라도 유료로 사용 중이거나 유상이전을 약속한 경우에는 과세한다.",
+    src:"2026-06-13 재산세 비과세" },
+  { type:"객관식", cat:"부동산세법",
+    q:"재산세 과세표준과 시가표준액에 관한 설명으로 옳은 것은?",
+    opts:["단독주택의 시가표준액은 공동주택가격으로 한다","공시된 가액이 없는 경우 국토교통부장관이 결정한 가액으로 한다","토지의 시가표준액은 공시된 가액이 있으면 개별공시지가로 한다","과세표준상한액은 토지와 건축물에도 적용된다"], answer:2,
+    expl:"토지의 시가표준액은 공시된 가액이 있으면 개별공시지가로 한다. 공시된 가액이 없는 경우에만 지방자치단체장이 결정한 가액으로 한다.",
+    src:"2026-06-13 재산세 과세표준 시가표준액" },
+  { type:"객관식", cat:"부동산세법",
+    q:"재산세 세율에서 누진세율이 적용되는 대상으로만 묶인 것은?",
+    opts:["종합합산, 별도합산, 주택","종합합산, 별도합산, 분리과세","별도합산, 분리과세, 주택","종합합산, 분리과세, 건축물"], answer:0,
+    expl:"재산세 누진세율 대상은 종합합산, 별도합산, 주택만이다. 분리과세대상은 비례세율을 적용한다.",
+    src:"2026-06-13 재산세 세율" },
+  { type:"객관식", cat:"부동산세법",
+    q:"갑은 1세대 1주택자로서 보유 주택에 대한 재산세 납부유예를 신청하려 한다. 재산세 납부유예에 관한 설명으로 옳은 것은? (다른 조건은 동일)",
+    opts:["납부기한 만료 5일 전까지 신청해야 한다","담보를 제공하지 않아도 신청할 수 있다","2주택자도 금액 제한 내에서 신청할 수 있다","납부기한 만료 3일 전까지 신청하며 담보를 제공해야 한다"], answer:3,
+    expl:"재산세 납부유예는 1세대 1주택자가 금액 제한 없이, 납부기한 만료 3일 전까지 신청하며 담보를 제공하면 된다.",
+    src:"2026-06-13 재산세 징수 납부유예 납세지" },
+  { type:"객관식", cat:"부동산세법",
+    q:"재산세 징수와 납부유예에 관한 설명으로 옳지 않은 것은?",
+    opts:["재산세는 보통징수하며 납기개시 5일 전까지 고지서를 발급한다","납부유예를 받은 자가 해당 주택을 양도하더라도 유예는 그대로 유지된다","조세포탈 대상자 징수를 위해 수시로 부과, 징수할 수 있다","납부유예는 1세대 1주택자가 금액 제한 없이 신청할 수 있다"], answer:1,
+    expl:"납부유예자가 해당 주택을 타인에게 양도하거나 증여한 경우 납부유예를 즉시 취소한다.",
+    src:"2026-06-13 재산세 징수 납부유예 납세지" },
+  { type:"OX", cat:"부동산세법",
+    q:"종합부동산세는 지방세처럼 부동산 소재지를 기준으로 과세한다.",
+    opts:["O","X"], answer:1,
+    expl:"X. 종합부동산세는 개인의 주소지 또는 거주지를 기준으로 과세하는 인 기준 조세이다.",
+    src:"2026-06-13 종합부동산세 납세지 과세기준일 납기" },
+  { type:"객관식", cat:"부동산세법",
+    q:"종합부동산세 과세대상에 관한 설명으로 옳지 않은 것은?",
+    opts:["주택, 종합합산 토지, 별도합산 토지가 종합부동산세 과세대상이다","회원제 골프장용 토지는 고율 분리과세대상이므로 종합부동산세 과세대상이 아니다","건축물은 비례세 대상으로 종합부동산세 과세대상이 아니다","분리과세대상 토지도 종합부동산세 과세대상에 포함된다"], answer:3,
+    expl:"종합부동산세 대상은 주택, 종합합산, 별도합산 토지만이며 분리과세대상 토지는 포함되지 않는다.",
+    src:"2026-06-13 종합부동산세 과세대상에서 빠지는 것" },
+  { type:"객관식", cat:"부동산세법",
+    q:"종합부동산세 합산배제와 보유현황 신고에 관한 설명으로 옳은 것은?",
+    opts:["합산배제 임대주택과 등록문화유산 등은 12월에 보유현황을 신고한다","합산배제 임대주택과 등록문화유산 등은 9월에 보유현황을 신고한다","합산배제 주택은 신고 없이도 자동으로 주택수에서 제외된다","합산배제 주택이 주택수에서 제외되려면 그 합산배제 주택에 거주해야 한다"], answer:1,
+    expl:"합산배제 임대주택, 등록문화유산 등은 9월에 보유현황을 신고한다. 주택수 제외는 나머지 보유 주택에 거주해야 인정된다.",
+    src:"2026-06-13 종합부동산세 합산배제 보유현황 신고" },
+  { type:"객관식", cat:"부동산세법",
+    q:"종합부동산세의 과세기준일과 납기에 관한 설명으로 옳은 것은?",
+    opts:["과세기준일은 5월 1일, 납기는 매년 12월 1일부터 12월 15일까지이다","과세기준일은 6월 1일, 납기는 매년 9월 16일부터 9월 30일까지이다","과세기준일은 6월 1일, 납기는 매년 12월 1일부터 12월 15일까지이다","과세기준일은 6월 1일, 납기는 매년 7월 16일부터 7월 31일까지이다"], answer:2,
+    expl:"종합부동산세 과세기준일은 6월 1일이며 납기는 매년 12월 1일부터 12월 15일까지로 통일한다.",
+    src:"2026-06-13 종합부동산세 납세지 과세기준일 납기" }
+];
+
+const form = document.getElementById('quiz');
+const selected = new Array(QUESTIONS.length).fill(null);
+let graded = false;
+let lastCat = null;
+
+QUESTIONS.forEach((item, qi)=>{
+  if(item.cat !== lastCat){
+    const s = document.createElement('div');
+    s.className = 'sec';
+    s.textContent = '▍' + item.cat;
+    form.appendChild(s);
+    lastCat = item.cat;
+  }
+  const card = document.createElement('div');
+  card.className = 'q';
+  const isOX = item.type === 'OX';
+  card.innerHTML = `
+    <div class="qhead">
+      <span class="qno">${qi+1}</span>
+      <span class="qtype">${item.type}</span>
+      <span class="qcat">${item.cat}</span>
+    </div>
+    <div class="qtext">${item.q}</div>
+    <div class="opts ${isOX?'ox':''}" data-q="${qi}"></div>
+    <div class="expl" id="expl-${qi}"></div>`;
+  const optsEl = card.querySelector('.opts');
+  item.opts.forEach((o, oi)=>{
+    const el = document.createElement('div');
+    el.className = 'opt';
+    el.dataset.q = qi; el.dataset.o = oi;
+    el.innerHTML = isOX
+      ? `<span>${o}</span>`
+      : `<span class="mk">${String.fromCharCode(65+oi)}</span><span>${o}</span>`;
+    el.addEventListener('click', ()=>{
+      if(graded) return;
+      selected[qi] = oi;
+      optsEl.querySelectorAll('.opt').forEach(x=>x.classList.remove('sel'));
+      el.classList.add('sel');
+      updateProgress();
+    });
+    optsEl.appendChild(el);
+  });
+  form.appendChild(card);
+});
+
+function updateProgress(){
+  const done = selected.filter(s=>s!==null).length;
+  document.getElementById('pcount').textContent = `${done} / ${QUESTIONS.length} 선택`;
+  document.getElementById('pbar').style.width = (done/QUESTIONS.length*100)+'%';
+  document.getElementById('submitBtn').disabled = done !== QUESTIONS.length;
+}
+
+const btn = document.getElementById('submitBtn');
+btn.addEventListener('click', ()=>{ if(!graded){ grade(); } else { location.reload(); } });
+
+function grade(){
+  graded = true;
+  let score = 0;
+  const wrong = [];
+  QUESTIONS.forEach((item, qi)=>{
+    const opts = document.querySelectorAll(`.opt[data-q="${qi}"]`);
+    opts.forEach((el, oi)=>{
+      el.style.cursor='default';
+      if(oi === item.answer) el.classList.add('correct');
+      if(oi === selected[qi] && oi !== item.answer) el.classList.add('wrong');
+    });
+    const correct = selected[qi] === item.answer;
+    if(correct){ score++; }
+    else {
+      wrong.push({
+        id: `${QUIZ_DATE}-q${qi+1}`, cat:item.cat, type:item.type, q:item.q,
+        options:item.opts, myAnswer:item.opts[selected[qi]], correct:item.opts[item.answer],
+        expl:item.expl, src:item.src
+      });
+    }
+    const ex = document.getElementById('expl-'+qi);
+    ex.innerHTML = `<span class="verdict" style="color:${correct?'var(--ok)':'var(--no)'}">${correct?'정답!':'오답'}</span>${item.expl}<span class="src">📄 출처: ${item.src}</span>`;
+    ex.classList.add('show');
+  });
+  const r = document.getElementById('result');
+  document.getElementById('score').textContent = score;
+  document.getElementById('rmsg').textContent = msgFor(score);
+  r.classList.add('show');
+  btn.textContent = '🔄 다시 풀기';
+  btn.classList.add('retry');
+
+  // 결과 자동 다운로드 (월요일 오답 수거 작업이 읽는 파일)
+  downloadResult(score, wrong);
+
+  r.scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+function downloadResult(score, wrong){
+  const payload = {
+    subject:"공인중개사", date:QUIZ_DATE,
+    score:score, total:QUESTIONS.length, wrongCount:wrong.length,
+    wrong:wrong, generatedAt:new Date().toISOString()
+  };
+  try{
+    const blob = new Blob([JSON.stringify(payload,null,2)], {type:"application/json"});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `공인중개사_오답_${QUIZ_DATE}.json`;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url), 1500);
+    document.getElementById('dlnote').textContent =
+      wrong.length>0 ? `💾 오답 ${wrong.length}개 저장됨 — 다운로드 폴더 확인` : "💾 만점 기록 저장됨";
+  }catch(e){
+    document.getElementById('dlnote').textContent = "⚠️ 자동 저장 실패 — 브라우저에서 직접 열어 풀어주세요";
+  }
+}
+
+function msgFor(s){
+  const t = QUESTIONS.length;
+  const r = s/t;
+  if(s===t)   return "만점. 오늘 등록증 발급해도 되겠는데요? 🏆";
+  if(r>=0.8)  return "합격권. 틀린 거 해설만 한 번 더 보면 완벽합니다.";
+  if(r>=0.6)  return "절반은 넘었어요. 오답 노트행 직행하는 개념들이 보이네요.";
+  if(r>=0.4)  return "아직 흔들리는 개념이 있어요. 해설 정독하고 내일 재도전!";
+  return "괜찮아요, 회독이 쌓이면 올라갑니다. 해설부터 차근차근.";
+}
+</script>
+</body>
+</html>

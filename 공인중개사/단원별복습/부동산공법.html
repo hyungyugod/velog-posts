@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📚 단원별 복습 · 부동산공법 · 2026-06-21</title>
+<style>
+  :root{
+    --bg:#0f1115; --card:#191c23; --card2:#20242d; --line:#2c313b;
+    --txt:#e7e9ee; --sub:#9aa3b2; --accent:#ffd24a; --accent2:#7c9cff;
+    --ok:#34d399; --no:#f87171; --okbg:#10261d; --nobg:#2a1414;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);
+    font-family:'Pretendard','Apple SD Gothic Neo',system-ui,-apple-system,sans-serif;
+    line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:760px;margin:0 auto;padding:32px 20px 80px}
+  header{margin-bottom:24px}
+  .eyebrow{color:var(--accent);font-weight:700;font-size:14px;letter-spacing:.04em}
+  h1{font-size:28px;margin:6px 0 4px;font-weight:800}
+  .meta{color:var(--sub);font-size:14px}
+  .tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px}
+  .tag{background:var(--card2);border:1px solid var(--line);color:var(--sub);
+    padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600}
+  .bar{position:sticky;top:0;z-index:5;background:rgba(15,17,21,.88);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--line);
+    padding:12px 0;margin:18px 0 24px}
+  .progress{height:8px;background:var(--card2);border-radius:999px;overflow:hidden}
+  .progress>i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));
+    border-radius:999px;transition:width .35s ease}
+  .pmeta{display:flex;justify-content:space-between;font-size:12.5px;color:var(--sub);margin-bottom:7px}
+  .sec{font-size:13px;font-weight:800;color:var(--accent2);margin:26px 0 10px;letter-spacing:.02em;
+    border-top:1px dashed var(--line);padding-top:18px}
+  .sec:first-of-type{border-top:none;padding-top:0}
+  .q{background:var(--card);border:1px solid var(--line);border-radius:16px;
+    padding:18px 18px 16px;margin-bottom:14px}
+  .qhead{display:flex;align-items:center;gap:9px;margin-bottom:11px}
+  .qno{background:var(--accent);color:#1a1a1a;font-weight:800;font-size:13px;
+    width:26px;height:26px;border-radius:8px;display:grid;place-items:center;flex:0 0 auto}
+  .qtype{font-size:11.5px;font-weight:700;color:var(--accent2);border:1px solid var(--accent2);
+    padding:1px 8px;border-radius:999px}
+  .qcat{font-size:12px;color:var(--sub);margin-left:auto}
+  .qtext{font-size:16px;font-weight:600;margin:2px 0 14px}
+  .opts{display:flex;flex-direction:column;gap:8px}
+  .opt{display:flex;align-items:center;gap:11px;padding:11px 13px;border:1px solid var(--line);
+    border-radius:11px;cursor:pointer;background:var(--card2);transition:.15s;user-select:none}
+  .opt:hover{border-color:var(--accent2)}
+  .opt.sel{border-color:var(--accent);background:#26261a}
+  .opt .mk{width:22px;height:22px;border-radius:50%;border:2px solid var(--line);flex:0 0 auto;
+    display:grid;place-items:center;font-size:12px;font-weight:800}
+  .opt.sel .mk{border-color:var(--accent);background:var(--accent);color:#1a1a1a}
+  .ox{flex-direction:row;gap:10px}
+  .ox .opt{flex:1;justify-content:center;font-size:18px;font-weight:800}
+  .opt.correct{border-color:var(--ok);background:var(--okbg)}
+  .opt.correct .mk{border-color:var(--ok);background:var(--ok);color:#06281c}
+  .opt.wrong{border-color:var(--no);background:var(--nobg)}
+  .opt.wrong .mk{border-color:var(--no);background:var(--no);color:#2a0d0d}
+  .expl{margin-top:12px;padding:12px 14px;border-radius:11px;background:var(--card2);
+    border-left:3px solid var(--accent2);font-size:13.5px;color:#d4d9e2;display:none}
+  .expl.show{display:block;animation:fade .3s ease}
+  .expl .verdict{font-weight:800;margin-right:6px}
+  .expl .src{display:block;margin-top:7px;color:var(--sub);font-size:12px}
+  @keyframes fade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+  .submit{width:100%;padding:16px;border:none;border-radius:14px;font-size:17px;font-weight:800;
+    background:linear-gradient(90deg,var(--accent),#ffb347);color:#1a1a1a;cursor:pointer;margin-top:10px}
+  .submit:disabled{opacity:.45;cursor:not-allowed}
+  .submit.retry{background:var(--card2);color:var(--txt);border:1px solid var(--line)}
+  #result{display:none;text-align:center;background:var(--card);border:1px solid var(--line);
+    border-radius:18px;padding:28px 20px;margin-bottom:18px}
+  #result.show{display:block;animation:fade .4s ease}
+  .ring{font-size:46px;font-weight:900;margin:4px 0}
+  .ring small{font-size:18px;color:var(--sub);font-weight:700}
+  #rmsg{color:var(--sub);font-size:15px;margin-top:4px}
+  #dlnote{font-size:12.5px;color:var(--accent);margin-top:12px}
+  .foot{text-align:center;margin-top:30px;color:var(--sub);font-size:12.5px;line-height:1.8}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">DAILY QUIZ · 공인중개사</div>
+    <h1>오늘의 복습 문제지</h1>
+    <div class="meta">부동산공법 · wox 5회독 통합 · 실전형 30문항 · 개념 망라형</div>
+    <div class="tags">
+      <span class="tag">🔥 심화</span><span class="tag">📝 실전 4지선다</span><span class="tag">🧩 개념 망라</span><span class="tag">🎯 정답분산</span>
+      <span class="tag">부동산공법</span><span class="tag">wox 5회독 통합(전 회차)</span>
+    </div>
+  </header>
+
+  <div class="bar">
+    <div class="pmeta"><span id="pcount">0 / 30 선택</span><span>제출 시 오답이 자동 저장됩니다</span></div>
+    <div class="progress"><i id="pbar"></i></div>
+  </div>
+
+  <div id="result">
+    <div class="ring"><span id="score">0</span><small> / 30</small></div>
+    <div id="rmsg"></div>
+    <div id="dlnote"></div>
+  </div>
+
+  <form id="quiz"></form>
+
+  <button class="submit" id="submitBtn" disabled>제출하고 채점하기</button>
+
+  <div class="foot">
+    매일 새벽, 최근 7일 학습 노트로 자동 갱신됩니다.<br>
+    틀린 문제는 제출 시 결과파일로 저장 → 매주 월요일 오답노트로 자동 정리됩니다.
+  </div>
+</div>
+
+<script>
+const QUIZ_DATE = "2026-06-21-부동산공법";
+const QUESTIONS = [
+  { type:"객관식", cat:"부동산공법",
+    q:"국토계획법상 광역도시계획에 관한 설명으로 <b>옳지 않은</b> 것은?",
+    opts:["광역계획권이 둘 이상의 도에 걸쳐 있는 경우 해당 도지사들이 공동으로 광역계획권을 지정한다","국토교통부장관이 광역도시계획을 수립한 경우 직접 공고하지 않고 시도지사에게 서류를 송부하여 시도지사가 공고한다","광역계획권 지정권자는 국토교통부장관과 도지사뿐이며 광역시장은 지정 권한이 없다","도지사가 시장의 요청으로 관할 시장과 공동으로 수립하는 경우에도 국토교통부장관의 승인을 받아야 한다"], answer:3,
+    expl:"도지사가 시장의 요청으로 관할 시장과 공동 수립하는 경우 도지사는 원래 승인권자이므로 국장의 승인이 불요하다. 광역계획권 지정권자는 국장과 도지사뿐이고 국장 수립 시 시도지사가 공고한다.",
+    src:"2026-06-03 광역도시계획" },
+  { type:"객관식", cat:"부동산공법",
+    q:"국토계획법상 도시군관리계획에 관한 설명으로 <b>옳지 않은</b> 것은?",
+    opts:["도시군관리계획 결정의 효력은 지형도면을 고시한 날부터 발생한다","성장관리계획구역, 개발밀도관리구역, 기반시설부담구역은 도시군관리계획으로 결정하지 않는다","수산자원보호구역 지정에 관한 도시군관리계획 결정권자는 국토교통부장관이다","도시지역의 축소에 따른 용도지역 변경을 내용으로 하는 입안은 주민 의견청취를 생략할 수 있다"], answer:2,
+    expl:"수산자원보호구역 지정에 관한 도시군관리계획 결정권자는 해양수산부장관이며 국토교통부장관이 아니다. 결정 효력은 지형도면 고시일 당일 발생하고 이용파트 3개 구역은 관리계획 결정 대상이 아니다.",
+    src:"2026-06-03 도시군관리계획" },
+  { type:"객관식", cat:"부동산공법",
+    q:"국토계획법상 취락지구에 속한 대지면적 1200제곱미터의 토지에 건축물을 지으려 한다. 취락지구 건폐율 상한을 적용할 때 건축할 수 있는 최대 건축면적은? (다른 조건은 동일)",
+    opts:["720제곱미터","600제곱미터","840제곱미터","480제곱미터"], answer:0,
+    expl:"취락지구의 건폐율 상한은 60퍼센트이다. 따라서 최대 건축면적은 대지면적 1200제곱미터에 0.6을 곱한 720제곱미터이다. 건폐율은 대지면적 대비 건축면적의 비율로 산정한다.",
+    src:"2026-06-03 건폐율 특별규정" },
+  { type:"객관식", cat:"부동산공법",
+    q:"국토계획법상 도시혁신구역, 공동구, 시가화조정구역에 관한 설명으로 <b>옳지 않은</b> 것은?",
+    opts:["도시혁신구역은 공개공지, 부설주차장, 미술작품 설치, 학교, 공원, 주택에 관해 따로 정할 수 있다","시가화조정구역은 유보기간이 끝난 날에 바로 실효된다","공동구 설치 시 가스관과 하수도관만 공동구협의회의 심의를 거쳐 수용할 수 있다","시가화조정구역 내 입목의 벌채, 조림, 육림 행위는 허가를 받아 할 수 있다"], answer:1,
+    expl:"시가화조정구역은 유보기간이 끝난 다음날에 실효되며 끝난 날 당일이 아니다. 도시혁신구역은 공주미와 학교, 공원, 주택을 따로 정할 수 있고 공동구는 가스관과 하수도관만 심의 대상이다.",
+    src:"2026-06-03 도시혁신구역 공동구 시가화조정구역" },
+  { type:"객관식", cat:"부동산공법",
+    q:"국토계획법상 복합용도지구를 지정할 수 있는 용도지역을 모두 고른 것은?<br>ㄱ. 일반주거지역<br>ㄴ. 전용공업지역<br>ㄷ. 일반공업지역<br>ㄹ. 계획관리지역",
+    opts:["ㄱ, ㄴ","ㄴ, ㄷ","ㄱ, ㄴ, ㄷ, ㄹ","ㄱ, ㄷ, ㄹ"], answer:3,
+    expl:"복합용도지구는 일반주거지역, 일반공업지역, 계획관리지역에 지정할 수 있다(일일계). 너무 순수하게 보호할 전용공업지역이나 이미 다 섞인 상업지역은 대상이 아니다.",
+    src:"2026-06-03 용도지구" },
+  { type:"객관식", cat:"부동산공법",
+    q:"국토계획법상 용도지구의 세분 또는 지정에 관한 설명으로 <b>옳지 않은</b> 것은?",
+    opts:["방재지구는 자연방재지구와 시가지방재지구 2종으로 세분한다","복합용도지구는 용도를 추가로 제한하고 특정용도제한지구는 용도를 추가로 허용한다","경관지구는 자연경관지구, 시가지경관지구, 특화경관지구 3종으로 세분한다","인구 50만 이상 대도시 시장은 도지사 승인 없이 용도지구를 직접 지정할 수 있다"], answer:1,
+    expl:"복합용도지구는 용도를 추가로 허용하고 특정용도제한지구는 용도를 추가로 제한하는 반대 개념이다. 방재지구는 2종, 경관지구는 자시특 3종이며 대도시 시장은 직접 지정이 가능하다.",
+    src:"2026-06-03 용도지구" },
+  { type:"객관식", cat:"부동산공법",
+    q:"국토계획법상 도시군계획시설 부지의 매수청구에 관한 설명으로 <b>옳지 않은</b> 것은?",
+    opts:["매수청구권자는 시설부지로 묶인 토지 중 지목이 대인 토지의 소유자이다","매수의무자는 6개월 이내에 매수 여부를 결정하고 2년 이내에 매수하여야 한다","도시군계획시설채권의 상환기간은 10년 이내로 한다","매수하지 않겠다고 통보하거나 1년이 지나면 매수청구자는 허가를 받아 건축할 수 있다"], answer:3,
+    expl:"매수하지 않는다고 통보하거나 2년이 지나야 개발행위허가를 받아 건축할 수 있으며 1년은 짧다. 청구권자는 지목 대 토지소유자이고 절차는 6개월 결정 2년 매수, 채권 상환기간은 10년 이내이다.",
+    src:"2026-06-09 도시군계획시설 매수청구" },
+  { type:"객관식", cat:"부동산공법",
+    q:"국토계획법상 도시군계획시설 결정의 실효 및 사업시행에 관한 설명으로 옳은 것은?",
+    opts:["3년 이내에 시행하는 사업은 단계별 집행계획 중 제1단계 집행계획에 포함되어야 한다","시설결정 고시일부터 10년이 되는 다음날에 결정의 효력을 잃는다","같은 도 관할 둘 이상 시군에 걸친 사업은 협의가 안 되면 국토교통부장관이 정한다","행정청 시행자가 설치한 새 공공시설은 시행자에게 무상으로 귀속된다"], answer:0,
+    expl:"3년 이내 시행 사업은 제1단계 집행계획에 포함된다. 실효는 고시일부터 20년이 되는 다음날이고 시군 협의가 안 되면 도지사가 정하며 새 공공시설은 관리청에 무상귀속된다.",
+    src:"2026-06-09 도시군계획시설 실효 사업시행" },
+  { type:"객관식", cat:"부동산공법",
+    q:"국토계획법상 지구단위계획에 관한 설명으로 <b>옳지 않은</b> 것은?",
+    opts:["도시지역 외를 지구단위계획구역으로 지정하려면 면적의 3분의 2 이상이 계획관리지역이어야 한다","구역 지정 시 건폐율은 150퍼센트, 용적률은 200퍼센트 이내에서 완화 적용할 수 있다","주차장 설치기준은 50퍼센트까지 완화 적용할 수 있다","용도와 종류, 규모를 완화할 때 아파트와 연립주택은 허용하지 않는다"], answer:2,
+    expl:"지구단위계획에서 주차장 설치기준은 100퍼센트까지 완화 적용할 수 있다. 도시지역 외는 3분의 2 이상이 계획관리지역이어야 하고 건폐율 150 용적률 200 이내 완화, 아파트와 연립주택은 허용하지 않는다.",
+    src:"2026-06-09 지구단위계획" },
+  { type:"객관식", cat:"부동산공법",
+    q:"국토계획법상 개발행위허가에 관한 설명으로 옳은 것은?",
+    opts:["사업면적을 5퍼센트 범위에서 확장하는 경우는 경미한 변경에 해당한다","환경오염 방지조치를 조건으로 허가하려면 미리 신청자의 의견을 들어야 한다","국가유산 손상 우려가 있으면 최대 5년까지 개발행위허가를 제한할 수 있다","농림지역에 물건을 1개월 이상 쌓아놓는 행위는 개발행위허가 대상이다"], answer:1,
+    expl:"조건부 허가는 신청한 자의 의견을 미리 들어야 한다. 5퍼센트 확장은 절대 경미한 변경이 아니고 국가유산 손상 우려 시 제한은 최대 3년이며 농림지역 물건 1개월 이상 적치는 허가 대상이 아니다.",
+    src:"2026-06-09 개발행위허가" },
+  { type:"객관식", cat:"부동산공법",
+    q:"국토계획법상 성장관리계획에 관한 설명으로 옳은 것을 모두 고른 것은?<br>ㄱ. 성장관리계획구역은 녹지, 관리, 농림, 자연환경보전지역에만 지정할 수 있다<br>ㄴ. 보전관리지역도 용적률 완화가 가능하다<br>ㄷ. 시장 군수는 성장관리계획구역안을 14일간 일반이 열람할 수 있도록 해야 한다<br>ㄹ. 신청 내용이 성장관리계획에 어긋나면 허가해서는 안 된다",
+    opts:["ㄱ, ㄷ, ㄹ","ㄱ, ㄴ","ㄴ, ㄷ","ㄱ, ㄴ, ㄹ"], answer:0,
+    expl:"성장관리계획구역은 녹관농자에만 지정하고 구역안은 14일간 열람하며 어긋나면 허가할 수 없다. 보전관리지역은 용적률 완화가 안 되므로 ㄴ은 틀리다.",
+    src:"2026-06-09 성장관리계획" },
+  { type:"객관식", cat:"부동산공법",
+    q:"국토계획법상 기반시설의 분류가 잘못 연결된 것은?",
+    opts:["공간시설 - 광장, 유원지","방재시설 - 하천, 유수지, 저수지","보건위생시설 - 도축장, 종합의료시설, 장사시설","환경기초시설 - 광장, 폐차장, 빗물저장시설"], answer:3,
+    expl:"광장은 공간시설에 해당하며 환경기초시설은 하수도, 폐차장, 빗물저장시설, 폐기물처리시설 등이다. 방재시설은 하천과 유수지, 저수지이고 보건위생시설은 도축장과 종합의료시설, 장사시설이다.",
+    src:"2026-06-09 기반시설" },
+  { type:"객관식", cat:"부동산공법",
+    q:"도시개발법상 토지소유자가 도시개발조합을 설립하려 한다. 구역 내 토지소유자가 총 28명이고 토지면적 합계가 12000제곱미터일 때, 설립인가 동의요건을 충족하기 위한 최소 동의 인원과 최소 동의 면적은? (다른 조건은 동일)",
+    opts:["14명, 6000제곱미터","14명, 8000제곱미터","19명, 8000제곱미터","14명, 12000제곱미터"], answer:1,
+    expl:"조합 설립 동의요건은 면총 즉 면적 3분의 2 이상과 총수 2분의 1 이상이다. 총수 28명의 2분의 1은 14명, 면적 12000제곱미터의 3분의 2는 8000제곱미터이므로 최소 14명과 8000제곱미터의 동의가 필요하다.",
+    src:"2026-06-14 도시개발구역 동의자 수 산정" },
+  { type:"객관식", cat:"부동산공법",
+    q:"도시개발법상 도시개발구역의 분할 및 지정 해제에 관한 설명으로 <b>옳지 않은</b> 것은?",
+    opts:["조합설립인가는 국토교통부장관에게 받아야 한다","둘 이상의 사업시행지구로 분할하는 경우 분할 후 각 지구의 면적은 각각 1만제곱미터 이상이어야 한다","구역 지정 후 2년 내 계획수립, 그 후 3년 내 실시계획인가가 안 되면 그 기간 만료일에 지정이 해제된 것으로 본다","면적이 330만제곱미터 이상이면 2년과 3년 기간이 각각 5년씩으로 늘어난다"], answer:0,
+    expl:"도시개발법 지정권자는 시도지사와 대도시 시장이므로 이들에게 조합설립인가를 받는다. 분할 후 각 지구는 1만제곱미터 이상, 2년과 3년 기간 도과 시 해제, 330만제곱미터 이상이면 각각 5년으로 늘어난다.",
+    src:"2026-06-14 도시개발구역 분할 해제 조합" },
+  { type:"객관식", cat:"부동산공법",
+    q:"도시개발법상 실시계획에 관한 설명으로 <b>옳지 않은</b> 것은?",
+    opts:["고시된 실시계획과 종전 도시군관리계획이 저촉되면 종전 관리계획이 우선 적용된다","지정권자가 아닌 시행자가 사업비의 100분의 10 범위에서 증액하는 경우 지정권자 인가를 받지 않아도 된다","시행자가 작성하는 실시계획에는 지구단위계획이 포함되어야 한다","고시된 실시계획에서 필요한 부분은 도시군관리계획으로 결정 고시된 것으로 본다"], answer:0,
+    expl:"고시된 실시계획과 종전 도시군관리계획이 저촉되면 종전 관리계획이 변경된 것으로 본다. 실시계획에는 지구단위계획이 포함되고 사업비 100분의 10 범위 증액은 인가 불요이다.",
+    src:"2026-06-14 실시계획" },
+  { type:"객관식", cat:"부동산공법",
+    q:"도시개발법상 토지상환채권과 도시개발채권에 관한 설명으로 <b>옳지 않은</b> 것은?",
+    opts:["토지상환채권은 시행자가 발행하고 이율은 발행자가 정한다","토지상환채권의 발행 규모는 토지면적의 2분의 1을 넘지 못한다","도시개발채권의 소멸시효는 원금 5년, 이자 2년이다","도시개발채권의 상환기간은 1년에서 5년이다"], answer:3,
+    expl:"도시개발채권의 상환기간은 5년에서 10년이다. 토지상환채권은 시행자가 발행하고 발행자가 이율을 정하며 면적의 2분의 1을 넘지 못하고, 도시개발채권 소멸시효는 오이 즉 원금 5년 이자 2년이다.",
+    src:"2026-06-16 토지상환채권 도시개발채권" },
+  { type:"객관식", cat:"부동산공법",
+    q:"도시개발법상 원형지와 조성토지에 관한 설명으로 옳은 것을 모두 고른 것은?<br>ㄱ. 원형지는 미개발 상태로 받는 사람이 직접 개발해야 한다<br>ㄴ. 국가 및 지자체를 제외한 원형지개발자는 10년 범위에서 정한 기간 안에는 원형지를 매각할 수 없다<br>ㄷ. 원형지를 학교나 공장 용도로 공급할 때 3회까지 경쟁입찰방식으로 한다<br>ㄹ. 공공용지인 조성토지등의 공급은 수의계약의 방법으로 할 수 있다",
+    opts:["ㄱ, ㄷ","ㄴ, ㄷ, ㄹ","ㄱ, ㄴ, ㄹ","ㄱ, ㄴ, ㄷ, ㄹ"], answer:2,
+    expl:"원형지는 받는 사람이 직접 개발하고, 국가 등 제외 시 10년 범위 매각 제한이 있으며 공공용지 조성토지는 수의계약이 가능하다. 학교나 공장 용도 공급은 2회까지 경쟁입찰이므로 ㄷ은 틀리다.",
+    src:"2026-06-16 원형지 조성토지" },
+  { type:"객관식", cat:"부동산공법",
+    q:"도시개발법상 시행방식과 환지에 관한 설명으로 <b>옳지 않은</b> 것은?",
+    opts:["사용방식은 토지 소유권은 그대로 두고 사용권만 받아 공사하는 방식이다","지자체가 전부환지방식을 사용할 때는 규약을 정한다","시행자는 준공검사를 받은 경우 60일 이내에 환지처분을 하여야 한다","수용 또는 사용방식에서 혼용방식으로의 변경도 가능하다"], answer:1,
+    expl:"지자체가 전부환지방식을 사용할 때는 규약이 아니라 시행규정을 작성한다. 사용방식은 소유권을 두고 사용권만 받으며 환지처분은 준공검사 후 60일 이내, 시행방식은 수용에서 혼용으로 변경이 가능하다.",
+    src:"2026-06-16 시행방식 환지" },
+  { type:"객관식", cat:"부동산공법",
+    q:"도정법상 토지등소유자 및 조합에 관한 설명으로 옳은 것을 모두 고른 것은?<br>ㄱ. 재개발 정비구역 내 토지의 지상권자는 토지등소유자이다<br>ㄴ. 재건축사업 부속토지의 지상권자는 토지등소유자가 아니다<br>ㄷ. 조합원 수가 100명 이상인 조합은 대의원회를 두어야 한다<br>ㄹ. 사업 완료로 인한 조합 해산은 대의원회가 대행할 수 없다",
+    opts:["ㄱ, ㄴ, ㄷ","ㄴ, ㄹ","ㄷ, ㄹ","ㄱ, ㄷ, ㄹ"], answer:0,
+    expl:"재개발은 공익성이 강해 지상권자를 토지등소유자로 넓게 포섭하고 재건축은 제외하며 100명 이상 조합은 대의원회를 두어야 한다. 사업 완료로 인한 해산은 예외적으로 대의원회가 대행할 수 있으므로 ㄹ은 틀리다.",
+    src:"2026-06-16 토지등소유자 조합" },
+  { type:"객관식", cat:"부동산공법",
+    q:"도정법상 관리처분과 분양에 관한 설명으로 <b>옳지 않은</b> 것은?",
+    opts:["분양신청기간 종료 이전에 분양신청을 철회한 자만 손실보상 대상이 된다","분양신청기간의 연장은 20일 범위에서 1차례만 할 수 있다","부대 복리시설의 위치를 변경하는 것은 도정법에서 경미한 변경에 해당한다","청산금을 징수할 권리의 소멸시효 기산일은 소유권이전고시일 다음날이다"], answer:2,
+    expl:"부대 복리시설의 위치를 변경하는 것은 도정법에서 경미한 변경이 아니다. 분양신청기간 종료 이전 철회자만 손실보상 대상이고 연장은 20일 범위 1차례, 청산금 시효 기산일은 이전고시일 다음날이다.",
+    src:"2026-06-16 관리처분 분양 청산" },
+  { type:"객관식", cat:"부동산공법",
+    q:"도정법상 정비구역에서 시장 군수 등의 허가를 받아야 하는 행위를 모두 고른 것은?<br>ㄱ. 가설건축물의 건축<br>ㄴ. 죽목의 벌채<br>ㄷ. 공유수면의 매립<br>ㄹ. 이동이 쉽지 않은 물건을 1개월 이상 쌓아놓는 행위",
+    opts:["ㄱ, ㄴ","ㄴ, ㄷ, ㄹ","ㄱ, ㄴ, ㄷ, ㄹ","ㄱ, ㄷ"], answer:2,
+    expl:"정비구역에서 가설건축물 건축, 죽목 벌채, 공유수면 매립, 이동이 쉽지 않은 물건을 1개월 이상 적치하는 행위는 모두 시장 군수 등의 허가를 받아야 한다. 정비구역에서는 지역주택조합 조합원 모집도 금지된다.",
+    src:"2026-06-16 정비구역 행위제한" },
+  { type:"객관식", cat:"부동산공법",
+    q:"건축법상 건축허가 및 사전결정에 관한 설명으로 <b>옳지 않은</b> 것은?",
+    opts:["사전결정 통지를 받은 후 2년 이내에 건축허가를 신청하지 않으면 사전결정의 효력이 상실된다","사전결정을 받으면 개발행위허가, 산지전용허가, 농지전용허가, 하천점용허가를 받은 것으로 본다","건축허가 원칙적 권한자는 시장, 군수, 구청장이다","도지사의 사전승인은 30일 이내에 승인 통보하여야 한다"], answer:3,
+    expl:"도지사의 사전승인은 50일 이내에 승인을 통보하여야 한다. 사전결정 통지 후 2년 내 허가신청을 하지 않으면 효력이 상실되고 통지효과로 개산농하가 의제되며 원칙 허가권자는 시장 군수 구청장이다.",
+    src:"2026-06-03 건축허가 사전결정" },
+  { type:"객관식", cat:"부동산공법",
+    q:"건축법상 증축, 대수선, 특수구조 건축물에 관한 설명으로 옳은 것은?",
+    opts:["내력벽을 수선하면 수선 면적과 무관하게 항상 대수선에 해당한다","보, 기둥, 지붕틀은 1개만 변경해도 대수선이다","내력벽을 증설하여 건축면적을 늘리면 증축이다","차양이 외벽 중심선에서 1미터 이상 돌출되면 특수구조 건축물이다"], answer:2,
+    expl:"내력벽을 증설하여 건축면적을 늘리면 증축이다. 내력벽 수선 면적 합계 30제곱미터 미만은 대수선이 아니고, 보 기둥 지붕틀은 3개 이상 변경해야 대수선이며 차양은 3미터 이상 돌출 시 특수구조 건축물이다.",
+    src:"2026-06-16 증축 대수선 건축물 분류" },
+  { type:"객관식", cat:"부동산공법",
+    q:"주택법상 사업주체와 주택조합에 관한 설명으로 옳은 것은?",
+    opts:["비등록사업자인 고용자는 단독으로 주택건설사업을 시행할 수 있다","주택조합 조합원 모집은 주택건설대지의 50퍼센트 이상 토지사용권원을 확보한 후 신고하여 공개모집한다","지역 직장주택조합 설립인가는 사용권원 50퍼센트 이상과 소유권 30퍼센트 이상을 확보해야 한다","공구를 나눌 때 공구별 세대수는 100세대 이상이어야 한다"], answer:1,
+    expl:"조합원 모집은 주택건설대지의 50퍼센트 이상 토지사용권원을 확보한 후 신고하여 공개모집한다. 비등록 고용자는 단독 사업이 불가하고, 설립인가는 사용권원 80퍼센트와 소유권 15퍼센트, 공구별 300세대 이상이다.",
+    src:"2026-06-09 사업주체 주택조합" },
+  { type:"객관식", cat:"부동산공법",
+    q:"수험생 현규가 토지 형질변경 면적이 25000제곱미터인 농림지역 토지에서 개발사업을 검토한다. 다른 조건은 동일할 때 국토계획법상 옳은 판단은?",
+    opts:["농림지역은 형질변경면적 1만제곱미터 미만이어야 하므로 면적 요건을 충족하지 못한다","면적이 3만제곱미터 이상이므로 개발행위허가로 처리할 수 있다","농림지역은 형질변경면적 3만제곱미터 미만이므로 개발행위허가 면적 요건을 갖춘 것으로 본다","농림지역은 개발행위허가 대상에서 제외된다"], answer:2,
+    expl:"개발행위허가 규모는 공삼이 관농이로 공업 관리 농림지역 모두 3만제곱미터 미만이다. 25000제곱미터는 3만제곱미터 미만이므로 면적 요건을 갖춘 것으로 본다. 3만제곱미터 이상이면 더 큰 절차로 가야 한다.",
+    src:"2026-06-14 개발행위허가 규모" },
+  { type:"OX", cat:"부동산공법",
+    q:"국토계획법상 도시지역에서 세부 용도지역으로 지정되지 않은 경우에는 보전녹지지역에 관한 용적률 규정을 적용한다.",
+    opts:["O","X"], answer:0,
+    expl:"O. 도시지역에서 세부 용도지역으로 지정되지 않은 경우 난개발 방지를 위해 가장 규제가 센 보전녹지지역에 관한 용적률 규정을 적용한다.",
+    src:"2026-06-03 용도지역" },
+  { type:"OX", cat:"부동산공법",
+    q:"국토계획법상 입체복합구역의 주민 입안 제안 시 대상 토지 면적의 3분의 2 이상 토지소유자의 동의가 필요하다.",
+    opts:["O","X"], answer:1,
+    expl:"X. 입체복합구역의 주민 입안 제안은 대상 토지 면적의 5분의 4 이상 토지소유자 동의가 필요하다. 기반시설과 입체복합구역은 4/5이고 나머지는 2/3이며 이때 국공유지는 제외하고 산정한다.",
+    src:"2026-06-09 도시군관리계획 입안 제안" },
+  { type:"OX", cat:"부동산공법",
+    q:"도정법상 조합설립인가를 받으려면 토지등소유자의 4분의 3 이상 및 토지면적의 2분의 1 이상의 동의를 받아야 한다.",
+    opts:["O","X"], answer:0,
+    expl:"O. 재개발 조합설립인가 동의요건은 소면 즉 토지등소유자 4분의 3 이상과 토지면적 2분의 1 이상의 동의이다. 추진위원회는 위원장 포함 5명과 토지등소유자 과반수 동의, 시장 군수 승인이 필요하다.",
+    src:"2026-06-09 조합 설립" },
+  { type:"OX", cat:"부동산공법",
+    q:"도정법상 사업시행계획에서 임대주택 건설계획은 재건축사업에는 포함하지 않는다.",
+    opts:["O","X"], answer:0,
+    expl:"O. 임대주택 건설계획은 재건축사업에는 포함하지 않는다. 또한 국민주택규모 주택 건설계획은 주거환경개선사업에서는 제외하는 등 사업종류별 제외 항목을 구분하여야 한다.",
+    src:"2026-06-09 사업시행 관리처분" },
+  { type:"OX", cat:"부동산공법",
+    q:"건축법상 건축물의 대지와 도로는 4미터 이상 접하여야 하는 접도의무를 가진다.",
+    opts:["O","X"], answer:1,
+    expl:"X. 건축물의 대지와 도로는 2미터 이상 접하여야 하는 접도의무를 가진다. 건축물과 담장은 건축선의 수직면을 넘을 수 없으나 지표 아래 부분은 수직면을 넘을 수 있다.",
+    src:"2026-06-09 접도 건축선" }
+];
+
+const form = document.getElementById('quiz');
+const selected = new Array(QUESTIONS.length).fill(null);
+let graded = false;
+let lastCat = null;
+
+QUESTIONS.forEach((item, qi)=>{
+  if(item.cat !== lastCat){
+    const s = document.createElement('div');
+    s.className = 'sec';
+    s.textContent = '▍' + item.cat;
+    form.appendChild(s);
+    lastCat = item.cat;
+  }
+  const card = document.createElement('div');
+  card.className = 'q';
+  const isOX = item.type === 'OX';
+  card.innerHTML = `
+    <div class="qhead">
+      <span class="qno">${qi+1}</span>
+      <span class="qtype">${item.type}</span>
+      <span class="qcat">${item.cat}</span>
+    </div>
+    <div class="qtext">${item.q}</div>
+    <div class="opts ${isOX?'ox':''}" data-q="${qi}"></div>
+    <div class="expl" id="expl-${qi}"></div>`;
+  const optsEl = card.querySelector('.opts');
+  item.opts.forEach((o, oi)=>{
+    const el = document.createElement('div');
+    el.className = 'opt';
+    el.dataset.q = qi; el.dataset.o = oi;
+    el.innerHTML = isOX
+      ? `<span>${o}</span>`
+      : `<span class="mk">${String.fromCharCode(65+oi)}</span><span>${o}</span>`;
+    el.addEventListener('click', ()=>{
+      if(graded) return;
+      selected[qi] = oi;
+      optsEl.querySelectorAll('.opt').forEach(x=>x.classList.remove('sel'));
+      el.classList.add('sel');
+      updateProgress();
+    });
+    optsEl.appendChild(el);
+  });
+  form.appendChild(card);
+});
+
+function updateProgress(){
+  const done = selected.filter(s=>s!==null).length;
+  document.getElementById('pcount').textContent = `${done} / ${QUESTIONS.length} 선택`;
+  document.getElementById('pbar').style.width = (done/QUESTIONS.length*100)+'%';
+  document.getElementById('submitBtn').disabled = done !== QUESTIONS.length;
+}
+
+const btn = document.getElementById('submitBtn');
+btn.addEventListener('click', ()=>{ if(!graded){ grade(); } else { location.reload(); } });
+
+function grade(){
+  graded = true;
+  let score = 0;
+  const wrong = [];
+  QUESTIONS.forEach((item, qi)=>{
+    const opts = document.querySelectorAll(`.opt[data-q="${qi}"]`);
+    opts.forEach((el, oi)=>{
+      el.style.cursor='default';
+      if(oi === item.answer) el.classList.add('correct');
+      if(oi === selected[qi] && oi !== item.answer) el.classList.add('wrong');
+    });
+    const correct = selected[qi] === item.answer;
+    if(correct){ score++; }
+    else {
+      wrong.push({
+        id: `${QUIZ_DATE}-q${qi+1}`, cat:item.cat, type:item.type, q:item.q,
+        options:item.opts, myAnswer:item.opts[selected[qi]], correct:item.opts[item.answer],
+        expl:item.expl, src:item.src
+      });
+    }
+    const ex = document.getElementById('expl-'+qi);
+    ex.innerHTML = `<span class="verdict" style="color:${correct?'var(--ok)':'var(--no)'}">${correct?'정답!':'오답'}</span>${item.expl}<span class="src">📄 출처: ${item.src}</span>`;
+    ex.classList.add('show');
+  });
+  const r = document.getElementById('result');
+  document.getElementById('score').textContent = score;
+  document.getElementById('rmsg').textContent = msgFor(score);
+  r.classList.add('show');
+  btn.textContent = '🔄 다시 풀기';
+  btn.classList.add('retry');
+
+  // 결과 자동 다운로드 (월요일 오답 수거 작업이 읽는 파일)
+  downloadResult(score, wrong);
+
+  r.scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+function downloadResult(score, wrong){
+  const payload = {
+    subject:"공인중개사", date:QUIZ_DATE,
+    score:score, total:QUESTIONS.length, wrongCount:wrong.length,
+    wrong:wrong, generatedAt:new Date().toISOString()
+  };
+  try{
+    const blob = new Blob([JSON.stringify(payload,null,2)], {type:"application/json"});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `공인중개사_오답_${QUIZ_DATE}.json`;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url), 1500);
+    document.getElementById('dlnote').textContent =
+      wrong.length>0 ? `💾 오답 ${wrong.length}개 저장됨 — 다운로드 폴더 확인` : "💾 만점 기록 저장됨";
+  }catch(e){
+    document.getElementById('dlnote').textContent = "⚠️ 자동 저장 실패 — 브라우저에서 직접 열어 풀어주세요";
+  }
+}
+
+function msgFor(s){
+  const t = QUESTIONS.length;
+  const r = s/t;
+  if(s===t)   return "만점. 오늘 등록증 발급해도 되겠는데요? 🏆";
+  if(r>=0.8)  return "합격권. 틀린 거 해설만 한 번 더 보면 완벽합니다.";
+  if(r>=0.6)  return "절반은 넘었어요. 오답 노트행 직행하는 개념들이 보이네요.";
+  if(r>=0.4)  return "아직 흔들리는 개념이 있어요. 해설 정독하고 내일 재도전!";
+  return "괜찮아요, 회독이 쌓이면 올라갑니다. 해설부터 차근차근.";
+}
+</script>
+</body>
+</html>
