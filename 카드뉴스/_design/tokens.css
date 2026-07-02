@@ -1,0 +1,22 @@
+/* ═══ 지식산책 디자인 토큰 v1 (2026-07-02, Fable 설계 WO-8 시드) ═══
+   규칙: 카드 HTML은 색·좌표·크기 리터럴 금지 — 반드시 이 토큰만 참조.
+   테마 교체 = themes/*.css 로드(아래 색 4개만 덮어씀). 언어 교체 = --font-base 스왑. */
+:root{
+  /* 캔버스 — 4:5 기본. 핵심 요소는 중앙 3:4(세로 1215px 상당) 안에 배치(그리드 크롭 대응) */
+  --canvas-w:1080px; --canvas-h:1350px;
+  /* ── 불변 chrome (레이아웃·테마·언어와 무관 — 절대 좌표) ── */
+  --chrome-wordmark-top:56px;  --chrome-wordmark-left:64px;  --chrome-wordmark-fs:34px;
+  --chrome-pageno-top:56px;    --chrome-pageno-right:64px;   --chrome-pageno-fs:28px;
+  --chrome-footer-bottom:48px; --chrome-footer-fs:24px;
+  /* ── 색 (테마가 덮어쓰는 4개 + 고정 잉크) — 미니멀 화이트 아이덴티티 ── */
+  --bg:#FFFFFF; --ink:#111111; --ink-sub:#555555;
+  --brand:#378ADD; --brand-bg:#E6F1FB;
+  /* ── 타이포 (한/영 페어링) ── */
+  --font-kr:'Pretendard Variable',Pretendard,'Apple SD Gothic Neo',sans-serif;
+  --font-en:'Inter',-apple-system,'Segoe UI',sans-serif;
+  --font-base:var(--font-kr);            /* EN 카드는 themes/en.css가 스왑 */
+  --fs-cover:76px; --fs-h:52px; --fs-body:36px; --fs-caption:26px; --lh:1.45;
+  /* ── 간격·모양 ── */
+  --pad:80px; --gap:32px; --radius:24px; --shadow:0 8px 24px rgba(0,0,0,.06);
+  --rule-w:4px;
+}

@@ -1,0 +1,31 @@
+/* ═══ 지식산책 컴포넌트 라이브러리 v1 (WO-8 시드) — 슬롯에 꽂는 부품 ═══ */
+.card{position:relative;width:var(--canvas-w);height:var(--canvas-h);background:var(--bg);
+  font-family:var(--font-base);color:var(--ink);line-height:var(--lh);overflow:hidden}
+.content{position:absolute;left:var(--pad);right:var(--pad);top:180px;bottom:140px;
+  display:flex;flex-direction:column;gap:var(--gap);justify-content:center}
+.cover-title{font-size:var(--fs-cover);font-weight:900;letter-spacing:-0.02em}   /* 훅은 질문형 강제 */
+.cover-sub{font-size:var(--fs-body);color:var(--ink-sub)}
+.tag-chip{display:inline-block;background:var(--brand-bg);color:var(--brand);
+  font-size:var(--fs-caption);font-weight:700;padding:10px 22px;border-radius:999px}
+.h{font-size:var(--fs-h);font-weight:800}
+.rule{width:64px;height:var(--rule-w);background:var(--ink)}                      /* 기존 강조선 승격 */
+.dot-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:calc(var(--gap)*0.6)}
+.dot-list li{font-size:var(--fs-body);padding-left:44px;position:relative}
+.dot-list li::before{content:"";position:absolute;left:8px;top:0.55em;width:14px;height:14px;
+  border-radius:50%;background:var(--brand)}
+.highlight-box{background:var(--brand-bg);border-radius:var(--radius);padding:40px 44px;
+  font-size:var(--fs-body);font-weight:700;box-shadow:var(--shadow)}
+.compare-2col{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap)}          /* 비교형 전용 */
+.compare-2col .col{border:2px solid var(--brand-bg);border-radius:var(--radius);padding:36px}
+.compare-2col .col h3{margin:0 0 16px;font-size:var(--fs-h);color:var(--brand)}
+.step-flow{display:flex;flex-direction:column;gap:calc(var(--gap)*0.5)}           /* 절차형 전용 */
+.step{display:flex;gap:24px;align-items:flex-start;font-size:var(--fs-body)}
+.step .no{flex:0 0 56px;height:56px;border-radius:16px;background:var(--brand);color:#fff;
+  font-weight:800;display:grid;place-items:center;font-size:30px}
+.big-number{font-size:180px;font-weight:900;color:var(--brand);letter-spacing:-0.03em;line-height:1.05}
+.big-number small{font-size:var(--fs-h);color:var(--ink)}
+.quote-bracket{border-left:8px solid var(--brand);padding-left:36px;font-size:var(--fs-body);
+  font-style:normal;color:var(--ink)}                                             /* 사례형 내러티브 */
+.formula-chip{display:inline-block;background:#F4F5F7;border-radius:16px;padding:18px 28px;
+  font-size:var(--fs-body);font-weight:700;font-variant-numeric:tabular-nums}
+.source-caption{font-size:22px;color:var(--ink-sub)}                              /* 출처+기준일 — EN 필수, KR 권장 */

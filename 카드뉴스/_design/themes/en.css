@@ -1,0 +1,2 @@
+/* 테마: EN(글로벌) — 폰트만 스왑, chrome 좌표·색 체계 불변. 워드마크 텍스트는 chrome.html에서 교체 */
+:root{ --font-base:var(--font-en); }

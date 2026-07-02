@@ -1,0 +1,17 @@
+<!-- ═══ 불변 chrome 레이어 (모든 카드 최상위에 1회 포함) ═══
+     콘텐츠 레이아웃이 무엇이든 이 세 요소는 항상 같은 좌표·크기.
+     EN 카드: 워드마크 텍스트만 "Knowledge Stroll"로 교체(좌표 동일). -->
+<div class="chrome" aria-hidden="true">
+  <div class="chrome-wordmark">지식산책</div>
+  <div class="chrome-pageno"><span class="pg-n">1</span>/<span class="pg-total">7</span></div>
+  <div class="chrome-footer"><span class="footer-topic">주제명</span> / 지식산책 · Knowledge Stroll</div>
+</div>
+<style>
+.chrome{position:absolute;inset:0;pointer-events:none;font-family:var(--font-base);color:var(--ink)}
+.chrome-wordmark{position:absolute;top:var(--chrome-wordmark-top);left:var(--chrome-wordmark-left);
+  font-size:var(--chrome-wordmark-fs);font-weight:800;letter-spacing:-0.01em}
+.chrome-pageno{position:absolute;top:var(--chrome-pageno-top);right:var(--chrome-pageno-right);
+  font-size:var(--chrome-pageno-fs);font-weight:700;color:var(--ink-sub)}
+.chrome-footer{position:absolute;bottom:var(--chrome-footer-bottom);left:0;right:0;text-align:center;
+  font-size:var(--chrome-footer-fs);color:var(--ink-sub);font-weight:600}
+</style>

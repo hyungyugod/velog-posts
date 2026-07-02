@@ -1,10 +1,10 @@
-# 데일리퀴즈 생성 지침 v2 (2026-07-02 개정 — Fable 설계 WO-3·WO-6)
-
-> 스케줄러 `weekend-daily-quiz`(토·일 11시)에 적용된 프롬프트의 사본. 평일 수동용 플러그인 스킬 `daily-quiz-gongin`도 이 내용으로 교체 권장(개정판 파일: 데일리퀴즈/_daily-quiz-gongin_SKILL_개정판.md).
-> **v2 변경점:** ① 재도전 원천 = 오답 원장 dueQueue(간격반복) ② type 세분화(일반/조합/계산/사례/OX) + conceptKey·retryOf·calc 필드 ③ HTML을 정본 템플릿 `_template.html`에서 생성(최신 파일 복제 폐기) ④ 검증 강화(쿼터 자동판정·계산 검산·길이누수 FAIL).
-> 롤백: 플러그인 스킬 `daily-quiz-gongin`에 원본 로직이 그대로 있음 + `ai-guidelines/Fable5_설계요청/_백업_스케줄프롬프트_2026-07-02/`.
-
 ---
+name: daily-quiz-gongin
+description: 평일 아침(월~금), 최근 7일 공인중개사 학습노트로 40문항 실전형(일반·조합·계산·사례·OX) 심화 문제지 자동 생성 v2 (원장 듀 큐 재도전·정본 템플릿·자동 검산)
+---
+
+> ⚙️ 설치: 설정 > 기능(Capabilities)에서 기존 daily-quiz-gongin 스킬 본문을 이 파일 내용으로 교체.
+
 
 토·일요일에 실행되는 "데일리 문제지 자동 생성" 작업이다. 아래를 순서대로 수행하라.
 

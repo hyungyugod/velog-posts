@@ -1,0 +1,1269 @@
+{
+  "ledgerSchema": 2,
+  "generatedAt": "2026-07-03T00:26:15",
+  "sourceFiles": 11,
+  "v2Files": 0,
+  "submissions": 11,
+  "avgScore": 36.1,
+  "avgTotal": 39,
+  "perfectRuns": 1,
+  "totalWrongItems": 33,
+  "uniqueConcepts": 32,
+  "dateRange": [
+    "2026-06-15",
+    "2026-07-01"
+  ],
+  "statusCounts": {
+    "상습": 2,
+    "재도전중": 30
+  },
+  "subjectWeakness": {
+    "부동산공법": 13,
+    "부동산학개론": 6,
+    "부동산공시법": 5,
+    "민법": 5,
+    "공인중개사법": 3,
+    "부동산세법": 1
+  },
+  "dueQueue": [
+    {
+      "conceptKey": "부동산공법 개발행위허가 제한",
+      "subject": "부동산공법",
+      "status": "상습",
+      "timesWrong": 2,
+      "retryMissed": 2,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-06-25",
+      "nextReviewDate": "2026-06-28"
+    },
+    {
+      "conceptKey": "부동산공법 공간재구조화계획",
+      "subject": "부동산공법",
+      "status": "상습",
+      "timesWrong": 1,
+      "retryMissed": 1,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-06-15",
+      "nextReviewDate": "2026-06-18"
+    },
+    {
+      "conceptKey": "공인중개사법 §1 중개보수·업무보증",
+      "subject": "공인중개사법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-06-15",
+      "nextReviewDate": "2026-06-18"
+    },
+    {
+      "conceptKey": "부동산공시법 §1 등록사항정정",
+      "subject": "부동산공시법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-06-15",
+      "nextReviewDate": "2026-06-18"
+    },
+    {
+      "conceptKey": "부동산학개론 §2 여과·주거분리",
+      "subject": "부동산학개론",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-06-15",
+      "nextReviewDate": "2026-06-18"
+    },
+    {
+      "conceptKey": "부동산학개론 §1 거미집이론",
+      "subject": "부동산학개론",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-06-17-2",
+      "nextReviewDate": "2026-06-20"
+    },
+    {
+      "conceptKey": "부동산학개론 §1 시장이론",
+      "subject": "부동산학개론",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-06-17",
+      "nextReviewDate": "2026-06-20"
+    },
+    {
+      "conceptKey": "부동산학개론 §2 주거분리·여과",
+      "subject": "부동산학개론",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-06-17",
+      "nextReviewDate": "2026-06-20"
+    },
+    {
+      "conceptKey": "부동산공시법 1-3 지적재조사 신고면제",
+      "subject": "부동산공시법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-06-17",
+      "nextReviewDate": "2026-06-20"
+    },
+    {
+      "conceptKey": "건폐율 특별규정",
+      "subject": "부동산공법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-06-21-부동산공법",
+      "nextReviewDate": "2026-06-24"
+    },
+    {
+      "conceptKey": "시행방식 환지",
+      "subject": "부동산공법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-06-21-부동산공법",
+      "nextReviewDate": "2026-06-24"
+    },
+    {
+      "conceptKey": "조합 설립",
+      "subject": "부동산공법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-06-21-부동산공법",
+      "nextReviewDate": "2026-06-24"
+    },
+    {
+      "conceptKey": "접도 건축선",
+      "subject": "부동산공법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-06-21-부동산공법",
+      "nextReviewDate": "2026-06-24"
+    },
+    {
+      "conceptKey": "부동산공법 도시개발구역 분할",
+      "subject": "부동산공법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-06-22",
+      "nextReviewDate": "2026-06-25"
+    },
+    {
+      "conceptKey": "부동산공법 도시개발구역 해제",
+      "subject": "부동산공법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-06-22",
+      "nextReviewDate": "2026-06-25"
+    },
+    {
+      "conceptKey": "부동산공법 정비구역 행위제한",
+      "subject": "부동산공법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-06-22",
+      "nextReviewDate": "2026-06-25"
+    },
+    {
+      "conceptKey": "부동산공법 토지등소유자 범위",
+      "subject": "부동산공법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-06-22",
+      "nextReviewDate": "2026-06-25"
+    },
+    {
+      "conceptKey": "공인중개사법 1-2 포상금",
+      "subject": "공인중개사법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-06-22",
+      "nextReviewDate": "2026-06-25"
+    },
+    {
+      "conceptKey": "공인중개사법 1-4 거래신고 의무자",
+      "subject": "공인중개사법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-06-22",
+      "nextReviewDate": "2026-06-25"
+    },
+    {
+      "conceptKey": "민법 3 점유자와 회복자",
+      "subject": "민법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-06-22",
+      "nextReviewDate": "2026-06-25"
+    },
+    {
+      "conceptKey": "부동산공시법 등기신청기간",
+      "subject": "부동산공시법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-06-24",
+      "nextReviewDate": "2026-06-27"
+    },
+    {
+      "conceptKey": "민법 유치권",
+      "subject": "민법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-06-25",
+      "nextReviewDate": "2026-06-28"
+    },
+    {
+      "conceptKey": "부동산학개론 주택저당유동화증권",
+      "subject": "부동산학개론",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-06-25",
+      "nextReviewDate": "2026-06-28"
+    },
+    {
+      "conceptKey": "부동산공법 1-6 건축협정",
+      "subject": "부동산공법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-06-29-2",
+      "nextReviewDate": "2026-07-02"
+    },
+    {
+      "conceptKey": "부동산공법 2-2·2-5 주택조합·사업계획승인",
+      "subject": "부동산공법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-06-29-2",
+      "nextReviewDate": "2026-07-02"
+    },
+    {
+      "conceptKey": "민법 2-7 집합건물 공용부분 변경",
+      "subject": "민법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-06-29-2",
+      "nextReviewDate": "2026-07-02"
+    },
+    {
+      "conceptKey": "민법 §2·3 저당권 순위·채권최고액",
+      "subject": "민법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-06-29-2",
+      "nextReviewDate": "2026-07-02"
+    },
+    {
+      "conceptKey": "민법 2-5 담보책임",
+      "subject": "민법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-06-29",
+      "nextReviewDate": "2026-07-02"
+    },
+    {
+      "conceptKey": "부동산공시법 1 소유권보존등기",
+      "subject": "부동산공시법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-06-29",
+      "nextReviewDate": "2026-07-02"
+    },
+    {
+      "conceptKey": "부동산공시법 8 진정명의회복",
+      "subject": "부동산공시법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-06-29",
+      "nextReviewDate": "2026-07-02"
+    }
+  ],
+  "ledger": [
+    {
+      "conceptKey": "부동산공법 개발행위허가 제한",
+      "aliases": [],
+      "subject": "부동산공법",
+      "concept": "부동산공법 개발행위허가 제한",
+      "status": "상습",
+      "timesWrong": 2,
+      "retryMissed": 2,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-06-15",
+      "lastWrong": "2026-06-25",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-06-25",
+      "nextReviewDate": "2026-06-28",
+      "dates": [
+        "2026-06-15",
+        "2026-06-25"
+      ],
+      "samples": [
+        {
+          "date": "2026-06-15",
+          "type": "객관식",
+          "q": "🔁 개발행위허가의 제한에 관한 설명으로 <b>옳지 않은</b> 것은?",
+          "myAnswer": "제한은 원칙적으로 3년 이내로 하되 1회에 한하여 2년 이내의 기간 동안 연장할 수 있다",
+          "correct": "개발행위허가 제한을 연장할 수 있는 지역에는 개발밀도관리구역이 포함된다",
+          "expl": "연장이 가능한 지역은 도시·군관리계획 수립 중인 지역, 지구단위계획구역, 기반시설부담구역이다. 개발밀도관리구역은 들어가지 않는다. 개발밀도관리구역(규제 강화)과 기반시설부담구역(비용 부과)은 이름은 비슷하나 성격이 정반대다. 제한 최대기간은 3+2=5년."
+        },
+        {
+          "date": "2026-06-25",
+          "type": "객관식",
+          "q": "🔁 국토의 계획 및 이용에 관한 법령상 개발행위허가의 <b>제한</b>에 관한 설명으로 옳은 것은?",
+          "myAnswer": "최초 제한기간은 5년이며 도시계획위원회의 심의를 거치지 않는다",
+          "correct": "한 차례만 2년 이내 연장할 수 있어 제한기간은 최장 5년이다",
+          "expl": "개발행위허가 제한은 원칙 3년 + 1회 2년 연장 = 최장 5년이며, 처음 3년만 도시계획위원회 심의를 거치고 연장 시엔 심의가 필요 없다. 연장 가능 지역은 '관리계획 수립 중·지구단위계획구역·기반시설부담구역'으로, ②의 개발밀도관리구역은 규제(강화) 장치라 빠진다. 비슷한 이름의 두 구역을 바꿔치기한 함정."
+        }
+      ]
+    },
+    {
+      "conceptKey": "부동산공법 공간재구조화계획",
+      "aliases": [],
+      "subject": "부동산공법",
+      "concept": "부동산공법 공간재구조화계획",
+      "status": "상습",
+      "timesWrong": 1,
+      "retryMissed": 1,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-06-15",
+      "lastWrong": "2026-06-15",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-06-15",
+      "nextReviewDate": "2026-06-18",
+      "dates": [
+        "2026-06-15"
+      ],
+      "samples": [
+        {
+          "date": "2026-06-15",
+          "type": "객관식",
+          "q": "🔁 도시혁신구역·복합용도구역을 정하는 공간재구조화계획의 결정권자에 관한 설명으로 <b>옳지 않은</b> 것은?",
+          "myAnswer": "국토교통부장관도 공간재구조화계획을 결정할 수 있다",
+          "correct": "대도시 시장은 단독으로 공간재구조화계획을 결정할 수 있다",
+          "expl": "공간재구조화계획의 결정권자는 시·도지사와 국토교통부장관이다. 일반 도시·군관리계획과 달리 대도시 시장은 빠진다(대도시시장 OUT, 국장 IN). 도시혁신구역 등이 국가급 큰 그림이라 대도시 시장에게 맡기지 않기 때문이다."
+        }
+      ]
+    },
+    {
+      "conceptKey": "공인중개사법 §1 중개보수·업무보증",
+      "aliases": [],
+      "subject": "공인중개사법",
+      "concept": "공인중개사법 §1 중개보수·업무보증",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-06-15",
+      "lastWrong": "2026-06-15",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-06-15",
+      "nextReviewDate": "2026-06-18",
+      "dates": [
+        "2026-06-15"
+      ],
+      "samples": [
+        {
+          "date": "2026-06-15",
+          "type": "객관식",
+          "q": "개업공인중개사 갑이 중개를 완성하고 중개보수를 받았다. 이에 관한 설명으로 옳은 것은?",
+          "myAnswer": "갑이 폐업한 경우 폐업한 날부터 1년이 지나면 손해배상책임 보장을 위해 공탁한 공탁금을 회수할 수 있다",
+          "correct": "갑이 지방자치단체 조례를 잘못 해석하여 법령상 한도를 초과한 중개보수를 받았다면 처벌대상이 된다",
+          "expl": "조례를 잘못 해석한 착오라도 한도 초과 보수 수령은 정당한 착오로 인정되지 않아 처벌대상이다. 공탁금 회수 제한은 폐업일부터 3년이고, 거래계약서는 법정 표준서식이 없으며, 단순 투자·이익분배만으로는 대여가 아니라 업무수행까지 시켜야 대여가 된다."
+        }
+      ]
+    },
+    {
+      "conceptKey": "부동산공시법 §1 등록사항정정",
+      "aliases": [],
+      "subject": "부동산공시법",
+      "concept": "부동산공시법 §1 등록사항정정",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-06-15",
+      "lastWrong": "2026-06-15",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-06-15",
+      "nextReviewDate": "2026-06-18",
+      "dates": [
+        "2026-06-15"
+      ],
+      "samples": [
+        {
+          "date": "2026-06-15",
+          "type": "객관식",
+          "q": "지적공부의 등록사항정정에 관한 설명으로 <b>옳지 않은</b> 것은?",
+          "myAnswer": "신규등록하는 토지의 소유자에 관한 사항은 지적소관청이 직접 조사하여 등록한다",
+          "correct": "토지의 경계·면적 등 표시에 관한 정정도 등기필증·등기사항증명서에 따라 정정한다",
+          "expl": "경계·면적 등 토지표시 정정은 측량성과도·인접 토지소유자 승낙서·확정판결서 등 다양한 서류로 사실관계를 확인해 진행한다. 등기부로 간단히 고치는 것은 소유자 표시 정정에 한한다. 소유자 정정과 토지표시 정정의 근거 서류가 다르다는 점이 핵심."
+        }
+      ]
+    },
+    {
+      "conceptKey": "부동산학개론 §2 여과·주거분리",
+      "aliases": [],
+      "subject": "부동산학개론",
+      "concept": "부동산학개론 §2 여과·주거분리",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-06-15",
+      "lastWrong": "2026-06-15",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-06-15",
+      "nextReviewDate": "2026-06-18",
+      "dates": [
+        "2026-06-15"
+      ],
+      "samples": [
+        {
+          "date": "2026-06-15",
+          "type": "객관식",
+          "q": "주거분리와 여과과정에 관한 설명으로 옳은 것은?",
+          "myAnswer": "하향여과는 고소득층이 노후화된 주택을 매입하여 사용하는 현상이다",
+          "correct": "하향여과는 저소득층의 저가주택에 대한 수요가 증가할 때 발생한다",
+          "expl": "하향여과는 저소득층이 노후화로 값이 낮아진 옛 고소득층 주택을 사용하게 되는 현상으로, 저가주택 수요가 증가할 때 발생한다. 주거분리는 정(+)의 외부효과를 좇는 고소득가구가 주도하며, 개량 가치상승분이 크면 가격이 떨어지지 않아 하향여과가 일어나지 않는다."
+        }
+      ]
+    },
+    {
+      "conceptKey": "부동산학개론 §1 거미집이론",
+      "aliases": [],
+      "subject": "부동산학개론",
+      "concept": "부동산학개론 §1 거미집이론",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-06-17-2",
+      "lastWrong": "2026-06-17-2",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-06-17",
+      "nextReviewDate": "2026-06-20",
+      "dates": [
+        "2026-06-17-2"
+      ],
+      "samples": [
+        {
+          "date": "2026-06-17-2",
+          "type": "객관식",
+          "q": "거미집이론에서 가격이 균형에서 점점 멀어지는 발산형이 나타나는 조건으로 옳은 것은?",
+          "myAnswer": "수요곡선 기울기의 절댓값이 공급곡선 기울기의 절댓값보다 큰 경우",
+          "correct": "수요의 가격탄력성이 공급의 가격탄력성보다 작은 경우",
+          "expl": "수렴은 수요탄력성 > 공급탄력성(공급이 더 비탄력적)일 때이므로, 그 반대인 수요탄력성 < 공급탄력성이면 발산형이 된다. 즉 공급이 수요보다 탄력적일 때 진동이 커진다. 수렴 조건을 그대로 둔 보기들이 함정이다."
+        }
+      ]
+    },
+    {
+      "conceptKey": "부동산학개론 §1 시장이론",
+      "aliases": [],
+      "subject": "부동산학개론",
+      "concept": "부동산학개론 §1 시장이론",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-06-17",
+      "lastWrong": "2026-06-17",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-06-17",
+      "nextReviewDate": "2026-06-20",
+      "dates": [
+        "2026-06-17"
+      ],
+      "samples": [
+        {
+          "date": "2026-06-17",
+          "type": "객관식",
+          "q": "효율적 시장 가설과 할당 효율성에 관한 설명으로 <b>옳지 않은</b> 것은?",
+          "myAnswer": "할당 효율성의 핵심 기준은 초과이윤의 부존재다",
+          "correct": "과거 정보가 가격에 즉시 반영되는 것은 약성시장에만 있는 고유한 특성이다",
+          "expl": "과거 정보가 지체 없이 가격에 반영되는 것은 약성시장만이 아니라 모든 효율적 시장이 공유하는 특성이다 — 약성은 과거 정보까지 반영하는 최소 단계일 뿐. 할당 효율성은 완전·불완전 시장을 가리지 않고 초과이윤 부재가 기준이라는 점이 단골 함정."
+        }
+      ]
+    },
+    {
+      "conceptKey": "부동산학개론 §2 주거분리·여과",
+      "aliases": [],
+      "subject": "부동산학개론",
+      "concept": "부동산학개론 §2 주거분리·여과",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-06-17",
+      "lastWrong": "2026-06-17",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-06-17",
+      "nextReviewDate": "2026-06-20",
+      "dates": [
+        "2026-06-17"
+      ],
+      "samples": [
+        {
+          "date": "2026-06-17",
+          "type": "객관식",
+          "q": "주거지 여과과정과 주거분리 현상에 관한 설명으로 옳은 것은?",
+          "myAnswer": "주거분리는 정(+)의 외부효과만을 추구하는 과정에서 나타난다",
+          "correct": "주택개량에 따른 가치상승분이 크면 그 지역에서는 하향여과가 일어나지 않는다",
+          "expl": "개량 가치상승분이 크면 주택가격이 떨어지지 않아 하향여과의 전제(노후·저가화)가 깨진다. 주거분리는 고소득가구가 정의 외부효과는 좇고 부의 외부효과는 피하려는 동기로 주도하며, 하향여과는 저가주택 수요가 늘 때 일어난다. 주도자·방향을 뒤집은 함정."
+        }
+      ]
+    },
+    {
+      "conceptKey": "부동산공시법 1-3 지적재조사 신고면제",
+      "aliases": [],
+      "subject": "부동산공시법",
+      "concept": "부동산공시법 1-3 지적재조사 신고면제",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-06-17",
+      "lastWrong": "2026-06-17",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-06-17",
+      "nextReviewDate": "2026-06-20",
+      "dates": [
+        "2026-06-17"
+      ],
+      "samples": [
+        {
+          "date": "2026-06-17",
+          "type": "OX",
+          "q": "지적재조사사업은 그 사업의 착수·변경 및 완료 사실을 지적소관청에 신고할 필요가 없다.",
+          "myAnswer": "X",
+          "correct": "O",
+          "expl": "O. 지적재조사사업은 지적소관청이 직접 시행하므로 자기 자신에게 신고할 필요가 없다 — 신고는 외부 시행자가 소관청에 알리는 절차이기 때문. 도시개발사업 등 외부 시행 사업의 신고의무와 구별하는 게 포인트."
+        }
+      ]
+    },
+    {
+      "conceptKey": "건폐율 특별규정",
+      "aliases": [],
+      "subject": "부동산공법",
+      "concept": "건폐율 특별규정",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-06-21-부동산공법",
+      "lastWrong": "2026-06-21-부동산공법",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-06-21",
+      "nextReviewDate": "2026-06-24",
+      "dates": [
+        "2026-06-21-부동산공법"
+      ],
+      "samples": [
+        {
+          "date": "2026-06-21-부동산공법",
+          "type": "객관식",
+          "q": "국토계획법상 취락지구에 속한 대지면적 1200제곱미터의 토지에 건축물을 지으려 한다. 취락지구 건폐율 상한을 적용할 때 건축할 수 있는 최대 건축면적은? (다른 조건은 동일)",
+          "myAnswer": "480제곱미터",
+          "correct": "720제곱미터",
+          "expl": "취락지구의 건폐율 상한은 60퍼센트이다. 따라서 최대 건축면적은 대지면적 1200제곱미터에 0.6을 곱한 720제곱미터이다. 건폐율은 대지면적 대비 건축면적의 비율로 산정한다."
+        }
+      ]
+    },
+    {
+      "conceptKey": "시행방식 환지",
+      "aliases": [],
+      "subject": "부동산공법",
+      "concept": "시행방식 환지",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-06-21-부동산공법",
+      "lastWrong": "2026-06-21-부동산공법",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-06-21",
+      "nextReviewDate": "2026-06-24",
+      "dates": [
+        "2026-06-21-부동산공법"
+      ],
+      "samples": [
+        {
+          "date": "2026-06-21-부동산공법",
+          "type": "객관식",
+          "q": "도시개발법상 시행방식과 환지에 관한 설명으로 <b>옳지 않은</b> 것은?",
+          "myAnswer": "시행자는 준공검사를 받은 경우 60일 이내에 환지처분을 하여야 한다",
+          "correct": "지자체가 전부환지방식을 사용할 때는 규약을 정한다",
+          "expl": "지자체가 전부환지방식을 사용할 때는 규약이 아니라 시행규정을 작성한다. 사용방식은 소유권을 두고 사용권만 받으며 환지처분은 준공검사 후 60일 이내, 시행방식은 수용에서 혼용으로 변경이 가능하다."
+        }
+      ]
+    },
+    {
+      "conceptKey": "조합 설립",
+      "aliases": [],
+      "subject": "부동산공법",
+      "concept": "조합 설립",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-06-21-부동산공법",
+      "lastWrong": "2026-06-21-부동산공법",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-06-21",
+      "nextReviewDate": "2026-06-24",
+      "dates": [
+        "2026-06-21-부동산공법"
+      ],
+      "samples": [
+        {
+          "date": "2026-06-21-부동산공법",
+          "type": "OX",
+          "q": "도정법상 조합설립인가를 받으려면 토지등소유자의 4분의 3 이상 및 토지면적의 2분의 1 이상의 동의를 받아야 한다.",
+          "myAnswer": "X",
+          "correct": "O",
+          "expl": "O. 재개발 조합설립인가 동의요건은 소면 즉 토지등소유자 4분의 3 이상과 토지면적 2분의 1 이상의 동의이다. 추진위원회는 위원장 포함 5명과 토지등소유자 과반수 동의, 시장 군수 승인이 필요하다."
+        }
+      ]
+    },
+    {
+      "conceptKey": "접도 건축선",
+      "aliases": [],
+      "subject": "부동산공법",
+      "concept": "접도 건축선",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-06-21-부동산공법",
+      "lastWrong": "2026-06-21-부동산공법",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-06-21",
+      "nextReviewDate": "2026-06-24",
+      "dates": [
+        "2026-06-21-부동산공법"
+      ],
+      "samples": [
+        {
+          "date": "2026-06-21-부동산공법",
+          "type": "OX",
+          "q": "건축법상 건축물의 대지와 도로는 4미터 이상 접하여야 하는 접도의무를 가진다.",
+          "myAnswer": "O",
+          "correct": "X",
+          "expl": "X. 건축물의 대지와 도로는 2미터 이상 접하여야 하는 접도의무를 가진다. 건축물과 담장은 건축선의 수직면을 넘을 수 없으나 지표 아래 부분은 수직면을 넘을 수 있다."
+        }
+      ]
+    },
+    {
+      "conceptKey": "부동산공법 도시개발구역 분할",
+      "aliases": [],
+      "subject": "부동산공법",
+      "concept": "부동산공법 도시개발구역 분할",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-06-22",
+      "lastWrong": "2026-06-22",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-06-22",
+      "nextReviewDate": "2026-06-25",
+      "dates": [
+        "2026-06-22"
+      ],
+      "samples": [
+        {
+          "date": "2026-06-22",
+          "type": "객관식",
+          "q": "도시개발구역(면적 45,000㎡)을 둘 이상의 사업시행지구로 분할하려고 한다. 분할 후 각 지구가 법령상 최소면적 요건을 갖추도록 할 때, 나눌 수 있는 사업시행지구의 <b>최대 개수</b>는? (다른 조건은 동일)",
+          "myAnswer": "3개",
+          "correct": "4개",
+          "expl": "분할 후 각 사업시행지구는 1만㎡ 이상이어야 한다. 45,000㎡ ÷ 10,000㎡ = 4.5이므로 1만㎡ 이상을 만족하는 지구는 최대 4개다(예: 10,000×3 + 15,000). 5개로 나누면 한 지구가 1만㎡ 미만이 되어 불가 — 나머지를 버리고 4개에서 끊는 게 포인트."
+        }
+      ]
+    },
+    {
+      "conceptKey": "부동산공법 도시개발구역 해제",
+      "aliases": [],
+      "subject": "부동산공법",
+      "concept": "부동산공법 도시개발구역 해제",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-06-22",
+      "lastWrong": "2026-06-22",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-06-22",
+      "nextReviewDate": "2026-06-25",
+      "dates": [
+        "2026-06-22"
+      ],
+      "samples": [
+        {
+          "date": "2026-06-22",
+          "type": "객관식",
+          "q": "면적이 330만㎡ 이상인 도시개발구역에서, 구역 지정·고시일부터 ① 개발계획 수립까지의 기한과 ② 개발계획 수립 후 실시계획 인가신청까지의 기한을 더한 <b>총 기간</b>은? (이 기간을 넘기면 지정이 해제된 것으로 본다)",
+          "myAnswer": "5년",
+          "correct": "10년",
+          "expl": "원칙은 지정 후 2년 내 개발계획 수립, 그 후 3년 내 실시계획 인가신청(합 5년)이지만, 330만㎡ 이상 대규모는 각각 5년씩으로 늘어 5+5=10년이다. 큰 사업일수록 절차에 시간이 더 들기 때문 — 일반 규모(2+3=5년)와 헷갈리게 만든 함정."
+        }
+      ]
+    },
+    {
+      "conceptKey": "부동산공법 정비구역 행위제한",
+      "aliases": [],
+      "subject": "부동산공법",
+      "concept": "부동산공법 정비구역 행위제한",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-06-22",
+      "lastWrong": "2026-06-22",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-06-22",
+      "nextReviewDate": "2026-06-25",
+      "dates": [
+        "2026-06-22"
+      ],
+      "samples": [
+        {
+          "date": "2026-06-22",
+          "type": "객관식",
+          "q": "도시 및 주거환경정비법령상 정비구역에서 <b>시장·군수등의 허가</b>를 받아야 하는 행위를 <b>모두 고른 것은?</b><br>ㄱ. 가설건축물의 건축<br>ㄴ. 죽목의 벌채<br>ㄷ. 이동이 쉽지 않은 물건을 1개월 이상 쌓아놓는 행위<br>ㄹ. 주택법에 따른 지역주택조합 조합원의 모집",
+          "myAnswer": "ㄴ, ㄷ, ㄹ",
+          "correct": "ㄱ, ㄴ, ㄷ",
+          "expl": "정비구역 내 허가대상은 가설건축물 건축·죽목 벌채·공유수면 매립·1개월 이상 물건 적치 등이다. 지역주택조합 조합원 모집(ㄹ)은 허가받아 할 수 있는 게 아니라 아예 금지된다 — 정비사업과 지역주택조합이 충돌하지 않도록 막는 것. '허가 대상'과 '금지행위'를 같은 줄에 세운 함정."
+        }
+      ]
+    },
+    {
+      "conceptKey": "부동산공법 토지등소유자 범위",
+      "aliases": [],
+      "subject": "부동산공법",
+      "concept": "부동산공법 토지등소유자 범위",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-06-22",
+      "lastWrong": "2026-06-22",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-06-22",
+      "nextReviewDate": "2026-06-25",
+      "dates": [
+        "2026-06-22"
+      ],
+      "samples": [
+        {
+          "date": "2026-06-22",
+          "type": "객관식",
+          "q": "갑은 재개발사업 정비구역에 위치한 토지의 지상권자이고, 을은 재건축사업 정비구역에 위치한 건축물 부속토지의 지상권자이다. 이에 관한 설명으로 옳은 것은?",
+          "myAnswer": "갑은 토지등소유자에 해당하지 않지만, 을은 토지등소유자에 해당한다",
+          "correct": "갑은 토지등소유자에 해당하지만, 을은 토지등소유자에 해당하지 않는다",
+          "expl": "재개발은 공익성이 강해 권리자를 넓게 포섭 → 지상권자도 토지등소유자(갑 O). 재건축은 좁게 봐서 부속토지 지상권자는 제외(을 X). 같은 '지상권자'라도 재개발이냐 재건축이냐로 갈린다 — 갑·을을 뒤집은 3번이 함정."
+        }
+      ]
+    },
+    {
+      "conceptKey": "공인중개사법 1-2 포상금",
+      "aliases": [],
+      "subject": "공인중개사법",
+      "concept": "공인중개사법 1-2 포상금",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-06-22",
+      "lastWrong": "2026-06-22",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-06-22",
+      "nextReviewDate": "2026-06-25",
+      "dates": [
+        "2026-06-22"
+      ],
+      "samples": [
+        {
+          "date": "2026-06-22",
+          "type": "객관식",
+          "q": "공인중개사법령상 <b>포상금</b>의 지급에 관한 설명으로 <b>옳지 않은</b> 것은?",
+          "myAnswer": "포상금은 지급결정일부터 1개월 이내에 지급해야 한다",
+          "correct": "포상금 지급에 드는 비용 중 국고에서 보조하는 비율은 100분의 50 이상이다",
+          "expl": "국고보조 비율은 100분의 50 '이내'(이하)지 이상이 아니다 → 1번 틀림. 포상금은 '공소제기'가 기준이라 무죄여도 지급사유가 되고, 발각 후 신고는 제외, 지급은 결정일부터 1개월 이내다. '이내'를 '이상'으로 바꿔 상한을 하한처럼 둔갑시킨 함정."
+        }
+      ]
+    },
+    {
+      "conceptKey": "공인중개사법 1-4 거래신고 의무자",
+      "aliases": [],
+      "subject": "공인중개사법",
+      "concept": "공인중개사법 1-4 거래신고 의무자",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-06-22",
+      "lastWrong": "2026-06-22",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-06-22",
+      "nextReviewDate": "2026-06-25",
+      "dates": [
+        "2026-06-22"
+      ],
+      "samples": [
+        {
+          "date": "2026-06-22",
+          "type": "객관식",
+          "q": "지방자치단체 갑이 개업공인중개사의 중개 없이 개인 을 소유의 토지를 매수하는 계약을 체결하였다. 부동산 거래신고에 관한 설명으로 옳은 것은?",
+          "myAnswer": "갑과 을이 공동으로 신고하여야 하며, 어느 일방이 거부하면 거래신고를 할 수 없다",
+          "correct": "갑이 단독으로 부동산거래계약 신고서에 서명 또는 날인하여 신고해야 한다",
+          "expl": "거래당사자 일방이 국가·지자체 등이면 그 국가등이 신고한다 → 지자체 갑이 단독으로 신고서에 서명·날인. 개업공인중개사가 끼지 않은 직거래라도 신고의무는 살아 있다. '중개사 없으면 면제'·'상대방이 신고' 같은 직관 오류를 노린 사례."
+        }
+      ]
+    },
+    {
+      "conceptKey": "민법 3 점유자와 회복자",
+      "aliases": [],
+      "subject": "민법",
+      "concept": "민법 3 점유자와 회복자",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-06-22",
+      "lastWrong": "2026-06-22",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-06-22",
+      "nextReviewDate": "2026-06-25",
+      "dates": [
+        "2026-06-22"
+      ],
+      "samples": [
+        {
+          "date": "2026-06-22",
+          "type": "객관식",
+          "q": "점유자와 회복자 사이에서 점유자의 <b>선의·악의 구별이 결과에 영향을 주는</b> 경우를 <b>모두 고른 것은?</b><br>ㄱ. 점유물의 과실(果實) 취득(제201조)<br>ㄴ. 점유물의 멸실·훼손에 대한 책임(제202조)<br>ㄷ. 점유물에 지출한 유익비의 상환청구(제203조)<br>ㄹ. 점유물에 지출한 필요비의 상환청구(제203조)",
+          "myAnswer": "ㄷ, ㄹ",
+          "correct": "ㄱ, ㄴ",
+          "expl": "선의·악의로 결과가 갈리는 건 과실 귀속(201조: 선의=취득/악의=반환)과 멸실·훼손 책임(202조: 선의·자주=현존이익/악의=전부)이다. 비용상환(203조: 필요비·유익비)은 회복자에게 남은 이익을 정산하는 것이라 점유자 주관과 무관 → ㄷ·ㄹ은 실익 없음."
+        }
+      ]
+    },
+    {
+      "conceptKey": "부동산공시법 등기신청기간",
+      "aliases": [],
+      "subject": "부동산공시법",
+      "concept": "부동산공시법 등기신청기간",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-06-24",
+      "lastWrong": "2026-06-24",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-06-24",
+      "nextReviewDate": "2026-06-27",
+      "dates": [
+        "2026-06-24"
+      ],
+      "samples": [
+        {
+          "date": "2026-06-24",
+          "type": "객관식",
+          "q": "부동산등기법령상 등기의 <b>신청기간 등</b>에 관한 설명으로 <b>옳지 않은</b> 것은?",
+          "myAnswer": "매매로 인한 소유권이전등기는 매매계약일이 아니라 잔금지급일부터 60일 이내에 신청하여야 한다",
+          "correct": "건물 대지의 지번이 변경된 경우 변경일부터 60일 이내에 변경등기를 신청하여야 한다",
+          "expl": "표시변경(지번·대지권·지목변경)은 변경일부터 '1개월' 이내가 원칙인데, ④는 이를 매매의 60일과 섞어 60일로 적은 함정이다. 매매 이전등기만 잔금지급일부터 60일이고, 상속재산분할협의로 등기해도 원인일자는 협의일이 아니라 '사망일'이다 — 기간과 기준일을 항목별로 구분한다."
+        }
+      ]
+    },
+    {
+      "conceptKey": "민법 유치권",
+      "aliases": [],
+      "subject": "민법",
+      "concept": "민법 유치권",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-06-25",
+      "lastWrong": "2026-06-25",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-06-25",
+      "nextReviewDate": "2026-06-28",
+      "dates": [
+        "2026-06-25"
+      ],
+      "samples": [
+        {
+          "date": "2026-06-25",
+          "type": "객관식",
+          "q": "민법상 유치권에 관한 설명으로 옳은 것은?",
+          "myAnswer": "유치권자가 유치물을 점유하는 동안에는 피담보채권의 소멸시효가 진행하지 않는다",
+          "correct": "수급인의 공사대금채권은 그 목적물에 관하여 생긴 채권으로서 유치권이 성립할 수 있다",
+          "expl": "공사대금채권은 그 목적물에 관하여 생긴 채권이라 견련관계가 인정되어 유치권이 성립한다 — ①이 옳다. 보증금·권리금·외상대금은 물건이 아니라 계약에서 생긴 채권이라 견련관계가 없고(②), 건축자재대금도 건물 자체에서 나온 채권이 아니다(④). 유치권 행사는 점유일 뿐 채권 청구가 아니어서 소멸시효는 그대로 진행한다(③ 틀림)."
+        }
+      ]
+    },
+    {
+      "conceptKey": "부동산학개론 주택저당유동화증권",
+      "aliases": [],
+      "subject": "부동산학개론",
+      "concept": "부동산학개론 주택저당유동화증권",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-06-25",
+      "lastWrong": "2026-06-25",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-06-25",
+      "nextReviewDate": "2026-06-28",
+      "dates": [
+        "2026-06-25"
+      ],
+      "samples": [
+        {
+          "date": "2026-06-25",
+          "type": "객관식",
+          "q": "주택저당유동화증권(MBS)에 관한 설명으로 옳은 것은?",
+          "myAnswer": "MPTB에서 채무불이행위험은 투자자가 부담한다",
+          "correct": "MPTS는 지분형으로, 주택저당채권의 소유권이 투자자에게 이전된다",
+          "expl": "MPTS는 지분형(pass-through)이라 저당채권의 소유권이 투자자에게 넘어가 투자자가 위험을 진다 — ①이 옳다. 혼합형 MPTB는 소유권을 발행자가 갖되 원리금수취권은 투자자가 가지므로 ②는 틀리고, 조기상환위험은 투자자가·채무불이행위험은 발행자가 부담하므로 ③·④도 뒤바뀐 함정이다. '소유권을 누가 갖느냐가 위험 부담을 결정.'"
+        }
+      ]
+    },
+    {
+      "conceptKey": "부동산공법 1-6 건축협정",
+      "aliases": [],
+      "subject": "부동산공법",
+      "concept": "부동산공법 1-6 건축협정",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-06-29-2",
+      "lastWrong": "2026-06-29-2",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-06-29",
+      "nextReviewDate": "2026-07-02",
+      "dates": [
+        "2026-06-29-2"
+      ],
+      "samples": [
+        {
+          "date": "2026-06-29-2",
+          "type": "객관식",
+          "q": "건축법령상 건축협정에 관한 설명으로 옳은 것을 모두 고른 것은?<br>ㄱ. 토지·건축물 소유자 전원이 합의해도 지상권자가 합의하지 않으면 건축협정을 체결할 수 없다<br>ㄴ. 건축협정을 폐지하려면 협정체결자 전원의 동의를 받아야 한다<br>ㄷ. 협정 대상 토지가 둘 이상의 시·군·구에 걸치면 토지면적의 과반이 속하는 인가권자에게 신청할 수 있다<br>ㄹ. 건축협정은 토지소유자만 합의하면 성립하고 지상권자는 고려하지 않는다",
+          "myAnswer": "ㄱ, ㄴ",
+          "correct": "ㄱ, ㄷ",
+          "expl": "지상권자가 합의하지 않으면 건축협정을 체결할 수 없고(ㄱ), 둘 이상 시군구에 걸치면 과반 면적 인가권자에게 신청한다(ㄷ). 폐지는 전원이 아니라 협정체결자 과반수 동의면 되므로 ㄴ이 틀리고, 지상권자를 무시한다는 ㄹ도 틀렸다."
+        }
+      ]
+    },
+    {
+      "conceptKey": "부동산공법 2-2·2-5 주택조합·사업계획승인",
+      "aliases": [],
+      "subject": "부동산공법",
+      "concept": "부동산공법 2-2·2-5 주택조합·사업계획승인",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-06-29-2",
+      "lastWrong": "2026-06-29-2",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-06-29",
+      "nextReviewDate": "2026-07-02",
+      "dates": [
+        "2026-06-29-2"
+      ],
+      "samples": [
+        {
+          "date": "2026-06-29-2",
+          "type": "객관식",
+          "q": "주택법령상 주택의 분류 및 사업주체에 관한 설명으로 <b>옳지 않은</b> 것은?",
+          "myAnswer": "법률에 따라 공익법인이 연간 20호 이상 단독주택 건설사업을 하면 등록하지 않아도 된다",
+          "correct": "지역주택조합은 설립인가를 받은 날부터 5년 이내에 사업계획승인을 신청하여야 한다",
+          "expl": "지역주택조합은 설립인가일부터 2년 이내에 사업계획승인을 신청해야 하고(공사착수가 5년), 5년을 신청기한으로 바꾼 지문이 함정. 국가 건설 국민주택 요건, 도시형 생활주택 300세대 미만, 공익법인 등록면제는 모두 옳다."
+        }
+      ]
+    },
+    {
+      "conceptKey": "민법 2-7 집합건물 공용부분 변경",
+      "aliases": [],
+      "subject": "민법",
+      "concept": "민법 2-7 집합건물 공용부분 변경",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-06-29-2",
+      "lastWrong": "2026-06-29-2",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-06-29",
+      "nextReviewDate": "2026-07-02",
+      "dates": [
+        "2026-06-29-2"
+      ],
+      "samples": [
+        {
+          "date": "2026-06-29-2",
+          "type": "OX",
+          "q": "집합건물의 공용부분의 변경은 원칙적으로 구분소유자의 3분의 2 이상 및 의결권의 3분의 2 이상의 결의가 있어야 한다.",
+          "myAnswer": "O",
+          "correct": "X",
+          "expl": "X가 아니라 O다 — 공용부분의 변경은 구분소유자 2/3 이상 및 의결권 2/3 이상의 결의로 한다(과거 3/4에서 완화). 통상의 관리행위와 달리 변경은 가중정족수를 요구한다는 점이 포인트다."
+        }
+      ]
+    },
+    {
+      "conceptKey": "민법 §2·3 저당권 순위·채권최고액",
+      "aliases": [],
+      "subject": "민법",
+      "concept": "민법 §2·3 저당권 순위·채권최고액",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-06-29-2",
+      "lastWrong": "2026-06-29-2",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-06-29",
+      "nextReviewDate": "2026-07-02",
+      "dates": [
+        "2026-06-29-2"
+      ],
+      "samples": [
+        {
+          "date": "2026-06-29-2",
+          "type": "객관식",
+          "q": "저당권과 그 위에 설정된 다른 권리의 우열에 관한 설명으로 <b>옳지 않은</b> 것은?",
+          "myAnswer": "저당권보다 먼저 설정된 선순위 지상권자는 경매의 매수인에게 대항할 수 있다",
+          "correct": "근저당권의 실행비용은 채권최고액에 포함되어 그 범위 안에서만 변제받는다",
+          "expl": "근저당권의 실행비용(절차비용)은 채권최고액에 포함되지 않는다 — 빌려준 돈엔 한도가 있어도 받아내는 절차비용엔 한도를 씌우지 않기 때문. 후순위 지상권 소멸, 1번 저당권자의 담보가치 인식, 선순위 지상권의 대항력은 모두 옳다."
+        }
+      ]
+    },
+    {
+      "conceptKey": "민법 2-5 담보책임",
+      "aliases": [],
+      "subject": "민법",
+      "concept": "민법 2-5 담보책임",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-06-29",
+      "lastWrong": "2026-06-29",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-06-29",
+      "nextReviewDate": "2026-07-02",
+      "dates": [
+        "2026-06-29"
+      ],
+      "samples": [
+        {
+          "date": "2026-06-29",
+          "type": "객관식",
+          "q": "매도인의 담보책임에 관한 설명으로 옳은 것을 모두 고른 것은?<br>ㄱ. 수량을 지정한 매매에서 수량부족을 안 매수인은 대금감액을 청구할 수 없다<br>ㄴ. 전부 타인의 권리인 매매에서 악의의 매수인도 계약을 해제할 수 있다<br>ㄷ. 저당권의 행사로 매수인이 소유권을 잃은 경우 악의의 매수인은 담보책임으로 보호받지 못한다<br>ㄹ. 물건의 하자로 인한 담보책임을 묻기 위해 매수인은 선의·무과실이어야 한다",
+          "myAnswer": "ㄱ, ㄴ, ㄷ",
+          "correct": "ㄱ, ㄴ, ㄹ",
+          "expl": "수량부족·일부멸실은 악의면 담보책임이 없고(ㄱ), 전부 타인권리는 악의라도 해제는 가능하다(ㄴ). 저당권·전세권 행사로 인한 담보책임은 선의·악의를 불문하고 보호하므로 ㄷ은 틀렸다. 물건의 하자담보는 선의·무과실이 요건(ㄹ)."
+        }
+      ]
+    },
+    {
+      "conceptKey": "부동산공시법 1 소유권보존등기",
+      "aliases": [],
+      "subject": "부동산공시법",
+      "concept": "부동산공시법 1 소유권보존등기",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-06-29",
+      "lastWrong": "2026-06-29",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-06-29",
+      "nextReviewDate": "2026-07-02",
+      "dates": [
+        "2026-06-29"
+      ],
+      "samples": [
+        {
+          "date": "2026-06-29",
+          "type": "객관식",
+          "q": "소유권보존등기에 관한 설명으로 옳은 것을 모두 고른 것은?<br>ㄱ. 미등기 토지가 상속된 경우 상속인은 직접 자기 명의로 소유권보존등기를 신청할 수 있다<br>ㄴ. 등기관이 소유권보존등기를 할 때에는 등기원인과 그 연월일을 기록하여야 한다<br>ㄷ. 시장·군수·구청장의 확인에 의해 자기 소유권을 증명하는 자는 건물에 대해서만 보존등기를 신청할 수 있다<br>ㄹ. 미등기 건물을 증여받은 자는 직접 자기 명의로 소유권보존등기를 신청할 수 있다",
+          "myAnswer": "ㄷ, ㄹ",
+          "correct": "ㄱ, ㄷ",
+          "expl": "상속은 예외적으로 상속인 앞으로 바로 보존등기를 한다(ㄱ). 시군구청장 확인 보존은 대장이 부실한 건물에만 허용된다(ㄷ). 보존등기는 넘겨준 사람·원인이 없어 등기원인·연월일을 기록하지 않으므로 ㄴ이 틀리고, 증여받은 자는 대장상 소유자 보존 후 이전해야 하므로 ㄹ도 틀렸다."
+        }
+      ]
+    },
+    {
+      "conceptKey": "부동산공시법 8 진정명의회복",
+      "aliases": [],
+      "subject": "부동산공시법",
+      "concept": "부동산공시법 8 진정명의회복",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-06-29",
+      "lastWrong": "2026-06-29",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-06-29",
+      "nextReviewDate": "2026-07-02",
+      "dates": [
+        "2026-06-29"
+      ],
+      "samples": [
+        {
+          "date": "2026-06-29",
+          "type": "객관식",
+          "q": "진정명의회복 및 환매특약등기에 관한 설명으로 <b>옳지 않은</b> 것은?",
+          "myAnswer": "진정명의회복을 원인으로 하는 소유권이전등기 신청정보에는 등기원인 일자를 기재하지 않는다",
+          "correct": "진정명의회복 소송의 승소확정판결을 받은 자는 그 판결로 현 명의인의 등기에 대해 말소등기를 신청할 수 있다",
+          "expl": "판결 주문이 '이전등기'이면 신청할 수 있는 것도 이전등기뿐이라 말소등기는 신청할 수 없다. 진정명의회복은 특정 법률행위일이 없어 원인일자를 적지 않고, 판 것(전부)과 되살 것(일부 지분)이 달라 환매특약등기가 불가하며, 제3자 저당권이 있으면 말소 대신 이전등기로 회복한다. 말소 가능으로 바꾼 지문이 함정."
+        }
+      ]
+    },
+    {
+      "conceptKey": "부동산학개론 5 감정평가",
+      "aliases": [],
+      "subject": "부동산학개론",
+      "concept": "부동산학개론 5 감정평가",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-07-01",
+      "lastWrong": "2026-07-01",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-07-01",
+      "nextReviewDate": "2026-07-04",
+      "dates": [
+        "2026-07-01"
+      ],
+      "samples": [
+        {
+          "date": "2026-07-01",
+          "type": "객관식",
+          "q": "감정평가의 기준시점 및 지역·개별분석에 관한 설명으로 <b>옳지 않은</b> 것은?",
+          "myAnswer": "기준시점을 미리 정한 경우에는 그 날짜에 가격조사가 가능한 경우에만 그 날짜를 기준시점으로 할 수 있다",
+          "correct": "감정평가는 가격조사를 의뢰받은 시점의 이용상황 및 공법상 제한을 기준으로 한다",
+          "expl": "감정평가는 의뢰(가격조사) 시점이 아니라 기준시점의 이용상황·공법상 제한을 기준으로 한다. 가치는 특정 시점을 못박아야 확정되기 때문 — 그 기준이 기준시점이다. 기준시점을 의뢰시점으로 슬쩍 바꾼 것이 함정이고, 지역·개별분석과 인근지역 설명은 옳다."
+        }
+      ]
+    },
+    {
+      "conceptKey": "부동산세법 2-5 취득시기·9 물납/부과시점",
+      "aliases": [],
+      "subject": "부동산세법",
+      "concept": "부동산세법 2-5 취득시기·9 물납/부과시점",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-07-01",
+      "lastWrong": "2026-07-01",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-07-01",
+      "nextReviewDate": "2026-07-04",
+      "dates": [
+        "2026-07-01"
+      ],
+      "samples": [
+        {
+          "date": "2026-07-01",
+          "type": "객관식",
+          "q": "지방세법령상 취득의 시기 및 세목별 부과 등에 관한 설명으로 옳은 것은?",
+          "myAnswer": "재건축조합이 취득하는 토지는 소유권이전고시일에 취득한 것으로 본다",
+          "correct": "주택조합이 취득하는 조합원에게 귀속되지 않는 토지는 사용검사를 받은 날에 취득한 것으로 본다",
+          "expl": "주택조합이 취득하는 조합원 비귀속 토지의 취득시기는 사용검사일이다(주택은 검사, 재건축은 다음날). 재건축조합은 소유권이전고시일의 다음 날이고, 취득세·등록면허세는 물납·분납이 모두 불가하며, 인지세는 계약서 작성 시 부과된다 — 시기·부과단계를 어긋나게 한 나머지가 함정."
+        }
+      ]
+    }
+  ]
+}
