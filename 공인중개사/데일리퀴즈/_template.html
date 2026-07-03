@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <!-- ═══════════════════════════════════════════════════════════════
-  데일리퀴즈 정본 템플릿 v2 (2026-07-02, Fable 설계 WO-2·WO-4)
+  데일리퀴즈 정본 템플릿 v2.1
+    - v2.1 (2026-07-03): 보기 소거 눈동자(👁) 학습보조 추가 — 확실히 아닌 보기를 희미하게.
+      순수 시각용이라 채점·payload 스키마에 전혀 영향 없음. 채점 시 자동 제거된다.
+    - v2 (2026-07-02, Fable 설계 WO-2·WO-4)
   - 채점·결과 저장(downloadResult)·스키마는 이 파일에서만 수정한다.
   - 생성 스킬이 교체하는 것: {{QUIZ_DATE}} · {{META_LINE}} · {{TAGS_HTML}}
     그리고 QUESTIONS 마커 사이의 문항 배열. 그 외 로직 수정 금지.
@@ -60,6 +63,14 @@
   .opt .mk{width:22px;height:22px;border-radius:50%;border:2px solid var(--line);flex:0 0 auto;
     display:grid;place-items:center;font-size:12px;font-weight:800}
   .opt.sel .mk{border-color:var(--accent);background:var(--accent);color:#1a1a1a}
+  /* 보기 소거(눈동자) 학습보조 — 순수 시각용, 채점·저장에 영향 없음 */
+  .opt .eye{margin-left:auto;flex:0 0 auto;width:30px;height:30px;padding:0;border-radius:8px;
+    display:grid;place-items:center;font-size:15px;line-height:1;background:transparent;
+    border:1px solid transparent;color:var(--sub);opacity:.4;cursor:pointer;transition:.15s}
+  .opt .eye:hover{opacity:1;background:var(--card);border-color:var(--line)}
+  .opt.ruled{opacity:.42;background:var(--card)}
+  .opt.ruled span:not(.mk){text-decoration:line-through;text-decoration-color:var(--no)}
+  .opt.ruled .eye{opacity:.9;color:var(--no)}
   .ox{flex-direction:row;gap:10px}
   .ox .opt{flex:1;justify-content:center;font-size:18px;font-weight:800}
   .opt.correct{border-color:var(--ok);background:var(--okbg)}
@@ -205,6 +216,21 @@ QUESTIONS.forEach((item, qi)=>{
       el.classList.add('sel');
       updateProgress();
     });
+    // 눈동자(👁) 소거 버튼 — 확실히 아닌 보기를 희미하게(다시 누르면 복구). 채점·선택·저장에 영향 없음.
+    if(!isOX){
+      const eye = document.createElement('button');
+      eye.type = 'button';
+      eye.className = 'eye';
+      eye.textContent = '👁';
+      eye.title = '확실히 아닌 보기 희미하게 (다시 누르면 복구)';
+      eye.setAttribute('aria-label', '이 보기를 후보에서 제외');
+      eye.addEventListener('click', (ev)=>{
+        ev.stopPropagation();
+        if(graded) return;
+        el.classList.toggle('ruled');
+      });
+      el.appendChild(eye);
+    }
     optsEl.appendChild(el);
   });
   form.appendChild(card);
@@ -243,6 +269,9 @@ function grade(){
     const opts = document.querySelectorAll(`.opt[data-q="${qi}"]`);
     opts.forEach((el, oi)=>{
       el.style.cursor='default';
+      el.classList.remove('ruled');           // 채점 시 소거 표시 해제(정답이 희미하게 남지 않도록)
+      const eye = el.querySelector('.eye');    // 눈동자 버튼 제거 — 채점 후엔 불필요
+      if(eye) eye.remove();
       if(oi === item.answer) el.classList.add('correct');
       if(oi === selected[qi] && oi !== item.answer) el.classList.add('wrong');
     });
