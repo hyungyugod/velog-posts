@@ -1,6 +1,6 @@
 {
   "ledgerSchema": 2,
-  "generatedAt": "2026-07-03T00:26:15",
+  "generatedAt": "2026-07-06T15:42:47",
   "sourceFiles": 11,
   "v2Files": 0,
   "submissions": 11,
@@ -325,6 +325,26 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-29",
       "nextReviewDate": "2026-07-02"
+    },
+    {
+      "conceptKey": "부동산학개론 5 감정평가",
+      "subject": "부동산학개론",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-07-01",
+      "nextReviewDate": "2026-07-04"
+    },
+    {
+      "conceptKey": "부동산세법 2-5 취득시기·9 물납/부과시점",
+      "subject": "부동산세법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-07-01",
+      "nextReviewDate": "2026-07-04"
     }
   ],
   "ledger": [
