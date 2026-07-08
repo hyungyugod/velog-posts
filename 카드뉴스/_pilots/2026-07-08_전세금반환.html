@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>지식산책 파일럿 · 전세금 반환 (WO-10 · 4:5 실발행)</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/variable/pretendardvariable.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+<!-- 정본 참조: tokens → theme(law·주제 1개=색 1개) → chrome → components -->
+<link rel="stylesheet" href="../_design/tokens.css">
+<link rel="stylesheet" href="../_design/themes/law.css">
+<link rel="stylesheet" href="../_design/chrome.css">
+<link rel="stylesheet" href="../_design/components.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+  :root{--ui:#111}
+  *{box-sizing:border-box}
+  body{margin:0;background:#eceef1;
+    font-family:'Pretendard Variable',Pretendard,'Apple SD Gothic Neo',sans-serif;color:#111}
+  .bar{position:sticky;top:0;z-index:10;background:#111;color:#fff;padding:16px 24px;
+    display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .bar h1{font-size:16px;margin:0;font-weight:800}
+  .bar .meta{font-size:13px;color:#bbb}
+  .bar button{margin-left:auto;background:#378ADD;color:#fff;border:0;border-radius:10px;
+    padding:12px 20px;font-size:14px;font-weight:800;cursor:pointer}
+  .deck{display:flex;flex-direction:column;align-items:center;gap:40px;padding:40px 16px 80px}
+  .stage{display:flex;flex-direction:column;align-items:center;gap:12px}
+  .stage .card{box-shadow:0 10px 30px rgba(0,0,0,.14);border-radius:8px}
+  .dl{background:#111;color:#fff;border:0;border-radius:8px;padding:9px 16px;font-size:13px;
+    font-weight:700;cursor:pointer;opacity:.85}
+  .dl:hover{opacity:1}
+  /* ── 캡션 섹션 ── */
+  .caption{max-width:1080px;width:100%;margin:0 auto;background:#fff;border-radius:16px;padding:36px 40px;
+    box-shadow:0 8px 24px rgba(0,0,0,.06)}
+  .caption h2{font-size:18px;margin:0 0 16px}
+  .cap-box{white-space:pre-wrap;font-size:15px;line-height:1.7;background:#f7f8fa;border-radius:12px;
+    padding:20px 22px}
+  .tags{font-size:15px;color:#378ADD;line-height:1.9;margin-top:8px}
+  .copy{background:#eef1f4;border:0;border-radius:8px;padding:8px 14px;font-size:13px;font-weight:700;
+    cursor:pointer;margin-top:12px}
+  .copy.ok{background:#1D9E75;color:#fff}
+  /* 요약 카드 전용 소품 (컴포넌트 조합) */
+  .today{font-size:var(--fs-cover);font-weight:900;letter-spacing:-.02em;color:var(--brand)}
+  .chips{display:flex;flex-wrap:wrap;gap:12px}
+</style>
+</head>
+<body>
+<div class="bar">
+  <h1>지식산책 파일럿 — 전세금 반환</h1>
+  <span class="meta">4:5 · 1080×1350 · 7장 · 테마 law · WO-10 실발행 파일럿</span>
+  <button onclick="saveAll()">↓ 전체 7장 PNG 저장 (2160×2700)</button>
+</div>
+
+<div class="deck" id="deck">
+
+  <!-- ① 커버 (질문형 훅) -->
+  <div class="stage">
+    <div class="card" id="c1">
+      <div class="chrome" aria-hidden="true"><div class="chrome-wordmark">지식산책</div>
+        <div class="chrome-pageno">1/7</div>
+        <div class="chrome-footer">전세금 반환 / 지식산책 · Knowledge Stroll</div></div>
+      <div class="content">
+        <span class="tag-chip">부동산 공부 기록</span>
+        <div class="rule"></div>
+        <h1 class="cover-title">전세금은 왜<br>돌려받기<br>어려울까?</h1>
+        <p class="cover-sub">확정일자까지 받았는데도 바로 못 받는 이유 — 한 장씩 정리했습니다.</p>
+      </div>
+    </div>
+    <button class="dl" onclick="saveOne('c1',1)">이 장 PNG 저장</button>
+  </div>
+
+  <!-- ② 정의형 -->
+  <div class="stage">
+    <div class="card" id="c2">
+      <div class="chrome" aria-hidden="true"><div class="chrome-wordmark">지식산책</div>
+        <div class="chrome-pageno">2/7</div>
+        <div class="chrome-footer">전세금 반환 / 지식산책 · Knowledge Stroll</div></div>
+      <div class="content">
+        <span class="tag-chip">기본 개념</span>
+        <div class="rule"></div>
+        <h2 class="h">전세금 반환, 뭐가 문제일까?</h2>
+        <ul class="dot-list">
+          <li>계약이 끝나면 보증금을 <b>돌려받는 게 원칙</b></li>
+          <li>단, <b>집 인도 ↔ 반환</b>이 동시이행 관계</li>
+          <li>집주인이 안 주면 <b>강제할 수단</b>이 따로 필요</li>
+        </ul>
+        <div class="highlight-box">💡 확정일자·대항력은 “순위”일 뿐 — 반환을 자동으로 강제하진 않는다</div>
+      </div>
+    </div>
+    <button class="dl" onclick="saveOne('c2',2)">이 장 PNG 저장</button>
+  </div>
+
+  <!-- ③ 사례형 -->
+  <div class="stage">
+    <div class="card" id="c3">
+      <div class="chrome" aria-hidden="true"><div class="chrome-wordmark">지식산책</div>
+        <div class="chrome-pageno">3/7</div>
+        <div class="chrome-footer">전세금 반환 / 지식산책 · Knowledge Stroll</div></div>
+      <div class="content">
+        <span class="tag-chip">이런 상황</span>
+        <div class="rule"></div>
+        <h2 class="h">“다음 세입자 오면 준대요”</h2>
+        <div class="quote-bracket">“계약이 끝났는데 집주인이 ‘새 세입자 구해지면 보증금 준다’고 해요.
+          저는 확정일자도 받았는데, 왜 지금 바로 못 받나요?”</div>
+        <div class="highlight-box">💡 세입자를 못 구한 건 <b>집주인 사정</b> — 반환 의무는 그대로 존재한다</div>
+      </div>
+    </div>
+    <button class="dl" onclick="saveOne('c3',3)">이 장 PNG 저장</button>
+  </div>
+
+  <!-- ④ 절차형 -->
+  <div class="stage">
+    <div class="card" id="c4">
+      <div class="chrome" aria-hidden="true"><div class="chrome-wordmark">지식산책</div>
+        <div class="chrome-pageno">4/7</div>
+        <div class="chrome-footer">전세금 반환 / 지식산책 · Knowledge Stroll</div></div>
+      <div class="content">
+        <span class="tag-chip">안 줄 때, 이 순서로</span>
+        <div class="rule"></div>
+        <h2 class="h">보증금 못 받으면</h2>
+        <div class="step-flow">
+          <div class="step"><div class="no">1</div><div><b>내용증명</b> 발송 — 반환 요구를 문서로 (증거 확보)</div></div>
+          <div class="step"><div class="no">2</div><div><b>임차권등기명령</b> — 이사 가도 대항력·우선변제권 유지</div></div>
+          <div class="step"><div class="no">3</div><div><b>보증금반환청구소송</b> → 승소 판결 확보</div></div>
+          <div class="step"><div class="no">4</div><div>판결로 <b>강제집행(경매)</b> — 배당으로 회수</div></div>
+        </div>
+        <div class="highlight-box">💡 이사부터 하면 대항력 상실 — 반드시 <b>임차권등기 먼저</b></div>
+      </div>
+    </div>
+    <button class="dl" onclick="saveOne('c4',4)">이 장 PNG 저장</button>
+  </div>
+
+  <!-- ⑤ 숫자형 -->
+  <div class="stage">
+    <div class="card" id="c5">
+      <div class="chrome" aria-hidden="true"><div class="chrome-wordmark">지식산책</div>
+        <div class="chrome-pageno">5/7</div>
+        <div class="chrome-footer">전세금 반환 / 지식산책 · Knowledge Stroll</div></div>
+      <div class="content">
+        <span class="tag-chip">숫자로 기억</span>
+        <div class="rule"></div>
+        <div class="big-number">D+1<br><small>대항력이 생기는 시점</small></div>
+        <p style="font-size:var(--fs-body)">전입신고를 해도 대항력은 <b>다음날 0시</b>에 발생한다.
+          그래서 잔금·이사·전입신고는 <b>같은 날</b>, 등기부 확인은 <b>그 전날</b>까지.</p>
+        <div class="source-caption">근거: 주택임대차보호법 §3 · 현행 기준</div>
+      </div>
+    </div>
+    <button class="dl" onclick="saveOne('c5',5)">이 장 PNG 저장</button>
+  </div>
+
+  <!-- ⑥ 비교형 -->
+  <div class="stage">
+    <div class="card" id="c6">
+      <div class="chrome" aria-hidden="true"><div class="chrome-wordmark">지식산책</div>
+        <div class="chrome-pageno">6/7</div>
+        <div class="chrome-footer">전세금 반환 / 지식산책 · Knowledge Stroll</div></div>
+      <div class="content">
+        <span class="tag-chip">헷갈림 정리</span>
+        <div class="rule"></div>
+        <h2 class="h">전세권 vs 임차권</h2>
+        <div class="compare-2col">
+          <div class="col"><h3>전세권</h3>
+            <ul class="dot-list"><li>물권 (등기)</li><li>경매청구권 직접</li><li>대항력 = 등기</li></ul></div>
+          <div class="col"><h3>임차권</h3>
+            <ul class="dot-list"><li>채권 (계약)</li><li>임차권등기명령</li><li>대항력 = 전입+인도</li></ul></div>
+        </div>
+        <div class="highlight-box">💡 등기했으면 전세권(강력), 아니면 임차권 — 대항력 만드는 법이 다르다</div>
+      </div>
+    </div>
+    <button class="dl" onclick="saveOne('c6',6)">이 장 PNG 저장</button>
+  </div>
+
+  <!-- ⑦ 요약 -->
+  <div class="stage">
+    <div class="card" id="c7">
+      <div class="chrome" aria-hidden="true"><div class="chrome-wordmark">지식산책</div>
+        <div class="chrome-pageno">7/7</div>
+        <div class="chrome-footer">다음 포스트도 기대해주세요 / 지식산책 · Knowledge Stroll</div></div>
+      <div class="content">
+        <span class="tag-chip">오늘의 핵심</span>
+        <div class="rule"></div>
+        <div class="today">3줄 요약</div>
+        <ul class="dot-list">
+          <li>확정일자는 <b>순위</b>일 뿐, 반환을 강제하진 않는다</li>
+          <li>못 받으면 <b>내용증명 → 임차권등기 → 소송</b> 순서</li>
+          <li>이사 전 <b>임차권등기</b>부터 — 대항력을 지킨다</li>
+        </ul>
+        <div class="chips">
+          <span class="tag-chip">#전세금반환</span><span class="tag-chip">#임차권등기</span><span class="tag-chip">#부동산공부</span>
+        </div>
+      </div>
+    </div>
+    <button class="dl" onclick="saveOne('c7',7)">이 장 PNG 저장</button>
+  </div>
+
+  <!-- ── 인스타그램 게시글 ── -->
+  <div class="caption">
+    <h2>📋 인스타그램 게시글</h2>
+    <div class="cap-box" id="cap">전세 계약이 끝나면 보증금은 당연히 바로 돌려받는 거라고 생각했습니다. 그런데 공부해보니, ‘확정일자’는 돈을 받을 순위를 정해줄 뿐 반환을 강제하는 장치는 아니더라고요.
+
+집주인이 “다음 세입자가 오면 준다”고 미뤄도 반환 의무는 그대로입니다. 안 줄 때는 내용증명 → 임차권등기명령 → 보증금반환청구소송 순서로 갑니다. 여기서 핵심은, 이사를 먼저 가버리면 대항력을 잃기 때문에 반드시 ‘임차권등기’부터 해야 한다는 점이었습니다.
+
+저도 아직 배우는 중이지만, 오늘도 한 개념씩 정리해봤습니다 💪</div>
+    <button class="copy" onclick="copyText('cap',this)">캡션 복사</button>
+    <div class="tags" id="tags">#지식산책 #KnowledgeStroll #공부기록 #대학생공부 #공인중개사 #부동산공부 #전세 #전세금반환 #임차권등기명령 #보증금반환소송 #대항력 #확정일자 #주택임대차보호법 #부동산상식 #자취꿀팁</div>
+    <button class="copy" onclick="copyText('tags',this)">해시태그 복사</button>
+  </div>
+</div>
+
+<script>
+  async function saveOne(id, n){
+    const el = document.getElementById(id);
+    const canvas = await html2canvas(el, {scale:2, backgroundColor:'#ffffff', width:1080, height:1350, useCORS:true});
+    const a = document.createElement('a');
+    a.download = `지식산책_전세금반환_${n}장.png`;
+    a.href = canvas.toDataURL('image/png');
+    a.click();
+  }
+  async function saveAll(){
+    for(let i=1;i<=7;i++){ await saveOne('c'+i, i); await new Promise(r=>setTimeout(r,400)); }
+  }
+  function copyText(id, btn){
+    const t = document.getElementById(id).innerText;
+    navigator.clipboard.writeText(t).then(()=>{ btn.textContent='복사됨 ✓'; btn.classList.add('ok');
+      setTimeout(()=>{ btn.textContent = id==='cap'?'캡션 복사':'해시태그 복사'; btn.classList.remove('ok'); },1500); });
+  }
+</script>
+</body>
+</html>
