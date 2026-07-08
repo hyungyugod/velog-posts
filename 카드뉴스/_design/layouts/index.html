@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>지식산책 레이아웃 5종 — 프리뷰 (WO-9)</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/variable/pretendardvariable.min.css">
+<style>
+  :root{--card-w:1080;--card-h:1350;--scale:0.30}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:'Pretendard Variable',Pretendard,'Apple SD Gothic Neo',sans-serif;
+    background:#f4f5f7;color:#111;padding:56px 40px 80px}
+  header{max-width:1200px;margin:0 auto 40px}
+  h1{font-size:34px;font-weight:900;letter-spacing:-0.02em;margin:0 0 8px}
+  .sub{font-size:16px;color:#555;line-height:1.6;margin:0}
+  .sub b{color:#378ADD}
+  .grid{max-width:1200px;margin:0 auto;display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(324px,1fr));gap:36px 28px}
+  .cell{display:flex;flex-direction:column;gap:12px}
+  .frame{width:calc(var(--card-w)*var(--scale)*1px);height:calc(var(--card-h)*var(--scale)*1px);
+    border-radius:12px;overflow:hidden;box-shadow:0 6px 22px rgba(0,0,0,.12);background:#fff}
+  .frame iframe{width:calc(var(--card-w)*1px);height:calc(var(--card-h)*1px);border:0;
+    transform:scale(var(--scale));transform-origin:top left;display:block}
+  .cap{font-size:14px}
+  .cap .name{font-weight:800}
+  .cap .meta{color:#777;font-weight:600}
+  .swatch{display:inline-block;width:10px;height:10px;border-radius:50%;vertical-align:middle;margin-right:5px}
+  code{background:#eceef1;padding:1px 7px;border-radius:6px;font-size:12px}
+</style>
+</head>
+<body>
+<header>
+  <h1>지식산책 카드뉴스 · 레이아웃 5종 + 커버</h1>
+  <p class="sub">정본 = <code>_design/</code> (tokens · chrome · components · themes). 캔버스 <b>1080×1350 (4:5)</b> ·
+    커버는 <b>질문형 훅</b> 강제 · 테마는 <code>themes/*.css</code> 스왑만. 아래는 축소 프리뷰 — 클릭하면 원본(1080×1350)이 열린다.</p>
+</header>
+<div class="grid" id="grid"></div>
+<script>
+  const cards = [
+    {file:'cover.html',      name:'커버 (질문형 훅)', id:'cover',        theme:'law',   c:'#378ADD'},
+    {file:'definition.html', name:'① 정의형',         id:'definition',   theme:'law',   c:'#378ADD'},
+    {file:'compare.html',    name:'② 비교형',         id:'compare-2col', theme:'law',   c:'#378ADD'},
+    {file:'step.html',       name:'③ 절차형',         id:'step-flow',    theme:'econ',  c:'#BA7517'},
+    {file:'number.html',     name:'④ 숫자형',         id:'big-number',   theme:'econ',  c:'#BA7517'},
+    {file:'quote.html',      name:'⑤ 사례형',         id:'quote-bracket',theme:'alert', c:'#D85A30'},
+  ];
+  const grid = document.getElementById('grid');
+  grid.innerHTML = cards.map(k => `
+    <div class="cell">
+      <a class="frame" href="./${k.file}" target="_blank" title="원본 열기">
+        <iframe src="./${k.file}" loading="lazy" scrolling="no" tabindex="-1"></iframe>
+      </a>
+      <div class="cap">
+        <div class="name">${k.name}</div>
+        <div class="meta"><span class="swatch" style="background:${k.c}"></span><code>${k.id}</code> · theme: ${k.theme}</div>
+      </div>
+    </div>`).join('');
+</script>
+</body>
+</html>

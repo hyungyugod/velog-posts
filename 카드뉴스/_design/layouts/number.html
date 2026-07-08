@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>레이아웃 4 · 숫자형 (big-number) — 지식산책</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/variable/pretendardvariable.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../themes/econ.css">
+<link rel="stylesheet" href="../chrome.css">
+<link rel="stylesheet" href="../components.css">
+<style>html,body{margin:0;background:#e9eaec;display:grid;place-items:center;min-height:100vh}</style>
+</head>
+<body>
+<!-- ═══ 레이아웃 ④: 숫자형 — 핵심 수치 1개를 압도적으로 강조 (통계·한도·요율) ═══
+     슬롯 순서: tag-chip → rule → big-number(수치 + small 라벨) → 보조 설명 → source-caption(출처·기준일) -->
+<div class="card" data-layout="number">
+  <div class="chrome" aria-hidden="true">
+    <div class="chrome-wordmark">지식산책</div>
+    <div class="chrome-pageno"><span class="pg-n">5</span>/<span class="pg-total">7</span></div>
+    <div class="chrome-footer"><span class="footer-topic">계약갱신청구권</span> / 지식산책 · Knowledge Stroll</div>
+  </div>
+  <div class="content">
+    <span class="tag-chip">숫자로 기억</span>
+    <div class="rule"></div>
+    <div class="big-number">5%<br><small>계약 갱신 시 임대료 인상 상한</small></div>
+    <p style="font-size:var(--fs-body)">임차인이 <b>계약갱신청구권</b>을 쓰면, 집주인은 보증금·월세를
+      직전 금액의 <b>5%까지만</b> 올릴 수 있다. 1회(2년) 행사 가능.</p>
+    <div class="source-caption">근거: 주택임대차보호법 §7 · 현행 기준</div>
+  </div>
+</div>
+</body>
+</html>

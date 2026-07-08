@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>레이아웃 3 · 절차형 (step-flow) — 지식산책</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/variable/pretendardvariable.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../themes/econ.css">
+<link rel="stylesheet" href="../chrome.css">
+<link rel="stylesheet" href="../components.css">
+<style>html,body{margin:0;background:#e9eaec;display:grid;place-items:center;min-height:100vh}</style>
+</head>
+<body>
+<!-- ═══ 레이아웃 ③: 절차형 — 순서 있는 단계 (계약·신청·처리 흐름) ═══
+     슬롯 순서: tag-chip → rule → h(제목) → step-flow(.step×3~5, 각 .no + 설명) → highlight-box(주의점) -->
+<div class="card" data-layout="step">
+  <div class="chrome" aria-hidden="true">
+    <div class="chrome-wordmark">지식산책</div>
+    <div class="chrome-pageno"><span class="pg-n">4</span>/<span class="pg-total">7</span></div>
+    <div class="chrome-footer"><span class="footer-topic">전세 계약 절차</span> / 지식산책 · Knowledge Stroll</div>
+  </div>
+  <div class="content">
+    <span class="tag-chip">실전 절차</span>
+    <div class="rule"></div>
+    <h2 class="h">전세, 이 순서로 지킨다</h2>
+    <div class="step-flow">
+      <div class="step"><div class="no">1</div><div>등기부등본 확인 — 근저당·가압류 등 <b>선순위 권리</b> 점검</div></div>
+      <div class="step"><div class="no">2</div><div>계약 체결 — 계약금 지급, 특약으로 <b>잔금일 등기 유지</b> 명시</div></div>
+      <div class="step"><div class="no">3</div><div>잔금·입주 당일 <b>전입신고 + 확정일자</b> 동시 처리</div></div>
+      <div class="step"><div class="no">4</div><div>대항력·우선변제권 확보 확인 (전입 다음날 0시 발생)</div></div>
+    </div>
+    <div class="highlight-box">💡 확정일자는 “늦어도 잔금일”에 — 하루만 밀려도 후순위로 밀린다</div>
+  </div>
+</div>
+</body>
+</html>

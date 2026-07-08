@@ -1,0 +1,10 @@
+/* ═══ 불변 chrome 스타일 v1 (WO-9) — chrome.html의 style을 분리 ═══
+   레이아웃·테마·언어와 무관하게 세 요소(워드마크·페이지번호·푸터)는 항상 같은 좌표.
+   각 카드는 이 CSS를 링크하고 chrome 마크업 <div class="chrome">…</div>을 1회 포함한다. */
+.chrome{position:absolute;inset:0;pointer-events:none;font-family:var(--font-base);color:var(--ink)}
+.chrome-wordmark{position:absolute;top:var(--chrome-wordmark-top);left:var(--chrome-wordmark-left);
+  font-size:var(--chrome-wordmark-fs);font-weight:800;letter-spacing:-0.01em}
+.chrome-pageno{position:absolute;top:var(--chrome-pageno-top);right:var(--chrome-pageno-right);
+  font-size:var(--chrome-pageno-fs);font-weight:700;color:var(--ink-sub)}
+.chrome-footer{position:absolute;bottom:var(--chrome-footer-bottom);left:0;right:0;text-align:center;
+  font-size:var(--chrome-footer-fs);color:var(--ink-sub);font-weight:600}

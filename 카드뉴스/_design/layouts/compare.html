@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>레이아웃 2 · 비교형 (compare-2col) — 지식산책</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/variable/pretendardvariable.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../themes/law.css">
+<link rel="stylesheet" href="../chrome.css">
+<link rel="stylesheet" href="../components.css">
+<style>html,body{margin:0;background:#e9eaec;display:grid;place-items:center;min-height:100vh}</style>
+</head>
+<body>
+<!-- ═══ 레이아웃 ②: 비교형 — 두 개념을 2단 대조 (혼동 개념 정리에 최적) ═══
+     슬롯 순서: tag-chip → rule → h(제목) → compare-2col(.col×2, 각 h3+dot-list) → highlight-box(판단 기준) -->
+<div class="card" data-layout="compare">
+  <div class="chrome" aria-hidden="true">
+    <div class="chrome-wordmark">지식산책</div>
+    <div class="chrome-pageno"><span class="pg-n">3</span>/<span class="pg-total">7</span></div>
+    <div class="chrome-footer"><span class="footer-topic">전세권 vs 임차권</span> / 지식산책 · Knowledge Stroll</div>
+  </div>
+  <div class="content">
+    <span class="tag-chip">헷갈림 정리</span>
+    <div class="rule"></div>
+    <h2 class="h">전세권 vs 임차권</h2>
+    <div class="compare-2col">
+      <div class="col">
+        <h3>전세권</h3>
+        <ul class="dot-list">
+          <li>물권 (등기 필요)</li>
+          <li>경매 청구권 있음</li>
+          <li>양도·전대 자유</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h3>임차권</h3>
+        <ul class="dot-list">
+          <li>채권 (계약)</li>
+          <li>대항력 = 전입+인도</li>
+          <li>우선변제 = 확정일자</li>
+        </ul>
+      </div>
+    </div>
+    <div class="highlight-box">💡 가르는 기준: “등기했는가?” — 등기하면 물권(전세권), 아니면 채권(임차권)</div>
+  </div>
+</div>
+</body>
+</html>

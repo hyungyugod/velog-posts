@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>레이아웃 1 · 정의형 (definition) — 지식산책</title>
+<!-- 명명 폰트 로드(휴대성). 실기기(맥)엔 시스템 폰트 폴백이 이미 tokens에 있음 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/variable/pretendardvariable.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+<!-- 단일 진실 원천: tokens → theme → chrome → components (색·좌표 리터럴 금지) -->
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../themes/law.css">
+<link rel="stylesheet" href="../chrome.css">
+<link rel="stylesheet" href="../components.css">
+<style>html,body{margin:0;background:#e9eaec;display:grid;place-items:center;min-height:100vh}</style>
+</head>
+<body>
+<!-- ═══ 레이아웃 ①: 정의형 — 개념 1개를 정의 + 핵심 포인트 리스트 (기존 정의 카드 승격) ═══
+     슬롯 순서: tag-chip → rule → h(제목) → dot-list(핵심 3±) → highlight-box(한 줄 요지) -->
+<div class="card" data-layout="definition">
+  <div class="chrome" aria-hidden="true">
+    <div class="chrome-wordmark">지식산책</div>
+    <div class="chrome-pageno"><span class="pg-n">2</span>/<span class="pg-total">7</span></div>
+    <div class="chrome-footer"><span class="footer-topic">전세권</span> / 지식산책 · Knowledge Stroll</div>
+  </div>
+  <div class="content">
+    <span class="tag-chip">민법 · 물권</span>
+    <div class="rule"></div>
+    <h2 class="h">전세권이란?</h2>
+    <ul class="dot-list">
+      <li>전세금을 내고 <b>타인의 부동산을 사용·수익</b>하는 물권</li>
+      <li>등기하면 제3자에게도 <b>대항</b> 가능 (채권적 전세와 구별)</li>
+      <li>기간 만료 시 <b>전세금 반환 ↔ 목적물 인도</b>가 동시이행</li>
+    </ul>
+    <div class="highlight-box">💡 전세권은 “등기된 물권”, 임차권은 “채권” — 대항력의 근거가 다르다</div>
+  </div>
+</div>
+</body>
+</html>
