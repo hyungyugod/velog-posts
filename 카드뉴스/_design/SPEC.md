@@ -6,7 +6,7 @@
 - 장수: **커버 1 + 본문 3~8 + 요약 1 = 5~10장** (예약도구 API 상한 10장과 정합).
 - 레이어 순서: 배경 → 콘텐츠(레이아웃 5종 중 1) → **chrome(불변: 워드마크·페이지번호·푸터)**.
 - 레이아웃 5종(구현됨 → `layouts/`): 정의형(현행 승격) / 비교형(compare-2col) / 절차형(step-flow) / 숫자형(big-number) / 사례형(quote-bracket). + 질문형 커버(`layouts/cover.html`). chrome 스타일은 `chrome.css`로 분리, 프리뷰는 `layouts/index.html`.
-- 테마 = themes/*.css 스왑만 (law 파랑 / medical 초록 / econ 주황 / alert 빨강 / misc 보라 / en 폰트스왑).
+- 테마 = themes/*.css 스왑만 (law 파랑 / medical 초록 / econ 주황 / alert 빨강 / misc 보라 / en 폰트스왑 / humanities 인문학·에세이 따뜻한 종이톤·갈색). humanities는 브랜드색 외 지면·잉크까지 덮는 확장 테마.
 - 훅 규칙(정체성 앵커): 커버는 **질문형** — "전문가의 정리"가 아니라 "학습자의 질문". 예: "전세금은 왜 돌려받기 어려울까?"
 - 글자수 상한(4:5 세로 +30% 기준선, 파일럿에서 조정): 태그 8 / 제목 21 / 아이템 39 / 하이라이트 52 (시나리오 도입부 예외, 2줄).
 - 정확성 게이트: 개요 확정 시 교차검증 1회, VOLATILE 정보는 "현행 기준" 치환, EN 카드는 source-caption(출처+기준일) 강제.
