@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<!-- ═══════════════════════════════════════════════════════════════
+  데일리퀴즈 정본 템플릿 v2.1
+    - v2.1 (2026-07-03): 보기 소거 눈동자(👁) 학습보조 추가 — 확실히 아닌 보기를 희미하게.
+      순수 시각용이라 채점·payload 스키마에 전혀 영향 없음. 채점 시 자동 제거된다.
+    - v2 (2026-07-02, Fable 설계 WO-2·WO-4)
+  - 채점·결과 저장(downloadResult)·스키마는 이 파일에서만 수정한다.
+  - 생성 스킬이 교체하는 것: 2026-07-10 · 2026년 7월 10일 (금) · 실전형 40문항 · 오답 재도전 6문항(🔁) 포함 · <span class="tag">🔥 심화</span><span class="tag">📝 실전 4지선다</span><span class="tag">🔁 오답 재도전 6</span><span class="tag">🎯 정답분산</span><span class="tag">공인중개사법</span><span class="tag">부동산학개론</span><span class="tag">부동산세법</span><span class="tag">민법</span><span class="tag">부동산공법</span>
+    그리고 QUESTIONS 마커 사이의 문항 배열. 그 외 로직 수정 금지.
+  - 결과 JSON 스키마 v2: results[](전 문항 정오 기록, retryOf·conceptKey 포함)
+    + wrong[](v1 하위호환 — 기존 수거·집계가 그대로 동작).
+  - 문항 필드 계약(v2): type ∈ 일반|조합|계산|사례|OX,
+    conceptKey(없으면 src에서 자동 유도), retryOf(재도전이면 원장 conceptKey),
+    calc:{expr,expected}(계산형 필수).
+═══════════════════════════════════════════════════════════════ -->
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📚 데일리 문제지 · 2026-07-10</title>
+<style>
+  :root{
+    --bg:#0f1115; --card:#191c23; --card2:#20242d; --line:#2c313b;
+    --txt:#e7e9ee; --sub:#9aa3b2; --accent:#ffd24a; --accent2:#7c9cff;
+    --ok:#34d399; --no:#f87171; --okbg:#10261d; --nobg:#2a1414;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);
+    font-family:'Pretendard','Apple SD Gothic Neo',system-ui,-apple-system,sans-serif;
+    line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:760px;margin:0 auto;padding:32px 20px 80px}
+  header{margin-bottom:24px}
+  .eyebrow{color:var(--accent);font-weight:700;font-size:14px;letter-spacing:.04em}
+  h1{font-size:28px;margin:6px 0 4px;font-weight:800}
+  .meta{color:var(--sub);font-size:14px}
+  .tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px}
+  .tag{background:var(--card2);border:1px solid var(--line);color:var(--sub);
+    padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600}
+  .bar{position:sticky;top:0;z-index:5;background:rgba(15,17,21,.88);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--line);
+    padding:12px 0;margin:18px 0 24px}
+  .progress{height:8px;background:var(--card2);border-radius:999px;overflow:hidden}
+  .progress>i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));
+    border-radius:999px;transition:width .35s ease}
+  .pmeta{display:flex;justify-content:space-between;font-size:12.5px;color:var(--sub);margin-bottom:7px}
+  .sec{font-size:13px;font-weight:800;color:var(--accent2);margin:26px 0 10px;letter-spacing:.02em;
+    border-top:1px dashed var(--line);padding-top:18px}
+  .sec:first-of-type{border-top:none;padding-top:0}
+  .q{background:var(--card);border:1px solid var(--line);border-radius:16px;
+    padding:18px 18px 16px;margin-bottom:14px}
+  .qhead{display:flex;align-items:center;gap:9px;margin-bottom:11px}
+  .qno{background:var(--accent);color:#1a1a1a;font-weight:800;font-size:13px;
+    width:26px;height:26px;border-radius:8px;display:grid;place-items:center;flex:0 0 auto}
+  .qtype{font-size:11.5px;font-weight:700;color:var(--accent2);border:1px solid var(--accent2);
+    padding:1px 8px;border-radius:999px}
+  .qcat{font-size:12px;color:var(--sub);margin-left:auto}
+  .qtext{font-size:16px;font-weight:600;margin:2px 0 14px}
+  .opts{display:flex;flex-direction:column;gap:8px}
+  .opt{display:flex;align-items:center;gap:11px;padding:11px 13px;border:1px solid var(--line);
+    border-radius:11px;cursor:pointer;background:var(--card2);transition:.15s;user-select:none}
+  .opt:hover{border-color:var(--accent2)}
+  .opt.sel{border-color:var(--accent);background:#26261a}
+  .opt .mk{width:22px;height:22px;border-radius:50%;border:2px solid var(--line);flex:0 0 auto;
+    display:grid;place-items:center;font-size:12px;font-weight:800}
+  .opt.sel .mk{border-color:var(--accent);background:var(--accent);color:#1a1a1a}
+  /* 보기 소거(눈동자) 학습보조 — 순수 시각용, 채점·저장에 영향 없음 */
+  .opt .eye{margin-left:auto;flex:0 0 auto;width:30px;height:30px;padding:0;border-radius:8px;
+    display:grid;place-items:center;font-size:15px;line-height:1;background:transparent;
+    border:1px solid transparent;color:var(--sub);opacity:.4;cursor:pointer;transition:.15s}
+  .opt .eye:hover{opacity:1;background:var(--card);border-color:var(--line)}
+  .opt.ruled{opacity:.42;background:var(--card)}
+  .opt.ruled span:not(.mk){text-decoration:line-through;text-decoration-color:var(--no)}
+  .opt.ruled .eye{opacity:.9;color:var(--no)}
+  .ox{flex-direction:row;gap:10px}
+  .ox .opt{flex:1;justify-content:center;font-size:18px;font-weight:800}
+  .opt.correct{border-color:var(--ok);background:var(--okbg)}
+  .opt.correct .mk{border-color:var(--ok);background:var(--ok);color:#06281c}
+  .opt.wrong{border-color:var(--no);background:var(--nobg)}
+  .opt.wrong .mk{border-color:var(--no);background:var(--no);color:#2a0d0d}
+  .expl{margin-top:12px;padding:12px 14px;border-radius:11px;background:var(--card2);
+    border-left:3px solid var(--accent2);font-size:13.5px;color:#d4d9e2;display:none}
+  .expl.show{display:block;animation:fade .3s ease}
+  .expl .verdict{font-weight:800;margin-right:6px}
+  .expl .src{display:block;margin-top:7px;color:var(--sub);font-size:12px}
+  @keyframes fade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+  .submit{width:100%;padding:16px;border:none;border-radius:14px;font-size:17px;font-weight:800;
+    background:linear-gradient(90deg,var(--accent),#ffb347);color:#1a1a1a;cursor:pointer;margin-top:10px}
+  .submit:disabled{opacity:.45;cursor:not-allowed}
+  .submit.retry{background:var(--card2);color:var(--txt);border:1px solid var(--line)}
+  #result{display:none;text-align:center;background:var(--card);border:1px solid var(--line);
+    border-radius:18px;padding:28px 20px;margin-bottom:18px}
+  #result.show{display:block;animation:fade .4s ease}
+  .ring{font-size:46px;font-weight:900;margin:4px 0}
+  .ring small{font-size:18px;color:var(--sub);font-weight:700}
+  #rmsg{color:var(--sub);font-size:15px;margin-top:4px}
+  #dlnote{font-size:12.5px;color:var(--accent);margin-top:12px}
+  .copybtn{display:none;margin-top:12px;padding:10px 16px;border-radius:10px;border:1px solid var(--line);
+    background:var(--card2);color:var(--txt);font-weight:700;cursor:pointer;font-size:13px}
+  .copybtn.show{display:inline-block}
+  .foot{text-align:center;margin-top:30px;color:var(--sub);font-size:12.5px;line-height:1.8}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">DAILY QUIZ · 공인중개사</div>
+    <h1>오늘의 복습 문제지</h1>
+    <div class="meta">2026년 7월 10일 (금) · 실전형 40문항 · 오답 재도전 6문항(🔁) 포함</div>
+    <div class="tags"><span class="tag">🔥 심화</span><span class="tag">📝 실전 4지선다</span><span class="tag">🔁 오답 재도전 6</span><span class="tag">🎯 정답분산</span><span class="tag">공인중개사법</span><span class="tag">부동산학개론</span><span class="tag">부동산세법</span><span class="tag">민법</span><span class="tag">부동산공법</span></div>
+  </header>
+
+  <div class="bar">
+    <div class="pmeta"><span id="pcount">0 / 0 선택</span><span>제출 시 결과가 자동 저장됩니다</span></div>
+    <div class="progress"><i id="pbar"></i></div>
+  </div>
+
+  <div id="result">
+    <div class="ring"><span id="score">0</span><small id="total"> / 0</small></div>
+    <div id="rmsg"></div>
+    <div id="dlnote"></div>
+    <button class="copybtn" id="copyBtn">📋 결과 JSON 복사 (다운로드 실패 대비)</button>
+  </div>
+
+  <form id="quiz"></form>
+
+  <button class="submit" id="submitBtn" disabled>제출하고 채점하기</button>
+
+  <div class="foot">
+    최근 7일 학습 노트로 자동 생성됩니다.<br>
+    제출 결과는 JSON으로 저장 → 매주 월요일 오답 원장·오답노트로 자동 반영됩니다.
+  </div>
+</div>
+
+<script>
+const SCHEMA_VERSION = 2;
+const QUIZ_DATE = "2026-07-10";
+const QUESTIONS = [
+/*__QUESTIONS_START__*/
+{ type:"일반", cat:"공인중개사법", q:"중개사무소 개설등록과 그 결격사유에 관한 설명으로 <b>옳지 않은</b> 것은?", opts:["개설등록 신청을 받은 등록관청은 등록 여부를 신청일부터 7일 이내에 신청인에게 서면으로 통지하여야 한다.","공인중개사 자격이 취소된 후 3년이 지나지 아니한 자는 개설등록의 결격사유에 해당한다.","개설등록을 신청하는 법인의 공인중개사가 아닌 사원은 실무교육 대상에서 제외된다.","개업공인중개사는 부가가치세법 시행령에 따른 사업자등록증을 사무소 안의 보기 쉬운 곳에 게시하여야 한다."], answer:2, expl:"법인의 공인중개사가 아닌 사원·임원도 실무교육 대상이므로 3번이 옳지 않다. 등록 단계에서 중개업 종사자 전원의 자질을 확보하려는 취지다. 등록 여부 7일 서면통지·자격취소 3년 결격·사업자등록증 게시는 모두 옳은 지문이다.", src:"2026-07-08 공인중개사법 개설등록·결격사유", conceptKey:"공인중개사법 개설등록-비공인중개사 사원 실무교육" },
+{ type:"일반", cat:"공인중개사법", q:"개업공인중개사의 각종 신고의무에 관한 설명으로 <b>옳지 않은</b> 것은?", opts:["법인이 분사무소를 이전한 경우 이전 후 분사무소를 관할하는 등록관청에 이전 사실을 신고하여야 한다.","중개보조원과의 고용관계가 종료된 때에는 종료일부터 10일 이내에 신고하면 된다.","3개월 이하의 중개업 휴업은 신고의무가 없다.","휴업한 중개업을 재개하려는 신고를 하지 않은 것은 벌금이 아니라 100만원 이하 과태료 부과 대상이다."], answer:0, expl:"분사무소 이전신고는 이전 후 분사무소 관할이 아니라 주된 사무소 관할 등록관청에 하므로 1번이 옳지 않다. 분사무소 관련 사무는 주된 사무소를 창구로 일원화하기 때문이다. 고용종료 10일·3개월 이하 휴업 신고면제·재개 미신고 과태료는 옳은 지문이다.", src:"2026-07-08 공인중개사법 사무소 운영·신고", conceptKey:"공인중개사법 분사무소 이전신고-주된사무소 관할" },
+{ type:"일반", cat:"공인중개사법", q:"🔁 개업공인중개사의 손해배상책임 보장(업무보증)에 관한 설명으로 옳은 것은?", opts:["보증기관에 따른 손해배상책임의 보장은 반드시 공탁의 방법으로만 하여야 한다.","개업공인중개사는 업무를 개시하기 전에 손해배상책임을 보장하기 위한 조치를 하여야 한다.","중개가 완성된 때에는 거래당사자에게 보장금액만 설명하면 되고 보장기관에 관한 사항은 설명할 필요가 없다.","공탁한 공탁금은 개업공인중개사가 폐업한 즉시 회수할 수 있다."], answer:1, expl:"업무보증은 등록 후 업무개시 전에 설정해야 하므로 2번이 옳다. 중개사고 피해자의 배상 재원을 사전에 확보하려는 강제장치이기 때문이다. 방법은 보증보험·공제·공탁 중 선택이고, 폐업 후 공탁금 회수는 3년간 제한되므로 나머지는 틀리다.", src:"2026-07-08 공인중개사법 손해배상책임 보장 (재도전)", conceptKey:"공인중개사법 §1 중개보수·업무보증", retryOf:"공인중개사법 §1 중개보수·업무보증" },
+{ type:"조합", cat:"공인중개사법", q:"부동산 거래신고제도에 관한 설명으로 옳은 것을 <b>모두 고른</b> 것은?<br>ㄱ. 거래당사자 간 직접거래의 경우 공동으로 신고서를 제출할 필요는 없다.<br>ㄴ. 토지거래허가구역에서 허가를 받았더라도 부동산 거래신고는 하여야 한다.<br>ㄷ. 입목·광업재단·공장재단의 거래는 부동산 거래신고 대상이 아니다.", opts:["ㄱ, ㄴ","ㄴ, ㄷ","ㄱ, ㄷ","ㄱ, ㄴ, ㄷ"], answer:3, expl:"ㄱ·ㄴ·ㄷ 모두 옳다. 거래신고는 계약과 별개의 공법상 의무라 허가를 받았어도 신고는 따로 해야 하고, 신고 대상은 부동산과 그 공급·전매계약에 한정되어 입목·재단은 제외된다. 직접거래는 단독신고도 가능해 공동제출이 강제되지 않는다.", src:"2026-07-08 공인중개사법 부동산 거래신고", conceptKey:"공인중개사법 부동산 거래신고-대상·방법" },
+{ type:"사례", cat:"공인중개사법", q:"갑 소유 부동산에 대한 법원 경매절차에서 을이 최고가매수신고인이 되었고, 병은 이 절차의 이해관계인이다. 이에 관한 설명으로 옳은 것은?", opts:["병은 매각허가결정이 확정되면 그 즉시 경매개시결정에 대한 이의신청을 할 수 없게 된다.","을이 매각대금을 모두 낸 경우 차순위매수신고인은 매각기일이 종결된 때 곧바로 매수신청 보증의 반환을 요구할 수 있다.","을은 대금을 낸 뒤 6개월 이내에 매각부동산에 대한 인도명령을 신청할 수 있다.","병은 매각대금이 지급되기 전이라도 배당요구의 종기를 첫 매각기일 이후로 늦춰 줄 것을 신청할 수 있다."], answer:2, expl:"인도명령 신청은 매수인이 대금을 낸 뒤 6개월 이내에 하여야 하므로 3번이 옳다. 명도소송보다 간이한 절차로 매수인의 신속한 점유확보를 돕는 제도다. 경매개시결정 이의는 대금완납 전까지 가능하고, 차순위인 보증반환은 매각기일 종결이 아니라 매수인이 대금을 낸 때 요구할 수 있어 나머지는 틀리다.", src:"2026-07-03 공인중개사법 경매절차", conceptKey:"공인중개사법 경매-인도명령·이의신청 시점" },
+{ type:"일반", cat:"공인중개사법", q:"전속중개계약과 중개대상물 확인·설명서에 관한 설명으로 <b>옳지 않은</b> 것은?", opts:["전속중개계약서는 3년간 보존하여야 한다.","전속중개계약을 체결한 개업공인중개사는 체결 후 7일 이내에 정보를 공개하여야 한다.","확인·설명서의 용적률·건폐율 상한은 시·군 조례에 따라 기재한다.","비주거용 건축물의 확인·설명서에는 거래예정금액을 적지 않는다."], answer:3, expl:"비주거용 건축물 확인·설명서에도 거래예정금액을 기재해야 하므로 4번이 옳지 않다. 거래예정금액은 중개보수 산정 등의 기초가 되어 물건 종류를 불문하고 필요하기 때문이다. 전속중개계약서 3년 보존·정보공개 7일·용적률 등은 조례 기준은 모두 옳은 지문이다.", src:"2026-07-08 공인중개사법 전속중개·확인설명서", conceptKey:"공인중개사법 확인설명서-비주거용 거래예정금액" },
+{ type:"OX", cat:"공인중개사법", q:"거래정보사업자로 지정받으려는 자는 공인중개사 자격을 갖춘 부가통신사업자여야 한다.", opts:["O","X"], answer:1, expl:"X. 거래정보사업자는 전기통신사업법상 부가통신사업자이면 되고 공인중개사 자격은 요건이 아니다. 정보망 운영은 중개행위가 아니라 전산 인프라 제공이기 때문이다. 지정취소도 '취소하여야 한다'가 아니라 '취소할 수 있다'는 재량사항인 점과 함께 자주 나오는 함정이다.", src:"2026-07-08 공인중개사법 거래정보사업자", conceptKey:"공인중개사법 거래정보사업자-자격요건" },
+{ type:"일반", cat:"공인중개사법", q:"공인중개사에 대한 행정처분과 표시·광고 규제에 관한 설명으로 <b>옳지 않은</b> 것은?", opts:["공인중개사 자격이 취소된 자는 7일 이내에 자격증을 반납하여야 한다.","폐업 사실을 신고하고도 중개사무소 간판을 철거하지 않으면 과태료를 부과하는 것이 아니라 행정대집행을 할 수 있다.","전속중개계약서에 의하지 않고 전속중개계약을 체결한 것은 소속공인중개사의 자격정지 사유이다.","개업공인중개사가 아닌 자가 중개대상물의 표시·광고를 한 것을 신고한 경우는 포상금 지급 대상이다."], answer:2, expl:"전속중개계약서에 의하지 않은 전속중개계약 체결은 소속공인중개사의 자격정지가 아니라 개업공인중개사의 업무정지 사유이므로 3번이 옳지 않다. 계약 주체가 개업공인중개사이기 때문이다. 자격증 7일 반납·간판 미철거 대집행·비개공 광고 신고 포상금은 옳은 지문이다.", src:"2026-07-08 공인중개사법 행정처분·표시광고", conceptKey:"공인중개사법 자격정지vs업무정지-전속중개계약서" },
+{ type:"일반", cat:"부동산학개론", q:"🔁 주택의 여과과정(filtering)과 주거분리에 관한 설명으로 옳은 것은?", opts:["주거분리는 도심의 직장과 주거지가 서로 분리되는 현상을 말한다.","하향여과는 고소득층이 사용하던 주택이 헐리고 새 주택으로 대체되는 과정을 말한다.","상향여과는 저소득층 주거지역에서만 나타나는 현상이다.","하향여과는 저소득층의 소득 증가로 저가주택 수요가 늘 때 상위 시장의 노후주택이 저가주택 시장으로 옮겨오는 현상이다."], answer:3, expl:"하향여과는 저소득층 수요 증가→저가주택 초과수요→상위 노후주택의 하향 이동으로 나타나므로 4번이 옳다. 여과는 주택이 소득계층 사이를 이동하며 배분되는 과정이다. 주거분리는 소득계층별 분리이지 직주분리가 아니라는 점이 함정이다.", src:"2026-07-09 부동산학개론 여과과정·주거분리 (재도전)", conceptKey:"부동산학개론 §2 여과·주거분리", retryOf:"부동산학개론 §2 여과·주거분리" },
+{ type:"일반", cat:"부동산학개론", q:"🔁 부동산시장의 효율성에 관한 설명으로 <b>옳지 않은</b> 것은?", opts:["준강성 효율적 시장은 새로 공표된 정보가 신속히 가격에 반영되는 시장이다.","강성 효율적 시장에서는 공표되지 않은 내부정보를 이용하더라도 초과이윤을 얻을 수 없다.","약성 효율적 시장은 과거의 역사적 정보뿐 아니라 현재 공표된 정보까지 이미 반영된 시장이다.","부동산시장은 정보의 비대칭성이 커서 완전경쟁시장에 비해 할당 효율성이 떨어질 수 있으며, 이를 완화하기 위해 정보의 공개와 유통이 요구된다."], answer:2, expl:"약성 효율적 시장은 과거의 역사적 정보만 가격에 반영된 시장이므로, 현재 공표정보까지 반영됐다고 한 3번이 옳지 않다. 공표정보 반영은 준강성 단계의 특징이다. 약성→준강성→강성으로 갈수록 가격에 반영되는 정보집합이 넓어진다는 위계가 핵심이다.", src:"2026-07-09 부동산학개론 부동산시장의 효율성 (재도전)", conceptKey:"부동산학개론 §1 시장이론", retryOf:"부동산학개론 §1 시장이론" },
+{ type:"조합", cat:"부동산학개론", q:"🔁 거미집이론(cobweb model)에 관한 설명으로 옳은 것을 <b>모두 고른</b> 것은?<br>ㄱ. 수요의 가격탄력성이 공급의 가격탄력성보다 크면 가격과 수급량은 수렴한다.<br>ㄴ. 공급곡선 기울기의 절댓값이 수요곡선 기울기의 절댓값보다 작으면 발산형이 된다.<br>ㄷ. 거미집이론은 공급자가 현재와 미래의 가격을 동시에 고려하여 공급량을 결정함을 전제한다.", opts:["ㄱ","ㄱ, ㄴ","ㄴ, ㄷ","ㄱ, ㄴ, ㄷ"], answer:1, expl:"수요탄력성이 공급탄력성보다 크면(공급곡선이 더 가파르면) 수렴형이므로 ㄱ·ㄴ이 옳다. 공급자가 전기(前期) 가격에만 반응해 한 박자 늦게 조정하는 모형이라, 미래가격을 함께 고려한다는 ㄷ은 전제와 어긋난다. 탄력성 대소가 수렴·발산을 가른다.", src:"2026-07-09 부동산학개론 거미집이론 (재도전)", conceptKey:"부동산학개론 §1 거미집이론", retryOf:"부동산학개론 §1 거미집이론" },
+{ type:"계산", cat:"부동산학개론", q:"다음 자료로 산정한 유효총소득은? (다른 조건은 동일)<br>ㆍ가능총소득: 6,000만원<br>ㆍ공실 및 불량부채: 300만원<br>ㆍ기타소득: 200만원", opts:["5,900만원","5,500만원","6,300만원","6,100만원"], answer:0, calc:{expr:"6000-300+200",expected:5900}, expl:"유효총소득 = 가능총소득 - 공실·불량부채 + 기타소득 = 6,000 - 300 + 200 = 5,900만원이다. 공실은 빼고 주차·자판기 수입 등 기타소득은 더한다. 공실을 더하거나 기타소득을 빼는 방향 실수를 유도하는 계산이다.", src:"2026-07-09 부동산학개론 유효총소득 산정", conceptKey:"부동산학개론 유효총소득-산정식" },
+{ type:"계산", cat:"부동산학개론", q:"명목이자율이 연 7%, 예상 물가상승률이 연 2.5%일 때 피셔효과에 따른 실질이자율은? (다른 조건은 동일)", opts:["9.5%","2.8%","7.0%","4.5%"], answer:3, calc:{expr:"7-2.5",expected:4.5}, expl:"실질이자율 = 명목이자율 - 예상 물가상승률 = 7% - 2.5% = 4.5%이다. 명목이자율이 실질이자율과 기대인플레이션의 합이라는 피셔관계에서 도출된다. 두 값을 더해 9.5%로 계산하는 것이 대표적 함정이다.", src:"2026-07-09 부동산학개론 실질이자율", conceptKey:"부동산학개론 실질이자율-피셔" },
+{ type:"계산", cat:"부동산학개론", q:"총투자액 10억원, 순영업소득 8,000만원인 부동산의 순소득승수는? (다른 조건은 동일)", opts:["8","10","12.5","16"], answer:2, calc:{expr:"1000000000/80000000",expected:12.5}, expl:"순소득승수 = 총투자액 / 순영업소득 = 10억 / 8,000만 = 12.5(배)이다. 투자원금을 순영업소득으로 회수하는 데 걸리는 기간 개념이다. 지분투자액을 쓰는 세전현금흐름승수와 분모·분자를 혼동하지 않아야 한다.", src:"2026-07-09 부동산학개론 순소득승수", conceptKey:"부동산학개론 순소득승수" },
+{ type:"계산", cat:"부동산학개론", q:"지분투자액 4억원, 세전현금수지 5,000만원인 부동산의 세전현금흐름승수는? (다른 조건은 동일)", opts:["10","8","6.4","12.5"], answer:1, calc:{expr:"400000000/50000000",expected:8}, expl:"세전현금흐름승수 = 지분투자액 / 세전현금수지 = 4억 / 5,000만 = 8(배)이다. 대출을 뺀 자기자본 대비 세전현금흐름의 회수기간을 본다. 총투자액을 쓰는 순소득승수와 달리 분자에 '지분'투자액이 온다는 점이 핵심이다.", src:"2026-07-09 부동산학개론 세전현금흐름승수", conceptKey:"부동산학개론 세전현금흐름승수" },
+{ type:"일반", cat:"부동산학개론", q:"감정평가의 기준시점과 절차에 관한 설명으로 <b>옳지 않은</b> 것은?", opts:["기준시점은 원칙적으로 대상물건의 가격조사를 완료한 날짜로 한다.","재조달원가에는 표준적 건설비 외에 재세공과금 등 통상의 부대비용이 포함된다.","일체로 이용되는 물건의 일부라도 특수한 목적이나 합리적 이유가 있으면 그 부분만 감정평가할 수 있다.","감정평가는 어떠한 경우에도 기준시점의 가치형성요인을 실제와 다르게 가정하는 조건을 붙일 수 없다."], answer:3, expl:"법령에 다른 규정이 있거나 의뢰 목적상 필요한 경우에는 조건부 감정평가가 허용되므로 4번이 옳지 않다. 현실과 다른 상정이 필요한 평가 수요가 실제로 있기 때문이다. 기준시점은 가격조사 완료일, 재조달원가의 재세공과금 포함, 부분평가 허용은 옳은 지문이다.", src:"2026-07-04 부동산학개론 감정평가 원칙·기준시점", conceptKey:"부동산학개론 감정평가-조건부평가·기준시점" },
+{ type:"일반", cat:"부동산세법", q:"지방세 징수를 위한 서류의 송달에 관한 설명으로 <b>옳지 않은</b> 것은?", opts:["납세의 고지와 독촉에 관한 서류는 연대납세의무자 중 대표자 1인에게만 송달하면 된다.","서류가 납부기한이 지난 후 도달하거나 도달일부터 납부기한이 7일 이내로 남은 경우, 도달일부터 14일이 지난 날로 납부기한이 연장된다.","공시송달은 서류의 주요 내용을 공고한 날부터 14일이 지나면 송달된 것으로 본다.","주소 또는 영업소가 분명하지 아니한 경우 등에는 공시송달을 할 수 있다."], answer:0, expl:"연대납세의무자에 대한 고지·독촉 서류는 대표자 1인이 아니라 의무자 모두에게 각각 송달해야 하므로 1번이 옳지 않다. 각자가 독립하여 전액 납부의무를 지므로 개별 고지가 필요하기 때문이다. 지연송달 14일 연장·공시송달 14일 의제는 옳은 지문이다.", src:"2026-07-05 부동산세법 서류의 송달", conceptKey:"부동산세법 송달-연대납세의무자 각각" },
+{ type:"조합", cat:"부동산세법", q:"지방세 불복 시 심판청구와 행정소송의 관계에 관한 설명으로 옳은 것을 <b>모두 고른</b> 것은?<br>ㄱ. 지방세에 관한 행정소송은 원칙적으로 심판청구를 거치지 않으면 제기할 수 없다.<br>ㄴ. 이의신청을 거치지 않고 곧바로 심판청구를 할 수도 있다.<br>ㄷ. 통고처분에 대해서도 지방세 불복청구를 할 수 있다.", opts:["ㄱ","ㄴ, ㄷ","ㄱ, ㄴ","ㄱ, ㄴ, ㄷ"], answer:2, expl:"심판청구 전치가 원칙이고 이의신청은 선택이라 ㄱ·ㄴ이 옳다. 통고처분·과태료는 이미 법원 등 더 강한 구제절차가 마련돼 있어 지방세 불복 대상에서 제외되므로 ㄷ은 틀리다. '이의신청 선택, 심판청구 필수'가 축이다.", src:"2026-07-05 부동산세법 불복절차", conceptKey:"부동산세법 불복-심판청구 전치·대상제외" },
+{ type:"일반", cat:"부동산세법", q:"지방세 기한후신고와 가산세 감면에 관한 설명으로 옳은 것은?", opts:["법정신고기한이 지난 후에는 어떠한 경우에도 기한후신고를 할 수 없다.","무신고자가 법정신고기한 경과 후 6개월 이내에 기한후신고를 하면 가산세를 감면받을 수 있다.","지방자치단체장이 과세표준과 세액을 결정할 것을 미리 알고 기한후신고를 한 경우에도 감면을 받는다.","기한후신고를 하면 무신고가산세는 전액 면제된다."], answer:1, expl:"무신고자도 법정신고기한 후 6개월 이내에 기한후신고를 하면 가산세를 감면받으므로 2번이 옳다. 자진 시정을 유도하려는 제도다. 다만 과세관청이 결정할 것을 미리 알고 낸 신고는 감면 대상에서 제외되며, 감면은 전액면제가 아니라는 점이 함정이다.", src:"2026-07-05 부동산세법 기한후신고·가산세 감면", conceptKey:"부동산세법 기한후신고-6개월·미리 안 경우 제외" },
+{ type:"사례", cat:"부동산세법", q:"갑은 지방세 부과처분에 불복하여 이의신청을 하였으나, 법정 결정기간이 지나도록 그 결정통지를 받지 못하였다. 갑에 관한 설명으로 옳은 것은?", opts:["갑은 결정통지를 받을 때까지는 심판청구를 할 수 없다.","갑은 이의신청 결정통지를 받은 날부터 30일 이내에 심판청구를 하여야 한다.","갑은 이의신청을 거쳤으므로 심판청구 없이 곧바로 행정소송을 제기할 수 있다.","갑은 결정통지를 받기 전이라도 심판청구를 할 수 있다."], answer:3, expl:"이의신청 결정통지를 법정기간 내에 받지 못하면 결정통지 전이라도 심판청구를 할 수 있으므로 4번이 옳다. 행정청의 지연으로 납세자의 구제기회가 막히지 않게 한 장치다. 심판청구 기한은 통지를 받은 날부터 90일이고, 행정소송은 심판청구를 거쳐야 한다.", src:"2026-07-05 부동산세법 불복청구 기한", conceptKey:"부동산세법 불복-결정통지 지연 시 심판청구" },
+{ type:"OX", cat:"부동산세법", q:"지방세 서류의 공시송달은 서류의 주요 내용을 공고한 날부터 14일이 지나면 송달된 것으로 본다.", opts:["O","X"], answer:0, expl:"O. 공시송달은 공고일부터 14일이 지나면 송달된 것으로 의제한다. 주소불명 등으로 실제 도달을 확인할 수 없을 때 절차를 진행하기 위한 간주규정이다. 송달지연에 따른 납부기한 연장(14일)과 숫자가 같아 혼동하기 쉽다.", src:"2026-07-05 부동산세법 공시송달", conceptKey:"부동산세법 공시송달-14일 의제" },
+{ type:"OX", cat:"부동산세법", q:"지방세에 관한 불복은 심판청구를 거치지 않고도 곧바로 행정소송을 제기할 수 있다.", opts:["O","X"], answer:1, expl:"X. 지방세는 심판청구를 거치지 않으면 행정소송을 제기할 수 없는 필요적 전치주의가 적용된다. 조세행정의 전문성·대량성 때문에 행정심판을 먼저 거치게 한 것이다. 이의신청은 거치지 않아도 되는 선택 절차라는 점과 대비된다.", src:"2026-07-05 부동산세법 행정소송 전치", conceptKey:"부동산세법 행정소송-필요적 전치" },
+{ type:"일반", cat:"부동산세법", q:"조세채권과 다른 채권 간의 배당순위에 관한 설명으로 <b>옳지 않은</b> 것은?", opts:["일반조세와 피담보채권의 우선순위는 조세의 법정기일과 담보물권 설정일의 선후로 정하며, 법정기일이 앞서면 그 조세가 우선한다.","조세채권 상호간의 배당순위는 담보 → 압류 → 교부청구의 순이다.","재산세·소방분 지역자원시설세 등 당해세는 그 재산에 설정된 담보채권보다 항상 후순위이다.","재산세·지방교육세·소방분 지역자원시설세·종합부동산세는 당해세에 해당한다."], answer:2, expl:"당해세는 그 재산에 부과된 조세로서 담보채권보다 우선하므로, 항상 후순위라고 한 3번이 옳지 않다. 재산 자체에 담세력이 화체(化體)돼 있다고 보기 때문이다. 일반조세는 법정기일·설정일 선후로, 조세 상호간은 담·압·교 순으로 갈린다는 점과 구분해야 한다.", src:"2026-07-05 부동산세법 조세채권 배당순위", conceptKey:"부동산세법 배당순위-당해세 우선·담압교" },
+{ type:"일반", cat:"부동산세법", q:"지방세 법정기일의 판단 기준에 관한 설명으로 옳은 것은?", opts:["신고에 의하여 확정되는 지방세는 그 신고일이 법정기일이 된다.","과세관청의 결정·경정으로 고지한 세액은 납세자가 그 고지서를 받은 날이 법정기일이 된다.","법정기일은 담보물권 설정일보다 언제나 우선한다.","당해세는 법정기일이 존재하지 않는다."], answer:0, expl:"신고납부 세목은 신고일이 법정기일이므로 1번이 옳다. 법정기일은 조세채권이 대외적으로 인식될 수 있는 것으로 보는 기준시점이다. 고지한 세액은 고지서 수령일이 아니라 발송일이 법정기일이며, 법정기일과 담보설정일의 선후로 순위가 갈린다는 점이 함정이다.", src:"2026-07-05 부동산세법 법정기일", conceptKey:"부동산세법 법정기일-신고일·고지서 발송일" },
+{ type:"일반", cat:"민법", q:"의사표시와 그 효력에 관한 설명으로 <b>옳지 않은</b> 것은?", opts:["통정허위표시가 성립하려면 상대방과 서로 짜고 하는 정도에 이르러야 한다.","착오를 이유로 한 취소권은 추인할 수 있는 날부터 10년, 법률행위를 한 날부터 3년 내에 행사하여야 한다.","대리인이 상대방을 기망한 경우 본인이 그 사실을 몰랐더라도 상대방은 사기를 이유로 취소할 수 있다.","의사표시의 상대방이 그 의사표시를 받은 때에 제한능력자인 경우, 표의자는 원칙적으로 그 의사표시로써 대항할 수 없다."], answer:1, expl:"착오 취소권은 추인할 수 있는 날부터 3년, 법률행위를 한 날부터 10년 내에 행사해야 하므로 두 기간을 뒤바꾼 2번이 옳지 않다. 취소권 존속기간은 제척기간이다. 통정허위표시의 통모성, 대리인의 사기, 제한능력자에 대한 의사표시 대항 제한은 옳은 지문이다.", src:"2026-07-06 민법 의사표시 총칙", conceptKey:"민법 착오취소-행사기간 3년·10년" },
+{ type:"일반", cat:"민법", q:"무효인 법률행위의 추인에 관한 설명으로 옳은 것은?", opts:["반사회질서의 법률행위도 당사자가 추인하면 유효로 된다.","토지거래허가를 잠탈할 목적으로 체결된 토지거래계약은 추인하면 소급하여 유효로 된다.","불법조건이 붙은 법률행위는 그 조건만 무효가 되고 나머지 부분은 유효하다.","통정허위표시는 당사자가 그 무효임을 알고 추인하면 그때부터 새로운 법률행위를 한 것으로 볼 수 있다."], answer:3, expl:"통정허위표시는 무효임을 알고 추인하면 그때부터 새로운 행위로 보므로 4번이 옳다. 무효행위의 추인은 소급효 없이 장래를 향해 새 계약을 하는 것이다. 반사회·강행법규 위반·토지거래허가 잠탈행위는 추인해도 무효이고, 불법조건부 행위는 전부 무효라는 점이 함정이다.", src:"2026-07-06 민법 무효·취소·추인", conceptKey:"민법 무효행위 추인-통정허위 장래효" },
+{ type:"조합", cat:"민법", q:"공동소유와 점유의 승계 등에 관한 설명으로 옳은 것을 <b>모두 고른</b> 것은?<br>ㄱ. 합유자의 권리는 합유물 전부에 미친다.<br>ㄴ. 시효완성자의 등기청구권은 소유자의 동의 없이도 양도할 수 있다.<br>ㄷ. 간접점유자는 직접점유자가 목적물을 제3자에게 인도하더라도 간접점유를 잃지 않는다.", opts:["ㄱ, ㄴ","ㄱ, ㄷ","ㄴ, ㄷ","ㄱ, ㄴ, ㄷ"], answer:0, expl:"합유자의 권리는 합유물 전부에 미치고, 시효완성자의 등기청구권은 통상의 채권양도 법리에 따라 소유자 동의 없이 양도되므로 ㄱ·ㄴ이 옳다. 간접점유는 직접점유자를 매개로 성립하므로 직접점유자가 제3자에게 인도하면 소멸해 ㄷ은 틀리다.", src:"2026-07-06 민법 소유권·점유", conceptKey:"민법 공동소유·점유-합유·시효등기청구권·간접점유" },
+{ type:"사례", cat:"민법", q:"갑 소유의 토지와 그 지상 건물 중 건물만을 을이 경매로 취득하여 법정지상권이 성립하였고, 을은 그 건물을 다시 병에게 매도하였다. 이에 관한 설명으로 옳은 것은?", opts:["병은 건물의 소유권이전등기를 마치면 법정지상권도 등기 없이 당연히 취득한다.","을에게 성립한 법정지상권은 건물이 병에게 매도되면 그 즉시 소멸한다.","병이 법정지상권의 이전등기를 갖추지 않은 동안, 토지소유자 갑은 병에게 지료 상당의 부당이득반환을 청구할 수 있다.","병은 토지소유자 갑의 동의가 있어야만 법정지상권을 취득할 수 있다."], answer:2, expl:"법정지상권 있는 건물을 양수해도 지상권은 등기해야 취득하므로, 미등기 상태의 병에게 토지소유자는 지료 상당의 부당이득반환을 청구할 수 있어 3번이 옳다. 건물 양수인은 등기 전까지 지상권을 대항하지 못하기 때문이다. 건물 이전등기만으로 지상권까지 당연취득한다는 1번이 대표적 함정이다.", src:"2026-07-06 민법 법정지상권", conceptKey:"민법 법정지상권-건물양수인 등기·부당이득" },
+{ type:"일반", cat:"민법", q:"저당권의 효력과 법정지상권에 관한 설명으로 <b>옳지 않은</b> 것은?", opts:["저당권은 원칙적으로 그 저당권의 실행비용도 담보한다.","근저당권의 실행비용은 채권최고액에 포함되어 그 한도 내에서만 우선변제된다.","나대지에 저당권이 설정된 경우, 저당권자가 동의하였더라도 그 후 신축된 건물을 위한 법정지상권은 성립하지 않는다.","일괄경매를 청구하려면 토지와 그 지상 건물의 소유자가 동일하여야 한다."], answer:1, expl:"근저당권의 실행비용은 채권최고액에 포함되지 않고 최고액과 별도로 담보되므로 2번이 옳지 않다. 채권최고액은 원본·이자·지연손해금을 아우르는 한도일 뿐 실행비용까지 가두지 않기 때문이다. 저당권의 실행비용 담보, 나대지 법정지상권 불성립, 일괄경매의 소유자 동일 요건은 옳은 지문이다.", src:"2026-07-06 민법 담보물권", conceptKey:"민법 저당권-근저당 실행비용·일괄경매" },
+{ type:"조합", cat:"민법", q:"계약의 성립과 효력에 관한 설명으로 옳은 것을 <b>모두 고른</b> 것은?<br>ㄱ. 계약금은 다른 약정이 없으면 해약금으로 추정된다.<br>ㄴ. 정기행위는 이행하지 않았다는 것만으로 해제되는 것이 아니라 해제의 의사표시가 있어야 한다.<br>ㄷ. 제3자를 위한 계약의 당사자는 요약자와 낙약자이다.", opts:["ㄱ, ㄴ","ㄴ, ㄷ","ㄱ, ㄷ","ㄱ, ㄴ, ㄷ"], answer:3, expl:"ㄱ·ㄴ·ㄷ 모두 옳다. 계약금은 해약금으로 추정되고, 정기행위도 당연해제가 아니라 해제 의사표시가 필요하며, 제3자를 위한 계약의 당사자는 요약자·낙약자이고 수익자는 당사자가 아니다. 수익자를 당사자로 오인하게 하는 것이 함정이다.", src:"2026-07-06 민법 계약 총칙", conceptKey:"민법 계약-해약금추정·정기행위·제3자를 위한 계약" },
+{ type:"일반", cat:"민법", q:"임대차와 명의신탁에 관한 설명으로 <b>옳지 않은</b> 것은?", opts:["임대차가 묵시적으로 갱신된 경우, 전(前)임대차에 대해 제3자가 제공한 담보는 원칙적으로 소멸한다.","민법상 임차기간을 영구로 정한 임대차약정도 유효하다.","명의신탁에서 제3자는 선의인 경우에만 보호되고 악의이면 보호되지 않는다.","차임증액청구에 따라 법원이 증액을 결정하면 그 효력은 증액청구 시로 소급한다."], answer:2, expl:"명의신탁에서 제3자는 악의라도 보호되므로 3번이 옳지 않다. 등기를 신뢰한 거래안전을 두텁게 보호하려는 취지로, 비진의·통정허위표시의 선의 제3자 보호와 구별된다. 묵시갱신 시 제3자 담보 소멸, 영구 임대차 유효, 차임증액 소급은 옳은 지문이다.", src:"2026-07-06 민법 임대차·명의신탁", conceptKey:"민법 명의신탁-제3자 악의 보호" },
+{ type:"OX", cat:"민법", q:"집합건물 시공자가 전유부분에 대하여 지는 담보책임은 사용승인일이 아니라 구분소유자에게 인도한 날부터 기산한다.", opts:["O","X"], answer:0, expl:"O. 전유부분에 대한 시공자의 담보책임 기산점은 사용승인일이 아니라 구분소유자에게 인도한 날이다. 실제로 하자를 관리·확인할 수 있게 된 시점을 기준으로 삼기 위함이다. 사용승인일로 앞당겨 기산점을 오인하게 하는 것이 함정이다.", src:"2026-07-06 민법 집합건물", conceptKey:"민법 집합건물-시공자 담보책임 기산점" },
+{ type:"일반", cat:"부동산공법", q:"🔁 개발행위허가의 제한과 절차에 관한 설명으로 <b>옳지 않은</b> 것은?", opts:["국토교통부장관은 개발행위허가를 제한하려면 중앙도시계획위원회의 심의를 거쳐야 한다.","개발행위허가의 제한은 한 번에 최대 5년까지만 할 수 있다.","허가받은 사업면적을 5% 범위에서 축소하는 것은 경미한 변경으로 통지만 하면 된다.","개발행위허가 신청이 있으면 심의·협의 기간을 포함하여 15일 이내에 허가 또는 불허가 처분을 하여야 한다."], answer:3, expl:"개발행위허가의 처분기한 15일에는 관계기관 협의·심의에 걸린 기간이 산입되지 않으므로, 이를 포함한다고 한 4번이 옳지 않다. 행정청이 통제할 수 없는 협의 지연을 처분기한에서 빼주는 것이다. 제한 시 중앙도시계획위 심의, 최대 5년 제한, 5% 축소 경미변경은 옳은 지문이다.", src:"2026-07-07 부동산공법 개발행위허가 제한 (재도전)", conceptKey:"부동산공법 개발행위허가 제한", retryOf:"부동산공법 개발행위허가 제한" },
+{ type:"일반", cat:"부동산공법", q:"🔁 국토의 계획 및 이용에 관한 법률상 공간재구조화계획에 관한 설명으로 옳은 것은?", opts:["공간재구조화계획은 광역도시계획의 하위 계획으로서 도(道) 전역을 대상으로 수립하는 계획이다.","공간재구조화계획은 도시혁신구역·복합용도구역 등 용도구역의 효율적이고 계획적인 관리를 위하여 수립하는 계획이다.","공간재구조화계획은 지구단위계획으로 대체할 수 있어 별도로 수립할 필요가 없다.","공간재구조화계획은 개발제한구역의 지정·해제만을 목적으로 하는 계획이다."], answer:1, expl:"공간재구조화계획은 도시혁신구역·복합용도구역 등 용도구역을 효율적·계획적으로 관리하기 위해 수립하는 계획이므로 2번이 옳다. 토지의 용도·밀도를 유연하게 재편하려는 최근 도입 제도다. 광역도시계획의 하위·지구단위계획으로 대체·개발제한구역 전용이라는 서술은 모두 틀리다.", src:"2026-07-07 부동산공법 공간재구조화계획 (재도전)", conceptKey:"부동산공법 공간재구조화계획", retryOf:"부동산공법 공간재구조화계획" },
+{ type:"일반", cat:"부동산공법", q:"도시·군관리계획 입안 시 기초조사 등의 생략에 관한 설명으로 <b>옳지 않은</b> 것은?", opts:["도시·군관리계획 입안 시 기초조사·환경성 검토·토지적성평가는 어떠한 경우에도 생략할 수 없다.","지구단위계획구역이 상업지역처럼 도시화가 완료된 지역이면 기초조사를 전부 생략할 수 있다.","행정청이 개발하는 경우에는 환경성 검토와 토지적성평가 중 토지적성평가를 생략할 수 있다.","개발제한구역 안에 기반시설을 설치하는 경우에는 토지적성평가는 생략하고 환경성 검토만 하여 도시·군관리계획을 입안할 수 있다."], answer:0, expl:"도시화가 완료된 지역이거나 행정청 개발 등 일정 요건에서는 기초조사 등을 생략할 수 있으므로, 어떤 경우에도 생략 불가라고 한 1번이 옳지 않다. 토지적성평가는 주체의 자의성을 통제하는 절차라 행정청이면 생략, 환경성 검토는 행위 결과를 보는 절차라 생략 요건이 다르다. 나머지는 옳은 지문이다.", src:"2026-07-07 부동산공법 기초조사 생략", conceptKey:"부동산공법 기초조사 생략-도시화·행정청·개발제한구역" },
+{ type:"조합", cat:"부동산공법", q:"도시·군계획시설의 실효와 해제에 관한 설명으로 옳은 것을 <b>모두 고른</b> 것은?<br>ㄱ. 결정 고시일부터 10년 이내에 사업이 시행되지 않는 등의 경우 토지소유자는 그 시설결정의 해제를 위한 입안을 신청할 수 있다.<br>ㄴ. 도시·군계획시설결정은 고시일부터 20년이 지날 때까지 사업이 시행되지 않으면 효력을 잃고, 지체 없이 그 사실을 고시하여야 한다.<br>ㄷ. 해제를 신청받은 도지사는 특별한 사유가 없으면 신청받은 날부터 6개월 이내에 해제 결정을 하여야 한다.", opts:["ㄱ","ㄴ, ㄷ","ㄱ, ㄴ","ㄱ, ㄴ, ㄷ"], answer:2, expl:"10년 내 미시행 시 해제 입안 신청, 20년 경과 시 실효·고시라는 ㄱ·ㄴ이 옳다. 해제 신청을 받은 도지사의 해제 결정기한은 6개월이 아니라 1년이므로 ㄷ은 틀리다. 10년(해제 입안)·20년(실효)·1년(해제 결정)의 숫자를 구분해야 한다.", src:"2026-07-07 부동산공법 도시군계획시설 실효·해제", conceptKey:"부동산공법 시설 실효해제-10년·20년·1년" },
+{ type:"사례", cat:"부동산공법", q:"갑은 도시지역 외의 지역에 있는 자신의 토지를 지구단위계획구역으로 지정받고자 한다. 이에 관한 설명으로 옳은 것은?", opts:["지정하려는 구역 면적의 30% 이상이 계획관리지역이면 지정할 수 있다.","계획관리지역 외의 지역이라도 지구단위계획으로 아파트·연립주택 건축을 위한 완화를 적용할 수 있다.","도시지역 외에서도 지구단위계획으로 건축물의 높이제한을 지구단위계획으로 정한 기준의 120% 이내의 범위에서 완화하여 적용할 수 있다.","도시지역 외를 지구단위계획구역으로 지정하려면 그 구역 면적의 50% 이상이 계획관리지역이어야 한다."], answer:3, expl:"도시지역 외 지구단위계획구역 지정은 면적의 50% 이상이 계획관리지역이어야 하므로 4번이 옳다. 난개발 방지를 위해 계획적 관리가 가능한 지역의 비중을 요구하는 것이다. 높이 120% 완화는 도시지역 내에서만 가능하고, 계획관리지역 외에서는 아파트·연립 완화가 불가하다는 점이 함정이다.", src:"2026-07-07 부동산공법 지구단위계획(도시지역 외)", conceptKey:"부동산공법 지구단위-도시지역외 50% 계획관리지역" },
+{ type:"조합", cat:"부동산공법", q:"개발행위허가와 그 절차에 관한 설명으로 옳은 것을 <b>모두 고른</b> 것은?<br>ㄱ. 허가받은 사업면적을 5% 범위에서 축소하는 것은 경미한 변경으로 통지만 하면 된다.<br>ㄴ. 토지분할은 준공검사 대상에서 제외되나 개발행위허가는 받아야 한다.<br>ㄷ. 개발행위허가의 제한은 한 번에 최대 3년까지만 할 수 있다.", opts:["ㄱ","ㄱ, ㄴ","ㄴ, ㄷ","ㄱ, ㄴ, ㄷ"], answer:1, expl:"5% 축소는 경미한 변경으로 통지만 하면 되고, 토지분할은 준공검사 대상은 아니나 허가는 받아야 하므로 ㄱ·ㄴ이 옳다. 개발행위허가 제한은 최대 3년이 아니라 5년까지 가능해 ㄷ은 틀리다. 토목공사 결과물이 없는 분할은 준공검사에서 빠진다는 논리가 핵심이다.", src:"2026-07-07 부동산공법 개발행위허가 절차", conceptKey:"부동산공법 개발행위-경미변경·토지분할·제한기간" },
+{ type:"일반", cat:"부동산공법", q:"용도지구 중 복합개발진흥지구와 특정용도제한지구에 관한 설명으로 <b>옳지 않은</b> 것은?", opts:["복합개발진흥지구는 주거·공업·유통물류·관광휴양 기능 중 하나의 기능을 중심으로 개발·정비할 필요가 있는 지구이다.","특정용도제한지구는 주거·교육환경 보호나 청소년 보호를 위해 특정 시설의 입지를 제한하는 지구이다.","하나의 필지에 둘 이상의 용도지구가 중복하여 지정될 수 있다.","용도지구는 용도지역의 제한을 강화하거나 완화하여 적용함으로써 그 기능을 증진시키기 위해 지정한다."], answer:0, expl:"복합개발진흥지구는 하나가 아니라 둘 이상의 기능을 중심으로 개발·정비할 필요가 있는 지구이므로 1번이 옳지 않다. 이름의 '복합'이 복수 기능의 결합을 뜻하기 때문이다. 특정용도제한지구의 취지, 용도지구의 중복 지정, 용도지역 제한의 강화·완화 기능은 옳은 지문이다.", src:"2026-07-07 부동산공법 용도지구", conceptKey:"부동산공법 용도지구-복합개발진흥지구 2이상 기능" },
+{ type:"OX", cat:"부동산공법", q:"도시·군계획시설사업의 시행자인 시·도지사는 그 사업을 준공한 경우에도 별도로 준공검사를 받지 않는다.", opts:["O","X"], answer:0, expl:"O. 시·도지사가 시행자인 경우에는 스스로가 준공검사권자이므로 별도로 누구에게 준공검사를 받을 필요가 없다. 검사 주체와 피검사 주체가 같아지기 때문이다. 시행자가 시장·군수 등인 경우에는 준공검사를 받아야 한다는 점과 구분해야 한다.", src:"2026-07-07 부동산공법 도시군계획시설 준공검사", conceptKey:"부동산공법 준공검사-시도지사 시행자" },
+/*__QUESTIONS_END__*/
+];
+
+/*__BUILD_PAYLOAD_START__*/
+// ── 순수 함수 레이어: DOM 없이 채점 결과(payload v2)를 만든다. node로 단위테스트 가능.
+function conceptFromSrc(src){
+  return String(src||"").replace(/^\s*\d{4}-\d{2}-\d{2}\s*/,"").replace(/\s*\(재도전\)\s*$/,"").trim();
+}
+function buildPayload(questions, sel, quizDate, nowIso, schemaVersion){
+  let score = 0; const results = [], wrong = [];
+  questions.forEach((item, qi)=>{
+    const isCorrect = sel[qi] === item.answer;
+    if(isCorrect) score++;
+    const ck = item.conceptKey || conceptFromSrc(item.src);
+    const isRetry = !!item.retryOf || /\(재도전\)/.test(item.src||"") || String(item.q||"").indexOf("🔁") >= 0;
+    const base = {
+      id: quizDate + "-q" + (qi+1), cat: item.cat, type: item.type, q: item.q,
+      options: item.opts, myAnswer: item.opts[sel[qi]], correct: item.opts[item.answer],
+      expl: item.expl, src: item.src
+    };
+    const r = Object.assign({}, base, {
+      conceptKey: ck,
+      retryOf: isRetry ? (item.retryOf || ck) : null,
+      correctAnswered: isCorrect
+    });
+    if(item.calc) r.calc = item.calc;
+    results.push(r);
+    if(!isCorrect) wrong.push(base);   // v1 하위호환 필드 (기존 수거 파이프라인용)
+  });
+  return { score: score, wrong: wrong, payload: {
+    schemaVersion: schemaVersion, subject: "공인중개사", date: quizDate, quizId: quizDate,
+    score: score, total: questions.length, wrongCount: wrong.length,
+    results: results, wrong: wrong, generatedAt: nowIso
+  }};
+}
+/*__BUILD_PAYLOAD_END__*/
+
+const form = document.getElementById('quiz');
+const selected = new Array(QUESTIONS.length).fill(null);
+let graded = false;
+let LAST_PAYLOAD = null;
+let lastCat = null;
+
+document.getElementById('total').textContent = ' / ' + QUESTIONS.length;
+
+QUESTIONS.forEach((item, qi)=>{
+  if(item.cat !== lastCat){
+    const s = document.createElement('div');
+    s.className = 'sec';
+    s.textContent = '▍' + item.cat;
+    form.appendChild(s);
+    lastCat = item.cat;
+  }
+  const card = document.createElement('div');
+  card.className = 'q';
+  const isOX = item.type === 'OX';
+  card.innerHTML = `
+    <div class="qhead">
+      <span class="qno">${qi+1}</span>
+      <span class="qtype">${item.type}</span>
+      <span class="qcat">${item.cat}</span>
+    </div>
+    <div class="qtext">${item.q}</div>
+    <div class="opts ${isOX?'ox':''}" data-q="${qi}"></div>
+    <div class="expl" id="expl-${qi}"></div>`;
+  const optsEl = card.querySelector('.opts');
+  item.opts.forEach((o, oi)=>{
+    const el = document.createElement('div');
+    el.className = 'opt';
+    el.dataset.q = qi; el.dataset.o = oi;
+    el.innerHTML = isOX
+      ? `<span>${o}</span>`
+      : `<span class="mk">${String.fromCharCode(65+oi)}</span><span>${o}</span>`;
+    el.addEventListener('click', ()=>{
+      if(graded) return;
+      selected[qi] = oi;
+      optsEl.querySelectorAll('.opt').forEach(x=>x.classList.remove('sel'));
+      el.classList.add('sel');
+      updateProgress();
+    });
+    // 눈동자(👁) 소거 버튼 — 확실히 아닌 보기를 희미하게(다시 누르면 복구). 채점·선택·저장에 영향 없음.
+    if(!isOX){
+      const eye = document.createElement('button');
+      eye.type = 'button';
+      eye.className = 'eye';
+      eye.textContent = '👁';
+      eye.title = '확실히 아닌 보기 희미하게 (다시 누르면 복구)';
+      eye.setAttribute('aria-label', '이 보기를 후보에서 제외');
+      eye.addEventListener('click', (ev)=>{
+        ev.stopPropagation();
+        if(graded) return;
+        el.classList.toggle('ruled');
+      });
+      el.appendChild(eye);
+    }
+    optsEl.appendChild(el);
+  });
+  form.appendChild(card);
+});
+
+function updateProgress(){
+  const done = selected.filter(s=>s!==null).length;
+  document.getElementById('pcount').textContent = `${done} / ${QUESTIONS.length} 선택`;
+  document.getElementById('pbar').style.width = (done/QUESTIONS.length*100)+'%';
+  document.getElementById('submitBtn').disabled = done !== QUESTIONS.length;
+}
+
+const btn = document.getElementById('submitBtn');
+btn.addEventListener('click', ()=>{ if(!graded){ grade(); } else { location.reload(); } });
+
+document.getElementById('copyBtn').addEventListener('click', ()=>{
+  if(!LAST_PAYLOAD) return;
+  const txt = JSON.stringify(LAST_PAYLOAD, null, 2);
+  const done = ()=>{ document.getElementById('dlnote').textContent = "📋 복사 완료 — velog-posts/공인중개사/claude_ox_오답/_inbox/에 붙여넣어 저장해도 된다"; };
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(txt).then(done).catch(()=>fallbackCopy(txt, done));
+  } else { fallbackCopy(txt, done); }
+});
+function fallbackCopy(txt, done){
+  const ta = document.createElement('textarea');
+  ta.value = txt; document.body.appendChild(ta); ta.select();
+  try{ document.execCommand('copy'); done(); }catch(e){}
+  ta.remove();
+}
+
+function grade(){
+  graded = true;
+  const built = buildPayload(QUESTIONS, selected, QUIZ_DATE, new Date().toISOString(), SCHEMA_VERSION);
+  LAST_PAYLOAD = built.payload;
+  QUESTIONS.forEach((item, qi)=>{
+    const opts = document.querySelectorAll(`.opt[data-q="${qi}"]`);
+    opts.forEach((el, oi)=>{
+      el.style.cursor='default';
+      el.classList.remove('ruled');           // 채점 시 소거 표시 해제(정답이 희미하게 남지 않도록)
+      const eye = el.querySelector('.eye');    // 눈동자 버튼 제거 — 채점 후엔 불필요
+      if(eye) eye.remove();
+      if(oi === item.answer) el.classList.add('correct');
+      if(oi === selected[qi] && oi !== item.answer) el.classList.add('wrong');
+    });
+    const correct = selected[qi] === item.answer;
+    const ex = document.getElementById('expl-'+qi);
+    ex.innerHTML = `<span class="verdict" style="color:${correct?'var(--ok)':'var(--no)'}">${correct?'정답!':'오답'}</span>${item.expl}<span class="src">📄 출처: ${item.src}</span>`;
+    ex.classList.add('show');
+  });
+  const r = document.getElementById('result');
+  document.getElementById('score').textContent = built.score;
+  document.getElementById('rmsg').textContent = msgFor(built.score);
+  r.classList.add('show');
+  btn.textContent = '🔄 다시 풀기';
+  btn.classList.add('retry');
+  document.getElementById('copyBtn').classList.add('show');
+
+  // 결과 자동 다운로드 (월요일 수거·원장 갱신이 읽는 파일)
+  downloadResult(built.payload);
+
+  r.scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+function downloadResult(payload){
+  try{
+    const blob = new Blob([JSON.stringify(payload,null,2)], {type:"application/json"});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `공인중개사_오답_${QUIZ_DATE}.json`;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url), 1500);
+    document.getElementById('dlnote').textContent =
+      payload.wrongCount>0 ? `💾 결과 저장됨(오답 ${payload.wrongCount}개) — 다운로드 폴더 확인` : "💾 만점 기록 저장됨";
+  }catch(e){
+    document.getElementById('dlnote').textContent = "⚠️ 자동 저장 실패 — 아래 '결과 JSON 복사'를 눌러 수동 저장";
+  }
+}
+
+function msgFor(s){
+  const t = QUESTIONS.length;
+  const r = s/t;
+  if(s===t)   return "만점. 오늘 등록증 발급해도 되겠는데요? 🏆";
+  if(r>=0.8)  return "합격권. 틀린 거 해설만 한 번 더 보면 완벽합니다.";
+  if(r>=0.6)  return "절반은 넘었어요. 오답 노트행 직행하는 개념들이 보이네요.";
+  if(r>=0.4)  return "아직 흔들리는 개념이 있어요. 해설 정독하고 내일 재도전!";
+  return "괜찮아요, 회독이 쌓이면 올라갑니다. 해설부터 차근차근.";
+}
+</script>
+</body>
+</html>
