@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<!-- 민법 전범위 모의고사 · 최근 1달(2026-06-20~07-20) 정리본 5편 기반 · 데일리퀴즈 정본 템플릿 v2.1 채점엔진 재사용 -->
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>⚖️ 민법 전범위 모의고사 · 2026-07-20</title>
+<style>
+  :root{
+    --bg:#0f1115; --card:#191c23; --card2:#20242d; --line:#2c313b;
+    --txt:#e7e9ee; --sub:#9aa3b2; --accent:#ffd24a; --accent2:#7c9cff;
+    --ok:#34d399; --no:#f87171; --okbg:#10261d; --nobg:#2a1414;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);
+    font-family:'Pretendard','Apple SD Gothic Neo',system-ui,-apple-system,sans-serif;
+    line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:760px;margin:0 auto;padding:32px 20px 80px}
+  header{margin-bottom:24px}
+  .eyebrow{color:var(--accent);font-weight:700;font-size:14px;letter-spacing:.04em}
+  h1{font-size:28px;margin:6px 0 4px;font-weight:800}
+  .meta{color:var(--sub);font-size:14px}
+  .tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px}
+  .tag{background:var(--card2);border:1px solid var(--line);color:var(--sub);
+    padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600}
+  .bar{position:sticky;top:0;z-index:5;background:rgba(15,17,21,.88);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--line);
+    padding:12px 0;margin:18px 0 24px}
+  .progress{height:8px;background:var(--card2);border-radius:999px;overflow:hidden}
+  .progress>i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));
+    border-radius:999px;transition:width .35s ease}
+  .pmeta{display:flex;justify-content:space-between;font-size:12.5px;color:var(--sub);margin-bottom:7px}
+  .sec{font-size:13px;font-weight:800;color:var(--accent2);margin:26px 0 10px;letter-spacing:.02em;
+    border-top:1px dashed var(--line);padding-top:18px}
+  .sec:first-of-type{border-top:none;padding-top:0}
+  .q{background:var(--card);border:1px solid var(--line);border-radius:16px;
+    padding:18px 18px 16px;margin-bottom:14px}
+  .qhead{display:flex;align-items:center;gap:9px;margin-bottom:11px}
+  .qno{background:var(--accent);color:#1a1a1a;font-weight:800;font-size:13px;
+    width:26px;height:26px;border-radius:8px;display:grid;place-items:center;flex:0 0 auto}
+  .qtype{font-size:11.5px;font-weight:700;color:var(--accent2);border:1px solid var(--accent2);
+    padding:1px 8px;border-radius:999px}
+  .qcat{font-size:12px;color:var(--sub);margin-left:auto}
+  .qtext{font-size:16px;font-weight:600;margin:2px 0 14px}
+  .opts{display:flex;flex-direction:column;gap:8px}
+  .opt{display:flex;align-items:center;gap:11px;padding:11px 13px;border:1px solid var(--line);
+    border-radius:11px;cursor:pointer;background:var(--card2);transition:.15s;user-select:none}
+  .opt:hover{border-color:var(--accent2)}
+  .opt.sel{border-color:var(--accent);background:#26261a}
+  .opt .mk{width:22px;height:22px;border-radius:50%;border:2px solid var(--line);flex:0 0 auto;
+    display:grid;place-items:center;font-size:12px;font-weight:800}
+  .opt.sel .mk{border-color:var(--accent);background:var(--accent);color:#1a1a1a}
+  .opt .eye{margin-left:auto;flex:0 0 auto;width:30px;height:30px;padding:0;border-radius:8px;
+    display:grid;place-items:center;font-size:15px;line-height:1;background:transparent;
+    border:1px solid transparent;color:var(--sub);opacity:.4;cursor:pointer;transition:.15s}
+  .opt .eye:hover{opacity:1;background:var(--card);border-color:var(--line)}
+  .opt.ruled{opacity:.42;background:var(--card)}
+  .opt.ruled span:not(.mk){text-decoration:line-through;text-decoration-color:var(--no)}
+  .opt.ruled .eye{opacity:.9;color:var(--no)}
+  .ox{flex-direction:row;gap:10px}
+  .ox .opt{flex:1;justify-content:center;font-size:18px;font-weight:800}
+  .opt.correct{border-color:var(--ok);background:var(--okbg)}
+  .opt.correct .mk{border-color:var(--ok);background:var(--ok);color:#06281c}
+  .opt.wrong{border-color:var(--no);background:var(--nobg)}
+  .opt.wrong .mk{border-color:var(--no);background:var(--no);color:#2a0d0d}
+  .expl{margin-top:12px;padding:12px 14px;border-radius:11px;background:var(--card2);
+    border-left:3px solid var(--accent2);font-size:13.5px;color:#d4d9e2;display:none}
+  .expl.show{display:block;animation:fade .3s ease}
+  .expl .verdict{font-weight:800;margin-right:6px}
+  .expl .src{display:block;margin-top:7px;color:var(--sub);font-size:12px}
+  @keyframes fade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+  .submit{width:100%;padding:16px;border:none;border-radius:14px;font-size:17px;font-weight:800;
+    background:linear-gradient(90deg,var(--accent),#ffb347);color:#1a1a1a;cursor:pointer;margin-top:10px}
+  .submit:disabled{opacity:.45;cursor:not-allowed}
+  .submit.retry{background:var(--card2);color:var(--txt);border:1px solid var(--line)}
+  #result{display:none;text-align:center;background:var(--card);border:1px solid var(--line);
+    border-radius:18px;padding:28px 20px;margin-bottom:18px}
+  #result.show{display:block;animation:fade .4s ease}
+  .ring{font-size:46px;font-weight:900;margin:4px 0}
+  .ring small{font-size:18px;color:var(--sub);font-weight:700}
+  #rmsg{color:var(--sub);font-size:15px;margin-top:4px}
+  #catbreak{font-size:13px;color:var(--sub);margin-top:12px;line-height:1.9}
+  #dlnote{font-size:12.5px;color:var(--accent);margin-top:12px}
+  .copybtn{display:none;margin-top:12px;padding:10px 16px;border-radius:10px;border:1px solid var(--line);
+    background:var(--card2);color:var(--txt);font-weight:700;cursor:pointer;font-size:13px}
+  .copybtn.show{display:inline-block}
+  .foot{text-align:center;margin-top:30px;color:var(--sub);font-size:12.5px;line-height:1.8}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">MOCK EXAM · 공인중개사 민법</div>
+    <h1>민법 전범위 모의고사</h1>
+    <div class="meta">2026년 7월 20일 · 최근 1달 정리본 5편 기반 · 전범위 실전 40문항</div>
+    <div class="tags"><span class="tag">🔥 심화</span><span class="tag">📝 실전 40문항</span><span class="tag">🧩 4지선다·조합·사례·OX</span><span class="tag">📚 민법총칙</span><span class="tag">🏠 물권법</span><span class="tag">🤝 계약법</span><span class="tag">⚖️ 민사특별법</span></div>
+  </header>
+
+  <div class="bar">
+    <div class="pmeta"><span id="pcount">0 / 0 선택</span><span>제출 시 결과가 자동 저장됩니다</span></div>
+    <div class="progress"><i id="pbar"></i></div>
+  </div>
+
+  <div id="result">
+    <div class="ring"><span id="score">0</span><small id="total"> / 0</small></div>
+    <div id="rmsg"></div>
+    <div id="catbreak"></div>
+    <div id="dlnote"></div>
+    <button class="copybtn" id="copyBtn">📋 결과 JSON 복사 (다운로드 실패 대비)</button>
+  </div>
+
+  <form id="quiz"></form>
+
+  <button class="submit" id="submitBtn" disabled>제출하고 채점하기</button>
+
+  <div class="foot">
+    최근 1달(6/20~7/20) 민법 정리본 5편으로 구성한 전범위 실전 세트입니다.<br>
+    제출하면 점수·과목별 정답률·해설이 표시되고, 오답은 JSON으로 저장할 수 있습니다.
+  </div>
+</div>
+
+<script>
+const SCHEMA_VERSION = 2;
+const QUIZ_DATE = "2026-07-20";
+const QUESTIONS = [
+/*__QUESTIONS_START__*/
+// ═══════════════ 민법총칙 (12) ═══════════════
+{ type:"일반", cat:"민법총칙", conceptKey:"반사회질서-104는 103의 예시",
+  q:"반사회질서의 법률행위(제103조)에 관한 설명으로 <b>옳지 않은</b> 것은?",
+  opts:[
+    "도박채무의 변제를 위해 채무자로부터 부동산 처분을 위임받은 도박채권자가, 그 사정을 모르는 제3자와 체결한 매매계약은 반사회적 법률행위가 아니다.",
+    "소송에서 사실대로 증언해 줄 것을 조건으로 통상 용인되는 수준을 초과하는 대가를 약정한 경우 반사회적 법률행위에 해당한다.",
+    "반사회질서로 무효인 법률행위는 절대적 무효이므로 선의의 제3자에게도 무효를 주장할 수 있다.",
+    "불공정한 법률행위(제104조)의 요건을 갖추지 못한 법률행위는 반사회질서 행위가 될 수 없다."],
+  answer:3,
+  expl:"불공정한 법률행위의 요건(제104조)을 갖추지 못했더라도 반사회질서 행위(제103조)가 될 수 있고, 대가 없는 증여가 그 예다. → 제104조는 제103조의 예시적 규정이어서 둘은 포함관계다. 함정: '104조 요건 미충족 = 103조도 불성립'으로 엮으면 오답.",
+  src:"2026-07-13 반사회질서 법률행위" },
+
+{ type:"사례", cat:"민법총칙", conceptKey:"이중매매-적극가담 요건",
+  q:"甲은 자신의 토지를 乙에게 매도하고 중도금까지 받았는데, 丙이 이 사정을 알고 甲에게 적극 요청하여 다시 그 토지를 매수한 뒤 소유권이전등기를 마쳤다. 옳은 것은?",
+  opts:[
+    "丙이 甲의 배임행위에 적극 가담한 이상, 甲·丙 사이의 매매는 반사회적 법률행위로서 무효다.",
+    "丙이 단순히 이중매매 사실을 알고 있었다면 그것만으로 甲·丙의 매매는 무효가 된다.",
+    "乙은 甲을 대위하지 않고 직접 丙에게 소유권이전등기의 말소를 청구할 수 있다.",
+    "乙은 丙에 대하여 채권자취소권을 행사하여 그 등기를 말소시킬 수 있다."],
+  answer:0,
+  expl:"이중매매가 제103조로 무효가 되려면 매도인의 배임행위에 제2매수인이 적극 가담해야 한다. → 단순히 이중매매 사실을 아는 정도(악의)로는 부족하다. 함정: '중도금 지급 전이면 이중매매 불성립'은 형법상 배임죄 법리일 뿐 민사 제103조의 요건이 아니다.",
+  src:"2026-07-13 반사회질서 이중매매" },
+
+{ type:"일반", cat:"민법총칙", conceptKey:"비진의표시-알고하면 비진의",
+  q:"진의 아닌 의사표시(비진의표시, 제107조)에 관한 설명으로 옳은 것은?",
+  opts:[
+    "표의자가 의사와 표시의 불일치를 알지 못하고 한 경우에도, 그 부지에 과실이 없으면 비진의표시로서 유효하다.",
+    "대출절차상 편의를 위해 명의를 빌려준 자가 자신을 주채무자로 하는 대출계약을 체결한 경우, 그 의사표시는 비진의표시에 해당한다.",
+    "비진의표시는 표의자가 진의 아님을 스스로 알고서 한 경우에 성립하며, 알지 못하고 했다면 착오의 문제가 될 뿐이다.",
+    "상대방이 표의자의 진의 아님을 알 수 있었던 경우에도 비진의표시는 언제나 유효하다."],
+  answer:2,
+  expl:"비진의표시는 표의자가 의사와 표시의 불일치를 '알고' 한 경우에만 성립하고, 모르고 했다면 착오(제109조)의 문제가 된다. → '알고 하면 비진의, 모르고 하면 착오'가 갈림길. 함정: 명의대여 대출은 명의인이 스스로 채무를 부담할 의사가 있으므로 비진의표시가 아니다.",
+  src:"2026-07-13 비진의표시" },
+
+{ type:"조합", cat:"민법총칙", conceptKey:"통정허위-제3자 판별",
+  q:"통정허위표시(제108조)에서 제2항의 보호받는 '제3자'에 해당하는 것을 모두 고른 것은?<br>ㄱ. 파산관재인(총파산채권자가 악의가 아닌 경우)<br>ㄴ. 가장양수인으로부터 추심을 위하여 채권을 양수한 자<br>ㄷ. 가장매매의 매수인으로부터 그 목적물에 저당권을 취득한 자",
+  opts:["ㄱ, ㄴ","ㄱ, ㄷ","ㄴ, ㄷ","ㄱ, ㄴ, ㄷ"],
+  answer:1,
+  expl:"파산관재인은 총파산채권자를 기준으로 선의를 판단해 제3자로 보호되고(ㄱ), 가장매매 목적물에 새로 저당권을 취득한 자도 새로운 이해관계를 맺은 제3자다(ㄷ). → 판별기준은 '가짜 외형 위에 새로운 법률상 이해관계를 맺었는가'. 함정: 추심을 위해 채권을 양수한 자(ㄴ)는 새 이해관계인이 아니어서 제3자가 아니다.",
+  src:"2026-07-13 통정허위표시 제3자" },
+
+{ type:"OX", cat:"민법총칙", conceptKey:"통정허위-채권자취소 대상",
+  q:"통정허위표시로 이루어진 재산권 처분행위는 채권자취소권(제406조)의 대상이 될 수 있다.",
+  opts:["O","X"],
+  answer:0,
+  expl:"O. 통정허위표시는 무효이지만, 채권자를 해하는 재산권 처분행위로서 채권자취소권의 대상이 될 수 있다. → 무효와 사해행위 취소는 다른 층위여서 병존할 수 있다. 함정: 특정물채권만 문제되는 이중매매에서는 채권자취소권이 나올 여지가 없다는 점과 구별.",
+  src:"2026-07-13 통정허위표시 채권자취소" },
+
+{ type:"일반", cat:"민법총칙", conceptKey:"착오-중과실 입증책임",
+  q:"착오로 인한 의사표시(제109조)에 관한 설명으로 <b>옳지 않은</b> 것은?",
+  opts:[
+    "법률에 관한 착오라도 그것이 법률행위 내용의 중요부분에 해당하면 취소할 수 있다.",
+    "착오를 이유로 취소하려는 표의자는, 착오가 의사표시에 결정적 영향을 미쳤다는 점을 증명해야 한다.",
+    "표의자에게 중대한 과실이 있다는 점은, 착오를 이유로 취소를 주장하는 표의자 스스로 증명해야 한다.",
+    "착오를 이유로 의사표시가 적법하게 취소된 경우, 상대방은 표의자에게 불법행위를 이유로 손해배상을 청구할 수 없다."],
+  answer:2,
+  expl:"표의자의 중대한 과실은 법률행위의 효력을 주장하려는 '상대방'이 증명해야 한다. → 중과실이 인정되면 취소가 막히므로, 취소를 저지해 이익을 얻는 쪽에 입증책임을 지운 것. 함정: '착오가 중요부분이라는 점'은 표의자가, '중과실이 있다는 점'은 상대방이 — 입증 주체를 뒤집는 선지.",
+  src:"2026-07-13 착오 입증책임" },
+
+{ type:"사례", cat:"민법총칙", conceptKey:"제3자 사기-상대방 선의무과실",
+  q:"乙은 제3자 丁의 사기에 속아 甲으로부터 부동산을 매수하는 계약을 체결하였다(甲은 丁의 사기 사실을 알지 못했고 알 수도 없었다). 옳은 것은?",
+  opts:[
+    "甲이 선의·무과실이더라도 乙은 제3자 丁의 사기를 이유로 계약을 취소할 수 있다.",
+    "甲이 丁의 사기 사실을 알았거나 알 수 있었을 경우에 한하여 乙은 계약을 취소할 수 있다.",
+    "강박의 정도가 의사결정의 자유를 완전히 박탈하는 데 이르지 않았다면 그 의사표시는 무효이다.",
+    "사기·강박으로 인한 취소는 통정허위표시와 달리 선의의 제3자에게도 대항할 수 있다."],
+  answer:1,
+  expl:"제3자의 사기·강박인 경우, 상대방(甲)이 그 사실을 알았거나 알 수 있었을 때에만 표의자는 취소할 수 있다(제110조 제2항). → 상대방은 선의·무과실까지 보호받고, 제3자는 선의·악의만 따진다. 함정: 강박은 의사결정의 자유가 '완전히 박탈'되어야 무효, 그에 못 미치면 취소사유일 뿐이다.",
+  src:"2026-07-20 사기강박" },
+
+{ type:"일반", cat:"민법총칙", conceptKey:"대리권 소멸사유-한정후견 제외",
+  q:"대리권의 소멸사유에 관한 설명으로 <b>옳지 않은</b> 것은?",
+  opts:[
+    "본인의 사망은 임의대리·법정대리의 공통된 소멸사유이다.",
+    "대리인이 성년후견개시심판을 받거나 파산한 것은 임의대리·법정대리의 공통된 소멸사유이다.",
+    "대리인이 한정후견개시심판을 받은 것은 대리권의 소멸사유이다.",
+    "본인이 성년후견개시심판을 받은 것은 오히려 대리가 필요한 사유이므로 대리권 소멸사유가 아니다."],
+  answer:2,
+  expl:"대리인의 한정후견개시는 대리권 소멸사유가 아니다. → 성년후견·파산은 '지속적인 사무처리능력의 결여'를 전제하지만 한정후견은 그렇지 않기 때문. 함정: 본인이 성년후견을 받으면 대리권이 소멸하는 것이 아니라 오히려 대리가 필요해지는 상황이다.",
+  src:"2026-07-20 대리권 소멸" },
+
+{ type:"일반", cat:"민법총칙", conceptKey:"복대리-임의대리 복임 제한",
+  q:"복대리에 관한 설명으로 <b>옳지 않은</b> 것은?",
+  opts:[
+    "복대리인은 대리인이 자신의 이름으로 선임하며, 본인을 대리한다.",
+    "임의대리인은 본인의 승낙이 있는 때에도 복대리인을 선임할 수 없다.",
+    "법정대리인은 원칙적으로 언제나 복대리인을 선임할 수 있고, 그에 대해 무과실책임을 진다.",
+    "대리인이 복대리인을 선임한 경우에도 표현대리가 성립할 수 있다."],
+  answer:1,
+  expl:"임의대리인은 본인의 승낙이 있거나 부득이한 사유가 있으면 복대리인을 선임할 수 있으므로, '승낙이 있어도 선임할 수 없다'는 틀리다. → 임의대리는 신임에 기초하나 승낙·부득이한 사유라는 예외를 둔다. 함정: 법정대리인은 언제든 복임할 수 있으나 무과실책임을 지고, 복대리에서도 표현대리가 성립할 수 있다.",
+  src:"2026-07-20 복대리" },
+
+{ type:"조합", cat:"민법총칙", conceptKey:"무권대리-무과실책임·상속",
+  q:"무권대리에 관한 설명으로 옳은 것을 모두 고른 것은?<br>ㄱ. 무권대리인의 상대방에 대한 책임(제135조)은 무과실책임이다.<br>ㄴ. 상대방이 과실로 무권대리임을 알지 못한 경우에도 무권대리인은 제135조의 책임을 진다.<br>ㄷ. 무권대리인이 본인을 단독상속한 경우, 본인의 지위에서 추인을 거절하는 것은 신의칙상 허용되지 않는다.",
+  opts:["ㄱ, ㄴ","ㄱ, ㄷ","ㄴ, ㄷ","ㄱ, ㄴ, ㄷ"],
+  answer:1,
+  expl:"무권대리인의 책임은 무과실책임이고(ㄱ), 무권대리인이 본인을 상속하면 스스로 유효를 의도했던 자가 추인을 거절함은 신의칙 위반이다(ㄷ). → 무권대리인은 자기 대리권 존부를 확인할 수 있는 유일한 지위에 있다. 함정: 상대방이 '과실로' 무권대리임을 몰랐다면 무권대리인은 책임을 지지 않는다(ㄴ은 틀림) — 상대방은 선의·무과실이어야 보호된다.",
+  src:"2026-07-20 무권대리" },
+
+{ type:"사례", cat:"민법총칙", conceptKey:"표현대리-무권대리 성질",
+  q:"甲의 대리인이라고 주장하는 乙과 계약을 체결한 丙이 표현대리를 주장하는 상황이다. 옳은 것은?",
+  opts:[
+    "표현대리가 성립하면 그 법률행위는 유권대리로 전환되어 확정적으로 유효하게 된다.",
+    "丙이 유권대리를 주장한 경우, 그 주장 속에는 표현대리의 주장도 당연히 포함된다.",
+    "표현대리는 본질적으로 무권대리이며, 상대방 丙이 표현대리의 효과를 주장할 것인지 선택할 수 있다.",
+    "甲의 乙에 대한 수권행위가 무효였더라도 기본대리권이 인정되어 표현대리가 성립할 수 있다."],
+  answer:2,
+  expl:"표현대리는 여전히 무권대리이고, 다만 외관을 신뢰한 상대방을 보호하려고 상대방에게 본인에 대한 책임을 물을 선택권을 준 것이다. → 그래서 성립해도 '유효'로 전환되지 않고 상대방의 선택 대상이 된다. 함정: 유권대리 주장에는 표현대리 주장이 포함되지 않으며(판례), 수권행위가 무효면 기본대리권 자체가 없어 표현대리도 성립하지 않는다.",
+  src:"2026-07-20 표현대리" },
+
+{ type:"일반", cat:"민법총칙", conceptKey:"무효행위 추인-강행법규 위반",
+  q:"무효행위의 추인에 관한 설명으로 <b>옳지 않은</b> 것은?",
+  opts:[
+    "통정허위표시는 당사자가 추인하면 그때부터 새로운 법률행위를 한 것으로 볼 수 있다.",
+    "강박에 의한 의사표시도 추후 추인하여 그 효과를 인정할 수 있다.",
+    "반사회질서 또는 강행법규에 위반하여 무효인 법률행위는 추인하여도 유효로 되지 않는다.",
+    "토지거래허가를 잠탈할 목적으로 체결된 허가구역 내 토지거래계약은 추인하면 유효로 될 수 있다."],
+  answer:3,
+  expl:"토지거래허가를 잠탈할 목적의 계약은 강행규정·사회질서 위반이어서 추인해도 무효다. → 무효행위 추인은 '무효사유가 사라진 뒤 새 행위로 인정'하는 것인데, 반사회·강행법규 위반은 그 사유가 소멸하지 않는다. 함정: 통정허위·강박은 추인이 가능하다는 점과 대비된다.",
+  src:"2026-07-06 무효·취소·추인" },
+
+// ═══════════════ 물권법 (11) ═══════════════
+{ type:"일반", cat:"물권법", conceptKey:"등기없는 물권변동-점유취득시효 예외",
+  q:"등기 없이도 물권변동의 효력이 생기는 경우에 관한 설명으로 <b>옳지 않은</b> 것은?",
+  opts:[
+    "점유취득시효의 완성으로 인한 소유권 취득은 등기 없이도 그 효력이 생긴다.",
+    "분묘기지권의 취득에는 등기가 필요하지 않다.",
+    "상속·공용징수·판결·경매에 의한 물권취득은 등기를 요하지 않는다.",
+    "법률행위로 인한 부동산물권변동은 등기하여야 그 효력이 생긴다."],
+  answer:0,
+  expl:"점유취득시효(제245조 제1항)는 '등기함으로써' 소유권을 취득하므로 등기 없는 물권변동의 예외에 해당한다. → 법률행위와 점유취득시효를 제외하면 대체로 등기 없이 물권변동이 일어난다. 함정: 분묘기지권·상속·경매 등은 등기 없이 효력이 생기지만, 점유취득시효는 등기가 필요하다.",
+  src:"2026-07-06 등기 없는 물권변동" },
+
+{ type:"OX", cat:"물권법", conceptKey:"점유물반환-사기 인도는 침탈 아님",
+  q:"점유자가 사기를 당하여 스스로 물건을 인도한 경우, 이는 점유의 침탈에 해당하지 않으므로 점유물반환청구권을 행사할 수 없다.",
+  opts:["O","X"],
+  answer:0,
+  expl:"O. 점유물반환청구권은 점유를 '침탈'당한 경우에만 인정되는데, 사기에 의해 스스로 인도한 것은 침탈이 아니다. → 침탈은 점유자의 의사에 반한 점유 상실을 의미하므로, 기망에 의한 자발적 인도는 제외된다. 함정: '빼앗겼다'는 결과만 보고 침탈로 오인하면 틀린다.",
+  src:"2026-07-06 점유물반환청구" },
+
+{ type:"일반", cat:"물권법", conceptKey:"간접점유-직접점유자 인도시 소멸",
+  q:"점유에 관한 설명으로 옳은 것은?",
+  opts:[
+    "간접점유자는 직접점유자가 점유를 상실하더라도 여전히 간접점유를 유지한다.",
+    "직접점유자가 목적물을 제3자에게 인도하면 간접점유는 그 자체로 소멸한다.",
+    "점유물반환청구권은 점유를 침탈당한 날부터 3년 내에 행사하여야 한다.",
+    "점유매개관계는 반드시 유효한 법률관계를 전제로 하여야만 성립한다."],
+  answer:1,
+  expl:"간접점유는 직접점유자를 매개로 성립하므로, 직접점유자가 제3자에게 인도하면 매개관계가 끊겨 간접점유가 소멸한다. → 그래서 간접점유에서는 직접점유자를 신중히 선정해야 한다. 함정: 점유물반환청구권의 제척기간은 침탈당한 날부터 1년이다(3년 아님).",
+  src:"2026-07-06 간접점유" },
+
+{ type:"사례", cat:"물권법", conceptKey:"점유취득시효-원시취득·기산점 선택",
+  q:"甲은 乙 소유의 토지를 20년간 소유의 의사로 평온·공연하게 점유하여 점유취득시효가 완성되었다. 옳은 것은?",
+  opts:[
+    "시효완성으로 인한 甲의 소유권 취득은 승계취득에 해당한다.",
+    "시효완성의 효과는 등기를 마친 때부터 장래를 향하여 발생한다.",
+    "甲의 시효완성으로 인한 등기청구권은 乙의 동의가 있어야 양도할 수 있다.",
+    "점유의 승계가 있는 경우, 甲은 자기 또는 전 점유자의 점유개시일 중 임의로 기산점을 선택할 수 있다."],
+  answer:3,
+  expl:"점유의 승계가 있으면 시효이익을 주장하는 자는 자기 또는 전 점유자의 점유개시일 중에서 기산점을 선택할 수 있다. → 시효취득은 원시취득이고 그 효과는 점유개시 시로 소급한다. 함정: 시효완성자의 등기청구권은 통상의 채권양도 법리에 따라 소유자의 동의 없이 양도할 수 있다(매수인의 등기청구권과 구별).",
+  src:"2026-07-06 취득시효" },
+
+{ type:"조합", cat:"물권법", conceptKey:"공동소유-합유·공유물분할",
+  q:"공동소유에 관한 설명으로 옳은 것을 모두 고른 것은?<br>ㄱ. 합유자의 권리는 합유물 전부에 미친다.<br>ㄴ. 공유물의 분할을 금지하는 특약은 3년 내의 기간으로만 할 수 있다.<br>ㄷ. 재판상 공유물분할은 현물분할이 원칙이다.",
+  opts:["ㄱ, ㄴ","ㄱ, ㄷ","ㄴ, ㄷ","ㄱ, ㄴ, ㄷ"],
+  answer:1,
+  expl:"합유자의 권리는 하나의 공동목적으로 묶인 조합체를 전제로 하므로 합유물 전부에 미치고(ㄱ), 재판상 분할은 현물분할이 원칙이다(ㄷ). → 대금분할은 현물분할이 곤란한 경우의 예외다. 함정: 공유물분할금지특약은 '5년' 내에서 가능하고 5년 내로 갱신할 수 있다(ㄴ의 3년은 틀림).",
+  src:"2026-07-06 공동소유" },
+
+{ type:"일반", cat:"물권법", conceptKey:"지상권 최단존속기간-30/15/5",
+  q:"지상권의 최단존속기간에 관한 설명으로 옳은 것은? (당사자가 이보다 짧은 기간을 정한 경우)",
+  opts:[
+    "석조·석회조·연와조 등 견고한 건물의 소유를 목적으로 하는 경우 최단 15년이다.",
+    "견고한 건물 이외의 건물의 소유를 목적으로 하는 경우 최단 10년이다.",
+    "건물 이외의 공작물의 소유를 목적으로 하는 경우 최단 5년이다.",
+    "수목의 소유를 목적으로 하는 경우 최단 10년이다."],
+  answer:2,
+  expl:"지상권 최단존속기간은 견고한 건물·수목 30년, 그 밖의 건물 15년, 건물 이외의 공작물 5년이다. → 견고할수록·회복이 느릴수록 장기간을 보장한다. 함정: 견고한 건물을 15년, 일반 건물을 10년으로 낮춰 적는 숫자 스왑 선지에 주의.",
+  src:"2026-07-06 지상권 최단존속기간" },
+
+{ type:"일반", cat:"물권법", conceptKey:"법정지상권-건물양수인 등기·나대지",
+  q:"법정지상권에 관한 설명으로 옳은 것은?",
+  opts:[
+    "관습법상 법정지상권이 성립한 건물을 등기 없이 양수한 자에 대하여, 토지소유자는 부당이득의 반환을 청구할 수 있다.",
+    "법정지상권이 성립한 건물을 매매로 양수한 자는 등기 없이도 법정지상권을 취득한다.",
+    "나대지에 저당권을 설정한 후 그 위에 건물이 신축된 경우, 저당권자가 동의하였다면 법정지상권이 성립한다.",
+    "동일인 소유의 토지와 건물 중 건물에만 저당권이 설정되었다가 경매된 경우에는 법정지상권이 성립하지 않는다."],
+  answer:0,
+  expl:"관습법상 법정지상권이 있는 건물을 등기 없이 양수한 자는 아직 지상권을 취득하지 못하므로, 토지소유자는 그 토지 사용에 대해 부당이득의 반환을 청구할 수 있다. → 물권인 법정지상권도 양수인은 등기해야 취득한다. 함정: 나대지에 저당권 설정 후 신축된 건물은 저당권자가 동의했더라도 법정지상권이 성립하지 않는다.",
+  src:"2026-07-06 법정지상권" },
+
+{ type:"일반", cat:"물권법", conceptKey:"전세권-일부전세권 전부 우선변제",
+  q:"전세권에 관한 설명으로 옳은 것은?",
+  opts:[
+    "건물전세권이 법정갱신된 경우, 그 존속기간은 종전과 동일한 기간으로 본다.",
+    "주택전세권이 만료된 경우 전세권자는 지상물매수청구권을 행사할 수 있다.",
+    "토지전세권의 존속기간은 최장 20년을 넘지 못한다.",
+    "건물 일부에 전세권을 취득한 자도 건물 전부의 경매대가에서 후순위권리자보다 전세금을 우선변제받을 수 있다."],
+  answer:3,
+  expl:"건물 일부에만 전세권을 취득했더라도 전세권자는 건물 전부의 경매대가에서 우선변제를 받을 권리가 있다. → 건물 전체가 경매될 때 전세금을 회수할 수 있어야 하기 때문. 함정: 전세권 법정갱신 시 존속기간은 '정하지 않은 것'으로 보고, 최장기간은 토지·건물 모두 10년이다(부속물매수청구권은 인정, 지상물매수청구권은 부정).",
+  src:"2026-07-06 전세권" },
+
+{ type:"조합", cat:"물권법", conceptKey:"유치권-제3자물·시효진행",
+  q:"유치권에 관한 설명으로 옳은 것을 모두 고른 것은?<br>ㄱ. 유치권은 채무자 이외의 제3자 소유물에도 성립할 수 있다.<br>ㄴ. 유치권자가 소유자의 승낙 없이 유치물을 임대한 경우, 소유자는 유치권의 소멸을 청구할 수 있다.<br>ㄷ. 유치권을 행사하고 있더라도 피담보채권의 소멸시효는 진행한다.",
+  opts:["ㄱ, ㄴ","ㄱ, ㄷ","ㄴ, ㄷ","ㄱ, ㄴ, ㄷ"],
+  answer:3,
+  expl:"유치권은 제3자 소유물에도 성립하고(ㄱ), 승낙 없는 임대는 소멸청구 사유이며(ㄴ), 유치권 행사는 물건을 점유·인도거절하는 것일 뿐 채권을 '청구'한 것이 아니어서 소멸시효는 계속 진행한다(ㄷ). → 유치권 행사와 채권 행사는 다른 층위다. 함정: 유치권을 행사하면 채권 시효가 중단된다고 착각하기 쉽다.",
+  src:"2026-06-22 유치권" },
+
+{ type:"일반", cat:"물권법", conceptKey:"저당권-근저당 실행비용 최고액 밖",
+  q:"저당권에 관한 설명으로 <b>옳지 않은</b> 것은?",
+  opts:[
+    "근저당권의 실행비용은 채권최고액에 포함되어 그 범위 내에서만 우선변제된다.",
+    "저당권은 그 실행비용도 담보한다.",
+    "저당권설정자에게 지급될 보상금에 대한 물상대위권은 그 지급 전에 압류하여야 한다.",
+    "나대지에 저당권을 설정한 후 설정자가 건물을 신축·소유한 경우, 토지저당권자는 일괄경매를 청구할 수 있다."],
+  answer:0,
+  expl:"근저당권의 실행비용은 채권최고액에 포함되지 않는다. → 빌려준 돈(채권)엔 한도가 있어도, 이를 회수하는 데 든 절차비용까지 한도로 묶지는 않는다는 취지. 함정: 일반 저당권은 실행비용을 담보하지만, '근저당의 실행비용'은 채권최고액 밖이라는 점이 갈린다.",
+  src:"2026-06-22 근저당권·저당권" },
+
+{ type:"OX", cat:"물권법", conceptKey:"근저당 확정-경매신청시 확정",
+  q:"근저당권자가 스스로 경매를 신청한 경우 피담보채권은 경매신청 시에 확정되며, 그 후 경매신청이 취하되더라도 채권확정의 효과는 번복되지 않는다.",
+  opts:["O","X"],
+  answer:0,
+  expl:"O. 근저당권자가 경매를 신청하면 그 시점에 피담보채권이 확정되고, 이후 취하해도 확정 효과는 유지된다. → 거래관계를 끝내고 담보를 실행하겠다는 의사를 명확히 드러냈고, 확정을 신뢰한 이해관계인이 생기기 때문. 함정: 제3자가 경매한 경우에는 매각대금 완납 시까지 확정되지 않는 점과 구별.",
+  src:"2026-06-22 근저당권 확정" },
+
+// ═══════════════ 계약법 (9) ═══════════════
+{ type:"일반", cat:"계약법", conceptKey:"계약성립-매매비용 균분",
+  q:"계약의 성립에 관한 설명으로 <b>옳지 않은</b> 것은?",
+  opts:[
+    "청약은 상대방에게 도달하여 효력이 생긴 후에는 임의로 철회하지 못한다.",
+    "매매계약에 관한 비용은 특별한 약정이 없으면 매수인이 전부 부담한다.",
+    "교차청약의 경우 양 청약이 상대방에게 모두 도달한 때에 계약이 성립한다.",
+    "교환계약은 당사자의 의사합치만으로 성립하는 낙성계약이다."],
+  answer:1,
+  expl:"매매계약의 비용은 매수인이 전부 부담하는 것이 아니라 당사자 쌍방이 균분하여 부담한다. → 계약 성립 비용을 어느 한쪽에 전가하지 않는다는 취지. 함정: 청약은 도달 후 철회 불가, 교차청약은 양쪽 도달 시 성립, 교환계약은 낙성계약이라는 점은 모두 옳다.",
+  src:"2026-06-22 계약의 성립" },
+
+{ type:"일반", cat:"계약법", conceptKey:"위험부담-채무자위험부담주의",
+  q:"위험부담에 관한 설명으로 <b>옳지 않은</b> 것은?",
+  opts:[
+    "우리 민법은 채무자위험부담주의를 원칙으로 한다.",
+    "당사자 쌍방의 책임 없는 사유로 매매목적물이 멸실된 경우, 매도인은 대금지급을 청구할 수 없다.",
+    "매매목적물이 재결수용으로 소실된 경우, 매수인은 이행불능을 이유로 계약을 해제할 수 있다.",
+    "동시이행항변권은 그 존재만으로 이행지체책임을 저지하므로 별도로 원용할 필요가 없다."],
+  answer:2,
+  expl:"재결수용처럼 당사자에게 책임 없는 사유로 목적물이 소실된 경우는 해제가 아니라 위험부담으로 해결한다. → 해제는 '채무자의 책임 있는 사유로 인한 이행불능'을 요건으로 하기 때문. 함정: 이 상황을 이행불능 해제로 처리하면 요건을 잘못 적용한 것이다.",
+  src:"2026-06-22 위험부담·동시이행" },
+
+{ type:"사례", cat:"계약법", conceptKey:"제3자를 위한 계약-수익자 지위",
+  q:"甲(요약자)과 乙(낙약자)은 丙을 수익자로 하는 제3자를 위한 계약을 체결하였다. 옳은 것은?",
+  opts:[
+    "丙은 계약의 당사자가 아니므로 그 계약에 대한 해제권·취소권을 갖지 못한다.",
+    "丙은 계약당사자이므로 乙의 채무불이행을 이유로 계약을 해제할 수 있다.",
+    "丙은 낙약자 乙의 채무불이행이 있더라도 손해배상을 청구할 수 없다.",
+    "丙은 그 계약으로부터 직접 권리를 취득하므로, 착오취소로 대항할 수 없는 선의의 제3자에 해당한다."],
+  answer:0,
+  expl:"수익자 丙은 계약당사자가 아니어서 해제권·취소권이 없고 수익만 얻는 자다. → 다만 낙약자의 채무불이행에 대한 손해배상은 청구할 수 있다. 함정: 수익자는 그 계약으로 직접 권리를 얻은 자여서, 착오취소로 대항할 수 없는 '선의의 제3자'에는 해당하지 않는다.",
+  src:"2026-06-22 제3자를 위한 계약" },
+
+{ type:"일반", cat:"계약법", conceptKey:"계약해제-소급효 보호 제3자",
+  q:"계약의 해제에 관한 설명으로 옳은 것은?",
+  opts:[
+    "이행지체가 있으면 최고 없이 곧바로 계약을 해제할 수 있다.",
+    "이행기를 도과하면 별도의 의사표시 없이도 계약은 자동으로 해제된다.",
+    "합의해제의 경우에도 매도인은 수령한 대금에 이자를 붙여 반환하여야 한다.",
+    "해제의 소급효로부터 보호되는 제3자는 목적물에 관하여 권리를 취득한 자에 한한다."],
+  answer:3,
+  expl:"해제의 소급효로부터 보호되는 제3자는 '목적물에 직접 권리를 취득하고 거래안전을 신뢰한 자'에 한한다. → 채권에 관한 이해관계자는 그 채권이 해제로 당연히 소멸하므로 보호할 신뢰 대상이 없다. 함정: 이행지체는 원칙적으로 최고 후 해제, 이행기 도과만으로 자동해제되지 않으며, 합의해제는 이자 반환 의무가 없다.",
+  src:"2026-06-22 계약의 해제" },
+
+{ type:"일반", cat:"계약법", conceptKey:"담보책임 제척기간-물건하자 6개월",
+  q:"매도인의 담보책임에 관한 설명으로 옳은 것은?",
+  opts:[
+    "권리의 일부가 타인에게 속한 경우, 선의의 매수인은 계약한 날부터 1년 내에 손해배상을 청구해야 한다.",
+    "매매목적물의 하자에 대하여 선의·무과실의 매수인은 그 사실을 안 날부터 6개월 내에 담보책임을 물어야 한다.",
+    "토지에 법령상 제한이 있어 건물 신축이 불가능한 것은 권리의 하자에 해당한다.",
+    "권리 전부가 타인에게 속하여 이전할 수 없게 된 경우, 매도인은 선의의 매수인에게 신뢰이익만 배상하면 족하다."],
+  answer:1,
+  expl:"물건의 하자에 대한 담보책임은 매수인이 선의·무과실인 경우 그 사실을 '안 날부터 6개월' 내에 물어야 한다. → 권리의 하자(선의: 안 날부터 1년)와 기산점·기간이 다르다. 함정: 법령상 제한으로 건물 신축이 불가능한 것은 토지라는 물건의 성상 흠결이어서 '물건의 하자'이고, 전부타인매매 시 선의 매수인에게는 이행이익을 배상해야 한다.",
+  src:"2026-07-01 담보책임 제척기간" },
+
+{ type:"조합", cat:"계약법", conceptKey:"타인권리매매·수량지정매매",
+  q:"매도인의 담보책임에 관한 설명으로 옳은 것을 모두 고른 것은?<br>ㄱ. 권리 전부가 타인에게 속한 경우, 악의의 매수인도 손해배상을 청구할 수 있다.<br>ㄴ. 권리 일부가 타인에게 속한 경우, 악의의 매수인은 대금감액만 청구할 수 있다.<br>ㄷ. 수량을 지정한 매매에서 부족분은 원시적 일부불능이어서 계약체결상 과실책임(제535조)은 성립하지 않는다.",
+  opts:["ㄱ, ㄴ","ㄱ, ㄷ","ㄴ, ㄷ","ㄱ, ㄴ, ㄷ"],
+  answer:2,
+  expl:"일부타인매매에서 악의 매수인은 대금감액만 가능하고(ㄴ), 수량지정매매의 미달부분은 원시적 '일부'불능이어서 계약 전부를 무효로 만들지 않으므로 제535조가 성립하지 않는다(ㄷ). → 제535조는 계약 자체가 무효여야 한다. 함정: 전부타인매매에서 악의 매수인은 해제만 가능할 뿐 손해배상은 청구할 수 없다(ㄱ은 틀림).",
+  src:"2026-07-01 타인권리매매·수량지정매매" },
+
+{ type:"일반", cat:"계약법", conceptKey:"환매·예약완결권",
+  q:"환매와 예약완결권에 관한 설명으로 <b>옳지 않은</b> 것은?",
+  opts:[
+    "부동산의 환매기간을 7년으로 정한 경우, 그 약정은 전부 무효이고 환매권 자체가 소멸한다.",
+    "부동산의 환매기간은 5년을 넘지 못하며, 이를 넘는 약정은 5년으로 단축된다.",
+    "환매권은 일신전속권이 아니라 양도할 수 있는 재산권이다.",
+    "예약완결권은 제척기간의 대상이므로, 목적물을 점유하더라도 그 기간의 경과로 소멸한다."],
+  answer:0,
+  expl:"부동산 환매기간을 7년으로 정해도 약정 전부가 무효가 되는 것이 아니라 '5년으로 단축'될 뿐이다. → 환매권 자체는 유효하게 존속한다. 함정: 환매권은 양도 가능한 재산권이고, 예약완결권은 제척기간 대상이라 점유해도 기간 경과로 소멸한다.",
+  src:"2026-07-01 환매·예약완결권" },
+
+{ type:"일반", cat:"계약법", conceptKey:"임대차-비용상환 6개월",
+  q:"민법상 임대차에 관한 설명으로 <b>옳지 않은</b> 것은?",
+  opts:[
+    "민법상 임대차가 묵시적으로 갱신된 경우, 임대인과 임차인은 모두 해지통고를 할 수 있다.",
+    "차임증액청구가 법원에서 인용되면 그 효력은 증액청구 시로 소급한다.",
+    "임차인의 비용상환청구는 임대인이 목적물을 반환받은 날부터 1년 내에 행사하여야 한다.",
+    "건물 소유를 목적으로 한 토지임차인이 그 지상건물을 보존등기하면 토지임대차는 제3자에 대하여 효력이 생긴다."],
+  answer:2,
+  expl:"임차인의 비용상환청구는 임대인이 목적물을 반환받은 날부터 '6개월' 내에 행사해야 한다(1년 아님). → 비용상환 관계를 신속히 정리하기 위한 단기 제척기간이다. 함정: 묵시갱신 시 양쪽 해지통고 가능, 차임증액은 청구 시 소급, 지상건물 보존등기로 토지임대차 대항력 취득은 모두 옳다.",
+  src:"2026-07-01·07-06 임대차" },
+
+{ type:"사례", cat:"계약법", conceptKey:"무단전대-해지 전 부당이득 부정",
+  q:"임차인 乙은 임대인 甲의 동의 없이 임차물을 丙에게 전대하였다. 옳은 것은?",
+  opts:[
+    "甲은 해지권을 행사하기 전이라도 丙에게 부당이득의 반환을 청구할 수 있다.",
+    "甲이 해지권을 행사하기 전까지는 甲·乙의 임대차가 유효하게 존속하므로, 甲에게는 손해나 부당이득이 인정되지 않는다.",
+    "무단전대의 경우에도 丙은 甲에게 지상물매수청구권을 행사할 수 있다.",
+    "乙의 차임연체액이 2기에 달하여 甲이 해지하는 경우, 甲은 그 사유를 丙에게 통지하지 않으면 대항할 수 없다."],
+  answer:1,
+  expl:"무단전대라도 임대인이 해지권을 행사하기 전까지는 임대차가 유효하게 존속하므로, 전차인의 사용은 임차인이 직접 쓰는 것과 다를 바 없어 손해·부당이득이 인정되지 않는다. → 차임채권도 그대로 존재한다. 함정: 무단전대에서 전차인은 지상물매수청구를 할 수 없고, 2기 차임연체 해지는 사유를 알리지 않아도 전차인에게 대항할 수 있다.",
+  src:"2026-07-01 전대차" },
+
+// ═══════════════ 민사특별법 (8) ═══════════════
+{ type:"조합", cat:"민사특별법", conceptKey:"주임법-2기연체·나대지·채무승계",
+  q:"주택임대차보호법에 관한 설명으로 옳은 것을 모두 고른 것은?<br>ㄱ. 임차인이 2기의 차임을 연체한 경우 묵시적 갱신이 인정되지 않는다.<br>ㄴ. 나대지에 저당권이 설정된 후 신축된 주택의 소액임차인은 최우선변제를 받을 수 없다.<br>ㄷ. 대항력을 갖춘 임차인의 보증금반환채무가 양수인에게 승계된 후에는, 임차인이 주민등록을 옮겨도 양수인의 반환채무는 소멸하지 않는다.",
+  opts:["ㄱ, ㄴ","ㄱ, ㄷ","ㄴ, ㄷ","ㄱ, ㄴ, ㄷ"],
+  answer:3,
+  expl:"2기 차임연체 시 묵시갱신 부정(ㄱ), 나대지 저당 후 신축주택은 소액 최우선변제 불가(ㄴ), 이미 확정된 양수인의 보증금반환채무는 임차인의 주민등록 이전으로 소멸하지 않는다(ㄷ). → 나대지 저당권자가 잡은 담보가치를 후발 임차인이 잠식하지 못하게 하는 취지. 함정: 세 지문 모두 옳다.",
+  src:"2026-07-01·07-06 주택임대차보호법" },
+
+{ type:"사례", cat:"민사특별법", conceptKey:"명의신탁-제3자 선악불문 대항불가",
+  q:"甲은 자신의 부동산을 乙에게 명의신탁하였고, 乙은 이를 丙에게 처분하여 丙 앞으로 등기가 마쳐졌다. 옳은 것은?",
+  opts:[
+    "丙은 명의신탁 사실을 알았더라도, 乙의 배임에 적극 가담한 것이 아닌 한 유효하게 소유권을 취득한다.",
+    "명의신탁의 무효는 선의의 제3자에게만 대항하지 못하므로, 악의인 丙은 소유권을 취득할 수 없다.",
+    "丙이 명의신탁 사실을 알고 乙의 처분에 적극 가담하였더라도 그 매매는 유효하다.",
+    "乙이 丙에게 이전하였다가 다시 소유권을 이전받은 경우, 甲은 언제나 乙에게 소유물의 반환을 청구할 수 있다."],
+  answer:0,
+  expl:"부동산실명법 제4조 제3항은 명의신탁 무효를 '제3자에게 대항하지 못한다'고만 규정하여 제3자의 선의·악의를 묻지 않는다. → 그래서 단순 악의의 丙도 보호되고, 제103조 무효가 되려면 배임행위에 '적극 가담'해야 한다. 함정: 비진의·통정허위의 '선의의 제3자' 요건과 달리 명의신탁은 선악을 불문한다는 점이 핵심.",
+  src:"2026-07-13·07-06 명의신탁" },
+
+{ type:"일반", cat:"민사특별법", conceptKey:"상임법-대항력 신청 다음날",
+  q:"상가건물 임대차보호법에 관한 설명으로 <b>옳지 않은</b> 것은?",
+  opts:[
+    "임차권등기명령은 세무서가 아니라 관할 법원에 신청한다.",
+    "보증금을 우선변제받으려면 배당요구의 종기까지 사업자등록이 유지되어야 한다.",
+    "상가건물 임대차의 대항력은 임차인이 사업자등록을 신청하고 사업자등록증을 교부받은 다음 날 발생한다.",
+    "권리금 회수 방해로 인한 손해배상청구권은 임대차가 종료한 날부터 3년 내에 행사하지 않으면 소멸한다."],
+  answer:2,
+  expl:"상가건물 임대차의 대항력은 사업자등록을 '신청한' 다음 날 발생하며, 등록증을 교부받은 다음 날이 아니다. → 대항력 기산점을 신청일이 아닌 교부일로 늦춰 적는 것이 전형적 함정이다. 함정: 우선변제는 배당요구 종기까지 등록 유지, 임차권등기명령은 관할 법원 신청, 권리금 손배는 종료일부터 3년이 맞다.",
+  src:"2026-07-01·07-06 상가건물임대차보호법" },
+
+{ type:"OX", cat:"민사특별법", conceptKey:"상임법-1년미만 편면적강행",
+  q:"상가건물 임대차에서 기간을 1년 미만으로 정한 경우, 임대인과 임차인 모두 그 기간이 유효함을 주장할 수 없다.",
+  opts:["O","X"],
+  answer:1,
+  expl:"X. 1년 미만으로 정한 경우 '임대인'은 그 기간의 유효를 주장할 수 없지만, '임차인'은 그 기간이 유효함을 주장할 수 있다. → 최단기간 보장은 임차인을 보호하기 위한 편면적 강행규정이기 때문. 함정: '모두 주장할 수 없다'로 임차인의 선택권까지 빼앗으면 틀린다.",
+  src:"2026-07-06 상가 최단기간" },
+
+{ type:"조합", cat:"민사특별법", conceptKey:"가등기담보법-적용요건·귀속청산",
+  q:"가등기담보 등에 관한 법률에 관한 설명으로 옳은 것을 모두 고른 것은?<br>ㄱ. 가등기담보법은 목적물의 가액이 차용액보다 적은 경우에도 적용된다.<br>ㄴ. 귀속청산 시 채권자는 청산금의 평가액을 통지하고 2개월의 청산기간이 지난 후 청산금을 지급해야 한다.<br>ㄷ. 후순위권리자는 청산기간 내에 목적부동산의 경매를 청구할 수 있다.",
+  opts:["ㄱ, ㄴ","ㄱ, ㄷ","ㄴ, ㄷ","ㄱ, ㄴ, ㄷ"],
+  answer:2,
+  expl:"귀속청산은 실행통지→2개월 청산기간→청산금 지급 순서로 진행되고(ㄴ), 후순위권리자는 청산기간 내에 경매를 청구해 귀속청산 대신 경매로 전환시킬 수 있다(ㄷ). → 가등기담보법은 담보물 가액이 차용액보다 '커야' 적용된다(ㄱ은 틀림). 함정: 목적물 가액이 피담보채권에 못 미치면 청산할 잉여가 없어 이 법이 적용되지 않는다.",
+  src:"2026-07-01 가등기담보법" },
+
+{ type:"일반", cat:"민사특별법", conceptKey:"집합건물-공용부분채무 물적승계",
+  q:"집합건물의 소유 및 관리에 관한 법률에 관한 설명으로 <b>옳지 않은</b> 것은?",
+  opts:[
+    "공용부분에 관한 비용은 원칙적으로 각 공유자의 지분비율에 따라 부담한다.",
+    "재건축 결의는 구분소유자 및 의결권의 각 5분의 4 이상의 동의가 필요하다.",
+    "관리위원회가 있는 경우, 관리인은 보존행위를 하더라도 원칙적으로 관리위원회의 결의를 거쳐야 한다.",
+    "공용부분에 관하여 발생한 채무는 사람에게 귀속되므로 특별승계인에게 승계되지 않는다."],
+  answer:3,
+  expl:"공용부분에 관하여 발생한 채무는 사람이 아니라 '물건(전유부분)에 붙는' 것이므로 특별승계인에게 그대로 승계된다. → 관리비 등 공용부분 채무의 물적 성격을 반영한 것. 함정: 재건축 결의 정족수는 구분소유자·의결권의 각 4/5이고, 관리위원회가 있으면 보존행위도 원칙적으로 그 결의를 요한다.",
+  src:"2026-07-06 집합건물법" },
+
+{ type:"일반", cat:"민사특별법", conceptKey:"집합건물-구분소유 성립·시공자담보",
+  q:"집합건물의 소유 및 관리에 관한 법률에 관한 설명으로 옳은 것은?",
+  opts:[
+    "구분소유의 성립을 위한 구분행위는, 그 의사가 객관적으로 표시되면 구분건물로 등기하지 않아도 인정될 수 있다.",
+    "전유부분에 대한 시공자의 담보책임은 사용승인일부터 기산한다.",
+    "구분소유자 전원의 동의로 소집된 관리단집회라도, 소집통지되지 않은 사항은 결의할 수 없다.",
+    "재건축 결의는 구분소유자 및 의결권의 각 3분의 2 이상의 동의로 성립한다."],
+  answer:0,
+  expl:"구분행위는 그 의사가 객관적으로 외부에 표시되면 구분건물로 등기하기 전이라도 구분소유가 성립할 수 있다(판례). → 등기는 성립요건이 아니라 대항·공시의 문제다. 함정: 시공자 담보책임은 인도한 날부터 기산, 전원동의로 소집된 집회는 통지 안 된 사항도 결의할 수 있으며, 재건축은 4/5 정족수다.",
+  src:"2026-07-06 집합건물법" },
+
+{ type:"OX", cat:"민사특별법", conceptKey:"상임법-종료후 보증금 미반환시 차임청구",
+  q:"상가건물 임대차가 종료하고 임차인이 보증금을 반환받지 못한 경우, 임대차관계는 종료하였으므로 임대인은 더 이상 차임을 청구할 수 없다.",
+  opts:["O","X"],
+  answer:1,
+  expl:"X. 임대차가 종료했어도 보증금을 반환하지 않으면 임대차관계는 존속하는 것으로 보므로, 임대인은 종전 계약에서 정한 차임의 지급을 청구할 수 있다. → 임차인이 목적물을 계속 점유·사용하는 한 그 대가 관계도 유지된다. 함정: '종료했으니 차임청구 불가'로 단정하면 틀린다.",
+  src:"2026-07-01 상가 종료 후 차임청구" }
+/*__QUESTIONS_END__*/
+];
+
+/*__BUILD_PAYLOAD_START__*/
+function conceptFromSrc(src){
+  return String(src||"").replace(/^\s*\d{4}-\d{2}-\d{2}\s*/,"").replace(/\s*\(재도전\)\s*$/,"").trim();
+}
+function buildPayload(questions, sel, quizDate, nowIso, schemaVersion){
+  let score = 0; const results = [], wrong = [];
+  questions.forEach((item, qi)=>{
+    const isCorrect = sel[qi] === item.answer;
+    if(isCorrect) score++;
+    const ck = item.conceptKey || conceptFromSrc(item.src);
+    const isRetry = !!item.retryOf || /\(재도전\)/.test(item.src||"") || String(item.q||"").indexOf("🔁") >= 0;
+    const base = {
+      id: quizDate + "-q" + (qi+1), cat: item.cat, type: item.type, q: item.q,
+      options: item.opts, myAnswer: item.opts[sel[qi]], correct: item.opts[item.answer],
+      expl: item.expl, src: item.src
+    };
+    const r = Object.assign({}, base, {
+      conceptKey: ck,
+      retryOf: isRetry ? (item.retryOf || ck) : null,
+      correctAnswered: isCorrect
+    });
+    if(item.calc) r.calc = item.calc;
+    results.push(r);
+    if(!isCorrect) wrong.push(base);
+  });
+  return { score: score, wrong: wrong, payload: {
+    schemaVersion: schemaVersion, subject: "공인중개사", date: quizDate, quizId: quizDate + "-민법전범위",
+    score: score, total: questions.length, wrongCount: wrong.length,
+    results: results, wrong: wrong, generatedAt: nowIso
+  }};
+}
+/*__BUILD_PAYLOAD_END__*/
+
+const form = document.getElementById('quiz');
+const selected = new Array(QUESTIONS.length).fill(null);
+let graded = false;
+let LAST_PAYLOAD = null;
+let lastCat = null;
+
+document.getElementById('total').textContent = ' / ' + QUESTIONS.length;
+
+QUESTIONS.forEach((item, qi)=>{
+  if(item.cat !== lastCat){
+    const s = document.createElement('div');
+    s.className = 'sec';
+    s.textContent = '▍' + item.cat;
+    form.appendChild(s);
+    lastCat = item.cat;
+  }
+  const card = document.createElement('div');
+  card.className = 'q';
+  const isOX = item.type === 'OX';
+  card.innerHTML = `
+    <div class="qhead">
+      <span class="qno">${qi+1}</span>
+      <span class="qtype">${item.type}</span>
+      <span class="qcat">${item.cat}</span>
+    </div>
+    <div class="qtext">${item.q}</div>
+    <div class="opts ${isOX?'ox':''}" data-q="${qi}"></div>
+    <div class="expl" id="expl-${qi}"></div>`;
+  const optsEl = card.querySelector('.opts');
+  item.opts.forEach((o, oi)=>{
+    const el = document.createElement('div');
+    el.className = 'opt';
+    el.dataset.q = qi; el.dataset.o = oi;
+    el.innerHTML = isOX
+      ? `<span>${o}</span>`
+      : `<span class="mk">${String.fromCharCode(65+oi)}</span><span>${o}</span>`;
+    el.addEventListener('click', ()=>{
+      if(graded) return;
+      selected[qi] = oi;
+      optsEl.querySelectorAll('.opt').forEach(x=>x.classList.remove('sel'));
+      el.classList.add('sel');
+      updateProgress();
+    });
+    if(!isOX){
+      const eye = document.createElement('button');
+      eye.type = 'button';
+      eye.className = 'eye';
+      eye.textContent = '👁';
+      eye.title = '확실히 아닌 보기 희미하게 (다시 누르면 복구)';
+      eye.setAttribute('aria-label', '이 보기를 후보에서 제외');
+      eye.addEventListener('click', (ev)=>{
+        ev.stopPropagation();
+        if(graded) return;
+        el.classList.toggle('ruled');
+      });
+      el.appendChild(eye);
+    }
+    optsEl.appendChild(el);
+  });
+  form.appendChild(card);
+});
+
+function updateProgress(){
+  const done = selected.filter(s=>s!==null).length;
+  document.getElementById('pcount').textContent = `${done} / ${QUESTIONS.length} 선택`;
+  document.getElementById('pbar').style.width = (done/QUESTIONS.length*100)+'%';
+  document.getElementById('submitBtn').disabled = done !== QUESTIONS.length;
+}
+
+const btn = document.getElementById('submitBtn');
+btn.addEventListener('click', ()=>{ if(!graded){ grade(); } else { location.reload(); } });
+
+document.getElementById('copyBtn').addEventListener('click', ()=>{
+  if(!LAST_PAYLOAD) return;
+  const txt = JSON.stringify(LAST_PAYLOAD, null, 2);
+  const done = ()=>{ document.getElementById('dlnote').textContent = "📋 복사 완료 — velog-posts/공인중개사/claude_ox_오답/_inbox/에 붙여넣어 저장해도 된다"; };
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(txt).then(done).catch(()=>fallbackCopy(txt, done));
+  } else { fallbackCopy(txt, done); }
+});
+function fallbackCopy(txt, done){
+  const ta = document.createElement('textarea');
+  ta.value = txt; document.body.appendChild(ta); ta.select();
+  try{ document.execCommand('copy'); done(); }catch(e){}
+  ta.remove();
+}
+
+function grade(){
+  graded = true;
+  const built = buildPayload(QUESTIONS, selected, QUIZ_DATE, new Date().toISOString(), SCHEMA_VERSION);
+  LAST_PAYLOAD = built.payload;
+  QUESTIONS.forEach((item, qi)=>{
+    const opts = document.querySelectorAll(`.opt[data-q="${qi}"]`);
+    opts.forEach((el, oi)=>{
+      el.style.cursor='default';
+      el.classList.remove('ruled');
+      const eye = el.querySelector('.eye');
+      if(eye) eye.remove();
+      if(oi === item.answer) el.classList.add('correct');
+      if(oi === selected[qi] && oi !== item.answer) el.classList.add('wrong');
+    });
+    const correct = selected[qi] === item.answer;
+    const ex = document.getElementById('expl-'+qi);
+    ex.innerHTML = `<span class="verdict" style="color:${correct?'var(--ok)':'var(--no)'}">${correct?'정답!':'오답'}</span>${item.expl}<span class="src">📄 출처: ${item.src}</span>`;
+    ex.classList.add('show');
+  });
+  const r = document.getElementById('result');
+  document.getElementById('score').textContent = built.score;
+  document.getElementById('rmsg').textContent = msgFor(built.score);
+  document.getElementById('catbreak').innerHTML = catBreakdown();
+  r.classList.add('show');
+  btn.textContent = '🔄 다시 풀기';
+  btn.classList.add('retry');
+  document.getElementById('copyBtn').classList.add('show');
+
+  downloadResult(built.payload);
+
+  r.scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+function catBreakdown(){
+  const stat = {};
+  QUESTIONS.forEach((item, qi)=>{
+    if(!stat[item.cat]) stat[item.cat] = {c:0, t:0};
+    stat[item.cat].t++;
+    if(selected[qi] === item.answer) stat[item.cat].c++;
+  });
+  return Object.keys(stat).map(k=>{
+    const s = stat[k]; const pct = Math.round(s.c/s.t*100);
+    const col = pct>=80 ? 'var(--ok)' : (pct>=60 ? 'var(--accent)' : 'var(--no)');
+    return `▍${k} <b style="color:${col}">${s.c}/${s.t}</b> (${pct}%)`;
+  }).join('&nbsp;&nbsp;·&nbsp;&nbsp;');
+}
+
+function downloadResult(payload){
+  try{
+    const blob = new Blob([JSON.stringify(payload,null,2)], {type:"application/json"});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `공인중개사_민법전범위_오답_${QUIZ_DATE}.json`;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url), 1500);
+    document.getElementById('dlnote').textContent =
+      payload.wrongCount>0 ? `💾 결과 저장됨(오답 ${payload.wrongCount}개) — 다운로드 폴더 확인` : "💾 만점 기록 저장됨";
+  }catch(e){
+    document.getElementById('dlnote').textContent = "⚠️ 자동 저장 실패 — 아래 '결과 JSON 복사'를 눌러 수동 저장";
+  }
+}
+
+function msgFor(s){
+  const t = QUESTIONS.length;
+  const r = s/t;
+  if(s===t)   return "만점. 전범위 민법 정복입니다. 등록증 발급 가시죠 🏆";
+  if(r>=0.8)  return "합격권. 틀린 것 해설만 한 번 더 보면 완벽합니다.";
+  if(r>=0.6)  return "절반은 넘었어요. 과목별 정답률 보고 약한 파트부터 재정독!";
+  if(r>=0.4)  return "아직 흔들리는 개념이 있어요. 오답 해설 정독하고 재도전!";
+  return "괜찮아요, 회독이 쌓이면 올라갑니다. 해설부터 차근차근.";
+}
+</script>
+</body>
+</html>
