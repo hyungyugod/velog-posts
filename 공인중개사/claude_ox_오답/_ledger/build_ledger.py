@@ -32,10 +32,17 @@ RAW  = os.path.join(BASE, "_raw")
 INBOX= os.path.join(BASE, "_inbox")
 LADDER = [3, 7, 16, 35]                           # 오답 직후 / 정답 1·2·3회 후 간격(일)
 
+# 결과 JSON 파일명 패턴.
+#   표준:   공인중개사_오답_2026-07-24.json
+#   변형:   공인중개사_민법전범위_오답_2026-07-20.json  (과목명이 '_오답_' 앞에 끼는 형태)
+# '*'가 빈 문자열도 매칭하므로 하나의 패턴으로 둘 다 잡는다.
+# (2026-07-27 수정: 기존 "공인중개사_오답_*.json"은 변형을 조용히 누락시켰다)
+RESULT_GLOB = "공인중개사_*오답_*.json"
+
 def find_jsons():
     seen = {}
     for d in (RAW, INBOX):
-        for f in glob.glob(os.path.join(d, "공인중개사_오답_*.json")):
+        for f in glob.glob(os.path.join(d, RESULT_GLOB)):
             base = re.sub(r" \(\d+\)(?=\.json$)", "", os.path.basename(f))
             if base not in seen or os.path.getmtime(f) > os.path.getmtime(seen[base]):
                 seen[base] = f
@@ -48,6 +55,12 @@ def norm(s): return re.sub(r"\s+", " ", s or "").strip()
 def canon(s): return re.sub(r"[\s/]+", "", norm(s))
 def date_prefix(s):
     m = re.match(r"\d{4}-\d{2}-\d{2}", s or "")
+    return m.group(0) if m else None
+
+def date_anywhere(s):
+    """파일명 어디에 있든 YYYY-MM-DD를 찾는다.
+    (표준·변형 파일명 모두 대응 — 고정 접두어 replace는 변형에서 실패했다)"""
+    m = re.search(r"\d{4}-\d{2}-\d{2}", s or "")
     return m.group(0) if m else None
 
 def new_rec(subject, label):
@@ -67,7 +80,7 @@ def main():
 
     if ingest:
         os.makedirs(RAW, exist_ok=True)
-        for f in glob.glob(os.path.join(INBOX, "공인중개사_오답_*.json")):
+        for f in glob.glob(os.path.join(INBOX, RESULT_GLOB)):
             dst = os.path.join(RAW, os.path.basename(f))
             if not os.path.exists(dst):
                 shutil.copy2(f, dst); print("  ↳ 보존:", os.path.basename(f))
@@ -85,7 +98,9 @@ def main():
         subs += 1; score_sum += d.get("score", 0); tot_sum += d.get("total", 0)
         if d.get("wrongCount") == 0: perfect += 1
         date_raw = str(d.get("date") or "")
-        dp = date_prefix(date_raw) or date_prefix(fname.replace("공인중개사_오답_", "")) or "0000-00-00"
+        dp = date_prefix(date_raw) or date_anywhere(fname) or "0000-00-00"
+        if dp == "0000-00-00":
+            print(f"⚠️  날짜 판독 실패 — {fname} (date 필드·파일명 모두에서 YYYY-MM-DD를 못 찾음)")
         dps_all.add(dp)
         sv = d.get("schemaVersion", 1)
         if sv >= 2 and isinstance(d.get("results"), list):
