@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📚 단원별 복습 · 부동산학개론 · 2026-06-21</title>
+<style>
+  :root{
+    --bg:#0f1115; --card:#191c23; --card2:#20242d; --line:#2c313b;
+    --txt:#e7e9ee; --sub:#9aa3b2; --accent:#ffd24a; --accent2:#7c9cff;
+    --ok:#34d399; --no:#f87171; --okbg:#10261d; --nobg:#2a1414;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);
+    font-family:'Pretendard','Apple SD Gothic Neo',system-ui,-apple-system,sans-serif;
+    line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:760px;margin:0 auto;padding:32px 20px 80px}
+  header{margin-bottom:24px}
+  .eyebrow{color:var(--accent);font-weight:700;font-size:14px;letter-spacing:.04em}
+  h1{font-size:28px;margin:6px 0 4px;font-weight:800}
+  .meta{color:var(--sub);font-size:14px}
+  .tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px}
+  .tag{background:var(--card2);border:1px solid var(--line);color:var(--sub);
+    padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600}
+  .bar{position:sticky;top:0;z-index:5;background:rgba(15,17,21,.88);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--line);
+    padding:12px 0;margin:18px 0 24px}
+  .progress{height:8px;background:var(--card2);border-radius:999px;overflow:hidden}
+  .progress>i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));
+    border-radius:999px;transition:width .35s ease}
+  .pmeta{display:flex;justify-content:space-between;font-size:12.5px;color:var(--sub);margin-bottom:7px}
+  .sec{font-size:13px;font-weight:800;color:var(--accent2);margin:26px 0 10px;letter-spacing:.02em;
+    border-top:1px dashed var(--line);padding-top:18px}
+  .sec:first-of-type{border-top:none;padding-top:0}
+  .q{background:var(--card);border:1px solid var(--line);border-radius:16px;
+    padding:18px 18px 16px;margin-bottom:14px}
+  .qhead{display:flex;align-items:center;gap:9px;margin-bottom:11px}
+  .qno{background:var(--accent);color:#1a1a1a;font-weight:800;font-size:13px;
+    width:26px;height:26px;border-radius:8px;display:grid;place-items:center;flex:0 0 auto}
+  .qtype{font-size:11.5px;font-weight:700;color:var(--accent2);border:1px solid var(--accent2);
+    padding:1px 8px;border-radius:999px}
+  .qcat{font-size:12px;color:var(--sub);margin-left:auto}
+  .qtext{font-size:16px;font-weight:600;margin:2px 0 14px}
+  .opts{display:flex;flex-direction:column;gap:8px}
+  .opt{display:flex;align-items:center;gap:11px;padding:11px 13px;border:1px solid var(--line);
+    border-radius:11px;cursor:pointer;background:var(--card2);transition:.15s;user-select:none}
+  .opt:hover{border-color:var(--accent2)}
+  .opt.sel{border-color:var(--accent);background:#26261a}
+  .opt .mk{width:22px;height:22px;border-radius:50%;border:2px solid var(--line);flex:0 0 auto;
+    display:grid;place-items:center;font-size:12px;font-weight:800}
+  .opt.sel .mk{border-color:var(--accent);background:var(--accent);color:#1a1a1a}
+  .ox{flex-direction:row;gap:10px}
+  .ox .opt{flex:1;justify-content:center;font-size:18px;font-weight:800}
+  .opt.correct{border-color:var(--ok);background:var(--okbg)}
+  .opt.correct .mk{border-color:var(--ok);background:var(--ok);color:#06281c}
+  .opt.wrong{border-color:var(--no);background:var(--nobg)}
+  .opt.wrong .mk{border-color:var(--no);background:var(--no);color:#2a0d0d}
+  .expl{margin-top:12px;padding:12px 14px;border-radius:11px;background:var(--card2);
+    border-left:3px solid var(--accent2);font-size:13.5px;color:#d4d9e2;display:none}
+  .expl.show{display:block;animation:fade .3s ease}
+  .expl .verdict{font-weight:800;margin-right:6px}
+  .expl .src{display:block;margin-top:7px;color:var(--sub);font-size:12px}
+  @keyframes fade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+  .submit{width:100%;padding:16px;border:none;border-radius:14px;font-size:17px;font-weight:800;
+    background:linear-gradient(90deg,var(--accent),#ffb347);color:#1a1a1a;cursor:pointer;margin-top:10px}
+  .submit:disabled{opacity:.45;cursor:not-allowed}
+  .submit.retry{background:var(--card2);color:var(--txt);border:1px solid var(--line)}
+  #result{display:none;text-align:center;background:var(--card);border:1px solid var(--line);
+    border-radius:18px;padding:28px 20px;margin-bottom:18px}
+  #result.show{display:block;animation:fade .4s ease}
+  .ring{font-size:46px;font-weight:900;margin:4px 0}
+  .ring small{font-size:18px;color:var(--sub);font-weight:700}
+  #rmsg{color:var(--sub);font-size:15px;margin-top:4px}
+  #dlnote{font-size:12.5px;color:var(--accent);margin-top:12px}
+  .foot{text-align:center;margin-top:30px;color:var(--sub);font-size:12.5px;line-height:1.8}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">DAILY QUIZ · 공인중개사</div>
+    <h1>오늘의 복습 문제지</h1>
+    <div class="meta">부동산학개론 · wox 5회독 통합 · 실전형 30문항 · 개념 망라형</div>
+    <div class="tags">
+      <span class="tag">🔥 심화</span><span class="tag">📝 실전 4지선다</span><span class="tag">🧩 개념 망라</span><span class="tag">🎯 정답분산</span>
+      <span class="tag">부동산학개론</span><span class="tag">wox 5회독 통합(전 회차)</span>
+    </div>
+  </header>
+
+  <div class="bar">
+    <div class="pmeta"><span id="pcount">0 / 30 선택</span><span>제출 시 오답이 자동 저장됩니다</span></div>
+    <div class="progress"><i id="pbar"></i></div>
+  </div>
+
+  <div id="result">
+    <div class="ring"><span id="score">0</span><small> / 30</small></div>
+    <div id="rmsg"></div>
+    <div id="dlnote"></div>
+  </div>
+
+  <form id="quiz"></form>
+
+  <button class="submit" id="submitBtn" disabled>제출하고 채점하기</button>
+
+  <div class="foot">
+    매일 새벽, 최근 7일 학습 노트로 자동 갱신됩니다.<br>
+    틀린 문제는 제출 시 결과파일로 저장 → 매주 월요일 오답노트로 자동 정리됩니다.
+  </div>
+</div>
+
+<script>
+const QUIZ_DATE = "2026-06-21-부동산학개론";
+const QUESTIONS = [
+  { type:"OX", cat:"부동산학개론",
+    q:"맹지는 타인의 토지로 완전히 둘러싸여 도로와 전혀 접하지 못하는 토지를 말한다.",
+    opts:["O","X"], answer:0,
+    expl:"O. 맹지는 타인의 토지에 둘러싸여 도로와 전혀 접하지 못하는 토지다. 건물이 없는 미이용 구획인 공지와 구분해야 한다.",
+    src:"2026-06-05 토지의 분류" },
+  { type:"OX", cat:"부동산학개론",
+    q:"기숙사는 단독주택에 포함되며, 준주택에는 해당하지 않는다.",
+    opts:["O","X"], answer:1,
+    expl:"X. 기숙사는 공동주택에 포함되며, 동시에 준주택(오피스텔·노인복지주택·기숙사·다중생활시설)에도 해당한다. 다중주택과 혼동하지 않아야 한다.",
+    src:"2026-06-05 주택의 분류" },
+  { type:"OX", cat:"부동산학개론",
+    q:"수요곡선이 수직으로 가격축과 평행하면 수요는 완전비탄력적이다.",
+    opts:["O","X"], answer:0,
+    expl:"O. 가격이 변해도 수요량이 동일하면 완전비탄력적이며, 그래프는 가격축과 평행한 수직선이다. 비탄력은 세로 막대 모양으로 연상하면 된다.",
+    src:"2026-06-05 부동산 수요·공급" },
+  { type:"OX", cat:"부동산학개론",
+    q:"순현재가치(NPV)가 0이라는 것은 투자로 얻는 수익이 0이라는 뜻이다.",
+    opts:["O","X"], answer:1,
+    expl:"X. NPV가 0이라는 것은 수익 자체가 0이라는 의미가 아니라, 적용한 할인율을 초과하는 추가 이득이 0이라는 뜻이다.",
+    src:"2026-06-18 투자 타당성 분석 기법" },
+  { type:"OX", cat:"부동산학개론",
+    q:"부동산 신디케이트에서 통상 투자자는 유한책임을, 신디케이터(운영자)는 무한책임을 진다.",
+    opts:["O","X"], answer:0,
+    expl:"O. 신디케이트는 다수 소액투자자가 자금을 모으는 공동출자 조합으로, 투자자는 유한책임을 지고 사업을 주도하는 신디케이터는 무한책임을 진다.",
+    src:"2026-06-18 지분금융 3종 세트" },
+  { type:"객관식", cat:"부동산학개론",
+    q:"부동산의 복합개념 중 경제적 개념에 해당하지 않는 것은?",
+    opts:["위치","자본","소비재","생산요소"], answer:0,
+    expl:"위치는 공간·환경·자연과 함께 물리적 개념에 속한다. 경제적 개념은 자산·자본·소비재·생산재·생산요소다.",
+    src:"2026-06-05 부동산의 복합개념" },
+  { type:"객관식", cat:"부동산학개론",
+    q:"공동주택의 분류 기준으로 옳은 것은?",
+    opts:["아파트는 3개층 이하의 공동주택이다","아파트는 주택으로 쓰는 층수가 5개층 이상이다","연립주택은 4개층 이하이며 바닥면적 합계가 660㎡ 이하다","다세대주택은 4개층 이하이며 바닥면적 합계가 660㎡ 초과다"], answer:1,
+    expl:"아파트는 주택으로 쓰는 층수가 5개층 이상인 공동주택이다. 연립주택은 4개층 이하·660㎡ 초과, 다세대주택은 4개층 이하·660㎡ 이하다.",
+    src:"2026-06-05 주택의 분류" },
+  { type:"객관식", cat:"부동산학개론",
+    q:"토지의 영속성이라는 자연적 특성과 직접 관련되는 것은?",
+    opts:["임장활동의 강조","시장의 지역화·국지화","직접환원법 적용의 수학적 전제 충족","용도의 경합과 합병·분할의 곤란"], answer:2,
+    expl:"토지는 영속성으로 수익이 영구히 일정하다는 가정이 성립해 직접환원법 적용에 적합하다. 임장활동 강조와 시장 국지화는 부동성, 용도 경합은 용도의 다양성과 관련된다.",
+    src:"2026-06-05 토지의 자연적 특성" },
+  { type:"객관식", cat:"부동산학개론",
+    q:"부동산 수요·공급에 관한 설명으로 옳지 않은 것은?",
+    opts:["보완주택의 가격 상승은 수요를 감소시키는 원인이다","주택가격 하락 기대는 주택시장에서 공급을 감소시킨다","부동산가격 상승 기대는 수요를 증가시키는 요인이다","수입·임금·공급량·수요량은 저량변수다"], answer:3,
+    expl:"수입·임금·공급량·수요량은 일정 기간 동안 측정하므로 유량(플로우)변수다. 저량변수가 아니다.",
+    src:"2026-06-05 부동산 수요·공급" },
+  { type:"객관식", cat:"부동산학개론",
+    q:"토지의 분류에 관한 설명으로 옳지 않은 것은?",
+    opts:["획지는 법률상의 단위개념으로 소유권이 미치는 범위다","소지는 개발되기 이전의 자연 그대로의 토지다","공지는 건물이 세워지지 않은 미이용 토지의 구획이다","후보지는 용도지역 상호간에 용도가 전환되고 있는 지역 내의 토지다"], answer:0,
+    expl:"법률상의 단위개념으로 소유권이 미치는 범위는 필지다. 획지는 가격수준이 유사한 일단의 토지를 말한다.",
+    src:"2026-06-05 토지의 분류" },
+  { type:"객관식", cat:"부동산학개론",
+    q:"거미집이론에 관한 설명으로 옳은 것은?",
+    opts:["공급이 탄력적일수록 발산형이 된다","수요와 공급의 탄력성이 같으면 발산형이 된다","수요의 가격탄력성보다 공급의 탄력성이 더 비탄력적이면 수렴형이 된다","곡선의 기울기가 클수록 점점 탄력적이 된다"], answer:2,
+    expl:"수요의 가격탄력성보다 공급의 탄력성이 더 비탄력적이면 요동치는 수요를 공급이 잘 잡아주어 수렴형이 된다. 기울기가 클수록 점점 비탄력적이 된다.",
+    src:"2026-06-11 시장 이론" },
+  { type:"객관식", cat:"부동산학개론",
+    q:"부동산 시장이론에 관한 설명으로 옳지 않은 것은?",
+    opts:["약성시장에서는 과거 정보가 지체 없이 가격에 반영된다","부동산시장도 초과이윤이 없으면 할당 효율성을 달성할 수 있다","불완전경쟁시장도 초과이윤이 없으면 할당 효율성을 달성할 수 있다","과거 정보로 이득을 볼 수 없는 것은 약성시장만의 특성이다"], answer:3,
+    expl:"과거 정보로 이득을 볼 수 없는 것은 약성시장만의 특성이 아니라 모든 효율적 시장이 공통으로 가지는 특성이다.",
+    src:"2026-06-11 시장 이론" },
+  { type:"객관식", cat:"부동산학개론",
+    q:"주거분리와 여과과정에 관한 설명으로 옳지 않은 것은?",
+    opts:["하향여과는 저가주택에 대한 수요가 증가할 때 발생한다","여과과정에서 주거분리를 주도하는 것은 저소득가구다","고소득가구는 정의 외부효과를 추구하고 부의 외부효과를 회피한다","주택개량 가치상승분이 커 가격이 하락하지 않으면 하향여과도 발생하지 않는다"], answer:1,
+    expl:"여과과정에서 주거분리를 주도하는 것은 고소득가구다. 고소득가구가 정의 외부효과를 추구하고 부의 외부효과를 회피하는 동기에서 비롯된다.",
+    src:"2026-06-11 주거분리와 여과과정" },
+  { type:"객관식", cat:"부동산학개론",
+    q:"부동산 조세에 관한 설명으로 옳지 않은 것은?",
+    opts:["증여세는 부동산의 보유 단계에 부과한다","상속세와 증여세는 누진세율을 적용한다","양도소득세와 부가가치세는 국세다","상속세는 누진세율이 적용되는 세목이다"], answer:0,
+    expl:"증여세는 부동산의 취득 단계에 부과한다. 보유 단계가 아니다. 상속세·증여세는 누진세율, 양도소득세·부가가치세는 국세다.",
+    src:"2026-06-11 부동산 조세" },
+  { type:"객관식", cat:"부동산학개론",
+    q:"부동산 정책에 관한 설명으로 옳지 않은 것은?",
+    opts:["PIR이 클수록 주택 구매가 쉽지 않다는 것을 의미한다","임대료규제가 정상 시행되면 장기적으로 임차인 주거이동이 제한될 수 있다","토지적성평가제도는 개발과 보전의 경합을 합리적으로 조정하는 수단이다","택지소유상한제는 현재 활발히 실시되고 있는 정책이다"], answer:3,
+    expl:"택지소유상한제는 현재 실시되고 있지 않은 정책이다. PIR은 클수록 구매가 어렵고, 토지적성평가제도는 개발과 보전의 경합을 조정한다.",
+    src:"2026-06-11 부동산 정책" },
+  { type:"객관식", cat:"부동산학개론",
+    q:"위험과 수익에 관한 설명으로 옳지 않은 것은?",
+    opts:["위험조정할인률은 위험한 투자대안일수록 더 높은 할인률을 적용한다","경기변동·인플레이션 등은 비체계적 위험이다","효율적 프런티어는 모든 위험수준에서 최대의 기대수익률을 얻는 포트폴리오 집합이다","효율적 전선이 우상향하면 높은 수익을 위해 많은 위험을 감수한다는 뜻이다"], answer:1,
+    expl:"경기변동·인플레이션 등은 분산투자로 제거할 수 없는 체계적 위험이다. 비체계적 위험이 아니다.",
+    src:"2026-06-18 기대수익률과 위험" },
+  { type:"객관식", cat:"부동산학개론",
+    q:"원리금균등 상환방식에 관한 설명으로 옳은 것은?",
+    opts:["매기 상환하는 원금의 크기는 점점 감소한다","첫 이자는 원금에 저당상수를 곱해 구한다","매기상환액은 원금에 연이자율을 곱해 구한다","매기 상환하는 원금은 점점 증가하고 이자는 점점 감소한다"], answer:3,
+    expl:"원리금균등상환은 매기 상환원금이 점점 증가하고 이자는 점점 감소한다. 첫 이자는 원금에 연이자를 곱하고, 매기상환액은 저당상수를 곱해 구한다.",
+    src:"2026-06-18 대출 상환 방식" },
+  { type:"객관식", cat:"부동산학개론",
+    q:"부동산 금융과 정부 정책에 관한 설명으로 옳지 않은 것은?",
+    opts:["정부는 주택가격을 잡기 위해 주택소비금융을 확대하고 금리를 인하한다","주택소비금융의 핵심 형태는 저당대출(주택담보대출)이다","주택소비금융은 구입할 주택 자체를 담보로 잡는다","DTI는 연 부채상환액을 연소득으로 나눈 비율이다"], answer:0,
+    expl:"정부는 주택가격을 잡기 위해 투자를 줄여야 하므로 주택소비금융을 축소하고 금리를 인상하며 대출규제를 강화한다. 확대·인하는 옳지 않다.",
+    src:"2026-06-18 부동산 금융과 정부 정책" },
+  { type:"객관식", cat:"부동산학개론",
+    q:"주택저당유동화증권(MBS)에 관한 설명으로 옳지 않은 것은?",
+    opts:["MPTS는 소유권을 투자자에게 넘겨 투자자가 책임을 지는 지분형이다","MPTB는 소유권을 발행자가 보유하고 채권을 쪼개주는 혼합형이다","MPTB에서 조기상환위험은 발행자가, 채무불이행위험은 투자자가 부담한다","MPTB는 MBB와 달리 원리금 수취권을 투자자가 가진다"], answer:2,
+    expl:"MPTB에서 조기상환위험은 투자자가 부담하고, 소유권에 따른 채무불이행위험은 발행자가 부담한다. 보기는 둘을 뒤바꿔 옳지 않다.",
+    src:"2026-06-18 주택저당유동화증권(MBS)" },
+  { type:"객관식", cat:"부동산학개론",
+    q:"비할인법(화폐의 시간가치 미고려)에 관한 설명으로 옳지 않은 것은?",
+    opts:["승수법은 투자액 ÷ 소득으로 구한다","수익률법은 소득 ÷ 투자액으로 구한다","수익률법과 승수법은 화폐의 시간가치를 고려하지 않는다","수익률법은 투자액을 소득으로 나눈 값이다"], answer:3,
+    expl:"수익률법은 소득 ÷ 투자액이다. 보기는 분자·분모가 뒤바뀌어 옳지 않다. 승수법은 투자액 ÷ 소득이며 둘 다 화폐의 시간가치를 고려하지 않는다.",
+    src:"2026-06-18 비율 분석 지표" },
+  { type:"객관식", cat:"부동산학개론",
+    q:"부동산투자회사법상 자본금 기준에 관한 설명으로 옳지 않은 것은?",
+    opts:["자기관리 부동산투자회사의 설립자본금은 5억원 이상이다","위탁관리 부동산투자회사의 설립자본금은 3억원 이상이다","자기관리 부동산투자회사의 최저자본금은 50억원 이상이다","위탁관리 부동산투자회사의 최저자본금은 50억원 이상이다"], answer:2,
+    expl:"자기관리 부동산투자회사의 최저자본금은 70억원 이상이다. 설립자본금은 자기관리 5억·위탁관리 3억, 최저자본금은 자기관리 70억·위탁관리 50억이다.",
+    src:"2026-06-18 부동산투자회사법 핵심 규정" },
+  { type:"객관식", cat:"부동산학개론",
+    q:"부동산 투자·금융 개념에 관한 설명 중 옳은 것을 모두 고른 것은?<br>ㄱ. 정의 레버리지 효과는 총자본수익률이 저당수익률보다 높을 때 발생한다.<br>ㄴ. 대출자는 돈을 빌리는 차입자를 의미한다.<br>ㄷ. 위험조정할인률은 위험한 투자대안일수록 더 높은 할인률을 적용한다.",
+    opts:["ㄱ, ㄴ","ㄱ, ㄷ","ㄴ, ㄷ","ㄱ, ㄴ, ㄷ"], answer:1,
+    expl:"ㄱ·ㄷ이 옳다. ㄴ은 대출자가 돈을 빌려주는 은행을 의미하므로 틀렸다. 차입자가 빌리는 쪽이다.",
+    src:"2026-06-11 부동산 투자·금융" },
+  { type:"객관식", cat:"부동산학개론",
+    q:"지분금융 3종에 관한 설명 중 옳은 것을 모두 고른 것은?<br>ㄱ. 신디케이트는 다수의 소액투자자가 자금을 모아 공동 투자한다.<br>ㄴ. 조인트벤처는 소수의 특정 당사자가 특정 프로젝트를 위해 결합한 공동사업체다.<br>ㄷ. 부동산투자회사(REITs)는 부동산투자회사법상 합자회사다.",
+    opts:["ㄱ, ㄴ","ㄴ, ㄷ","ㄱ","ㄱ, ㄴ, ㄷ"], answer:0,
+    expl:"ㄱ·ㄴ이 옳다. ㄷ은 부동산투자회사가 부동산투자회사법상 주식회사이므로 틀렸다. 합자회사가 아니다.",
+    src:"2026-06-18 지분금융 3종 세트" },
+  { type:"객관식", cat:"부동산학개론",
+    q:"투자 타당성 분석 기법에 관한 설명 중 옳은 것을 모두 고른 것은?<br>ㄱ. 할인현금흐름기법(DCF)에는 내부수익률법·순현재가치법·수익성지수법이 해당한다.<br>ㄴ. 내부수익률법은 재투자율로 요구수익률을 사용한다.<br>ㄷ. 민감도분석은 투입요소 변화에 따른 순현재가치·내부수익률의 변화를 분석한다.",
+    opts:["ㄴ, ㄷ","ㄱ, ㄷ","ㄱ, ㄴ","ㄱ, ㄴ, ㄷ"], answer:1,
+    expl:"ㄱ·ㄷ이 옳다. ㄴ은 내부수익률법이 재투자율로 내부수익률을 사용하므로 틀렸다. 요구수익률을 쓰는 것은 순현가법이다.",
+    src:"2026-06-18 투자 타당성 분석 기법" },
+  { type:"객관식", cat:"부동산학개론",
+    q:"부동산투자회사법 규정 중 옳은 것을 모두 고른 것은?<br>ㄱ. 감정평가사 또는 공인중개사로서 해당 분야 5년 이상 종사자는 자기관리회사의 상근 자산운용 전문인력이 될 수 있다.<br>ㄴ. 자산 운용 회계처리는 금융위원회가 정하는 기준에 따른다.<br>ㄷ. 위탁관리 부동산투자회사는 주주 1인당 주식소유 한도가 제한된다.",
+    opts:["ㄱ, ㄴ","ㄱ, ㄷ","ㄴ, ㄷ","ㄱ, ㄴ, ㄷ"], answer:3,
+    expl:"ㄱ·ㄴ·ㄷ 모두 옳다. 5년 이상 종사한 감정평가사·공인중개사는 자기관리회사 상근 전문인력이 될 수 있고, 회계처리는 금융위원회 기준에 따르며, 위탁관리회사는 1인당 주식소유 한도가 제한된다.",
+    src:"2026-06-18 부동산투자회사법 핵심 규정" },
+  { type:"객관식", cat:"부동산학개론",
+    q:"다음 조건에서 기대수익률은? (다른 조건은 동일)<br>ㄱ. 호황: 발생확률 0.4, 예상수익률 20%<br>ㄴ. 불황: 발생확률 0.6, 예상수익률 5%",
+    opts:["8%","9%","11%","13%"], answer:2,
+    expl:"기대수익률은 상황별 확률에 예상수익률을 곱해 더한 값이다. (0.4 × 20%) + (0.6 × 5%) = 8% + 3% = 11%.",
+    src:"2026-06-18 기대수익률과 위험" },
+  { type:"객관식", cat:"부동산학개론",
+    q:"다음 조건에서 부채감당률은? (다른 조건은 동일)<br>ㄱ. 순영업소득: 8,000만원<br>ㄴ. 부채서비스액: 5,000만원",
+    opts:["1.6","0.625","1.4","2.0"], answer:0,
+    expl:"부채감당률은 순영업소득을 부채서비스액으로 나눈 값이다. 8,000만원 ÷ 5,000만원 = 1.6이다.",
+    src:"2026-06-18 비율 분석 지표" },
+  { type:"객관식", cat:"부동산학개론",
+    q:"다음 조건에서 채무불이행율은? (다른 조건은 동일)<br>ㄱ. 영업경비: 2,000만원<br>ㄴ. 부채서비스액: 3,000만원<br>ㄷ. 유효총소득: 1억원",
+    opts:["20%","50%","30%","80%"], answer:1,
+    expl:"채무불이행율은 (영업경비 + 부채서비스액)을 유효총소득으로 나눈 값이다. (2,000만 + 3,000만) ÷ 1억 = 5,000만 ÷ 1억 = 0.5 = 50%.",
+    src:"2026-06-18 비율 분석 지표" },
+  { type:"객관식", cat:"부동산학개론",
+    q:"다음 조건에서 대부비율(LTV)은? (다른 조건은 동일)<br>ㄱ. 대출금액: 3억원<br>ㄴ. 부동산가격: 5억원",
+    opts:["40%","50%","75%","60%"], answer:3,
+    expl:"대부비율은 대출금액을 부동산가격으로 나눈 값이다. 3억원 ÷ 5억원 = 0.6 = 60%.",
+    src:"2026-06-18 비율 분석 지표" },
+  { type:"객관식", cat:"부동산학개론",
+    q:"다음 조건에서 총부채상환비율(DTI)은? (다른 조건은 동일)<br>ㄱ. 연 부채상환액: 1,500만원<br>ㄴ. 연소득: 5,000만원",
+    opts:["20%","30%","40%","50%"], answer:1,
+    expl:"DTI는 연 부채상환액을 연소득으로 나눈 값이다. 1,500만원 ÷ 5,000만원 = 0.3 = 30%.",
+    src:"2026-06-18 비율 분석 지표" }
+];
+
+const form = document.getElementById('quiz');
+const selected = new Array(QUESTIONS.length).fill(null);
+let graded = false;
+let lastCat = null;
+
+QUESTIONS.forEach((item, qi)=>{
+  if(item.cat !== lastCat){
+    const s = document.createElement('div');
+    s.className = 'sec';
+    s.textContent = '▍' + item.cat;
+    form.appendChild(s);
+    lastCat = item.cat;
+  }
+  const card = document.createElement('div');
+  card.className = 'q';
+  const isOX = item.type === 'OX';
+  card.innerHTML = `
+    <div class="qhead">
+      <span class="qno">${qi+1}</span>
+      <span class="qtype">${item.type}</span>
+      <span class="qcat">${item.cat}</span>
+    </div>
+    <div class="qtext">${item.q}</div>
+    <div class="opts ${isOX?'ox':''}" data-q="${qi}"></div>
+    <div class="expl" id="expl-${qi}"></div>`;
+  const optsEl = card.querySelector('.opts');
+  item.opts.forEach((o, oi)=>{
+    const el = document.createElement('div');
+    el.className = 'opt';
+    el.dataset.q = qi; el.dataset.o = oi;
+    el.innerHTML = isOX
+      ? `<span>${o}</span>`
+      : `<span class="mk">${String.fromCharCode(65+oi)}</span><span>${o}</span>`;
+    el.addEventListener('click', ()=>{
+      if(graded) return;
+      selected[qi] = oi;
+      optsEl.querySelectorAll('.opt').forEach(x=>x.classList.remove('sel'));
+      el.classList.add('sel');
+      updateProgress();
+    });
+    optsEl.appendChild(el);
+  });
+  form.appendChild(card);
+});
+
+function updateProgress(){
+  const done = selected.filter(s=>s!==null).length;
+  document.getElementById('pcount').textContent = `${done} / ${QUESTIONS.length} 선택`;
+  document.getElementById('pbar').style.width = (done/QUESTIONS.length*100)+'%';
+  document.getElementById('submitBtn').disabled = done !== QUESTIONS.length;
+}
+
+const btn = document.getElementById('submitBtn');
+btn.addEventListener('click', ()=>{ if(!graded){ grade(); } else { location.reload(); } });
+
+function grade(){
+  graded = true;
+  let score = 0;
+  const wrong = [];
+  QUESTIONS.forEach((item, qi)=>{
+    const opts = document.querySelectorAll(`.opt[data-q="${qi}"]`);
+    opts.forEach((el, oi)=>{
+      el.style.cursor='default';
+      if(oi === item.answer) el.classList.add('correct');
+      if(oi === selected[qi] && oi !== item.answer) el.classList.add('wrong');
+    });
+    const correct = selected[qi] === item.answer;
+    if(correct){ score++; }
+    else {
+      wrong.push({
+        id: `${QUIZ_DATE}-q${qi+1}`, cat:item.cat, type:item.type, q:item.q,
+        options:item.opts, myAnswer:item.opts[selected[qi]], correct:item.opts[item.answer],
+        expl:item.expl, src:item.src
+      });
+    }
+    const ex = document.getElementById('expl-'+qi);
+    ex.innerHTML = `<span class="verdict" style="color:${correct?'var(--ok)':'var(--no)'}">${correct?'정답!':'오답'}</span>${item.expl}<span class="src">📄 출처: ${item.src}</span>`;
+    ex.classList.add('show');
+  });
+  const r = document.getElementById('result');
+  document.getElementById('score').textContent = score;
+  document.getElementById('rmsg').textContent = msgFor(score);
+  r.classList.add('show');
+  btn.textContent = '🔄 다시 풀기';
+  btn.classList.add('retry');
+
+  // 결과 자동 다운로드 (월요일 오답 수거 작업이 읽는 파일)
+  downloadResult(score, wrong);
+
+  r.scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+function downloadResult(score, wrong){
+  const payload = {
+    subject:"공인중개사", date:QUIZ_DATE,
+    score:score, total:QUESTIONS.length, wrongCount:wrong.length,
+    wrong:wrong, generatedAt:new Date().toISOString()
+  };
+  try{
+    const blob = new Blob([JSON.stringify(payload,null,2)], {type:"application/json"});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `공인중개사_오답_${QUIZ_DATE}.json`;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url), 1500);
+    document.getElementById('dlnote').textContent =
+      wrong.length>0 ? `💾 오답 ${wrong.length}개 저장됨 — 다운로드 폴더 확인` : "💾 만점 기록 저장됨";
+  }catch(e){
+    document.getElementById('dlnote').textContent = "⚠️ 자동 저장 실패 — 브라우저에서 직접 열어 풀어주세요";
+  }
+}
+
+function msgFor(s){
+  const t = QUESTIONS.length;
+  const r = s/t;
+  if(s===t)   return "만점. 오늘 등록증 발급해도 되겠는데요? 🏆";
+  if(r>=0.8)  return "합격권. 틀린 거 해설만 한 번 더 보면 완벽합니다.";
+  if(r>=0.6)  return "절반은 넘었어요. 오답 노트행 직행하는 개념들이 보이네요.";
+  if(r>=0.4)  return "아직 흔들리는 개념이 있어요. 해설 정독하고 내일 재도전!";
+  return "괜찮아요, 회독이 쌓이면 올라갑니다. 해설부터 차근차근.";
+}
+</script>
+</body>
+</html>
