@@ -1,6 +1,6 @@
 {
   "ledgerSchema": 2,
-  "generatedAt": "2026-07-27T10:59:01",
+  "generatedAt": "2026-08-04T00:27:08",
   "sourceFiles": 37,
   "v2Files": 6,
   "submissions": 37,
@@ -8,33 +8,43 @@
   "avgTotal": 35,
   "perfectRuns": 3,
   "totalWrongItems": 93,
-  "uniqueConcepts": 87,
+  "uniqueConcepts": 86,
   "dateRange": [
     "2026-06-02",
     "2026-07-24"
   ],
   "statusCounts": {
-    "상습": 7,
-    "재도전중": 71,
+    "상습": 8,
+    "재도전중": 69,
     "졸업후보": 3,
     "졸업": 6
   },
   "subjectWeakness": {
-    "부동산공법": 19,
+    "부동산공법": 20,
+    "공인중개사법": 14,
     "민법": 14,
-    "공인중개사법": 13,
-    "부동산학개론": 12,
+    "부동산학개론": 11,
     "부동산공시법": 8,
     "공법": 5,
     "세법": 4,
     "계약법": 4,
-    "부동산세법": 4,
     "공시법": 3,
     "민법총칙": 3,
     "물권법": 3,
+    "부동산세법": 3,
     "민사특별법": 1
   },
   "dueQueue": [
+    {
+      "conceptKey": "부동산공법 도시개발조합 동의요건",
+      "subject": "부동산공법",
+      "status": "상습",
+      "timesWrong": 2,
+      "retryMissed": 2,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-07-01",
+      "nextReviewDate": "2026-07-04"
+    },
     {
       "conceptKey": "공인중개사법 1-2 포상금",
       "subject": "공인중개사법",
@@ -54,16 +64,6 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-11",
       "nextReviewDate": "2026-06-14"
-    },
-    {
-      "conceptKey": "부동산공법 도시개발조합 동의요건",
-      "subject": "부동산공법",
-      "status": "상습",
-      "timesWrong": 1,
-      "retryMissed": 1,
-      "consecutiveCorrect": 0,
-      "lastWrong": "2026-07-01",
-      "nextReviewDate": "2026-07-04"
     },
     {
       "conceptKey": "민법 1-4",
@@ -104,6 +104,16 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-11-2",
       "nextReviewDate": "2026-06-14"
+    },
+    {
+      "conceptKey": "공인중개사법 19 토지거래허가구역",
+      "subject": "공인중개사법",
+      "status": "상습",
+      "timesWrong": 2,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-07-01",
+      "nextReviewDate": "2026-07-04"
     },
     {
       "conceptKey": "부동산세법 3-3",
@@ -576,26 +586,6 @@
       "nextReviewDate": "2026-07-02"
     },
     {
-      "conceptKey": "공인중개사법 19 토지거래허가구역",
-      "subject": "공인중개사법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "lastWrong": "2026-07-01",
-      "nextReviewDate": "2026-07-04"
-    },
-    {
-      "conceptKey": "부동산학개론 5 감정평가",
-      "subject": "부동산학개론",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "lastWrong": "2026-07-01",
-      "nextReviewDate": "2026-07-04"
-    },
-    {
       "conceptKey": "부동산학개론 원금균등상환 계산",
       "subject": "부동산학개론",
       "status": "재도전중",
@@ -814,9 +804,77 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-07-24",
       "nextReviewDate": "2026-07-27"
+    },
+    {
+      "conceptKey": "부동산학개론 §1 시장이론",
+      "subject": "부동산학개론",
+      "status": "졸업후보",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 2,
+      "lastWrong": "2026-06-17",
+      "nextReviewDate": "2026-07-30"
+    },
+    {
+      "conceptKey": "민법 유치권",
+      "subject": "민법",
+      "status": "졸업후보",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 2,
+      "lastWrong": "2026-06-25",
+      "nextReviewDate": "2026-07-30"
+    },
+    {
+      "conceptKey": "부동산세법 2-5 취득시기·9 물납/부과시점",
+      "subject": "부동산세법",
+      "status": "졸업후보",
+      "timesWrong": 0,
+      "retryMissed": 0,
+      "consecutiveCorrect": 2,
+      "lastWrong": null,
+      "nextReviewDate": "2026-07-30"
     }
   ],
   "ledger": [
+    {
+      "conceptKey": "부동산공법 도시개발조합 동의요건",
+      "aliases": [],
+      "subject": "부동산공법",
+      "concept": "부동산공법 도시개발조합 동의요건",
+      "status": "상습",
+      "timesWrong": 2,
+      "retryMissed": 2,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-07-01",
+      "lastWrong": "2026-07-01",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-07-01",
+      "nextReviewDate": "2026-07-04",
+      "dates": [
+        "2026-07-01",
+        "2026-07-01"
+      ],
+      "samples": [
+        {
+          "date": "2026-07-01",
+          "type": "OX",
+          "q": "🔁 도시개발법령상 도시개발조합의 설립인가를 받으려면 토지면적의 2분의 1 이상에 해당하는 토지소유자와 토지소유자 총수의 3분의 2 이상의 동의를 받아야 한다.",
+          "myAnswer": "O",
+          "correct": "X",
+          "expl": "X. 도시개발조합은 토지면적 2/3 이상과 토지소유자 총수 1/2 이상의 동의가 필요하다(땅이 더 무겁다). 지문은 면적과 사람의 비율을 서로 뒤바꿔 놓은 함정이다 — 면적 쪽 요건이 더 높다는 점, 재개발(사람 3/4)과 반대라는 점을 함께 기억한다."
+        },
+        {
+          "date": "2026-07-01",
+          "type": "OX",
+          "q": "🔁 도시개발법령상 도시개발조합의 설립인가를 받으려면 토지면적의 2분의 1 이상에 해당하는 토지소유자와 토지소유자 총수의 3분의 2 이상의 동의를 받아야 한다.",
+          "myAnswer": "O",
+          "correct": "X",
+          "expl": "X. 도시개발조합은 토지면적 2/3 이상과 토지소유자 총수 1/2 이상의 동의가 필요하다(땅이 더 무겁다). 지문은 면적과 사람의 비율을 서로 뒤바꿔 놓은 함정이다 — 면적 쪽 요건이 더 높다는 점, 재개발(사람 3/4)과 반대라는 점을 함께 기억한다."
+        }
+      ]
+    },
     {
       "conceptKey": "공인중개사법 1-2 포상금",
       "aliases": [],
@@ -881,35 +939,6 @@
           "myAnswer": "O",
           "correct": "X",
           "expl": "X. 공간재구조화계획 결정권자는 '국토교통부장관 + 시·도지사'다. 일반 도시·군관리계획은 '시·도지사 + 대도시 시장'인데, 공간재구조화는 국가급 큰 그림이라 대도시 시장이 빠지고 국장이 들어온다 — '대도시시장 OUT, 국장 IN'으로 기억."
-        }
-      ]
-    },
-    {
-      "conceptKey": "부동산공법 도시개발조합 동의요건",
-      "aliases": [],
-      "subject": "부동산공법",
-      "concept": "부동산공법 도시개발조합 동의요건",
-      "status": "상습",
-      "timesWrong": 1,
-      "retryMissed": 1,
-      "consecutiveCorrect": 0,
-      "firstWrong": "2026-07-01",
-      "lastWrong": "2026-07-01",
-      "lastCorrect": null,
-      "lastResult": "wrong",
-      "lastDp": "2026-07-01",
-      "nextReviewDate": "2026-07-04",
-      "dates": [
-        "2026-07-01"
-      ],
-      "samples": [
-        {
-          "date": "2026-07-01",
-          "type": "OX",
-          "q": "🔁 도시개발법령상 도시개발조합의 설립인가를 받으려면 토지면적의 2분의 1 이상에 해당하는 토지소유자와 토지소유자 총수의 3분의 2 이상의 동의를 받아야 한다.",
-          "myAnswer": "O",
-          "correct": "X",
-          "expl": "X. 도시개발조합은 토지면적 2/3 이상과 토지소유자 총수 1/2 이상의 동의가 필요하다(땅이 더 무겁다). 지문은 면적과 사람의 비율을 서로 뒤바꿔 놓은 함정이다 — 면적 쪽 요건이 더 높다는 점, 재개발(사람 3/4)과 반대라는 점을 함께 기억한다."
         }
       ]
     },
@@ -1062,6 +1091,44 @@
           "myAnswer": "X",
           "correct": "O",
           "expl": "O. 캐내기·파내기·쌓기(돌·흙·쓰레기 등)는 잡종지지만, 원상회복 조건부 허가라면 그 이용은 일시적이고 땅의 본래 용도가 유지될 예정이므로 잡종지로 바꾸지 않는다. 지목은 '토지의 지속적인 주된 용도'를 따른다는 원리에서 나오는 예외."
+        }
+      ]
+    },
+    {
+      "conceptKey": "공인중개사법 19 토지거래허가구역",
+      "aliases": [],
+      "subject": "공인중개사법",
+      "concept": "공인중개사법 19 토지거래허가구역",
+      "status": "상습",
+      "timesWrong": 2,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-07-01",
+      "lastWrong": "2026-07-01",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-07-01",
+      "nextReviewDate": "2026-07-04",
+      "dates": [
+        "2026-07-01",
+        "2026-07-01"
+      ],
+      "samples": [
+        {
+          "date": "2026-07-01",
+          "type": "객관식",
+          "q": "토지거래허가구역의 지정 및 토지거래계약 허가에 관한 설명으로 <b>옳지 않은</b> 것은?",
+          "myAnswer": "허가구역의 지정은 주민의 의견을 듣지 않고 심의를 거쳐서 한다",
+          "correct": "허가받은 사항의 변경에 대한 허가는 국토교통부장관이 한다",
+          "expl": "토지거래계약 허가받은 사항의 변경 허가는 국토교통부장관이 아니라 시장·군수·구청장이 한다. 개별 거래의 변경까지 국장이 관여하는 것은 과하기 때문. 변경허가 주체를 상급기관으로 올린 첫 지문이 함정이고, 둘 이상 시·도 걸치면 국장 지정·의견 없이 심의만·5년 초과 불가는 옳다."
+        },
+        {
+          "date": "2026-07-01",
+          "type": "객관식",
+          "q": "토지거래허가구역의 지정 및 토지거래계약 허가에 관한 설명으로 <b>옳지 않은</b> 것은?",
+          "myAnswer": "허가구역의 지정은 주민의 의견을 듣지 않고 심의를 거쳐서 한다",
+          "correct": "허가받은 사항의 변경에 대한 허가는 국토교통부장관이 한다",
+          "expl": "토지거래계약 허가받은 사항의 변경 허가는 국토교통부장관이 아니라 시장·군수·구청장이 한다. 개별 거래의 변경까지 국장이 관여하는 것은 과하기 때문. 변경허가 주체를 상급기관으로 올린 첫 지문이 함정이고, 둘 이상 시·도 걸치면 국장 지정·의견 없이 심의만·5년 초과 불가는 옳다."
         }
       ]
     },
@@ -2429,64 +2496,6 @@
       ]
     },
     {
-      "conceptKey": "공인중개사법 19 토지거래허가구역",
-      "aliases": [],
-      "subject": "공인중개사법",
-      "concept": "공인중개사법 19 토지거래허가구역",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "firstWrong": "2026-07-01",
-      "lastWrong": "2026-07-01",
-      "lastCorrect": null,
-      "lastResult": "wrong",
-      "lastDp": "2026-07-01",
-      "nextReviewDate": "2026-07-04",
-      "dates": [
-        "2026-07-01"
-      ],
-      "samples": [
-        {
-          "date": "2026-07-01",
-          "type": "객관식",
-          "q": "토지거래허가구역의 지정 및 토지거래계약 허가에 관한 설명으로 <b>옳지 않은</b> 것은?",
-          "myAnswer": "허가구역의 지정은 주민의 의견을 듣지 않고 심의를 거쳐서 한다",
-          "correct": "허가받은 사항의 변경에 대한 허가는 국토교통부장관이 한다",
-          "expl": "토지거래계약 허가받은 사항의 변경 허가는 국토교통부장관이 아니라 시장·군수·구청장이 한다. 개별 거래의 변경까지 국장이 관여하는 것은 과하기 때문. 변경허가 주체를 상급기관으로 올린 첫 지문이 함정이고, 둘 이상 시·도 걸치면 국장 지정·의견 없이 심의만·5년 초과 불가는 옳다."
-        }
-      ]
-    },
-    {
-      "conceptKey": "부동산학개론 5 감정평가",
-      "aliases": [],
-      "subject": "부동산학개론",
-      "concept": "부동산학개론 5 감정평가",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "firstWrong": "2026-07-01",
-      "lastWrong": "2026-07-01",
-      "lastCorrect": null,
-      "lastResult": "wrong",
-      "lastDp": "2026-07-01",
-      "nextReviewDate": "2026-07-04",
-      "dates": [
-        "2026-07-01"
-      ],
-      "samples": [
-        {
-          "date": "2026-07-01",
-          "type": "객관식",
-          "q": "감정평가의 기준시점 및 지역·개별분석에 관한 설명으로 <b>옳지 않은</b> 것은?",
-          "myAnswer": "기준시점을 미리 정한 경우에는 그 날짜에 가격조사가 가능한 경우에만 그 날짜를 기준시점으로 할 수 있다",
-          "correct": "감정평가는 가격조사를 의뢰받은 시점의 이용상황 및 공법상 제한을 기준으로 한다",
-          "expl": "감정평가는 의뢰(가격조사) 시점이 아니라 기준시점의 이용상황·공법상 제한을 기준으로 한다. 가치는 특정 시점을 못박아야 확정되기 때문 — 그 기준이 기준시점이다. 기준시점을 의뢰시점으로 슬쩍 바꾼 것이 함정이고, 지역·개별분석과 인근지역 설명은 옳다."
-        }
-      ]
-    },
-    {
       "conceptKey": "부동산학개론 원금균등상환 계산",
       "aliases": [],
       "subject": "부동산학개론",
@@ -3188,28 +3197,17 @@
       "subject": "부동산세법",
       "concept": "부동산세법 2-5 취득시기·9 물납/부과시점",
       "status": "졸업후보",
-      "timesWrong": 1,
+      "timesWrong": 0,
       "retryMissed": 0,
       "consecutiveCorrect": 2,
-      "firstWrong": "2026-07-01",
-      "lastWrong": "2026-07-01",
+      "firstWrong": null,
+      "lastWrong": null,
       "lastCorrect": "2026-07-14",
       "lastResult": "correct",
       "lastDp": "2026-07-14",
       "nextReviewDate": "2026-07-30",
-      "dates": [
-        "2026-07-01"
-      ],
-      "samples": [
-        {
-          "date": "2026-07-01",
-          "type": "객관식",
-          "q": "지방세법령상 취득의 시기 및 세목별 부과 등에 관한 설명으로 옳은 것은?",
-          "myAnswer": "재건축조합이 취득하는 토지는 소유권이전고시일에 취득한 것으로 본다",
-          "correct": "주택조합이 취득하는 조합원에게 귀속되지 않는 토지는 사용검사를 받은 날에 취득한 것으로 본다",
-          "expl": "주택조합이 취득하는 조합원 비귀속 토지의 취득시기는 사용검사일이다(주택은 검사, 재건축은 다음날). 재건축조합은 소유권이전고시일의 다음 날이고, 취득세·등록면허세는 물납·분납이 모두 불가하며, 인지세는 계약서 작성 시 부과된다 — 시기·부과단계를 어긋나게 한 나머지가 함정."
-        }
-      ]
+      "dates": [],
+      "samples": []
     },
     {
       "conceptKey": "부동산공법 개발행위허가 제한",
