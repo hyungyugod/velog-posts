@@ -1,119 +1,61 @@
 {
   "ledgerSchema": 2,
-  "generatedAt": "2026-08-17T21:09:37",
-  "sourceFiles": 37,
-  "v2Files": 6,
-  "submissions": 37,
-  "avgScore": 32.6,
-  "avgTotal": 35,
-  "perfectRuns": 3,
-  "totalWrongItems": 93,
-  "uniqueConcepts": 86,
+  "generatedAt": "2026-08-18T09:22:19",
+  "sourceFiles": 40,
+  "v2Files": 9,
+  "submissions": 40,
+  "avgScore": 33.0,
+  "avgTotal": 36,
+  "perfectRuns": 4,
+  "totalWrongItems": 100,
+  "uniqueConcepts": 99,
   "dateRange": [
     "2026-06-02",
-    "2026-07-24"
+    "2026-08-14"
   ],
   "statusCounts": {
-    "상습": 8,
-    "재도전중": 69,
-    "졸업후보": 3,
-    "졸업": 6
+    "상습": 3,
+    "재도전중": 82,
+    "졸업후보": 7,
+    "졸업": 7
   },
   "subjectWeakness": {
-    "부동산공법": 20,
+    "부동산공법": 19,
     "공인중개사법": 14,
     "민법": 14,
-    "부동산학개론": 11,
+    "부동산학개론": 12,
     "부동산공시법": 8,
+    "부동산세법": 6,
     "공법": 5,
+    "민법총칙": 5,
     "세법": 4,
     "계약법": 4,
     "공시법": 3,
-    "민법총칙": 3,
     "물권법": 3,
-    "부동산세법": 3,
-    "민사특별법": 1
+    "민사특별법": 1,
+    "민법 물권법": 1,
+    "민법 용익·담보물권": 1
   },
   "dueQueue": [
     {
       "conceptKey": "부동산공법 도시개발조합 동의요건",
       "subject": "부동산공법",
       "status": "상습",
-      "timesWrong": 2,
-      "retryMissed": 2,
-      "consecutiveCorrect": 0,
-      "lastWrong": "2026-07-01",
-      "nextReviewDate": "2026-07-04"
-    },
-    {
-      "conceptKey": "공인중개사법 1-2 포상금",
-      "subject": "공인중개사법",
-      "status": "상습",
-      "timesWrong": 2,
+      "timesWrong": 1,
       "retryMissed": 1,
       "consecutiveCorrect": 1,
-      "lastWrong": "2026-07-13-2",
-      "nextReviewDate": "2026-07-21"
+      "lastWrong": "2026-07-01",
+      "nextReviewDate": "2026-08-17"
     },
     {
-      "conceptKey": "공법 OX 오답 8번",
-      "subject": "부동산공법",
+      "conceptKey": "민법 1-4 대리권 소멸",
+      "subject": "민법총칙",
       "status": "상습",
       "timesWrong": 1,
       "retryMissed": 1,
       "consecutiveCorrect": 0,
-      "lastWrong": "2026-06-11",
-      "nextReviewDate": "2026-06-14"
-    },
-    {
-      "conceptKey": "민법 1-4",
-      "subject": "민법총칙",
-      "status": "상습",
-      "timesWrong": 2,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "lastWrong": "2026-06-08",
-      "nextReviewDate": "2026-06-11"
-    },
-    {
-      "conceptKey": "민법 1-1",
-      "subject": "민법총칙",
-      "status": "상습",
-      "timesWrong": 2,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "lastWrong": "2026-06-08-민법",
-      "nextReviewDate": "2026-06-11"
-    },
-    {
-      "conceptKey": "부동산세법 4-1",
-      "subject": "세법",
-      "status": "상습",
-      "timesWrong": 2,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "lastWrong": "2026-06-11-2",
-      "nextReviewDate": "2026-06-14"
-    },
-    {
-      "conceptKey": "부동산공시법 1-3",
-      "subject": "공시법",
-      "status": "상습",
-      "timesWrong": 2,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "lastWrong": "2026-06-11-2",
-      "nextReviewDate": "2026-06-14"
-    },
-    {
-      "conceptKey": "공인중개사법 19 토지거래허가구역",
-      "subject": "공인중개사법",
-      "status": "상습",
-      "timesWrong": 2,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "lastWrong": "2026-07-01",
-      "nextReviewDate": "2026-07-04"
+      "lastWrong": "2026-08-14-민법특화",
+      "nextReviewDate": "2026-08-17"
     },
     {
       "conceptKey": "부동산세법 3-3",
@@ -586,6 +528,16 @@
       "nextReviewDate": "2026-07-02"
     },
     {
+      "conceptKey": "부동산학개론 5 감정평가",
+      "subject": "부동산학개론",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-07-01",
+      "nextReviewDate": "2026-07-04"
+    },
+    {
       "conceptKey": "부동산학개론 원금균등상환 계산",
       "subject": "부동산학개론",
       "status": "재도전중",
@@ -806,6 +758,66 @@
       "nextReviewDate": "2026-07-27"
     },
     {
+      "conceptKey": "민법총칙 1-1 제3자의 사기",
+      "subject": "민법총칙",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-08-14-민법특화",
+      "nextReviewDate": "2026-08-17"
+    },
+    {
+      "conceptKey": "물권법 1-5 등기와 물권변동",
+      "subject": "민법 물권법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-08-14-민법특화",
+      "nextReviewDate": "2026-08-17"
+    },
+    {
+      "conceptKey": "담보물권 저당권·일괄경매",
+      "subject": "민법 용익·담보물권",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-08-14-민법특화",
+      "nextReviewDate": "2026-08-17"
+    },
+    {
+      "conceptKey": "공인중개사법 1-5 과태료 개별금액",
+      "subject": "공인중개사법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-08-14",
+      "nextReviewDate": "2026-08-17"
+    },
+    {
+      "conceptKey": "부동산세법 1-4 종부세 과세표준 산정",
+      "subject": "부동산세법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-08-14",
+      "nextReviewDate": "2026-08-17"
+    },
+    {
+      "conceptKey": "부동산세법 1-3 신탁재산 납세의무",
+      "subject": "부동산세법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-08-14",
+      "nextReviewDate": "2026-08-17"
+    },
+    {
       "conceptKey": "부동산학개론 §1 시장이론",
       "subject": "부동산학개론",
       "status": "졸업후보",
@@ -829,10 +841,10 @@
       "conceptKey": "부동산세법 2-5 취득시기·9 물납/부과시점",
       "subject": "부동산세법",
       "status": "졸업후보",
-      "timesWrong": 0,
+      "timesWrong": 1,
       "retryMissed": 0,
       "consecutiveCorrect": 2,
-      "lastWrong": null,
+      "lastWrong": "2026-07-01",
       "nextReviewDate": "2026-07-30"
     }
   ],
@@ -843,17 +855,16 @@
       "subject": "부동산공법",
       "concept": "부동산공법 도시개발조합 동의요건",
       "status": "상습",
-      "timesWrong": 2,
-      "retryMissed": 2,
-      "consecutiveCorrect": 0,
+      "timesWrong": 1,
+      "retryMissed": 1,
+      "consecutiveCorrect": 1,
       "firstWrong": "2026-07-01",
       "lastWrong": "2026-07-01",
-      "lastCorrect": null,
-      "lastResult": "wrong",
-      "lastDp": "2026-07-01",
-      "nextReviewDate": "2026-07-04",
+      "lastCorrect": "2026-08-10",
+      "lastResult": "correct",
+      "lastDp": "2026-08-10",
+      "nextReviewDate": "2026-08-17",
       "dates": [
-        "2026-07-01",
         "2026-07-01"
       ],
       "samples": [
@@ -864,195 +875,35 @@
           "myAnswer": "O",
           "correct": "X",
           "expl": "X. 도시개발조합은 토지면적 2/3 이상과 토지소유자 총수 1/2 이상의 동의가 필요하다(땅이 더 무겁다). 지문은 면적과 사람의 비율을 서로 뒤바꿔 놓은 함정이다 — 면적 쪽 요건이 더 높다는 점, 재개발(사람 3/4)과 반대라는 점을 함께 기억한다."
-        },
-        {
-          "date": "2026-07-01",
-          "type": "OX",
-          "q": "🔁 도시개발법령상 도시개발조합의 설립인가를 받으려면 토지면적의 2분의 1 이상에 해당하는 토지소유자와 토지소유자 총수의 3분의 2 이상의 동의를 받아야 한다.",
-          "myAnswer": "O",
-          "correct": "X",
-          "expl": "X. 도시개발조합은 토지면적 2/3 이상과 토지소유자 총수 1/2 이상의 동의가 필요하다(땅이 더 무겁다). 지문은 면적과 사람의 비율을 서로 뒤바꿔 놓은 함정이다 — 면적 쪽 요건이 더 높다는 점, 재개발(사람 3/4)과 반대라는 점을 함께 기억한다."
         }
       ]
     },
     {
-      "conceptKey": "공인중개사법 1-2 포상금",
+      "conceptKey": "민법 1-4 대리권 소멸",
       "aliases": [],
-      "subject": "공인중개사법",
-      "concept": "공인중개사법 1-2 포상금",
-      "status": "상습",
-      "timesWrong": 2,
-      "retryMissed": 1,
-      "consecutiveCorrect": 1,
-      "firstWrong": "2026-06-22",
-      "lastWrong": "2026-07-13-2",
-      "lastCorrect": "2026-07-14",
-      "lastResult": "correct",
-      "lastDp": "2026-07-14",
-      "nextReviewDate": "2026-07-21",
-      "dates": [
-        "2026-06-22",
-        "2026-07-13-2"
-      ],
-      "samples": [
-        {
-          "date": "2026-06-22",
-          "type": "객관식",
-          "q": "공인중개사법령상 <b>포상금</b>의 지급에 관한 설명으로 <b>옳지 않은</b> 것은?",
-          "myAnswer": "포상금은 지급결정일부터 1개월 이내에 지급해야 한다",
-          "correct": "포상금 지급에 드는 비용 중 국고에서 보조하는 비율은 100분의 50 이상이다",
-          "expl": "국고보조 비율은 100분의 50 '이내'(이하)지 이상이 아니다 → 1번 틀림. 포상금은 '공소제기'가 기준이라 무죄여도 지급사유가 되고, 발각 후 신고는 제외, 지급은 결정일부터 1개월 이내다. '이내'를 '이상'으로 바꿔 상한을 하한처럼 둔갑시킨 함정."
-        },
-        {
-          "date": "2026-07-13-2",
-          "type": "일반",
-          "q": "🔁 포상금 지급에 관한 설명으로 <b>옳지 않은</b> 것은?",
-          "myAnswer": "포상금 지급결정은 신고·고발이 있은 후 1개월 이내에 한다.",
-          "correct": "거짓으로 중개대상물을 표시·광고한 자를 신고한 경우도 포상금 지급 대상이다.",
-          "expl": "거짓 표시·광고를 한 자는 500만원 이하 과태료 대상일 뿐 포상금 지급 대상이 아니다. 무혐의 시 미지급, 지급결정 1개월, 무자격 표시·광고자 신고는 포상금 대상이 맞다. '과태료 대상'을 '포상금 대상'으로 끌어온 함정."
-        }
-      ]
-    },
-    {
-      "conceptKey": "공법 OX 오답 8번",
-      "aliases": [],
-      "subject": "부동산공법",
-      "concept": "공법 OX 오답 8번",
+      "subject": "민법총칙",
+      "concept": "민법 1-4 대리권 소멸",
       "status": "상습",
       "timesWrong": 1,
       "retryMissed": 1,
       "consecutiveCorrect": 0,
-      "firstWrong": "2026-06-11",
-      "lastWrong": "2026-06-11",
+      "firstWrong": "2026-08-14-민법특화",
+      "lastWrong": "2026-08-14-민법특화",
       "lastCorrect": null,
       "lastResult": "wrong",
-      "lastDp": "2026-06-11",
-      "nextReviewDate": "2026-06-14",
+      "lastDp": "2026-08-14",
+      "nextReviewDate": "2026-08-17",
       "dates": [
-        "2026-06-11"
+        "2026-08-14-민법특화"
       ],
       "samples": [
         {
-          "date": "2026-06-11",
-          "type": "OX",
-          "q": "🔁 도시혁신구역·복합용도구역을 정하는 <b>공간재구조화계획</b>의 결정권자에는 시·도지사뿐 아니라 <b>대도시 시장</b>도 포함된다.",
-          "myAnswer": "O",
-          "correct": "X",
-          "expl": "X. 공간재구조화계획 결정권자는 '국토교통부장관 + 시·도지사'다. 일반 도시·군관리계획은 '시·도지사 + 대도시 시장'인데, 공간재구조화는 국가급 큰 그림이라 대도시 시장이 빠지고 국장이 들어온다 — '대도시시장 OUT, 국장 IN'으로 기억."
-        }
-      ]
-    },
-    {
-      "conceptKey": "민법 1-4",
-      "aliases": [],
-      "subject": "민법총칙",
-      "concept": "민법 1-4",
-      "status": "상습",
-      "timesWrong": 2,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "firstWrong": "2026-06-08-민법",
-      "lastWrong": "2026-06-08",
-      "lastCorrect": null,
-      "lastResult": "wrong",
-      "lastDp": "2026-06-08",
-      "nextReviewDate": "2026-06-11",
-      "dates": [
-        "2026-06-08-민법",
-        "2026-06-08"
-      ],
-      "samples": [
-        {
-          "date": "2026-06-08-민법",
-          "type": "객관식",
-          "q": "다음 중 법정추인 사유(제145조)에 <b>해당하지 않는</b> 것은?",
-          "myAnswer": "취소할 수 있는 행위로 생긴 채무의 이행",
-          "correct": "취소권의 포기 의사표시",
-          "expl": "법정추인 사유는 이행·이행청구·경개·담보제공·권리 양도·강제집행 6가지다. 이는 '추인으로 볼 만한 객관적 행위'가 있을 때 법이 추인으로 간주하는 것으로, 명시적 포기 의사표시는 별개(임의추인)다."
-        },
-        {
-          "date": "2026-06-08",
-          "type": "OX",
-          "q": "지번을 착오한 토지매매는 계약은 유효하지만 등기는 무효이며, 착오를 이유로 그 계약을 취소할 수 있다.",
-          "myAnswer": "O",
-          "correct": "X",
-          "expl": "X. 계약은 유효(A토지 합의 존재), B토지로 한 등기는 물권적 합의가 없어 무효지만, 착오가 '계약 내용'이 아니라 '등기 서류 작성'에 있으므로 착오를 이유로 계약을 취소할 수는 없다."
-        }
-      ]
-    },
-    {
-      "conceptKey": "민법 1-1",
-      "aliases": [],
-      "subject": "민법총칙",
-      "concept": "민법 1-1",
-      "status": "상습",
-      "timesWrong": 2,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "firstWrong": "2026-06-08-민법",
-      "lastWrong": "2026-06-08-민법",
-      "lastCorrect": null,
-      "lastResult": "wrong",
-      "lastDp": "2026-06-08",
-      "nextReviewDate": "2026-06-11",
-      "dates": [
-        "2026-06-08-민법",
-        "2026-06-08-민법"
-      ],
-      "samples": [
-        {
-          "date": "2026-06-08-민법",
-          "type": "OX",
-          "q": "기한이익 상실 특약은 정지조건부 특약으로서, 연체하면 자동으로 즉시 변제의무가 발생한다.",
-          "myAnswer": "O",
-          "correct": "X",
-          "expl": "X. 기한이익 상실 특약은 원칙적으로 '형성권적' 권리다. 연체해도 자동으로 변제기가 도래하는 게 아니라, 채권자가 상황을 보고 일방적 의사표시로 기한이익을 상실시킬 수 있다."
-        },
-        {
-          "date": "2026-06-08-민법",
-          "type": "객관식",
-          "q": "점유의 선의→악의, 자주→타주 전환 시점으로 옳은 것은?",
-          "myAnswer": "선의→악의: 판결 확정 시 / 자주→타주: 소 제기 시",
-          "correct": "선의→악의: 소 제기 시 / 자주→타주: 패소판결 확정 시",
-          "expl": "본권에 관한 소에서 패소한 선의 점유자는 '소가 제기된 때'부터 악의로 보고(지식의 문제), 자주→타주 전환은 '패소판결 확정 후'부터다(의사의 문제). 시점이 다르다는 점이 핵심."
-        }
-      ]
-    },
-    {
-      "conceptKey": "부동산세법 4-1",
-      "aliases": [],
-      "subject": "세법",
-      "concept": "부동산세법 4-1",
-      "status": "상습",
-      "timesWrong": 2,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "firstWrong": "2026-06-08-3",
-      "lastWrong": "2026-06-11-2",
-      "lastCorrect": null,
-      "lastResult": "wrong",
-      "lastDp": "2026-06-11",
-      "nextReviewDate": "2026-06-14",
-      "dates": [
-        "2026-06-08-3",
-        "2026-06-11-2"
-      ],
-      "samples": [
-        {
-          "date": "2026-06-08-3",
-          "type": "OX",
-          "q": "공동소유 부동산을 양도한 경우, 공유자들은 양도소득세를 연대하여 납부할 의무를 진다.",
-          "myAnswer": "O",
-          "correct": "X",
-          "expl": "X. 연대납부가 아니라 각자 자기 지분만큼 개별 납세한다. 양도소득은 인별 과세가 원칙이므로 지분별로 쪼개어 각자의 세액을 계산한다."
-        },
-        {
-          "date": "2026-06-11-2",
-          "type": "OX",
-          "q": "양도 당시 실지거래가액의 합계액이 정확히 12억원인 주택은 양도소득세법상 고가주택에 해당한다.",
-          "myAnswer": "O",
-          "correct": "X",
-          "expl": "X. 고가주택은 실지거래가액 합계액이 12억원을 '초과'하는 주택이다. 딱 12억원이면 초과가 아니므로 고가주택이 아니다. '기준시가 12억'으로 바꾸는 함정과 '이상/초과' 경계값 함정이 모두 출제되는 지점 — 실지거래가액 + 초과, 두 단어로 기억."
+          "date": "2026-08-14-민법특화",
+          "type": "일반",
+          "q": "🔁 대리권의 소멸사유에 관한 설명으로 옳은 것은?",
+          "myAnswer": "대리인에 대한 한정후견의 개시는 법정대리와 임의대리의 공통된 소멸사유이다",
+          "correct": "본인의 파산은 위임의 종료를 통하여 임의대리권을 소멸시킬 수 있다",
+          "expl": "제127조는 본인 쪽 사유로 사망만 들지만, 위임은 당사자 일방의 파산으로 종료되고 제128조에 따라 원인된 법률관계가 끝나면 임의대리권도 소멸한다. 본인 파산은 조문 하나가 아니라 위임 종료를 거치는 2단 경로로 작동한다. 제127조에 없으니 소멸하지 않는다고 외우면 이 경로를 놓친다."
         }
       ]
     },
@@ -1064,13 +915,13 @@
       "status": "상습",
       "timesWrong": 2,
       "retryMissed": 0,
-      "consecutiveCorrect": 0,
+      "consecutiveCorrect": 1,
       "firstWrong": "2026-06-09",
       "lastWrong": "2026-06-11-2",
-      "lastCorrect": null,
-      "lastResult": "wrong",
-      "lastDp": "2026-06-11",
-      "nextReviewDate": "2026-06-14",
+      "lastCorrect": "2026-08-14",
+      "lastResult": "correct",
+      "lastDp": "2026-08-14",
+      "nextReviewDate": "2026-08-21",
       "dates": [
         "2026-06-09",
         "2026-06-11-2"
@@ -1091,44 +942,6 @@
           "myAnswer": "X",
           "correct": "O",
           "expl": "O. 캐내기·파내기·쌓기(돌·흙·쓰레기 등)는 잡종지지만, 원상회복 조건부 허가라면 그 이용은 일시적이고 땅의 본래 용도가 유지될 예정이므로 잡종지로 바꾸지 않는다. 지목은 '토지의 지속적인 주된 용도'를 따른다는 원리에서 나오는 예외."
-        }
-      ]
-    },
-    {
-      "conceptKey": "공인중개사법 19 토지거래허가구역",
-      "aliases": [],
-      "subject": "공인중개사법",
-      "concept": "공인중개사법 19 토지거래허가구역",
-      "status": "상습",
-      "timesWrong": 2,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "firstWrong": "2026-07-01",
-      "lastWrong": "2026-07-01",
-      "lastCorrect": null,
-      "lastResult": "wrong",
-      "lastDp": "2026-07-01",
-      "nextReviewDate": "2026-07-04",
-      "dates": [
-        "2026-07-01",
-        "2026-07-01"
-      ],
-      "samples": [
-        {
-          "date": "2026-07-01",
-          "type": "객관식",
-          "q": "토지거래허가구역의 지정 및 토지거래계약 허가에 관한 설명으로 <b>옳지 않은</b> 것은?",
-          "myAnswer": "허가구역의 지정은 주민의 의견을 듣지 않고 심의를 거쳐서 한다",
-          "correct": "허가받은 사항의 변경에 대한 허가는 국토교통부장관이 한다",
-          "expl": "토지거래계약 허가받은 사항의 변경 허가는 국토교통부장관이 아니라 시장·군수·구청장이 한다. 개별 거래의 변경까지 국장이 관여하는 것은 과하기 때문. 변경허가 주체를 상급기관으로 올린 첫 지문이 함정이고, 둘 이상 시·도 걸치면 국장 지정·의견 없이 심의만·5년 초과 불가는 옳다."
-        },
-        {
-          "date": "2026-07-01",
-          "type": "객관식",
-          "q": "토지거래허가구역의 지정 및 토지거래계약 허가에 관한 설명으로 <b>옳지 않은</b> 것은?",
-          "myAnswer": "허가구역의 지정은 주민의 의견을 듣지 않고 심의를 거쳐서 한다",
-          "correct": "허가받은 사항의 변경에 대한 허가는 국토교통부장관이 한다",
-          "expl": "토지거래계약 허가받은 사항의 변경 허가는 국토교통부장관이 아니라 시장·군수·구청장이 한다. 개별 거래의 변경까지 국장이 관여하는 것은 과하기 때문. 변경허가 주체를 상급기관으로 올린 첫 지문이 함정이고, 둘 이상 시·도 걸치면 국장 지정·의견 없이 심의만·5년 초과 불가는 옳다."
         }
       ]
     },
@@ -2496,6 +2309,35 @@
       ]
     },
     {
+      "conceptKey": "부동산학개론 5 감정평가",
+      "aliases": [],
+      "subject": "부동산학개론",
+      "concept": "부동산학개론 5 감정평가",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-07-01",
+      "lastWrong": "2026-07-01",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-07-01",
+      "nextReviewDate": "2026-07-04",
+      "dates": [
+        "2026-07-01"
+      ],
+      "samples": [
+        {
+          "date": "2026-07-01",
+          "type": "객관식",
+          "q": "감정평가의 기준시점 및 지역·개별분석에 관한 설명으로 <b>옳지 않은</b> 것은?",
+          "myAnswer": "기준시점을 미리 정한 경우에는 그 날짜에 가격조사가 가능한 경우에만 그 날짜를 기준시점으로 할 수 있다",
+          "correct": "감정평가는 가격조사를 의뢰받은 시점의 이용상황 및 공법상 제한을 기준으로 한다",
+          "expl": "감정평가는 의뢰(가격조사) 시점이 아니라 기준시점의 이용상황·공법상 제한을 기준으로 한다. 가치는 특정 시점을 못박아야 확정되기 때문 — 그 기준이 기준시점이다. 기준시점을 의뢰시점으로 슬쩍 바꾼 것이 함정이고, 지역·개별분석과 인근지역 설명은 옳다."
+        }
+      ]
+    },
+    {
       "conceptKey": "부동산학개론 원금균등상환 계산",
       "aliases": [],
       "subject": "부동산학개론",
@@ -3134,6 +2976,442 @@
       ]
     },
     {
+      "conceptKey": "민법총칙 1-1 제3자의 사기",
+      "aliases": [],
+      "subject": "민법총칙",
+      "concept": "민법총칙 1-1 제3자의 사기",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-08-14-민법특화",
+      "lastWrong": "2026-08-14-민법특화",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-08-14",
+      "nextReviewDate": "2026-08-17",
+      "dates": [
+        "2026-08-14-민법특화"
+      ],
+      "samples": [
+        {
+          "date": "2026-08-14-민법특화",
+          "type": "사례",
+          "q": "갑은 을 소유의 X토지를 매수하였는데, 계약 체결 과정에서 을의 피용자 병이 갑을 기망하였다. 이에 관한 설명으로 옳은 것은?",
+          "myAnswer": "병에게 갑의 재산상 손실을 주려는 고의가 없었다면 기망행위 자체가 성립할 수 없다",
+          "correct": "병은 제3자이므로 을이 알았거나 알 수 있었어야 갑이 취소할 수 있다",
+          "expl": "피용자는 제110조 제2항의 제3자이므로 상대방 을의 악의 또는 과실이 있어야 취소할 수 있고, 대리인이었다면 당사자와 같이 보아 곧바로 취소된다. 상대방은 무과실까지, 제3자는 선의·악의만 따지는 구조가 두 층을 가른다. 사기에는 재산상 손해를 줄 고의가 필요하지 않고, 취소는 선의의 제3자에게 대항하지 못한다."
+        }
+      ]
+    },
+    {
+      "conceptKey": "물권법 1-5 등기와 물권변동",
+      "aliases": [],
+      "subject": "민법 물권법",
+      "concept": "물권법 1-5 등기와 물권변동",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-08-14-민법특화",
+      "lastWrong": "2026-08-14-민법특화",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-08-14",
+      "nextReviewDate": "2026-08-17",
+      "dates": [
+        "2026-08-14-민법특화"
+      ],
+      "samples": [
+        {
+          "date": "2026-08-14-민법특화",
+          "type": "조합",
+          "q": "부동산물권변동에서 등기를 갖추어야 비로소 효력이 생기는 것을 모두 고른 것은?<br>ㄱ. 공유자 중 1인이 자기 지분을 포기한 경우<br>ㄴ. 포괄유증에 의한 소유권의 취득<br>ㄷ. 재판상 화해에 의한 소유권의 취득<br>ㄹ. 점유취득시효의 완성에 의한 소유권의 취득",
+          "myAnswer": "ㄱ, ㄴ, ㄹ",
+          "correct": "ㄱ, ㄷ, ㄹ",
+          "expl": "ㄴ만 등기가 필요 없다. 등기를 요구하는 축은 법률행위와 시효완성이고, 화해나 조정은 당사자 합의라 법률행위 쪽으로, 지분 포기도 처분행위라 같은 쪽으로 들어간다. 상속·포괄유증은 사람이 사라진 순간 권리가 자동으로 옮겨가야 하므로 등기를 요구하지 않는다."
+        }
+      ]
+    },
+    {
+      "conceptKey": "담보물권 저당권·일괄경매",
+      "aliases": [],
+      "subject": "민법 용익·담보물권",
+      "concept": "담보물권 저당권·일괄경매",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-08-14-민법특화",
+      "lastWrong": "2026-08-14-민법특화",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-08-14",
+      "nextReviewDate": "2026-08-17",
+      "dates": [
+        "2026-08-14-민법특화"
+      ],
+      "samples": [
+        {
+          "date": "2026-08-14-민법특화",
+          "type": "조합",
+          "q": "저당권의 효력과 일괄경매청구권에 관한 설명으로 옳은 것을 모두 고른 것은?<br>ㄱ. 채권최고액의 범위 안에서는 지연이자도 제한 없이 담보된다<br>ㄴ. 근저당권자가 채무불이행을 이유로 경매를 신청한 경우 피담보채무액은 그 신청 시에 확정된다<br>ㄷ. 저당물의 제3취득자는 그 부동산에 지출한 유익비를 매각대금에서 우선상환받을 수 있다<br>ㄹ. 토지 저당권설정자가 건물을 신축한 뒤 그 건물의 소유자가 달라져도 일괄경매를 청구할 수 있다",
+          "myAnswer": "ㄴ, ㄷ, ㄹ",
+          "correct": "ㄱ, ㄴ, ㄷ",
+          "expl": "ㄹ만 틀리다. 일괄경매는 토지와 건물을 한 덩어리로 파는 것이라 경매 당시 두 소유자가 같아야 하고, 남의 건물까지 팔 수는 없기 때문이다. 채권최고액은 상한을 미리 걸어 둔 장치라 그 안에서는 지연이자에 제한이 없고, 가치를 올린 제3취득자에게 매각대금에서 회수의 길을 열어 개량 유인을 남겨 두었다."
+        }
+      ]
+    },
+    {
+      "conceptKey": "공인중개사법 1-5 과태료 개별금액",
+      "aliases": [],
+      "subject": "공인중개사법",
+      "concept": "공인중개사법 1-5 과태료 개별금액",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-08-14",
+      "lastWrong": "2026-08-14",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-08-14",
+      "nextReviewDate": "2026-08-17",
+      "dates": [
+        "2026-08-14"
+      ],
+      "samples": [
+        {
+          "date": "2026-08-14",
+          "type": "일반",
+          "q": "공인중개사법령상 100만원 이하의 과태료 부과사유별 개별 기준금액에 관한 설명으로 옳은 것은?",
+          "myAnswer": "중개사무소등록증을 반납하지 아니한 경우는 20만원이다",
+          "correct": "중개대상물의 표시·광고 규정을 위반한 경우는 50만원이다",
+          "expl": "등록증·광고·문자 계열이 50만원 라인이므로 표시·광고 위반은 50만원이다. 금액을 셋으로 쪼갠 이유는 의무의 공공성 크기(대외적 광고 > 신분증표 > 내부 신고)에 따라 제재 강도를 계단으로 나눈 것이다. 자격증 반납은 30만원, 폐업 계열은 20만원으로 세 칸을 섞어 내는 것이 전형적 함정이다."
+        }
+      ]
+    },
+    {
+      "conceptKey": "부동산세법 1-4 종부세 과세표준 산정",
+      "aliases": [],
+      "subject": "부동산세법",
+      "concept": "부동산세법 1-4 종부세 과세표준 산정",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-08-14",
+      "lastWrong": "2026-08-14",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-08-14",
+      "nextReviewDate": "2026-08-17",
+      "dates": [
+        "2026-08-14"
+      ],
+      "samples": [
+        {
+          "date": "2026-08-14",
+          "type": "계산",
+          "q": "거주자 갑이 소유한 종합합산과세대상 토지의 공시가격 합계액이 15억원이다. 갑의 종합부동산세 과세표준은? (공정시장가액비율은 100분의 70이며, 다른 조건은 동일)",
+          "myAnswer": "10억 5천만원",
+          "correct": "7억원",
+          "expl": "공시가격 합계 15억원에서 종합합산토지 공제액 5억원을 뺀 10억원에 공정시장가액비율 70퍼센트를 곱하면 (15억-5억)×0.7=7억원이다. 공제를 먼저 하고 비율을 곱하는 순서로 설계된 이유는 기초공제로 소액 보유자를 걸러낸 뒤 남은 금액만 과세 강도로 조절하기 위해서다. 주택은 9억(1세대 1주택 12억), 별도합산토지는 80억이라 공제액을 바꿔 내는 것이 함정이다."
+        }
+      ]
+    },
+    {
+      "conceptKey": "부동산세법 1-3 신탁재산 납세의무",
+      "aliases": [],
+      "subject": "부동산세법",
+      "concept": "부동산세법 1-3 신탁재산 납세의무",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-08-14",
+      "lastWrong": "2026-08-14",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-08-14",
+      "nextReviewDate": "2026-08-17",
+      "dates": [
+        "2026-08-14"
+      ],
+      "samples": [
+        {
+          "date": "2026-08-14",
+          "type": "일반",
+          "q": "지방세법령상 신탁재산에 대한 재산세 납세의무에 관한 설명으로 <b>옳지 않은</b> 것은?",
+          "myAnswer": "납부통지서에 따른 고지가 있은 후 위탁자가 신탁재산을 양도하여도 고지된 부분의 납세의무에는 영향이 없다",
+          "correct": "신탁재산의 수탁자가 변경된 경우 새로운 수탁자는 종전 수탁자에게 고지된 납세의무를 승계하지 아니한다",
+          "expl": "새로운 수탁자는 납부통지서에 따라 종전 수탁자에게 고지된 납세의무를 승계한다. 신탁재산은 그대로 남아 있는데 관리자만 바뀐 것이므로 조세채권이 사람 교체로 끊기면 회피 통로가 열리기 때문이다. 고지 이후의 권리 포기나 재산 양도가 이미 확정된 납세의무를 지우지 못한다는 점도 같은 논리다."
+        }
+      ]
+    },
+    {
+      "conceptKey": "공인중개사법 19 토지거래허가구역",
+      "aliases": [],
+      "subject": "공인중개사법",
+      "concept": "공인중개사법 19 토지거래허가구역",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "firstWrong": "2026-07-01",
+      "lastWrong": "2026-07-01",
+      "lastCorrect": "2026-08-14",
+      "lastResult": "correct",
+      "lastDp": "2026-08-14",
+      "nextReviewDate": "2026-08-21",
+      "dates": [
+        "2026-07-01"
+      ],
+      "samples": [
+        {
+          "date": "2026-07-01",
+          "type": "객관식",
+          "q": "토지거래허가구역의 지정 및 토지거래계약 허가에 관한 설명으로 <b>옳지 않은</b> 것은?",
+          "myAnswer": "허가구역의 지정은 주민의 의견을 듣지 않고 심의를 거쳐서 한다",
+          "correct": "허가받은 사항의 변경에 대한 허가는 국토교통부장관이 한다",
+          "expl": "토지거래계약 허가받은 사항의 변경 허가는 국토교통부장관이 아니라 시장·군수·구청장이 한다. 개별 거래의 변경까지 국장이 관여하는 것은 과하기 때문. 변경허가 주체를 상급기관으로 올린 첫 지문이 함정이고, 둘 이상 시·도 걸치면 국장 지정·의견 없이 심의만·5년 초과 불가는 옳다."
+        }
+      ]
+    },
+    {
+      "conceptKey": "민법 1-1 반사회질서",
+      "aliases": [],
+      "subject": "민법총칙",
+      "concept": "민법 1-1 반사회질서",
+      "status": "재도전중",
+      "timesWrong": 0,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "firstWrong": null,
+      "lastWrong": null,
+      "lastCorrect": "2026-08-14-민법특화",
+      "lastResult": "correct",
+      "lastDp": "2026-08-14",
+      "nextReviewDate": "2026-08-21",
+      "dates": [],
+      "samples": []
+    },
+    {
+      "conceptKey": "민법 1-1 통정허위표시 제3자",
+      "aliases": [],
+      "subject": "민법총칙",
+      "concept": "민법 1-1 통정허위표시 제3자",
+      "status": "재도전중",
+      "timesWrong": 0,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "firstWrong": null,
+      "lastWrong": null,
+      "lastCorrect": "2026-08-14-민법특화",
+      "lastResult": "correct",
+      "lastDp": "2026-08-14",
+      "nextReviewDate": "2026-08-21",
+      "dates": [],
+      "samples": []
+    },
+    {
+      "conceptKey": "민법 1-4 복대리",
+      "aliases": [],
+      "subject": "민법총칙",
+      "concept": "민법 1-4 복대리",
+      "status": "재도전중",
+      "timesWrong": 0,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "firstWrong": null,
+      "lastWrong": null,
+      "lastCorrect": "2026-08-14-민법특화",
+      "lastResult": "correct",
+      "lastDp": "2026-08-14",
+      "nextReviewDate": "2026-08-21",
+      "dates": [],
+      "samples": []
+    },
+    {
+      "conceptKey": "유치권",
+      "aliases": [],
+      "subject": "민법 용익·담보물권",
+      "concept": "유치권",
+      "status": "재도전중",
+      "timesWrong": 0,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "firstWrong": null,
+      "lastWrong": null,
+      "lastCorrect": "2026-08-14-민법특화",
+      "lastResult": "correct",
+      "lastDp": "2026-08-14",
+      "nextReviewDate": "2026-08-21",
+      "dates": [],
+      "samples": []
+    },
+    {
+      "conceptKey": "유치권 소멸",
+      "aliases": [],
+      "subject": "민법 용익·담보물권",
+      "concept": "유치권 소멸",
+      "status": "재도전중",
+      "timesWrong": 0,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "firstWrong": null,
+      "lastWrong": null,
+      "lastCorrect": "2026-08-14-민법특화",
+      "lastResult": "correct",
+      "lastDp": "2026-08-14",
+      "nextReviewDate": "2026-08-21",
+      "dates": [],
+      "samples": []
+    },
+    {
+      "conceptKey": "공법 OX 오답 8번",
+      "aliases": [],
+      "subject": "부동산공법",
+      "concept": "공법 OX 오답 8번",
+      "status": "졸업후보",
+      "timesWrong": 1,
+      "retryMissed": 1,
+      "consecutiveCorrect": 2,
+      "firstWrong": "2026-06-11",
+      "lastWrong": "2026-06-11",
+      "lastCorrect": "2026-08-14",
+      "lastResult": "correct",
+      "lastDp": "2026-08-14",
+      "nextReviewDate": "2026-08-30",
+      "dates": [
+        "2026-06-11"
+      ],
+      "samples": [
+        {
+          "date": "2026-06-11",
+          "type": "OX",
+          "q": "🔁 도시혁신구역·복합용도구역을 정하는 <b>공간재구조화계획</b>의 결정권자에는 시·도지사뿐 아니라 <b>대도시 시장</b>도 포함된다.",
+          "myAnswer": "O",
+          "correct": "X",
+          "expl": "X. 공간재구조화계획 결정권자는 '국토교통부장관 + 시·도지사'다. 일반 도시·군관리계획은 '시·도지사 + 대도시 시장'인데, 공간재구조화는 국가급 큰 그림이라 대도시 시장이 빠지고 국장이 들어온다 — '대도시시장 OUT, 국장 IN'으로 기억."
+        }
+      ]
+    },
+    {
+      "conceptKey": "부동산세법 4-1",
+      "aliases": [],
+      "subject": "세법",
+      "concept": "부동산세법 4-1",
+      "status": "졸업후보",
+      "timesWrong": 2,
+      "retryMissed": 0,
+      "consecutiveCorrect": 2,
+      "firstWrong": "2026-06-08-3",
+      "lastWrong": "2026-06-11-2",
+      "lastCorrect": "2026-08-14",
+      "lastResult": "correct",
+      "lastDp": "2026-08-14",
+      "nextReviewDate": "2026-08-30",
+      "dates": [
+        "2026-06-08-3",
+        "2026-06-11-2"
+      ],
+      "samples": [
+        {
+          "date": "2026-06-08-3",
+          "type": "OX",
+          "q": "공동소유 부동산을 양도한 경우, 공유자들은 양도소득세를 연대하여 납부할 의무를 진다.",
+          "myAnswer": "O",
+          "correct": "X",
+          "expl": "X. 연대납부가 아니라 각자 자기 지분만큼 개별 납세한다. 양도소득은 인별 과세가 원칙이므로 지분별로 쪼개어 각자의 세액을 계산한다."
+        },
+        {
+          "date": "2026-06-11-2",
+          "type": "OX",
+          "q": "양도 당시 실지거래가액의 합계액이 정확히 12억원인 주택은 양도소득세법상 고가주택에 해당한다.",
+          "myAnswer": "O",
+          "correct": "X",
+          "expl": "X. 고가주택은 실지거래가액 합계액이 12억원을 '초과'하는 주택이다. 딱 12억원이면 초과가 아니므로 고가주택이 아니다. '기준시가 12억'으로 바꾸는 함정과 '이상/초과' 경계값 함정이 모두 출제되는 지점 — 실지거래가액 + 초과, 두 단어로 기억."
+        }
+      ]
+    },
+    {
+      "conceptKey": "민법 1-4",
+      "aliases": [],
+      "subject": "민법총칙",
+      "concept": "민법 1-4",
+      "status": "졸업후보",
+      "timesWrong": 2,
+      "retryMissed": 0,
+      "consecutiveCorrect": 2,
+      "firstWrong": "2026-06-08-민법",
+      "lastWrong": "2026-06-08",
+      "lastCorrect": "2026-08-14",
+      "lastResult": "correct",
+      "lastDp": "2026-08-14",
+      "nextReviewDate": "2026-08-30",
+      "dates": [
+        "2026-06-08-민법",
+        "2026-06-08"
+      ],
+      "samples": [
+        {
+          "date": "2026-06-08-민법",
+          "type": "객관식",
+          "q": "다음 중 법정추인 사유(제145조)에 <b>해당하지 않는</b> 것은?",
+          "myAnswer": "취소할 수 있는 행위로 생긴 채무의 이행",
+          "correct": "취소권의 포기 의사표시",
+          "expl": "법정추인 사유는 이행·이행청구·경개·담보제공·권리 양도·강제집행 6가지다. 이는 '추인으로 볼 만한 객관적 행위'가 있을 때 법이 추인으로 간주하는 것으로, 명시적 포기 의사표시는 별개(임의추인)다."
+        },
+        {
+          "date": "2026-06-08",
+          "type": "OX",
+          "q": "지번을 착오한 토지매매는 계약은 유효하지만 등기는 무효이며, 착오를 이유로 그 계약을 취소할 수 있다.",
+          "myAnswer": "O",
+          "correct": "X",
+          "expl": "X. 계약은 유효(A토지 합의 존재), B토지로 한 등기는 물권적 합의가 없어 무효지만, 착오가 '계약 내용'이 아니라 '등기 서류 작성'에 있으므로 착오를 이유로 계약을 취소할 수는 없다."
+        }
+      ]
+    },
+    {
+      "conceptKey": "민법 1-1",
+      "aliases": [],
+      "subject": "민법총칙",
+      "concept": "민법 1-1",
+      "status": "졸업후보",
+      "timesWrong": 2,
+      "retryMissed": 0,
+      "consecutiveCorrect": 2,
+      "firstWrong": "2026-06-08-민법",
+      "lastWrong": "2026-06-08-민법",
+      "lastCorrect": "2026-08-14",
+      "lastResult": "correct",
+      "lastDp": "2026-08-14",
+      "nextReviewDate": "2026-08-30",
+      "dates": [
+        "2026-06-08-민법",
+        "2026-06-08-민법"
+      ],
+      "samples": [
+        {
+          "date": "2026-06-08-민법",
+          "type": "OX",
+          "q": "기한이익 상실 특약은 정지조건부 특약으로서, 연체하면 자동으로 즉시 변제의무가 발생한다.",
+          "myAnswer": "O",
+          "correct": "X",
+          "expl": "X. 기한이익 상실 특약은 원칙적으로 '형성권적' 권리다. 연체해도 자동으로 변제기가 도래하는 게 아니라, 채권자가 상황을 보고 일방적 의사표시로 기한이익을 상실시킬 수 있다."
+        },
+        {
+          "date": "2026-06-08-민법",
+          "type": "객관식",
+          "q": "점유의 선의→악의, 자주→타주 전환 시점으로 옳은 것은?",
+          "myAnswer": "선의→악의: 판결 확정 시 / 자주→타주: 소 제기 시",
+          "correct": "선의→악의: 소 제기 시 / 자주→타주: 패소판결 확정 시",
+          "expl": "본권에 관한 소에서 패소한 선의 점유자는 '소가 제기된 때'부터 악의로 보고(지식의 문제), 자주→타주 전환은 '패소판결 확정 후'부터다(의사의 문제). 시점이 다르다는 점이 핵심."
+        }
+      ]
+    },
+    {
       "conceptKey": "부동산학개론 §1 시장이론",
       "aliases": [],
       "subject": "부동산학개론",
@@ -3197,17 +3475,28 @@
       "subject": "부동산세법",
       "concept": "부동산세법 2-5 취득시기·9 물납/부과시점",
       "status": "졸업후보",
-      "timesWrong": 0,
+      "timesWrong": 1,
       "retryMissed": 0,
       "consecutiveCorrect": 2,
-      "firstWrong": null,
-      "lastWrong": null,
+      "firstWrong": "2026-07-01",
+      "lastWrong": "2026-07-01",
       "lastCorrect": "2026-07-14",
       "lastResult": "correct",
       "lastDp": "2026-07-14",
       "nextReviewDate": "2026-07-30",
-      "dates": [],
-      "samples": []
+      "dates": [
+        "2026-07-01"
+      ],
+      "samples": [
+        {
+          "date": "2026-07-01",
+          "type": "객관식",
+          "q": "지방세법령상 취득의 시기 및 세목별 부과 등에 관한 설명으로 옳은 것은?",
+          "myAnswer": "재건축조합이 취득하는 토지는 소유권이전고시일에 취득한 것으로 본다",
+          "correct": "주택조합이 취득하는 조합원에게 귀속되지 않는 토지는 사용검사를 받은 날에 취득한 것으로 본다",
+          "expl": "주택조합이 취득하는 조합원 비귀속 토지의 취득시기는 사용검사일이다(주택은 검사, 재건축은 다음날). 재건축조합은 소유권이전고시일의 다음 날이고, 취득세·등록면허세는 물납·분납이 모두 불가하며, 인지세는 계약서 작성 시 부과된다 — 시기·부과단계를 어긋나게 한 나머지가 함정."
+        }
+      ]
     },
     {
       "conceptKey": "부동산공법 개발행위허가 제한",
@@ -3244,6 +3533,44 @@
           "myAnswer": "최초 제한기간은 5년이며 도시계획위원회의 심의를 거치지 않는다",
           "correct": "한 차례만 2년 이내 연장할 수 있어 제한기간은 최장 5년이다",
           "expl": "개발행위허가 제한은 원칙 3년 + 1회 2년 연장 = 최장 5년이며, 처음 3년만 도시계획위원회 심의를 거치고 연장 시엔 심의가 필요 없다. 연장 가능 지역은 '관리계획 수립 중·지구단위계획구역·기반시설부담구역'으로, ②의 개발밀도관리구역은 규제(강화) 장치라 빠진다. 비슷한 이름의 두 구역을 바꿔치기한 함정."
+        }
+      ]
+    },
+    {
+      "conceptKey": "공인중개사법 1-2 포상금",
+      "aliases": [],
+      "subject": "공인중개사법",
+      "concept": "공인중개사법 1-2 포상금",
+      "status": "졸업",
+      "timesWrong": 2,
+      "retryMissed": 1,
+      "consecutiveCorrect": 3,
+      "firstWrong": "2026-06-22",
+      "lastWrong": "2026-07-13-2",
+      "lastCorrect": "2026-08-14",
+      "lastResult": "correct",
+      "lastDp": "2026-08-14",
+      "nextReviewDate": "2026-09-18",
+      "dates": [
+        "2026-06-22",
+        "2026-07-13-2"
+      ],
+      "samples": [
+        {
+          "date": "2026-06-22",
+          "type": "객관식",
+          "q": "공인중개사법령상 <b>포상금</b>의 지급에 관한 설명으로 <b>옳지 않은</b> 것은?",
+          "myAnswer": "포상금은 지급결정일부터 1개월 이내에 지급해야 한다",
+          "correct": "포상금 지급에 드는 비용 중 국고에서 보조하는 비율은 100분의 50 이상이다",
+          "expl": "국고보조 비율은 100분의 50 '이내'(이하)지 이상이 아니다 → 1번 틀림. 포상금은 '공소제기'가 기준이라 무죄여도 지급사유가 되고, 발각 후 신고는 제외, 지급은 결정일부터 1개월 이내다. '이내'를 '이상'으로 바꿔 상한을 하한처럼 둔갑시킨 함정."
+        },
+        {
+          "date": "2026-07-13-2",
+          "type": "일반",
+          "q": "🔁 포상금 지급에 관한 설명으로 <b>옳지 않은</b> 것은?",
+          "myAnswer": "포상금 지급결정은 신고·고발이 있은 후 1개월 이내에 한다.",
+          "correct": "거짓으로 중개대상물을 표시·광고한 자를 신고한 경우도 포상금 지급 대상이다.",
+          "expl": "거짓 표시·광고를 한 자는 500만원 이하 과태료 대상일 뿐 포상금 지급 대상이 아니다. 무혐의 시 미지급, 지급결정 1개월, 무자격 표시·광고자 신고는 포상금 대상이 맞다. '과태료 대상'을 '포상금 대상'으로 끌어온 함정."
         }
       ]
     },
