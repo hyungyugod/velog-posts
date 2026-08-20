@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>오늘의 복습 · 2026-08-20</title>
+<style>
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    padding:28px 16px 56px;
+    background-color:#FAFAFA;
+    background-image:linear-gradient(#EFEFEF 1px,transparent 1px),
+                     linear-gradient(90deg,#EFEFEF 1px,transparent 1px);
+    background-size:36px 36px;
+    background-position:-1px -1px;
+    color:#23262b;
+    font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Noto Sans KR',
+                'Malgun Gothic',sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:720px;margin:0 auto}
+  .card{background:#fff;border:1px solid #ececec;border-radius:12px;
+        box-shadow:0 1px 2px rgba(20,24,32,.04)}
+  header.head{margin:2px 0 22px;padding:22px 22px 20px;background:#fff;
+        border:1px solid #ececec;border-radius:12px;box-shadow:0 1px 2px rgba(20,24,32,.04)}
+  .eyebrow{font-size:12.5px;font-weight:700;letter-spacing:.06em;color:#378ADD}
+  h1{margin:6px 0 10px;font-size:27px;font-weight:800;letter-spacing:-.01em}
+  .headrow{display:flex;align-items:center;justify-content:space-between;
+           gap:10px;flex-wrap:wrap}
+  .today{font-size:14.5px;color:#6b7280;font-weight:600}
+  .streak{display:inline-block;padding:5px 13px;border-radius:999px;font-size:13.5px;
+          font-weight:700;background:#FFF3EC;color:#D85A30;border:1px solid #F6DDD0;
+          white-space:nowrap}
+  .streak.zero{background:#F4F5F7;color:#7a8290;border-color:#e7e9ee}
+  h2.sect{margin:26px 2px 11px;font-size:13px;font-weight:800;color:#8a919c;
+          letter-spacing:.05em}
+  .mission{padding:6px 20px}
+  .row{display:flex;align-items:flex-start;gap:11px;padding:14px 0;
+       border-top:1px solid #f2f2f2}
+  .row:first-child{border-top:none}
+  .mark{flex:0 0 auto;font-size:16px;line-height:1.5}
+  .body{flex:1 1 auto;min-width:0}
+  .title{font-size:15.5px;font-weight:700;color:#23262b}
+  .title.done{color:#1D9E75}
+  .sub{margin-top:3px;font-size:13.5px;color:#6b7280;word-break:keep-all}
+  .go{display:inline-block;margin-top:9px;padding:7px 15px;border-radius:9px;
+      background:#378ADD;color:#fff;font-size:13.5px;font-weight:700;text-decoration:none}
+  .go.ghost{background:#F2F7FD;color:#2b6fb4;border:1px solid #dbe8f6}
+  .warn{margin-top:12px;padding:15px 18px;border-left:4px solid #D85A30}
+  .warn .title{color:#D85A30}
+  .tiles{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(148px,1fr))}
+  .tile{padding:16px 15px 15px}
+  .tile .k{font-size:12.5px;font-weight:700;color:#8a919c}
+  .tile .v{margin-top:5px;font-size:29px;font-weight:800;letter-spacing:-.02em;
+           line-height:1.15}
+  .tile .u{font-size:14px;font-weight:700;color:#9aa1ad;margin-left:2px}
+  .tile .d{margin-top:5px;font-size:12.5px;font-weight:600;color:#8a919c}
+  .up{color:#D85A30}
+  .down{color:#1D9E75}
+  .blue{color:#378ADD}
+  .green{color:#1D9E75}
+  .orange{color:#D85A30}
+  .weak{padding:18px 20px 20px}
+  .wrow{margin-top:15px}
+  .wrow:first-child{margin-top:0}
+  .wtop{display:flex;justify-content:space-between;align-items:baseline;
+        font-size:14px;margin-bottom:7px}
+  .wname{font-weight:700}
+  .wnum{color:#8a919c;font-size:13px;font-weight:700}
+  .track{height:9px;background:#F1F3F5;border-radius:999px;overflow:hidden}
+  .fill{display:block;height:100%;background:#378ADD;border-radius:999px}
+  .fill.f2{background:#6FA9E6;opacity:.92}
+  .fill.f3{background:#A8CBF0}
+  .empty{padding:18px 20px;color:#8a919c;font-size:13.5px}
+  footer{margin-top:26px;padding:0 4px;display:flex;justify-content:space-between;
+         gap:10px;flex-wrap:wrap;font-size:12.5px;color:#9aa1ad}
+  footer .dday{font-weight:800;color:#D85A30}
+  @media (max-width:420px){
+    body{padding:20px 12px 44px}
+    h1{font-size:24px}
+    .tile .v{font-size:26px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="head">
+<div class="eyebrow">공인중개사 · 데일리 복습</div>
+<h1>오늘의 복습</h1>
+<div class="headrow">
+<span class="today">2026년 8월 20일 (목)</span>
+<span class="streak zero">🔥 스트릭 0일</span>
+</div>
+</header>
+<h2 class="sect">오늘의 미션</h2>
+<div class="card mission">
+<div class="row"><span class="mark">⬜</span><div class="body">
+<div class="title">오늘 문제지 대기 중</div>
+<div class="sub">2026-08-20.html · 15분이면 끝납니다.</div>
+<a class="go" href="./2026-08-20.html">문제지 열기</a>
+</div></div>
+<div class="row"><span class="mark">✅</span><div class="body">
+<div class="title done">점심 OX 3문 발송됨</div>
+<div class="sub">정답은 저녁 카톡으로 도착합니다.</div>
+</div></div>
+</div>
+<div class="card warn">
+<div class="row"><span class="mark">⚠️</span><div class="body">
+<div class="title">2026년 8월 19일 (수) 문제지 미제출</div>
+<div class="sub">직전 평일 결과가 원장에 들어오지 않았습니다. 오늘 것부터 다시 스트릭을 쌓으세요.</div>
+</div></div>
+</div>
+<h2 class="sect">지표</h2>
+<div class="tiles">
+<div class="card tile">
+<div class="k">원장 적체</div>
+<div class="v orange">91<span class="u">건</span></div>
+<div class="d ">7일 전 기록 없음</div>
+</div>
+<div class="card tile">
+<div class="k">🎓 졸업</div>
+<div class="v green">7<span class="u">개</span></div>
+<div class="d ">다시 안 틀린 개념</div>
+</div>
+<div class="card tile">
+<div class="k">상습</div>
+<div class="v orange">3<span class="u">개</span></div>
+<div class="d ">반복해서 틀리는 개념</div>
+</div>
+<div class="card tile">
+<div class="k">장기복습 커버리지</div>
+<div class="v ">0<span class="u">%</span></div>
+<div class="d ">로그 없음 — 내일부터 쌓임</div>
+</div>
+</div>
+<h2 class="sect">과목 약점 TOP 3</h2>
+<div class="card weak">
+<div class="wrow">
+<div class="wtop"><span class="wname">민법</span><span class="wnum">29건</span></div>
+<div class="track"><span class="fill f1" style="width:100%"></span></div>
+</div>
+<div class="wrow">
+<div class="wtop"><span class="wname">부동산공법</span><span class="wnum">24건</span></div>
+<div class="track"><span class="fill f2" style="width:83%"></span></div>
+</div>
+<div class="wrow">
+<div class="wtop"><span class="wname">공인중개사법</span><span class="wnum">14건</span></div>
+<div class="track"><span class="fill f3" style="width:48%"></span></div>
+</div>
+</div>
+<footer>
+<span>생성 2026-08-20 16:30</span>
+<span><span class="dday">D-72</span> (10/31 제37회)</span>
+</footer>
+</div>
+</body>
+</html>
