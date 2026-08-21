@@ -1,6 +1,6 @@
 {
   "ledgerSchema": 3,
-  "generatedAt": "2026-08-20T16:30:06",
+  "generatedAt": "2026-08-21T16:30:04",
   "fsrsMeta": {
     "version": "6.3.2",
     "desiredRetention": 0.9,
@@ -45,7 +45,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-14-민법특화",
       "nextReviewDate": "2026-08-15",
-      "retrievability": 0.596,
+      "retrievability": 0.582,
       "stability": 0.212
     },
     {
@@ -57,7 +57,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-06-11-2",
       "nextReviewDate": "2026-08-16",
-      "retrievability": 0.788,
+      "retrievability": 0.773,
       "stability": 1.598
     },
     {
@@ -69,7 +69,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-07-01",
       "nextReviewDate": "2026-08-15",
-      "retrievability": 0.841,
+      "retrievability": 0.833,
       "stability": 4.742
     },
     {
@@ -93,7 +93,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-05",
       "nextReviewDate": "2026-06-06",
-      "retrievability": 0.405,
+      "retrievability": 0.404,
       "stability": 0.212
     },
     {
@@ -105,7 +105,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-06",
       "nextReviewDate": "2026-06-07",
-      "retrievability": 0.406,
+      "retrievability": 0.405,
       "stability": 0.212
     },
     {
@@ -117,7 +117,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-08-5",
       "nextReviewDate": "2026-06-09",
-      "retrievability": 0.407,
+      "retrievability": 0.406,
       "stability": 0.212
     },
     {
@@ -129,7 +129,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-08-2",
       "nextReviewDate": "2026-06-09",
-      "retrievability": 0.407,
+      "retrievability": 0.406,
       "stability": 0.212
     },
     {
@@ -141,7 +141,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-08-2",
       "nextReviewDate": "2026-06-09",
-      "retrievability": 0.407,
+      "retrievability": 0.406,
       "stability": 0.212
     },
     {
@@ -153,7 +153,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-08-3",
       "nextReviewDate": "2026-06-09",
-      "retrievability": 0.407,
+      "retrievability": 0.406,
       "stability": 0.212
     },
     {
@@ -165,7 +165,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-08-2",
       "nextReviewDate": "2026-06-09",
-      "retrievability": 0.407,
+      "retrievability": 0.406,
       "stability": 0.212
     },
     {
@@ -177,7 +177,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-08-민법",
       "nextReviewDate": "2026-06-09",
-      "retrievability": 0.407,
+      "retrievability": 0.406,
       "stability": 0.212
     },
     {
@@ -189,7 +189,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-08-민법",
       "nextReviewDate": "2026-06-09",
-      "retrievability": 0.407,
+      "retrievability": 0.406,
       "stability": 0.212
     },
     {
@@ -201,7 +201,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-08-4",
       "nextReviewDate": "2026-06-09",
-      "retrievability": 0.407,
+      "retrievability": 0.406,
       "stability": 0.212
     },
     {
@@ -213,7 +213,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-08-5",
       "nextReviewDate": "2026-06-09",
-      "retrievability": 0.407,
+      "retrievability": 0.406,
       "stability": 0.212
     },
     {
@@ -225,7 +225,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-08-민법",
       "nextReviewDate": "2026-06-09",
-      "retrievability": 0.407,
+      "retrievability": 0.406,
       "stability": 0.212
     },
     {
@@ -237,7 +237,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-08-민법",
       "nextReviewDate": "2026-06-09",
-      "retrievability": 0.407,
+      "retrievability": 0.406,
       "stability": 0.212
     },
     {
@@ -249,7 +249,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-08-4",
       "nextReviewDate": "2026-06-09",
-      "retrievability": 0.407,
+      "retrievability": 0.406,
       "stability": 0.212
     },
     {
@@ -261,7 +261,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-08-5",
       "nextReviewDate": "2026-06-09",
-      "retrievability": 0.407,
+      "retrievability": 0.406,
       "stability": 0.212
     },
     {
@@ -273,7 +273,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-08",
       "nextReviewDate": "2026-06-09",
-      "retrievability": 0.407,
+      "retrievability": 0.406,
       "stability": 0.212
     },
     {
@@ -285,7 +285,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-08",
       "nextReviewDate": "2026-06-09",
-      "retrievability": 0.407,
+      "retrievability": 0.406,
       "stability": 0.212
     },
     {
@@ -297,7 +297,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-09",
       "nextReviewDate": "2026-06-10",
-      "retrievability": 0.408,
+      "retrievability": 0.407,
       "stability": 0.212
     },
     {
@@ -309,7 +309,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-09-3",
       "nextReviewDate": "2026-06-10",
-      "retrievability": 0.408,
+      "retrievability": 0.407,
       "stability": 0.212
     },
     {
@@ -321,7 +321,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-09-2",
       "nextReviewDate": "2026-06-10",
-      "retrievability": 0.408,
+      "retrievability": 0.407,
       "stability": 0.212
     },
     {
@@ -333,7 +333,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-09",
       "nextReviewDate": "2026-06-10",
-      "retrievability": 0.408,
+      "retrievability": 0.407,
       "stability": 0.212
     },
     {
@@ -345,7 +345,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-11",
       "nextReviewDate": "2026-06-12",
-      "retrievability": 0.41,
+      "retrievability": 0.409,
       "stability": 0.212
     },
     {
@@ -357,7 +357,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-11-2",
       "nextReviewDate": "2026-06-12",
-      "retrievability": 0.41,
+      "retrievability": 0.409,
       "stability": 0.212
     },
     {
@@ -369,7 +369,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-11",
       "nextReviewDate": "2026-06-12",
-      "retrievability": 0.41,
+      "retrievability": 0.409,
       "stability": 0.212
     },
     {
@@ -381,7 +381,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-11-2",
       "nextReviewDate": "2026-06-12",
-      "retrievability": 0.41,
+      "retrievability": 0.409,
       "stability": 0.212
     },
     {
@@ -393,7 +393,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-11-2",
       "nextReviewDate": "2026-06-12",
-      "retrievability": 0.41,
+      "retrievability": 0.409,
       "stability": 0.212
     },
     {
@@ -405,7 +405,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-17",
       "nextReviewDate": "2026-06-18",
-      "retrievability": 0.416,
+      "retrievability": 0.415,
       "stability": 0.212
     },
     {
@@ -417,7 +417,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-17",
       "nextReviewDate": "2026-06-18",
-      "retrievability": 0.416,
+      "retrievability": 0.415,
       "stability": 0.212
     },
     {
@@ -429,7 +429,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-21-부동산공법",
       "nextReviewDate": "2026-06-22",
-      "retrievability": 0.42,
+      "retrievability": 0.419,
       "stability": 0.212
     },
     {
@@ -441,7 +441,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-21",
       "nextReviewDate": "2026-06-22",
-      "retrievability": 0.42,
+      "retrievability": 0.419,
       "stability": 0.212
     },
     {
@@ -453,7 +453,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-21",
       "nextReviewDate": "2026-06-22",
-      "retrievability": 0.42,
+      "retrievability": 0.419,
       "stability": 0.212
     },
     {
@@ -465,7 +465,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-21-민법",
       "nextReviewDate": "2026-06-22",
-      "retrievability": 0.42,
+      "retrievability": 0.419,
       "stability": 0.212
     },
     {
@@ -477,7 +477,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-21-부동산공법",
       "nextReviewDate": "2026-06-22",
-      "retrievability": 0.42,
+      "retrievability": 0.419,
       "stability": 0.212
     },
     {
@@ -489,7 +489,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-21-부동산공법",
       "nextReviewDate": "2026-06-22",
-      "retrievability": 0.42,
+      "retrievability": 0.419,
       "stability": 0.212
     },
     {
@@ -501,7 +501,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-22",
       "nextReviewDate": "2026-06-23",
-      "retrievability": 0.421,
+      "retrievability": 0.42,
       "stability": 0.212
     },
     {
@@ -513,7 +513,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-22",
       "nextReviewDate": "2026-06-23",
-      "retrievability": 0.421,
+      "retrievability": 0.42,
       "stability": 0.212
     },
     {
@@ -525,7 +525,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-22",
       "nextReviewDate": "2026-06-23",
-      "retrievability": 0.421,
+      "retrievability": 0.42,
       "stability": 0.212
     },
     {
@@ -537,7 +537,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-22",
       "nextReviewDate": "2026-06-23",
-      "retrievability": 0.421,
+      "retrievability": 0.42,
       "stability": 0.212
     },
     {
@@ -549,7 +549,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-22",
       "nextReviewDate": "2026-06-23",
-      "retrievability": 0.421,
+      "retrievability": 0.42,
       "stability": 0.212
     },
     {
@@ -561,7 +561,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-22",
       "nextReviewDate": "2026-06-23",
-      "retrievability": 0.421,
+      "retrievability": 0.42,
       "stability": 0.212
     },
     {
@@ -573,7 +573,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-29-2",
       "nextReviewDate": "2026-06-30",
-      "retrievability": 0.429,
+      "retrievability": 0.428,
       "stability": 0.212
     },
     {
@@ -585,7 +585,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-29-2",
       "nextReviewDate": "2026-06-30",
-      "retrievability": 0.429,
+      "retrievability": 0.428,
       "stability": 0.212
     },
     {
@@ -597,7 +597,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-29-2",
       "nextReviewDate": "2026-06-30",
-      "retrievability": 0.429,
+      "retrievability": 0.428,
       "stability": 0.212
     },
     {
@@ -609,7 +609,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-29-2",
       "nextReviewDate": "2026-06-30",
-      "retrievability": 0.429,
+      "retrievability": 0.428,
       "stability": 0.212
     },
     {
@@ -621,7 +621,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-29",
       "nextReviewDate": "2026-06-30",
-      "retrievability": 0.429,
+      "retrievability": 0.428,
       "stability": 0.212
     },
     {
@@ -633,7 +633,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-29",
       "nextReviewDate": "2026-06-30",
-      "retrievability": 0.429,
+      "retrievability": 0.428,
       "stability": 0.212
     },
     {
@@ -645,7 +645,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-07-01",
       "nextReviewDate": "2026-07-02",
-      "retrievability": 0.432,
+      "retrievability": 0.43,
       "stability": 0.212
     },
     {
@@ -657,7 +657,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-07-02",
       "nextReviewDate": "2026-07-03",
-      "retrievability": 0.433,
+      "retrievability": 0.432,
       "stability": 0.212
     },
     {
@@ -669,7 +669,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-07-02",
       "nextReviewDate": "2026-07-03",
-      "retrievability": 0.433,
+      "retrievability": 0.432,
       "stability": 0.212
     },
     {
@@ -681,7 +681,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-07-08",
       "nextReviewDate": "2026-07-09",
-      "retrievability": 0.442,
+      "retrievability": 0.44,
       "stability": 0.212
     },
     {
@@ -693,7 +693,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-07-08",
       "nextReviewDate": "2026-07-09",
-      "retrievability": 0.442,
+      "retrievability": 0.44,
       "stability": 0.212
     },
     {
@@ -705,7 +705,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-07-13-2",
       "nextReviewDate": "2026-07-14",
-      "retrievability": 0.45,
+      "retrievability": 0.448,
       "stability": 0.212
     },
     {
@@ -717,7 +717,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-07-13",
       "nextReviewDate": "2026-07-14",
-      "retrievability": 0.45,
+      "retrievability": 0.448,
       "stability": 0.212
     },
     {
@@ -729,7 +729,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-07-13",
       "nextReviewDate": "2026-07-14",
-      "retrievability": 0.45,
+      "retrievability": 0.448,
       "stability": 0.212
     },
     {
@@ -741,7 +741,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-07-13",
       "nextReviewDate": "2026-07-14",
-      "retrievability": 0.45,
+      "retrievability": 0.448,
       "stability": 0.212
     },
     {
@@ -753,7 +753,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-07-13",
       "nextReviewDate": "2026-07-14",
-      "retrievability": 0.45,
+      "retrievability": 0.448,
       "stability": 0.212
     },
     {
@@ -765,7 +765,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-07-14",
       "nextReviewDate": "2026-07-15",
-      "retrievability": 0.452,
+      "retrievability": 0.45,
       "stability": 0.212
     },
     {
@@ -777,7 +777,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-07-14",
       "nextReviewDate": "2026-07-15",
-      "retrievability": 0.452,
+      "retrievability": 0.45,
       "stability": 0.212
     },
     {
@@ -789,7 +789,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-07-14",
       "nextReviewDate": "2026-07-15",
-      "retrievability": 0.452,
+      "retrievability": 0.45,
       "stability": 0.212
     },
     {
@@ -801,7 +801,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-07-20",
       "nextReviewDate": "2026-07-21",
-      "retrievability": 0.465,
+      "retrievability": 0.462,
       "stability": 0.212
     },
     {
@@ -813,7 +813,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-07-20",
       "nextReviewDate": "2026-07-21",
-      "retrievability": 0.465,
+      "retrievability": 0.462,
       "stability": 0.212
     },
     {
@@ -825,7 +825,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-07-20",
       "nextReviewDate": "2026-07-21",
-      "retrievability": 0.465,
+      "retrievability": 0.462,
       "stability": 0.212
     },
     {
@@ -837,7 +837,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-07-20",
       "nextReviewDate": "2026-07-21",
-      "retrievability": 0.465,
+      "retrievability": 0.462,
       "stability": 0.212
     },
     {
@@ -849,7 +849,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-07-24",
       "nextReviewDate": "2026-07-25",
-      "retrievability": 0.474,
+      "retrievability": 0.472,
       "stability": 0.212
     },
     {
@@ -861,7 +861,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-07-24",
       "nextReviewDate": "2026-07-25",
-      "retrievability": 0.474,
+      "retrievability": 0.472,
       "stability": 0.212
     },
     {
@@ -873,7 +873,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-14",
       "nextReviewDate": "2026-08-15",
-      "retrievability": 0.596,
+      "retrievability": 0.582,
       "stability": 0.212
     },
     {
@@ -885,7 +885,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-14-민법특화",
       "nextReviewDate": "2026-08-15",
-      "retrievability": 0.596,
+      "retrievability": 0.582,
       "stability": 0.212
     },
     {
@@ -897,7 +897,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-14-민법특화",
       "nextReviewDate": "2026-08-15",
-      "retrievability": 0.596,
+      "retrievability": 0.582,
       "stability": 0.212
     },
     {
@@ -909,7 +909,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-14-민법특화",
       "nextReviewDate": "2026-08-15",
-      "retrievability": 0.596,
+      "retrievability": 0.582,
       "stability": 0.212
     },
     {
@@ -921,7 +921,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-14",
       "nextReviewDate": "2026-08-15",
-      "retrievability": 0.596,
+      "retrievability": 0.582,
       "stability": 0.212
     },
     {
@@ -933,7 +933,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-14",
       "nextReviewDate": "2026-08-15",
-      "retrievability": 0.596,
+      "retrievability": 0.582,
       "stability": 0.212
     },
     {
@@ -945,7 +945,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-06-21-부동산공법",
       "nextReviewDate": "2026-07-12",
-      "retrievability": 0.689,
+      "retrievability": 0.687,
       "stability": 4.126
     },
     {
@@ -957,7 +957,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-06-29",
       "nextReviewDate": "2026-07-17",
-      "retrievability": 0.697,
+      "retrievability": 0.695,
       "stability": 3.98
     },
     {
@@ -969,7 +969,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-06-25",
       "nextReviewDate": "2026-07-17",
-      "retrievability": 0.702,
+      "retrievability": 0.699,
       "stability": 4.168
     },
     {
@@ -981,7 +981,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-06-24",
       "nextReviewDate": "2026-07-17",
-      "retrievability": 0.703,
+      "retrievability": 0.7,
       "stability": 4.208
     },
     {
@@ -993,7 +993,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": null,
       "nextReviewDate": "2026-08-16",
-      "retrievability": 0.823,
+      "retrievability": 0.808,
       "stability": 2.307
     },
     {
@@ -1005,7 +1005,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": null,
       "nextReviewDate": "2026-08-16",
-      "retrievability": 0.823,
+      "retrievability": 0.808,
       "stability": 2.307
     },
     {
@@ -1017,7 +1017,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": null,
       "nextReviewDate": "2026-08-16",
-      "retrievability": 0.823,
+      "retrievability": 0.808,
       "stability": 2.307
     },
     {
@@ -1029,7 +1029,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": null,
       "nextReviewDate": "2026-08-16",
-      "retrievability": 0.823,
+      "retrievability": 0.808,
       "stability": 2.307
     },
     {
@@ -1041,7 +1041,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": null,
       "nextReviewDate": "2026-08-16",
-      "retrievability": 0.823,
+      "retrievability": 0.808,
       "stability": 2.307
     },
     {
@@ -1053,7 +1053,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-07-01",
       "nextReviewDate": "2026-08-19",
-      "retrievability": 0.884,
+      "retrievability": 0.872,
       "stability": 4.808
     },
     {
@@ -1065,7 +1065,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-07-01",
       "nextReviewDate": "2026-07-20",
-      "retrievability": 0.747,
+      "retrievability": 0.744,
       "stability": 6.412
     },
     {
@@ -1077,7 +1077,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-06-25",
       "nextReviewDate": "2026-07-21",
-      "retrievability": 0.751,
+      "retrievability": 0.748,
       "stability": 6.707
     },
     {
@@ -1089,7 +1089,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-06-17",
       "nextReviewDate": "2026-07-29",
-      "retrievability": 0.826,
+      "retrievability": 0.824,
       "stability": 14.776
     },
     {
@@ -1101,7 +1101,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-06-08-민법",
       "nextReviewDate": "2026-08-18",
-      "retrievability": 0.874,
+      "retrievability": 0.862,
       "stability": 4.221
     },
     {
@@ -1113,7 +1113,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-06-08",
       "nextReviewDate": "2026-08-18",
-      "retrievability": 0.874,
+      "retrievability": 0.862,
       "stability": 4.221
     },
     {
@@ -1125,7 +1125,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-06-11-2",
       "nextReviewDate": "2026-08-19",
-      "retrievability": 0.885,
+      "retrievability": 0.873,
       "stability": 4.849
     }
   ],
@@ -1165,7 +1165,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.841
+        "retrievability": 0.833
       },
       "fsrsFallback": false
     },
@@ -1204,7 +1204,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.596
+        "retrievability": 0.582
       },
       "fsrsFallback": false
     },
@@ -1252,7 +1252,7 @@
         "state": "Review",
         "reps": 3,
         "lapses": 2,
-        "retrievability": 0.788
+        "retrievability": 0.773
       },
       "fsrsFallback": false
     },
@@ -1330,7 +1330,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.405
+        "retrievability": 0.404
       },
       "fsrsFallback": false
     },
@@ -1369,7 +1369,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.406
+        "retrievability": 0.405
       },
       "fsrsFallback": false
     },
@@ -1408,7 +1408,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.407
+        "retrievability": 0.406
       },
       "fsrsFallback": false
     },
@@ -1447,7 +1447,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.407
+        "retrievability": 0.406
       },
       "fsrsFallback": false
     },
@@ -1486,7 +1486,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.407
+        "retrievability": 0.406
       },
       "fsrsFallback": false
     },
@@ -1525,7 +1525,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.407
+        "retrievability": 0.406
       },
       "fsrsFallback": false
     },
@@ -1564,7 +1564,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.407
+        "retrievability": 0.406
       },
       "fsrsFallback": false
     },
@@ -1603,7 +1603,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.407
+        "retrievability": 0.406
       },
       "fsrsFallback": false
     },
@@ -1642,7 +1642,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.407
+        "retrievability": 0.406
       },
       "fsrsFallback": false
     },
@@ -1681,7 +1681,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.407
+        "retrievability": 0.406
       },
       "fsrsFallback": false
     },
@@ -1720,7 +1720,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.407
+        "retrievability": 0.406
       },
       "fsrsFallback": false
     },
@@ -1759,7 +1759,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.407
+        "retrievability": 0.406
       },
       "fsrsFallback": false
     },
@@ -1798,7 +1798,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.407
+        "retrievability": 0.406
       },
       "fsrsFallback": false
     },
@@ -1837,7 +1837,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.407
+        "retrievability": 0.406
       },
       "fsrsFallback": false
     },
@@ -1876,7 +1876,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.407
+        "retrievability": 0.406
       },
       "fsrsFallback": false
     },
@@ -1915,7 +1915,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.407
+        "retrievability": 0.406
       },
       "fsrsFallback": false
     },
@@ -1954,7 +1954,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.407
+        "retrievability": 0.406
       },
       "fsrsFallback": false
     },
@@ -1993,7 +1993,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.408
+        "retrievability": 0.407
       },
       "fsrsFallback": false
     },
@@ -2032,7 +2032,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.408
+        "retrievability": 0.407
       },
       "fsrsFallback": false
     },
@@ -2071,7 +2071,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.408
+        "retrievability": 0.407
       },
       "fsrsFallback": false
     },
@@ -2110,7 +2110,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.408
+        "retrievability": 0.407
       },
       "fsrsFallback": false
     },
@@ -2149,7 +2149,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.41
+        "retrievability": 0.409
       },
       "fsrsFallback": false
     },
@@ -2188,7 +2188,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.41
+        "retrievability": 0.409
       },
       "fsrsFallback": false
     },
@@ -2227,7 +2227,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.41
+        "retrievability": 0.409
       },
       "fsrsFallback": false
     },
@@ -2266,7 +2266,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.41
+        "retrievability": 0.409
       },
       "fsrsFallback": false
     },
@@ -2305,7 +2305,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.41
+        "retrievability": 0.409
       },
       "fsrsFallback": false
     },
@@ -2344,7 +2344,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.416
+        "retrievability": 0.415
       },
       "fsrsFallback": false
     },
@@ -2383,7 +2383,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.416
+        "retrievability": 0.415
       },
       "fsrsFallback": false
     },
@@ -2422,7 +2422,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.42
+        "retrievability": 0.419
       },
       "fsrsFallback": false
     },
@@ -2461,7 +2461,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.42
+        "retrievability": 0.419
       },
       "fsrsFallback": false
     },
@@ -2500,7 +2500,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.42
+        "retrievability": 0.419
       },
       "fsrsFallback": false
     },
@@ -2539,7 +2539,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.42
+        "retrievability": 0.419
       },
       "fsrsFallback": false
     },
@@ -2578,7 +2578,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.42
+        "retrievability": 0.419
       },
       "fsrsFallback": false
     },
@@ -2617,7 +2617,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.42
+        "retrievability": 0.419
       },
       "fsrsFallback": false
     },
@@ -2656,7 +2656,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.421
+        "retrievability": 0.42
       },
       "fsrsFallback": false
     },
@@ -2695,7 +2695,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.421
+        "retrievability": 0.42
       },
       "fsrsFallback": false
     },
@@ -2734,7 +2734,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.421
+        "retrievability": 0.42
       },
       "fsrsFallback": false
     },
@@ -2773,7 +2773,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.421
+        "retrievability": 0.42
       },
       "fsrsFallback": false
     },
@@ -2812,7 +2812,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.421
+        "retrievability": 0.42
       },
       "fsrsFallback": false
     },
@@ -2851,7 +2851,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.421
+        "retrievability": 0.42
       },
       "fsrsFallback": false
     },
@@ -2890,7 +2890,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.429
+        "retrievability": 0.428
       },
       "fsrsFallback": false
     },
@@ -2929,7 +2929,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.429
+        "retrievability": 0.428
       },
       "fsrsFallback": false
     },
@@ -2968,7 +2968,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.429
+        "retrievability": 0.428
       },
       "fsrsFallback": false
     },
@@ -3007,7 +3007,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.429
+        "retrievability": 0.428
       },
       "fsrsFallback": false
     },
@@ -3046,7 +3046,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.429
+        "retrievability": 0.428
       },
       "fsrsFallback": false
     },
@@ -3085,7 +3085,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.429
+        "retrievability": 0.428
       },
       "fsrsFallback": false
     },
@@ -3124,7 +3124,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.432
+        "retrievability": 0.43
       },
       "fsrsFallback": false
     },
@@ -3163,7 +3163,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.433
+        "retrievability": 0.432
       },
       "fsrsFallback": false
     },
@@ -3202,7 +3202,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.433
+        "retrievability": 0.432
       },
       "fsrsFallback": false
     },
@@ -3241,7 +3241,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.442
+        "retrievability": 0.44
       },
       "fsrsFallback": false
     },
@@ -3280,7 +3280,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.442
+        "retrievability": 0.44
       },
       "fsrsFallback": false
     },
@@ -3319,7 +3319,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.689
+        "retrievability": 0.687
       },
       "fsrsFallback": false
     },
@@ -3358,7 +3358,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.45
+        "retrievability": 0.448
       },
       "fsrsFallback": false
     },
@@ -3397,7 +3397,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.45
+        "retrievability": 0.448
       },
       "fsrsFallback": false
     },
@@ -3436,7 +3436,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.45
+        "retrievability": 0.448
       },
       "fsrsFallback": false
     },
@@ -3475,7 +3475,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.45
+        "retrievability": 0.448
       },
       "fsrsFallback": false
     },
@@ -3514,7 +3514,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.45
+        "retrievability": 0.448
       },
       "fsrsFallback": false
     },
@@ -3553,7 +3553,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.452
+        "retrievability": 0.45
       },
       "fsrsFallback": false
     },
@@ -3592,7 +3592,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.452
+        "retrievability": 0.45
       },
       "fsrsFallback": false
     },
@@ -3631,7 +3631,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.452
+        "retrievability": 0.45
       },
       "fsrsFallback": false
     },
@@ -3670,7 +3670,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.703
+        "retrievability": 0.7
       },
       "fsrsFallback": false
     },
@@ -3709,7 +3709,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.702
+        "retrievability": 0.699
       },
       "fsrsFallback": false
     },
@@ -3748,7 +3748,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.697
+        "retrievability": 0.695
       },
       "fsrsFallback": false
     },
@@ -3787,7 +3787,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.465
+        "retrievability": 0.462
       },
       "fsrsFallback": false
     },
@@ -3826,7 +3826,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.465
+        "retrievability": 0.462
       },
       "fsrsFallback": false
     },
@@ -3865,7 +3865,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.465
+        "retrievability": 0.462
       },
       "fsrsFallback": false
     },
@@ -3904,7 +3904,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.465
+        "retrievability": 0.462
       },
       "fsrsFallback": false
     },
@@ -3943,7 +3943,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.474
+        "retrievability": 0.472
       },
       "fsrsFallback": false
     },
@@ -3982,7 +3982,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.474
+        "retrievability": 0.472
       },
       "fsrsFallback": false
     },
@@ -4021,7 +4021,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.596
+        "retrievability": 0.582
       },
       "fsrsFallback": false
     },
@@ -4060,7 +4060,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.596
+        "retrievability": 0.582
       },
       "fsrsFallback": false
     },
@@ -4099,7 +4099,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.596
+        "retrievability": 0.582
       },
       "fsrsFallback": false
     },
@@ -4138,7 +4138,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.596
+        "retrievability": 0.582
       },
       "fsrsFallback": false
     },
@@ -4177,7 +4177,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.596
+        "retrievability": 0.582
       },
       "fsrsFallback": false
     },
@@ -4216,7 +4216,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.596
+        "retrievability": 0.582
       },
       "fsrsFallback": false
     },
@@ -4255,7 +4255,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.884
+        "retrievability": 0.872
       },
       "fsrsFallback": false
     },
@@ -4283,7 +4283,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 0,
-        "retrievability": 0.823
+        "retrievability": 0.808
       },
       "fsrsFallback": false
     },
@@ -4311,7 +4311,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 0,
-        "retrievability": 0.823
+        "retrievability": 0.808
       },
       "fsrsFallback": false
     },
@@ -4339,7 +4339,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 0,
-        "retrievability": 0.823
+        "retrievability": 0.808
       },
       "fsrsFallback": false
     },
@@ -4367,7 +4367,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 0,
-        "retrievability": 0.823
+        "retrievability": 0.808
       },
       "fsrsFallback": false
     },
@@ -4395,7 +4395,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 0,
-        "retrievability": 0.823
+        "retrievability": 0.808
       },
       "fsrsFallback": false
     },
@@ -4434,7 +4434,7 @@
         "state": "Review",
         "reps": 3,
         "lapses": 1,
-        "retrievability": 0.944
+        "retrievability": 0.937
       },
       "fsrsFallback": false
     },
@@ -4482,7 +4482,7 @@
         "state": "Review",
         "reps": 4,
         "lapses": 2,
-        "retrievability": 0.874
+        "retrievability": 0.862
       },
       "fsrsFallback": false
     },
@@ -4530,7 +4530,7 @@
         "state": "Review",
         "reps": 4,
         "lapses": 2,
-        "retrievability": 0.874
+        "retrievability": 0.862
       },
       "fsrsFallback": false
     },
@@ -4578,7 +4578,7 @@
         "state": "Review",
         "reps": 4,
         "lapses": 2,
-        "retrievability": 0.885
+        "retrievability": 0.873
       },
       "fsrsFallback": false
     },
@@ -4617,7 +4617,7 @@
         "state": "Review",
         "reps": 3,
         "lapses": 1,
-        "retrievability": 0.747
+        "retrievability": 0.744
       },
       "fsrsFallback": false
     },
@@ -4656,7 +4656,7 @@
         "state": "Review",
         "reps": 3,
         "lapses": 1,
-        "retrievability": 0.751
+        "retrievability": 0.748
       },
       "fsrsFallback": false
     },
@@ -4695,7 +4695,7 @@
         "state": "Review",
         "reps": 3,
         "lapses": 1,
-        "retrievability": 0.826
+        "retrievability": 0.824
       },
       "fsrsFallback": false
     },
@@ -4743,7 +4743,7 @@
         "state": "Review",
         "reps": 6,
         "lapses": 2,
-        "retrievability": 0.848
+        "retrievability": 0.845
       },
       "fsrsFallback": false
     },
@@ -4791,7 +4791,7 @@
         "state": "Review",
         "reps": 5,
         "lapses": 2,
-        "retrievability": 0.93
+        "retrievability": 0.921
       },
       "fsrsFallback": false
     },
@@ -4830,7 +4830,7 @@
         "state": "Review",
         "reps": 4,
         "lapses": 1,
-        "retrievability": 0.912
+        "retrievability": 0.91
       },
       "fsrsFallback": false
     },
@@ -4869,7 +4869,7 @@
         "state": "Review",
         "reps": 4,
         "lapses": 1,
-        "retrievability": 0.889
+        "retrievability": 0.886
       },
       "fsrsFallback": false
     },
@@ -4908,7 +4908,7 @@
         "state": "Review",
         "reps": 4,
         "lapses": 1,
-        "retrievability": 0.912
+        "retrievability": 0.91
       },
       "fsrsFallback": false
     },
@@ -4947,7 +4947,7 @@
         "state": "Review",
         "reps": 4,
         "lapses": 1,
-        "retrievability": 0.912
+        "retrievability": 0.909
       },
       "fsrsFallback": false
     },
@@ -4986,7 +4986,7 @@
         "state": "Review",
         "reps": 5,
         "lapses": 1,
-        "retrievability": 0.914
+        "retrievability": 0.912
       },
       "fsrsFallback": false
     }
