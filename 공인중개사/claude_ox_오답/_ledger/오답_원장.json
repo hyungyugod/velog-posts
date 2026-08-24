@@ -1,6 +1,6 @@
 {
   "ledgerSchema": 3,
-  "generatedAt": "2026-08-21T16:30:04",
+  "generatedAt": "2026-08-24T18:03:42",
   "fsrsMeta": {
     "version": "6.3.2",
     "desiredRetention": 0.9,
@@ -15,25 +15,25 @@
   "avgTotal": 36,
   "perfectRuns": 4,
   "totalWrongItems": 100,
-  "uniqueConcepts": 99,
+  "uniqueConcepts": 98,
   "dateRange": [
     "2026-06-02",
     "2026-08-14"
   ],
   "statusCounts": {
-    "상습": 3,
-    "재도전중": 82,
+    "상습": 4,
+    "재도전중": 80,
     "졸업후보": 7,
     "졸업": 7
   },
   "fsrsFallbacks": 0,
   "subjectWeakness": {
     "민법": 29,
-    "부동산공법": 24,
-    "공인중개사법": 14,
-    "부동산학개론": 12,
+    "부동산공법": 25,
+    "공인중개사법": 15,
     "부동산공시법": 11,
-    "부동산세법": 10
+    "부동산학개론": 11,
+    "부동산세법": 9
   },
   "dueQueue": [
     {
@@ -45,8 +45,32 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-14-민법특화",
       "nextReviewDate": "2026-08-15",
-      "retrievability": 0.582,
+      "retrievability": 0.552,
       "stability": 0.212
+    },
+    {
+      "conceptKey": "부동산공법 도시개발조합 동의요건",
+      "subject": "부동산공법",
+      "status": "상습",
+      "timesWrong": 2,
+      "retryMissed": 2,
+      "consecutiveCorrect": 1,
+      "lastWrong": "2026-07-01",
+      "nextReviewDate": "2026-08-11",
+      "retrievability": 0.679,
+      "stability": 1.211
+    },
+    {
+      "conceptKey": "공인중개사법 19 토지거래허가구역",
+      "subject": "공인중개사법",
+      "status": "상습",
+      "timesWrong": 2,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "lastWrong": "2026-07-01",
+      "nextReviewDate": "2026-08-15",
+      "retrievability": 0.713,
+      "stability": 1.225
     },
     {
       "conceptKey": "부동산공시법 1-3",
@@ -57,20 +81,8 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-06-11-2",
       "nextReviewDate": "2026-08-16",
-      "retrievability": 0.773,
+      "retrievability": 0.739,
       "stability": 1.598
-    },
-    {
-      "conceptKey": "부동산공법 도시개발조합 동의요건",
-      "subject": "부동산공법",
-      "status": "상습",
-      "timesWrong": 1,
-      "retryMissed": 1,
-      "consecutiveCorrect": 1,
-      "lastWrong": "2026-07-01",
-      "nextReviewDate": "2026-08-15",
-      "retrievability": 0.833,
-      "stability": 4.742
     },
     {
       "conceptKey": "부동산세법 3-3",
@@ -81,7 +93,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-02-심화",
       "nextReviewDate": "2026-06-03",
-      "retrievability": 0.402,
+      "retrievability": 0.399,
       "stability": 0.212
     },
     {
@@ -93,7 +105,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-05",
       "nextReviewDate": "2026-06-06",
-      "retrievability": 0.404,
+      "retrievability": 0.402,
       "stability": 0.212
     },
     {
@@ -105,7 +117,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-06",
       "nextReviewDate": "2026-06-07",
-      "retrievability": 0.405,
+      "retrievability": 0.402,
       "stability": 0.212
     },
     {
@@ -117,7 +129,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-08-5",
       "nextReviewDate": "2026-06-09",
-      "retrievability": 0.406,
+      "retrievability": 0.404,
       "stability": 0.212
     },
     {
@@ -129,7 +141,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-08-2",
       "nextReviewDate": "2026-06-09",
-      "retrievability": 0.406,
+      "retrievability": 0.404,
       "stability": 0.212
     },
     {
@@ -141,7 +153,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-08-2",
       "nextReviewDate": "2026-06-09",
-      "retrievability": 0.406,
+      "retrievability": 0.404,
       "stability": 0.212
     },
     {
@@ -153,7 +165,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-08-3",
       "nextReviewDate": "2026-06-09",
-      "retrievability": 0.406,
+      "retrievability": 0.404,
       "stability": 0.212
     },
     {
@@ -165,7 +177,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-08-2",
       "nextReviewDate": "2026-06-09",
-      "retrievability": 0.406,
+      "retrievability": 0.404,
       "stability": 0.212
     },
     {
@@ -177,7 +189,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-08-민법",
       "nextReviewDate": "2026-06-09",
-      "retrievability": 0.406,
+      "retrievability": 0.404,
       "stability": 0.212
     },
     {
@@ -189,7 +201,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-08-민법",
       "nextReviewDate": "2026-06-09",
-      "retrievability": 0.406,
+      "retrievability": 0.404,
       "stability": 0.212
     },
     {
@@ -201,7 +213,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-08-4",
       "nextReviewDate": "2026-06-09",
-      "retrievability": 0.406,
+      "retrievability": 0.404,
       "stability": 0.212
     },
     {
@@ -213,7 +225,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-08-5",
       "nextReviewDate": "2026-06-09",
-      "retrievability": 0.406,
+      "retrievability": 0.404,
       "stability": 0.212
     },
     {
@@ -225,7 +237,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-08-민법",
       "nextReviewDate": "2026-06-09",
-      "retrievability": 0.406,
+      "retrievability": 0.404,
       "stability": 0.212
     },
     {
@@ -237,7 +249,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-08-민법",
       "nextReviewDate": "2026-06-09",
-      "retrievability": 0.406,
+      "retrievability": 0.404,
       "stability": 0.212
     },
     {
@@ -249,7 +261,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-08-4",
       "nextReviewDate": "2026-06-09",
-      "retrievability": 0.406,
+      "retrievability": 0.404,
       "stability": 0.212
     },
     {
@@ -261,7 +273,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-08-5",
       "nextReviewDate": "2026-06-09",
-      "retrievability": 0.406,
+      "retrievability": 0.404,
       "stability": 0.212
     },
     {
@@ -273,7 +285,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-08",
       "nextReviewDate": "2026-06-09",
-      "retrievability": 0.406,
+      "retrievability": 0.404,
       "stability": 0.212
     },
     {
@@ -285,7 +297,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-08",
       "nextReviewDate": "2026-06-09",
-      "retrievability": 0.406,
+      "retrievability": 0.404,
       "stability": 0.212
     },
     {
@@ -297,7 +309,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-09",
       "nextReviewDate": "2026-06-10",
-      "retrievability": 0.407,
+      "retrievability": 0.405,
       "stability": 0.212
     },
     {
@@ -309,7 +321,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-09-3",
       "nextReviewDate": "2026-06-10",
-      "retrievability": 0.407,
+      "retrievability": 0.405,
       "stability": 0.212
     },
     {
@@ -321,7 +333,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-09-2",
       "nextReviewDate": "2026-06-10",
-      "retrievability": 0.407,
+      "retrievability": 0.405,
       "stability": 0.212
     },
     {
@@ -333,7 +345,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-09",
       "nextReviewDate": "2026-06-10",
-      "retrievability": 0.407,
+      "retrievability": 0.405,
       "stability": 0.212
     },
     {
@@ -345,7 +357,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-11",
       "nextReviewDate": "2026-06-12",
-      "retrievability": 0.409,
+      "retrievability": 0.406,
       "stability": 0.212
     },
     {
@@ -357,7 +369,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-11-2",
       "nextReviewDate": "2026-06-12",
-      "retrievability": 0.409,
+      "retrievability": 0.406,
       "stability": 0.212
     },
     {
@@ -369,7 +381,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-11",
       "nextReviewDate": "2026-06-12",
-      "retrievability": 0.409,
+      "retrievability": 0.406,
       "stability": 0.212
     },
     {
@@ -381,7 +393,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-11-2",
       "nextReviewDate": "2026-06-12",
-      "retrievability": 0.409,
+      "retrievability": 0.406,
       "stability": 0.212
     },
     {
@@ -393,7 +405,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-11-2",
       "nextReviewDate": "2026-06-12",
-      "retrievability": 0.409,
+      "retrievability": 0.406,
       "stability": 0.212
     },
     {
@@ -405,7 +417,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-17",
       "nextReviewDate": "2026-06-18",
-      "retrievability": 0.415,
+      "retrievability": 0.412,
       "stability": 0.212
     },
     {
@@ -417,7 +429,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-17",
       "nextReviewDate": "2026-06-18",
-      "retrievability": 0.415,
+      "retrievability": 0.412,
       "stability": 0.212
     },
     {
@@ -429,7 +441,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-21-부동산공법",
       "nextReviewDate": "2026-06-22",
-      "retrievability": 0.419,
+      "retrievability": 0.416,
       "stability": 0.212
     },
     {
@@ -441,7 +453,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-21",
       "nextReviewDate": "2026-06-22",
-      "retrievability": 0.419,
+      "retrievability": 0.416,
       "stability": 0.212
     },
     {
@@ -453,7 +465,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-21",
       "nextReviewDate": "2026-06-22",
-      "retrievability": 0.419,
+      "retrievability": 0.416,
       "stability": 0.212
     },
     {
@@ -465,7 +477,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-21-민법",
       "nextReviewDate": "2026-06-22",
-      "retrievability": 0.419,
+      "retrievability": 0.416,
       "stability": 0.212
     },
     {
@@ -477,7 +489,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-21-부동산공법",
       "nextReviewDate": "2026-06-22",
-      "retrievability": 0.419,
+      "retrievability": 0.416,
       "stability": 0.212
     },
     {
@@ -489,7 +501,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-21-부동산공법",
       "nextReviewDate": "2026-06-22",
-      "retrievability": 0.419,
+      "retrievability": 0.416,
       "stability": 0.212
     },
     {
@@ -501,7 +513,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-22",
       "nextReviewDate": "2026-06-23",
-      "retrievability": 0.42,
+      "retrievability": 0.417,
       "stability": 0.212
     },
     {
@@ -513,7 +525,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-22",
       "nextReviewDate": "2026-06-23",
-      "retrievability": 0.42,
+      "retrievability": 0.417,
       "stability": 0.212
     },
     {
@@ -525,7 +537,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-22",
       "nextReviewDate": "2026-06-23",
-      "retrievability": 0.42,
+      "retrievability": 0.417,
       "stability": 0.212
     },
     {
@@ -537,7 +549,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-22",
       "nextReviewDate": "2026-06-23",
-      "retrievability": 0.42,
+      "retrievability": 0.417,
       "stability": 0.212
     },
     {
@@ -549,7 +561,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-22",
       "nextReviewDate": "2026-06-23",
-      "retrievability": 0.42,
+      "retrievability": 0.417,
       "stability": 0.212
     },
     {
@@ -561,7 +573,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-22",
       "nextReviewDate": "2026-06-23",
-      "retrievability": 0.42,
+      "retrievability": 0.417,
       "stability": 0.212
     },
     {
@@ -573,7 +585,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-29-2",
       "nextReviewDate": "2026-06-30",
-      "retrievability": 0.428,
+      "retrievability": 0.424,
       "stability": 0.212
     },
     {
@@ -585,7 +597,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-29-2",
       "nextReviewDate": "2026-06-30",
-      "retrievability": 0.428,
+      "retrievability": 0.424,
       "stability": 0.212
     },
     {
@@ -597,7 +609,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-29-2",
       "nextReviewDate": "2026-06-30",
-      "retrievability": 0.428,
+      "retrievability": 0.424,
       "stability": 0.212
     },
     {
@@ -609,7 +621,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-29-2",
       "nextReviewDate": "2026-06-30",
-      "retrievability": 0.428,
+      "retrievability": 0.424,
       "stability": 0.212
     },
     {
@@ -621,7 +633,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-29",
       "nextReviewDate": "2026-06-30",
-      "retrievability": 0.428,
+      "retrievability": 0.424,
       "stability": 0.212
     },
     {
@@ -633,19 +645,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-29",
       "nextReviewDate": "2026-06-30",
-      "retrievability": 0.428,
-      "stability": 0.212
-    },
-    {
-      "conceptKey": "부동산학개론 5 감정평가",
-      "subject": "부동산학개론",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "lastWrong": "2026-07-01",
-      "nextReviewDate": "2026-07-02",
-      "retrievability": 0.43,
+      "retrievability": 0.424,
       "stability": 0.212
     },
     {
@@ -657,7 +657,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-07-02",
       "nextReviewDate": "2026-07-03",
-      "retrievability": 0.432,
+      "retrievability": 0.428,
       "stability": 0.212
     },
     {
@@ -669,7 +669,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-07-02",
       "nextReviewDate": "2026-07-03",
-      "retrievability": 0.432,
+      "retrievability": 0.428,
       "stability": 0.212
     },
     {
@@ -681,7 +681,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-07-08",
       "nextReviewDate": "2026-07-09",
-      "retrievability": 0.44,
+      "retrievability": 0.436,
       "stability": 0.212
     },
     {
@@ -693,7 +693,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-07-08",
       "nextReviewDate": "2026-07-09",
-      "retrievability": 0.44,
+      "retrievability": 0.436,
       "stability": 0.212
     },
     {
@@ -705,7 +705,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-07-13-2",
       "nextReviewDate": "2026-07-14",
-      "retrievability": 0.448,
+      "retrievability": 0.443,
       "stability": 0.212
     },
     {
@@ -717,7 +717,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-07-13",
       "nextReviewDate": "2026-07-14",
-      "retrievability": 0.448,
+      "retrievability": 0.443,
       "stability": 0.212
     },
     {
@@ -729,7 +729,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-07-13",
       "nextReviewDate": "2026-07-14",
-      "retrievability": 0.448,
+      "retrievability": 0.443,
       "stability": 0.212
     },
     {
@@ -741,7 +741,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-07-13",
       "nextReviewDate": "2026-07-14",
-      "retrievability": 0.448,
+      "retrievability": 0.443,
       "stability": 0.212
     },
     {
@@ -753,7 +753,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-07-13",
       "nextReviewDate": "2026-07-14",
-      "retrievability": 0.448,
+      "retrievability": 0.443,
       "stability": 0.212
     },
     {
@@ -765,7 +765,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-07-14",
       "nextReviewDate": "2026-07-15",
-      "retrievability": 0.45,
+      "retrievability": 0.445,
       "stability": 0.212
     },
     {
@@ -777,7 +777,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-07-14",
       "nextReviewDate": "2026-07-15",
-      "retrievability": 0.45,
+      "retrievability": 0.445,
       "stability": 0.212
     },
     {
@@ -789,7 +789,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-07-14",
       "nextReviewDate": "2026-07-15",
-      "retrievability": 0.45,
+      "retrievability": 0.445,
       "stability": 0.212
     },
     {
@@ -801,7 +801,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-07-20",
       "nextReviewDate": "2026-07-21",
-      "retrievability": 0.462,
+      "retrievability": 0.456,
       "stability": 0.212
     },
     {
@@ -813,7 +813,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-07-20",
       "nextReviewDate": "2026-07-21",
-      "retrievability": 0.462,
+      "retrievability": 0.456,
       "stability": 0.212
     },
     {
@@ -825,7 +825,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-07-20",
       "nextReviewDate": "2026-07-21",
-      "retrievability": 0.462,
+      "retrievability": 0.456,
       "stability": 0.212
     },
     {
@@ -837,7 +837,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-07-20",
       "nextReviewDate": "2026-07-21",
-      "retrievability": 0.462,
+      "retrievability": 0.456,
       "stability": 0.212
     },
     {
@@ -849,7 +849,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-07-24",
       "nextReviewDate": "2026-07-25",
-      "retrievability": 0.472,
+      "retrievability": 0.465,
       "stability": 0.212
     },
     {
@@ -861,7 +861,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-07-24",
       "nextReviewDate": "2026-07-25",
-      "retrievability": 0.472,
+      "retrievability": 0.465,
       "stability": 0.212
     },
     {
@@ -873,7 +873,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-14",
       "nextReviewDate": "2026-08-15",
-      "retrievability": 0.582,
+      "retrievability": 0.552,
       "stability": 0.212
     },
     {
@@ -885,7 +885,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-14-민법특화",
       "nextReviewDate": "2026-08-15",
-      "retrievability": 0.582,
+      "retrievability": 0.552,
       "stability": 0.212
     },
     {
@@ -897,7 +897,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-14-민법특화",
       "nextReviewDate": "2026-08-15",
-      "retrievability": 0.582,
+      "retrievability": 0.552,
       "stability": 0.212
     },
     {
@@ -909,7 +909,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-14-민법특화",
       "nextReviewDate": "2026-08-15",
-      "retrievability": 0.582,
+      "retrievability": 0.552,
       "stability": 0.212
     },
     {
@@ -921,7 +921,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-14",
       "nextReviewDate": "2026-08-15",
-      "retrievability": 0.582,
+      "retrievability": 0.552,
       "stability": 0.212
     },
     {
@@ -933,7 +933,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-14",
       "nextReviewDate": "2026-08-15",
-      "retrievability": 0.582,
+      "retrievability": 0.552,
       "stability": 0.212
     },
     {
@@ -945,7 +945,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-06-21-부동산공법",
       "nextReviewDate": "2026-07-12",
-      "retrievability": 0.687,
+      "retrievability": 0.68,
       "stability": 4.126
     },
     {
@@ -957,7 +957,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-06-29",
       "nextReviewDate": "2026-07-17",
-      "retrievability": 0.695,
+      "retrievability": 0.688,
       "stability": 3.98
     },
     {
@@ -969,7 +969,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-06-25",
       "nextReviewDate": "2026-07-17",
-      "retrievability": 0.699,
+      "retrievability": 0.692,
       "stability": 4.168
     },
     {
@@ -981,7 +981,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-06-24",
       "nextReviewDate": "2026-07-17",
-      "retrievability": 0.7,
+      "retrievability": 0.693,
       "stability": 4.208
     },
     {
@@ -993,7 +993,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": null,
       "nextReviewDate": "2026-08-16",
-      "retrievability": 0.808,
+      "retrievability": 0.774,
       "stability": 2.307
     },
     {
@@ -1005,7 +1005,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": null,
       "nextReviewDate": "2026-08-16",
-      "retrievability": 0.808,
+      "retrievability": 0.774,
       "stability": 2.307
     },
     {
@@ -1017,7 +1017,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": null,
       "nextReviewDate": "2026-08-16",
-      "retrievability": 0.808,
+      "retrievability": 0.774,
       "stability": 2.307
     },
     {
@@ -1029,7 +1029,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": null,
       "nextReviewDate": "2026-08-16",
-      "retrievability": 0.808,
+      "retrievability": 0.774,
       "stability": 2.307
     },
     {
@@ -1041,32 +1041,8 @@
       "consecutiveCorrect": 1,
       "lastWrong": null,
       "nextReviewDate": "2026-08-16",
-      "retrievability": 0.808,
+      "retrievability": 0.774,
       "stability": 2.307
-    },
-    {
-      "conceptKey": "공인중개사법 19 토지거래허가구역",
-      "subject": "공인중개사법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 1,
-      "lastWrong": "2026-07-01",
-      "nextReviewDate": "2026-08-19",
-      "retrievability": 0.872,
-      "stability": 4.808
-    },
-    {
-      "conceptKey": "부동산세법 2-5 취득시기·9 물납/부과시점",
-      "subject": "부동산세법",
-      "status": "졸업후보",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 2,
-      "lastWrong": "2026-07-01",
-      "nextReviewDate": "2026-07-20",
-      "retrievability": 0.744,
-      "stability": 6.412
     },
     {
       "conceptKey": "민법 유치권",
@@ -1077,8 +1053,20 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-06-25",
       "nextReviewDate": "2026-07-21",
-      "retrievability": 0.748,
+      "retrievability": 0.741,
       "stability": 6.707
+    },
+    {
+      "conceptKey": "부동산세법 2-5 취득시기·9 물납/부과시점",
+      "subject": "부동산세법",
+      "status": "졸업후보",
+      "timesWrong": 0,
+      "retryMissed": 0,
+      "consecutiveCorrect": 2,
+      "lastWrong": null,
+      "nextReviewDate": "2026-07-21",
+      "retrievability": 0.749,
+      "stability": 7.315
     },
     {
       "conceptKey": "부동산학개론 §1 시장이론",
@@ -1089,7 +1077,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-06-17",
       "nextReviewDate": "2026-07-29",
-      "retrievability": 0.824,
+      "retrievability": 0.817,
       "stability": 14.776
     },
     {
@@ -1101,7 +1089,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-06-08-민법",
       "nextReviewDate": "2026-08-18",
-      "retrievability": 0.862,
+      "retrievability": 0.831,
       "stability": 4.221
     },
     {
@@ -1113,7 +1101,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-06-08",
       "nextReviewDate": "2026-08-18",
-      "retrievability": 0.862,
+      "retrievability": 0.831,
       "stability": 4.221
     },
     {
@@ -1125,7 +1113,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-06-11-2",
       "nextReviewDate": "2026-08-19",
-      "retrievability": 0.873,
+      "retrievability": 0.843,
       "stability": 4.849
     }
   ],
@@ -1136,16 +1124,17 @@
       "subject": "부동산공법",
       "concept": "부동산공법 도시개발조합 동의요건",
       "status": "상습",
-      "timesWrong": 1,
-      "retryMissed": 1,
+      "timesWrong": 2,
+      "retryMissed": 2,
       "consecutiveCorrect": 1,
       "firstWrong": "2026-07-01",
       "lastWrong": "2026-07-01",
       "lastCorrect": "2026-08-10",
       "lastResult": "correct",
       "lastDp": "2026-08-10",
-      "nextReviewDate": "2026-08-15",
+      "nextReviewDate": "2026-08-11",
       "dates": [
+        "2026-07-01",
         "2026-07-01"
       ],
       "samples": [
@@ -1156,16 +1145,24 @@
           "myAnswer": "O",
           "correct": "X",
           "expl": "X. 도시개발조합은 토지면적 2/3 이상과 토지소유자 총수 1/2 이상의 동의가 필요하다(땅이 더 무겁다). 지문은 면적과 사람의 비율을 서로 뒤바꿔 놓은 함정이다 — 면적 쪽 요건이 더 높다는 점, 재개발(사람 3/4)과 반대라는 점을 함께 기억한다."
+        },
+        {
+          "date": "2026-07-01",
+          "type": "OX",
+          "q": "🔁 도시개발법령상 도시개발조합의 설립인가를 받으려면 토지면적의 2분의 1 이상에 해당하는 토지소유자와 토지소유자 총수의 3분의 2 이상의 동의를 받아야 한다.",
+          "myAnswer": "O",
+          "correct": "X",
+          "expl": "X. 도시개발조합은 토지면적 2/3 이상과 토지소유자 총수 1/2 이상의 동의가 필요하다(땅이 더 무겁다). 지문은 면적과 사람의 비율을 서로 뒤바꿔 놓은 함정이다 — 면적 쪽 요건이 더 높다는 점, 재개발(사람 3/4)과 반대라는 점을 함께 기억한다."
         }
       ],
       "fsrs": {
-        "stability": 4.742,
-        "difficulty": 6.402,
-        "due": "2026-08-15",
+        "stability": 1.211,
+        "difficulty": 8.793,
+        "due": "2026-08-11",
         "state": "Review",
-        "reps": 2,
-        "lapses": 1,
-        "retrievability": 0.833
+        "reps": 3,
+        "lapses": 2,
+        "retrievability": 0.679
       },
       "fsrsFallback": false
     },
@@ -1204,7 +1201,55 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.582
+        "retrievability": 0.552
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "공인중개사법 19 토지거래허가구역",
+      "aliases": [],
+      "subject": "공인중개사법",
+      "concept": "공인중개사법 19 토지거래허가구역",
+      "status": "상습",
+      "timesWrong": 2,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "firstWrong": "2026-07-01",
+      "lastWrong": "2026-07-01",
+      "lastCorrect": "2026-08-14",
+      "lastResult": "correct",
+      "lastDp": "2026-08-14",
+      "nextReviewDate": "2026-08-15",
+      "dates": [
+        "2026-07-01",
+        "2026-07-01"
+      ],
+      "samples": [
+        {
+          "date": "2026-07-01",
+          "type": "객관식",
+          "q": "토지거래허가구역의 지정 및 토지거래계약 허가에 관한 설명으로 <b>옳지 않은</b> 것은?",
+          "myAnswer": "허가구역의 지정은 주민의 의견을 듣지 않고 심의를 거쳐서 한다",
+          "correct": "허가받은 사항의 변경에 대한 허가는 국토교통부장관이 한다",
+          "expl": "토지거래계약 허가받은 사항의 변경 허가는 국토교통부장관이 아니라 시장·군수·구청장이 한다. 개별 거래의 변경까지 국장이 관여하는 것은 과하기 때문. 변경허가 주체를 상급기관으로 올린 첫 지문이 함정이고, 둘 이상 시·도 걸치면 국장 지정·의견 없이 심의만·5년 초과 불가는 옳다."
+        },
+        {
+          "date": "2026-07-01",
+          "type": "객관식",
+          "q": "토지거래허가구역의 지정 및 토지거래계약 허가에 관한 설명으로 <b>옳지 않은</b> 것은?",
+          "myAnswer": "허가구역의 지정은 주민의 의견을 듣지 않고 심의를 거쳐서 한다",
+          "correct": "허가받은 사항의 변경에 대한 허가는 국토교통부장관이 한다",
+          "expl": "토지거래계약 허가받은 사항의 변경 허가는 국토교통부장관이 아니라 시장·군수·구청장이 한다. 개별 거래의 변경까지 국장이 관여하는 것은 과하기 때문. 변경허가 주체를 상급기관으로 올린 첫 지문이 함정이고, 둘 이상 시·도 걸치면 국장 지정·의견 없이 심의만·5년 초과 불가는 옳다."
+        }
+      ],
+      "fsrs": {
+        "stability": 1.225,
+        "difficulty": 8.793,
+        "due": "2026-08-15",
+        "state": "Review",
+        "reps": 3,
+        "lapses": 2,
+        "retrievability": 0.713
       },
       "fsrsFallback": false
     },
@@ -1252,7 +1297,7 @@
         "state": "Review",
         "reps": 3,
         "lapses": 2,
-        "retrievability": 0.773
+        "retrievability": 0.739
       },
       "fsrsFallback": false
     },
@@ -1291,7 +1336,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.402
+        "retrievability": 0.399
       },
       "fsrsFallback": false
     },
@@ -1330,7 +1375,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.404
+        "retrievability": 0.402
       },
       "fsrsFallback": false
     },
@@ -1369,7 +1414,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.405
+        "retrievability": 0.402
       },
       "fsrsFallback": false
     },
@@ -1408,7 +1453,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.406
+        "retrievability": 0.404
       },
       "fsrsFallback": false
     },
@@ -1447,7 +1492,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.406
+        "retrievability": 0.404
       },
       "fsrsFallback": false
     },
@@ -1486,7 +1531,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.406
+        "retrievability": 0.404
       },
       "fsrsFallback": false
     },
@@ -1525,7 +1570,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.406
+        "retrievability": 0.404
       },
       "fsrsFallback": false
     },
@@ -1564,7 +1609,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.406
+        "retrievability": 0.404
       },
       "fsrsFallback": false
     },
@@ -1603,7 +1648,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.406
+        "retrievability": 0.404
       },
       "fsrsFallback": false
     },
@@ -1642,7 +1687,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.406
+        "retrievability": 0.404
       },
       "fsrsFallback": false
     },
@@ -1681,7 +1726,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.406
+        "retrievability": 0.404
       },
       "fsrsFallback": false
     },
@@ -1720,7 +1765,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.406
+        "retrievability": 0.404
       },
       "fsrsFallback": false
     },
@@ -1759,7 +1804,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.406
+        "retrievability": 0.404
       },
       "fsrsFallback": false
     },
@@ -1798,7 +1843,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.406
+        "retrievability": 0.404
       },
       "fsrsFallback": false
     },
@@ -1837,7 +1882,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.406
+        "retrievability": 0.404
       },
       "fsrsFallback": false
     },
@@ -1876,7 +1921,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.406
+        "retrievability": 0.404
       },
       "fsrsFallback": false
     },
@@ -1915,7 +1960,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.406
+        "retrievability": 0.404
       },
       "fsrsFallback": false
     },
@@ -1954,7 +1999,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.406
+        "retrievability": 0.404
       },
       "fsrsFallback": false
     },
@@ -1993,7 +2038,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.407
+        "retrievability": 0.405
       },
       "fsrsFallback": false
     },
@@ -2032,7 +2077,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.407
+        "retrievability": 0.405
       },
       "fsrsFallback": false
     },
@@ -2071,7 +2116,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.407
+        "retrievability": 0.405
       },
       "fsrsFallback": false
     },
@@ -2110,7 +2155,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.407
+        "retrievability": 0.405
       },
       "fsrsFallback": false
     },
@@ -2149,7 +2194,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.409
+        "retrievability": 0.406
       },
       "fsrsFallback": false
     },
@@ -2188,7 +2233,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.409
+        "retrievability": 0.406
       },
       "fsrsFallback": false
     },
@@ -2227,7 +2272,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.409
+        "retrievability": 0.406
       },
       "fsrsFallback": false
     },
@@ -2266,7 +2311,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.409
+        "retrievability": 0.406
       },
       "fsrsFallback": false
     },
@@ -2305,7 +2350,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.409
+        "retrievability": 0.406
       },
       "fsrsFallback": false
     },
@@ -2344,7 +2389,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.415
+        "retrievability": 0.412
       },
       "fsrsFallback": false
     },
@@ -2383,7 +2428,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.415
+        "retrievability": 0.412
       },
       "fsrsFallback": false
     },
@@ -2422,7 +2467,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.419
+        "retrievability": 0.416
       },
       "fsrsFallback": false
     },
@@ -2461,7 +2506,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.419
+        "retrievability": 0.416
       },
       "fsrsFallback": false
     },
@@ -2500,7 +2545,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.419
+        "retrievability": 0.416
       },
       "fsrsFallback": false
     },
@@ -2539,7 +2584,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.419
+        "retrievability": 0.416
       },
       "fsrsFallback": false
     },
@@ -2578,7 +2623,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.419
+        "retrievability": 0.416
       },
       "fsrsFallback": false
     },
@@ -2617,7 +2662,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.419
+        "retrievability": 0.416
       },
       "fsrsFallback": false
     },
@@ -2656,7 +2701,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.42
+        "retrievability": 0.417
       },
       "fsrsFallback": false
     },
@@ -2695,7 +2740,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.42
+        "retrievability": 0.417
       },
       "fsrsFallback": false
     },
@@ -2734,7 +2779,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.42
+        "retrievability": 0.417
       },
       "fsrsFallback": false
     },
@@ -2773,7 +2818,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.42
+        "retrievability": 0.417
       },
       "fsrsFallback": false
     },
@@ -2812,7 +2857,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.42
+        "retrievability": 0.417
       },
       "fsrsFallback": false
     },
@@ -2851,7 +2896,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.42
+        "retrievability": 0.417
       },
       "fsrsFallback": false
     },
@@ -2890,7 +2935,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.428
+        "retrievability": 0.424
       },
       "fsrsFallback": false
     },
@@ -2929,7 +2974,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.428
+        "retrievability": 0.424
       },
       "fsrsFallback": false
     },
@@ -2968,7 +3013,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.428
+        "retrievability": 0.424
       },
       "fsrsFallback": false
     },
@@ -3007,7 +3052,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.428
+        "retrievability": 0.424
       },
       "fsrsFallback": false
     },
@@ -3046,7 +3091,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.428
+        "retrievability": 0.424
       },
       "fsrsFallback": false
     },
@@ -3085,46 +3130,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.428
-      },
-      "fsrsFallback": false
-    },
-    {
-      "conceptKey": "부동산학개론 5 감정평가",
-      "aliases": [],
-      "subject": "부동산학개론",
-      "concept": "부동산학개론 5 감정평가",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "firstWrong": "2026-07-01",
-      "lastWrong": "2026-07-01",
-      "lastCorrect": null,
-      "lastResult": "wrong",
-      "lastDp": "2026-07-01",
-      "nextReviewDate": "2026-07-02",
-      "dates": [
-        "2026-07-01"
-      ],
-      "samples": [
-        {
-          "date": "2026-07-01",
-          "type": "객관식",
-          "q": "감정평가의 기준시점 및 지역·개별분석에 관한 설명으로 <b>옳지 않은</b> 것은?",
-          "myAnswer": "기준시점을 미리 정한 경우에는 그 날짜에 가격조사가 가능한 경우에만 그 날짜를 기준시점으로 할 수 있다",
-          "correct": "감정평가는 가격조사를 의뢰받은 시점의 이용상황 및 공법상 제한을 기준으로 한다",
-          "expl": "감정평가는 의뢰(가격조사) 시점이 아니라 기준시점의 이용상황·공법상 제한을 기준으로 한다. 가치는 특정 시점을 못박아야 확정되기 때문 — 그 기준이 기준시점이다. 기준시점을 의뢰시점으로 슬쩍 바꾼 것이 함정이고, 지역·개별분석과 인근지역 설명은 옳다."
-        }
-      ],
-      "fsrs": {
-        "stability": 0.212,
-        "difficulty": 6.413,
-        "due": "2026-07-02",
-        "state": "Review",
-        "reps": 1,
-        "lapses": 1,
-        "retrievability": 0.43
+        "retrievability": 0.424
       },
       "fsrsFallback": false
     },
@@ -3163,7 +3169,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.432
+        "retrievability": 0.428
       },
       "fsrsFallback": false
     },
@@ -3202,7 +3208,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.432
+        "retrievability": 0.428
       },
       "fsrsFallback": false
     },
@@ -3241,7 +3247,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.44
+        "retrievability": 0.436
       },
       "fsrsFallback": false
     },
@@ -3280,7 +3286,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.44
+        "retrievability": 0.436
       },
       "fsrsFallback": false
     },
@@ -3319,7 +3325,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.687
+        "retrievability": 0.68
       },
       "fsrsFallback": false
     },
@@ -3358,7 +3364,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.448
+        "retrievability": 0.443
       },
       "fsrsFallback": false
     },
@@ -3397,7 +3403,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.448
+        "retrievability": 0.443
       },
       "fsrsFallback": false
     },
@@ -3436,7 +3442,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.448
+        "retrievability": 0.443
       },
       "fsrsFallback": false
     },
@@ -3475,7 +3481,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.448
+        "retrievability": 0.443
       },
       "fsrsFallback": false
     },
@@ -3514,7 +3520,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.448
+        "retrievability": 0.443
       },
       "fsrsFallback": false
     },
@@ -3553,7 +3559,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.45
+        "retrievability": 0.445
       },
       "fsrsFallback": false
     },
@@ -3592,7 +3598,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.45
+        "retrievability": 0.445
       },
       "fsrsFallback": false
     },
@@ -3631,7 +3637,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.45
+        "retrievability": 0.445
       },
       "fsrsFallback": false
     },
@@ -3670,7 +3676,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.7
+        "retrievability": 0.693
       },
       "fsrsFallback": false
     },
@@ -3709,7 +3715,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.699
+        "retrievability": 0.692
       },
       "fsrsFallback": false
     },
@@ -3748,7 +3754,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.695
+        "retrievability": 0.688
       },
       "fsrsFallback": false
     },
@@ -3787,7 +3793,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.462
+        "retrievability": 0.456
       },
       "fsrsFallback": false
     },
@@ -3826,7 +3832,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.462
+        "retrievability": 0.456
       },
       "fsrsFallback": false
     },
@@ -3865,7 +3871,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.462
+        "retrievability": 0.456
       },
       "fsrsFallback": false
     },
@@ -3904,7 +3910,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.462
+        "retrievability": 0.456
       },
       "fsrsFallback": false
     },
@@ -3943,7 +3949,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.472
+        "retrievability": 0.465
       },
       "fsrsFallback": false
     },
@@ -3982,7 +3988,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.472
+        "retrievability": 0.465
       },
       "fsrsFallback": false
     },
@@ -4021,7 +4027,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.582
+        "retrievability": 0.552
       },
       "fsrsFallback": false
     },
@@ -4060,7 +4066,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.582
+        "retrievability": 0.552
       },
       "fsrsFallback": false
     },
@@ -4099,7 +4105,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.582
+        "retrievability": 0.552
       },
       "fsrsFallback": false
     },
@@ -4138,7 +4144,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.582
+        "retrievability": 0.552
       },
       "fsrsFallback": false
     },
@@ -4177,7 +4183,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.582
+        "retrievability": 0.552
       },
       "fsrsFallback": false
     },
@@ -4216,46 +4222,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.582
-      },
-      "fsrsFallback": false
-    },
-    {
-      "conceptKey": "공인중개사법 19 토지거래허가구역",
-      "aliases": [],
-      "subject": "공인중개사법",
-      "concept": "공인중개사법 19 토지거래허가구역",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 1,
-      "firstWrong": "2026-07-01",
-      "lastWrong": "2026-07-01",
-      "lastCorrect": "2026-08-14",
-      "lastResult": "correct",
-      "lastDp": "2026-08-14",
-      "nextReviewDate": "2026-08-19",
-      "dates": [
-        "2026-07-01"
-      ],
-      "samples": [
-        {
-          "date": "2026-07-01",
-          "type": "객관식",
-          "q": "토지거래허가구역의 지정 및 토지거래계약 허가에 관한 설명으로 <b>옳지 않은</b> 것은?",
-          "myAnswer": "허가구역의 지정은 주민의 의견을 듣지 않고 심의를 거쳐서 한다",
-          "correct": "허가받은 사항의 변경에 대한 허가는 국토교통부장관이 한다",
-          "expl": "토지거래계약 허가받은 사항의 변경 허가는 국토교통부장관이 아니라 시장·군수·구청장이 한다. 개별 거래의 변경까지 국장이 관여하는 것은 과하기 때문. 변경허가 주체를 상급기관으로 올린 첫 지문이 함정이고, 둘 이상 시·도 걸치면 국장 지정·의견 없이 심의만·5년 초과 불가는 옳다."
-        }
-      ],
-      "fsrs": {
-        "stability": 4.808,
-        "difficulty": 6.402,
-        "due": "2026-08-19",
-        "state": "Review",
-        "reps": 2,
-        "lapses": 1,
-        "retrievability": 0.872
+        "retrievability": 0.552
       },
       "fsrsFallback": false
     },
@@ -4283,7 +4250,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 0,
-        "retrievability": 0.808
+        "retrievability": 0.774
       },
       "fsrsFallback": false
     },
@@ -4311,7 +4278,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 0,
-        "retrievability": 0.808
+        "retrievability": 0.774
       },
       "fsrsFallback": false
     },
@@ -4339,7 +4306,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 0,
-        "retrievability": 0.808
+        "retrievability": 0.774
       },
       "fsrsFallback": false
     },
@@ -4367,7 +4334,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 0,
-        "retrievability": 0.808
+        "retrievability": 0.774
       },
       "fsrsFallback": false
     },
@@ -4395,7 +4362,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 0,
-        "retrievability": 0.808
+        "retrievability": 0.774
       },
       "fsrsFallback": false
     },
@@ -4434,7 +4401,7 @@
         "state": "Review",
         "reps": 3,
         "lapses": 1,
-        "retrievability": 0.937
+        "retrievability": 0.917
       },
       "fsrsFallback": false
     },
@@ -4482,7 +4449,7 @@
         "state": "Review",
         "reps": 4,
         "lapses": 2,
-        "retrievability": 0.862
+        "retrievability": 0.831
       },
       "fsrsFallback": false
     },
@@ -4530,7 +4497,7 @@
         "state": "Review",
         "reps": 4,
         "lapses": 2,
-        "retrievability": 0.862
+        "retrievability": 0.831
       },
       "fsrsFallback": false
     },
@@ -4578,46 +4545,7 @@
         "state": "Review",
         "reps": 4,
         "lapses": 2,
-        "retrievability": 0.873
-      },
-      "fsrsFallback": false
-    },
-    {
-      "conceptKey": "부동산세법 2-5 취득시기·9 물납/부과시점",
-      "aliases": [],
-      "subject": "부동산세법",
-      "concept": "부동산세법 2-5 취득시기·9 물납/부과시점",
-      "status": "졸업후보",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 2,
-      "firstWrong": "2026-07-01",
-      "lastWrong": "2026-07-01",
-      "lastCorrect": "2026-07-14",
-      "lastResult": "correct",
-      "lastDp": "2026-07-14",
-      "nextReviewDate": "2026-07-20",
-      "dates": [
-        "2026-07-01"
-      ],
-      "samples": [
-        {
-          "date": "2026-07-01",
-          "type": "객관식",
-          "q": "지방세법령상 취득의 시기 및 세목별 부과 등에 관한 설명으로 옳은 것은?",
-          "myAnswer": "재건축조합이 취득하는 토지는 소유권이전고시일에 취득한 것으로 본다",
-          "correct": "주택조합이 취득하는 조합원에게 귀속되지 않는 토지는 사용검사를 받은 날에 취득한 것으로 본다",
-          "expl": "주택조합이 취득하는 조합원 비귀속 토지의 취득시기는 사용검사일이다(주택은 검사, 재건축은 다음날). 재건축조합은 소유권이전고시일의 다음 날이고, 취득세·등록면허세는 물납·분납이 모두 불가하며, 인지세는 계약서 작성 시 부과된다 — 시기·부과단계를 어긋나게 한 나머지가 함정."
-        }
-      ],
-      "fsrs": {
-        "stability": 6.412,
-        "difficulty": 6.391,
-        "due": "2026-07-20",
-        "state": "Review",
-        "reps": 3,
-        "lapses": 1,
-        "retrievability": 0.744
+        "retrievability": 0.843
       },
       "fsrsFallback": false
     },
@@ -4656,7 +4584,7 @@
         "state": "Review",
         "reps": 3,
         "lapses": 1,
-        "retrievability": 0.748
+        "retrievability": 0.741
       },
       "fsrsFallback": false
     },
@@ -4695,7 +4623,35 @@
         "state": "Review",
         "reps": 3,
         "lapses": 1,
-        "retrievability": 0.824
+        "retrievability": 0.817
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "부동산세법 2-5 취득시기·9 물납/부과시점",
+      "aliases": [],
+      "subject": "부동산세법",
+      "concept": "부동산세법 2-5 취득시기·9 물납/부과시점",
+      "status": "졸업후보",
+      "timesWrong": 0,
+      "retryMissed": 0,
+      "consecutiveCorrect": 2,
+      "firstWrong": null,
+      "lastWrong": null,
+      "lastCorrect": "2026-07-14",
+      "lastResult": "correct",
+      "lastDp": "2026-07-14",
+      "nextReviewDate": "2026-07-21",
+      "dates": [],
+      "samples": [],
+      "fsrs": {
+        "stability": 7.315,
+        "difficulty": 2.111,
+        "due": "2026-07-21",
+        "state": "Review",
+        "reps": 2,
+        "lapses": 0,
+        "retrievability": 0.749
       },
       "fsrsFallback": false
     },
@@ -4743,7 +4699,7 @@
         "state": "Review",
         "reps": 6,
         "lapses": 2,
-        "retrievability": 0.845
+        "retrievability": 0.836
       },
       "fsrsFallback": false
     },
@@ -4791,7 +4747,7 @@
         "state": "Review",
         "reps": 5,
         "lapses": 2,
-        "retrievability": 0.921
+        "retrievability": 0.898
       },
       "fsrsFallback": false
     },
@@ -4830,7 +4786,7 @@
         "state": "Review",
         "reps": 4,
         "lapses": 1,
-        "retrievability": 0.91
+        "retrievability": 0.903
       },
       "fsrsFallback": false
     },
@@ -4869,7 +4825,7 @@
         "state": "Review",
         "reps": 4,
         "lapses": 1,
-        "retrievability": 0.886
+        "retrievability": 0.878
       },
       "fsrsFallback": false
     },
@@ -4908,7 +4864,7 @@
         "state": "Review",
         "reps": 4,
         "lapses": 1,
-        "retrievability": 0.91
+        "retrievability": 0.903
       },
       "fsrsFallback": false
     },
@@ -4947,7 +4903,7 @@
         "state": "Review",
         "reps": 4,
         "lapses": 1,
-        "retrievability": 0.909
+        "retrievability": 0.903
       },
       "fsrsFallback": false
     },
@@ -4986,7 +4942,7 @@
         "state": "Review",
         "reps": 5,
         "lapses": 1,
-        "retrievability": 0.912
+        "retrievability": 0.905
       },
       "fsrsFallback": false
     }
