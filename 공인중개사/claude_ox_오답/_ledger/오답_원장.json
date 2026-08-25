@@ -1,6 +1,6 @@
 {
   "ledgerSchema": 3,
-  "generatedAt": "2026-08-24T16:35:09",
+  "generatedAt": "2026-08-25T09:18:41",
   "fsrsMeta": {
     "version": "6.3.2",
     "desiredRetention": 0.9,
@@ -47,6 +47,18 @@
       "nextReviewDate": "2026-08-21",
       "retrievability": 0.776,
       "stability": 0.937
+    },
+    {
+      "conceptKey": "부동산공시법 1-3",
+      "subject": "부동산공시법",
+      "status": "상습",
+      "timesWrong": 3,
+      "retryMissed": 1,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-08-24",
+      "nextReviewDate": "2026-08-25",
+      "retrievability": 1.0,
+      "stability": 0.94
     },
     {
       "conceptKey": "모의고사 2차 1-5",
@@ -1019,6 +1031,54 @@
       "nextReviewDate": "2026-08-19",
       "retrievability": 0.842,
       "stability": 4.808
+    },
+    {
+      "conceptKey": "공인중개사법 1-5 허가구역 지정효력",
+      "subject": "공인중개사법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-08-24",
+      "nextReviewDate": "2026-08-25",
+      "retrievability": 1.0,
+      "stability": 0.212
+    },
+    {
+      "conceptKey": "부동산공법 1-11 주택법",
+      "subject": "부동산공법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-08-24",
+      "nextReviewDate": "2026-08-25",
+      "retrievability": 1.0,
+      "stability": 0.212
+    },
+    {
+      "conceptKey": "부동산공법 1-6 시설채권과 매수청구",
+      "subject": "부동산공법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-08-24",
+      "nextReviewDate": "2026-08-25",
+      "retrievability": 1.0,
+      "stability": 0.212
+    },
+    {
+      "conceptKey": "부동산세법 1-4 세율 구조",
+      "subject": "부동산세법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-08-24",
+      "nextReviewDate": "2026-08-25",
+      "retrievability": 1.0,
+      "stability": 0.212
     },
     {
       "conceptKey": "부동산세법 2-5 취득시기·9 물납/부과시점",
