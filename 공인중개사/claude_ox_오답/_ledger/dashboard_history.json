@@ -22,5 +22,17 @@
   "longRevServed": 3,
   "longRevCandidates": 180,
   "coverage": 2
+ },
+ {
+  "date": "2026-08-24",
+  "generatedAt": "2026-08-24T16:35:20",
+  "streak": 4,
+  "submitted": true,
+  "dueCount": 88,
+  "graduated": 9,
+  "chronic": 4,
+  "longRevServed": 7,
+  "longRevCandidates": 183,
+  "coverage": 4
  }
 ]
