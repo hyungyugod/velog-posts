@@ -1,6 +1,6 @@
 {
   "ledgerSchema": 3,
-  "generatedAt": "2026-08-25T16:41:31",
+  "generatedAt": "2026-08-26T09:14:20",
   "fsrsMeta": {
     "version": "6.3.2",
     "desiredRetention": 0.9,
@@ -8,132 +8,205 @@
     "fuzzing": false,
     "ratingMap": "wrong=Again, retryCorrect=Good"
   },
-  "sourceFiles": 1,
-  "v2Files": 1,
-  "submissions": 1,
-  "avgScore": 11.0,
-  "avgTotal": 20,
+  "sourceFiles": 3,
+  "v2Files": 3,
+  "submissions": 3,
+  "avgScore": 8.3,
+  "avgTotal": 16,
   "perfectRuns": 0,
-  "totalWrongItems": 9,
-  "uniqueConcepts": 9,
+  "totalWrongItems": 24,
+  "uniqueConcepts": 22,
   "dateRange": [
     "2026-08-24",
-    "2026-08-24"
+    "2026-08-25"
   ],
   "statusCounts": {
-    "재도전중": 9
+    "상습": 2,
+    "재도전중": 20
   },
   "fsrsFallbacks": 0,
   "subjectWeakness": {
-    "형법": 9
+    "형법": 24
   },
   "dueQueue": [
     {
-      "conceptKey": "형법 1-1 포괄일죄 진행 중 개정은 실행행위 종료시법",
-      "subject": "형법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "lastWrong": "2026-08-24",
-      "nextReviewDate": "2026-08-25",
-      "retrievability": 0.766,
-      "stability": 0.212
-    },
-    {
-      "conceptKey": "형법 1-2 작위의무 발생근거 6개(법계조선신사) → 보증인지위",
-      "subject": "형법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "lastWrong": "2026-08-24",
-      "nextReviewDate": "2026-08-25",
-      "retrievability": 0.766,
-      "stability": 0.212
-    },
-    {
       "conceptKey": "형법 1-2 초과주관적 구성요건요소 = 목적범의 목적·불법영득의사",
       "subject": "형법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
+      "status": "상습",
+      "timesWrong": 2,
+      "retryMissed": 1,
       "consecutiveCorrect": 0,
-      "lastWrong": "2026-08-24",
-      "nextReviewDate": "2026-08-25",
-      "retrievability": 0.766,
-      "stability": 0.212
-    },
-    {
-      "conceptKey": "형법 1-4 구체적 사실의 착오는 법정적부합설로 발생사실 고의",
-      "subject": "형법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "lastWrong": "2026-08-24",
-      "nextReviewDate": "2026-08-25",
-      "retrievability": 0.766,
-      "stability": 0.212
+      "lastWrong": "2026-08-25",
+      "nextReviewDate": "2026-08-26",
+      "retrievability": 1.0,
+      "stability": 0.101
     },
     {
       "conceptKey": "형법 1-5 주의의무 = 예견+방지, 신뢰의 원칙은 수직관계 배제",
       "subject": "형법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
+      "status": "상습",
+      "timesWrong": 2,
+      "retryMissed": 1,
       "consecutiveCorrect": 0,
-      "lastWrong": "2026-08-24",
-      "nextReviewDate": "2026-08-25",
-      "retrievability": 0.766,
-      "stability": 0.212
+      "lastWrong": "2026-08-25",
+      "nextReviewDate": "2026-08-26",
+      "retrievability": 1.0,
+      "stability": 0.101
     },
     {
-      "conceptKey": "형법 1-6 결과적 가중범 구성요건 4개",
+      "conceptKey": "형법 1-1 답안 작성 순서 성립 후 소추조건",
       "subject": "형법",
       "status": "재도전중",
       "timesWrong": 1,
       "retryMissed": 0,
       "consecutiveCorrect": 0,
-      "lastWrong": "2026-08-24",
-      "nextReviewDate": "2026-08-25",
-      "retrievability": 0.766,
+      "lastWrong": "2026-08-25",
+      "nextReviewDate": "2026-08-26",
+      "retrievability": 1.0,
       "stability": 0.212
     },
     {
-      "conceptKey": "형법 1-6 교사의 양적 초과와 예견가능성",
+      "conceptKey": "형법 1-10 업무방해의 수단과 위력의 의미",
       "subject": "형법",
       "status": "재도전중",
       "timesWrong": 1,
       "retryMissed": 0,
       "consecutiveCorrect": 0,
-      "lastWrong": "2026-08-24",
-      "nextReviewDate": "2026-08-25",
-      "retrievability": 0.766,
+      "lastWrong": "2026-08-25",
+      "nextReviewDate": "2026-08-26",
+      "retrievability": 1.0,
       "stability": 0.212
     },
     {
-      "conceptKey": "형법 1-8 정당방위 요건 3개 순서",
+      "conceptKey": "형법 1-10 업무방해죄의 업무 요건",
       "subject": "형법",
       "status": "재도전중",
       "timesWrong": 1,
       "retryMissed": 0,
       "consecutiveCorrect": 0,
-      "lastWrong": "2026-08-24",
-      "nextReviewDate": "2026-08-25",
-      "retrievability": 0.766,
+      "lastWrong": "2026-08-25",
+      "nextReviewDate": "2026-08-26",
+      "retrievability": 1.0,
       "stability": 0.212
     },
     {
-      "conceptKey": "형법 1-9 위법성 착오는 책임 단계, 정당한 이유 요구",
+      "conceptKey": "형법 1-3 결과범과 형식범의 판별식",
       "subject": "형법",
       "status": "재도전중",
       "timesWrong": 1,
       "retryMissed": 0,
       "consecutiveCorrect": 0,
-      "lastWrong": "2026-08-24",
-      "nextReviewDate": "2026-08-25",
-      "retrievability": 0.766,
+      "lastWrong": "2026-08-25",
+      "nextReviewDate": "2026-08-26",
+      "retrievability": 1.0,
+      "stability": 0.212
+    },
+    {
+      "conceptKey": "형법 1-3 계속범과 기수 후 공범 성립",
+      "subject": "형법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-08-25",
+      "nextReviewDate": "2026-08-26",
+      "retrievability": 1.0,
+      "stability": 0.212
+    },
+    {
+      "conceptKey": "형법 1-3 구체적 위험범과 추상적 위험범의 판별식",
+      "subject": "형법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-08-25",
+      "nextReviewDate": "2026-08-26",
+      "retrievability": 1.0,
+      "stability": 0.212
+    },
+    {
+      "conceptKey": "형법 1-4 개괄적 고의의 처리",
+      "subject": "형법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-08-25",
+      "nextReviewDate": "2026-08-26",
+      "retrievability": 1.0,
+      "stability": 0.212
+    },
+    {
+      "conceptKey": "형법 1-4 행위지배의 세 종류",
+      "subject": "형법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-08-25",
+      "nextReviewDate": "2026-08-26",
+      "retrievability": 1.0,
+      "stability": 0.212
+    },
+    {
+      "conceptKey": "형법 1-5 제1조 제2항 적용의 판별식",
+      "subject": "형법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-08-25",
+      "nextReviewDate": "2026-08-26",
+      "retrievability": 1.0,
+      "stability": 0.212
+    },
+    {
+      "conceptKey": "형법 1-6 부진정 결과적 가중범의 정의와 예",
+      "subject": "형법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-08-25",
+      "nextReviewDate": "2026-08-26",
+      "retrievability": 1.0,
+      "stability": 0.212
+    },
+    {
+      "conceptKey": "형법 1-6 상해치사 사례의 결론",
+      "subject": "형법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-08-25",
+      "nextReviewDate": "2026-08-26",
+      "retrievability": 1.0,
+      "stability": 0.212
+    },
+    {
+      "conceptKey": "형법 1-7 부진정 결과적 가중범과 고의범의 죄수",
+      "subject": "형법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-08-25",
+      "nextReviewDate": "2026-08-26",
+      "retrievability": 1.0,
+      "stability": 0.212
+    },
+    {
+      "conceptKey": "형법 1-8 싸움에서 정당방위가 인정될 수 있는 경우",
+      "subject": "형법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-08-25",
+      "nextReviewDate": "2026-08-26",
+      "retrievability": 1.0,
       "stability": 0.212
     }
   ],
@@ -143,18 +216,19 @@
       "aliases": [],
       "subject": "형법",
       "concept": "형법 1-2 초과주관적 구성요건요소 = 목적범의 목적·불법영득의사",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
+      "status": "상습",
+      "timesWrong": 2,
+      "retryMissed": 1,
       "consecutiveCorrect": 0,
       "firstWrong": "2026-08-24",
-      "lastWrong": "2026-08-24",
+      "lastWrong": "2026-08-25",
       "lastCorrect": null,
       "lastResult": "wrong",
-      "lastDp": "2026-08-24",
-      "nextReviewDate": "2026-08-25",
+      "lastDp": "2026-08-25",
+      "nextReviewDate": "2026-08-26",
       "dates": [
-        "2026-08-24"
+        "2026-08-24",
+        "2026-08-25"
       ],
       "samples": [
         {
@@ -164,16 +238,579 @@
           "myAnswer": "목적성, ",
           "correct": "초과주관적 구성요건요소. 목적범의 목적과 불법영득의사가 그 예다.",
           "expl": "노트 1-2는 목적범의 목적과 불법영득의사를 초과주관적 구성요건요소로 두고 이를 요구하는 범죄에서는 별도로 검토하라고 지시한다. 고의는 객관적 사실에 대응하는 인식과 의사지만 목적은 그 대응물이 없는 초과분이라 따로 세우지 않으면 누락된다. 목적을 고의의 의사와 같은 칸에 넣으면 요건 하나가 통째로 빠진다."
+        },
+        {
+          "date": "2026-08-25",
+          "type": "단답",
+          "q": "🔁 절도죄의 불법영득의사나 목적범의 목적처럼 고의와 별도로 검토해야 하는 요소의 명칭을 쓰고, 그것이 고의에 흡수되지 않는 이유를 한 줄로 밝히라.",
+          "myAnswer": "추가주관적구성요소이다. ",
+          "correct": "초과주관적 구성요건요소다. 객관적 구성요건에 대응하는 사실이 없는 초과분이어서 고의와 따로 세워야 한다.",
+          "expl": "[정답 근거] 목적범의 목적과 불법영득의사가 초과주관적 구성요건요소의 예다. [메커니즘] 고의는 객관적 사실에 대응하는 인식과 의사인데 목적은 대응물이 없어 따로 세우지 않으면 누락된다. [함정] 목적을 고의의 의사와 같은 칸에 넣으면 요건 하나가 통째로 빠진다."
+        }
+      ],
+      "fsrs": {
+        "stability": 0.101,
+        "difficulty": 8.806,
+        "due": "2026-08-26",
+        "state": "Review",
+        "reps": 2,
+        "lapses": 2,
+        "retrievability": 1.0
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "형법 1-5 주의의무 = 예견+방지, 신뢰의 원칙은 수직관계 배제",
+      "aliases": [],
+      "subject": "형법",
+      "concept": "형법 1-5 주의의무 = 예견+방지, 신뢰의 원칙은 수직관계 배제",
+      "status": "상습",
+      "timesWrong": 2,
+      "retryMissed": 1,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-08-24",
+      "lastWrong": "2026-08-25",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-08-25",
+      "nextReviewDate": "2026-08-26",
+      "dates": [
+        "2026-08-24",
+        "2026-08-25"
+      ],
+      "samples": [
+        {
+          "date": "2026-08-24",
+          "type": "단답",
+          "q": "주의의무 위반을 이루는 두 축을 쓰고, 신뢰의 원칙이 원용될 수 없는 관계가 무엇인지 붙이라.",
+          "myAnswer": "결과예상주의의무위반, 결과방지주의의무 위반, 신뢰의 원칙은  의사-간호사처럼 수직적인 관계에서는 원용될 수 없다.",
+          "correct": "결과예견의무 위반과 결과방지의무 위반. 신뢰의 원칙은 수직적 관계에서는 부정된다.",
+          "expl": "노트 1-5는 주의의무 위반을 결과예견 위반과 결과방지 위반으로 나누고 신뢰의 원칙을 과실 범위를 좁혀 주는 이론으로 두되 수직적 관계에서는 부정한다. 지시와 감독이 있는 관계에서는 상대가 알아서 하리라는 신뢰 자체가 정당화되지 않기 때문이다. 분업이라는 말만 보고 신뢰의 원칙을 꺼내면 결론이 뒤집힌다."
+        },
+        {
+          "date": "2026-08-25",
+          "type": "단답",
+          "q": "🔁 신뢰의 원칙이 원용될 수 있는 관계와 원용될 수 없는 관계를 나누어 쓰고, 주의의무 위반을 이루는 두 축을 함께 밝히라.",
+          "myAnswer": "신뢰의 원칙은 수직적 관계에서 원용될 수 없다. 주의의무 위반은 경계주의의무, 예방경계주의의무가 있다.",
+          "correct": "수평적 분업관계에서는 원용되나 지시와 감독이 있는 수직적 관계에서는 부정된다. 주의의무 위반은 결과예견의무 위반과 결과방지의무 위반으로 이루어진다.",
+          "expl": "[정답 근거] 신뢰의 원칙은 수직적 관계에서 부정되고 주의의무는 예견과 방지 두 축으로 나뉜다. [메커니즘] 지시와 감독이 있는 관계에서는 상대가 알아서 하리라는 신뢰 자체가 정당화되지 않기 때문이다. [함정] 분업이라는 말만 보고 신뢰의 원칙을 꺼내면 결론이 뒤집힌다."
+        }
+      ],
+      "fsrs": {
+        "stability": 0.101,
+        "difficulty": 8.806,
+        "due": "2026-08-26",
+        "state": "Review",
+        "reps": 2,
+        "lapses": 2,
+        "retrievability": 1.0
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "형법 1-1 답안 작성 순서 성립 후 소추조건",
+      "aliases": [],
+      "subject": "형법",
+      "concept": "형법 1-1 답안 작성 순서 성립 후 소추조건",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-08-25",
+      "lastWrong": "2026-08-25",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-08-25",
+      "nextReviewDate": "2026-08-26",
+      "dates": [
+        "2026-08-25"
+      ],
+      "samples": [
+        {
+          "date": "2026-08-25",
+          "type": "단답",
+          "q": "3요소를 모두 검토해 범죄가 성립한다는 결론이 났다. 답안에서 그다음에 논해야 하는 것 2개를 쓰라.",
+          "myAnswer": "친고죄와 ",
+          "correct": "친고죄인지, 반의사불벌죄인지를 논한다. 순서상 범죄 성립을 먼저 다 쓴 뒤에 검토한다.",
+          "expl": "노트 1-1은 구성요건해당성·위법성·책임성을 다 쓰고 성립이 인정된 다음에야 친고죄·반의사불벌죄를 논하라고 순서를 못 박는다. 이 둘은 범죄 성립 여부가 아니라 소추조건 문제라서, 성립하지도 않은 범죄에 대해 고소를 따지는 것은 논리 순서가 뒤집힌 목차가 된다. 성립 검토 중간에 끼워 넣으면 논점 배치에서 감점된다."
         }
       ],
       "fsrs": {
         "stability": 0.212,
         "difficulty": 6.413,
-        "due": "2026-08-25",
+        "due": "2026-08-26",
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.766
+        "retrievability": 1.0
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "형법 1-3 결과범과 형식범의 판별식",
+      "aliases": [],
+      "subject": "형법",
+      "concept": "형법 1-3 결과범과 형식범의 판별식",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-08-25",
+      "lastWrong": "2026-08-25",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-08-25",
+      "nextReviewDate": "2026-08-26",
+      "dates": [
+        "2026-08-25"
+      ],
+      "samples": [
+        {
+          "date": "2026-08-25",
+          "type": "단답",
+          "q": "결과범과 형식범을 가르는 단일 변수를 물음 형태로 쓰고, 노트에 나온 각각의 예를 하나씩 붙이라.",
+          "myAnswer": "결과범과 형식범은 범죄행위의 결과가 나와야하는지 그 착수만으로 성립하는지의 차이이고 살인범과 폭행범의 차이이다. ",
+          "correct": "구성요건적 결과의 발생을 요구하는가? 요구하면 결과범으로 살인죄가 예이고, 요구하지 않고 행위만으로 충족되면 형식범으로 폭행죄가 예이다.",
+          "expl": "노트 1-3은 살인죄를 사망이라는 결과가 발생해야 성립하는 범죄로, 폭행죄를 유형력 행사만으로 충족되는 범죄로 대비시킨다. 결과가 구성요건에 들어 있는지 여부가 갈림길이므로, 결과범에서만 결과와 인과관계라는 두 요소를 별도로 포섭해야 한다. 형식범에 인과관계 목차를 잡으면 불필요한 논점을 쓴 것이 된다."
+        }
+      ],
+      "fsrs": {
+        "stability": 0.212,
+        "difficulty": 6.413,
+        "due": "2026-08-26",
+        "state": "Review",
+        "reps": 1,
+        "lapses": 1,
+        "retrievability": 1.0
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "형법 1-3 구체적 위험범과 추상적 위험범의 판별식",
+      "aliases": [],
+      "subject": "형법",
+      "concept": "형법 1-3 구체적 위험범과 추상적 위험범의 판별식",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-08-25",
+      "lastWrong": "2026-08-25",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-08-25",
+      "nextReviewDate": "2026-08-26",
+      "dates": [
+        "2026-08-25"
+      ],
+      "samples": [
+        {
+          "date": "2026-08-25",
+          "type": "단답",
+          "q": "위험범을 둘로 나누는 하위 분류의 명칭 2개를 쓰고, 둘을 가르는 단일 변수를 물음 형태로 쓰라.",
+          "myAnswer": "위험만으로 충분한가",
+          "correct": "구체적 위험범과 추상적 위험범이다. 공공의 위험이 현실로 발생해야 기수가 되는가를 물으면 갈리며, 발생을 요구하면 구체적 위험범, 요구하지 않고 바로 구성요건이 충족되면 추상적 위험범이다.",
+          "expl": "노트 1-3은 침해범과 대비되는 위험범을 다시 구체적·추상적으로 나누고, 공공의 위험 발생이 기수 요건인지로 구분한다. 법익이 아직 깨지지 않은 단계에서 처벌하려니 위험을 얼마나 앞당겨 인정할지 눈금이 필요했고, 그 눈금이 위험의 현실 발생 요구 여부다. 추상적 위험범에서 위험 발생을 별도로 포섭하면 요건을 하나 더 만든 셈이 된다."
+        }
+      ],
+      "fsrs": {
+        "stability": 0.212,
+        "difficulty": 6.413,
+        "due": "2026-08-26",
+        "state": "Review",
+        "reps": 1,
+        "lapses": 1,
+        "retrievability": 1.0
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "형법 1-3 계속범과 기수 후 공범 성립",
+      "aliases": [],
+      "subject": "형법",
+      "concept": "형법 1-3 계속범과 기수 후 공범 성립",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-08-25",
+      "lastWrong": "2026-08-25",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-08-25",
+      "nextReviewDate": "2026-08-26",
+      "dates": [
+        "2026-08-25"
+      ],
+      "samples": [
+        {
+          "date": "2026-08-25",
+          "type": "단답",
+          "q": "갑이 을을 감금해 이미 기수에 이른 뒤, 감금 상태가 이어지는 중에 병이 가담했다. 이런 범죄 유형의 명칭과 병에게 공범이 성립할 수 있는지를 한 줄로 쓰라.",
+          "myAnswer": "계속범이다. 이는 행위가 계속된다고 보며 병에게 당연히 공범이 성립할 수 있다.",
+          "correct": "계속범이다. 계속범은 기수에 달한 다음에도 범죄가 계속되므로 기수 후 가담한 병에게도 공범이 성립할 수 있다.",
+          "expl": "노트 1-3은 계속범을 기수가 된 뒤에도 범죄가 계속되는 유형으로 정의하고 기수 후 공범 성립 가능성을 매우 중요하다고 표시한다. 공범은 정범의 실행행위에 가담해야 성립하는데 계속범은 실행행위가 기수 시점에 끝나지 않고 이어지므로 가담할 실행행위가 아직 남아 있는 것이다. 즉시범 감각으로 '기수 후에는 승계가 불가능하다'고 쓰면 그대로 틀린다."
+        }
+      ],
+      "fsrs": {
+        "stability": 0.212,
+        "difficulty": 6.413,
+        "due": "2026-08-26",
+        "state": "Review",
+        "reps": 1,
+        "lapses": 1,
+        "retrievability": 1.0
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "형법 1-4 행위지배의 세 종류",
+      "aliases": [],
+      "subject": "형법",
+      "concept": "형법 1-4 행위지배의 세 종류",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-08-25",
+      "lastWrong": "2026-08-25",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-08-25",
+      "nextReviewDate": "2026-08-26",
+      "dates": [
+        "2026-08-25"
+      ],
+      "samples": [
+        {
+          "date": "2026-08-25",
+          "type": "단답",
+          "q": "행위지배의 종류 3개를 쓰고, 그중 공동정범과 간접정범에 각각 대응하는 것이 무엇인지 붙이라.",
+          "myAnswer": "실행지배, 의사지배, 기능적지배이며 간접정범은 의사지배를, 공동정범은 기능적지배를 한 것으로 본다.",
+          "correct": "실행지배, 기능적 행위지배, 의사지배이다. 공동정범은 기능적 행위지배, 간접정범은 의사지배에 대응한다.",
+          "expl": "노트 1-4는 행위지배를 실행·기능적·의사지배로 나누고 각각 단독 실행, 공동정범, 간접정범에 대응시킨다. 정범과 공범을 가르는 기준이 '범행 과정을 주체적으로 지배·통제했는가'인데 지배하는 방식이 셋으로 달라서 이름을 나눠 붙인 것이다. 공동정범에 의사지배를 갖다 붙이면 간접정범 목차를 쓴 셈이 되어 죄명 자체가 틀어진다."
+        }
+      ],
+      "fsrs": {
+        "stability": 0.212,
+        "difficulty": 6.413,
+        "due": "2026-08-26",
+        "state": "Review",
+        "reps": 1,
+        "lapses": 1,
+        "retrievability": 1.0
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "형법 1-5 제1조 제2항 적용의 판별식",
+      "aliases": [],
+      "subject": "형법",
+      "concept": "형법 1-5 제1조 제2항 적용의 판별식",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-08-25",
+      "lastWrong": "2026-08-25",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-08-25",
+      "nextReviewDate": "2026-08-26",
+      "dates": [
+        "2026-08-25"
+      ],
+      "samples": [
+        {
+          "date": "2026-08-25",
+          "type": "단답",
+          "q": "법령이 변경된 사안에서 형법 제1조 제2항을 바로 적용할지 가르는 단일 변수를 물음 형태로 쓰고, 한시법의 처리도 한 줄 붙이라.",
+          "myAnswer": "행위시 전에 변경되었는지 후에 변경되었는지를 우선 본다. 한시법은 그 기간에 법을 집행할 입법자의 의도가 있으므로 반드시 그 때의 법으로 처벌한다.",
+          "correct": "변경된 것이 형벌규정 자체 또는 그 위임입법인가를 묻는다. 그렇다면 바로 제1조 제2항을 적용하고, 그 밖의 규정 변경이면 형사법적 관점의 변화가 있어야 적용한다. 한시법은 행위시법으로 처벌한다.",
+          "expl": "노트 1-5는 법령 변경을 형벌규정·위임입법이 바뀐 경우와 그 밖의 규정이 바뀐 경우로 갈라, 후자는 형사법적 관점의 변화를 추가로 요구한다. 처벌 자체에 대한 평가가 달라진 것만 피고인에게 유리하게 반영해야 하므로, 행정적 사정 변경까지 면소로 이어지지 않게 문턱을 하나 더 둔 것이다. 한시법은 그 기간에 처벌하겠다는 입법 의도가 있어 행위시법으로 간다."
+        }
+      ],
+      "fsrs": {
+        "stability": 0.212,
+        "difficulty": 6.413,
+        "due": "2026-08-26",
+        "state": "Review",
+        "reps": 1,
+        "lapses": 1,
+        "retrievability": 1.0
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "형법 1-4 개괄적 고의의 처리",
+      "aliases": [],
+      "subject": "형법",
+      "concept": "형법 1-4 개괄적 고의의 처리",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-08-25",
+      "lastWrong": "2026-08-25",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-08-25",
+      "nextReviewDate": "2026-08-26",
+      "dates": [
+        "2026-08-25"
+      ],
+      "samples": [
+        {
+          "date": "2026-08-25",
+          "type": "단답",
+          "q": "사람을 죽이려 공격한 뒤 이미 죽은 줄 알고 땅에 묻었는데 실제 사인은 질식이었다. 이 경우의 처리 결론을 죄명 단위로 쓰고, 그 명칭도 함께 쓰라.",
+          "myAnswer": "바로 살인죄가 성립한다. ",
+          "correct": "개괄적 고의의 문제이며, 살인미수와 과실치사로 쪼개지 않고 살인죄 하나로 한 번에 평가한다.",
+          "expl": "노트 1-4는 이 사안을 개괄적 고의로 부르고 살인죄 하나로 평가한다고 정리한다. 처음의 살해 의사가 매장 행위까지 하나의 사건 경과로 이어져 있어 이를 인위적으로 두 개의 죄로 자르면 행위자의 고의를 실제보다 축소해 평가하게 되기 때문이다. 답안에서 미수와 과실범을 병렬로 세우는 것이 대표적 함정이다."
+        }
+      ],
+      "fsrs": {
+        "stability": 0.212,
+        "difficulty": 6.413,
+        "due": "2026-08-26",
+        "state": "Review",
+        "reps": 1,
+        "lapses": 1,
+        "retrievability": 1.0
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "형법 1-6 상해치사 사례의 결론",
+      "aliases": [],
+      "subject": "형법",
+      "concept": "형법 1-6 상해치사 사례의 결론",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-08-25",
+      "lastWrong": "2026-08-25",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-08-25",
+      "nextReviewDate": "2026-08-26",
+      "dates": [
+        "2026-08-25"
+      ],
+      "samples": [
+        {
+          "date": "2026-08-25",
+          "type": "단답",
+          "q": "사람을 때려 기절시킨 뒤 죽은 줄 알고 자살로 위장하려 창문 밖으로 던져 사망에 이르게 했다. 결론과 그 결론을 가른 판단을 한 줄로 쓰라.",
+          "myAnswer": "상해치사이다. 분리해서 생각하면 상해죄와 ",
+          "correct": "상해로 인하여 치사의 결과가 발생했다고 인정된다. 앞의 상해 행위에 고의가 있었다는 점이 결론을 가른다.",
+          "expl": "노트 1-6은 이 사안에서 상해로 인해 치사가 발생했다고 인정한다고 정리한다. 결과적 가중범은 작은 고의 범죄에서 중한 결과가 나온 구조를 과실범보다 무겁게 벌하려는 제도라, 앞의 기본범죄에 고의가 있었는지가 결정적 변수가 된다. 뒤의 투척만 떼어 과실치사로 구성하면 앞 행위의 고의를 지워 버린 답안이 된다."
+        }
+      ],
+      "fsrs": {
+        "stability": 0.212,
+        "difficulty": 6.413,
+        "due": "2026-08-26",
+        "state": "Review",
+        "reps": 1,
+        "lapses": 1,
+        "retrievability": 1.0
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "형법 1-6 부진정 결과적 가중범의 정의와 예",
+      "aliases": [],
+      "subject": "형법",
+      "concept": "형법 1-6 부진정 결과적 가중범의 정의와 예",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-08-25",
+      "lastWrong": "2026-08-25",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-08-25",
+      "nextReviewDate": "2026-08-26",
+      "dates": [
+        "2026-08-25"
+      ],
+      "samples": [
+        {
+          "date": "2026-08-25",
+          "type": "단답",
+          "q": "부진정 결과적 가중범을 한 줄로 정의하고, 노트에 나온 예 2개를 쓰라.",
+          "myAnswer": "부진정 결과적 가중범은 일반적 결과적 가중범과 다르게 기본범죄에 고의가 있고 잇다라 발생한 중한 범죄에 과실이 아니라 고의인 경우에 성립한다. 이는 현주건물실화치사죄가 예로 있다.",
+          "correct": "중한 결과를 과실로 야기한 경우뿐 아니라 고의로 발생케 한 경우에도 성립하는 결과적 가중범이다. 예로 특수공무집행방해치상죄와 현주건조물방화치사죄가 있다.",
+          "expl": "노트 1-6은 부진정 결과적 가중범을 중한 결과에 고의가 있어도 성립하는 유형으로 정의하고 두 예를 든다. 과실일 때만 성립한다고 보면 더 나쁜 고의 사안이 오히려 가벼운 죄로 처리되는 역전이 생기므로 고의 사안까지 끌어안도록 만든 것이다. 그 대가로 고의범과의 죄수 관계라는 별도 쟁점이 따라붙는다."
+        }
+      ],
+      "fsrs": {
+        "stability": 0.212,
+        "difficulty": 6.413,
+        "due": "2026-08-26",
+        "state": "Review",
+        "reps": 1,
+        "lapses": 1,
+        "retrievability": 1.0
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "형법 1-7 부진정 결과적 가중범과 고의범의 죄수",
+      "aliases": [],
+      "subject": "형법",
+      "concept": "형법 1-7 부진정 결과적 가중범과 고의범의 죄수",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-08-25",
+      "lastWrong": "2026-08-25",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-08-25",
+      "nextReviewDate": "2026-08-26",
+      "dates": [
+        "2026-08-25"
+      ],
+      "samples": [
+        {
+          "date": "2026-08-25",
+          "type": "단답",
+          "q": "현주건조물방화치사죄가 성립하는 사안에서 살인죄가 따로 성립하는지 쓰고, 반대의 경우에는 어떻게 처리되는지 붙이라.",
+          "myAnswer": "살인죄가 성립하지 않는다. 현주건조물방화죄가 더 큰죄이기때문이다. 반대의 경우에는 뒤의 중한 범죄가 성립하게 된다.",
+          "correct": "현주건조물방화치사죄가 살인죄보다 무거워 살인죄가 그 안에 포함되므로 살인죄는 따로 성립하지 않는다. 반대로 불법의 크기가 더 큰 고의범 구성요건이 있으면 둘 다 성립해 상상적 경합이 된다.",
+          "expl": "노트 1-7은 결과적 가중범의 형이 고의범보다 무거우면 고의범이 흡수되고, 고의범이 더 무거우면 둘 다 성립해 상상적 경합이 된다고 정리한다. 무거운 죄로 이미 평가된 불법을 가벼운 죄로 또 세면 이중평가가 되고, 반대로 남는 불법이 있으면 그것을 따로 세워야 평가가 빠지지 않기 때문이다. 어느 쪽이 무거운지를 비교하지 않고 기계적으로 흡수시키는 것이 함정이다."
+        }
+      ],
+      "fsrs": {
+        "stability": 0.212,
+        "difficulty": 6.413,
+        "due": "2026-08-26",
+        "state": "Review",
+        "reps": 1,
+        "lapses": 1,
+        "retrievability": 1.0
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "형법 1-8 싸움에서 정당방위가 인정될 수 있는 경우",
+      "aliases": [],
+      "subject": "형법",
+      "concept": "형법 1-8 싸움에서 정당방위가 인정될 수 있는 경우",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-08-25",
+      "lastWrong": "2026-08-25",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-08-25",
+      "nextReviewDate": "2026-08-26",
+      "dates": [
+        "2026-08-25"
+      ],
+      "samples": [
+        {
+          "date": "2026-08-25",
+          "type": "단답",
+          "q": "싸움에는 원칙적으로 정당방위가 인정되지 않는다. 그럼에도 인정될 수 있는 경우 3개를 쓰라.",
+          "myAnswer": "중단, 예상외, 다른규칙",
+          "correct": "싸움이 중단된 경우, 예상할 수 없는 공격이 있은 경우, 외관상 격투에 지나지 않는 경우이다.",
+          "expl": "노트 1-8은 싸움에 방위의사가 없다는 이유로 정당방위를 부정하면서 중단·예상 불가·외관상 격투 세 경우를 예외로 든다. 부정의 근거가 방위의사 결여이므로, 서로 공격을 주고받는 구도가 깨져 다시 일방적 침해가 된 국면에서는 방위의사를 인정할 여지가 생기는 것이다. 예외를 못 쓰면 사안이 예외형으로 나왔을 때 논점 자체를 통째로 놓친다."
+        }
+      ],
+      "fsrs": {
+        "stability": 0.212,
+        "difficulty": 6.413,
+        "due": "2026-08-26",
+        "state": "Review",
+        "reps": 1,
+        "lapses": 1,
+        "retrievability": 1.0
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "형법 1-10 업무방해죄의 업무 요건",
+      "aliases": [],
+      "subject": "형법",
+      "concept": "형법 1-10 업무방해죄의 업무 요건",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-08-25",
+      "lastWrong": "2026-08-25",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-08-25",
+      "nextReviewDate": "2026-08-26",
+      "dates": [
+        "2026-08-25"
+      ],
+      "samples": [
+        {
+          "date": "2026-08-25",
+          "type": "단답",
+          "q": "업무방해죄의 '업무'로 인정되기 위한 요소 3개를 쓰라.",
+          "myAnswer": "사회적 지위에 의해 지속되는 사무, 반사회질서에 해당하지 않음, 생계유지",
+          "correct": "사회생활상의 지위에 의하여 계속적으로 행하는 사무일 것, 보호할 법익과 그 가치가 있을 것, 사회질서에 반하지 않을 것이다.",
+          "expl": "노트 1-10은 업무를 사회생활상 지위에 의해 계속적으로 행하는 사무로 정의하고 보호가치와 사회질서 적합성을 추가로 요구한다. 일회적 행위나 불법한 활동까지 형벌로 보호하면 보호할 이유가 없는 이익을 국가가 지켜 주는 셈이 되므로 문턱을 세 겹으로 둔 것이다. 아무 일이나 업무로 보고 곧장 방해 여부로 넘어가는 것이 대표적 누락이다."
+        }
+      ],
+      "fsrs": {
+        "stability": 0.212,
+        "difficulty": 6.413,
+        "due": "2026-08-26",
+        "state": "Review",
+        "reps": 1,
+        "lapses": 1,
+        "retrievability": 1.0
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "형법 1-10 업무방해의 수단과 위력의 의미",
+      "aliases": [],
+      "subject": "형법",
+      "concept": "형법 1-10 업무방해의 수단과 위력의 의미",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-08-25",
+      "lastWrong": "2026-08-25",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-08-25",
+      "nextReviewDate": "2026-08-26",
+      "dates": [
+        "2026-08-25"
+      ],
+      "samples": [
+        {
+          "date": "2026-08-25",
+          "type": "단답",
+          "q": "업무방해죄의 방해 수단 2개를 쓰고, 그중 위력의 의미를 한 줄로 정의하라.",
+          "myAnswer": "위력, ",
+          "correct": "허위사실 유포와 위력이다. 위력은 상대방의 의사를 제압할 만한 힘을 말하며 사회적 지위나 권세를 이용하는 것도 포함된다.",
+          "expl": "노트 1-10은 방해 수단을 허위사실 유포와 위력 둘로 잡고, 위력에 지위·권세의 이용까지 포함시킨다. 물리적 폭행이 없어도 상대의 의사결정을 꺾을 수 있는 힘이면 업무의 자유를 침해하는 결과는 같으므로 유형력에 한정하지 않은 것이다. 위력을 폭행·협박으로만 좁혀 잡으면 지위를 이용한 사안에서 성립을 부정하는 답안이 나온다."
+        }
+      ],
+      "fsrs": {
+        "stability": 0.212,
+        "difficulty": 6.413,
+        "due": "2026-08-26",
+        "state": "Review",
+        "reps": 1,
+        "lapses": 1,
+        "retrievability": 1.0
       },
       "fsrsFallback": false
     },
@@ -185,13 +822,13 @@
       "status": "재도전중",
       "timesWrong": 1,
       "retryMissed": 0,
-      "consecutiveCorrect": 0,
+      "consecutiveCorrect": 1,
       "firstWrong": "2026-08-24",
       "lastWrong": "2026-08-24",
-      "lastCorrect": null,
-      "lastResult": "wrong",
-      "lastDp": "2026-08-24",
-      "nextReviewDate": "2026-08-25",
+      "lastCorrect": "2026-08-25",
+      "lastResult": "correct",
+      "lastDp": "2026-08-25",
+      "nextReviewDate": "2026-08-27",
       "dates": [
         "2026-08-24"
       ],
@@ -206,13 +843,13 @@
         }
       ],
       "fsrs": {
-        "stability": 0.212,
-        "difficulty": 6.413,
-        "due": "2026-08-25",
+        "stability": 1.887,
+        "difficulty": 6.402,
+        "due": "2026-08-27",
         "state": "Review",
-        "reps": 1,
+        "reps": 2,
         "lapses": 1,
-        "retrievability": 0.766
+        "retrievability": 1.0
       },
       "fsrsFallback": false
     },
@@ -224,13 +861,13 @@
       "status": "재도전중",
       "timesWrong": 1,
       "retryMissed": 0,
-      "consecutiveCorrect": 0,
+      "consecutiveCorrect": 1,
       "firstWrong": "2026-08-24",
       "lastWrong": "2026-08-24",
-      "lastCorrect": null,
-      "lastResult": "wrong",
-      "lastDp": "2026-08-24",
-      "nextReviewDate": "2026-08-25",
+      "lastCorrect": "2026-08-25",
+      "lastResult": "correct",
+      "lastDp": "2026-08-25",
+      "nextReviewDate": "2026-08-27",
       "dates": [
         "2026-08-24"
       ],
@@ -245,13 +882,13 @@
         }
       ],
       "fsrs": {
-        "stability": 0.212,
-        "difficulty": 6.413,
-        "due": "2026-08-25",
+        "stability": 1.887,
+        "difficulty": 6.402,
+        "due": "2026-08-27",
         "state": "Review",
-        "reps": 1,
+        "reps": 2,
         "lapses": 1,
-        "retrievability": 0.766
+        "retrievability": 1.0
       },
       "fsrsFallback": false
     },
@@ -263,13 +900,13 @@
       "status": "재도전중",
       "timesWrong": 1,
       "retryMissed": 0,
-      "consecutiveCorrect": 0,
+      "consecutiveCorrect": 1,
       "firstWrong": "2026-08-24",
       "lastWrong": "2026-08-24",
-      "lastCorrect": null,
-      "lastResult": "wrong",
-      "lastDp": "2026-08-24",
-      "nextReviewDate": "2026-08-25",
+      "lastCorrect": "2026-08-25",
+      "lastResult": "correct",
+      "lastDp": "2026-08-25",
+      "nextReviewDate": "2026-08-27",
       "dates": [
         "2026-08-24"
       ],
@@ -284,52 +921,13 @@
         }
       ],
       "fsrs": {
-        "stability": 0.212,
-        "difficulty": 6.413,
-        "due": "2026-08-25",
+        "stability": 1.887,
+        "difficulty": 6.402,
+        "due": "2026-08-27",
         "state": "Review",
-        "reps": 1,
+        "reps": 2,
         "lapses": 1,
-        "retrievability": 0.766
-      },
-      "fsrsFallback": false
-    },
-    {
-      "conceptKey": "형법 1-5 주의의무 = 예견+방지, 신뢰의 원칙은 수직관계 배제",
-      "aliases": [],
-      "subject": "형법",
-      "concept": "형법 1-5 주의의무 = 예견+방지, 신뢰의 원칙은 수직관계 배제",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "firstWrong": "2026-08-24",
-      "lastWrong": "2026-08-24",
-      "lastCorrect": null,
-      "lastResult": "wrong",
-      "lastDp": "2026-08-24",
-      "nextReviewDate": "2026-08-25",
-      "dates": [
-        "2026-08-24"
-      ],
-      "samples": [
-        {
-          "date": "2026-08-24",
-          "type": "단답",
-          "q": "주의의무 위반을 이루는 두 축을 쓰고, 신뢰의 원칙이 원용될 수 없는 관계가 무엇인지 붙이라.",
-          "myAnswer": "결과예상주의의무위반, 결과방지주의의무 위반, 신뢰의 원칙은  의사-간호사처럼 수직적인 관계에서는 원용될 수 없다.",
-          "correct": "결과예견의무 위반과 결과방지의무 위반. 신뢰의 원칙은 수직적 관계에서는 부정된다.",
-          "expl": "노트 1-5는 주의의무 위반을 결과예견 위반과 결과방지 위반으로 나누고 신뢰의 원칙을 과실 범위를 좁혀 주는 이론으로 두되 수직적 관계에서는 부정한다. 지시와 감독이 있는 관계에서는 상대가 알아서 하리라는 신뢰 자체가 정당화되지 않기 때문이다. 분업이라는 말만 보고 신뢰의 원칙을 꺼내면 결론이 뒤집힌다."
-        }
-      ],
-      "fsrs": {
-        "stability": 0.212,
-        "difficulty": 6.413,
-        "due": "2026-08-25",
-        "state": "Review",
-        "reps": 1,
-        "lapses": 1,
-        "retrievability": 0.766
+        "retrievability": 1.0
       },
       "fsrsFallback": false
     },
@@ -341,13 +939,13 @@
       "status": "재도전중",
       "timesWrong": 1,
       "retryMissed": 0,
-      "consecutiveCorrect": 0,
+      "consecutiveCorrect": 1,
       "firstWrong": "2026-08-24",
       "lastWrong": "2026-08-24",
-      "lastCorrect": null,
-      "lastResult": "wrong",
-      "lastDp": "2026-08-24",
-      "nextReviewDate": "2026-08-25",
+      "lastCorrect": "2026-08-25",
+      "lastResult": "correct",
+      "lastDp": "2026-08-25",
+      "nextReviewDate": "2026-08-27",
       "dates": [
         "2026-08-24"
       ],
@@ -362,13 +960,13 @@
         }
       ],
       "fsrs": {
-        "stability": 0.212,
-        "difficulty": 6.413,
-        "due": "2026-08-25",
+        "stability": 1.887,
+        "difficulty": 6.402,
+        "due": "2026-08-27",
         "state": "Review",
-        "reps": 1,
+        "reps": 2,
         "lapses": 1,
-        "retrievability": 0.766
+        "retrievability": 1.0
       },
       "fsrsFallback": false
     },
@@ -380,13 +978,13 @@
       "status": "재도전중",
       "timesWrong": 1,
       "retryMissed": 0,
-      "consecutiveCorrect": 0,
+      "consecutiveCorrect": 1,
       "firstWrong": "2026-08-24",
       "lastWrong": "2026-08-24",
-      "lastCorrect": null,
-      "lastResult": "wrong",
-      "lastDp": "2026-08-24",
-      "nextReviewDate": "2026-08-25",
+      "lastCorrect": "2026-08-25",
+      "lastResult": "correct",
+      "lastDp": "2026-08-25",
+      "nextReviewDate": "2026-08-27",
       "dates": [
         "2026-08-24"
       ],
@@ -401,13 +999,13 @@
         }
       ],
       "fsrs": {
-        "stability": 0.212,
-        "difficulty": 6.413,
-        "due": "2026-08-25",
+        "stability": 1.887,
+        "difficulty": 6.402,
+        "due": "2026-08-27",
         "state": "Review",
-        "reps": 1,
+        "reps": 2,
         "lapses": 1,
-        "retrievability": 0.766
+        "retrievability": 1.0
       },
       "fsrsFallback": false
     },
@@ -419,13 +1017,13 @@
       "status": "재도전중",
       "timesWrong": 1,
       "retryMissed": 0,
-      "consecutiveCorrect": 0,
+      "consecutiveCorrect": 1,
       "firstWrong": "2026-08-24",
       "lastWrong": "2026-08-24",
-      "lastCorrect": null,
-      "lastResult": "wrong",
-      "lastDp": "2026-08-24",
-      "nextReviewDate": "2026-08-25",
+      "lastCorrect": "2026-08-25",
+      "lastResult": "correct",
+      "lastDp": "2026-08-25",
+      "nextReviewDate": "2026-08-27",
       "dates": [
         "2026-08-24"
       ],
@@ -440,13 +1038,13 @@
         }
       ],
       "fsrs": {
-        "stability": 0.212,
-        "difficulty": 6.413,
-        "due": "2026-08-25",
+        "stability": 1.887,
+        "difficulty": 6.402,
+        "due": "2026-08-27",
         "state": "Review",
-        "reps": 1,
+        "reps": 2,
         "lapses": 1,
-        "retrievability": 0.766
+        "retrievability": 1.0
       },
       "fsrsFallback": false
     },
@@ -458,13 +1056,13 @@
       "status": "재도전중",
       "timesWrong": 1,
       "retryMissed": 0,
-      "consecutiveCorrect": 0,
+      "consecutiveCorrect": 1,
       "firstWrong": "2026-08-24",
       "lastWrong": "2026-08-24",
-      "lastCorrect": null,
-      "lastResult": "wrong",
-      "lastDp": "2026-08-24",
-      "nextReviewDate": "2026-08-25",
+      "lastCorrect": "2026-08-25",
+      "lastResult": "correct",
+      "lastDp": "2026-08-25",
+      "nextReviewDate": "2026-08-27",
       "dates": [
         "2026-08-24"
       ],
@@ -479,13 +1077,13 @@
         }
       ],
       "fsrs": {
-        "stability": 0.212,
-        "difficulty": 6.413,
-        "due": "2026-08-25",
+        "stability": 1.887,
+        "difficulty": 6.402,
+        "due": "2026-08-27",
         "state": "Review",
-        "reps": 1,
+        "reps": 2,
         "lapses": 1,
-        "retrievability": 0.766
+        "retrievability": 1.0
       },
       "fsrsFallback": false
     }

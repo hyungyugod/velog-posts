@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<!-- ═══════════════════════════════════════════════════════════════
+  법무사 오답 재도전 퀴즈 템플릿 — 데일리퀴즈 법무사판 정본 v1.0의 사본이다.
+  (정본은 법무사/데일리퀴즈/_template.html. 이 파일을 정본으로 착각하지 말 것.)
+  ── 이하 정본 v1.0 원주석 그대로 ──
+  데일리퀴즈 법무사판 정본 템플릿 v1.0 (2026-08-23)
+  - 원본: 공인중개사 정본 v2.1 파생. 정본 v2.1(공인중개사)은 불가침 — 이 파일이 법무사 단일 정본.
+  - v1.0 변경: ① 단답형(type "단답") 지원 — 타이핑 인출 → 정답 공개 → 자가채점(⭕/❌)
+              ② 문항 필드 exam("1차"|"2차") 추가 ③ subject "법무사2차", 결과 파일 법무사2차_오답_*.json
+              ④ 목표시간 표시(객관식 72초·단답 90초/문) ⑤ 미제출 경보 배너 토큰 ALERT_HTML
+              ⑥ 계산형(calc) 제거 — 법무사판은 계산형을 출제하지 않는다(수치는 VOLATILE)
+  - 채점·결과 저장(downloadResult)·스키마는 이 파일에서만 수정한다.
+  - 생성 스킬이 교체하는 것: 이중 중괄호 토큰 4종 QUIZ_DATE·META_LINE·TAGS_HTML·ALERT_HTML
+    (⚠ 이 주석에는 실제 토큰 표기를 쓰지 않는다 — 치환·잔존 검사가 주석에 걸리지 않게)
+    그리고 QUESTIONS 마커 사이의 문항 배열. 그 외 로직 수정 금지.
+  - 결과 JSON 스키마 v2(법무사 확장): results[] 각 원소에 exam 포함,
+    단답형은 selfGraded:true + keywords + myAnswer(타이핑 원문). wrong[]은 v1 하위호환.
+  - 문항 필드 계약(법무사 v1):
+    공통: type · exam · cat · q · expl · src · conceptKey (+재도전 retryOf, 한달전 monthlyOf)
+    객관식(일반|조합|판례|사례|OX): opts[] · answer(정답 인덱스)
+    단답형(단답): answer(모범답 문자열) · keywords[](자가채점 필수 키워드 2~4개) · opts 없음
+═══════════════════════════════════════════════════════════════ -->
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>⚖️ 법무사 2차 오답 재도전 문제지 · 2026-08-26</title>
+<style>
+  :root{
+    --bg:#0f1115; --card:#191c23; --card2:#20242d; --line:#2c313b;
+    --txt:#e7e9ee; --sub:#9aa3b2; --accent:#7c9cff; --accent2:#ffd24a;
+    --ok:#34d399; --no:#f87171; --okbg:#10261d; --nobg:#2a1414;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);
+    font-family:'Pretendard','Apple SD Gothic Neo',system-ui,-apple-system,sans-serif;
+    line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:760px;margin:0 auto;padding:32px 20px 80px}
+  header{margin-bottom:24px}
+  .eyebrow{color:var(--accent);font-weight:700;font-size:14px;letter-spacing:.04em}
+  h1{font-size:28px;margin:6px 0 4px;font-weight:800}
+  .meta{color:var(--sub);font-size:14px}
+  .tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px}
+  .tag{background:var(--card2);border:1px solid var(--line);color:var(--sub);
+    padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600}
+  .alertbanner{background:#2a1414;border:1px solid var(--no);color:#ffb4b4;border-radius:12px;
+    padding:12px 16px;margin:14px 0 0;font-size:13.5px;font-weight:700}
+  .alertbanner:empty{display:none}
+  .bar{position:sticky;top:0;z-index:5;background:rgba(15,17,21,.88);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--line);
+    padding:12px 0;margin:18px 0 24px}
+  .progress{height:8px;background:var(--card2);border-radius:999px;overflow:hidden}
+  .progress>i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));
+    border-radius:999px;transition:width .35s ease}
+  .pmeta{display:flex;justify-content:space-between;font-size:12.5px;color:var(--sub);margin-bottom:7px}
+  .sec{font-size:13px;font-weight:800;color:var(--accent);margin:26px 0 10px;letter-spacing:.02em;
+    border-top:1px dashed var(--line);padding-top:18px}
+  .sec:first-of-type{border-top:none;padding-top:0}
+  .q{background:var(--card);border:1px solid var(--line);border-radius:16px;
+    padding:18px 18px 16px;margin-bottom:14px}
+  .q.saok{border-color:var(--ok)} .q.sano{border-color:var(--no)}
+  .qhead{display:flex;align-items:center;gap:9px;margin-bottom:11px}
+  .qno{background:var(--accent);color:#10131c;font-weight:800;font-size:13px;
+    width:26px;height:26px;border-radius:8px;display:grid;place-items:center;flex:0 0 auto}
+  .qtype{font-size:11.5px;font-weight:700;color:var(--accent2);border:1px solid var(--accent2);
+    padding:1px 8px;border-radius:999px}
+  .qtype.t2{color:var(--ok);border-color:var(--ok)}
+  .qcat{font-size:12px;color:var(--sub);margin-left:auto}
+  .qtext{font-size:16px;font-weight:600;margin:2px 0 14px}
+  .opts{display:flex;flex-direction:column;gap:8px}
+  .opt{display:flex;align-items:center;gap:11px;padding:11px 13px;border:1px solid var(--line);
+    border-radius:11px;cursor:pointer;background:var(--card2);transition:.15s;user-select:none}
+  .opt:hover{border-color:var(--accent)}
+  .opt.sel{border-color:var(--accent2);background:#26261a}
+  .opt .mk{width:22px;height:22px;border-radius:50%;border:2px solid var(--line);flex:0 0 auto;
+    display:grid;place-items:center;font-size:12px;font-weight:800}
+  .opt.sel .mk{border-color:var(--accent2);background:var(--accent2);color:#1a1a1a}
+  .opt .eye{margin-left:auto;flex:0 0 auto;width:30px;height:30px;padding:0;border-radius:8px;
+    display:grid;place-items:center;font-size:15px;line-height:1;background:transparent;
+    border:1px solid transparent;color:var(--sub);opacity:.4;cursor:pointer;transition:.15s}
+  .opt .eye:hover{opacity:1;background:var(--card);border-color:var(--line)}
+  .opt.ruled{opacity:.42;background:var(--card)}
+  .opt.ruled span:not(.mk){text-decoration:line-through;text-decoration-color:var(--no)}
+  .opt.ruled .eye{opacity:.9;color:var(--no)}
+  .ox{flex-direction:row;gap:10px}
+  .ox .opt{flex:1;justify-content:center;font-size:18px;font-weight:800}
+  .opt.correct{border-color:var(--ok);background:var(--okbg)}
+  .opt.correct .mk{border-color:var(--ok);background:var(--ok);color:#06281c}
+  .opt.wrong{border-color:var(--no);background:var(--nobg)}
+  .opt.wrong .mk{border-color:var(--no);background:var(--no);color:#2a0d0d}
+  /* ── 단답형 UI ── */
+  .sa-input{width:100%;min-height:74px;resize:vertical;background:var(--card2);color:var(--txt);
+    border:1px solid var(--line);border-radius:11px;padding:12px 13px;font-size:14.5px;
+    font-family:inherit;line-height:1.6}
+  .sa-input:focus{outline:none;border-color:var(--accent)}
+  .sa-input:disabled{opacity:.7}
+  .sa-reveal{margin-top:10px;padding:10px 16px;border-radius:10px;border:1px solid var(--accent);
+    background:transparent;color:var(--accent);font-weight:800;font-size:13.5px;cursor:pointer}
+  .sa-reveal:hover{background:#1a2138}
+  .sa-reveal:disabled{opacity:.35;cursor:default}
+  .sa-answer{margin-top:12px;padding:13px 14px;border-radius:11px;background:var(--okbg);
+    border:1px solid #1d4634;font-size:14px}
+  .sa-answer[hidden]{display:none}
+  .sa-modela{font-weight:700}
+  .sa-modela b{color:var(--ok)}
+  .sa-keys{margin-top:9px;display:flex;gap:6px;flex-wrap:wrap;align-items:center;
+    font-size:12px;color:var(--sub)}
+  .sa-keys .kw{background:var(--card2);border:1px solid var(--line);border-radius:999px;
+    padding:2px 9px;font-size:12px;color:var(--txt);font-weight:600}
+  .sa-grade{margin-top:12px;display:flex;gap:9px;align-items:center;font-size:13px;color:var(--sub)}
+  .sa-grade button{flex:0 0 auto;padding:8px 15px;border-radius:10px;border:1px solid var(--line);
+    background:var(--card2);color:var(--txt);font-weight:800;font-size:13.5px;cursor:pointer;transition:.15s}
+  .sa-grade button.on-ok{border-color:var(--ok);background:var(--okbg);color:var(--ok)}
+  .sa-grade button.on-no{border-color:var(--no);background:var(--nobg);color:var(--no)}
+  .expl{margin-top:12px;padding:12px 14px;border-radius:11px;background:var(--card2);
+    border-left:3px solid var(--accent);font-size:13.5px;color:#d4d9e2;display:none}
+  .expl.show{display:block;animation:fade .3s ease}
+  .expl .verdict{font-weight:800;margin-right:6px}
+  .expl .src{display:block;margin-top:7px;color:var(--sub);font-size:12px}
+  @keyframes fade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+  .submit{width:100%;padding:16px;border:none;border-radius:14px;font-size:17px;font-weight:800;
+    background:linear-gradient(90deg,var(--accent),#5f7fe8);color:#0f1115;cursor:pointer;margin-top:10px}
+  .submit:disabled{opacity:.45;cursor:not-allowed}
+  .submit.retry{background:var(--card2);color:var(--txt);border:1px solid var(--line)}
+  #result{display:none;text-align:center;background:var(--card);border:1px solid var(--line);
+    border-radius:18px;padding:28px 20px;margin-bottom:18px}
+  #result.show{display:block;animation:fade .4s ease}
+  .ring{font-size:46px;font-weight:900;margin:4px 0}
+  .ring small{font-size:18px;color:var(--sub);font-weight:700}
+  #rmsg{color:var(--sub);font-size:15px;margin-top:4px}
+  #dlnote{font-size:12.5px;color:var(--accent2);margin-top:12px}
+  .copybtn{display:none;margin-top:12px;padding:10px 16px;border-radius:10px;border:1px solid var(--line);
+    background:var(--card2);color:var(--txt);font-weight:700;cursor:pointer;font-size:13px}
+  .copybtn.show{display:inline-block}
+  .foot{text-align:center;margin-top:30px;color:var(--sub);font-size:12.5px;line-height:1.8}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">RETRY QUIZ · 법무사 2차</div>
+    <h1>오답 재도전 문제지</h1>
+    <div class="meta">2026년 8월 26일 (수) · 오답 재도전 15문항 · 듀 잔여 0개</div>
+    <div class="tags"><span class="tag">🔁 오답 재도전 15</span><span class="tag">⚖️ 법무사 2차</span><span class="tag">형법</span></div>
+    <div class="alertbanner"></div>
+  </header>
+
+  <div class="bar">
+    <div class="pmeta"><span id="pcount">0 / 0 완료</span><span id="ptime"></span></div>
+    <div class="progress"><i id="pbar"></i></div>
+  </div>
+
+  <div id="result">
+    <div class="ring"><span id="score">0</span><small id="total"> / 0</small></div>
+    <div id="rmsg"></div>
+    <div id="dlnote"></div>
+    <button class="copybtn" id="copyBtn">📋 결과 JSON 복사 (다운로드 실패 대비)</button>
+  </div>
+
+  <form id="quiz"></form>
+
+  <button class="submit" id="submitBtn" disabled>제출하고 채점하기</button>
+
+  <div class="foot">
+    오답 원장(FSRS)의 복습 듀 큐에서 자동 생성됩니다. 2차 과목은 전부 단답형 — 먼저 쓰고, 정답을 확인하세요.<br>
+    제출 결과는 오답 원장(FSRS)의 졸업·재도전 판정에 반영됩니다.
+  </div>
+</div>
+
+<script>
+const SCHEMA_VERSION = 2;
+const QUIZ_DATE = "2026-08-26";
+const QUESTIONS = [
+/*__QUESTIONS_START__*/
+  {"type": "단답", "exam": "2차", "cat": "형법", "q": "🔁 절도죄 답안에서 재물 취득에 대한 인식과 의사만 인정하고 다음 목차로 넘어갔다. 무엇이 누락된 것인지 그 요소의 이름과 명칭을 함께 쓰고, 이 요소가 객관적 구성요건요소와 어떻게 대응하는지 한 줄로 밝히라.", "answer": "불법영득의사가 누락되었고, 이는 초과주관적 구성요건요소다. 대응하는 객관적 구성요건요소가 없는 초과분이어서 고의와 별도로 세워야 한다.", "keywords": ["불법영득의사", "초과주관적 구성요건요소", "대응"], "expl": "[정답 근거] 목적범의 목적과 불법영득의사는 초과주관적 구성요건요소로 별도 검토 대상이다. [메커니즘] 고의는 객관적 사실에 대응하는 인식과 의사인데 이 요소는 대응물이 없는 초과분이라 고의 칸에 넣으면 사라진다. [함정] 영득죄에서 고의만 쓰고 넘어가면 요건 하나가 통째로 빠진다.", "src": "오답원장 2026-08-24 (재도전)", "conceptKey": "형법 1-2 초과주관적 구성요건요소 = 목적범의 목적·불법영득의사", "retryOf": "형법 1-2 초과주관적 구성요건요소 = 목적범의 목적·불법영득의사"},
+  {"type": "단답", "exam": "2차", "cat": "형법", "q": "🔁 신뢰의 원칙이 과실의 범위를 넓히는 이론인지 좁히는 이론인지 밝히고, 의사가 간호사에게 지시한 사안에서 이를 원용할 수 있는지 결론과 근거를 한 줄로 쓰라.", "answer": "과실의 범위를 좁혀 주는 이론이다. 의사와 간호사는 지시와 감독이 있는 수직적 관계이므로 원용할 수 없다.", "keywords": ["좁힌다", "수직적 관계", "원용 불가"], "expl": "[정답 근거] 신뢰의 원칙은 자기 범위만 주의하면 과실을 부정해 주는 축소 이론이고 수직적 관계에서는 부정된다. [메커니즘] 지시와 감독이 있는 관계에서는 상대가 알아서 하리라는 신뢰 자체가 정당화되지 않는다. [함정] 분업이라는 말만 보고 원용하면 결론이 뒤집힌다.", "src": "오답원장 2026-08-24 (재도전)", "conceptKey": "형법 1-5 주의의무 = 예견+방지, 신뢰의 원칙은 수직관계 배제", "retryOf": "형법 1-5 주의의무 = 예견+방지, 신뢰의 원칙은 수직관계 배제"},
+  {"type": "단답", "exam": "2차", "cat": "형법", "q": "🔁 답안에서 구성요건해당성이 부정된다는 결론이 났다. 이어서 위법성과 책임성, 친고죄 여부까지 써도 되는지 밝히고, 친고죄와 반의사불벌죄를 논할 수 있는 시점을 한 줄로 쓰라.", "answer": "쓰면 안 된다. 앞 단계에서 탈락하면 뒷 단계는 서술하지 않으며, 3요소를 모두 검토해 범죄 성립이 인정된 뒤에야 친고죄와 반의사불벌죄를 논한다.", "keywords": ["서술 금지", "성립 인정 후", "소추조건"], "expl": "[정답 근거] 3요소를 다 쓰고 성립이 인정된 다음에 친고죄와 반의사불벌죄를 논하는 것이 답안 순서다. [메커니즘] 이 둘은 성립 여부가 아니라 소추조건 문제라서 성립하지 않은 범죄에 고소를 따지면 목차가 뒤집힌다. [함정] 탈락한 단계 뒤를 계속 쓰면 무죄인 사안을 붙잡고 논점을 늘린 답안이 된다.", "src": "오답원장 2026-08-25 (재도전)", "conceptKey": "형법 1-1 답안 작성 순서 성립 후 소추조건", "retryOf": "형법 1-1 답안 작성 순서 성립 후 소추조건"},
+  {"type": "단답", "exam": "2차", "cat": "형법", "q": "🔁 갑이 폭행이나 협박 없이 자신의 사회적 지위와 권세를 이용해 을의 업무를 방해했다. 업무방해죄의 수단 요건을 충족하는지 결론과 근거를 쓰고, 노트가 든 나머지 수단 하나를 붙이라.", "answer": "충족한다. 위력은 상대방의 의사를 제압할 만한 힘이고 사회적 지위나 권세를 이용하는 것도 포함되기 때문이다. 나머지 수단은 허위사실 유포다.", "keywords": ["위력", "의사를 제압", "허위사실 유포"], "expl": "[정답 근거] 방해 수단은 허위사실 유포와 위력 둘이고 위력에는 지위와 권세의 이용이 포함된다. [메커니즘] 물리적 폭행이 없어도 상대의 의사결정을 꺾으면 업무의 자유가 침해되는 결과는 같기 때문이다. [함정] 위력을 폭행과 협박으로만 좁히면 지위를 이용한 사안에서 성립을 부정하게 된다.", "src": "오답원장 2026-08-25 (재도전)", "conceptKey": "형법 1-10 업무방해의 수단과 위력의 의미", "retryOf": "형법 1-10 업무방해의 수단과 위력의 의미"},
+  {"type": "단답", "exam": "2차", "cat": "형법", "q": "🔁 일회적으로 한 번 행한 일이나 사회질서에 반하는 활동이 업무방해죄의 업무가 될 수 있는지 각각 결론을 쓰고, 그 결론을 낳은 업무의 요건을 빠짐없이 나열하라.", "answer": "둘 다 업무가 될 수 없다. 업무는 사회생활상의 지위에 의하여 계속적으로 행하는 사무여야 하고, 보호할 법익과 그 가치가 있어야 하며, 사회질서에 반하지 않아야 한다.", "keywords": ["계속적", "보호가치", "사회질서"], "expl": "[정답 근거] 업무는 계속성과 보호가치, 사회질서 적합성 세 겹의 문턱을 넘어야 한다. [메커니즘] 일회적 행위나 불법한 활동까지 형벌로 지키면 보호할 이유가 없는 이익을 국가가 지켜 주는 셈이 되기 때문이다. [함정] 아무 일이나 업무로 보고 곧장 방해 여부로 넘어가는 것이 대표적 누락이다.", "src": "오답원장 2026-08-25 (재도전)", "conceptKey": "형법 1-10 업무방해죄의 업무 요건", "retryOf": "형법 1-10 업무방해죄의 업무 요건"},
+  {"type": "단답", "exam": "2차", "cat": "형법", "q": "🔁 폭행죄 답안에 인과관계 목차를 잡아도 되는지 결론을 쓰고, 그 결론이 나오는 범죄 분류상의 이유를 판별식 한 문장으로 밝히라.", "answer": "잡으면 안 된다. 구성요건적 결과의 발생을 요구하는가를 물어 요구하지 않는 폭행죄는 형식범이고, 결과와 인과관계는 결과범에서만 별도로 포섭한다.", "keywords": ["형식범", "결과 발생", "인과관계"], "expl": "[정답 근거] 살인죄는 사망이라는 결과를 요구하는 결과범이고 폭행죄는 유형력 행사만으로 충족되는 형식범이다. [메커니즘] 결과가 구성요건에 들어 있는지가 갈림길이라 결과범에서만 결과와 인과관계 두 요소를 따로 포섭한다. [함정] 형식범에 인과관계 목차를 잡으면 불필요한 논점을 쓴 답안이 된다.", "src": "오답원장 2026-08-25 (재도전)", "conceptKey": "형법 1-3 결과범과 형식범의 판별식", "retryOf": "형법 1-3 결과범과 형식범의 판별식"},
+  {"type": "단답", "exam": "2차", "cat": "형법", "q": "🔁 기수에 이른 뒤 가담한 자에게도 공범이 성립할 수 있는 범죄 유형의 명칭을 쓰고, 즉시범과 달리 그것이 가능한 이유를 실행행위를 근거로 한 줄로 밝히라.", "answer": "계속범이다. 계속범은 기수에 달한 뒤에도 범죄가 계속되어 가담할 실행행위가 아직 남아 있기 때문이다.", "keywords": ["계속범", "기수 후", "실행행위"], "expl": "[정답 근거] 계속범은 기수가 된 뒤에도 범죄가 계속되고 기수 후 공범 성립이 가능하다. [메커니즘] 공범은 정범의 실행행위에 가담해야 성립하는데 계속범은 실행행위가 기수 시점에 끝나지 않는다. [함정] 즉시범 감각으로 기수 후에는 가담이 불가능하다고 쓰면 그대로 틀린다.", "src": "오답원장 2026-08-25 (재도전)", "conceptKey": "형법 1-3 계속범과 기수 후 공범 성립", "retryOf": "형법 1-3 계속범과 기수 후 공범 성립"},
+  {"type": "단답", "exam": "2차", "cat": "형법", "q": "🔁 추상적 위험범에 해당하는 범죄의 답안에서 공공의 위험 발생을 별도 요건으로 포섭했다. 이 처리가 옳은지 결론을 쓰고, 두 위험범을 가르는 단일 변수를 물음 형태로 붙이라.", "answer": "옳지 않다. 요건을 하나 더 만든 것이 된다. 판별식은 공공의 위험이 현실로 발생해야 기수가 되는가이며, 요구하면 구체적 위험범, 요구하지 않으면 추상적 위험범이다.", "keywords": ["요건을 더 만든", "공공의 위험", "기수"], "expl": "[정답 근거] 위험범은 공공의 위험 발생이 기수 요건인지로 구체적과 추상적으로 갈린다. [메커니즘] 법익이 아직 깨지지 않은 단계에서 처벌하려니 위험을 얼마나 앞당길지 눈금이 필요했고 그 눈금이 위험의 현실 발생 요구 여부다. [함정] 추상적 위험범에서 위험 발생을 포섭하면 없는 요건을 세운 것이다.", "src": "오답원장 2026-08-25 (재도전)", "conceptKey": "형법 1-3 구체적 위험범과 추상적 위험범의 판별식", "retryOf": "형법 1-3 구체적 위험범과 추상적 위험범의 판별식"},
+  {"type": "단답", "exam": "2차", "cat": "형법", "q": "🔁 갑이 을을 살해하려 공격한 뒤 이미 죽은 줄 알고 매장하였으나 실제 사인은 질식이었다. 이를 살인미수와 과실치사의 경합으로 구성한 답안이 왜 틀렸는지 한 줄로 쓰고, 올바른 결론을 죄명과 명칭으로 밝히라.", "answer": "처음의 살해 의사가 매장까지 하나의 사건 경과로 이어져 있어 두 죄로 자르면 고의를 실제보다 축소 평가하게 되기 때문이다. 개괄적 고의의 문제로 보아 살인죄 하나로 한 번에 평가한다.", "keywords": ["개괄적 고의", "살인죄", "하나로 평가"], "expl": "[정답 근거] 노트는 이 사안을 개괄적 고의로 부르고 살인죄 하나로 평가한다고 정리한다. [메커니즘] 살해 의사에서 매장까지가 하나의 경과라 인위적으로 자르면 행위자의 고의를 축소해 평가하게 된다. [함정] 미수와 과실범을 병렬로 세우는 것이 대표적 함정이다.", "src": "오답원장 2026-08-25 (재도전)", "conceptKey": "형법 1-4 개괄적 고의의 처리", "retryOf": "형법 1-4 개괄적 고의의 처리"},
+  {"type": "단답", "exam": "2차", "cat": "형법", "q": "🔁 정범과 공범을 가르는 기준을 한 단어로 쓰고, 그 기준의 세 종류를 모두 나열한 뒤 의사지배와 기능적 행위지배가 각각 어떤 정범 유형에 대응하는지 붙이라.", "answer": "행위지배다. 종류는 실행지배, 기능적 행위지배, 의사지배이며 의사지배는 간접정범에, 기능적 행위지배는 공동정범에 대응한다.", "keywords": ["행위지배", "간접정범", "공동정범"], "expl": "[정답 근거] 행위지배가 있으면 정범이고 종류는 실행과 기능적 행위지배와 의사지배 셋이다. [메커니즘] 범행 과정을 주체적으로 지배했는가가 기준인데 지배하는 방식이 셋이라 이름을 나눠 붙인 것이다. [함정] 공동정범에 의사지배를 갖다 붙이면 간접정범 목차를 쓴 셈이 되어 죄명이 틀어진다.", "src": "오답원장 2026-08-25 (재도전)", "conceptKey": "형법 1-4 행위지배의 세 종류", "retryOf": "형법 1-4 행위지배의 세 종류"},
+  {"type": "단답", "exam": "2차", "cat": "형법", "q": "🔁 법무사의 포괄적 사건 수임이 변호사법 위반이었다가 법무사법 개정으로 가능해졌다. 형법 제1조 제2항을 바로 적용할 수 있는지 결론을 쓰고, 그 결론을 낳은 추가 요건을 한 줄로 밝히라.", "answer": "바로 적용할 수 없고 처벌 대상이다. 형벌규정 자체나 그 위임입법이 아닌 다른 규정의 변경이어서 형사법적 관점의 변화가 있어야 적용되는데 그 변화가 없기 때문이다.", "keywords": ["형사법적 관점의 변화", "다른 규정", "처벌"], "expl": "[정답 근거] 법령 변경은 형벌규정과 위임입법이 바뀐 경우와 그 밖의 규정이 바뀐 경우로 갈리고 후자는 관점의 변화를 더 요구한다. [메커니즘] 처벌 자체에 대한 평가가 달라진 것만 피고인에게 유리하게 반영해야 행정적 사정 변경까지 면소로 흐르지 않는다. [함정] 결과적으로 적법해졌다는 이유만으로 제1조 제2항을 꺼내면 결론이 뒤집힌다.", "src": "오답원장 2026-08-25 (재도전)", "conceptKey": "형법 1-5 제1조 제2항 적용의 판별식", "retryOf": "형법 1-5 제1조 제2항 적용의 판별식"},
+  {"type": "단답", "exam": "2차", "cat": "형법", "q": "🔁 결과적 가중범을 진정과 부진정으로 가르는 단일 변수를 물음 형태로 쓰고, 부진정 쪽에 해당하는 노트상의 예 2개를 붙이라.", "answer": "중한 결과를 고의로 발생케 한 경우에도 성립하는가를 묻는다. 성립하면 부진정 결과적 가중범이며 특수공무집행방해치상죄와 현주건조물방화치사죄가 그 예다.", "keywords": ["중한 결과", "고의", "현주건조물방화치사"], "expl": "[정답 근거] 부진정 결과적 가중범은 중한 결과를 과실로 야기한 경우뿐 아니라 고의로 발생케 한 경우에도 성립한다. [메커니즘] 과실일 때만 성립한다고 보면 더 나쁜 고의 사안이 오히려 가벼운 죄가 되는 역전이 생겨 고의 사안까지 끌어안게 했다. [함정] 그 대가로 고의범과의 죄수라는 별도 쟁점이 반드시 따라붙는다.", "src": "오답원장 2026-08-25 (재도전)", "conceptKey": "형법 1-6 부진정 결과적 가중범의 정의와 예", "retryOf": "형법 1-6 부진정 결과적 가중범의 정의와 예"},
+  {"type": "단답", "exam": "2차", "cat": "형법", "q": "🔁 갑이 을을 때려 기절시킨 뒤 죽은 줄 알고 자살로 위장하려 창문 밖으로 던져 사망에 이르게 했다. 투척 행위만 떼어 과실치사로 구성하면 무엇이 지워지는지 한 줄로 쓰고, 올바른 결론을 밝히라.", "answer": "앞의 상해 행위에 고의가 있었다는 점이 지워진다. 상해로 인하여 치사의 결과가 발생했다고 인정하는 것이 결론이다.", "keywords": ["앞 행위의 고의", "상해치사", "치사"], "expl": "[정답 근거] 노트는 이 사안에서 상해로 인해 치사가 발생했다고 인정한다. [메커니즘] 결과적 가중범은 작은 고의 범죄에서 중한 결과가 나온 구조를 과실범보다 무겁게 벌하는 제도라 앞 행위의 고의가 결정적 변수다. [함정] 뒤의 투척만 떼어 과실치사로 구성하면 앞 행위의 고의를 지운 답안이 된다.", "src": "오답원장 2026-08-25 (재도전)", "conceptKey": "형법 1-6 상해치사 사례의 결론", "retryOf": "형법 1-6 상해치사 사례의 결론"},
+  {"type": "단답", "exam": "2차", "cat": "형법", "q": "🔁 부진정 결과적 가중범과 그에 대응하는 고의범의 죄수를 정할 때 흡수와 상상적 경합을 가르는 단일 변수를 물음 형태로 쓰고, 각 경우의 결론을 붙이라.", "answer": "어느 쪽 불법과 형이 더 무거운가를 묻는다. 결과적 가중범이 더 무거우면 고의범이 그 안에 포함되어 따로 성립하지 않고, 고의범의 불법이 더 크면 둘 다 성립해 상상적 경합이 된다.", "keywords": ["형의 경중", "흡수", "상상적 경합"], "expl": "[정답 근거] 결과적 가중범의 형이 고의범보다 무거우면 흡수되고 고의범이 더 무거우면 둘 다 성립해 상상적 경합이 된다. [메커니즘] 무거운 죄로 이미 평가된 불법을 또 세면 이중평가가 되고 남는 불법이 있으면 따로 세워야 평가가 빠지지 않는다. [함정] 경중을 비교하지 않고 기계적으로 흡수시키는 것이 함정이다.", "src": "오답원장 2026-08-25 (재도전)", "conceptKey": "형법 1-7 부진정 결과적 가중범과 고의범의 죄수", "retryOf": "형법 1-7 부진정 결과적 가중범과 고의범의 죄수"},
+  {"type": "단답", "exam": "2차", "cat": "형법", "q": "🔁 싸움에 원칙적으로 정당방위가 부정되는 근거를 정당방위 요건 가운데 하나로 지목하고, 그 근거가 무너져 정당방위가 인정될 수 있는 경우 3개를 쓰라.", "answer": "방위의사가 없다는 점이 부정의 근거다. 싸움이 중단된 경우, 예상할 수 없는 공격이 있은 경우, 외관상 격투에 지나지 않는 경우에는 인정될 수 있다.", "keywords": ["방위의사", "중단", "예상할 수 없는 공격", "외관상 격투"], "expl": "[정답 근거] 싸움은 방위의사가 없어 정당방위가 부정되고 중단과 예상 불가와 외관상 격투가 예외다. [메커니즘] 부정의 근거가 방위의사 결여이므로 서로 주고받는 구도가 깨져 다시 일방적 침해가 된 국면에서는 방위의사를 인정할 여지가 생긴다. [함정] 예외를 못 쓰면 예외형 사안에서 논점을 통째로 놓친다.", "src": "오답원장 2026-08-25 (재도전)", "conceptKey": "형법 1-8 싸움에서 정당방위가 인정될 수 있는 경우", "retryOf": "형법 1-8 싸움에서 정당방위가 인정될 수 있는 경우"}
+/*__QUESTIONS_END__*/
+];
+
+/*__BUILD_PAYLOAD_START__*/
+// ── 순수 함수 레이어: DOM 없이 채점 결과(payload v2·법무사)를 만든다. node로 단위테스트 가능.
+// sel[qi]: 객관식 = 선택 인덱스(number) / 단답형 = {typed, revealed, self}
+function conceptFromSrc(src){
+  return String(src||"").replace(/^\s*\d{4}-\d{2}-\d{2}\s*/,"").replace(/\s*\(재도전\)\s*$/,"").trim();
+}
+function buildPayload(questions, sel, quizDate, nowIso, schemaVersion){
+  let score = 0; const results = [], wrong = [];
+  questions.forEach((item, qi)=>{
+    const isSA = item.type === "단답";
+    const st = sel[qi];
+    const isCorrect = isSA ? !!(st && st.self === true) : (st === item.answer);
+    if(isCorrect) score++;
+    const ck = item.conceptKey || conceptFromSrc(item.src);
+    const isRetry = !!item.retryOf || /\(재도전\)/.test(item.src||"") || String(item.q||"").indexOf("🔁") >= 0;
+    const base = isSA ? {
+      id: quizDate + "-q" + (qi+1), cat: item.cat, type: item.type, q: item.q,
+      myAnswer: (st && st.typed) || "", correct: item.answer,
+      expl: item.expl, src: item.src
+    } : {
+      id: quizDate + "-q" + (qi+1), cat: item.cat, type: item.type, q: item.q,
+      options: item.opts, myAnswer: item.opts[st], correct: item.opts[item.answer],
+      expl: item.expl, src: item.src
+    };
+    const r = Object.assign({}, base, {
+      conceptKey: ck,
+      exam: item.exam || (isSA ? "2차" : "1차"),
+      retryOf: isRetry ? (item.retryOf || ck) : null,
+      correctAnswered: isCorrect
+    });
+    if(isSA){ r.selfGraded = true; r.keywords = item.keywords || []; }
+    if(item.monthlyOf) r.monthlyOf = item.monthlyOf;
+    results.push(r);
+    if(!isCorrect) wrong.push(base);   // v1 하위호환 필드 (수거 파이프라인용)
+  });
+  return { score: score, wrong: wrong, payload: {
+    schemaVersion: schemaVersion, subject: "법무사2차", date: quizDate, quizId: quizDate + "-RQ",
+    score: score, total: questions.length, wrongCount: wrong.length,
+    results: results, wrong: wrong, generatedAt: nowIso
+  }};
+}
+/*__BUILD_PAYLOAD_END__*/
+
+const form = document.getElementById('quiz');
+const selected = QUESTIONS.map(q => q.type === '단답' ? {typed:'', revealed:false, self:null} : null);
+let graded = false;
+let LAST_PAYLOAD = null;
+let lastCat = null;
+
+document.getElementById('total').textContent = ' / ' + QUESTIONS.length;
+(function(){
+  const sa = QUESTIONS.filter(q=>q.type==='단답').length;
+  const mc = QUESTIONS.length - sa;
+  const min = Math.round((mc*72 + sa*90)/60);
+  document.getElementById('ptime').textContent = '🎯 목표 ' + min + '분 (객관식 72초·단답 90초/문)';
+})();
+
+QUESTIONS.forEach((item, qi)=>{
+  const isSA = item.type === '단답';
+  if(item.cat !== lastCat){
+    const s = document.createElement('div');
+    s.className = 'sec';
+    s.textContent = '▍' + item.cat + (item.exam === '2차' ? ' · 2차 단답' : '');
+    form.appendChild(s);
+    lastCat = item.cat;
+  }
+  const card = document.createElement('div');
+  card.className = 'q';
+  card.id = 'card-' + qi;
+  const isOX = item.type === 'OX';
+  card.innerHTML = `
+    <div class="qhead">
+      <span class="qno">${qi+1}</span>
+      <span class="qtype ${isSA?'t2':''}">${item.type}${item.exam==='2차'?' · 2차':''}</span>
+      <span class="qcat">${item.cat}</span>
+    </div>
+    <div class="qtext">${item.q}</div>`;
+
+  if(isSA){
+    // ── 단답형: 타이핑 인출 → 정답 공개 → 자가채점 ──
+    const ta = document.createElement('textarea');
+    ta.className = 'sa-input';
+    ta.placeholder = '답을 먼저 쓰세요 (쓰기 전에 정답을 열면 인출이 아니라 인풋이 됩니다)';
+    card.appendChild(ta);
+    const btnR = document.createElement('button');
+    btnR.type = 'button'; btnR.className = 'sa-reveal';
+    btnR.textContent = '✍️ 정답·해설 확인';
+    card.appendChild(btnR);
+    const box = document.createElement('div');
+    box.className = 'sa-answer'; box.hidden = true;
+    const kws = (item.keywords||[]).map(k=>`<span class="kw">${k}</span>`).join('');
+    box.innerHTML = `
+      <div class="sa-modela"><b>📌 모범답</b> — ${item.answer}</div>
+      ${kws?`<div class="sa-keys">채점 포인트:${kws}</div>`:''}
+      <div class="sa-grade"><span>스스로 채점 →</span>
+        <button type="button" data-g="ok">⭕ 맞았다</button>
+        <button type="button" data-g="no">❌ 틀렸다</button>
+      </div>`;
+    card.appendChild(box);
+    const ex = document.createElement('div');
+    ex.className = 'expl'; ex.id = 'expl-'+qi;
+    card.appendChild(ex);
+
+    btnR.addEventListener('click', ()=>{
+      if(graded || selected[qi].revealed) return;
+      selected[qi].typed = ta.value;
+      selected[qi].revealed = true;
+      ta.disabled = true; btnR.disabled = true;
+      box.hidden = false;
+      ex.innerHTML = `${item.expl}<span class="src">📄 출처: ${item.src}</span>`;
+      ex.classList.add('show');
+    });
+    box.querySelectorAll('.sa-grade button').forEach(b=>{
+      b.addEventListener('click', ()=>{
+        if(graded || !selected[qi].revealed) return;
+        selected[qi].self = (b.dataset.g === 'ok');
+        box.querySelectorAll('.sa-grade button').forEach(x=>x.classList.remove('on-ok','on-no'));
+        b.classList.add(b.dataset.g === 'ok' ? 'on-ok' : 'on-no');
+        updateProgress();
+      });
+    });
+  } else {
+    // ── 객관식: 정본 v2.1 로직 그대로 ──
+    const optsWrap = document.createElement('div');
+    optsWrap.className = 'opts ' + (isOX?'ox':'');
+    optsWrap.dataset.q = qi;
+    card.appendChild(optsWrap);
+    const ex = document.createElement('div');
+    ex.className = 'expl'; ex.id = 'expl-'+qi;
+    card.appendChild(ex);
+    item.opts.forEach((o, oi)=>{
+      const el = document.createElement('div');
+      el.className = 'opt';
+      el.dataset.q = qi; el.dataset.o = oi;
+      el.innerHTML = isOX
+        ? `<span>${o}</span>`
+        : `<span class="mk">${String.fromCharCode(65+oi)}</span><span>${o}</span>`;
+      el.addEventListener('click', ()=>{
+        if(graded) return;
+        selected[qi] = oi;
+        optsWrap.querySelectorAll('.opt').forEach(x=>x.classList.remove('sel'));
+        el.classList.add('sel');
+        updateProgress();
+      });
+      if(!isOX){
+        const eye = document.createElement('button');
+        eye.type = 'button';
+        eye.className = 'eye';
+        eye.textContent = '👁';
+        eye.title = '확실히 아닌 보기 희미하게 (다시 누르면 복구)';
+        eye.setAttribute('aria-label', '이 보기를 후보에서 제외');
+        eye.addEventListener('click', (ev)=>{
+          ev.stopPropagation();
+          if(graded) return;
+          el.classList.toggle('ruled');
+        });
+        el.appendChild(eye);
+      }
+      optsWrap.appendChild(el);
+    });
+  }
+  form.appendChild(card);
+});
+
+function updateProgress(){
+  const done = selected.filter((s,i)=> QUESTIONS[i].type==='단답' ? (s.self!==null) : (s!==null)).length;
+  document.getElementById('pcount').textContent = `${done} / ${QUESTIONS.length} 완료`;
+  document.getElementById('pbar').style.width = (done/QUESTIONS.length*100)+'%';
+  document.getElementById('submitBtn').disabled = done !== QUESTIONS.length;
+}
+updateProgress();
+
+const btn = document.getElementById('submitBtn');
+btn.addEventListener('click', ()=>{ if(!graded){ grade(); } else { location.reload(); } });
+
+document.getElementById('copyBtn').addEventListener('click', ()=>{
+  if(!LAST_PAYLOAD) return;
+  const txt = JSON.stringify(LAST_PAYLOAD, null, 2);
+  const done = ()=>{ document.getElementById('dlnote').textContent = "📋 복사 완료 — velog-posts/법무사/2차/claude_ox_오답/_inbox/에 붙여넣어 저장해도 된다"; };
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(txt).then(done).catch(()=>fallbackCopy(txt, done));
+  } else { fallbackCopy(txt, done); }
+});
+function fallbackCopy(txt, done){
+  const ta = document.createElement('textarea');
+  ta.value = txt; document.body.appendChild(ta); ta.select();
+  try{ document.execCommand('copy'); done(); }catch(e){}
+  ta.remove();
+}
+
+function grade(){
+  graded = true;
+  const built = buildPayload(QUESTIONS, selected, QUIZ_DATE, new Date().toISOString(), SCHEMA_VERSION);
+  LAST_PAYLOAD = built.payload;
+  QUESTIONS.forEach((item, qi)=>{
+    const ex = document.getElementById('expl-'+qi);
+    if(item.type === '단답'){
+      const correct = selected[qi].self === true;
+      const card = document.getElementById('card-'+qi);
+      card.classList.add(correct ? 'saok' : 'sano');
+      card.querySelectorAll('.sa-grade button').forEach(b=>{ b.style.cursor='default'; });
+      ex.innerHTML = `<span class="verdict" style="color:${correct?'var(--ok)':'var(--no)'}">${correct?'정답(자가채점)':'오답(자가채점)'}</span>${item.expl}<span class="src">📄 출처: ${item.src}</span>`;
+      ex.classList.add('show');
+      return;
+    }
+    const opts = document.querySelectorAll(`.opt[data-q="${qi}"]`);
+    opts.forEach((el, oi)=>{
+      el.style.cursor='default';
+      el.classList.remove('ruled');
+      const eye = el.querySelector('.eye');
+      if(eye) eye.remove();
+      if(oi === item.answer) el.classList.add('correct');
+      if(oi === selected[qi] && oi !== item.answer) el.classList.add('wrong');
+    });
+    const correct = selected[qi] === item.answer;
+    ex.innerHTML = `<span class="verdict" style="color:${correct?'var(--ok)':'var(--no)'}">${correct?'정답!':'오답'}</span>${item.expl}<span class="src">📄 출처: ${item.src}</span>`;
+    ex.classList.add('show');
+  });
+  const r = document.getElementById('result');
+  document.getElementById('score').textContent = built.score;
+  document.getElementById('rmsg').textContent = msgFor(built.score);
+  r.classList.add('show');
+  btn.textContent = '🔄 다시 풀기';
+  btn.classList.add('retry');
+  document.getElementById('copyBtn').classList.add('show');
+
+  // 결과 자동 다운로드 (주간 수거·원장 갱신이 읽는 파일)
+  downloadResult(built.payload);
+
+  r.scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+function downloadResult(payload){
+  try{
+    const blob = new Blob([JSON.stringify(payload,null,2)], {type:"application/json"});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `법무사2차_오답_${QUIZ_DATE}-RQ.json`;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url), 1500);
+    document.getElementById('dlnote').textContent =
+      payload.wrongCount>0 ? `💾 결과 저장됨(오답 ${payload.wrongCount}개) — 다운로드 폴더 확인` : "💾 만점 기록 저장됨";
+  }catch(e){
+    document.getElementById('dlnote').textContent = "⚠️ 자동 저장 실패 — 아래 '결과 JSON 복사'를 눌러 수동 저장";
+  }
+}
+
+function msgFor(s){
+  const t = QUESTIONS.length;
+  const r = s/t;
+  if(s===t)   return "만점. 이 페이스면 동차가 농담이 아니게 됩니다 ⚖️";
+  if(r>=0.8)  return "합격권. 틀린 개념만 해설 한 번 더 — 그게 오늘의 회독입니다.";
+  if(r>=0.6)  return "절반 이상. 단답에서 막힌 건 백지 인출감이 아직이라는 신호예요.";
+  if(r>=0.4)  return "흔들리는 개념이 보입니다. 해설 정독 후 다음 회차에서 재도전.";
+  return "괜찮아요. 인출 실패 + 피드백이 읽기보다 낫다는 게 연구 결론입니다.";
+}
+</script>
+</body>
+</html>

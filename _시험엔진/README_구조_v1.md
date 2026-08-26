@@ -1,6 +1,7 @@
 # 시험 학습엔진 — 베이스+프로파일 구조 v1 (2026-08-25)
 
 > **이 폴더(velog-posts/_시험엔진/)가 모든 퀴즈·오답 자동화의 단일 정본 저장소다.**
+> 이 엔진군의 공식 명칭은 **HG Infinite Recall System (HG 무한복습체계)** — 학습 메커니즘 정본은 `공부루틴_OS_v1.md`.
 > 정본을 velog-posts 밖(ai-guidelines 등)에 두지 않는 이유: **스케줄 세션은 태스크가 '생성된 시점'에 연결돼 있던 폴더만 마운트한다.** 2026-08-25 아침 공인중개사 데일리퀴즈 태스크(구 daily-quiz-gongin)가 ai-guidelines를 못 읽어 자동 실행이 실패한 실사고의 교훈. 모든 작업이 velog-posts를 반드시 쓰므로, 정본도 여기에 두면 의존 폴더가 1개로 줄어 이 실패 계급이 사라진다.
 
 ## 구조
@@ -33,6 +34,8 @@ _시험엔진/
 | 오답 파이프라인 (평일) | 베이스_오답파이프라인 | `gongin-odap-quiz` 08:40 | `bupsa-1cha-odap-quiz` 08:55 | `bupsa-2cha-odap-quiz` 08:50 |
 | 데일리퀴즈 | 베이스_데일리퀴즈 | `gongin-daily-quiz` 평일 09:07 | `bupsa-1cha-daily-quiz` 화·목 09:20 | `bupsa-2cha-daily-quiz` 화·목 09:15 (11/1 평일 전환은 두 트랙 공통) |
 | 주간 리포트 (월) | 베이스_주간리포트 | `gongin-weekly-report` 07:09 | `bupsa-1cha-weekly-report` 07:40 | `bupsa-2cha-weekly-report` 07:30 |
+
+이 밖에 **시험 횡단 스케줄러 1개**: `anki-weekly-deck` 금 08:00 — 원자카드 주간 덱 (베이스_앙키덱_v1, 산출: `_시험엔진/anki/출고/`, 맥락: `공부루틴_OS_v1.md` §6).
 
 세 사이클의 파일·원장·결과는 **완전 분리**되며 교차 참조 금지 (프로파일의 RESULT_GLOB·EXAM_DIR이 경계). 법무사 1차/2차는 노트 폴더만 공유하며, 1차 노트가 아직 없는 동안 1차 사이클은 "스킵/듀 0" 보고만 하는 게 정상이다.
 

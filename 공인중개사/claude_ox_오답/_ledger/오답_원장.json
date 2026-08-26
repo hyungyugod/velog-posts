@@ -1,6 +1,6 @@
 {
   "ledgerSchema": 3,
-  "generatedAt": "2026-08-25T09:18:41",
+  "generatedAt": "2026-08-26T16:30:05",
   "fsrsMeta": {
     "version": "6.3.2",
     "desiredRetention": 0.9,
@@ -8,273 +8,69 @@
     "fuzzing": false,
     "ratingMap": "wrong=Again, retryCorrect=Good"
   },
-  "sourceFiles": 44,
-  "v2Files": 13,
-  "submissions": 44,
+  "sourceFiles": 46,
+  "v2Files": 15,
+  "submissions": 46,
   "avgScore": 33.7,
   "avgTotal": 36,
   "perfectRuns": 4,
-  "totalWrongItems": 117,
-  "uniqueConcepts": 109,
+  "totalWrongItems": 121,
+  "uniqueConcepts": 111,
   "dateRange": [
     "2026-06-02",
-    "2026-08-24"
+    "2026-08-25"
   ],
   "statusCounts": {
-    "상습": 4,
+    "상습": 5,
     "재도전중": 86,
-    "졸업후보": 10,
+    "졸업후보": 11,
     "졸업": 9
   },
   "fsrsFallbacks": 0,
   "subjectWeakness": {
+    "부동산공법": 32,
     "민법": 31,
-    "부동산공법": 30,
     "공인중개사법": 16,
+    "부동산세법": 15,
     "부동산학개론": 15,
-    "부동산세법": 13,
     "부동산공시법": 12
   },
   "dueQueue": [
     {
-      "conceptKey": "모의고사 2차 2-10",
-      "subject": "부동산공법",
+      "conceptKey": "부동산세법 3-4",
+      "subject": "부동산세법",
       "status": "상습",
       "timesWrong": 2,
       "retryMissed": 1,
-      "consecutiveCorrect": 1,
-      "lastWrong": "2026-08-19",
-      "nextReviewDate": "2026-08-21",
-      "retrievability": 0.776,
-      "stability": 0.937
-    },
-    {
-      "conceptKey": "부동산공시법 1-3",
-      "subject": "부동산공시법",
-      "status": "상습",
-      "timesWrong": 3,
-      "retryMissed": 1,
       "consecutiveCorrect": 0,
-      "lastWrong": "2026-08-24",
-      "nextReviewDate": "2026-08-25",
-      "retrievability": 1.0,
-      "stability": 0.94
-    },
-    {
-      "conceptKey": "모의고사 2차 1-5",
-      "subject": "공인중개사법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "lastWrong": "2026-06-08-3",
-      "nextReviewDate": "2026-06-09",
-      "retrievability": 0.404,
-      "stability": 0.212
-    },
-    {
-      "conceptKey": "민법 1-2·1-3",
-      "subject": "민법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "lastWrong": "2026-06-08-민법",
-      "nextReviewDate": "2026-06-09",
-      "retrievability": 0.404,
-      "stability": 0.212
-    },
-    {
-      "conceptKey": "민법 1-5",
-      "subject": "민법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "lastWrong": "2026-06-08-민법",
-      "nextReviewDate": "2026-06-09",
-      "retrievability": 0.404,
-      "stability": 0.212
-    },
-    {
-      "conceptKey": "민법 1-8",
-      "subject": "민법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "lastWrong": "2026-06-08-4",
-      "nextReviewDate": "2026-06-09",
-      "retrievability": 0.404,
-      "stability": 0.212
-    },
-    {
-      "conceptKey": "민법 1-9",
-      "subject": "민법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "lastWrong": "2026-06-08-5",
-      "nextReviewDate": "2026-06-09",
-      "retrievability": 0.404,
-      "stability": 0.212
-    },
-    {
-      "conceptKey": "민법 3-1",
-      "subject": "민법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "lastWrong": "2026-06-08-민법",
-      "nextReviewDate": "2026-06-09",
-      "retrievability": 0.404,
-      "stability": 0.212
-    },
-    {
-      "conceptKey": "민법 3-1·3-2",
-      "subject": "민법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "lastWrong": "2026-06-08-민법",
-      "nextReviewDate": "2026-06-09",
-      "retrievability": 0.404,
-      "stability": 0.212
-    },
-    {
-      "conceptKey": "부동산세법 3-4",
-      "subject": "부동산세법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "lastWrong": "2026-06-08-4",
-      "nextReviewDate": "2026-06-09",
-      "retrievability": 0.404,
-      "stability": 0.212
+      "lastWrong": "2026-08-25",
+      "nextReviewDate": "2026-08-26",
+      "retrievability": 0.752,
+      "stability": 0.184
     },
     {
       "conceptKey": "부동산세법 5-1",
       "subject": "부동산세법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
+      "status": "상습",
+      "timesWrong": 2,
+      "retryMissed": 1,
       "consecutiveCorrect": 0,
-      "lastWrong": "2026-06-08-5",
-      "nextReviewDate": "2026-06-09",
-      "retrievability": 0.404,
-      "stability": 0.212
+      "lastWrong": "2026-08-25",
+      "nextReviewDate": "2026-08-26",
+      "retrievability": 0.752,
+      "stability": 0.184
     },
     {
-      "conceptKey": "오답노트 2026-05-20 #8",
+      "conceptKey": "부동산공법 도시개발조합 동의요건",
       "subject": "부동산공법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
+      "status": "상습",
+      "timesWrong": 2,
+      "retryMissed": 2,
       "consecutiveCorrect": 0,
-      "lastWrong": "2026-06-08",
-      "nextReviewDate": "2026-06-09",
-      "retrievability": 0.404,
-      "stability": 0.212
-    },
-    {
-      "conceptKey": "오답노트 2026-05-20 #9·10",
-      "subject": "부동산공법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "lastWrong": "2026-06-08",
-      "nextReviewDate": "2026-06-09",
-      "retrievability": 0.404,
-      "stability": 0.212
-    },
-    {
-      "conceptKey": "공법 오답노트(재건축 조합 동의요건)",
-      "subject": "부동산공법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "lastWrong": "2026-06-09",
-      "nextReviewDate": "2026-06-10",
-      "retrievability": 0.405,
-      "stability": 0.212
-    },
-    {
-      "conceptKey": "공인중개사법 1-15",
-      "subject": "공인중개사법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "lastWrong": "2026-06-09-3",
-      "nextReviewDate": "2026-06-10",
-      "retrievability": 0.405,
-      "stability": 0.212
-    },
-    {
-      "conceptKey": "민법 6-2",
-      "subject": "민법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "lastWrong": "2026-06-09-2",
-      "nextReviewDate": "2026-06-10",
-      "retrievability": 0.405,
-      "stability": 0.212
-    },
-    {
-      "conceptKey": "부동산공시법 2-1",
-      "subject": "부동산공시법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "lastWrong": "2026-06-09",
-      "nextReviewDate": "2026-06-10",
-      "retrievability": 0.405,
-      "stability": 0.212
-    },
-    {
-      "conceptKey": "민법 §5 물권적 청구권",
-      "subject": "민법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "lastWrong": "2026-06-11",
-      "nextReviewDate": "2026-06-12",
-      "retrievability": 0.406,
-      "stability": 0.212
-    },
-    {
-      "conceptKey": "부동산공법 1-3",
-      "subject": "부동산공법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "lastWrong": "2026-06-11-2",
-      "nextReviewDate": "2026-06-12",
-      "retrievability": 0.406,
-      "stability": 0.212
-    },
-    {
-      "conceptKey": "부동산공시법 1-2 지번 부여",
-      "subject": "부동산공시법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "lastWrong": "2026-06-11",
-      "nextReviewDate": "2026-06-12",
-      "retrievability": 0.406,
-      "stability": 0.212
+      "lastWrong": "2026-08-24",
+      "nextReviewDate": "2026-08-26",
+      "retrievability": 0.89,
+      "stability": 1.737
     },
     {
       "conceptKey": "부동산학개론 1-1",
@@ -285,7 +81,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-11-2",
       "nextReviewDate": "2026-06-12",
-      "retrievability": 0.406,
+      "retrievability": 0.405,
       "stability": 0.212
     },
     {
@@ -297,7 +93,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-11-2",
       "nextReviewDate": "2026-06-12",
-      "retrievability": 0.406,
+      "retrievability": 0.405,
       "stability": 0.212
     },
     {
@@ -309,7 +105,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-17",
       "nextReviewDate": "2026-06-18",
-      "retrievability": 0.412,
+      "retrievability": 0.41,
       "stability": 0.212
     },
     {
@@ -321,7 +117,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-17",
       "nextReviewDate": "2026-06-18",
-      "retrievability": 0.412,
+      "retrievability": 0.41,
       "stability": 0.212
     },
     {
@@ -333,7 +129,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-21-부동산공법",
       "nextReviewDate": "2026-06-22",
-      "retrievability": 0.416,
+      "retrievability": 0.414,
       "stability": 0.212
     },
     {
@@ -345,7 +141,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-21",
       "nextReviewDate": "2026-06-22",
-      "retrievability": 0.416,
+      "retrievability": 0.414,
       "stability": 0.212
     },
     {
@@ -357,7 +153,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-21",
       "nextReviewDate": "2026-06-22",
-      "retrievability": 0.416,
+      "retrievability": 0.414,
       "stability": 0.212
     },
     {
@@ -369,7 +165,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-21-민법",
       "nextReviewDate": "2026-06-22",
-      "retrievability": 0.416,
+      "retrievability": 0.414,
       "stability": 0.212
     },
     {
@@ -381,7 +177,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-21-부동산공법",
       "nextReviewDate": "2026-06-22",
-      "retrievability": 0.416,
+      "retrievability": 0.414,
       "stability": 0.212
     },
     {
@@ -393,7 +189,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-21-부동산공법",
       "nextReviewDate": "2026-06-22",
-      "retrievability": 0.416,
+      "retrievability": 0.414,
       "stability": 0.212
     },
     {
@@ -405,7 +201,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-22",
       "nextReviewDate": "2026-06-23",
-      "retrievability": 0.417,
+      "retrievability": 0.415,
       "stability": 0.212
     },
     {
@@ -417,7 +213,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-22",
       "nextReviewDate": "2026-06-23",
-      "retrievability": 0.417,
+      "retrievability": 0.415,
       "stability": 0.212
     },
     {
@@ -429,7 +225,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-22",
       "nextReviewDate": "2026-06-23",
-      "retrievability": 0.417,
+      "retrievability": 0.415,
       "stability": 0.212
     },
     {
@@ -441,7 +237,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-22",
       "nextReviewDate": "2026-06-23",
-      "retrievability": 0.417,
+      "retrievability": 0.415,
       "stability": 0.212
     },
     {
@@ -453,7 +249,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-22",
       "nextReviewDate": "2026-06-23",
-      "retrievability": 0.417,
+      "retrievability": 0.415,
       "stability": 0.212
     },
     {
@@ -465,7 +261,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-22",
       "nextReviewDate": "2026-06-23",
-      "retrievability": 0.417,
+      "retrievability": 0.415,
       "stability": 0.212
     },
     {
@@ -477,7 +273,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-29-2",
       "nextReviewDate": "2026-06-30",
-      "retrievability": 0.424,
+      "retrievability": 0.422,
       "stability": 0.212
     },
     {
@@ -489,7 +285,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-29-2",
       "nextReviewDate": "2026-06-30",
-      "retrievability": 0.424,
+      "retrievability": 0.422,
       "stability": 0.212
     },
     {
@@ -501,7 +297,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-29-2",
       "nextReviewDate": "2026-06-30",
-      "retrievability": 0.424,
+      "retrievability": 0.422,
       "stability": 0.212
     },
     {
@@ -513,7 +309,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-29-2",
       "nextReviewDate": "2026-06-30",
-      "retrievability": 0.424,
+      "retrievability": 0.422,
       "stability": 0.212
     },
     {
@@ -525,7 +321,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-29",
       "nextReviewDate": "2026-06-30",
-      "retrievability": 0.424,
+      "retrievability": 0.422,
       "stability": 0.212
     },
     {
@@ -537,7 +333,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-06-29",
       "nextReviewDate": "2026-06-30",
-      "retrievability": 0.424,
+      "retrievability": 0.422,
       "stability": 0.212
     },
     {
@@ -549,7 +345,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-07-01",
       "nextReviewDate": "2026-07-02",
-      "retrievability": 0.427,
+      "retrievability": 0.424,
       "stability": 0.212
     },
     {
@@ -561,7 +357,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-07-02",
       "nextReviewDate": "2026-07-03",
-      "retrievability": 0.428,
+      "retrievability": 0.425,
       "stability": 0.212
     },
     {
@@ -573,7 +369,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-07-02",
       "nextReviewDate": "2026-07-03",
-      "retrievability": 0.428,
+      "retrievability": 0.425,
       "stability": 0.212
     },
     {
@@ -585,7 +381,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-07-08",
       "nextReviewDate": "2026-07-09",
-      "retrievability": 0.436,
+      "retrievability": 0.433,
       "stability": 0.212
     },
     {
@@ -597,7 +393,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-07-08",
       "nextReviewDate": "2026-07-09",
-      "retrievability": 0.436,
+      "retrievability": 0.433,
       "stability": 0.212
     },
     {
@@ -609,7 +405,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-07-13-2",
       "nextReviewDate": "2026-07-14",
-      "retrievability": 0.443,
+      "retrievability": 0.44,
       "stability": 0.212
     },
     {
@@ -621,7 +417,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-07-13",
       "nextReviewDate": "2026-07-14",
-      "retrievability": 0.443,
+      "retrievability": 0.44,
       "stability": 0.212
     },
     {
@@ -633,7 +429,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-07-13",
       "nextReviewDate": "2026-07-14",
-      "retrievability": 0.443,
+      "retrievability": 0.44,
       "stability": 0.212
     },
     {
@@ -645,7 +441,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-07-13",
       "nextReviewDate": "2026-07-14",
-      "retrievability": 0.443,
+      "retrievability": 0.44,
       "stability": 0.212
     },
     {
@@ -657,7 +453,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-07-13",
       "nextReviewDate": "2026-07-14",
-      "retrievability": 0.443,
+      "retrievability": 0.44,
       "stability": 0.212
     },
     {
@@ -669,7 +465,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-07-14",
       "nextReviewDate": "2026-07-15",
-      "retrievability": 0.445,
+      "retrievability": 0.442,
       "stability": 0.212
     },
     {
@@ -681,7 +477,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-07-14",
       "nextReviewDate": "2026-07-15",
-      "retrievability": 0.445,
+      "retrievability": 0.442,
       "stability": 0.212
     },
     {
@@ -693,7 +489,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-07-14",
       "nextReviewDate": "2026-07-15",
-      "retrievability": 0.445,
+      "retrievability": 0.442,
       "stability": 0.212
     },
     {
@@ -705,7 +501,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-07-20",
       "nextReviewDate": "2026-07-21",
-      "retrievability": 0.456,
+      "retrievability": 0.452,
       "stability": 0.212
     },
     {
@@ -717,7 +513,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-07-20",
       "nextReviewDate": "2026-07-21",
-      "retrievability": 0.456,
+      "retrievability": 0.452,
       "stability": 0.212
     },
     {
@@ -729,7 +525,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-07-20",
       "nextReviewDate": "2026-07-21",
-      "retrievability": 0.456,
+      "retrievability": 0.452,
       "stability": 0.212
     },
     {
@@ -741,7 +537,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-07-20",
       "nextReviewDate": "2026-07-21",
-      "retrievability": 0.456,
+      "retrievability": 0.452,
       "stability": 0.212
     },
     {
@@ -753,7 +549,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-07-24",
       "nextReviewDate": "2026-07-25",
-      "retrievability": 0.465,
+      "retrievability": 0.46,
       "stability": 0.212
     },
     {
@@ -765,7 +561,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-07-24",
       "nextReviewDate": "2026-07-25",
-      "retrievability": 0.465,
+      "retrievability": 0.46,
       "stability": 0.212
     },
     {
@@ -777,7 +573,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-14",
       "nextReviewDate": "2026-08-15",
-      "retrievability": 0.552,
+      "retrievability": 0.537,
       "stability": 0.212
     },
     {
@@ -789,7 +585,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-14-민법특화",
       "nextReviewDate": "2026-08-15",
-      "retrievability": 0.552,
+      "retrievability": 0.537,
       "stability": 0.212
     },
     {
@@ -801,7 +597,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-14-민법특화",
       "nextReviewDate": "2026-08-15",
-      "retrievability": 0.552,
+      "retrievability": 0.537,
       "stability": 0.212
     },
     {
@@ -813,7 +609,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-14-민법특화",
       "nextReviewDate": "2026-08-15",
-      "retrievability": 0.552,
+      "retrievability": 0.537,
       "stability": 0.212
     },
     {
@@ -825,7 +621,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-14",
       "nextReviewDate": "2026-08-15",
-      "retrievability": 0.552,
+      "retrievability": 0.537,
       "stability": 0.212
     },
     {
@@ -837,7 +633,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-14",
       "nextReviewDate": "2026-08-15",
-      "retrievability": 0.552,
+      "retrievability": 0.537,
       "stability": 0.212
     },
     {
@@ -849,7 +645,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-19",
       "nextReviewDate": "2026-08-20",
-      "retrievability": 0.612,
+      "retrievability": 0.582,
       "stability": 0.212
     },
     {
@@ -861,7 +657,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-19",
       "nextReviewDate": "2026-08-20",
-      "retrievability": 0.612,
+      "retrievability": 0.582,
       "stability": 0.212
     },
     {
@@ -873,7 +669,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-19",
       "nextReviewDate": "2026-08-20",
-      "retrievability": 0.612,
+      "retrievability": 0.582,
       "stability": 0.212
     },
     {
@@ -885,7 +681,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-21",
       "nextReviewDate": "2026-08-22",
-      "retrievability": 0.66,
+      "retrievability": 0.612,
       "stability": 0.212
     },
     {
@@ -897,7 +693,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-21",
       "nextReviewDate": "2026-08-22",
-      "retrievability": 0.66,
+      "retrievability": 0.612,
       "stability": 0.212
     },
     {
@@ -909,7 +705,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-21",
       "nextReviewDate": "2026-08-22",
-      "retrievability": 0.66,
+      "retrievability": 0.612,
       "stability": 0.212
     },
     {
@@ -921,7 +717,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-06-21-부동산공법",
       "nextReviewDate": "2026-07-12",
-      "retrievability": 0.68,
+      "retrievability": 0.676,
       "stability": 4.126
     },
     {
@@ -933,7 +729,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-06-29",
       "nextReviewDate": "2026-07-17",
-      "retrievability": 0.688,
+      "retrievability": 0.683,
       "stability": 3.98
     },
     {
@@ -945,7 +741,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-06-25",
       "nextReviewDate": "2026-07-17",
-      "retrievability": 0.692,
+      "retrievability": 0.688,
       "stability": 4.168
     },
     {
@@ -957,80 +753,8 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-06-24",
       "nextReviewDate": "2026-07-17",
-      "retrievability": 0.693,
+      "retrievability": 0.689,
       "stability": 4.208
-    },
-    {
-      "conceptKey": "민법 1-1 반사회질서",
-      "subject": "민법",
-      "status": "재도전중",
-      "timesWrong": 0,
-      "retryMissed": 0,
-      "consecutiveCorrect": 1,
-      "lastWrong": null,
-      "nextReviewDate": "2026-08-16",
-      "retrievability": 0.774,
-      "stability": 2.307
-    },
-    {
-      "conceptKey": "민법 1-1 통정허위표시 제3자",
-      "subject": "민법",
-      "status": "재도전중",
-      "timesWrong": 0,
-      "retryMissed": 0,
-      "consecutiveCorrect": 1,
-      "lastWrong": null,
-      "nextReviewDate": "2026-08-16",
-      "retrievability": 0.774,
-      "stability": 2.307
-    },
-    {
-      "conceptKey": "민법 1-4 복대리",
-      "subject": "민법",
-      "status": "재도전중",
-      "timesWrong": 0,
-      "retryMissed": 0,
-      "consecutiveCorrect": 1,
-      "lastWrong": null,
-      "nextReviewDate": "2026-08-16",
-      "retrievability": 0.774,
-      "stability": 2.307
-    },
-    {
-      "conceptKey": "유치권",
-      "subject": "민법",
-      "status": "재도전중",
-      "timesWrong": 0,
-      "retryMissed": 0,
-      "consecutiveCorrect": 1,
-      "lastWrong": null,
-      "nextReviewDate": "2026-08-16",
-      "retrievability": 0.774,
-      "stability": 2.307
-    },
-    {
-      "conceptKey": "유치권 소멸",
-      "subject": "민법",
-      "status": "재도전중",
-      "timesWrong": 0,
-      "retryMissed": 0,
-      "consecutiveCorrect": 1,
-      "lastWrong": null,
-      "nextReviewDate": "2026-08-16",
-      "retrievability": 0.774,
-      "stability": 2.307
-    },
-    {
-      "conceptKey": "공인중개사법 19 토지거래허가구역",
-      "subject": "공인중개사법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 1,
-      "lastWrong": "2026-07-01",
-      "nextReviewDate": "2026-08-19",
-      "retrievability": 0.842,
-      "stability": 4.808
     },
     {
       "conceptKey": "공인중개사법 1-5 허가구역 지정효력",
@@ -1041,7 +765,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-24",
       "nextReviewDate": "2026-08-25",
-      "retrievability": 1.0,
+      "retrievability": 0.698,
       "stability": 0.212
     },
     {
@@ -1053,7 +777,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-24",
       "nextReviewDate": "2026-08-25",
-      "retrievability": 1.0,
+      "retrievability": 0.698,
       "stability": 0.212
     },
     {
@@ -1065,7 +789,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-24",
       "nextReviewDate": "2026-08-25",
-      "retrievability": 1.0,
+      "retrievability": 0.698,
       "stability": 0.212
     },
     {
@@ -1077,8 +801,104 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-24",
       "nextReviewDate": "2026-08-25",
-      "retrievability": 1.0,
+      "retrievability": 0.698,
       "stability": 0.212
+    },
+    {
+      "conceptKey": "민법 1-1 반사회질서",
+      "subject": "민법",
+      "status": "재도전중",
+      "timesWrong": 0,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "lastWrong": null,
+      "nextReviewDate": "2026-08-16",
+      "retrievability": 0.757,
+      "stability": 2.307
+    },
+    {
+      "conceptKey": "민법 1-1 통정허위표시 제3자",
+      "subject": "민법",
+      "status": "재도전중",
+      "timesWrong": 0,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "lastWrong": null,
+      "nextReviewDate": "2026-08-16",
+      "retrievability": 0.757,
+      "stability": 2.307
+    },
+    {
+      "conceptKey": "민법 1-4 복대리",
+      "subject": "민법",
+      "status": "재도전중",
+      "timesWrong": 0,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "lastWrong": null,
+      "nextReviewDate": "2026-08-16",
+      "retrievability": 0.757,
+      "stability": 2.307
+    },
+    {
+      "conceptKey": "유치권",
+      "subject": "민법",
+      "status": "재도전중",
+      "timesWrong": 0,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "lastWrong": null,
+      "nextReviewDate": "2026-08-16",
+      "retrievability": 0.757,
+      "stability": 2.307
+    },
+    {
+      "conceptKey": "유치권 소멸",
+      "subject": "민법",
+      "status": "재도전중",
+      "timesWrong": 0,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "lastWrong": null,
+      "nextReviewDate": "2026-08-16",
+      "retrievability": 0.757,
+      "stability": 2.307
+    },
+    {
+      "conceptKey": "부동산공법 2-2 허가권자와 허가 취소",
+      "subject": "부동산공법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-08-25",
+      "nextReviewDate": "2026-08-26",
+      "retrievability": 0.766,
+      "stability": 0.212
+    },
+    {
+      "conceptKey": "부동산공법 2-5 안전관리 예치금",
+      "subject": "부동산공법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-08-25",
+      "nextReviewDate": "2026-08-26",
+      "retrievability": 0.766,
+      "stability": 0.212
+    },
+    {
+      "conceptKey": "공인중개사법 19 토지거래허가구역",
+      "subject": "공인중개사법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "lastWrong": "2026-07-01",
+      "nextReviewDate": "2026-08-19",
+      "retrievability": 0.826,
+      "stability": 4.808
     },
     {
       "conceptKey": "부동산세법 2-5 취득시기·9 물납/부과시점",
@@ -1089,7 +909,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-07-01",
       "nextReviewDate": "2026-07-20",
-      "retrievability": 0.736,
+      "retrievability": 0.732,
       "stability": 6.412
     },
     {
@@ -1101,7 +921,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-06-25",
       "nextReviewDate": "2026-07-21",
-      "retrievability": 0.741,
+      "retrievability": 0.736,
       "stability": 6.707
     },
     {
@@ -1113,7 +933,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-06-17",
       "nextReviewDate": "2026-07-29",
-      "retrievability": 0.817,
+      "retrievability": 0.812,
       "stability": 14.776
     },
     {
@@ -1125,7 +945,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-06-08-민법",
       "nextReviewDate": "2026-08-18",
-      "retrievability": 0.831,
+      "retrievability": 0.814,
       "stability": 4.221
     },
     {
@@ -1137,7 +957,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-06-08",
       "nextReviewDate": "2026-08-18",
-      "retrievability": 0.831,
+      "retrievability": 0.814,
       "stability": 4.221
     },
     {
@@ -1149,8 +969,20 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-06-11-2",
       "nextReviewDate": "2026-08-19",
-      "retrievability": 0.843,
+      "retrievability": 0.827,
       "stability": 4.849
+    },
+    {
+      "conceptKey": "부동산공법 1-5",
+      "subject": "부동산공법",
+      "status": "졸업후보",
+      "timesWrong": 3,
+      "retryMissed": 2,
+      "consecutiveCorrect": 2,
+      "lastWrong": "2026-08-20",
+      "nextReviewDate": "2026-08-26",
+      "retrievability": 0.882,
+      "stability": 1.553
     }
   ],
   "ledger": [
@@ -1198,7 +1030,7 @@
         "state": "Review",
         "reps": 5,
         "lapses": 2,
-        "retrievability": 1.0
+        "retrievability": 0.89
       },
       "fsrsFallback": false
     },
@@ -1210,13 +1042,13 @@
       "status": "상습",
       "timesWrong": 3,
       "retryMissed": 1,
-      "consecutiveCorrect": 0,
+      "consecutiveCorrect": 1,
       "firstWrong": "2026-06-09",
       "lastWrong": "2026-08-24",
-      "lastCorrect": "2026-08-21",
-      "lastResult": "wrong",
-      "lastDp": "2026-08-24",
-      "nextReviewDate": "2026-08-25",
+      "lastCorrect": "2026-08-25",
+      "lastResult": "correct",
+      "lastDp": "2026-08-25",
+      "nextReviewDate": "2026-08-27",
       "dates": [
         "2026-06-09",
         "2026-06-11-2",
@@ -1249,61 +1081,109 @@
         }
       ],
       "fsrs": {
-        "stability": 0.94,
-        "difficulty": 9.584,
-        "due": "2026-08-25",
+        "stability": 1.698,
+        "difficulty": 9.57,
+        "due": "2026-08-27",
         "state": "Review",
-        "reps": 5,
+        "reps": 6,
         "lapses": 3,
-        "retrievability": 1.0
+        "retrievability": 0.932
       },
       "fsrsFallback": false
     },
     {
-      "conceptKey": "모의고사 2차 2-10",
+      "conceptKey": "부동산세법 3-4",
       "aliases": [],
-      "subject": "부동산공법",
-      "concept": "모의고사 2차 2-10",
+      "subject": "부동산세법",
+      "concept": "부동산세법 3-4",
       "status": "상습",
       "timesWrong": 2,
       "retryMissed": 1,
-      "consecutiveCorrect": 1,
-      "firstWrong": "2026-06-08-2",
-      "lastWrong": "2026-08-19",
-      "lastCorrect": "2026-08-20",
-      "lastResult": "correct",
-      "lastDp": "2026-08-20",
-      "nextReviewDate": "2026-08-21",
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-06-08-4",
+      "lastWrong": "2026-08-25",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-08-25",
+      "nextReviewDate": "2026-08-26",
       "dates": [
-        "2026-06-08-2",
-        "2026-08-19"
+        "2026-06-08-4",
+        "2026-08-25"
       ],
       "samples": [
         {
-          "date": "2026-06-08-2",
-          "type": "객관식",
-          "q": "건물 외벽에 접한 길이 10m, 폭 2m인 노대(발코니)가 있을 때 바닥면적에 산입되는 면적은?",
-          "myAnswer": "15㎡",
-          "correct": "5㎡",
-          "expl": "노대 면적(10×2=20㎡)에서 '가장 긴 외벽에 접한 길이 × 1.5m'(10×1.5=15㎡)를 뺀 5㎡만 산입한다. 외벽에서 1.5m까지는 제외하고 그 너머만 포함시키는 구조다. 난간 설치 여부는 무관하다."
+          "date": "2026-06-08-4",
+          "type": "OX",
+          "q": "다른 주택의 부속토지만 소유한 경우에도 재산세 1세대 1주택 판단 시 주택 수에 포함된다.",
+          "myAnswer": "O",
+          "correct": "X",
+          "expl": "X. 다른 주택의 부속토지만 소유한 것은 1세대 1주택 계산에 포함되지 않는다. 건물 없이 땅만 가진 것을 '주택 보유'로 보지 않는 것이다."
         },
         {
-          "date": "2026-08-19",
-          "type": "계산",
-          "q": "🔁 건축물의 외벽에 접하여 설치된 노대의 크기가 가로 8미터, 세로 2.5미터인 경우 바닥면적에 산입되는 면적은? (노대가 접한 가장 긴 외벽의 길이는 8미터이며 다른 조건은 동일)",
-          "myAnswer": "12제곱미터",
-          "correct": "8제곱미터",
-          "expl": "[정답 근거] 노대 전체 면적 8 × 2.5 = 20제곱미터에서 가장 긴 외벽에 접한 길이에 1.5미터를 곱한 8 × 1.5 = 12제곱미터를 뺀 8제곱미터만 산입한다. [메커니즘] 외벽에서 1.5미터까지는 처마에 준하는 완충 공간으로 보아 면적에서 빼주는 설계다. [함정] 노대 전체 면적이나 공제되는 면적을 그대로 답으로 고르게 만드는 선택지가 함께 붙는다."
+          "date": "2026-08-25",
+          "type": "OX",
+          "q": "🔁 다른 주택의 부속토지만을 소유한 자는 재산세 1세대 1주택 판정에서 주택 수에 산입되지 아니한다.",
+          "myAnswer": "X",
+          "correct": "O",
+          "expl": "[정답 근거] 다른 주택의 부속토지만 소유한 것은 1세대 1주택 계산에서 주택 수에 넣지 않는다. [메커니즘] 주택 수는 주거용 건물의 보유를 기준으로 세는 것이라 건물 없는 땅만으로는 주택 보유로 보지 않는다. [함정] 재산세 과세대상이 된다는 사실과 주택 수 산입을 같은 것으로 묶어 버린다."
         }
       ],
       "fsrs": {
-        "stability": 0.937,
-        "difficulty": 8.793,
-        "due": "2026-08-21",
+        "stability": 0.184,
+        "difficulty": 8.806,
+        "due": "2026-08-26",
         "state": "Review",
-        "reps": 3,
+        "reps": 2,
         "lapses": 2,
-        "retrievability": 0.776
+        "retrievability": 0.752
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "부동산세법 5-1",
+      "aliases": [],
+      "subject": "부동산세법",
+      "concept": "부동산세법 5-1",
+      "status": "상습",
+      "timesWrong": 2,
+      "retryMissed": 1,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-06-08-5",
+      "lastWrong": "2026-08-25",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-08-25",
+      "nextReviewDate": "2026-08-26",
+      "dates": [
+        "2026-06-08-5",
+        "2026-08-25"
+      ],
+      "samples": [
+        {
+          "date": "2026-06-08-5",
+          "type": "객관식",
+          "q": "신고납부 방식인 취득세 1,000만원을 미납한 채 100일이 경과했다. 납부지연가산세는? (1일당 미납세액의 10만분의 22)",
+          "myAnswer": "2만 2,000원",
+          "correct": "22만원",
+          "expl": "1,000만 × 22/100,000 × 100일 = 22만원. 신고납부 세목은 일할 계산이며 한도는 미납세액의 75%다. 고지서 방식(재산세 등)은 3% 즉시 가산 + 월할 가산(45만원 이하 미적용)으로 구조가 다르다."
+        },
+        {
+          "date": "2026-08-25",
+          "type": "계산",
+          "q": "🔁 신고납부 방식인 취득세 1,500만원을 신고만 하고 납부하지 않은 채 200일이 지났다. 납부지연가산세는? (1일당 미납세액의 10만분의 22이며 다른 가산세는 고려하지 않는다)",
+          "myAnswer": "33만원",
+          "correct": "66만원",
+          "expl": "[정답 근거] 1,500만원에 10만분의 22와 200일을 곱하면 66만원이다. [메커니즘] 신고납부 세목은 미납 기간을 하루 단위로 곱해 계산하고 한도는 미납세액의 75퍼센트다. [함정] 고지서 방식은 3퍼센트 즉시 가산에 월할 계산이라 구조가 달라 섞으면 자릿수가 어긋난다."
+        }
+      ],
+      "fsrs": {
+        "stability": 0.184,
+        "difficulty": 8.806,
+        "due": "2026-08-26",
+        "state": "Review",
+        "reps": 2,
+        "lapses": 2,
+        "retrievability": 0.752
       },
       "fsrsFallback": false
     },
@@ -1351,592 +1231,7 @@
         "state": "Review",
         "reps": 5,
         "lapses": 2,
-        "retrievability": 1.0
-      },
-      "fsrsFallback": false
-    },
-    {
-      "conceptKey": "모의고사 2차 1-5",
-      "aliases": [],
-      "subject": "공인중개사법",
-      "concept": "모의고사 2차 1-5",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "firstWrong": "2026-06-08-3",
-      "lastWrong": "2026-06-08-3",
-      "lastCorrect": null,
-      "lastResult": "wrong",
-      "lastDp": "2026-06-08",
-      "nextReviewDate": "2026-06-09",
-      "dates": [
-        "2026-06-08-3"
-      ],
-      "samples": [
-        {
-          "date": "2026-06-08-3",
-          "type": "객관식",
-          "q": "부칙상 개업공인중개사(중개인)가 사무소 명칭에 사용할 수 있는 문자는?",
-          "myAnswer": "공인중개사사무소",
-          "correct": "부동산중개",
-          "expl": "일반 개업공인중개사는 '공인중개사사무소' 또는 '부동산중개' 문자를 쓸 수 있지만, 부칙상 개업공인중개사는 공인중개사 자격이 없으므로 '부동산중개' 문자만 사용할 수 있다."
-        }
-      ],
-      "fsrs": {
-        "stability": 0.212,
-        "difficulty": 6.413,
-        "due": "2026-06-09",
-        "state": "Review",
-        "reps": 1,
-        "lapses": 1,
-        "retrievability": 0.404
-      },
-      "fsrsFallback": false
-    },
-    {
-      "conceptKey": "민법 1-8",
-      "aliases": [],
-      "subject": "민법",
-      "concept": "민법 1-8",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "firstWrong": "2026-06-08-4",
-      "lastWrong": "2026-06-08-4",
-      "lastCorrect": null,
-      "lastResult": "wrong",
-      "lastDp": "2026-06-08",
-      "nextReviewDate": "2026-06-09",
-      "dates": [
-        "2026-06-08-4"
-      ],
-      "samples": [
-        {
-          "date": "2026-06-08-4",
-          "type": "객관식",
-          "q": "명의신탁에 관한 설명으로 옳지 <b>않은</b> 것은?",
-          "myAnswer": "계약명의신탁에서 수탁자가 자의로 신탁자에게 이전등기를 하면 신탁자는 소유권을 취득한다",
-          "correct": "무효 명의신탁에서 수탁자가 제3자에게 양도했다가 다시 소유권을 취득하면, 신탁자는 소유물반환을 청구할 수 있다",
-          "expl": "수탁자의 재취득은 명의신탁과 무관한 '새로운 원인'에 의한 취득이므로 신탁자는 소유물반환을 청구할 수 없다. ③은 약정의 이행이 아닌 새로운 법률행위라서 유효 — 두 사례 모두 '새 원인이냐'가 판단축이다."
-        }
-      ],
-      "fsrs": {
-        "stability": 0.212,
-        "difficulty": 6.413,
-        "due": "2026-06-09",
-        "state": "Review",
-        "reps": 1,
-        "lapses": 1,
-        "retrievability": 0.404
-      },
-      "fsrsFallback": false
-    },
-    {
-      "conceptKey": "부동산세법 3-4",
-      "aliases": [],
-      "subject": "부동산세법",
-      "concept": "부동산세법 3-4",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "firstWrong": "2026-06-08-4",
-      "lastWrong": "2026-06-08-4",
-      "lastCorrect": null,
-      "lastResult": "wrong",
-      "lastDp": "2026-06-08",
-      "nextReviewDate": "2026-06-09",
-      "dates": [
-        "2026-06-08-4"
-      ],
-      "samples": [
-        {
-          "date": "2026-06-08-4",
-          "type": "OX",
-          "q": "다른 주택의 부속토지만 소유한 경우에도 재산세 1세대 1주택 판단 시 주택 수에 포함된다.",
-          "myAnswer": "O",
-          "correct": "X",
-          "expl": "X. 다른 주택의 부속토지만 소유한 것은 1세대 1주택 계산에 포함되지 않는다. 건물 없이 땅만 가진 것을 '주택 보유'로 보지 않는 것이다."
-        }
-      ],
-      "fsrs": {
-        "stability": 0.212,
-        "difficulty": 6.413,
-        "due": "2026-06-09",
-        "state": "Review",
-        "reps": 1,
-        "lapses": 1,
-        "retrievability": 0.404
-      },
-      "fsrsFallback": false
-    },
-    {
-      "conceptKey": "민법 1-9",
-      "aliases": [],
-      "subject": "민법",
-      "concept": "민법 1-9",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "firstWrong": "2026-06-08-5",
-      "lastWrong": "2026-06-08-5",
-      "lastCorrect": null,
-      "lastResult": "wrong",
-      "lastDp": "2026-06-08",
-      "nextReviewDate": "2026-06-09",
-      "dates": [
-        "2026-06-08-5"
-      ],
-      "samples": [
-        {
-          "date": "2026-06-08-5",
-          "type": "OX",
-          "q": "집합건물의 관리인은 관리위원회의 위원을 겸할 수 있다.",
-          "myAnswer": "O",
-          "correct": "X",
-          "expl": "X. 관리인(집행)과 관리위원회(감독)는 견제 관계이므로 겸직이 불가하다. 견제받는 자가 견제하는 기구에 들어가면 감독이 무력화된다 — 정비사업 조합임원이 대의원이 될 수 없는 것과 같은 논리."
-        }
-      ],
-      "fsrs": {
-        "stability": 0.212,
-        "difficulty": 6.413,
-        "due": "2026-06-09",
-        "state": "Review",
-        "reps": 1,
-        "lapses": 1,
-        "retrievability": 0.404
-      },
-      "fsrsFallback": false
-    },
-    {
-      "conceptKey": "부동산세법 5-1",
-      "aliases": [],
-      "subject": "부동산세법",
-      "concept": "부동산세법 5-1",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "firstWrong": "2026-06-08-5",
-      "lastWrong": "2026-06-08-5",
-      "lastCorrect": null,
-      "lastResult": "wrong",
-      "lastDp": "2026-06-08",
-      "nextReviewDate": "2026-06-09",
-      "dates": [
-        "2026-06-08-5"
-      ],
-      "samples": [
-        {
-          "date": "2026-06-08-5",
-          "type": "객관식",
-          "q": "신고납부 방식인 취득세 1,000만원을 미납한 채 100일이 경과했다. 납부지연가산세는? (1일당 미납세액의 10만분의 22)",
-          "myAnswer": "2만 2,000원",
-          "correct": "22만원",
-          "expl": "1,000만 × 22/100,000 × 100일 = 22만원. 신고납부 세목은 일할 계산이며 한도는 미납세액의 75%다. 고지서 방식(재산세 등)은 3% 즉시 가산 + 월할 가산(45만원 이하 미적용)으로 구조가 다르다."
-        }
-      ],
-      "fsrs": {
-        "stability": 0.212,
-        "difficulty": 6.413,
-        "due": "2026-06-09",
-        "state": "Review",
-        "reps": 1,
-        "lapses": 1,
-        "retrievability": 0.404
-      },
-      "fsrsFallback": false
-    },
-    {
-      "conceptKey": "민법 3-1",
-      "aliases": [],
-      "subject": "민법",
-      "concept": "민법 3-1",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "firstWrong": "2026-06-08-민법",
-      "lastWrong": "2026-06-08-민법",
-      "lastCorrect": null,
-      "lastResult": "wrong",
-      "lastDp": "2026-06-08",
-      "nextReviewDate": "2026-06-09",
-      "dates": [
-        "2026-06-08-민법"
-      ],
-      "samples": [
-        {
-          "date": "2026-06-08-민법",
-          "type": "OX",
-          "q": "전세권은 전세금 지급과 등기 외에 목적물의 인도가 있어야 성립한다.",
-          "myAnswer": "O",
-          "correct": "X",
-          "expl": "X. 전세권은 전세금 지급과 등기만으로 성립하며 목적물 인도는 성립요건이 아니다. 존속기간은 최대 10년으로 제한되고 영구 설정은 불가하다(전세권만의 특징)."
-        }
-      ],
-      "fsrs": {
-        "stability": 0.212,
-        "difficulty": 6.413,
-        "due": "2026-06-09",
-        "state": "Review",
-        "reps": 1,
-        "lapses": 1,
-        "retrievability": 0.404
-      },
-      "fsrsFallback": false
-    },
-    {
-      "conceptKey": "민법 1-2·1-3",
-      "aliases": [],
-      "subject": "민법",
-      "concept": "민법 1-2·1-3",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "firstWrong": "2026-06-08-민법",
-      "lastWrong": "2026-06-08-민법",
-      "lastCorrect": null,
-      "lastResult": "wrong",
-      "lastDp": "2026-06-08",
-      "nextReviewDate": "2026-06-09",
-      "dates": [
-        "2026-06-08-민법"
-      ],
-      "samples": [
-        {
-          "date": "2026-06-08-민법",
-          "type": "객관식",
-          "q": "매매목적 토지가 수용된 경우, 매수인이 매매대금을 지급하고 수용보상금청구권의 양도를 청구할 수 있는 권리는?",
-          "myAnswer": "물상대위권",
-          "correct": "대상청구권",
-          "expl": "대상청구권이다. 수용은 채무불이행이 아닌 위험부담 영역의 문제이고, 매수인은 대상청구권으로 보상금청구권을 넘겨받을 수 있다. 다만 청구권일 뿐 당연히 자동 귀속되는 것은 아니다."
-        }
-      ],
-      "fsrs": {
-        "stability": 0.212,
-        "difficulty": 6.413,
-        "due": "2026-06-09",
-        "state": "Review",
-        "reps": 1,
-        "lapses": 1,
-        "retrievability": 0.404
-      },
-      "fsrsFallback": false
-    },
-    {
-      "conceptKey": "민법 1-5",
-      "aliases": [],
-      "subject": "민법",
-      "concept": "민법 1-5",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "firstWrong": "2026-06-08-민법",
-      "lastWrong": "2026-06-08-민법",
-      "lastCorrect": null,
-      "lastResult": "wrong",
-      "lastDp": "2026-06-08",
-      "nextReviewDate": "2026-06-09",
-      "dates": [
-        "2026-06-08-민법"
-      ],
-      "samples": [
-        {
-          "date": "2026-06-08-민법",
-          "type": "OX",
-          "q": "계약이 합의해제된 경우, 특약이 없으면 당사자는 상대방에게 손해배상이나 이자를 청구할 수 있다.",
-          "myAnswer": "O",
-          "correct": "X",
-          "expl": "X. 합의해제는 당사자의 새로운 합의로 계약을 푸는 것이라 특약이 없으면 이자·손해배상을 청구할 수 없다. 또 합의해제로 보호받는 제3자는 등기·등록을 마친 자에 한한다."
-        }
-      ],
-      "fsrs": {
-        "stability": 0.212,
-        "difficulty": 6.413,
-        "due": "2026-06-09",
-        "state": "Review",
-        "reps": 1,
-        "lapses": 1,
-        "retrievability": 0.404
-      },
-      "fsrsFallback": false
-    },
-    {
-      "conceptKey": "민법 3-1·3-2",
-      "aliases": [],
-      "subject": "민법",
-      "concept": "민법 3-1·3-2",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "firstWrong": "2026-06-08-민법",
-      "lastWrong": "2026-06-08-민법",
-      "lastCorrect": null,
-      "lastResult": "wrong",
-      "lastDp": "2026-06-08",
-      "nextReviewDate": "2026-06-09",
-      "dates": [
-        "2026-06-08-민법"
-      ],
-      "samples": [
-        {
-          "date": "2026-06-08-민법",
-          "type": "객관식",
-          "q": "임차인의 비용상환청구권에 관한 설명으로 옳지 <b>않은</b> 것은?",
-          "myAnswer": "비용상환청구는 임대인이 목적물을 반환받은 날부터 6개월 내에 한다",
-          "correct": "유익비상환청구권을 포기하는 특약은 무효다",
-          "expl": "비용상환청구권은 임의규정이라 유익비 포기 특약도 유효하다(임차인에게 불리해도 유효). 반면 부속물·건물 매수청구권은 편면적 강행규정이라 이를 배제하는 약정은 무효라는 점과 구별해야 한다."
-        }
-      ],
-      "fsrs": {
-        "stability": 0.212,
-        "difficulty": 6.413,
-        "due": "2026-06-09",
-        "state": "Review",
-        "reps": 1,
-        "lapses": 1,
-        "retrievability": 0.404
-      },
-      "fsrsFallback": false
-    },
-    {
-      "conceptKey": "오답노트 2026-05-20 #8",
-      "aliases": [],
-      "subject": "부동산공법",
-      "concept": "오답노트 2026-05-20 #8",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "firstWrong": "2026-06-08",
-      "lastWrong": "2026-06-08",
-      "lastCorrect": null,
-      "lastResult": "wrong",
-      "lastDp": "2026-06-08",
-      "nextReviewDate": "2026-06-09",
-      "dates": [
-        "2026-06-08"
-      ],
-      "samples": [
-        {
-          "date": "2026-06-08",
-          "type": "객관식",
-          "q": "도시혁신구역·복합용도구역을 정하는 '공간재구조화계획'의 결정권자로 옳은 것은?",
-          "myAnswer": "시·도지사 + 대도시 시장",
-          "correct": "시·도지사 + 국토교통부장관",
-          "expl": "시·도지사 + 국토교통부장관이다. 일반 도시·군관리계획은 '시·도지사+대도시시장'이지만, 공간재구조화는 국가급 큰 그림이라 '대도시시장 OUT, 국장 IN'으로 바뀐다. 주체 혼동으로 틀렸던 재도전."
-        }
-      ],
-      "fsrs": {
-        "stability": 0.212,
-        "difficulty": 6.413,
-        "due": "2026-06-09",
-        "state": "Review",
-        "reps": 1,
-        "lapses": 1,
-        "retrievability": 0.404
-      },
-      "fsrsFallback": false
-    },
-    {
-      "conceptKey": "오답노트 2026-05-20 #9·10",
-      "aliases": [],
-      "subject": "부동산공법",
-      "concept": "오답노트 2026-05-20 #9·10",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "firstWrong": "2026-06-08",
-      "lastWrong": "2026-06-08",
-      "lastCorrect": null,
-      "lastResult": "wrong",
-      "lastDp": "2026-06-08",
-      "nextReviewDate": "2026-06-09",
-      "dates": [
-        "2026-06-08"
-      ],
-      "samples": [
-        {
-          "date": "2026-06-08",
-          "type": "OX",
-          "q": "개발행위허가 제한은 원칙 3년에 1회 2년 연장하여 최대 5년이며, 연장이 가능한 지역에는 '개발밀도관리구역'이 포함된다.",
-          "myAnswer": "O",
-          "correct": "X",
-          "expl": "X. 최대 5년(3+2)은 맞지만, 연장 가능 지역은 관리계획 수립 중인 지역·지구단위계획구역·'기반시설부담구역'이다. 개발밀도관리구역(규제 강화 장치)이 아니라 기반시설부담구역(인프라 부과 장치)이 들어가야 한다 — 비슷한 이름 쌍 함정의 재도전."
-        }
-      ],
-      "fsrs": {
-        "stability": 0.212,
-        "difficulty": 6.413,
-        "due": "2026-06-09",
-        "state": "Review",
-        "reps": 1,
-        "lapses": 1,
-        "retrievability": 0.404
-      },
-      "fsrsFallback": false
-    },
-    {
-      "conceptKey": "민법 6-2",
-      "aliases": [],
-      "subject": "민법",
-      "concept": "민법 6-2",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "firstWrong": "2026-06-09-2",
-      "lastWrong": "2026-06-09-2",
-      "lastCorrect": null,
-      "lastResult": "wrong",
-      "lastDp": "2026-06-09",
-      "nextReviewDate": "2026-06-10",
-      "dates": [
-        "2026-06-09-2"
-      ],
-      "samples": [
-        {
-          "date": "2026-06-09-2",
-          "type": "객관식",
-          "q": "등기청구권에 관한 설명으로 <b>옳지 않은</b> 것은?",
-          "myAnswer": "매매로 인한 등기청구권을 양도하려면 매도인의 동의가 필요하다",
-          "correct": "매매로 인한 매수인의 등기청구권은 매도인의 동의 없이도 자유롭게 양도할 수 있다",
-          "expl": "매매(법률행위)로 인한 매수인의 등기청구권은 채권양도 법리만으로 자유롭게 양도되지 않고 '매도인의 동의'가 필요하다 — 매도인의 지위가 함께 걸려 있기 때문. 반면 점유취득시효 완성으로 인한 등기청구권은 통상 양도가 가능하다. 등기청구권(사법)과 등기신청권(공법)도 구별."
-        }
-      ],
-      "fsrs": {
-        "stability": 0.212,
-        "difficulty": 6.413,
-        "due": "2026-06-10",
-        "state": "Review",
-        "reps": 1,
-        "lapses": 1,
-        "retrievability": 0.405
-      },
-      "fsrsFallback": false
-    },
-    {
-      "conceptKey": "공인중개사법 1-15",
-      "aliases": [],
-      "subject": "공인중개사법",
-      "concept": "공인중개사법 1-15",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "firstWrong": "2026-06-09-3",
-      "lastWrong": "2026-06-09-3",
-      "lastCorrect": null,
-      "lastResult": "wrong",
-      "lastDp": "2026-06-09",
-      "nextReviewDate": "2026-06-10",
-      "dates": [
-        "2026-06-09-3"
-      ],
-      "samples": [
-        {
-          "date": "2026-06-09-3",
-          "type": "OX",
-          "q": "공인중개사법령상 각종 서식은 모두 대통령령(시행령)으로 정한다.",
-          "myAnswer": "O",
-          "correct": "X",
-          "expl": "X. 중개사법의 모든 서식은 '국토교통부령'으로 정한다. 법률·시행령·시행규칙(부령) 중 서식은 부령 사항이라는 점을 비트는 함정."
-        }
-      ],
-      "fsrs": {
-        "stability": 0.212,
-        "difficulty": 6.413,
-        "due": "2026-06-10",
-        "state": "Review",
-        "reps": 1,
-        "lapses": 1,
-        "retrievability": 0.405
-      },
-      "fsrsFallback": false
-    },
-    {
-      "conceptKey": "공법 오답노트(재건축 조합 동의요건)",
-      "aliases": [],
-      "subject": "부동산공법",
-      "concept": "공법 오답노트(재건축 조합 동의요건)",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "firstWrong": "2026-06-09",
-      "lastWrong": "2026-06-09",
-      "lastCorrect": null,
-      "lastResult": "wrong",
-      "lastDp": "2026-06-09",
-      "nextReviewDate": "2026-06-10",
-      "dates": [
-        "2026-06-09"
-      ],
-      "samples": [
-        {
-          "date": "2026-06-09",
-          "type": "객관식",
-          "q": "주택단지에서 시행하는 재건축사업의 조합설립인가 동의 요건으로 옳은 것은?",
-          "myAnswer": "토지면적 1/2 이상 + 소유자 3/4 이상",
-          "correct": "각 동별 구분소유자 과반수 + 전체 구분소유자 3/4 이상 + 토지면적 3/4 이상",
-          "expl": "'동별 과반수 + 전체 3/4 + 면적 3/4'이다. '전원 동의'는 알박기 한 명에 막히지 않도록 어디에도 요구하지 않는다 — '전원·반드시' 같은 극단 표현은 십중팔구 오답. 재개발(4321)과 숫자를 섞지 않도록 주의. 오답 포인트 재도전."
-        }
-      ],
-      "fsrs": {
-        "stability": 0.212,
-        "difficulty": 6.413,
-        "due": "2026-06-10",
-        "state": "Review",
-        "reps": 1,
-        "lapses": 1,
-        "retrievability": 0.405
-      },
-      "fsrsFallback": false
-    },
-    {
-      "conceptKey": "부동산공시법 2-1",
-      "aliases": [],
-      "subject": "부동산공시법",
-      "concept": "부동산공시법 2-1",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "firstWrong": "2026-06-09",
-      "lastWrong": "2026-06-09",
-      "lastCorrect": null,
-      "lastResult": "wrong",
-      "lastDp": "2026-06-09",
-      "nextReviewDate": "2026-06-10",
-      "dates": [
-        "2026-06-09"
-      ],
-      "samples": [
-        {
-          "date": "2026-06-09",
-          "type": "객관식",
-          "q": "지상경계의 결정기준에 관한 설명으로 <b>옳지 않은</b> 것은?",
-          "myAnswer": "도로·구거 등에 절토된 부분이 있으면 경사면의 상단부를 경계로 한다",
-          "correct": "연접 토지 간 높낮이 차이가 있으면 구조물의 상단부를 경계로 한다",
-          "expl": "높낮이 차이가 '있는' 경우에는 구조물의 '하단부'를 경계로 한다(상단부 아님). 절토 부분만 '상단부'다. 하단부/상단부를 뒤바꾸는 위치 함정 — 높낮이차=하단, 절토=상단, 매립제방=바깥 어깨로 묶어 기억."
-        }
-      ],
-      "fsrs": {
-        "stability": 0.212,
-        "difficulty": 6.413,
-        "due": "2026-06-10",
-        "state": "Review",
-        "reps": 1,
-        "lapses": 1,
-        "retrievability": 0.405
+        "retrievability": 0.933
       },
       "fsrsFallback": false
     },
@@ -1975,7 +1270,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.406
+        "retrievability": 0.405
       },
       "fsrsFallback": false
     },
@@ -2014,124 +1309,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.406
-      },
-      "fsrsFallback": false
-    },
-    {
-      "conceptKey": "부동산공법 1-3",
-      "aliases": [],
-      "subject": "부동산공법",
-      "concept": "부동산공법 1-3",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "firstWrong": "2026-06-11-2",
-      "lastWrong": "2026-06-11-2",
-      "lastCorrect": null,
-      "lastResult": "wrong",
-      "lastDp": "2026-06-11",
-      "nextReviewDate": "2026-06-12",
-      "dates": [
-        "2026-06-11-2"
-      ],
-      "samples": [
-        {
-          "date": "2026-06-11-2",
-          "type": "객관식",
-          "q": "도시·군관리계획 주민 입안제안에서 대부분의 제안은 토지소유자 3분의 2 이상 동의면 되지만, 기반시설·입체복합구역 제안에만 5분의 4 이상을 요구한다. 그 이유로 가장 적절한 것은?",
-          "myAnswer": "기반시설 제안은 대상 토지의 면적이 항상 더 넓어 이해관계인이 많기 때문",
-          "correct": "도로·공원 등이 타인 토지 위에 들어와 재산권 행사에 직접 부담을 지우는 구조이기 때문",
-          "expl": "내 땅이 이득 보는 제안(2/3, 낮은 문턱)과 남의 땅을 끌어들이는 제안(4/5, 높은 문턱)의 구분이다. 기반시설이 들어오면 타인 토지 위에 도로·공원·학교가 올라앉아 재산권 행사 방식 자체가 제한되고 권리관계가 얽히므로, 더 많은 소유자의 동의를 요구해 갈등을 사전에 거른다."
-        }
-      ],
-      "fsrs": {
-        "stability": 0.212,
-        "difficulty": 6.413,
-        "due": "2026-06-12",
-        "state": "Review",
-        "reps": 1,
-        "lapses": 1,
-        "retrievability": 0.406
-      },
-      "fsrsFallback": false
-    },
-    {
-      "conceptKey": "부동산공시법 1-2 지번 부여",
-      "aliases": [],
-      "subject": "부동산공시법",
-      "concept": "부동산공시법 1-2 지번 부여",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "firstWrong": "2026-06-11",
-      "lastWrong": "2026-06-11",
-      "lastCorrect": null,
-      "lastResult": "wrong",
-      "lastDp": "2026-06-11",
-      "nextReviewDate": "2026-06-12",
-      "dates": [
-        "2026-06-11"
-      ],
-      "samples": [
-        {
-          "date": "2026-06-11",
-          "type": "객관식",
-          "q": "지적확정측량을 실시한 지역의 지번부여 방법을 <b>준용</b>하여 지번을 부여하는 경우가 <b>아닌</b> 것은?",
-          "myAnswer": "지번변경을 하는 경우",
-          "correct": "등록전환 대상 토지에 지번을 부여하는 경우",
-          "expl": "준용 3총사는 '축척변경·지번변경·행정구역 개편' — 기존 지번 체계를 통째로 못 쓰게 되어 지역 전체를 새로 정리하는 경우다. 등록전환은 원칙적으로 인접 토지의 본번에 부번을 붙이고, 예외적으로 '최종본번의 다음 순번부터 본번' 특칙을 쓰는 별개 트랙이라는 게 함정 포인트."
-        }
-      ],
-      "fsrs": {
-        "stability": 0.212,
-        "difficulty": 6.413,
-        "due": "2026-06-12",
-        "state": "Review",
-        "reps": 1,
-        "lapses": 1,
-        "retrievability": 0.406
-      },
-      "fsrsFallback": false
-    },
-    {
-      "conceptKey": "민법 §5 물권적 청구권",
-      "aliases": [],
-      "subject": "민법",
-      "concept": "민법 §5 물권적 청구권",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "firstWrong": "2026-06-11",
-      "lastWrong": "2026-06-11",
-      "lastCorrect": null,
-      "lastResult": "wrong",
-      "lastDp": "2026-06-11",
-      "nextReviewDate": "2026-06-12",
-      "dates": [
-        "2026-06-11"
-      ],
-      "samples": [
-        {
-          "date": "2026-06-11",
-          "type": "객관식",
-          "q": "물권적 청구권에 관한 설명으로 <b>옳지 않은</b> 것은?",
-          "myAnswer": "지역권자와 저당권자에게는 반환청구권이 인정되지 않는다",
-          "correct": "사기에 의해 물건을 인도한 자는 점유를 침탈당한 것이므로 점유물반환청구권을 행사할 수 있다",
-          "expl": "사기로 인도한 것은 하자 있을지언정 '자의(自意)'의 인도이지 침탈이 아니다 → 점유물반환청구 불가, 계약 취소 후 부당이득반환으로 해결한다. 지역권·저당권은 점유하지 않는 물권이라 애초에 '돌려달라' 할 점유가 없다는 것(④)과 함께 '점유' 개념을 축으로 정리."
-        }
-      ],
-      "fsrs": {
-        "stability": 0.212,
-        "difficulty": 6.413,
-        "due": "2026-06-12",
-        "state": "Review",
-        "reps": 1,
-        "lapses": 1,
-        "retrievability": 0.406
+        "retrievability": 0.405
       },
       "fsrsFallback": false
     },
@@ -2170,7 +1348,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.412
+        "retrievability": 0.41
       },
       "fsrsFallback": false
     },
@@ -2209,7 +1387,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.412
+        "retrievability": 0.41
       },
       "fsrsFallback": false
     },
@@ -2248,7 +1426,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.416
+        "retrievability": 0.414
       },
       "fsrsFallback": false
     },
@@ -2287,7 +1465,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.416
+        "retrievability": 0.414
       },
       "fsrsFallback": false
     },
@@ -2326,7 +1504,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.416
+        "retrievability": 0.414
       },
       "fsrsFallback": false
     },
@@ -2365,7 +1543,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.416
+        "retrievability": 0.414
       },
       "fsrsFallback": false
     },
@@ -2404,7 +1582,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.416
+        "retrievability": 0.414
       },
       "fsrsFallback": false
     },
@@ -2443,7 +1621,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.416
+        "retrievability": 0.414
       },
       "fsrsFallback": false
     },
@@ -2482,7 +1660,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.417
+        "retrievability": 0.415
       },
       "fsrsFallback": false
     },
@@ -2521,7 +1699,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.417
+        "retrievability": 0.415
       },
       "fsrsFallback": false
     },
@@ -2560,7 +1738,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.417
+        "retrievability": 0.415
       },
       "fsrsFallback": false
     },
@@ -2599,7 +1777,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.417
+        "retrievability": 0.415
       },
       "fsrsFallback": false
     },
@@ -2638,7 +1816,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.417
+        "retrievability": 0.415
       },
       "fsrsFallback": false
     },
@@ -2677,7 +1855,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.417
+        "retrievability": 0.415
       },
       "fsrsFallback": false
     },
@@ -2716,7 +1894,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.424
+        "retrievability": 0.422
       },
       "fsrsFallback": false
     },
@@ -2755,7 +1933,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.424
+        "retrievability": 0.422
       },
       "fsrsFallback": false
     },
@@ -2794,7 +1972,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.424
+        "retrievability": 0.422
       },
       "fsrsFallback": false
     },
@@ -2833,7 +2011,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.424
+        "retrievability": 0.422
       },
       "fsrsFallback": false
     },
@@ -2872,7 +2050,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.424
+        "retrievability": 0.422
       },
       "fsrsFallback": false
     },
@@ -2911,7 +2089,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.424
+        "retrievability": 0.422
       },
       "fsrsFallback": false
     },
@@ -2950,7 +2128,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.427
+        "retrievability": 0.424
       },
       "fsrsFallback": false
     },
@@ -2989,7 +2167,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.428
+        "retrievability": 0.425
       },
       "fsrsFallback": false
     },
@@ -3028,7 +2206,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.428
+        "retrievability": 0.425
       },
       "fsrsFallback": false
     },
@@ -3067,7 +2245,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.436
+        "retrievability": 0.433
       },
       "fsrsFallback": false
     },
@@ -3106,7 +2284,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.436
+        "retrievability": 0.433
       },
       "fsrsFallback": false
     },
@@ -3145,7 +2323,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.68
+        "retrievability": 0.676
       },
       "fsrsFallback": false
     },
@@ -3184,7 +2362,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.443
+        "retrievability": 0.44
       },
       "fsrsFallback": false
     },
@@ -3223,7 +2401,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.443
+        "retrievability": 0.44
       },
       "fsrsFallback": false
     },
@@ -3262,7 +2440,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.443
+        "retrievability": 0.44
       },
       "fsrsFallback": false
     },
@@ -3301,7 +2479,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.443
+        "retrievability": 0.44
       },
       "fsrsFallback": false
     },
@@ -3340,7 +2518,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.443
+        "retrievability": 0.44
       },
       "fsrsFallback": false
     },
@@ -3379,7 +2557,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.445
+        "retrievability": 0.442
       },
       "fsrsFallback": false
     },
@@ -3418,7 +2596,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.445
+        "retrievability": 0.442
       },
       "fsrsFallback": false
     },
@@ -3457,7 +2635,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.445
+        "retrievability": 0.442
       },
       "fsrsFallback": false
     },
@@ -3496,7 +2674,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.693
+        "retrievability": 0.689
       },
       "fsrsFallback": false
     },
@@ -3535,7 +2713,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.692
+        "retrievability": 0.688
       },
       "fsrsFallback": false
     },
@@ -3574,7 +2752,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.688
+        "retrievability": 0.683
       },
       "fsrsFallback": false
     },
@@ -3613,7 +2791,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.456
+        "retrievability": 0.452
       },
       "fsrsFallback": false
     },
@@ -3652,7 +2830,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.456
+        "retrievability": 0.452
       },
       "fsrsFallback": false
     },
@@ -3691,7 +2869,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.456
+        "retrievability": 0.452
       },
       "fsrsFallback": false
     },
@@ -3730,7 +2908,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.456
+        "retrievability": 0.452
       },
       "fsrsFallback": false
     },
@@ -3769,7 +2947,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.465
+        "retrievability": 0.46
       },
       "fsrsFallback": false
     },
@@ -3808,7 +2986,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.465
+        "retrievability": 0.46
       },
       "fsrsFallback": false
     },
@@ -3847,7 +3025,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.552
+        "retrievability": 0.537
       },
       "fsrsFallback": false
     },
@@ -3886,7 +3064,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.552
+        "retrievability": 0.537
       },
       "fsrsFallback": false
     },
@@ -3925,7 +3103,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.552
+        "retrievability": 0.537
       },
       "fsrsFallback": false
     },
@@ -3964,7 +3142,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.552
+        "retrievability": 0.537
       },
       "fsrsFallback": false
     },
@@ -4003,7 +3181,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.552
+        "retrievability": 0.537
       },
       "fsrsFallback": false
     },
@@ -4042,7 +3220,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.552
+        "retrievability": 0.537
       },
       "fsrsFallback": false
     },
@@ -4081,7 +3259,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.842
+        "retrievability": 0.826
       },
       "fsrsFallback": false
     },
@@ -4120,7 +3298,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.612
+        "retrievability": 0.582
       },
       "fsrsFallback": false
     },
@@ -4159,7 +3337,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.612
+        "retrievability": 0.582
       },
       "fsrsFallback": false
     },
@@ -4198,7 +3376,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.612
+        "retrievability": 0.582
       },
       "fsrsFallback": false
     },
@@ -4237,7 +3415,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.66
+        "retrievability": 0.612
       },
       "fsrsFallback": false
     },
@@ -4276,7 +3454,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.66
+        "retrievability": 0.612
       },
       "fsrsFallback": false
     },
@@ -4315,7 +3493,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.66
+        "retrievability": 0.612
       },
       "fsrsFallback": false
     },
@@ -4354,7 +3532,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 1.0
+        "retrievability": 0.698
       },
       "fsrsFallback": false
     },
@@ -4393,7 +3571,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 1.0
+        "retrievability": 0.698
       },
       "fsrsFallback": false
     },
@@ -4432,7 +3610,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 1.0
+        "retrievability": 0.698
       },
       "fsrsFallback": false
     },
@@ -4471,7 +3649,85 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 1.0
+        "retrievability": 0.698
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "부동산공법 2-2 허가권자와 허가 취소",
+      "aliases": [],
+      "subject": "부동산공법",
+      "concept": "부동산공법 2-2 허가권자와 허가 취소",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-08-25",
+      "lastWrong": "2026-08-25",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-08-25",
+      "nextReviewDate": "2026-08-26",
+      "dates": [
+        "2026-08-25"
+      ],
+      "samples": [
+        {
+          "date": "2026-08-25",
+          "type": "일반",
+          "q": "건축법령상 건축허가의 권한과 그 취소에 관한 설명으로 <b>옳지 않은</b> 것은?",
+          "myAnswer": "특별시 또는 광역시에서 연면적 합계가 10만제곱미터 이상인 공장을 건축하려는 경우에도 구청장의 허가를 받는다.",
+          "correct": "허가권자가 숙박시설의 건축허가를 하지 아니하려는 경우에는 도지사의 사전승인을 받아야 한다.",
+          "expl": "[정답 근거] 허가를 거부하는 국면에서는 도지사 승인이 아니라 건축위원회의 심의를 거쳐 허가하지 아니할 수 있다. [메커니즘] 사전승인은 상급 행정청이 허가를 통제하는 장치이고, 거부는 허가권자 스스로 판단하되 전문 심의로 자의를 걸러내는 구조이기 때문이다. [함정] 승인 대상 용도와 거부 절차를 뒤섞는 지문이 자주 나온다."
+        }
+      ],
+      "fsrs": {
+        "stability": 0.212,
+        "difficulty": 6.413,
+        "due": "2026-08-26",
+        "state": "Review",
+        "reps": 1,
+        "lapses": 1,
+        "retrievability": 0.766
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "부동산공법 2-5 안전관리 예치금",
+      "aliases": [],
+      "subject": "부동산공법",
+      "concept": "부동산공법 2-5 안전관리 예치금",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-08-25",
+      "lastWrong": "2026-08-25",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-08-25",
+      "nextReviewDate": "2026-08-26",
+      "dates": [
+        "2026-08-25"
+      ],
+      "samples": [
+        {
+          "date": "2026-08-25",
+          "type": "계산",
+          "q": "건축법령상 갑과 을이 각각 건축허가를 받아 공사를 하고 있다. 갑의 건축물은 연면적 합계 900제곱미터에 건축공사비 20억원이고, 을의 건축물은 연면적 합계 1천200제곱미터에 건축공사비 25억원이다. 허가권자가 두 건축주에게 예치하게 할 수 있는 안전관리 예치금의 합계는? (다른 조건은 동일)",
+          "myAnswer": "두 건축주의 공사비를 합한 45억원의 1퍼센트인 4천500만원",
+          "correct": "2천500만원",
+          "expl": "[정답 근거] 예치 대상은 연면적 합계 1천제곱미터 이상이므로 900제곱미터인 갑은 제외되고, 을만 건축공사비 25억원의 1퍼센트인 2천500만원을 예치한다. [메커니즘] 공사 중단으로 방치된 현장의 안전·미관 조치 비용을 미리 확보하려는 장치여서 규모 요건을 먼저 통과해야 한다. [함정] 두 사람의 공사비를 그대로 더해 4천500만원으로 만들도록 유도한다."
+        }
+      ],
+      "fsrs": {
+        "stability": 0.212,
+        "difficulty": 6.413,
+        "due": "2026-08-26",
+        "state": "Review",
+        "reps": 1,
+        "lapses": 1,
+        "retrievability": 0.766
       },
       "fsrsFallback": false
     },
@@ -4510,7 +3766,631 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 1.0
+        "retrievability": 0.952
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "모의고사 2차 1-5",
+      "aliases": [],
+      "subject": "공인중개사법",
+      "concept": "모의고사 2차 1-5",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "firstWrong": "2026-06-08-3",
+      "lastWrong": "2026-06-08-3",
+      "lastCorrect": "2026-08-25",
+      "lastResult": "correct",
+      "lastDp": "2026-08-25",
+      "nextReviewDate": "2026-08-30",
+      "dates": [
+        "2026-06-08-3"
+      ],
+      "samples": [
+        {
+          "date": "2026-06-08-3",
+          "type": "객관식",
+          "q": "부칙상 개업공인중개사(중개인)가 사무소 명칭에 사용할 수 있는 문자는?",
+          "myAnswer": "공인중개사사무소",
+          "correct": "부동산중개",
+          "expl": "일반 개업공인중개사는 '공인중개사사무소' 또는 '부동산중개' 문자를 쓸 수 있지만, 부칙상 개업공인중개사는 공인중개사 자격이 없으므로 '부동산중개' 문자만 사용할 수 있다."
+        }
+      ],
+      "fsrs": {
+        "stability": 5.191,
+        "difficulty": 6.402,
+        "due": "2026-08-30",
+        "state": "Review",
+        "reps": 2,
+        "lapses": 1,
+        "retrievability": 0.974
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "민법 1-8",
+      "aliases": [],
+      "subject": "민법",
+      "concept": "민법 1-8",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "firstWrong": "2026-06-08-4",
+      "lastWrong": "2026-06-08-4",
+      "lastCorrect": "2026-08-25",
+      "lastResult": "correct",
+      "lastDp": "2026-08-25",
+      "nextReviewDate": "2026-08-30",
+      "dates": [
+        "2026-06-08-4"
+      ],
+      "samples": [
+        {
+          "date": "2026-06-08-4",
+          "type": "객관식",
+          "q": "명의신탁에 관한 설명으로 옳지 <b>않은</b> 것은?",
+          "myAnswer": "계약명의신탁에서 수탁자가 자의로 신탁자에게 이전등기를 하면 신탁자는 소유권을 취득한다",
+          "correct": "무효 명의신탁에서 수탁자가 제3자에게 양도했다가 다시 소유권을 취득하면, 신탁자는 소유물반환을 청구할 수 있다",
+          "expl": "수탁자의 재취득은 명의신탁과 무관한 '새로운 원인'에 의한 취득이므로 신탁자는 소유물반환을 청구할 수 없다. ③은 약정의 이행이 아닌 새로운 법률행위라서 유효 — 두 사례 모두 '새 원인이냐'가 판단축이다."
+        }
+      ],
+      "fsrs": {
+        "stability": 5.191,
+        "difficulty": 6.402,
+        "due": "2026-08-30",
+        "state": "Review",
+        "reps": 2,
+        "lapses": 1,
+        "retrievability": 0.974
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "민법 1-9",
+      "aliases": [],
+      "subject": "민법",
+      "concept": "민법 1-9",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "firstWrong": "2026-06-08-5",
+      "lastWrong": "2026-06-08-5",
+      "lastCorrect": "2026-08-25",
+      "lastResult": "correct",
+      "lastDp": "2026-08-25",
+      "nextReviewDate": "2026-08-30",
+      "dates": [
+        "2026-06-08-5"
+      ],
+      "samples": [
+        {
+          "date": "2026-06-08-5",
+          "type": "OX",
+          "q": "집합건물의 관리인은 관리위원회의 위원을 겸할 수 있다.",
+          "myAnswer": "O",
+          "correct": "X",
+          "expl": "X. 관리인(집행)과 관리위원회(감독)는 견제 관계이므로 겸직이 불가하다. 견제받는 자가 견제하는 기구에 들어가면 감독이 무력화된다 — 정비사업 조합임원이 대의원이 될 수 없는 것과 같은 논리."
+        }
+      ],
+      "fsrs": {
+        "stability": 5.191,
+        "difficulty": 6.402,
+        "due": "2026-08-30",
+        "state": "Review",
+        "reps": 2,
+        "lapses": 1,
+        "retrievability": 0.974
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "민법 3-1",
+      "aliases": [],
+      "subject": "민법",
+      "concept": "민법 3-1",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "firstWrong": "2026-06-08-민법",
+      "lastWrong": "2026-06-08-민법",
+      "lastCorrect": "2026-08-25",
+      "lastResult": "correct",
+      "lastDp": "2026-08-25",
+      "nextReviewDate": "2026-08-30",
+      "dates": [
+        "2026-06-08-민법"
+      ],
+      "samples": [
+        {
+          "date": "2026-06-08-민법",
+          "type": "OX",
+          "q": "전세권은 전세금 지급과 등기 외에 목적물의 인도가 있어야 성립한다.",
+          "myAnswer": "O",
+          "correct": "X",
+          "expl": "X. 전세권은 전세금 지급과 등기만으로 성립하며 목적물 인도는 성립요건이 아니다. 존속기간은 최대 10년으로 제한되고 영구 설정은 불가하다(전세권만의 특징)."
+        }
+      ],
+      "fsrs": {
+        "stability": 5.191,
+        "difficulty": 6.402,
+        "due": "2026-08-30",
+        "state": "Review",
+        "reps": 2,
+        "lapses": 1,
+        "retrievability": 0.974
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "민법 1-2·1-3",
+      "aliases": [],
+      "subject": "민법",
+      "concept": "민법 1-2·1-3",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "firstWrong": "2026-06-08-민법",
+      "lastWrong": "2026-06-08-민법",
+      "lastCorrect": "2026-08-25",
+      "lastResult": "correct",
+      "lastDp": "2026-08-25",
+      "nextReviewDate": "2026-08-30",
+      "dates": [
+        "2026-06-08-민법"
+      ],
+      "samples": [
+        {
+          "date": "2026-06-08-민법",
+          "type": "객관식",
+          "q": "매매목적 토지가 수용된 경우, 매수인이 매매대금을 지급하고 수용보상금청구권의 양도를 청구할 수 있는 권리는?",
+          "myAnswer": "물상대위권",
+          "correct": "대상청구권",
+          "expl": "대상청구권이다. 수용은 채무불이행이 아닌 위험부담 영역의 문제이고, 매수인은 대상청구권으로 보상금청구권을 넘겨받을 수 있다. 다만 청구권일 뿐 당연히 자동 귀속되는 것은 아니다."
+        }
+      ],
+      "fsrs": {
+        "stability": 5.191,
+        "difficulty": 6.402,
+        "due": "2026-08-30",
+        "state": "Review",
+        "reps": 2,
+        "lapses": 1,
+        "retrievability": 0.974
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "민법 1-5",
+      "aliases": [],
+      "subject": "민법",
+      "concept": "민법 1-5",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "firstWrong": "2026-06-08-민법",
+      "lastWrong": "2026-06-08-민법",
+      "lastCorrect": "2026-08-25",
+      "lastResult": "correct",
+      "lastDp": "2026-08-25",
+      "nextReviewDate": "2026-08-30",
+      "dates": [
+        "2026-06-08-민법"
+      ],
+      "samples": [
+        {
+          "date": "2026-06-08-민법",
+          "type": "OX",
+          "q": "계약이 합의해제된 경우, 특약이 없으면 당사자는 상대방에게 손해배상이나 이자를 청구할 수 있다.",
+          "myAnswer": "O",
+          "correct": "X",
+          "expl": "X. 합의해제는 당사자의 새로운 합의로 계약을 푸는 것이라 특약이 없으면 이자·손해배상을 청구할 수 없다. 또 합의해제로 보호받는 제3자는 등기·등록을 마친 자에 한한다."
+        }
+      ],
+      "fsrs": {
+        "stability": 5.191,
+        "difficulty": 6.402,
+        "due": "2026-08-30",
+        "state": "Review",
+        "reps": 2,
+        "lapses": 1,
+        "retrievability": 0.974
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "민법 3-1·3-2",
+      "aliases": [],
+      "subject": "민법",
+      "concept": "민법 3-1·3-2",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "firstWrong": "2026-06-08-민법",
+      "lastWrong": "2026-06-08-민법",
+      "lastCorrect": "2026-08-25",
+      "lastResult": "correct",
+      "lastDp": "2026-08-25",
+      "nextReviewDate": "2026-08-30",
+      "dates": [
+        "2026-06-08-민법"
+      ],
+      "samples": [
+        {
+          "date": "2026-06-08-민법",
+          "type": "객관식",
+          "q": "임차인의 비용상환청구권에 관한 설명으로 옳지 <b>않은</b> 것은?",
+          "myAnswer": "비용상환청구는 임대인이 목적물을 반환받은 날부터 6개월 내에 한다",
+          "correct": "유익비상환청구권을 포기하는 특약은 무효다",
+          "expl": "비용상환청구권은 임의규정이라 유익비 포기 특약도 유효하다(임차인에게 불리해도 유효). 반면 부속물·건물 매수청구권은 편면적 강행규정이라 이를 배제하는 약정은 무효라는 점과 구별해야 한다."
+        }
+      ],
+      "fsrs": {
+        "stability": 5.191,
+        "difficulty": 6.402,
+        "due": "2026-08-30",
+        "state": "Review",
+        "reps": 2,
+        "lapses": 1,
+        "retrievability": 0.974
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "오답노트 2026-05-20 #8",
+      "aliases": [],
+      "subject": "부동산공법",
+      "concept": "오답노트 2026-05-20 #8",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "firstWrong": "2026-06-08",
+      "lastWrong": "2026-06-08",
+      "lastCorrect": "2026-08-25",
+      "lastResult": "correct",
+      "lastDp": "2026-08-25",
+      "nextReviewDate": "2026-08-30",
+      "dates": [
+        "2026-06-08"
+      ],
+      "samples": [
+        {
+          "date": "2026-06-08",
+          "type": "객관식",
+          "q": "도시혁신구역·복합용도구역을 정하는 '공간재구조화계획'의 결정권자로 옳은 것은?",
+          "myAnswer": "시·도지사 + 대도시 시장",
+          "correct": "시·도지사 + 국토교통부장관",
+          "expl": "시·도지사 + 국토교통부장관이다. 일반 도시·군관리계획은 '시·도지사+대도시시장'이지만, 공간재구조화는 국가급 큰 그림이라 '대도시시장 OUT, 국장 IN'으로 바뀐다. 주체 혼동으로 틀렸던 재도전."
+        }
+      ],
+      "fsrs": {
+        "stability": 5.191,
+        "difficulty": 6.402,
+        "due": "2026-08-30",
+        "state": "Review",
+        "reps": 2,
+        "lapses": 1,
+        "retrievability": 0.974
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "오답노트 2026-05-20 #9·10",
+      "aliases": [],
+      "subject": "부동산공법",
+      "concept": "오답노트 2026-05-20 #9·10",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "firstWrong": "2026-06-08",
+      "lastWrong": "2026-06-08",
+      "lastCorrect": "2026-08-25",
+      "lastResult": "correct",
+      "lastDp": "2026-08-25",
+      "nextReviewDate": "2026-08-30",
+      "dates": [
+        "2026-06-08"
+      ],
+      "samples": [
+        {
+          "date": "2026-06-08",
+          "type": "OX",
+          "q": "개발행위허가 제한은 원칙 3년에 1회 2년 연장하여 최대 5년이며, 연장이 가능한 지역에는 '개발밀도관리구역'이 포함된다.",
+          "myAnswer": "O",
+          "correct": "X",
+          "expl": "X. 최대 5년(3+2)은 맞지만, 연장 가능 지역은 관리계획 수립 중인 지역·지구단위계획구역·'기반시설부담구역'이다. 개발밀도관리구역(규제 강화 장치)이 아니라 기반시설부담구역(인프라 부과 장치)이 들어가야 한다 — 비슷한 이름 쌍 함정의 재도전."
+        }
+      ],
+      "fsrs": {
+        "stability": 5.191,
+        "difficulty": 6.402,
+        "due": "2026-08-30",
+        "state": "Review",
+        "reps": 2,
+        "lapses": 1,
+        "retrievability": 0.974
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "민법 6-2",
+      "aliases": [],
+      "subject": "민법",
+      "concept": "민법 6-2",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "firstWrong": "2026-06-09-2",
+      "lastWrong": "2026-06-09-2",
+      "lastCorrect": "2026-08-25",
+      "lastResult": "correct",
+      "lastDp": "2026-08-25",
+      "nextReviewDate": "2026-08-30",
+      "dates": [
+        "2026-06-09-2"
+      ],
+      "samples": [
+        {
+          "date": "2026-06-09-2",
+          "type": "객관식",
+          "q": "등기청구권에 관한 설명으로 <b>옳지 않은</b> 것은?",
+          "myAnswer": "매매로 인한 등기청구권을 양도하려면 매도인의 동의가 필요하다",
+          "correct": "매매로 인한 매수인의 등기청구권은 매도인의 동의 없이도 자유롭게 양도할 수 있다",
+          "expl": "매매(법률행위)로 인한 매수인의 등기청구권은 채권양도 법리만으로 자유롭게 양도되지 않고 '매도인의 동의'가 필요하다 — 매도인의 지위가 함께 걸려 있기 때문. 반면 점유취득시효 완성으로 인한 등기청구권은 통상 양도가 가능하다. 등기청구권(사법)과 등기신청권(공법)도 구별."
+        }
+      ],
+      "fsrs": {
+        "stability": 5.183,
+        "difficulty": 6.402,
+        "due": "2026-08-30",
+        "state": "Review",
+        "reps": 2,
+        "lapses": 1,
+        "retrievability": 0.974
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "공인중개사법 1-15",
+      "aliases": [],
+      "subject": "공인중개사법",
+      "concept": "공인중개사법 1-15",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "firstWrong": "2026-06-09-3",
+      "lastWrong": "2026-06-09-3",
+      "lastCorrect": "2026-08-25",
+      "lastResult": "correct",
+      "lastDp": "2026-08-25",
+      "nextReviewDate": "2026-08-30",
+      "dates": [
+        "2026-06-09-3"
+      ],
+      "samples": [
+        {
+          "date": "2026-06-09-3",
+          "type": "OX",
+          "q": "공인중개사법령상 각종 서식은 모두 대통령령(시행령)으로 정한다.",
+          "myAnswer": "O",
+          "correct": "X",
+          "expl": "X. 중개사법의 모든 서식은 '국토교통부령'으로 정한다. 법률·시행령·시행규칙(부령) 중 서식은 부령 사항이라는 점을 비트는 함정."
+        }
+      ],
+      "fsrs": {
+        "stability": 5.183,
+        "difficulty": 6.402,
+        "due": "2026-08-30",
+        "state": "Review",
+        "reps": 2,
+        "lapses": 1,
+        "retrievability": 0.974
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "공법 오답노트(재건축 조합 동의요건)",
+      "aliases": [],
+      "subject": "부동산공법",
+      "concept": "공법 오답노트(재건축 조합 동의요건)",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "firstWrong": "2026-06-09",
+      "lastWrong": "2026-06-09",
+      "lastCorrect": "2026-08-25",
+      "lastResult": "correct",
+      "lastDp": "2026-08-25",
+      "nextReviewDate": "2026-08-30",
+      "dates": [
+        "2026-06-09"
+      ],
+      "samples": [
+        {
+          "date": "2026-06-09",
+          "type": "객관식",
+          "q": "주택단지에서 시행하는 재건축사업의 조합설립인가 동의 요건으로 옳은 것은?",
+          "myAnswer": "토지면적 1/2 이상 + 소유자 3/4 이상",
+          "correct": "각 동별 구분소유자 과반수 + 전체 구분소유자 3/4 이상 + 토지면적 3/4 이상",
+          "expl": "'동별 과반수 + 전체 3/4 + 면적 3/4'이다. '전원 동의'는 알박기 한 명에 막히지 않도록 어디에도 요구하지 않는다 — '전원·반드시' 같은 극단 표현은 십중팔구 오답. 재개발(4321)과 숫자를 섞지 않도록 주의. 오답 포인트 재도전."
+        }
+      ],
+      "fsrs": {
+        "stability": 5.183,
+        "difficulty": 6.402,
+        "due": "2026-08-30",
+        "state": "Review",
+        "reps": 2,
+        "lapses": 1,
+        "retrievability": 0.974
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "부동산공시법 2-1",
+      "aliases": [],
+      "subject": "부동산공시법",
+      "concept": "부동산공시법 2-1",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "firstWrong": "2026-06-09",
+      "lastWrong": "2026-06-09",
+      "lastCorrect": "2026-08-25",
+      "lastResult": "correct",
+      "lastDp": "2026-08-25",
+      "nextReviewDate": "2026-08-30",
+      "dates": [
+        "2026-06-09"
+      ],
+      "samples": [
+        {
+          "date": "2026-06-09",
+          "type": "객관식",
+          "q": "지상경계의 결정기준에 관한 설명으로 <b>옳지 않은</b> 것은?",
+          "myAnswer": "도로·구거 등에 절토된 부분이 있으면 경사면의 상단부를 경계로 한다",
+          "correct": "연접 토지 간 높낮이 차이가 있으면 구조물의 상단부를 경계로 한다",
+          "expl": "높낮이 차이가 '있는' 경우에는 구조물의 '하단부'를 경계로 한다(상단부 아님). 절토 부분만 '상단부'다. 하단부/상단부를 뒤바꾸는 위치 함정 — 높낮이차=하단, 절토=상단, 매립제방=바깥 어깨로 묶어 기억."
+        }
+      ],
+      "fsrs": {
+        "stability": 5.183,
+        "difficulty": 6.402,
+        "due": "2026-08-30",
+        "state": "Review",
+        "reps": 2,
+        "lapses": 1,
+        "retrievability": 0.974
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "부동산공법 1-3",
+      "aliases": [],
+      "subject": "부동산공법",
+      "concept": "부동산공법 1-3",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "firstWrong": "2026-06-11-2",
+      "lastWrong": "2026-06-11-2",
+      "lastCorrect": "2026-08-25",
+      "lastResult": "correct",
+      "lastDp": "2026-08-25",
+      "nextReviewDate": "2026-08-30",
+      "dates": [
+        "2026-06-11-2"
+      ],
+      "samples": [
+        {
+          "date": "2026-06-11-2",
+          "type": "객관식",
+          "q": "도시·군관리계획 주민 입안제안에서 대부분의 제안은 토지소유자 3분의 2 이상 동의면 되지만, 기반시설·입체복합구역 제안에만 5분의 4 이상을 요구한다. 그 이유로 가장 적절한 것은?",
+          "myAnswer": "기반시설 제안은 대상 토지의 면적이 항상 더 넓어 이해관계인이 많기 때문",
+          "correct": "도로·공원 등이 타인 토지 위에 들어와 재산권 행사에 직접 부담을 지우는 구조이기 때문",
+          "expl": "내 땅이 이득 보는 제안(2/3, 낮은 문턱)과 남의 땅을 끌어들이는 제안(4/5, 높은 문턱)의 구분이다. 기반시설이 들어오면 타인 토지 위에 도로·공원·학교가 올라앉아 재산권 행사 방식 자체가 제한되고 권리관계가 얽히므로, 더 많은 소유자의 동의를 요구해 갈등을 사전에 거른다."
+        }
+      ],
+      "fsrs": {
+        "stability": 5.165,
+        "difficulty": 6.402,
+        "due": "2026-08-30",
+        "state": "Review",
+        "reps": 2,
+        "lapses": 1,
+        "retrievability": 0.974
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "부동산공시법 1-2 지번 부여",
+      "aliases": [],
+      "subject": "부동산공시법",
+      "concept": "부동산공시법 1-2 지번 부여",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "firstWrong": "2026-06-11",
+      "lastWrong": "2026-06-11",
+      "lastCorrect": "2026-08-25",
+      "lastResult": "correct",
+      "lastDp": "2026-08-25",
+      "nextReviewDate": "2026-08-30",
+      "dates": [
+        "2026-06-11"
+      ],
+      "samples": [
+        {
+          "date": "2026-06-11",
+          "type": "객관식",
+          "q": "지적확정측량을 실시한 지역의 지번부여 방법을 <b>준용</b>하여 지번을 부여하는 경우가 <b>아닌</b> 것은?",
+          "myAnswer": "지번변경을 하는 경우",
+          "correct": "등록전환 대상 토지에 지번을 부여하는 경우",
+          "expl": "준용 3총사는 '축척변경·지번변경·행정구역 개편' — 기존 지번 체계를 통째로 못 쓰게 되어 지역 전체를 새로 정리하는 경우다. 등록전환은 원칙적으로 인접 토지의 본번에 부번을 붙이고, 예외적으로 '최종본번의 다음 순번부터 본번' 특칙을 쓰는 별개 트랙이라는 게 함정 포인트."
+        }
+      ],
+      "fsrs": {
+        "stability": 5.165,
+        "difficulty": 6.402,
+        "due": "2026-08-30",
+        "state": "Review",
+        "reps": 2,
+        "lapses": 1,
+        "retrievability": 0.974
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "민법 §5 물권적 청구권",
+      "aliases": [],
+      "subject": "민법",
+      "concept": "민법 §5 물권적 청구권",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "firstWrong": "2026-06-11",
+      "lastWrong": "2026-06-11",
+      "lastCorrect": "2026-08-25",
+      "lastResult": "correct",
+      "lastDp": "2026-08-25",
+      "nextReviewDate": "2026-08-30",
+      "dates": [
+        "2026-06-11"
+      ],
+      "samples": [
+        {
+          "date": "2026-06-11",
+          "type": "객관식",
+          "q": "물권적 청구권에 관한 설명으로 <b>옳지 않은</b> 것은?",
+          "myAnswer": "지역권자와 저당권자에게는 반환청구권이 인정되지 않는다",
+          "correct": "사기에 의해 물건을 인도한 자는 점유를 침탈당한 것이므로 점유물반환청구권을 행사할 수 있다",
+          "expl": "사기로 인도한 것은 하자 있을지언정 '자의(自意)'의 인도이지 침탈이 아니다 → 점유물반환청구 불가, 계약 취소 후 부당이득반환으로 해결한다. 지역권·저당권은 점유하지 않는 물권이라 애초에 '돌려달라' 할 점유가 없다는 것(④)과 함께 '점유' 개념을 축으로 정리."
+        }
+      ],
+      "fsrs": {
+        "stability": 5.165,
+        "difficulty": 6.402,
+        "due": "2026-08-30",
+        "state": "Review",
+        "reps": 2,
+        "lapses": 1,
+        "retrievability": 0.974
       },
       "fsrsFallback": false
     },
@@ -4538,7 +4418,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 0,
-        "retrievability": 0.774
+        "retrievability": 0.757
       },
       "fsrsFallback": false
     },
@@ -4566,7 +4446,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 0,
-        "retrievability": 0.774
+        "retrievability": 0.757
       },
       "fsrsFallback": false
     },
@@ -4594,7 +4474,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 0,
-        "retrievability": 0.774
+        "retrievability": 0.757
       },
       "fsrsFallback": false
     },
@@ -4622,7 +4502,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 0,
-        "retrievability": 0.774
+        "retrievability": 0.757
       },
       "fsrsFallback": false
     },
@@ -4650,7 +4530,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 0,
-        "retrievability": 0.774
+        "retrievability": 0.757
       },
       "fsrsFallback": false
     },
@@ -4707,7 +4587,7 @@
         "state": "Review",
         "reps": 5,
         "lapses": 3,
-        "retrievability": 1.0
+        "retrievability": 0.882
       },
       "fsrsFallback": false
     },
@@ -4755,7 +4635,55 @@
         "state": "Review",
         "reps": 5,
         "lapses": 2,
-        "retrievability": 1.0
+        "retrievability": 0.946
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "모의고사 2차 2-10",
+      "aliases": [],
+      "subject": "부동산공법",
+      "concept": "모의고사 2차 2-10",
+      "status": "졸업후보",
+      "timesWrong": 2,
+      "retryMissed": 1,
+      "consecutiveCorrect": 2,
+      "firstWrong": "2026-06-08-2",
+      "lastWrong": "2026-08-19",
+      "lastCorrect": "2026-08-25",
+      "lastResult": "correct",
+      "lastDp": "2026-08-25",
+      "nextReviewDate": "2026-08-29",
+      "dates": [
+        "2026-06-08-2",
+        "2026-08-19"
+      ],
+      "samples": [
+        {
+          "date": "2026-06-08-2",
+          "type": "객관식",
+          "q": "건물 외벽에 접한 길이 10m, 폭 2m인 노대(발코니)가 있을 때 바닥면적에 산입되는 면적은?",
+          "myAnswer": "15㎡",
+          "correct": "5㎡",
+          "expl": "노대 면적(10×2=20㎡)에서 '가장 긴 외벽에 접한 길이 × 1.5m'(10×1.5=15㎡)를 뺀 5㎡만 산입한다. 외벽에서 1.5m까지는 제외하고 그 너머만 포함시키는 구조다. 난간 설치 여부는 무관하다."
+        },
+        {
+          "date": "2026-08-19",
+          "type": "계산",
+          "q": "🔁 건축물의 외벽에 접하여 설치된 노대의 크기가 가로 8미터, 세로 2.5미터인 경우 바닥면적에 산입되는 면적은? (노대가 접한 가장 긴 외벽의 길이는 8미터이며 다른 조건은 동일)",
+          "myAnswer": "12제곱미터",
+          "correct": "8제곱미터",
+          "expl": "[정답 근거] 노대 전체 면적 8 × 2.5 = 20제곱미터에서 가장 긴 외벽에 접한 길이에 1.5미터를 곱한 8 × 1.5 = 12제곱미터를 뺀 8제곱미터만 산입한다. [메커니즘] 외벽에서 1.5미터까지는 처마에 준하는 완충 공간으로 보아 면적에서 빼주는 설계다. [함정] 노대 전체 면적이나 공제되는 면적을 그대로 답으로 고르게 만드는 선택지가 함께 붙는다."
+        }
+      ],
+      "fsrs": {
+        "stability": 3.875,
+        "difficulty": 8.779,
+        "due": "2026-08-29",
+        "state": "Review",
+        "reps": 4,
+        "lapses": 2,
+        "retrievability": 0.966
       },
       "fsrsFallback": false
     },
@@ -4794,7 +4722,7 @@
         "state": "Review",
         "reps": 3,
         "lapses": 1,
-        "retrievability": 0.917
+        "retrievability": 0.906
       },
       "fsrsFallback": false
     },
@@ -4842,7 +4770,7 @@
         "state": "Review",
         "reps": 4,
         "lapses": 2,
-        "retrievability": 0.831
+        "retrievability": 0.814
       },
       "fsrsFallback": false
     },
@@ -4890,7 +4818,7 @@
         "state": "Review",
         "reps": 4,
         "lapses": 2,
-        "retrievability": 0.831
+        "retrievability": 0.814
       },
       "fsrsFallback": false
     },
@@ -4938,7 +4866,7 @@
         "state": "Review",
         "reps": 4,
         "lapses": 2,
-        "retrievability": 0.843
+        "retrievability": 0.827
       },
       "fsrsFallback": false
     },
@@ -4977,7 +4905,7 @@
         "state": "Review",
         "reps": 3,
         "lapses": 1,
-        "retrievability": 0.736
+        "retrievability": 0.732
       },
       "fsrsFallback": false
     },
@@ -5016,7 +4944,7 @@
         "state": "Review",
         "reps": 3,
         "lapses": 1,
-        "retrievability": 0.741
+        "retrievability": 0.736
       },
       "fsrsFallback": false
     },
@@ -5055,7 +4983,7 @@
         "state": "Review",
         "reps": 3,
         "lapses": 1,
-        "retrievability": 0.817
+        "retrievability": 0.812
       },
       "fsrsFallback": false
     },
@@ -5094,7 +5022,7 @@
         "state": "Review",
         "reps": 3,
         "lapses": 1,
-        "retrievability": 0.938
+        "retrievability": 0.916
       },
       "fsrsFallback": false
     },
@@ -5142,7 +5070,7 @@
         "state": "Review",
         "reps": 6,
         "lapses": 2,
-        "retrievability": 0.836
+        "retrievability": 0.83
       },
       "fsrsFallback": false
     },
@@ -5190,7 +5118,7 @@
         "state": "Review",
         "reps": 5,
         "lapses": 2,
-        "retrievability": 0.898
+        "retrievability": 0.885
       },
       "fsrsFallback": false
     },
@@ -5229,7 +5157,7 @@
         "state": "Review",
         "reps": 4,
         "lapses": 1,
-        "retrievability": 0.903
+        "retrievability": 0.899
       },
       "fsrsFallback": false
     },
@@ -5268,7 +5196,7 @@
         "state": "Review",
         "reps": 4,
         "lapses": 1,
-        "retrievability": 0.878
+        "retrievability": 0.874
       },
       "fsrsFallback": false
     },
@@ -5307,7 +5235,7 @@
         "state": "Review",
         "reps": 4,
         "lapses": 1,
-        "retrievability": 0.903
+        "retrievability": 0.899
       },
       "fsrsFallback": false
     },
@@ -5346,7 +5274,7 @@
         "state": "Review",
         "reps": 4,
         "lapses": 1,
-        "retrievability": 0.903
+        "retrievability": 0.898
       },
       "fsrsFallback": false
     },
@@ -5385,7 +5313,7 @@
         "state": "Review",
         "reps": 5,
         "lapses": 1,
-        "retrievability": 0.905
+        "retrievability": 0.901
       },
       "fsrsFallback": false
     },
@@ -5424,7 +5352,7 @@
         "state": "Review",
         "reps": 4,
         "lapses": 1,
-        "retrievability": 1.0
+        "retrievability": 0.982
       },
       "fsrsFallback": false
     },
@@ -5463,7 +5391,7 @@
         "state": "Review",
         "reps": 5,
         "lapses": 1,
-        "retrievability": 1.0
+        "retrievability": 0.983
       },
       "fsrsFallback": false
     }
