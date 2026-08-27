@@ -31,11 +31,11 @@ _시험엔진/
 
 | 작업 | 베이스 | 공인중개사 | 법무사 1차 | 법무사 2차 |
 |---|---|---|---|---|
-| 오답 파이프라인 (평일) | 베이스_오답파이프라인 | `gongin-odap-quiz` 08:40 | `bupsa-1cha-odap-quiz` 08:55 | `bupsa-2cha-odap-quiz` 08:50 |
-| 데일리퀴즈 | 베이스_데일리퀴즈 | `gongin-daily-quiz` 평일 09:07 | `bupsa-1cha-daily-quiz` 화·목 09:20 | `bupsa-2cha-daily-quiz` 화·목 09:15 (11/1 평일 전환은 두 트랙 공통) |
+| 오답 파이프라인 | 베이스_오답파이프라인 | `gongin-odap-quiz` **월~토** 08:40 | `bupsa-1cha-odap-quiz` 평일 08:55 | `bupsa-2cha-odap-quiz` 평일 08:50 |
+| 데일리퀴즈 | 베이스_데일리퀴즈 | `gongin-daily-quiz` **월~토** 09:07 | `bupsa-1cha-daily-quiz` 화·목 09:20 | `bupsa-2cha-daily-quiz` 화·목 09:15 (11/1 평일 전환은 두 트랙 공통) |
 | 주간 리포트 (월) | 베이스_주간리포트 | `gongin-weekly-report` 07:09 | `bupsa-1cha-weekly-report` 07:40 | `bupsa-2cha-weekly-report` 07:30 |
 
-이 밖에 **시험 횡단 스케줄러 1개**: `anki-weekly-deck` 금 08:00 — 원자카드 주간 덱 (베이스_앙키덱_v1, 산출: `_시험엔진/anki/출고/`, 맥락: `공부루틴_OS_v1.md` §6).
+이 밖에 **시험 횡단 스케줄러 1개**: `anki-weekly-deck` 월 08:00 — 원자카드 주간 덱 (베이스_앙키덱_v1, 산출: `_시험엔진/anki/출고/`, 맥락: `공부루틴_OS_v1.md` §6).
 
 세 사이클의 파일·원장·결과는 **완전 분리**되며 교차 참조 금지 (프로파일의 RESULT_GLOB·EXAM_DIR이 경계). 법무사 1차/2차는 노트 폴더만 공유하며, 1차 노트가 아직 없는 동안 1차 사이클은 "스킵/듀 0" 보고만 하는 게 정상이다.
 

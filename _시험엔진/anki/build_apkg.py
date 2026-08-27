@@ -363,12 +363,15 @@ def main(argv):
         print(f"오류: TSV 파일을 찾을 수 없다 — {tsv_path}", file=sys.stderr)
         return 1
 
-    m = re.search(r"(\d{4}-\d{2}-\d{2})", os.path.basename(tsv_path))
-    if not m:
-        print(f"오류: 파일명에서 날짜(YYYY-MM-DD)를 찾을 수 없다 — {os.path.basename(tsv_path)}", file=sys.stderr)
-        print("      예: 카드_2026-08-26.tsv", file=sys.stderr)
+    base = os.path.basename(tsv_path)
+    if not re.search(r"\d{4}-\d{2}-\d{2}", base):
+        print(f"오류: 파일명에서 날짜(YYYY-MM-DD)를 찾을 수 없다 — {base}", file=sys.stderr)
+        print("      예: 카드_2026-08-26.tsv / 카드_2026-08-26-세율특집.tsv", file=sys.stderr)
         return 1
-    date_str = m.group(1)
+    # 출력명 = TSV stem에서 '카드_' 접두만 제거 — 접미사(특집명)를 보존해
+    # 같은 날짜의 정기 덱을 덮어쓰지 않는다 (2026-08-26 실사고 재발 방지)
+    stem = os.path.splitext(base)[0]
+    date_str = stem[3:] if stem.startswith("카드_") else stem
 
     out_dir = os.path.join(os.path.dirname(tsv_path), "출고")
     out_path = os.path.join(out_dir, f"{date_str}.apkg")
