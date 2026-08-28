@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<!-- ═══════════════════════════════════════════════════════════════
+  오답 재도전 퀴즈 템플릿 — 데일리퀴즈 정본 v2.1의 사본이다.
+  (정본은 공인중개사/데일리퀴즈/_template.html · 불가침. 이 파일을 정본으로 착각하지 말 것.)
+  ── 이하 정본 v2.1 원주석 그대로 ──
+  데일리퀴즈 정본 템플릿 v2.1
+    - v2.1 (2026-07-03): 보기 소거 눈동자(👁) 학습보조 추가 — 확실히 아닌 보기를 희미하게.
+      순수 시각용이라 채점·payload 스키마에 전혀 영향 없음. 채점 시 자동 제거된다.
+    - v2 (2026-07-02, Fable 설계 WO-2·WO-4)
+  - 채점·결과 저장(downloadResult)·스키마는 이 파일에서만 수정한다.
+  - 생성 스킬이 교체하는 것: 2026-08-28 · 2026년 8월 28일 (금) · 오답 재도전 20문항 · 듀 잔여 43개 · <span class="tag">🔁 오답 재도전 20</span><span class="tag">공인중개사법</span><span class="tag">민법</span><span class="tag">부동산공법</span><span class="tag">부동산세법</span><span class="tag">부동산공시법</span>
+    그리고 QUESTIONS 마커 사이의 문항 배열. 그 외 로직 수정 금지.
+  - 결과 JSON 스키마 v2: results[](전 문항 정오 기록, retryOf·conceptKey 포함)
+    + wrong[](v1 하위호환 — 기존 수거·집계가 그대로 동작).
+  - 문항 필드 계약(v2): type ∈ 일반|조합|계산|사례|OX,
+    conceptKey(없으면 src에서 자동 유도), retryOf(재도전이면 원장 conceptKey),
+    calc:{expr,expected}(계산형 필수).
+═══════════════════════════════════════════════════════════════ -->
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📚 오답 재도전 문제지 · 2026-08-28</title>
+<style>
+  :root{
+    --bg:#0f1115; --card:#191c23; --card2:#20242d; --line:#2c313b;
+    --txt:#e7e9ee; --sub:#9aa3b2; --accent:#ffd24a; --accent2:#7c9cff;
+    --ok:#34d399; --no:#f87171; --okbg:#10261d; --nobg:#2a1414;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);
+    font-family:'Pretendard','Apple SD Gothic Neo',system-ui,-apple-system,sans-serif;
+    line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:760px;margin:0 auto;padding:32px 20px 80px}
+  header{margin-bottom:24px}
+  .eyebrow{color:var(--accent);font-weight:700;font-size:14px;letter-spacing:.04em}
+  h1{font-size:28px;margin:6px 0 4px;font-weight:800}
+  .meta{color:var(--sub);font-size:14px}
+  .tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px}
+  .tag{background:var(--card2);border:1px solid var(--line);color:var(--sub);
+    padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600}
+  .bar{position:sticky;top:0;z-index:5;background:rgba(15,17,21,.88);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--line);
+    padding:12px 0;margin:18px 0 24px}
+  .progress{height:8px;background:var(--card2);border-radius:999px;overflow:hidden}
+  .progress>i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));
+    border-radius:999px;transition:width .35s ease}
+  .pmeta{display:flex;justify-content:space-between;font-size:12.5px;color:var(--sub);margin-bottom:7px}
+  .sec{font-size:13px;font-weight:800;color:var(--accent2);margin:26px 0 10px;letter-spacing:.02em;
+    border-top:1px dashed var(--line);padding-top:18px}
+  .sec:first-of-type{border-top:none;padding-top:0}
+  .q{background:var(--card);border:1px solid var(--line);border-radius:16px;
+    padding:18px 18px 16px;margin-bottom:14px}
+  .qhead{display:flex;align-items:center;gap:9px;margin-bottom:11px}
+  .qno{background:var(--accent);color:#1a1a1a;font-weight:800;font-size:13px;
+    width:26px;height:26px;border-radius:8px;display:grid;place-items:center;flex:0 0 auto}
+  .qtype{font-size:11.5px;font-weight:700;color:var(--accent2);border:1px solid var(--accent2);
+    padding:1px 8px;border-radius:999px}
+  .qcat{font-size:12px;color:var(--sub);margin-left:auto}
+  .qtext{font-size:16px;font-weight:600;margin:2px 0 14px}
+  .opts{display:flex;flex-direction:column;gap:8px}
+  .opt{display:flex;align-items:center;gap:11px;padding:11px 13px;border:1px solid var(--line);
+    border-radius:11px;cursor:pointer;background:var(--card2);transition:.15s;user-select:none}
+  .opt:hover{border-color:var(--accent2)}
+  .opt.sel{border-color:var(--accent);background:#26261a}
+  .opt .mk{width:22px;height:22px;border-radius:50%;border:2px solid var(--line);flex:0 0 auto;
+    display:grid;place-items:center;font-size:12px;font-weight:800}
+  .opt.sel .mk{border-color:var(--accent);background:var(--accent);color:#1a1a1a}
+  /* 보기 소거(눈동자) 학습보조 — 순수 시각용, 채점·저장에 영향 없음 */
+  .opt .eye{margin-left:auto;flex:0 0 auto;width:30px;height:30px;padding:0;border-radius:8px;
+    display:grid;place-items:center;font-size:15px;line-height:1;background:transparent;
+    border:1px solid transparent;color:var(--sub);opacity:.4;cursor:pointer;transition:.15s}
+  .opt .eye:hover{opacity:1;background:var(--card);border-color:var(--line)}
+  .opt.ruled{opacity:.42;background:var(--card)}
+  .opt.ruled span:not(.mk){text-decoration:line-through;text-decoration-color:var(--no)}
+  .opt.ruled .eye{opacity:.9;color:var(--no)}
+  .ox{flex-direction:row;gap:10px}
+  .ox .opt{flex:1;justify-content:center;font-size:18px;font-weight:800}
+  .opt.correct{border-color:var(--ok);background:var(--okbg)}
+  .opt.correct .mk{border-color:var(--ok);background:var(--ok);color:#06281c}
+  .opt.wrong{border-color:var(--no);background:var(--nobg)}
+  .opt.wrong .mk{border-color:var(--no);background:var(--no);color:#2a0d0d}
+  .expl{margin-top:12px;padding:12px 14px;border-radius:11px;background:var(--card2);
+    border-left:3px solid var(--accent2);font-size:13.5px;color:#d4d9e2;display:none}
+  .expl.show{display:block;animation:fade .3s ease}
+  .expl .verdict{font-weight:800;margin-right:6px}
+  .expl .src{display:block;margin-top:7px;color:var(--sub);font-size:12px}
+  @keyframes fade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+  .submit{width:100%;padding:16px;border:none;border-radius:14px;font-size:17px;font-weight:800;
+    background:linear-gradient(90deg,var(--accent),#ffb347);color:#1a1a1a;cursor:pointer;margin-top:10px}
+  .submit:disabled{opacity:.45;cursor:not-allowed}
+  .submit.retry{background:var(--card2);color:var(--txt);border:1px solid var(--line)}
+  #result{display:none;text-align:center;background:var(--card);border:1px solid var(--line);
+    border-radius:18px;padding:28px 20px;margin-bottom:18px}
+  #result.show{display:block;animation:fade .4s ease}
+  .ring{font-size:46px;font-weight:900;margin:4px 0}
+  .ring small{font-size:18px;color:var(--sub);font-weight:700}
+  #rmsg{color:var(--sub);font-size:15px;margin-top:4px}
+  #dlnote{font-size:12.5px;color:var(--accent);margin-top:12px}
+  .copybtn{display:none;margin-top:12px;padding:10px 16px;border-radius:10px;border:1px solid var(--line);
+    background:var(--card2);color:var(--txt);font-weight:700;cursor:pointer;font-size:13px}
+  .copybtn.show{display:inline-block}
+  .foot{text-align:center;margin-top:30px;color:var(--sub);font-size:12.5px;line-height:1.8}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">RETRY QUIZ · 공인중개사</div>
+    <h1>오답 재도전 문제지</h1>
+    <div class="meta">2026년 8월 28일 (금) · 오답 재도전 20문항 · 듀 잔여 43개</div>
+    <div class="tags"><span class="tag">🔁 오답 재도전 20</span><span class="tag">공인중개사법</span><span class="tag">민법</span><span class="tag">부동산공법</span><span class="tag">부동산세법</span><span class="tag">부동산공시법</span></div>
+  </header>
+
+  <div class="bar">
+    <div class="pmeta"><span id="pcount">0 / 0 선택</span><span>제출 시 결과가 자동 저장됩니다</span></div>
+    <div class="progress"><i id="pbar"></i></div>
+  </div>
+
+  <div id="result">
+    <div class="ring"><span id="score">0</span><small id="total"> / 0</small></div>
+    <div id="rmsg"></div>
+    <div id="dlnote"></div>
+    <button class="copybtn" id="copyBtn">📋 결과 JSON 복사 (다운로드 실패 대비)</button>
+  </div>
+
+  <form id="quiz"></form>
+
+  <button class="submit" id="submitBtn" disabled>제출하고 채점하기</button>
+
+  <div class="foot">
+    오답 원장(FSRS)의 복습 듀 큐에서 자동 생성됩니다.<br>
+    제출 결과는 오답 원장(FSRS)의 졸업·재도전 판정에 반영됩니다.
+  </div>
+</div>
+
+<script>
+const SCHEMA_VERSION = 2;
+const QUIZ_DATE = "2026-08-28";
+const QUESTIONS = [
+/*__QUESTIONS_START__*/
+  {"type": "사례", "cat": "공인중개사법", "q": "🔁 상가건물을 임차한 갑은 경제사정의 중대한 변동으로 폐업하고 2026년 3월 2일 임대인 을에게 계약 해지를 통고하여 3월 5일 을에게 도달하였다. 임대차가 종료되는 날은?", "opts": ["2026년 3월 5일", "2026년 4월 5일", "2026년 6월 5일", "2026년 9월 5일"], "answer": 2, "expl": "[정답 근거] 통고가 도달한 3월 5일부터 3개월이 지난 6월 5일에 해지의 효력이 생긴다. [메커니즘] 임대인에게 새 임차인을 구할 최소한의 유예를 주려고 도달일이 아니라 도달 후 3개월로 못박은 것이다. [함정] 통고를 보낸 3월 2일을 기산일로 잡거나 즉시 종료로 앞당기면 틀린다.", "src": "오답원장 2026-07-08 (재도전)", "conceptKey": "공인중개사법 1 상가임대차", "retryOf": "공인중개사법 1 상가임대차"},
+  {"type": "일반", "cat": "민법", "q": "🔁 상가건물 임대차보호법상 임차인의 권리금 회수 방해로 인한 손해배상청구권은 어느 시점부터 3년이 지나면 시효로 소멸하는가?", "opts": ["임대차가 종료한 날", "방해행위가 있은 날", "권리금 계약을 체결한 날", "임차인이 방해 사실을 안 날"], "answer": 0, "expl": "[정답 근거] 권리금 회수 방해 손해배상청구권의 3년은 임대차가 종료한 날부터 기산한다. [메커니즘] 회수 기회는 임대차가 끝나는 국면에서 문제되므로 종료 시점을 하나의 고정된 기산점으로 삼은 것이다. [함정] 방해행위일이나 안 날로 기산점을 옮긴 지문이 반복 출제된다.", "src": "오답원장 2026-07-13 (재도전)", "conceptKey": "민법 11 상가·주택임대차", "retryOf": "민법 11 상가·주택임대차"},
+  {"type": "계산", "cat": "부동산공법", "q": "🔁 도시개발구역을 정확히 5개의 사업시행지구로 분할하면서 각 지구가 법령상 최소면적 요건을 갖추도록 하려 한다. 도시개발구역의 면적은 최소 얼마 이상이어야 하는가? (다른 조건은 동일)", "opts": ["30,000제곱미터", "50,000제곱미터", "60,000제곱미터", "100,000제곱미터"], "answer": 1, "expl": "[정답 근거] 분할 후 각 지구가 1만제곱미터 이상이어야 하므로 5개 지구에는 5만제곱미터가 최소로 필요하다. [메커니즘] 요건은 지구 하나하나에 걸리는 하한이라 지구 수만큼 곱해야 구역 전체의 하한이 나온다. [함정] 1만제곱미터가 구역 전체에 걸린다고 읽으면 자릿수가 통째로 어긋난다.", "src": "오답원장 2026-06-22 (재도전)", "conceptKey": "부동산공법 도시개발구역 분할", "retryOf": "부동산공법 도시개발구역 분할", "calc": {"expr": "5*10000", "expected": 50000}},
+  {"type": "계산", "cat": "부동산세법", "q": "🔁 고지서 방식으로 부과된 재산세 30만원을 납부기한까지 내지 않고 3개월이 지났다. 지방세 납부지연가산세는 모두 얼마인가? (신고납부 세목이 아닌 고지서 방식이며 다른 조건은 동일)", "opts": ["1,980원", "5,400원", "6,300원", "9,000원"], "answer": 3, "expl": "[정답 근거] 고지분은 3퍼센트가 즉시 붙어 9,000원이고, 세액이 45만원 미만이라 월할로 더 붙는 부분은 적용되지 않는다. [메커니즘] 소액 고지분까지 매달 가산하면 징수비용이 세액을 넘어서므로 하한을 두고 잘라낸 것이다. [함정] 신고납부 세목의 1일 10만분의 22 일할 계산을 그대로 끌어오면 1,980원 같은 답이 나온다.", "src": "오답원장 2026-06-08 (재도전)", "conceptKey": "부동산세법 5-1", "retryOf": "부동산세법 5-1", "calc": {"expr": "300000*0.03", "expected": 9000}},
+  {"type": "사례", "cat": "민법", "q": "🔁 갑은 대리권 없이 을의 대리인이라 칭하며 병과 매매계약을 체결하였고 을은 추인을 거절하였다. 병이 갑에게 민법 제135조의 책임을 물을 수 <b>없는</b> 경우는?", "opts": ["갑이 자신에게 대리권이 없음을 몰랐던 경우", "을이 추인을 거절한 사실을 병이 뒤늦게 안 경우", "병이 과실로 갑에게 대리권이 없음을 알지 못한 경우", "갑이 대리권 소멸 사실을 통지받지 못한 경우"], "answer": 2, "expl": "[정답 근거] 상대방이 과실로 무권대리 사실을 알지 못했다면 무권대리인은 제135조의 책임을 지지 않는다. [메커니즘] 이 책임은 무과실책임이라 무권대리인 본인의 선의나 통지 여부로는 깨지지 않고 상대방의 선의·무과실과 제한능력만이 면책 통로다. [함정] 무권대리인이 몰랐다는 사정을 면책사유로 올려놓은 보기가 단골이다.", "src": "오답원장 2026-07-14 (재도전)", "conceptKey": "민법 2 무권대리인 책임", "retryOf": "민법 2 무권대리인 책임"},
+  {"type": "일반", "cat": "부동산공시법", "q": "🔁 부동산종합공부의 등록사항에 잘못이 있어 그 정정을 신청하려 한다. 신청 상대방으로 옳은 것은?", "opts": ["지적소관청", "읍·면·동장", "시·도지사", "국토교통부장관"], "answer": 0, "expl": "[정답 근거] 부동산종합공부의 등록사항 정정은 지적소관청에만 신청할 수 있다. [메커니즘] 열람·발급은 민원 창구를 넓혀 읍·면·동장까지 열어 두었지만 공부의 내용을 고치는 일은 관리 책임자인 지적소관청으로 좁힌 것이다. [함정] 열람 창구와 정정 창구를 한 덩어리로 묶으면 읍·면·동장을 고르게 된다.", "src": "오답원장 2026-07-14 (재도전)", "conceptKey": "부동산공시법 1-4 지적공부·종합공부", "retryOf": "부동산공시법 1-4 지적공부·종합공부"},
+  {"type": "사례", "cat": "부동산세법", "q": "🔁 갑이 소유한 1구의 건물 500제곱미터 중 280제곱미터를 주거용으로, 나머지를 점포로 사용하고 있다. 재산세 과세대상 분류로 옳은 것은?", "opts": ["주거용 부분만 주택으로 보고 나머지는 건축물로 나누어 과세한다", "건물 전체를 주택으로 보아 과세한다", "건물 전체를 건축물로 보아 과세한다", "주거용 비율이 과반이므로 소유자가 분류를 선택할 수 있다"], "answer": 1, "expl": "[정답 근거] 1구의 건물이 주거와 주거 외 용도로 함께 쓰이면 주거용이 50퍼센트 이상일 때 전체를 주택으로 본다. [메커니즘] 한 덩어리의 건물을 물리적으로 쪼개 과세하면 실무가 불가능해 주된 용도 하나로 성격을 통일한 것이다. [함정] 면적대로 안분해 나누어 과세한다는 보기가 가장 그럴듯하다.", "src": "오답원장 2026-07-14 (재도전)", "conceptKey": "부동산세법 1 재산세 과세대상·판정", "retryOf": "부동산세법 1 재산세 과세대상·판정"},
+  {"type": "사례", "cat": "민법", "q": "🔁 갑은 을로부터 토지를 매수하였으나 법령상 제한 때문에 건물을 신축할 수 없는 토지임을 뒤늦게 알았다. 갑이 선의·무과실일 때 담보책임을 물어야 하는 기간은?", "opts": ["계약한 날부터 6개월 이내", "계약한 날부터 1년 이내", "그 사실을 안 날부터 1년 이내", "그 사실을 안 날부터 6개월 이내"], "answer": 3, "expl": "[정답 근거] 법령상 제한으로 신축이 불가능한 것은 토지의 성상 흠결이라 물건의 하자이고 선의·무과실 매수인은 안 날부터 6개월 내에 물어야 한다. [메커니즘] 물건의 흠은 쓰면서 드러나므로 기산점은 안 날로 두되 기간을 짧게 끊어 법률관계를 빨리 확정한다. [함정] 권리의 하자인 안 날부터 1년과 뒤섞으면 그대로 틀린다.", "src": "오답원장 2026-07-20 (재도전)", "conceptKey": "담보책임 제척기간-물건하자 6개월", "retryOf": "담보책임 제척기간-물건하자 6개월"},
+  {"type": "OX", "cat": "민법", "q": "🔁 점유취득시효가 완성되면 점유자는 등기 없이도 그 부동산의 소유권을 취득한다.", "opts": ["O", "X"], "answer": 1, "expl": "X. [정답 근거] 점유취득시효는 등기함으로써 비로소 소유권을 취득한다. [메커니즘] 상속·공용징수·판결·경매처럼 권리가 자동으로 옮겨가는 사유와 달리 시효는 등기를 요구해 기존 소유자의 권리가 소리 없이 사라지는 것을 막는다. [함정] 등기 없는 물권변동의 예시 목록에 시효완성을 끼워 넣은 지문이 단골이다.", "src": "오답원장 2026-07-20 (재도전)", "conceptKey": "등기없는 물권변동-점유취득시효 예외", "retryOf": "등기없는 물권변동-점유취득시효 예외"},
+  {"type": "사례", "cat": "민법", "q": "🔁 갑은 대리권 없이 을의 대리인으로서 병과 계약을 체결하였고, 그 후 을이 사망하여 갑이 을을 단독상속하였다. 이에 관한 설명으로 옳은 것은?", "opts": ["갑이 본인의 지위에서 추인을 거절하는 것은 신의칙상 허용되지 않는다", "갑은 상속인의 지위에서 자유롭게 추인을 거절할 수 있다", "상속으로 그 무권대리행위는 당연히 무효로 확정된다", "병은 갑에게 계약의 이행이나 손해배상을 청구할 수 없게 된다"], "answer": 0, "expl": "[정답 근거] 무권대리인이 본인을 단독상속한 뒤 추인을 거절하는 것은 신의칙에 반해 허용되지 않는다. [메커니즘] 스스로 계약이 유효하기를 의도했던 자가 상속으로 얻은 지위를 들어 그 계약을 무너뜨리는 것은 앞뒤가 맞지 않기 때문이다. [함정] 지위가 바뀌었으니 거절도 자유롭다는 보기가 가장 그럴듯하다.", "src": "오답원장 2026-07-20 (재도전)", "conceptKey": "무권대리-무과실책임·상속", "retryOf": "무권대리-무과실책임·상속"},
+  {"type": "사례", "cat": "민법", "q": "🔁 을은 나대지인 X토지에 저당권을 설정해 준 뒤 그 지상에 주택을 신축하였고, 갑은 그 주택의 소액임차인이 되었다. X토지가 경매된 경우 갑의 지위로 옳은 것은?", "opts": ["갑은 대지의 환가대금에서 최우선변제를 받을 수 있다", "갑은 대지의 환가대금에서 최우선변제를 받을 수 없다", "갑은 저당권자보다 후순위로 최우선변제를 받는다", "갑은 저당권자와 채권액에 비례해 안분배당을 받는다"], "answer": 1, "expl": "[정답 근거] 나대지에 저당권이 설정된 뒤 신축된 주택의 소액임차인은 대지 환가대금에서 최우선변제를 받지 못한다. [메커니즘] 저당권자가 담보로 잡은 것은 건물 없는 땅의 가치인데 뒤에 생긴 임차인이 그 가치를 잠식하면 담보의 예측이 무너지기 때문이다. [함정] 소액임차인이면 언제나 최우선이라는 인식이 그대로 함정이 된다.", "src": "오답원장 2026-07-20 (재도전)", "conceptKey": "주임법-2기연체·나대지·채무승계", "retryOf": "주임법-2기연체·나대지·채무승계"},
+  {"type": "일반", "cat": "공인중개사법", "q": "🔁 농지에 대하여 토지거래계약 허가를 받은 경우 받은 것으로 보는 것은?", "opts": ["농지취득자격증명", "농지전용허가", "농지전용신고", "개발행위허가"], "answer": 0, "expl": "[정답 근거] 농지에 대한 토지거래계약 허가를 받으면 농지취득자격증명을 받은 것으로 본다. [메커니즘] 허가 심사에서 취득 자격을 이미 들여다보았으므로 같은 심사를 두 번 반복하지 않으려는 것이다. [함정] 취득 자격과 용도변경인 전용허가는 목적이 달라 전용허가까지 의제되지는 않는다.", "src": "오답원장 2026-07-24 (재도전)", "conceptKey": "공인중개사법 1-1·1-5 외국인 취득·허가 의제", "retryOf": "공인중개사법 1-1·1-5 외국인 취득·허가 의제"},
+  {"type": "OX", "cat": "민법", "q": "🔁 사기를 이유로 한 의사표시의 취소는 그 사실을 알지 못한 선의의 제3자에게도 대항할 수 있다.", "opts": ["O", "X"], "answer": 1, "expl": "X. [정답 근거] 사기에 의한 의사표시의 취소는 선의의 제3자에게 대항하지 못한다. [메커니즘] 취소의 소급효를 그대로 관철하면 외관을 믿고 거래한 자가 무너지므로 거래안전 쪽에 우선순위를 준 것이다. [함정] 취소가 인정된다는 결론과 그 취소를 누구에게까지 주장할 수 있는지를 한 덩어리로 묶으면 틀린다.", "src": "오답원장 2026-07-24 (재도전)", "conceptKey": "민법 1-1 제3자 사기 사례", "retryOf": "민법 1-1 제3자 사기 사례"},
+  {"type": "일반", "cat": "공인중개사법", "q": "🔁 공인중개사법령상 공인중개사자격증을 반납하지 아니한 경우의 과태료 개별 기준금액은?", "opts": ["10만원", "20만원", "50만원", "30만원"], "answer": 3, "expl": "[정답 근거] 자격증을 반납하지 않은 경우는 30만원이다. [메커니즘] 개별 금액을 세 칸으로 쪼갠 것은 의무의 대외적 파급력 순서로 제재를 계단화한 것이라 등록증·광고 계열 50만원, 자격증 30만원, 폐업 계열 20만원이 된다. [함정] 등록증 반납과 자격증 반납의 금액을 맞바꿔 외우면 그대로 틀린다.", "src": "오답원장 2026-08-14 (재도전)", "conceptKey": "공인중개사법 1-5 과태료 개별금액", "retryOf": "공인중개사법 1-5 과태료 개별금액"},
+  {"type": "사례", "cat": "민법", "q": "🔁 갑은 자신의 나대지에 을을 위한 저당권을 설정한 뒤 그 지상에 건물을 신축하였고, 경매 신청 전에 그 건물을 병에게 매도하였다. 을의 일괄경매청구에 관한 설명으로 옳은 것은?", "opts": ["건물이 저당권설정자에 의해 신축되었으므로 일괄경매를 청구할 수 있다", "경매 당시 토지와 건물의 소유자가 달라 일괄경매를 청구할 수 없다", "병의 동의를 받으면 일괄경매를 청구할 수 있다", "건물에 저당권을 추가로 설정하면 일괄경매를 청구할 수 있다"], "answer": 1, "expl": "[정답 근거] 일괄경매는 경매 당시 토지와 건물의 소유자가 같아야 하므로 건물이 병에게 넘어간 이상 청구할 수 없다. [메커니즘] 토지와 건물을 한 덩어리로 파는 제도라 남의 소유물까지 처분 대상으로 끌어들일 수는 없기 때문이다. [함정] 신축 당시 소유자가 같았다는 사정만으로 요건이 채워진다고 보면 틀린다.", "src": "오답원장 2026-08-14 (재도전)", "conceptKey": "담보물권 저당권·일괄경매", "retryOf": "담보물권 저당권·일괄경매"},
+  {"type": "일반", "cat": "민법", "q": "🔁 부동산물권변동에서 등기 없이도 그 효력이 생기는 것으로 옳은 것은?", "opts": ["재판상 화해에 의한 소유권의 취득", "공유자 중 1인의 지분 포기에 의한 지분 취득", "포괄유증에 의한 소유권의 취득", "점유취득시효의 완성에 의한 소유권의 취득"], "answer": 2, "expl": "[정답 근거] 포괄유증은 상속과 같이 취급되어 등기 없이 소유권이 이전된다. [메커니즘] 사람이 사라진 순간 권리의 주인을 비워 둘 수 없어 법이 자동으로 승계시키기 때문이다. [함정] 재판상 화해와 지분 포기는 당사자의 의사에 기한 처분이라 법률행위 쪽으로 묶여 등기가 필요하고 시효완성도 등기를 요구한다.", "src": "오답원장 2026-08-14 (재도전)", "conceptKey": "물권법 1-5 등기와 물권변동", "retryOf": "물권법 1-5 등기와 물권변동"},
+  {"type": "일반", "cat": "민법", "q": "🔁 갑은 을 소유 토지를 매수하였는데 계약 체결 과정에서 을의 <b>대리인</b> 병이 갑을 기망하였다. 이에 관한 설명으로 옳은 것은?", "opts": ["병은 제3자가 아니므로 갑은 을의 선의 여부와 관계없이 취소할 수 있다", "병은 제3자이므로 을이 알았거나 알 수 있었을 때에만 취소할 수 있다", "갑은 병에 대해서만 취소의 의사표시를 하여야 한다", "병에게 갑을 해할 고의가 없었다면 기망행위가 성립하지 않는다"], "answer": 0, "expl": "[정답 근거] 대리인은 상대방과 동일시되어 제110조 제2항의 제3자가 아니므로 본인의 선의 여부를 묻지 않고 취소할 수 있다. [메커니즘] 대리인의 행위는 곧 본인의 행위로 귀속되므로 본인이 몰랐다는 사정을 방패로 삼을 수 없다. [함정] 피용자 사안과 섞어 대리인까지 제3자로 취급하면 취소 요건이 하나 더 붙는다.", "src": "오답원장 2026-08-14 (재도전)", "conceptKey": "민법총칙 1-1 제3자의 사기", "retryOf": "민법총칙 1-1 제3자의 사기"},
+  {"type": "OX", "cat": "부동산세법", "q": "🔁 신탁재산의 수탁자가 변경된 경우 새로운 수탁자는 종전 수탁자에게 고지된 재산세 납세의무를 승계한다.", "opts": ["O", "X"], "answer": 0, "expl": "O. [정답 근거] 새로운 수탁자는 납부통지서로 종전 수탁자에게 고지된 납세의무를 그대로 승계한다. [메커니즘] 과세의 근거인 신탁재산은 남아 있고 관리자만 바뀐 것이라 사람 교체로 조세채권이 끊기면 회피 통로가 열리기 때문이다. [함정] 고지 이후의 재산 양도나 권리 포기도 확정된 납세의무를 지우지 못한다는 점이 같은 논리다.", "src": "오답원장 2026-08-14 (재도전)", "conceptKey": "부동산세법 1-3 신탁재산 납세의무", "retryOf": "부동산세법 1-3 신탁재산 납세의무"},
+  {"type": "계산", "cat": "부동산세법", "q": "🔁 거주자 갑이 소유한 별도합산과세대상 토지의 공시가격 합계액이 100억원이다. 갑의 종합부동산세 과세표준은? (공정시장가액비율은 100분의 70이며 다른 조건은 동일)", "opts": ["7억원", "12억원", "14억원", "20억원"], "answer": 2, "expl": "[정답 근거] 별도합산토지의 공제액 80억원을 뺀 20억원에 공정시장가액비율 70퍼센트를 곱하면 14억원이다. [메커니즘] 기초공제로 소액 보유자를 먼저 걸러낸 뒤 남은 금액만 비율로 조절하도록 공제를 먼저 하고 비율을 곱한다. [함정] 종합합산토지의 5억원 공제를 그대로 가져오면 자릿수가 통째로 어긋난다.", "src": "오답원장 2026-08-14 (재도전)", "conceptKey": "부동산세법 1-4 종부세 과세표준 산정", "retryOf": "부동산세법 1-4 종부세 과세표준 산정", "calc": {"expr": "(10000000000-8000000000)*0.7", "expected": 1400000000}},
+  {"type": "일반", "cat": "공인중개사법", "q": "🔁 법인이 주택의 거래계약을 체결한 경우 법인의 현황에 관한 사항을 <b>신고하여야 하는</b> 것은?", "opts": ["거래당사자 중 국가등이 포함되어 있는 경우", "주택의 공급계약인 경우", "분양권을 매매하는 경우", "법인이 개인으로부터 기존 주택을 매수하는 경우"], "answer": 3, "expl": "[정답 근거] 국가등이 낀 거래, 공급계약, 분양권 매매는 제외 사유이므로 법인이 개인에게서 기존 주택을 사는 경우에만 현황을 신고한다. [메커니즘] 이 신고는 법인과 거래상대방 사이의 특수관계를 들여다보는 장치라 그런 관계가 생길 여지가 없는 거래는 빼 둔 것이다. [함정] 제외 사유를 묻던 문제를 신고 사유로 뒤집으면 반사적으로 앞의 셋을 고르게 된다.", "src": "오답원장 2026-08-19 (재도전)", "conceptKey": "공인중개사법 1-7 법인 현황 신고", "retryOf": "공인중개사법 1-7 법인 현황 신고"}
+/*__QUESTIONS_END__*/
+];
+
+/*__BUILD_PAYLOAD_START__*/
+// ── 순수 함수 레이어: DOM 없이 채점 결과(payload v2)를 만든다. node로 단위테스트 가능.
+function conceptFromSrc(src){
+  return String(src||"").replace(/^\s*\d{4}-\d{2}-\d{2}\s*/,"").replace(/\s*\(재도전\)\s*$/,"").trim();
+}
+function buildPayload(questions, sel, quizDate, nowIso, schemaVersion){
+  let score = 0; const results = [], wrong = [];
+  questions.forEach((item, qi)=>{
+    const isCorrect = sel[qi] === item.answer;
+    if(isCorrect) score++;
+    const ck = item.conceptKey || conceptFromSrc(item.src);
+    const isRetry = !!item.retryOf || /\(재도전\)/.test(item.src||"") || String(item.q||"").indexOf("🔁") >= 0;
+    const base = {
+      id: quizDate + "-q" + (qi+1), cat: item.cat, type: item.type, q: item.q,
+      options: item.opts, myAnswer: item.opts[sel[qi]], correct: item.opts[item.answer],
+      expl: item.expl, src: item.src
+    };
+    const r = Object.assign({}, base, {
+      conceptKey: ck,
+      retryOf: isRetry ? (item.retryOf || ck) : null,
+      correctAnswered: isCorrect
+    });
+    if(item.calc) r.calc = item.calc;
+    results.push(r);
+    if(!isCorrect) wrong.push(base);   // v1 하위호환 필드 (기존 수거 파이프라인용)
+  });
+  return { score: score, wrong: wrong, payload: {
+    schemaVersion: schemaVersion, subject: "공인중개사", date: quizDate, quizId: quizDate + "-RQ",
+    score: score, total: questions.length, wrongCount: wrong.length,
+    results: results, wrong: wrong, generatedAt: nowIso
+  }};
+}
+/*__BUILD_PAYLOAD_END__*/
+
+const form = document.getElementById('quiz');
+const selected = new Array(QUESTIONS.length).fill(null);
+let graded = false;
+let LAST_PAYLOAD = null;
+let lastCat = null;
+
+document.getElementById('total').textContent = ' / ' + QUESTIONS.length;
+
+QUESTIONS.forEach((item, qi)=>{
+  if(item.cat !== lastCat){
+    const s = document.createElement('div');
+    s.className = 'sec';
+    s.textContent = '▍' + item.cat;
+    form.appendChild(s);
+    lastCat = item.cat;
+  }
+  const card = document.createElement('div');
+  card.className = 'q';
+  const isOX = item.type === 'OX';
+  card.innerHTML = `
+    <div class="qhead">
+      <span class="qno">${qi+1}</span>
+      <span class="qtype">${item.type}</span>
+      <span class="qcat">${item.cat}</span>
+    </div>
+    <div class="qtext">${item.q}</div>
+    <div class="opts ${isOX?'ox':''}" data-q="${qi}"></div>
+    <div class="expl" id="expl-${qi}"></div>`;
+  const optsEl = card.querySelector('.opts');
+  item.opts.forEach((o, oi)=>{
+    const el = document.createElement('div');
+    el.className = 'opt';
+    el.dataset.q = qi; el.dataset.o = oi;
+    el.innerHTML = isOX
+      ? `<span>${o}</span>`
+      : `<span class="mk">${String.fromCharCode(65+oi)}</span><span>${o}</span>`;
+    el.addEventListener('click', ()=>{
+      if(graded) return;
+      selected[qi] = oi;
+      optsEl.querySelectorAll('.opt').forEach(x=>x.classList.remove('sel'));
+      el.classList.add('sel');
+      updateProgress();
+    });
+    // 눈동자(👁) 소거 버튼 — 확실히 아닌 보기를 희미하게(다시 누르면 복구). 채점·선택·저장에 영향 없음.
+    if(!isOX){
+      const eye = document.createElement('button');
+      eye.type = 'button';
+      eye.className = 'eye';
+      eye.textContent = '👁';
+      eye.title = '확실히 아닌 보기 희미하게 (다시 누르면 복구)';
+      eye.setAttribute('aria-label', '이 보기를 후보에서 제외');
+      eye.addEventListener('click', (ev)=>{
+        ev.stopPropagation();
+        if(graded) return;
+        el.classList.toggle('ruled');
+      });
+      el.appendChild(eye);
+    }
+    optsEl.appendChild(el);
+  });
+  form.appendChild(card);
+});
+
+function updateProgress(){
+  const done = selected.filter(s=>s!==null).length;
+  document.getElementById('pcount').textContent = `${done} / ${QUESTIONS.length} 선택`;
+  document.getElementById('pbar').style.width = (done/QUESTIONS.length*100)+'%';
+  document.getElementById('submitBtn').disabled = done !== QUESTIONS.length;
+}
+
+const btn = document.getElementById('submitBtn');
+btn.addEventListener('click', ()=>{ if(!graded){ grade(); } else { location.reload(); } });
+
+document.getElementById('copyBtn').addEventListener('click', ()=>{
+  if(!LAST_PAYLOAD) return;
+  const txt = JSON.stringify(LAST_PAYLOAD, null, 2);
+  const done = ()=>{ document.getElementById('dlnote').textContent = "📋 복사 완료 — velog-posts/공인중개사/claude_ox_오답/_inbox/에 붙여넣어 저장해도 된다"; };
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(txt).then(done).catch(()=>fallbackCopy(txt, done));
+  } else { fallbackCopy(txt, done); }
+});
+function fallbackCopy(txt, done){
+  const ta = document.createElement('textarea');
+  ta.value = txt; document.body.appendChild(ta); ta.select();
+  try{ document.execCommand('copy'); done(); }catch(e){}
+  ta.remove();
+}
+
+function grade(){
+  graded = true;
+  const built = buildPayload(QUESTIONS, selected, QUIZ_DATE, new Date().toISOString(), SCHEMA_VERSION);
+  LAST_PAYLOAD = built.payload;
+  QUESTIONS.forEach((item, qi)=>{
+    const opts = document.querySelectorAll(`.opt[data-q="${qi}"]`);
+    opts.forEach((el, oi)=>{
+      el.style.cursor='default';
+      el.classList.remove('ruled');           // 채점 시 소거 표시 해제(정답이 희미하게 남지 않도록)
+      const eye = el.querySelector('.eye');    // 눈동자 버튼 제거 — 채점 후엔 불필요
+      if(eye) eye.remove();
+      if(oi === item.answer) el.classList.add('correct');
+      if(oi === selected[qi] && oi !== item.answer) el.classList.add('wrong');
+    });
+    const correct = selected[qi] === item.answer;
+    const ex = document.getElementById('expl-'+qi);
+    ex.innerHTML = `<span class="verdict" style="color:${correct?'var(--ok)':'var(--no)'}">${correct?'정답!':'오답'}</span>${item.expl}<span class="src">📄 출처: ${item.src}</span>`;
+    ex.classList.add('show');
+  });
+  const r = document.getElementById('result');
+  document.getElementById('score').textContent = built.score;
+  document.getElementById('rmsg').textContent = msgFor(built.score);
+  r.classList.add('show');
+  btn.textContent = '🔄 다시 풀기';
+  btn.classList.add('retry');
+  document.getElementById('copyBtn').classList.add('show');
+
+  // 결과 자동 다운로드 (월요일 수거·원장 갱신이 읽는 파일)
+  downloadResult(built.payload);
+
+  r.scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+function downloadResult(payload){
+  try{
+    const blob = new Blob([JSON.stringify(payload,null,2)], {type:"application/json"});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `공인중개사_오답_${QUIZ_DATE}-RQ.json`;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url), 1500);
+    document.getElementById('dlnote').textContent =
+      payload.wrongCount>0 ? `💾 결과 저장됨(오답 ${payload.wrongCount}개) — 다운로드 폴더 확인` : "💾 만점 기록 저장됨";
+  }catch(e){
+    document.getElementById('dlnote').textContent = "⚠️ 자동 저장 실패 — 아래 '결과 JSON 복사'를 눌러 수동 저장";
+  }
+}
+
+function msgFor(s){
+  const t = QUESTIONS.length;
+  const r = s/t;
+  if(s===t)   return "만점. 오늘 등록증 발급해도 되겠는데요? 🏆";
+  if(r>=0.8)  return "합격권. 틀린 거 해설만 한 번 더 보면 완벽합니다.";
+  if(r>=0.6)  return "절반은 넘었어요. 오답 노트행 직행하는 개념들이 보이네요.";
+  if(r>=0.4)  return "아직 흔들리는 개념이 있어요. 해설 정독하고 내일 재도전!";
+  return "괜찮아요, 회독이 쌓이면 올라갑니다. 해설부터 차근차근.";
+}
+</script>
+</body>
+</html>
