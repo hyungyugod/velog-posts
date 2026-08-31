@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <!-- ═══════════════════════════════════════════════════════════════
-  데일리퀴즈 정본 템플릿 v3.0 (2026-08-29, 혼합형)
-    - v3.0 (2026-08-29): 단답형(type "단답") 지원 이식 — 타이핑 인출 → 정답 공개 → 자가채점(⭕/❌).
-      이식 원본: 법무사/2차/데일리퀴즈/_template.html v1.0(프로덕션 검증분). 객관식 경로는
-      v2.1 그대로 — CSS·렌더·채점 전부 추가와 분기만 했고 기존 동작 코드는 손대지 않았다.
+  데일리퀴즈 정본 템플릿 v2.1
     - v2.1 (2026-07-03): 보기 소거 눈동자(👁) 학습보조 추가 — 확실히 아닌 보기를 희미하게.
       순수 시각용이라 채점·payload 스키마에 전혀 영향 없음. 채점 시 자동 제거된다.
     - v2 (2026-07-02, Fable 설계 WO-2·WO-4)
@@ -12,11 +9,9 @@
     그리고 QUESTIONS 마커 사이의 문항 배열. 그 외 로직 수정 금지.
   - 결과 JSON 스키마 v2: results[](전 문항 정오 기록, retryOf·conceptKey 포함)
     + wrong[](v1 하위호환 — 기존 수거·집계가 그대로 동작).
-    단답형 record는 options 없이 selfGraded:true + keywords + myAnswer(타이핑 원문).
   - 문항 필드 계약(v2): type ∈ 일반|조합|계산|사례|OX,
     conceptKey(없으면 src에서 자동 유도), retryOf(재도전이면 원장 conceptKey),
     calc:{expr,expected}(계산형 필수).
-    단답: answer(모범답 문자열)·keywords[](자가채점 키워드 2~4개)·opts 없음.
 ═══════════════════════════════════════════════════════════════ -->
 <html lang="ko">
 <head>
@@ -53,13 +48,11 @@
   .sec:first-of-type{border-top:none;padding-top:0}
   .q{background:var(--card);border:1px solid var(--line);border-radius:16px;
     padding:18px 18px 16px;margin-bottom:14px}
-  .q.saok{border-color:var(--ok)} .q.sano{border-color:var(--no)}
   .qhead{display:flex;align-items:center;gap:9px;margin-bottom:11px}
   .qno{background:var(--accent);color:#1a1a1a;font-weight:800;font-size:13px;
     width:26px;height:26px;border-radius:8px;display:grid;place-items:center;flex:0 0 auto}
   .qtype{font-size:11.5px;font-weight:700;color:var(--accent2);border:1px solid var(--accent2);
     padding:1px 8px;border-radius:999px}
-  .qtype.t2{color:var(--ok);border-color:var(--ok)}
   .qcat{font-size:12px;color:var(--sub);margin-left:auto}
   .qtext{font-size:16px;font-weight:600;margin:2px 0 14px}
   .opts{display:flex;flex-direction:column;gap:8px}
@@ -84,30 +77,6 @@
   .opt.correct .mk{border-color:var(--ok);background:var(--ok);color:#06281c}
   .opt.wrong{border-color:var(--no);background:var(--nobg)}
   .opt.wrong .mk{border-color:var(--no);background:var(--no);color:#2a0d0d}
-  /* ── 단답형 UI (v3.0, 법무사 2차 정본 이식) ── */
-  .sa-input{width:100%;min-height:74px;resize:vertical;background:var(--card2);color:var(--txt);
-    border:1px solid var(--line);border-radius:11px;padding:12px 13px;font-size:14.5px;
-    font-family:inherit;line-height:1.6}
-  .sa-input:focus{outline:none;border-color:var(--accent)}
-  .sa-input:disabled{opacity:.7}
-  .sa-reveal{margin-top:10px;padding:10px 16px;border-radius:10px;border:1px solid var(--accent);
-    background:transparent;color:var(--accent);font-weight:800;font-size:13.5px;cursor:pointer}
-  .sa-reveal:hover{background:#26261a}
-  .sa-reveal:disabled{opacity:.35;cursor:default}
-  .sa-answer{margin-top:12px;padding:13px 14px;border-radius:11px;background:var(--okbg);
-    border:1px solid #1d4634;font-size:14px}
-  .sa-answer[hidden]{display:none}
-  .sa-modela{font-weight:700}
-  .sa-modela b{color:var(--ok)}
-  .sa-keys{margin-top:9px;display:flex;gap:6px;flex-wrap:wrap;align-items:center;
-    font-size:12px;color:var(--sub)}
-  .sa-keys .kw{background:var(--card2);border:1px solid var(--line);border-radius:999px;
-    padding:2px 9px;font-size:12px;color:var(--txt);font-weight:600}
-  .sa-grade{margin-top:12px;display:flex;gap:9px;align-items:center;font-size:13px;color:var(--sub)}
-  .sa-grade button{flex:0 0 auto;padding:8px 15px;border-radius:10px;border:1px solid var(--line);
-    background:var(--card2);color:var(--txt);font-weight:800;font-size:13.5px;cursor:pointer;transition:.15s}
-  .sa-grade button.on-ok{border-color:var(--ok);background:var(--okbg);color:var(--ok)}
-  .sa-grade button.on-no{border-color:var(--no);background:var(--nobg);color:var(--no)}
   .expl{margin-top:12px;padding:12px 14px;border-radius:11px;background:var(--card2);
     border-left:3px solid var(--accent2);font-size:13.5px;color:#d4d9e2;display:none}
   .expl.show{display:block;animation:fade .3s ease}
@@ -172,24 +141,17 @@ const QUESTIONS = [
 
 /*__BUILD_PAYLOAD_START__*/
 // ── 순수 함수 레이어: DOM 없이 채점 결과(payload v2)를 만든다. node로 단위테스트 가능.
-// sel[qi]: 객관식 = 선택 인덱스(number) / 단답형(v3.0) = {typed, revealed, self}
 function conceptFromSrc(src){
   return String(src||"").replace(/^\s*\d{4}-\d{2}-\d{2}\s*/,"").replace(/\s*\(재도전\)\s*$/,"").trim();
 }
 function buildPayload(questions, sel, quizDate, nowIso, schemaVersion){
   let score = 0; const results = [], wrong = [];
   questions.forEach((item, qi)=>{
-    const isSA = item.type === "단답";                       // v3.0: 단답형(자가채점) 분기
-    const st = sel[qi];
-    const isCorrect = isSA ? !!(st && st.self === true) : (sel[qi] === item.answer);
+    const isCorrect = sel[qi] === item.answer;
     if(isCorrect) score++;
     const ck = item.conceptKey || conceptFromSrc(item.src);
     const isRetry = !!item.retryOf || /\(재도전\)/.test(item.src||"") || String(item.q||"").indexOf("🔁") >= 0;
-    const base = isSA ? {
-      id: quizDate + "-q" + (qi+1), cat: item.cat, type: item.type, q: item.q,
-      myAnswer: (st && st.typed) || "", correct: item.answer,
-      expl: item.expl, src: item.src
-    } : {
+    const base = {
       id: quizDate + "-q" + (qi+1), cat: item.cat, type: item.type, q: item.q,
       options: item.opts, myAnswer: item.opts[sel[qi]], correct: item.opts[item.answer],
       expl: item.expl, src: item.src
@@ -199,7 +161,6 @@ function buildPayload(questions, sel, quizDate, nowIso, schemaVersion){
       retryOf: isRetry ? (item.retryOf || ck) : null,
       correctAnswered: isCorrect
     });
-    if(isSA){ r.selfGraded = true; r.keywords = item.keywords || []; }   // v3.0
     if(item.calc) r.calc = item.calc;
     results.push(r);
     if(!isCorrect) wrong.push(base);   // v1 하위호환 필드 (기존 수거 파이프라인용)
@@ -213,70 +174,12 @@ function buildPayload(questions, sel, quizDate, nowIso, schemaVersion){
 /*__BUILD_PAYLOAD_END__*/
 
 const form = document.getElementById('quiz');
-// v3.0: 객관식은 종전대로 null(선택 인덱스가 들어간다) / 단답형만 상태 객체
-const selected = QUESTIONS.map(q => q.type === '단답' ? {typed:'', revealed:false, self:null} : null);
+const selected = new Array(QUESTIONS.length).fill(null);
 let graded = false;
 let LAST_PAYLOAD = null;
 let lastCat = null;
 
 document.getElementById('total').textContent = ' / ' + QUESTIONS.length;
-
-// ── v3.0 추가: 단답형 카드 렌더(법무사 2차 정본 v1.0 이식) ──
-// 타이핑 인출 → 정답·해설 공개 → 자가채점(⭕/❌). 객관식 렌더 경로와 완전히 분리돼 있다.
-function renderSA(item, qi){
-  const card = document.createElement('div');
-  card.className = 'q';
-  card.id = 'card-' + qi;
-  card.innerHTML = `
-    <div class="qhead">
-      <span class="qno">${qi+1}</span>
-      <span class="qtype t2">${item.type}</span>
-      <span class="qcat">${item.cat}</span>
-    </div>
-    <div class="qtext">${item.q}</div>`;
-  const ta = document.createElement('textarea');
-  ta.className = 'sa-input';
-  ta.placeholder = '답을 먼저 쓰세요 (쓰기 전에 정답을 열면 인출이 아니라 인풋이 됩니다)';
-  card.appendChild(ta);
-  const btnR = document.createElement('button');
-  btnR.type = 'button'; btnR.className = 'sa-reveal';
-  btnR.textContent = '✍️ 정답·해설 확인';
-  card.appendChild(btnR);
-  const box = document.createElement('div');
-  box.className = 'sa-answer'; box.hidden = true;
-  const kws = (item.keywords||[]).map(k=>`<span class="kw">${k}</span>`).join('');
-  box.innerHTML = `
-    <div class="sa-modela"><b>📌 모범답</b> — ${item.answer}</div>
-    ${kws?`<div class="sa-keys">채점 포인트:${kws}</div>`:''}
-    <div class="sa-grade"><span>스스로 채점 →</span>
-      <button type="button" data-g="ok">⭕ 맞았다</button>
-      <button type="button" data-g="no">❌ 틀렸다</button>
-    </div>`;
-  card.appendChild(box);
-  const ex = document.createElement('div');
-  ex.className = 'expl'; ex.id = 'expl-'+qi;
-  card.appendChild(ex);
-
-  btnR.addEventListener('click', ()=>{
-    if(graded || selected[qi].revealed) return;
-    selected[qi].typed = ta.value;
-    selected[qi].revealed = true;
-    ta.disabled = true; btnR.disabled = true;
-    box.hidden = false;
-    ex.innerHTML = `${item.expl}<span class="src">📄 출처: ${item.src}</span>`;
-    ex.classList.add('show');
-  });
-  box.querySelectorAll('.sa-grade button').forEach(b=>{
-    b.addEventListener('click', ()=>{
-      if(graded || !selected[qi].revealed) return;
-      selected[qi].self = (b.dataset.g === 'ok');
-      box.querySelectorAll('.sa-grade button').forEach(x=>x.classList.remove('on-ok','on-no'));
-      b.classList.add(b.dataset.g === 'ok' ? 'on-ok' : 'on-no');
-      updateProgress();
-    });
-  });
-  form.appendChild(card);
-}
 
 QUESTIONS.forEach((item, qi)=>{
   if(item.cat !== lastCat){
@@ -286,7 +189,6 @@ QUESTIONS.forEach((item, qi)=>{
     form.appendChild(s);
     lastCat = item.cat;
   }
-  if(item.type === '단답'){ renderSA(item, qi); return; }   // v3.0 분기 — 아래는 전부 객관식 경로(v2.1 원본)
   const card = document.createElement('div');
   card.className = 'q';
   const isOX = item.type === 'OX';
@@ -335,8 +237,7 @@ QUESTIONS.forEach((item, qi)=>{
 });
 
 function updateProgress(){
-  // v3.0: 단답형은 '자가채점까지 끝난 것'만 완료로 센다(객관식은 종전대로 선택 여부)
-  const done = selected.filter((s,i)=> QUESTIONS[i].type==='단답' ? (s && s.self!==null) : (s!==null)).length;
+  const done = selected.filter(s=>s!==null).length;
   document.getElementById('pcount').textContent = `${done} / ${QUESTIONS.length} 선택`;
   document.getElementById('pbar').style.width = (done/QUESTIONS.length*100)+'%';
   document.getElementById('submitBtn').disabled = done !== QUESTIONS.length;
@@ -365,19 +266,6 @@ function grade(){
   const built = buildPayload(QUESTIONS, selected, QUIZ_DATE, new Date().toISOString(), SCHEMA_VERSION);
   LAST_PAYLOAD = built.payload;
   QUESTIONS.forEach((item, qi)=>{
-    if(item.type === '단답'){                      // ── v3.0 추가: 단답형은 자가채점 결과로 확정 ──
-      const st = selected[qi];
-      const okSA = !!(st && st.self === true);
-      const cardSA = document.getElementById('card-'+qi);
-      if(cardSA){
-        cardSA.classList.add(okSA ? 'saok' : 'sano');
-        cardSA.querySelectorAll('.sa-grade button').forEach(b=>{ b.style.cursor='default'; });
-      }
-      const exSA = document.getElementById('expl-'+qi);
-      exSA.innerHTML = `<span class="verdict" style="color:${okSA?'var(--ok)':'var(--no)'}">${okSA?'정답(자가채점)':'오답(자가채점)'}</span>${item.expl}<span class="src">📄 출처: ${item.src}</span>`;
-      exSA.classList.add('show');
-      return;
-    }
     const opts = document.querySelectorAll(`.opt[data-q="${qi}"]`);
     opts.forEach((el, oi)=>{
       el.style.cursor='default';

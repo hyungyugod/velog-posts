@@ -200,6 +200,15 @@ def read_tsv(path):
 
         rows = []
         for lineno, raw in enumerate(reader, start=2):
+            # 열 수 검증 (2026-08-29 전수 감사): 필드 안에 탭이 섞이면 열이 밀려
+            # key 자리에 src가 들어가고 guid가 통째로 바뀐다 — 조용히 버리지 말고 빌드를 막는다.
+            if None in raw:  # 헤더보다 열이 많음 — 필드 내 탭 혼입 의심
+                errors.append(f"{lineno}행: 열 수 초과(필드 안 탭 혼입 의심) — 열 밀림은 key·guid를 오염시킨다")
+                continue
+            if any(raw.get(c) is None for c in header):  # 헤더보다 열이 적음
+                if any(v for v in raw.values() if v):  # 완전 빈 줄은 기존대로 조용히 스킵
+                    errors.append(f"{lineno}행: 열 수 부족(탭 누락 의심)")
+                continue
             row = {c: (raw.get(c) or "").strip() for c in REQUIRED_COLUMNS}
             if not any(row.values()):
                 continue  # 빈 줄
