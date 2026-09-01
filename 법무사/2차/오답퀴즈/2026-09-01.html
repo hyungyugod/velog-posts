@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <!-- ═══════════════════════════════════════════════════════════════
-  데일리퀴즈 정본 템플릿 v3.0 (2026-08-29, 혼합형)
-    - v3.0 (2026-08-29): 단답형(type "단답") 지원 이식 — 타이핑 인출 → 정답 공개 → 자가채점(⭕/❌).
-      이식 원본: 법무사/2차/데일리퀴즈/_template.html v1.0(프로덕션 검증분). 객관식 경로는
-      v2.1 그대로 — CSS·렌더·채점 전부 추가와 분기만 했고 기존 동작 코드는 손대지 않았다.
-    - v2.1 (2026-07-03): 보기 소거 눈동자(👁) 학습보조 추가 — 확실히 아닌 보기를 희미하게.
-      순수 시각용이라 채점·payload 스키마에 전혀 영향 없음. 채점 시 자동 제거된다.
-    - v2 (2026-07-02, Fable 설계 WO-2·WO-4)
+  법무사 오답 재도전 퀴즈 템플릿 — 데일리퀴즈 법무사판 정본 v1.0의 사본이다.
+  (정본은 법무사/데일리퀴즈/_template.html. 이 파일을 정본으로 착각하지 말 것.)
+  ── 이하 정본 v1.0 원주석 그대로 ──
+  데일리퀴즈 법무사판 정본 템플릿 v1.0 (2026-08-23)
+  - 원본: 공인중개사 정본 v2.1 파생. 정본 v2.1(공인중개사)은 불가침 — 이 파일이 법무사 단일 정본.
+  - v1.0 변경: ① 단답형(type "단답") 지원 — 타이핑 인출 → 정답 공개 → 자가채점(⭕/❌)
+              ② 문항 필드 exam("1차"|"2차") 추가 ③ subject "법무사2차", 결과 파일 법무사2차_오답_*.json
+              ④ 목표시간 표시(객관식 72초·단답 90초/문) ⑤ 미제출 경보 배너 토큰 ALERT_HTML
+              ⑥ 계산형(calc) 제거 — 법무사판은 계산형을 출제하지 않는다(수치는 VOLATILE)
   - 채점·결과 저장(downloadResult)·스키마는 이 파일에서만 수정한다.
-  - 생성 스킬이 교체하는 것: {{QUIZ_DATE}} · {{META_LINE}} · {{TAGS_HTML}}
+  - 생성 스킬이 교체하는 것: 이중 중괄호 토큰 4종 QUIZ_DATE·META_LINE·TAGS_HTML·ALERT_HTML
+    (⚠ 이 주석에는 실제 토큰 표기를 쓰지 않는다 — 치환·잔존 검사가 주석에 걸리지 않게)
     그리고 QUESTIONS 마커 사이의 문항 배열. 그 외 로직 수정 금지.
-  - 결과 JSON 스키마 v2: results[](전 문항 정오 기록, retryOf·conceptKey 포함)
-    + wrong[](v1 하위호환 — 기존 수거·집계가 그대로 동작).
-    단답형 record는 options 없이 selfGraded:true + keywords + myAnswer(타이핑 원문).
-  - 문항 필드 계약(v2): type ∈ 일반|조합|계산|사례|OX,
-    conceptKey(없으면 src에서 자동 유도), retryOf(재도전이면 원장 conceptKey),
-    calc:{expr,expected}(계산형 필수).
-    단답: answer(모범답 문자열)·keywords[](자가채점 키워드 2~4개)·opts 없음.
+  - 결과 JSON 스키마 v2(법무사 확장): results[] 각 원소에 exam 포함,
+    단답형은 selfGraded:true + keywords + myAnswer(타이핑 원문). wrong[]은 v1 하위호환.
+  - 문항 필드 계약(법무사 v1):
+    공통: type · exam · cat · q · expl · src · conceptKey (+재도전 retryOf, 한달전 monthlyOf)
+    객관식(일반|조합|판례|사례|OX): opts[] · answer(정답 인덱스)
+    단답형(단답): answer(모범답 문자열) · keywords[](자가채점 필수 키워드 2~4개) · opts 없음
   - 2026-09-01 v2: ❌ 틀렸다 → ① 채점 포인트 중 놓친 것 다중선택(1개 이상 필수, payload missedKeys
     → 오답원장 → 다음 오답퀴즈의 조준점) → ② 모범답을 가린 채 재인출 타이핑(가림은 상시, hover·탭으로 훔쳐보기).
   - 2026-09-01 추가: 단답 자가채점에서 ❌ 틀렸다를 고르면 교정 입력칸이 열리고,
@@ -34,11 +36,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>📚 데일리 문제지 · {{QUIZ_DATE}}</title>
+<title>⚖️ 법무사 2차 오답 재도전 문제지 · 2026-09-01</title>
 <style>
   :root{
     --bg:#0f1115; --card:#191c23; --card2:#20242d; --line:#2c313b;
-    --txt:#e7e9ee; --sub:#9aa3b2; --accent:#ffd24a; --accent2:#7c9cff;
+    --txt:#e7e9ee; --sub:#9aa3b2; --accent:#7c9cff; --accent2:#ffd24a;
     --ok:#34d399; --no:#f87171; --okbg:#10261d; --nobg:#2a1414;
   }
   *{box-sizing:border-box}
@@ -53,6 +55,9 @@
   .tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px}
   .tag{background:var(--card2);border:1px solid var(--line);color:var(--sub);
     padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600}
+  .alertbanner{background:#2a1414;border:1px solid var(--no);color:#ffb4b4;border-radius:12px;
+    padding:12px 16px;margin:14px 0 0;font-size:13.5px;font-weight:700}
+  .alertbanner:empty{display:none}
   .bar{position:sticky;top:0;z-index:5;background:rgba(15,17,21,.88);
     backdrop-filter:blur(8px);border-bottom:1px solid var(--line);
     padding:12px 0;margin:18px 0 24px}
@@ -60,14 +65,14 @@
   .progress>i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));
     border-radius:999px;transition:width .35s ease}
   .pmeta{display:flex;justify-content:space-between;font-size:12.5px;color:var(--sub);margin-bottom:7px}
-  .sec{font-size:13px;font-weight:800;color:var(--accent2);margin:26px 0 10px;letter-spacing:.02em;
+  .sec{font-size:13px;font-weight:800;color:var(--accent);margin:26px 0 10px;letter-spacing:.02em;
     border-top:1px dashed var(--line);padding-top:18px}
   .sec:first-of-type{border-top:none;padding-top:0}
   .q{background:var(--card);border:1px solid var(--line);border-radius:16px;
     padding:18px 18px 16px;margin-bottom:14px}
   .q.saok{border-color:var(--ok)} .q.sano{border-color:var(--no)}
   .qhead{display:flex;align-items:center;gap:9px;margin-bottom:11px}
-  .qno{background:var(--accent);color:#1a1a1a;font-weight:800;font-size:13px;
+  .qno{background:var(--accent);color:#10131c;font-weight:800;font-size:13px;
     width:26px;height:26px;border-radius:8px;display:grid;place-items:center;flex:0 0 auto}
   .qtype{font-size:11.5px;font-weight:700;color:var(--accent2);border:1px solid var(--accent2);
     padding:1px 8px;border-radius:999px}
@@ -77,12 +82,11 @@
   .opts{display:flex;flex-direction:column;gap:8px}
   .opt{display:flex;align-items:center;gap:11px;padding:11px 13px;border:1px solid var(--line);
     border-radius:11px;cursor:pointer;background:var(--card2);transition:.15s;user-select:none}
-  .opt:hover{border-color:var(--accent2)}
-  .opt.sel{border-color:var(--accent);background:#26261a}
+  .opt:hover{border-color:var(--accent)}
+  .opt.sel{border-color:var(--accent2);background:#26261a}
   .opt .mk{width:22px;height:22px;border-radius:50%;border:2px solid var(--line);flex:0 0 auto;
     display:grid;place-items:center;font-size:12px;font-weight:800}
-  .opt.sel .mk{border-color:var(--accent);background:var(--accent);color:#1a1a1a}
-  /* 보기 소거(눈동자) 학습보조 — 순수 시각용, 채점·저장에 영향 없음 */
+  .opt.sel .mk{border-color:var(--accent2);background:var(--accent2);color:#1a1a1a}
   .opt .eye{margin-left:auto;flex:0 0 auto;width:30px;height:30px;padding:0;border-radius:8px;
     display:grid;place-items:center;font-size:15px;line-height:1;background:transparent;
     border:1px solid transparent;color:var(--sub);opacity:.4;cursor:pointer;transition:.15s}
@@ -96,7 +100,7 @@
   .opt.correct .mk{border-color:var(--ok);background:var(--ok);color:#06281c}
   .opt.wrong{border-color:var(--no);background:var(--nobg)}
   .opt.wrong .mk{border-color:var(--no);background:var(--no);color:#2a0d0d}
-  /* ── 단답형 UI (v3.0, 법무사 2차 정본 이식) ── */
+  /* ── 단답형 UI ── */
   .sa-input{width:100%;min-height:74px;resize:vertical;background:var(--card2);color:var(--txt);
     border:1px solid var(--line);border-radius:11px;padding:12px 13px;font-size:14.5px;
     font-family:inherit;line-height:1.6}
@@ -104,7 +108,7 @@
   .sa-input:disabled{opacity:.7}
   .sa-reveal{margin-top:10px;padding:10px 16px;border-radius:10px;border:1px solid var(--accent);
     background:transparent;color:var(--accent);font-weight:800;font-size:13.5px;cursor:pointer}
-  .sa-reveal:hover{background:#26261a}
+  .sa-reveal:hover{background:#1a2138}
   .sa-reveal:disabled{opacity:.35;cursor:default}
   .sa-answer{margin-top:12px;padding:13px 14px;border-radius:11px;background:var(--okbg);
     border:1px solid #1d4634;font-size:14px}
@@ -189,13 +193,13 @@
   .ox-mark.o{border-color:var(--ok);background:var(--okbg);color:var(--ok)}
   .ox-mark.x{border-color:var(--no);background:var(--nobg);color:var(--no)}
   .expl{margin-top:12px;padding:12px 14px;border-radius:11px;background:var(--card2);
-    border-left:3px solid var(--accent2);font-size:13.5px;color:#d4d9e2;display:none}
+    border-left:3px solid var(--accent);font-size:13.5px;color:#d4d9e2;display:none}
   .expl.show{display:block;animation:fade .3s ease}
   .expl .verdict{font-weight:800;margin-right:6px}
   .expl .src{display:block;margin-top:7px;color:var(--sub);font-size:12px}
   @keyframes fade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
   .submit{width:100%;padding:16px;border:none;border-radius:14px;font-size:17px;font-weight:800;
-    background:linear-gradient(90deg,var(--accent),#ffb347);color:#1a1a1a;cursor:pointer;margin-top:10px}
+    background:linear-gradient(90deg,var(--accent),#5f7fe8);color:#0f1115;cursor:pointer;margin-top:10px}
   .submit:disabled{opacity:.45;cursor:not-allowed}
   .submit.retry{background:var(--card2);color:var(--txt);border:1px solid var(--line)}
   #result{display:none;text-align:center;background:var(--card);border:1px solid var(--line);
@@ -204,7 +208,7 @@
   .ring{font-size:46px;font-weight:900;margin:4px 0}
   .ring small{font-size:18px;color:var(--sub);font-weight:700}
   #rmsg{color:var(--sub);font-size:15px;margin-top:4px}
-  #dlnote{font-size:12.5px;color:var(--accent);margin-top:12px}
+  #dlnote{font-size:12.5px;color:var(--accent2);margin-top:12px}
   .copybtn{display:none;margin-top:12px;padding:10px 16px;border-radius:10px;border:1px solid var(--line);
     background:var(--card2);color:var(--txt);font-weight:700;cursor:pointer;font-size:13px}
   .copybtn.show{display:inline-block}
@@ -214,14 +218,15 @@
 <body>
 <div class="wrap">
   <header>
-    <div class="eyebrow">DAILY QUIZ · 공인중개사</div>
-    <h1>오늘의 복습 문제지</h1>
-    <div class="meta">{{META_LINE}}</div>
-    <div class="tags">{{TAGS_HTML}}</div>
+    <div class="eyebrow">RETRY QUIZ · 법무사 2차</div>
+    <h1>오답 재도전 문제지</h1>
+    <div class="meta">2026년 9월 1일 (화) · 오답 재도전 8문항 · 듀 잔여 6개</div>
+    <div class="tags"><span class="tag">🔁 오답 재도전 8</span><span class="tag">⚖️ 법무사 2차</span><span class="tag">형법</span></div>
+    <div class="alertbanner"></div>
   </header>
 
   <div class="bar">
-    <div class="pmeta"><span id="pcount">0 / 0 선택</span><span>제출 시 결과가 자동 저장됩니다</span></div>
+    <div class="pmeta"><span id="pcount">0 / 0 완료</span><span id="ptime"></span></div>
     <div class="progress"><i id="pbar"></i></div>
   </div>
 
@@ -237,31 +242,39 @@
   <button class="submit" id="submitBtn" disabled>제출하고 채점하기</button>
 
   <div class="foot">
-    최근 7일 학습 노트로 자동 생성됩니다.<br>
-    제출 결과는 JSON으로 저장 → 매주 월요일 오답 원장·오답노트로 자동 반영됩니다.
+    오답 원장(FSRS)의 복습 듀 큐에서 자동 생성됩니다. 2차 과목은 전부 단답형 — 먼저 쓰고, 정답을 확인하세요.<br>
+    제출 결과는 오답 원장(FSRS)의 졸업·재도전 판정에 반영됩니다.
   </div>
 </div>
 
 <script>
 const SCHEMA_VERSION = 2;
-const QUIZ_DATE = "{{QUIZ_DATE}}";
+const QUIZ_DATE = "2026-09-01";
 const QUESTIONS = [
 /*__QUESTIONS_START__*/
+{"type": "단답", "exam": "2차", "cat": "형법", "sub": "판별식", "q": "🔁 포괄일죄가 진행되는 도중에 법률이 개정된 경우와 실행행위가 종료된 후에 법률이 개정된 경우의 구별 기준을 밝히고, 그에 따라 적용되는 법률이 어떻게 달라지는지 서술하시오.", "answer": "양자는 법률의 개정이 실행행위의 종료 전에 있었는가 후에 있었는가에 따라 구별된다. 종료 전의 개정이라면 그 법은 범죄 후의 법이 아니라 행위 당시의 법이므로 실행행위 종료시의 법률에 의하여 처벌하여야 하고, 종료 후의 개정이라면 범죄 후 법령의 변경으로서 형법 제1조 제2항의 적용을 검토하여야 한다 할 것이다.", "keywords": ["개정 시점이 실행행위 종료 전인가 후인가", "종료 전 → 종료시(행위시)의 법", "종료 후 → 제1조 제2항 검토"], "expl": "[정답 근거] 노트 1-1은 범죄 후를 실행행위 종료 후로 새기고 진행 중 개정이면 종료시의 법으로 처벌한다고 정리한다. [메커니즘] 행위가 끝나지 않은 동안의 법은 범죄 후의 법이 아니라 행위시법이라 제1조 제2항이 열리지 않는다. [함정] 진행 중 개정된 법 가운데 가장 가벼운 형을 골라 적용하면 결론이 틀린다.", "src": "오답원장 2026-08-27 (재도전)", "conceptKey": "형법 1-1 포괄일죄 진행 중 개정은 실행행위 종료시법", "retryOf": "형법 1-1 포괄일죄 진행 중 개정은 실행행위 종료시법"},
+{"type": "단답", "exam": "2차", "cat": "형법", "sub": "결론이유", "q": "🔁 甲은 乙에게 丙에 대한 상해를 교사하였으나 乙은 丙을 살해하였다. 甲에게 丙의 사망에 대한 예견가능성은 인정되지 아니한다. 甲의 죄책에 대한 결론과 그 이유를 기재하시오.", "answer": "甲에게는 상해교사범만이 성립한다. 정범이 교사된 범위를 넘어 살인에 이른 것은 양적 초과로서 교사자의 고의는 자신이 심은 상해까지만 미치고, 그 초과 부분은 예견가능성이 있는 때에 한하여 상해치사의 교사로 연결된다. 사안의 경우 사망에 대한 예견가능성이 인정되지 아니하므로 상해치사의 교사도 성립하지 아니한다 할 것이다.", "keywords": ["상해교사범만 성립(결론)", "양적 초과", "교사자 고의의 범위", "예견가능성 부정 → 상해치사 교사 불성립"], "expl": "[정답 근거] 노트 1-6은 정범의 살인을 양적 초과로 보아 원칙은 상해교사범, 예견가능성이 있으면 상해치사의 교사까지로 정리한다. [메커니즘] 교사자의 고의는 심은 범위까지만 미치고 그 너머는 과실 영역이라 예견가능성이 유일한 다리다. [함정] 정범이 살인을 했다는 이유로 살인교사로 올려 쓰면 초과분을 고의로 떠넘긴 답안이 된다.", "src": "오답원장 2026-08-27 (재도전)", "conceptKey": "형법 1-6 교사의 양적 초과와 예견가능성", "retryOf": "형법 1-6 교사의 양적 초과와 예견가능성"},
+{"type": "단답", "exam": "2차", "cat": "형법", "sub": "목차순서", "q": "🔁 부진정부작위범의 성립 여부를 검토하는 답안의 목차 순서를 서술하시오.", "answer": "① 작위의무의 발생근거 → ② 보증인지위의 인정 → ③ 결과 방지 가능성 → ④ 요구되는 작위를 하지 아니하였을 것의 순서로 검토한다. 작위의무는 법령, 계약(법률행위), 조리상 작위의무, 선행행위, 신의성실 원칙, 사회상규에서 발생하는바, 부진정부작위범은 작위범 규정에 작위의무를 더하여 성립하므로 그 발생근거가 첫 목차에 놓인다.", "keywords": ["작위의무 발생근거 → 보증인지위", "결과 방지 가능성", "요구되는 작위의 부작위"], "expl": "[정답 근거] 노트 1-2는 작위의무 6개가 인정되면 보증인지위가 서고 여기에 방지 가능성과 부작위가 더해져 부진정부작위범이 된다고 정리한다. [메커니즘] 작위범 규정에 더해지는 알파가 작위의무라 그 출처가 답안의 첫 목차가 된다. [함정] 근거 6개만 나열하고 보증인지위라는 결론 목차를 세우지 않으면 요건 연결이 끊긴다.", "src": "오답원장 2026-08-28 (재도전)", "conceptKey": "형법 1-2 작위의무 발생근거 6개(법계조선신사) → 보증인지위", "retryOf": "형법 1-2 작위의무 발생근거 6개(법계조선신사) → 보증인지위"},
+{"type": "단답", "exam": "2차", "cat": "형법", "sub": "요건개수", "q": "🔁 결과범인 살인죄의 구성요건해당성 검토에서 포섭하여야 하는 객관적 구성요건요소를 답안에 쓰는 순서대로 밝히고, 형식범인 폭행죄에서 포섭 대상에서 빠지는 요소를 함께 서술하시오.", "answer": "객관적 구성요건요소로는 ① 주체 ② 객체 ③ 행위 ④ 결과 ⑤ 인과관계가 요구된다. 형식범인 폭행죄에서는 ④ 결과와 ⑤ 인과관계가 포섭 대상에서 빠지는바, 양자는 구성요건적 결과의 발생을 요구하는가에 따라 구별되기 때문이다.", "keywords": ["주체·객체·행위·결과·인과관계", "형식범 → 결과·인과관계 제외", "구성요건적 결과의 발생 요구 여부"], "expl": "[정답 근거] 노트 1-2의 객관적 요소는 5개이고 1-3은 사망을 요하는 살인죄와 유형력 행사만으로 충족되는 폭행죄를 대비시킨다. [메커니즘] 결과가 구성요건에 들어 있는 범죄에서만 결과와 인과관계를 따로 포섭한다. [함정] 형식범에 인과관계 목차를 잡으면 묻지 않은 논점을 쓴 답안이 되어 감점된다.", "src": "오답원장 2026-08-28 (재도전)", "conceptKey": "형법 1-3 결과범과 형식범의 판별식", "retryOf": "형법 1-3 결과범과 형식범의 판별식"},
+{"type": "단답", "exam": "2차", "cat": "형법", "sub": "용어정의", "q": "🔁 구체적 위험범의 의의를 답안 첫 문장으로 쓰고, 그 정의로부터 도출되는 포섭상의 귀결을 한 문장으로 붙여 서술하시오.", "answer": "구체적 위험범이란 공공의 위험이 현실로 발생하여야 기수가 되는 위험범을 말한다. 따라서 그 답안에서는 공공의 위험의 발생을 별도의 요건으로 포섭하여야 하고, 이를 요하지 아니하는 추상적 위험범에서는 위험의 발생을 포섭하지 아니한다 할 것이다.", "keywords": ["공공의 위험의 현실적 발생", "기수 요건", "별도의 요건으로 포섭"], "expl": "[정답 근거] 노트 1-3은 위험범을 공공의 위험 발생이 기수 요건인지에 따라 구체적·추상적으로 나눈다. [메커니즘] 법익이 깨지기 전 단계를 처벌하려니 위험을 얼마나 앞당길지 눈금이 필요했고 그 눈금이 위험의 현실 발생 요구 여부다. [함정] 정의만 쓰고 포섭 귀결을 붙이지 않으면 분류가 답안에서 아무 일도 하지 않는다.", "src": "오답원장 2026-08-31 (재도전)", "conceptKey": "형법 1-3 구체적 위험범과 추상적 위험범의 판별식", "retryOf": "형법 1-3 구체적 위험범과 추상적 위험범의 판별식"},
+{"type": "단답", "exam": "2차", "cat": "형법", "sub": "미니답안", "q": "🔁 甲은 乙을 살해할 의사로 乙이 현존하는 건조물에 불을 놓아 乙을 사망에 이르게 하였다. 현주건조물방화치사죄와 살인죄의 죄수에 대한 결론과 그 이유를 기재하시오. (10점)", "answer": "살인죄는 별도로 성립하지 아니하고 현주건조물방화치사죄만 성립한다.<br>부진정 결과적 가중범이란 중한 결과를 과실로 야기한 경우뿐만 아니라 고의로 야기한 경우에도 성립하는 결과적 가중범을 말한다. 이러한 범죄와 중한 결과에 대한 고의범의 죄수는 법정형의 경중을 비교하여 정하는바, 결과적 가중범의 형이 더 무거우면 고의범의 불법이 그 안에 포함되고, 고의범의 형이 더 무거우면 남는 불법을 평가하기 위하여 양죄가 모두 성립하여 상상적 경합이 된다.<br>사안의 경우 현주건조물방화치사죄는 살인죄보다 무거우므로 살인죄의 불법은 그 안에 포함되고, 살인죄를 따로 세우면 이미 평가된 불법을 다시 세는 이중평가가 되므로, 살인죄는 성립하지 아니한다 할 것이다.", "keywords": ["살인죄 불성립(결론)", "부진정 결과적 가중범의 의의", "법정형의 경중 비교", "사안의 경우 이중평가 금지"], "expl": "[정답 근거] 노트 1-7은 현주건조물방화치사죄가 살인죄보다 무거워 살인죄가 그 안에 포함되어 성립하지 않는다고 정리한다. [메커니즘] 이미 평가된 불법을 또 세면 이중평가이고 남는 불법이 있으면 따로 세워야 평가가 빠지지 않는다. [함정] 어느 형이 무거운지 비교하지 않고 결론만 옮겨 적으면 포섭이 빠진 답안이 된다.", "src": "오답원장 2026-08-31 (재도전)", "conceptKey": "형법 1-7 부진정 결과적 가중범과 고의범의 죄수", "retryOf": "형법 1-7 부진정 결과적 가중범과 고의범의 죄수"},
+{"type": "단답", "exam": "2차", "cat": "형법", "sub": "결론이유", "q": "🔁 甲과 乙이 외관상 서로 격투를 벌인 것처럼 보이나, 실제로는 乙이 일방적으로 甲을 공격하였고 甲은 이를 막았을 뿐이다. 甲에게 정당방위가 인정될 수 있는지에 대한 결론(인정 가능·불가능)과 그 이유를 기재하시오.", "answer": "정당방위가 인정될 수 있다. 싸움에 정당방위가 부정되는 근거는 방위의사가 인정되지 아니한다는 데 있고, 싸움이 중단된 경우, 예상할 수 없는 공격이 있은 경우, 외관상 격투에 지나지 아니하는 경우에는 예외가 인정된다. 사안의 경우 외관상 격투에 지나지 아니하여 甲에게 방위의사를 인정할 수 있으므로 정당방위가 인정될 수 있다 할 것이다.", "keywords": ["인정 가능(결론)", "방위의사 결여가 부정의 근거", "중단·예상 불가·외관상 격투", "사안의 경우 외관상 격투"], "expl": "[정답 근거] 노트 1-8은 싸움에 방위의사가 없어 정당방위를 부정하면서 중단·예상 불가·외관상 격투를 예외로 든다. [메커니즘] 부정의 근거가 방위의사 결여이므로 주고받는 구도가 실은 없었던 국면에서는 방위의사를 인정할 여지가 생긴다. [함정] 싸움이라는 외형만 보고 곧바로 부정하면 예외형 사안에서 논점을 통째로 놓친다.", "src": "오답원장 2026-08-28 (재도전)", "conceptKey": "형법 1-8 싸움에서 정당방위가 인정될 수 있는 경우", "retryOf": "형법 1-8 싸움에서 정당방위가 인정될 수 있는 경우"},
+{"type": "단답", "exam": "2차", "cat": "형법", "sub": "요건개수", "q": "🔁 위법성의 착오를 이유로 책임이 조각되기 위한 요건을 답안에 쓰는 순서대로 밝히고, 그 요건이 검토되는 범죄 성립단계를 함께 서술하시오.", "answer": "책임이 조각되기 위해서는 ① 자기의 행위가 위법하지 아니한 것으로 오인하였을 것 ② 그 오인에 정당한 이유가 있을 것이 필요하다. 이는 위법성조각사유로 걸러지지 아니한 다음의 책임 단계에서 검토되며, 정당한 이유는 제3기관에 조회하는 등 확인 노력이 있었는지에 따라 판단한다.", "keywords": ["위법성 오인", "정당한 이유", "책임 단계", "제3기관 조회 등 확인 노력"], "expl": "[정답 근거] 노트 1-9는 정당행위로 걸러지지 않은 사안을 책임 단계의 위법성 착오로 다시 거르고 확인 노력이 없으면 정당한 이유를 부정한다. [메커니즘] 위법성은 행위 자체의 평가이고 책임은 행위자에 대한 비난가능성의 평가라 심사 층위가 다르다. [함정] 요건을 위법성 단계에 놓고 쓰면 목차가 역전되어 감점된다.", "src": "오답원장 2026-08-28 (재도전)", "conceptKey": "형법 1-9 위법성 착오는 책임 단계, 정당한 이유 요구", "retryOf": "형법 1-9 위법성 착오는 책임 단계, 정당한 이유 요구"},
 /*__QUESTIONS_END__*/
 ];
 
 /*__BUILD_PAYLOAD_START__*/
-// ── 순수 함수 레이어: DOM 없이 채점 결과(payload v2)를 만든다. node로 단위테스트 가능.
-// sel[qi]: 객관식 = 선택 인덱스(number) / 단답형(v3.0) = {typed, revealed, self}
+// ── 순수 함수 레이어: DOM 없이 채점 결과(payload v2·법무사)를 만든다. node로 단위테스트 가능.
+// sel[qi]: 객관식 = 선택 인덱스(number) / 단답형 = {typed, revealed, self}
 function conceptFromSrc(src){
   return String(src||"").replace(/^\s*\d{4}-\d{2}-\d{2}\s*/,"").replace(/\s*\(재도전\)\s*$/,"").trim();
 }
 function buildPayload(questions, sel, quizDate, nowIso, schemaVersion){
   let score = 0; const results = [], wrong = [];
   questions.forEach((item, qi)=>{
-    const isSA = item.type === "단답";                       // v3.0: 단답형(자가채점) 분기
+    const isSA = item.type === "단답";
     const st = sel[qi];
-    const isCorrect = isSA ? !!(st && st.self === true) : (sel[qi] === item.answer);
+    const isCorrect = isSA ? !!(st && st.self === true) : (st === item.answer);
     if(isCorrect) score++;
     const ck = item.conceptKey || conceptFromSrc(item.src);
     const isRetry = !!item.retryOf || /\(재도전\)/.test(item.src||"") || String(item.q||"").indexOf("🔁") >= 0;
@@ -271,11 +284,12 @@ function buildPayload(questions, sel, quizDate, nowIso, schemaVersion){
       expl: item.expl, src: item.src
     } : {
       id: quizDate + "-q" + (qi+1), cat: item.cat, type: item.type, q: item.q,
-      options: item.opts, myAnswer: (sel[qi] === "DK" ? "모르겠음" : item.opts[sel[qi]]), correct: item.opts[item.answer],
+      options: item.opts, myAnswer: (st === "DK" ? "모르겠음" : item.opts[st]), correct: item.opts[item.answer],
       expl: item.expl, src: item.src
     };
     const r = Object.assign({}, base, {
       conceptKey: ck,
+      exam: item.exam || (isSA ? "2차" : "1차"),
       retryOf: isRetry ? (item.retryOf || ck) : null,
       correctAnswered: isCorrect
     });
@@ -283,13 +297,13 @@ function buildPayload(questions, sel, quizDate, nowIso, schemaVersion){
       if(st && st.self === false){
         if(st.fix){ r.fixTyped = st.fix; base.fixTyped = st.fix; }
         if(st.missed && st.missed.length){ r.missedKeys = st.missed.slice(); base.missedKeys = st.missed.slice(); }
-      } }   // v3.0
-    if(item.calc) r.calc = item.calc;
+      } }
+    if(item.monthlyOf) r.monthlyOf = item.monthlyOf;
     results.push(r);
-    if(!isCorrect) wrong.push(base);   // v1 하위호환 필드 (기존 수거 파이프라인용)
+    if(!isCorrect) wrong.push(base);   // v1 하위호환 필드 (수거 파이프라인용)
   });
   return { score: score, wrong: wrong, payload: {
-    schemaVersion: schemaVersion, subject: "공인중개사", date: quizDate, quizId: quizDate,
+    schemaVersion: schemaVersion, subject: "법무사2차", date: quizDate, quizId: quizDate + "-RQ",
     score: score, total: questions.length, wrongCount: wrong.length,
     results: results, wrong: wrong, generatedAt: nowIso
   }};
@@ -389,215 +403,214 @@ function makeDiag(qi){
 /*__MCQ_DIAG_END__*/
 
 const form = document.getElementById('quiz');
-// v3.0: 객관식은 종전대로 null(선택 인덱스가 들어간다) / 단답형만 상태 객체
 const selected = QUESTIONS.map(q => q.type === '단답' ? {typed:'', revealed:false, self:null, fix:'', fixed:false, missed:[]} : null);
 let graded = false;
 let LAST_PAYLOAD = null;
 let lastCat = null;
 
 document.getElementById('total').textContent = ' / ' + QUESTIONS.length;
-
-// ── v3.0 추가: 단답형 카드 렌더(법무사 2차 정본 v1.0 이식) ──
-// 타이핑 인출 → 정답·해설 공개 → 자가채점(⭕/❌). 객관식 렌더 경로와 완전히 분리돼 있다.
-function renderSA(item, qi){
-  const card = document.createElement('div');
-  card.className = 'q';
-  card.id = 'card-' + qi;
-  card.innerHTML = `
-    <div class="qhead">
-      <span class="qno">${qi+1}</span>
-      <span class="qtype t2">${item.type}</span>
-      <span class="qcat">${item.cat}</span>
-    </div>
-    <div class="qtext">${item.q}</div>`;
-  const ta = document.createElement('textarea');
-  ta.className = 'sa-input';
-  ta.placeholder = '답을 먼저 쓰세요 (쓰기 전에 정답을 열면 인출이 아니라 인풋이 됩니다)';
-  card.appendChild(ta);
-  const btnR = document.createElement('button');
-  btnR.type = 'button'; btnR.className = 'sa-reveal';
-  btnR.textContent = '✍️ 정답·해설 확인';
-  card.appendChild(btnR);
-  const box = document.createElement('div');
-  box.className = 'sa-answer'; box.hidden = true;
-  const kws = (item.keywords||[]).map(k=>`<span class="kw">${k}</span>`).join('');
-  box.innerHTML = `
-    <div class="sa-modela"><b>📌 모범답</b> — ${item.answer}</div>
-    ${kws?`<div class="sa-keys">채점 포인트:${kws}</div>`:''}
-    <div class="sa-grade"><span>스스로 채점 →</span>
-      <button type="button" data-g="ok">⭕ 맞았다</button>
-      <button type="button" data-g="no">❌ 틀렸다</button>
-    </div>`;
-  card.appendChild(box);
-  // ── 오답 교정 입력칸 (2026-09-01) — "틀렸다"일 때만 열린다 ──
-  const fix = document.createElement('div');
-  fix.className = 'sa-fix'; fix.hidden = true;
-  const MISS_OPTS = (item.keywords || []).concat(['결론·방향 자체']);
-  const FIXNOTE = `일치도 ${Math.round(SA_FIX_PASS*100)}% 이상이면 자동 통과 (오탈자·어순은 봐줍니다 / 붙여넣기는 막혀 있습니다)`;
-  fix.innerHTML = `
-    <div class="sa-misshead"><b>① 뭘 놓쳤나요?</b> — 해당되는 것 전부 (1개 이상 · 다음 오답퀴즈가 여길 조준합니다)</div>
-    <div class="sa-misschips">${MISS_OPTS.map((k,ki)=>`<span class="sa-chip" data-k="${ki}">${k}</span>`).join('')}<span class="sa-chip etc" data-etc="1">＋ 기타(직접 입력)</span></div>
-    <div class="sa-etcwrap" hidden><input type="text" class="sa-etcinput" maxlength="60"
-      placeholder="채점 포인트에 없던 것 — 짧게 (예: 예외 사유를 빠뜨림 / 주체를 반대로 씀)"></div>
-    <div class="sa-fixbody" hidden>
-      <div class="sa-fixhead"><b>② 교정 입력</b> — 모범답은 가려집니다. 기억으로 다시 쓰세요
-        <span class="sa-meter"><i></i></span><span class="sa-pct">0%</span></div>
-      <textarea class="sa-fixinput" placeholder="기억나는 대로 다시 쓰세요 — 막히면 위 모범답에 마우스를 올리거나 탭하면 잠깐 열립니다"></textarea>
-      <div class="sa-fixnote">${FIXNOTE}</div>
-    </div>`;
-  card.appendChild(fix);
-  const fixBody = fix.querySelector('.sa-fixbody');
-  const etcChip = fix.querySelector('.sa-chip.etc');
-  const etcWrap = fix.querySelector('.sa-etcwrap');
-  const etcInput= fix.querySelector('.sa-etcinput');
-  const fixTa   = fix.querySelector('.sa-fixinput');
-  const fixBar  = fix.querySelector('.sa-meter i');
-  const fixPct  = fix.querySelector('.sa-pct');
-  const fixNote = fix.querySelector('.sa-fixnote');
-  const modela  = box.querySelector('.sa-modela');
-  function fixCheck(){
-    const sim  = saSim(fixTa.value, item.answer);
-    const pass = sim >= SA_FIX_PASS;
-    fixBar.style.width = Math.min(100, Math.round(sim / SA_FIX_PASS * 100)) + '%';
-    fixPct.textContent = pass ? '통과 ✓' : Math.round(sim*100) + '%';
-    fix.classList.toggle('done', pass);
-    selected[qi].fix = fixTa.value;
-    selected[qi].fixed = pass;
-    if(pass) box.classList.remove('veil','peek');   // 재현했으면 모범답을 열어 대조
-    updateProgress();
-  }
-  function missSync(){
-    const on = [].slice.call(fix.querySelectorAll('.sa-chip.on'))
-      .filter(c=>!c.dataset.etc).map(c=>MISS_OPTS[+c.dataset.k]);
-    const etcOn = etcChip.classList.contains('on');
-    etcWrap.hidden = !etcOn;
-    const etcTxt = etcOn ? etcInput.value.trim().replace(/\s+/g,' ') : '';
-    if(etcTxt) on.push('기타: ' + etcTxt);   // 빈 기타는 선택으로 치지 않는다 — 적어야 조준점이 된다
-    selected[qi].missed = on;
-    fixBody.hidden = (on.length === 0);
-    fixCheck();
-  }
-  fix.querySelectorAll('.sa-chip').forEach(c=>{
-    c.addEventListener('click', ()=>{
-      if(graded || selected[qi].self !== false) return;
-      c.classList.toggle('on');
-      missSync();
-      if(c.dataset.etc && c.classList.contains('on')){ setTimeout(()=>etcInput.focus(), 0); return; }
-      if(!fixBody.hidden) setTimeout(()=>fixTa.focus(), 0);
-    });
-  });
-  etcInput.addEventListener('input', missSync);
-  etcInput.addEventListener('keydown', (ev)=>{ if(ev.key === 'Enter'){ ev.preventDefault(); if(!fixBody.hidden) fixTa.focus(); } });
-  if(modela) modela.addEventListener('click', ()=>{   // 터치 기기용 훔쳐보기(hover 대체)
-    if(box.classList.contains('veil')) box.classList.toggle('peek');
-  });
-  fixTa.addEventListener('input', fixCheck);
-  fixTa.addEventListener('paste', (ev)=>{
-    ev.preventDefault();
-    fixNote.textContent = '⚠️ 붙여넣기는 막혀 있습니다 — 손으로 쳐야 남습니다';
-    setTimeout(()=>{ fixNote.textContent = FIXNOTE; }, 2200);
-  });
-  const ex = document.createElement('div');
-  ex.className = 'expl'; ex.id = 'expl-'+qi;
-  card.appendChild(ex);
-
-  btnR.addEventListener('click', ()=>{
-    if(graded || selected[qi].revealed) return;
-    selected[qi].typed = ta.value;
-    selected[qi].revealed = true;
-    ta.disabled = true; btnR.disabled = true;
-    box.hidden = false;
-    ex.innerHTML = `${item.expl}<span class="src">📄 출처: ${item.src}</span>`;
-    ex.classList.add('show');
-  });
-  box.querySelectorAll('.sa-grade button').forEach(b=>{
-    b.addEventListener('click', ()=>{
-      if(graded || !selected[qi].revealed) return;
-      selected[qi].self = (b.dataset.g === 'ok');
-      box.querySelectorAll('.sa-grade button').forEach(x=>x.classList.remove('on-ok','on-no'));
-      b.classList.add(b.dataset.g === 'ok' ? 'on-ok' : 'on-no');
-      const isWrong = (selected[qi].self === false);
-      fix.hidden = !isWrong;
-      if(isWrong){
-        box.classList.add('veil'); box.classList.remove('peek');
-        missSync();
-      } else {
-        selected[qi].fix = ''; selected[qi].fixed = false; selected[qi].missed = [];
-        fix.querySelectorAll('.sa-chip').forEach(c=>c.classList.remove('on'));
-        etcInput.value = ''; etcWrap.hidden = true;
-        fix.classList.remove('done'); fixBody.hidden = true;
-        box.classList.remove('veil','peek');
-      }
-      updateProgress();
-    });
-  });
-  form.appendChild(card);
-}
+(function(){
+  const sa = QUESTIONS.filter(q=>q.type==='단답').length;
+  const mc = QUESTIONS.length - sa;
+  const min = Math.round((mc*72 + sa*90)/60);
+  document.getElementById('ptime').textContent = '🎯 목표 ' + min + '분 (객관식 72초·단답 90초/문)';
+})();
 
 QUESTIONS.forEach((item, qi)=>{
+  const isSA = item.type === '단답';
   if(item.cat !== lastCat){
     const s = document.createElement('div');
     s.className = 'sec';
-    s.textContent = '▍' + item.cat;
+    s.textContent = '▍' + item.cat + (item.exam === '2차' ? ' · 2차 단답' : '');
     form.appendChild(s);
     lastCat = item.cat;
   }
-  if(item.type === '단답'){ renderSA(item, qi); return; }   // v3.0 분기 — 아래는 전부 객관식 경로(v2.1 원본)
   const card = document.createElement('div');
   card.className = 'q';
+  card.id = 'card-' + qi;
   const isOX = item.type === 'OX';
   card.innerHTML = `
     <div class="qhead">
       <span class="qno">${qi+1}</span>
-      <span class="qtype">${item.type}</span>
+      <span class="qtype ${isSA?'t2':''}">${item.type}${item.exam==='2차'?' · 2차':''}</span>
       <span class="qcat">${item.cat}</span>
     </div>
-    <div class="qtext">${item.q}</div>
-    <div class="opts ${isOX?'ox':''}" data-q="${qi}"></div>
-    <div class="expl" id="expl-${qi}"></div>`;
-  const optsEl = card.querySelector('.opts');
-  item.opts.forEach((o, oi)=>{
-    const el = document.createElement('div');
-    el.className = 'opt';
-    el.dataset.q = qi; el.dataset.o = oi;
-    el.innerHTML = isOX
-      ? `<span>${o}</span>`
-      : `<span class="mk">${String.fromCharCode(65+oi)}</span><span>${o}</span>`;
-    el.addEventListener('click', ()=>{
-      if(graded) return;
-      selected[qi] = oi;
-      optsEl.querySelectorAll('.opt').forEach(x=>x.classList.remove('sel'));
-      el.classList.add('sel');
+    <div class="qtext">${item.q}</div>`;
+
+  if(isSA){
+    // ── 단답형: 타이핑 인출 → 정답 공개 → 자가채점 ──
+    const ta = document.createElement('textarea');
+    ta.className = 'sa-input';
+    ta.placeholder = '답을 먼저 쓰세요 (쓰기 전에 정답을 열면 인출이 아니라 인풋이 됩니다)';
+    card.appendChild(ta);
+    const btnR = document.createElement('button');
+    btnR.type = 'button'; btnR.className = 'sa-reveal';
+    btnR.textContent = '✍️ 정답·해설 확인';
+    card.appendChild(btnR);
+    const box = document.createElement('div');
+    box.className = 'sa-answer'; box.hidden = true;
+    const kws = (item.keywords||[]).map(k=>`<span class="kw">${k}</span>`).join('');
+    box.innerHTML = `
+      <div class="sa-modela"><b>📌 모범답</b> — ${item.answer}</div>
+      ${kws?`<div class="sa-keys">채점 포인트:${kws}</div>`:''}
+      <div class="sa-grade"><span>스스로 채점 →</span>
+        <button type="button" data-g="ok">⭕ 맞았다</button>
+        <button type="button" data-g="no">❌ 틀렸다</button>
+      </div>`;
+    card.appendChild(box);
+    // ── 오답 교정 입력칸 (2026-09-01) — "틀렸다"일 때만 열린다 ──
+    const fix = document.createElement('div');
+    fix.className = 'sa-fix'; fix.hidden = true;
+    const MISS_OPTS = (item.keywords || []).concat(['결론·방향 자체']);
+    const FIXNOTE = `일치도 ${Math.round(SA_FIX_PASS*100)}% 이상이면 자동 통과 (오탈자·어순은 봐줍니다 / 붙여넣기는 막혀 있습니다)`;
+    fix.innerHTML = `
+      <div class="sa-misshead"><b>① 뭘 놓쳤나요?</b> — 해당되는 것 전부 (1개 이상 · 다음 오답퀴즈가 여길 조준합니다)</div>
+      <div class="sa-misschips">${MISS_OPTS.map((k,ki)=>`<span class="sa-chip" data-k="${ki}">${k}</span>`).join('')}<span class="sa-chip etc" data-etc="1">＋ 기타(직접 입력)</span></div>
+      <div class="sa-etcwrap" hidden><input type="text" class="sa-etcinput" maxlength="60"
+        placeholder="채점 포인트에 없던 것 — 짧게 (예: 예외 사유를 빠뜨림 / 주체를 반대로 씀)"></div>
+      <div class="sa-fixbody" hidden>
+        <div class="sa-fixhead"><b>② 교정 입력</b> — 모범답은 가려집니다. 기억으로 다시 쓰세요
+          <span class="sa-meter"><i></i></span><span class="sa-pct">0%</span></div>
+        <textarea class="sa-fixinput" placeholder="기억나는 대로 다시 쓰세요 — 막히면 위 모범답에 마우스를 올리거나 탭하면 잠깐 열립니다"></textarea>
+        <div class="sa-fixnote">${FIXNOTE}</div>
+      </div>`;
+    card.appendChild(fix);
+    const fixBody = fix.querySelector('.sa-fixbody');
+    const etcChip = fix.querySelector('.sa-chip.etc');
+    const etcWrap = fix.querySelector('.sa-etcwrap');
+    const etcInput= fix.querySelector('.sa-etcinput');
+    const fixTa   = fix.querySelector('.sa-fixinput');
+    const fixBar  = fix.querySelector('.sa-meter i');
+    const fixPct  = fix.querySelector('.sa-pct');
+    const fixNote = fix.querySelector('.sa-fixnote');
+    const modela  = box.querySelector('.sa-modela');
+    function fixCheck(){
+      const sim  = saSim(fixTa.value, item.answer);
+      const pass = sim >= SA_FIX_PASS;
+      fixBar.style.width = Math.min(100, Math.round(sim / SA_FIX_PASS * 100)) + '%';
+      fixPct.textContent = pass ? '통과 ✓' : Math.round(sim*100) + '%';
+      fix.classList.toggle('done', pass);
+      selected[qi].fix = fixTa.value;
+      selected[qi].fixed = pass;
+      if(pass) box.classList.remove('veil','peek');   // 재현했으면 모범답을 열어 대조
       updateProgress();
-    });
-    // 눈동자(👁) 소거 버튼 — 확실히 아닌 보기를 희미하게(다시 누르면 복구). 채점·선택·저장에 영향 없음.
-    if(!isOX){
-      const eye = document.createElement('button');
-      eye.type = 'button';
-      eye.className = 'eye';
-      eye.textContent = '👁';
-      eye.title = '확실히 아닌 보기 희미하게 (다시 누르면 복구)';
-      eye.setAttribute('aria-label', '이 보기를 후보에서 제외');
-      eye.addEventListener('click', (ev)=>{
-        ev.stopPropagation();
-        if(graded) return;
-        el.classList.toggle('ruled');
-      });
-      el.appendChild(eye);
     }
-    optsEl.appendChild(el);
-  });
+    function missSync(){
+      const on = [].slice.call(fix.querySelectorAll('.sa-chip.on'))
+        .filter(c=>!c.dataset.etc).map(c=>MISS_OPTS[+c.dataset.k]);
+      const etcOn = etcChip.classList.contains('on');
+      etcWrap.hidden = !etcOn;
+      const etcTxt = etcOn ? etcInput.value.trim().replace(/\s+/g,' ') : '';
+      if(etcTxt) on.push('기타: ' + etcTxt);   // 빈 기타는 선택으로 치지 않는다 — 적어야 조준점이 된다
+      selected[qi].missed = on;
+      fixBody.hidden = (on.length === 0);
+      fixCheck();
+    }
+    fix.querySelectorAll('.sa-chip').forEach(c=>{
+      c.addEventListener('click', ()=>{
+        if(graded || selected[qi].self !== false) return;
+        c.classList.toggle('on');
+        missSync();
+        if(c.dataset.etc && c.classList.contains('on')){ setTimeout(()=>etcInput.focus(), 0); return; }
+        if(!fixBody.hidden) setTimeout(()=>fixTa.focus(), 0);
+      });
+    });
+    etcInput.addEventListener('input', missSync);
+    etcInput.addEventListener('keydown', (ev)=>{ if(ev.key === 'Enter'){ ev.preventDefault(); if(!fixBody.hidden) fixTa.focus(); } });
+    if(modela) modela.addEventListener('click', ()=>{   // 터치 기기용 훔쳐보기(hover 대체)
+      if(box.classList.contains('veil')) box.classList.toggle('peek');
+    });
+    fixTa.addEventListener('input', fixCheck);
+    fixTa.addEventListener('paste', (ev)=>{
+      ev.preventDefault();
+      fixNote.textContent = '⚠️ 붙여넣기는 막혀 있습니다 — 손으로 쳐야 남습니다';
+      setTimeout(()=>{ fixNote.textContent = FIXNOTE; }, 2200);
+    });
+    const ex = document.createElement('div');
+    ex.className = 'expl'; ex.id = 'expl-'+qi;
+    card.appendChild(ex);
+
+    btnR.addEventListener('click', ()=>{
+      if(graded || selected[qi].revealed) return;
+      selected[qi].typed = ta.value;
+      selected[qi].revealed = true;
+      ta.disabled = true; btnR.disabled = true;
+      box.hidden = false;
+      ex.innerHTML = `${item.expl}<span class="src">📄 출처: ${item.src}</span>`;
+      ex.classList.add('show');
+    });
+    box.querySelectorAll('.sa-grade button').forEach(b=>{
+      b.addEventListener('click', ()=>{
+        if(graded || !selected[qi].revealed) return;
+        selected[qi].self = (b.dataset.g === 'ok');
+        box.querySelectorAll('.sa-grade button').forEach(x=>x.classList.remove('on-ok','on-no'));
+        b.classList.add(b.dataset.g === 'ok' ? 'on-ok' : 'on-no');
+        const isWrong = (selected[qi].self === false);
+        fix.hidden = !isWrong;
+        if(isWrong){
+          box.classList.add('veil'); box.classList.remove('peek');
+          missSync();
+        } else {
+          selected[qi].fix = ''; selected[qi].fixed = false; selected[qi].missed = [];
+          fix.querySelectorAll('.sa-chip').forEach(c=>c.classList.remove('on'));
+          etcInput.value = ''; etcWrap.hidden = true;
+          fix.classList.remove('done'); fixBody.hidden = true;
+          box.classList.remove('veil','peek');
+        }
+        updateProgress();
+      });
+    });
+  } else {
+    // ── 객관식: 정본 v2.1 로직 그대로 ──
+    const optsWrap = document.createElement('div');
+    optsWrap.className = 'opts ' + (isOX?'ox':'');
+    optsWrap.dataset.q = qi;
+    card.appendChild(optsWrap);
+    const ex = document.createElement('div');
+    ex.className = 'expl'; ex.id = 'expl-'+qi;
+    card.appendChild(ex);
+    item.opts.forEach((o, oi)=>{
+      const el = document.createElement('div');
+      el.className = 'opt';
+      el.dataset.q = qi; el.dataset.o = oi;
+      el.innerHTML = isOX
+        ? `<span>${o}</span>`
+        : `<span class="mk">${String.fromCharCode(65+oi)}</span><span>${o}</span>`;
+      el.addEventListener('click', ()=>{
+        if(graded) return;
+        selected[qi] = oi;
+        optsWrap.querySelectorAll('.opt').forEach(x=>x.classList.remove('sel'));
+        el.classList.add('sel');
+        updateProgress();
+      });
+      if(!isOX){
+        const eye = document.createElement('button');
+        eye.type = 'button';
+        eye.className = 'eye';
+        eye.textContent = '👁';
+        eye.title = '확실히 아닌 보기 희미하게 (다시 누르면 복구)';
+        eye.setAttribute('aria-label', '이 보기를 후보에서 제외');
+        eye.addEventListener('click', (ev)=>{
+          ev.stopPropagation();
+          if(graded) return;
+          el.classList.toggle('ruled');
+        });
+        el.appendChild(eye);
+      }
+      optsWrap.appendChild(el);
+    });
+  }
   form.appendChild(card);
 });
 
 function updateProgress(){
   document.querySelectorAll('.dk-btn').forEach(b => { const k = +b.dataset.q; b.classList.toggle('on', selected[k] === 'DK'); });
-  // v3.0: 단답형은 '자가채점까지 끝난 것'만 완료로 센다(객관식은 종전대로 선택 여부)
   const done = selected.filter((s,i)=> QUESTIONS[i].type==='단답' ? (s && (s.self===true || (s.self===false && s.fixed && s.missed.length>0))) : (s!==null)).length;
-  document.getElementById('pcount').textContent = `${done} / ${QUESTIONS.length} 선택`;
+  document.getElementById('pcount').textContent = `${done} / ${QUESTIONS.length} 완료`;
   document.getElementById('pbar').style.width = (done/QUESTIONS.length*100)+'%';
   document.getElementById('submitBtn').disabled = done !== QUESTIONS.length;
 }
+updateProgress();
 
 // ── 모르겠음(무답) 버튼 (2026-09-01): 아예 모르면 찍지 말 것 — 찍어서 맞으면 구멍이 기록되지 않는다 ──
 QUESTIONS.forEach((it, qi) => {
@@ -639,7 +652,7 @@ btn.addEventListener('click', ()=>{ if(!graded){ grade(); } else { location.relo
 document.getElementById('copyBtn').addEventListener('click', ()=>{
   if(!LAST_PAYLOAD) return;
   const txt = JSON.stringify(LAST_PAYLOAD, null, 2);
-  const done = ()=>{ document.getElementById('dlnote').textContent = "📋 복사 완료 — velog-posts/공인중개사/claude_ox_오답/_inbox/에 붙여넣어 저장해도 된다"; };
+  const done = ()=>{ document.getElementById('dlnote').textContent = "📋 복사 완료 — velog-posts/법무사/2차/claude_ox_오답/_inbox/에 붙여넣어 저장해도 된다"; };
   if(navigator.clipboard && navigator.clipboard.writeText){
     navigator.clipboard.writeText(txt).then(done).catch(()=>fallbackCopy(txt, done));
   } else { fallbackCopy(txt, done); }
@@ -656,34 +669,30 @@ function grade(){
   const built = buildPayload(QUESTIONS, selected, QUIZ_DATE, new Date().toISOString(), SCHEMA_VERSION);
   LAST_PAYLOAD = built.payload;
   QUESTIONS.forEach((item, qi)=>{
-    if(item.type === '단답'){                      // ── v3.0 추가: 단답형은 자가채점 결과로 확정 ──
-      const st = selected[qi];
-      const okSA = !!(st && st.self === true);
-      const cardSA = document.getElementById('card-'+qi);
-      if(cardSA){
-        cardSA.classList.add(okSA ? 'saok' : 'sano');
-        cardSA.querySelectorAll('.sa-grade button').forEach(b=>{ b.style.cursor='default'; });
-        cardSA.querySelectorAll('.sa-fixinput').forEach(t=>{ t.disabled = true; });
-        cardSA.querySelectorAll('.sa-chip').forEach(c=>{ c.style.cursor = 'default'; });
-        cardSA.querySelectorAll('.sa-etcinput').forEach(t=>{ t.disabled = true; });
-        cardSA.querySelectorAll('.sa-answer').forEach(x=>x.classList.remove('veil'));
-      }
-      const exSA = document.getElementById('expl-'+qi);
-      exSA.innerHTML = `<span class="verdict" style="color:${okSA?'var(--ok)':'var(--no)'}">${okSA?'정답(자가채점)':'오답(자가채점)'}</span>${item.expl}<span class="src">📄 출처: ${item.src}</span>`;
-      exSA.classList.add('show');
+    const ex = document.getElementById('expl-'+qi);
+    if(item.type === '단답'){
+      const correct = selected[qi].self === true;
+      const card = document.getElementById('card-'+qi);
+      card.classList.add(correct ? 'saok' : 'sano');
+      card.querySelectorAll('.sa-grade button').forEach(b=>{ b.style.cursor='default'; });
+      card.querySelectorAll('.sa-fixinput').forEach(t=>{ t.disabled = true; });
+      card.querySelectorAll('.sa-chip').forEach(c=>{ c.style.cursor = 'default'; });
+      card.querySelectorAll('.sa-etcinput').forEach(t=>{ t.disabled = true; });
+      card.querySelectorAll('.sa-answer').forEach(x=>x.classList.remove('veil'));
+      ex.innerHTML = `<span class="verdict" style="color:${correct?'var(--ok)':'var(--no)'}">${correct?'정답(자가채점)':'오답(자가채점)'}</span>${item.expl}<span class="src">📄 출처: ${item.src}</span>`;
+      ex.classList.add('show');
       return;
     }
     const opts = document.querySelectorAll(`.opt[data-q="${qi}"]`);
     opts.forEach((el, oi)=>{
       el.style.cursor='default';
-      el.classList.remove('ruled');           // 채점 시 소거 표시 해제(정답이 희미하게 남지 않도록)
-      const eye = el.querySelector('.eye');    // 눈동자 버튼 제거 — 채점 후엔 불필요
+      el.classList.remove('ruled');
+      const eye = el.querySelector('.eye');
       if(eye) eye.remove();
       if(oi === item.answer) el.classList.add('correct');
       if(oi === selected[qi] && oi !== item.answer) el.classList.add('wrong');
     });
     const correct = selected[qi] === item.answer;
-    const ex = document.getElementById('expl-'+qi);
     ex.innerHTML = `<span class="verdict" style="color:${correct?'var(--ok)':'var(--no)'}">${correct?'정답!':(selected[qi]==='DK'?'모르겠음(무답)':'오답')}</span>${item.expl}<span class="src">📄 출처: ${item.src}</span>`;
     ex.classList.add('show');
   });
@@ -739,7 +748,7 @@ function downloadResult(payload){
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `공인중개사_오답_${QUIZ_DATE}.json`;
+    a.download = `법무사2차_오답_${QUIZ_DATE}-RQ.json`;
     document.body.appendChild(a); a.click(); a.remove();
     setTimeout(()=>URL.revokeObjectURL(url), 1500);
     document.getElementById('dlnote').textContent =
@@ -752,11 +761,11 @@ function downloadResult(payload){
 function msgFor(s){
   const t = QUESTIONS.length;
   const r = s/t;
-  if(s===t)   return "만점. 오늘 등록증 발급해도 되겠는데요? 🏆";
-  if(r>=0.8)  return "합격권. 틀린 거 해설만 한 번 더 보면 완벽합니다.";
-  if(r>=0.6)  return "절반은 넘었어요. 오답 노트행 직행하는 개념들이 보이네요.";
-  if(r>=0.4)  return "아직 흔들리는 개념이 있어요. 해설 정독하고 내일 재도전!";
-  return "괜찮아요, 회독이 쌓이면 올라갑니다. 해설부터 차근차근.";
+  if(s===t)   return "만점. 이 페이스면 동차가 농담이 아니게 됩니다 ⚖️";
+  if(r>=0.8)  return "합격권. 틀린 개념만 해설 한 번 더 — 그게 오늘의 회독입니다.";
+  if(r>=0.6)  return "절반 이상. 단답에서 막힌 건 백지 인출감이 아직이라는 신호예요.";
+  if(r>=0.4)  return "흔들리는 개념이 보입니다. 해설 정독 후 다음 회차에서 재도전.";
+  return "괜찮아요. 인출 실패 + 피드백이 읽기보다 낫다는 게 연구 결론입니다.";
 }
 </script>
 </body>

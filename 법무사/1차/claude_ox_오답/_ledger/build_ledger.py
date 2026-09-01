@@ -35,6 +35,9 @@ v2에서 **그대로 유지**한 것:
 - 상태머신(상습/재도전중/졸업후보/졸업) 판정 규칙 — 한 글자도 안 건드렸다
 - dueQueue 선정 규칙(졸업 제외 · nextReviewDate ≤ 오늘)과 기존 8개 필드
 - ledger[].dates / ledger[].samples / statusCounts 등 소비자 계약 필드
+- (2026-09-01 추가) ledger[].missedKeys{포인트:횟수} · samples[].missedKeys/fixTyped ·
+  dueQueue[].missedTop[≤3] — 단답 자가채점에서 고른 '놓친 채점 포인트'. 재도전 출제의 조준점.
+- (2026-09-01 추가) ledger[].errorCauses{원인:횟수} · samples[].errorCause/causeNote · dueQueue[].causeTop — 객관식 오답 원인 진단. 재출제 각도·Anki 편입 라우팅의 원천.
 
 사용:  python3 build_ledger.py                 (원장 재생성 — 기존 위치)
        python3 build_ledger.py --ingest        (추가로 _inbox JSON을 _raw로 복사·보존)
@@ -145,12 +148,31 @@ def date_anywhere(s):
     m = re.search(r"\d{4}-\d{2}-\d{2}", s or "")
     return m.group(0) if m else None
 
+# ─────────────────────────────────────────────────────────────────────────────
+# (2026-09-01) 객관식 오답 원인 — 틀린 뒤 본인이 고른 진단값(errorCause) 집계 유틸
+#   동률이면 진단 가치가 큰 쪽을 대표로 삼는다: 개념부재 > 혼동 > 함정 > 실수.
+#   표에 없는 값(구버전·오타)은 맨 뒤로 밀되 버리지 않는다.
+# ─────────────────────────────────────────────────────────────────────────────
+ERROR_CAUSE_PRIORITY = ["개념부재", "혼동", "함정", "실수"]
+
+def cause_rank(c):
+    return ERROR_CAUSE_PRIORITY.index(c) if c in ERROR_CAUSE_PRIORITY else len(ERROR_CAUSE_PRIORITY)
+
+def cause_sorted(causes):
+    """(원인, 횟수)를 빈도 내림차순 → 원인 우선순위 → 이름순으로 정렬해 돌려준다."""
+    return sorted((causes or {}).items(), key=lambda kv: (-kv[1], cause_rank(kv[0]), kv[0]))
+
+def cause_top(causes):
+    """최빈 오답 원인 1개(동률이면 개념부재 > 혼동 > 함정 > 실수). 비면 None."""
+    s = cause_sorted(causes)
+    return s[0][0] if s else None
+
 def new_rec(subject, label):
     return {"conceptKey": label, "aliases": [], "subject": subject, "concept": label,
             "status": "재도전중", "timesWrong": 0, "retryMissed": 0, "consecutiveCorrect": 0,
             "firstWrong": None, "lastWrong": None, "lastCorrect": None,
             "lastResult": None, "lastDp": None, "nextReviewDate": None,
-            "dates": [], "samples": []}
+            "dates": [], "samples": [], "missedKeys": {}, "errorCauses": {}}
 
 # ─────────────────────────────────────────────────────────────────────────────
 # 경로 해석 — v2는 스크립트가 항상 _ledger/ 안에 있다고 가정했다.
@@ -320,10 +342,23 @@ def main():
             r["lastWrong"] = date_raw or dp
             r["lastResult"] = "wrong"; r["lastDp"] = dp
             subj_wrong[subject] = subj_wrong.get(subject, 0) + 1
+            # 놓친 채점 포인트(단답 자가채점에서 본인이 고른 것) — 다음 재도전의 조준점
+            for mk in (sample.get("missedKeys") or []) if isinstance(sample, dict) else []:
+                mk = str(mk).strip()
+                if mk:
+                    r["missedKeys"][mk] = r["missedKeys"].get(mk, 0) + 1
+            # 객관식 오답 원인(본인이 고른 진단) — 재출제 각도·Anki 편입 라우팅의 원천
+            ec = str(sample.get("errorCause") or "").strip() if isinstance(sample, dict) else ""
+            if ec:
+                r["errorCauses"][ec] = r["errorCauses"].get(ec, 0) + 1
             if sample is not None and len(r["samples"]) < 3:
                 r["samples"].append({"date": date_raw or dp, "type": sample.get("type"), "q": sample.get("q"),
                                      "myAnswer": sample.get("myAnswer"), "correct": sample.get("correct"),
-                                     "expl": sample.get("expl")})
+                                     "expl": sample.get("expl"),
+                                     "missedKeys": sample.get("missedKeys") or [],
+                                     "fixTyped": sample.get("fixTyped"),
+                                     "errorCause": sample.get("errorCause"),
+                                     "causeNote": sample.get("causeNote")})
         else:
             r["consecutiveCorrect"] += 1
             r["lastCorrect"] = date_raw or dp
@@ -392,7 +427,11 @@ def main():
                  "consecutiveCorrect": r["consecutiveCorrect"],
                  "lastWrong": r["lastWrong"], "nextReviewDate": r["nextReviewDate"],
                  "retrievability": (r.get("fsrs") or {}).get("retrievability"),
-                 "stability": _s_of(r)} for r in due]
+                 "stability": _s_of(r),
+                 "missedTop": [k for k, _ in sorted(r.get("missedKeys", {}).items(),
+                                                    key=lambda kv: -kv[1])[:3]],
+                 "causeTop": cause_top(r.get("errorCauses")),
+                 "errorCauses": r.get("errorCauses") or {}} for r in due]
 
     status_counts = {}
     for r in recs:
@@ -443,11 +482,17 @@ def main():
     L.append("")
     L.append("_정렬: 상태(상습 우선) → 망각위험(R) 오름차순. R = 지금 떠올릴 확률이라 **낮을수록 이미 잊었다**는 뜻이고, 그런 개념이 큐 위로 온다._")
     L.append("")
+    L.append("_`놓친 포인트` = 단답 자가채점에서 본인이 \"이것 때문에 틀렸다\"고 고른 채점 포인트(빈도순 상위 3). **재도전 문항은 이 지점을 정면으로 겨냥해 출제한다** — 없으면(`—`) 종전대로 개념 전체를 변형 출제._")
+    L.append("")
+    L.append("_`원인` = 틀린 뒤 본인이 고른 오답 원인(개념부재/혼동/함정/실수) 누적. **재출제 각도와 Anki 편입이 이 값을 따른다** — 실수뿐인 개념은 Anki 카드화 제외._")
+    L.append("")
     if dueQueue:
-        L.append("| 우선 | 과목 | 개념 | 상태 | 틀림 | 재도전실패 | 연속정답 | 복습예정일 | 망각위험(R) |")
-        L.append("|---|---|---|---|---|---|---|---|---|")
+        L.append("| 우선 | 과목 | 개념 | 상태 | 틀림 | 재도전실패 | 연속정답 | 복습예정일 | 망각위험(R) | 놓친 포인트 | 원인 |")
+        L.append("|---|---|---|---|---|---|---|---|---|---|---|")
         for i, q in enumerate(dueQueue[:DUE_TABLE_ROWS], 1):
-            L.append(f"| {i} | {q['subject']} | {q['conceptKey']} | {q['status']} | {q['timesWrong']} | {q['retryMissed']} | {q['consecutiveCorrect']} | {q['nextReviewDate']} | {pct(q['retrievability'])} |")
+            mtop = " · ".join(q.get("missedTop") or []) or "—"
+            ctop = "·".join(f"{k}×{v}" for k, v in cause_sorted(q.get("errorCauses"))) or "—"
+            L.append(f"| {i} | {q['subject']} | {q['conceptKey']} | {q['status']} | {q['timesWrong']} | {q['retryMissed']} | {q['consecutiveCorrect']} | {q['nextReviewDate']} | {pct(q['retrievability'])} | {mtop} | {ctop} |")
         if len(dueQueue) > DUE_TABLE_ROWS:
             L.append("")
             L.append(f"_…외 {len(dueQueue) - DUE_TABLE_ROWS}개 (전체 목록은 JSON 원장의 `dueQueue`)_")
