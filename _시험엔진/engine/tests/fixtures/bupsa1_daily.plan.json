@@ -1,0 +1,22 @@
+{
+  "exam": "bupsa1",
+  "kind": "daily",
+  "date": "2026-09-10",
+  "root": "",
+  "mode": "rampup",
+  "stage": "S2",
+  "quotas": { "total": 8, "new": 7, "longrev": 1, "monthly": 0, "sa_swap_max": 2, "mini": 0 },
+  "new_sources": [
+    { "path": "법무사/2026-09-05-민법-(민법 총칙 정리).md", "subject": "민법", "date": "2026-09-05", "kind": "note" },
+    { "path": "법무사/2026-09-06-부동산등기법-(부등 신청주의).md", "subject": "부동산등기법", "date": "2026-09-06", "kind": "note" },
+    { "path": "법무사/백지복습/2026-09-01-부동산등기법-백지.md", "subject": "부동산등기법", "date": "2026-09-01", "kind": "blank_review" }
+  ],
+  "longrev_picks": [
+    { "path": "법무사/2026-06-20-부동산등기법-(부동산등기법 가등기).md", "subject": "부동산등기법", "age_days": 82, "bucket": "B2", "count": 1 }
+  ],
+  "monthly_block": [],
+  "monthly_src_range": null,
+  "due_backlog": 12,
+  "alert_html": "⚠ 최근 2회 미제출 · 인출 루프 단절 — 풀지 않은 문제지는 회독이 아니라 장식입니다. 오늘 것부터 제출.",
+  "past_questions": []
+}

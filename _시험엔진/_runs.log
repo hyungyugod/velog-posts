@@ -1,0 +1,5 @@
+2026-09-02T15:47:25	gongin	daily	EXISTS	이미 생성됨: /sessions/tender-cool-cerf/mnt/velog-posts/공인중개사/데일리퀴즈/2026-09-02.html
+2026-09-02T15:47:26	gongin	retry	EXISTS	이미 생성됨: /sessions/tender-cool-cerf/mnt/velog-posts/공인중개사/오답퀴즈/2026-09-02.html
+2026-09-02T15:47:26	bupsa2	retry	EXISTS	이미 생성됨: /sessions/tender-cool-cerf/mnt/velog-posts/법무사/2차/오답퀴즈/2026-09-02.html
+2026-09-02T15:47:26	bupsa1	daily	SKIP	스킵 — 신규 0·장기 0 (문제지 미생성)
+2026-09-02T15:47:26	bupsa1	retry	DUE0	듀 0 — 오답퀴즈 없음

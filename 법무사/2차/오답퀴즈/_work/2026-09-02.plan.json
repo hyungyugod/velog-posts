@@ -1,0 +1,25 @@
+{
+ "schema": 1,
+ "status": "exists",
+ "exam": "bupsa2",
+ "kind": "retry",
+ "date": "2026-09-02",
+ "root": "/sessions/tender-cool-cerf/mnt/velog-posts",
+ "generated_at": "2026-09-02T15:47:26+09:00",
+ "quiz_path": "/sessions/tender-cool-cerf/mnt/velog-posts/법무사/2차/오답퀴즈/2026-09-02.html",
+ "cap": 8,
+ "n": 0,
+ "due_total": 25,
+ "rest": 25,
+ "picks": [],
+ "ingest": {
+  "copied": 0,
+  "downloads": "unmounted",
+  "ledger_exit": 0,
+  "ledger_summary": "상태: 상습 8 · 재도전중 8 · 졸업후보 14 | 🗓️ 듀 큐 25개(상위 8개 소비 · 졸업후보 예약 2칸): 형법 1-9 위법성 착오는 책임 단계, 정당한 이유 요구(R63%), 형법 1-8 싸움에서 정당방위가 인정될 수 있는 경우(R65%), 형법 1-3 구체적 위험범과 추상적 위험범의 판별식(R70%), 형법 1-7 부진정 결과적 가중범과 고의범의 죄수(R70%), 형법 1-1 포괄일죄 진행 중 개정은 실행행위 종료시법(R80%), 형법 1-6 교사의 양적 초과와 예견가능성(R80%) | 과목별 약점 TOP3: 형법(55)"
+ },
+ "warnings": [
+  "Downloads 미연결: 기존 _inbox 분으로 진행"
+ ],
+ "ai_brief": "오늘(2026-09-02) 오답 재도전 문제지가 이미 있다 — 재생성 금지."
+}

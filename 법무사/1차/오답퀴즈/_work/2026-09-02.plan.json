@@ -1,0 +1,28 @@
+{
+ "schema": 1,
+ "status": "due0",
+ "exam": "bupsa1",
+ "kind": "retry",
+ "date": "2026-09-02",
+ "root": "/sessions/tender-cool-cerf/mnt/velog-posts",
+ "generated_at": "2026-09-02T15:47:26+09:00",
+ "cap": 20,
+ "n": 0,
+ "due_total": 0,
+ "rest": 0,
+ "picks": [],
+ "sa_promote_cap": 5,
+ "promoted": 0,
+ "ingest": {
+  "copied": 0,
+  "downloads": "unmounted",
+  "ledger_exit": 2,
+  "ledger_summary": "⚠️  접근 실패/0건 — _raw 와 _inbox 에서 채점결과 JSON을 찾지 못했다. | (조용히 넘어가지 않는다. 퀴즈 결과 JSON을 _inbox/ 에 넣고 다시 실행.) | 찾아본 곳: /sessions/tender-cool-cerf/mnt/velog-posts/법무사/1차/claude_ox_오답/_raw · /sessions/tender-cool-cerf/mnt/velog-posts/법무사/1차/claude_ox_오답/_inbox"
+ },
+ "warnings": [
+  "Downloads 미연결: 기존 _inbox 분으로 진행",
+  "원장: 원천 0건(exit 2) — 정상 범위",
+  "원장 없음: /sessions/tender-cool-cerf/mnt/velog-posts/법무사/1차/claude_ox_오답/_ledger/오답_원장.json — 듀 0으로 처리"
+ ],
+ "ai_brief": "듀 0 — 오늘 bupsa1 오답 재도전 문제지는 만들지 않는다."
+}

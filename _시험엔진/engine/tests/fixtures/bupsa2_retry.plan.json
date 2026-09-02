@@ -1,0 +1,97 @@
+{
+ "exam": "bupsa2",
+ "kind": "retry",
+ "date": "2026-09-11",
+ "root": "",
+ "cap": 8,
+ "n": 3,
+ "due_total": 9,
+ "rest": 6,
+ "picks": [
+  {
+   "conceptKey": "형법 1-1 포괄일죄 진행 중 개정은 실행행위 종료시법",
+   "subject": "형법",
+   "status": "상습",
+   "timesWrong": 3,
+   "retryMissed": 1,
+   "missedTop": [
+    "종료 전 → 종료시(행위시)의 법"
+   ],
+   "causeTop": "혼동",
+   "errorCauses": {
+    "혼동": 3
+   },
+   "samples": [
+    {
+     "date": "2026-08-27",
+     "type": "단답",
+     "q": "포괄일죄의 실행 도중 법이 개정된 경우 적용법규를 쓰시오.",
+     "expl": "포괄일죄가 진행되는 도중에 법이 개정되면 실행행위 종료시의 법을 적용한다.",
+     "myAnswer": "기억나는 만큼만 적음",
+     "correct": "포괄일죄가 진행되는 도중에 법이 개정되면 실행행위 종료시의 법을 적용한다.",
+     "missedKeys": {},
+     "errorCause": "혼동",
+     "causeNote": ""
+    }
+   ],
+   "promote_sa": true,
+   "related_notes": []
+  },
+  {
+   "conceptKey": "형법 1-6 교사의 양적 초과와 예견가능성",
+   "subject": "형법",
+   "status": "재도전",
+   "timesWrong": 2,
+   "retryMissed": 0,
+   "missedTop": [
+    "예견가능성 부정"
+   ],
+   "causeTop": "함정",
+   "errorCauses": {
+    "함정": 2
+   },
+   "samples": [
+    {
+     "date": "2026-08-27",
+     "type": "단답",
+     "q": "교사의 양적 초과에서 교사자의 책임 범위를 쓰시오.",
+     "expl": "교사 내용을 초과한 부분은 예견가능성이 없으면 교사자에게 귀속되지 않는다.",
+     "myAnswer": "기억나는 만큼만 적음",
+     "correct": "교사 내용을 초과한 부분은 예견가능성이 없으면 교사자에게 귀속되지 않는다.",
+     "missedKeys": {},
+     "errorCause": "함정",
+     "causeNote": ""
+    }
+   ],
+   "promote_sa": true,
+   "related_notes": []
+  },
+  {
+   "conceptKey": "민집 집행권원 의의",
+   "subject": "민사집행법",
+   "status": "재도전",
+   "timesWrong": 1,
+   "retryMissed": 0,
+   "missedTop": [],
+   "causeTop": "개념부재",
+   "errorCauses": {
+    "개념부재": 1
+   },
+   "samples": [
+    {
+     "date": "2026-08-27",
+     "type": "단답",
+     "q": "집행권원의 의의를 쓰시오.",
+     "expl": "집행권원은 급부청구권의 존재와 범위를 표시하고 집행력이 부여된 공정증서다.",
+     "myAnswer": "기억나는 만큼만 적음",
+     "correct": "집행권원은 급부청구권의 존재와 범위를 표시하고 집행력이 부여된 공정증서다.",
+     "missedKeys": {},
+     "errorCause": "개념부재",
+     "causeNote": ""
+    }
+   ],
+   "promote_sa": true,
+   "related_notes": []
+  }
+ ]
+}

@@ -1,0 +1,63 @@
+{
+  "exam": "bupsa2",
+  "kind": "daily",
+  "date": "2026-09-10",
+  "root": "",
+  "mode": "rampup",
+  "stage": "S2",
+  "quotas": {
+    "total": 5,
+    "new": 3,
+    "longrev": 1,
+    "monthly": 1,
+    "sa_swap_max": 0,
+    "mini": 1
+  },
+  "new_sources": [
+    {
+      "path": "법무사/2026-09-05-2차-형법-(형법 위법성조각사유).md",
+      "subject": "형법",
+      "date": "2026-09-05",
+      "kind": "note"
+    },
+    {
+      "path": "법무사/백지복습/2026-09-01-2차-민사집행법-백지.md",
+      "subject": "민사집행법",
+      "date": "2026-09-01",
+      "kind": "blank_review"
+    }
+  ],
+  "longrev_picks": [
+    {
+      "path": "법무사/2026-06-25-2차-민사집행법-(민사집행법 배당절차).md",
+      "subject": "민사집행법",
+      "age_days": 77,
+      "bucket": "B2",
+      "count": 1
+    }
+  ],
+  "monthly_block": [
+    {
+      "type": "단답",
+      "exam": "2차",
+      "cat": "형법",
+      "sub": "요건개수",
+      "q": "🔄 객관적 구성요건요소 5개를 빠짐없이 쓰시오.",
+      "answer": "주체, 객체, 행위, 결과, 인과관계.",
+      "keywords": [
+        "주체·객체",
+        "행위",
+        "결과",
+        "인과관계"
+      ],
+      "expl": "조문의 문언을 사실관계에 대응시키는 칸이 이 5개다. 고의는 주관적 구성요건요소이므로 목록에 끼워 넣으면 안 된다.",
+      "src": "2026-08-10 형법 구성요건의 내부 구조 (한달전 재출제·원본 2026-08-10)",
+      "conceptKey": "형법 객관적 구성요건요소 5개",
+      "monthlyOf": "2026-08-10"
+    }
+  ],
+  "monthly_src_range": "2026-08-08~2026-08-14",
+  "due_backlog": 6,
+  "alert_html": "",
+  "past_questions": []
+}

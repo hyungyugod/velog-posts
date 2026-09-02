@@ -1,0 +1,31 @@
+{
+  "exam": "gongin",
+  "kind": "retry",
+  "date": "2026-09-11",
+  "root": "",
+  "cap": 20,
+  "n": 6,
+  "due_total": 31,
+  "rest": 25,
+  "picks": [
+    { "conceptKey": "공인중개사법 1 상가임대차", "subject": "공인중개사법", "status": "상습", "timesWrong": 3,
+      "retryMissed": 2, "missedTop": ["3개월", "임대인이 받은 날"], "causeTop": "혼동",
+      "errorCauses": { "혼동": 2, "개념부재": 1 }, "samples": ["2026-08-20-q7"], "promote_sa": true,
+      "related_notes": ["공인중개사/2026-07-02-공인중개사법-(상가임대차).md"] },
+    { "conceptKey": "공인중개사법 1-5 과태료 개별금액", "subject": "공인중개사법", "status": "재도전", "timesWrong": 2,
+      "retryMissed": 0, "missedTop": [], "causeTop": "실수", "errorCauses": { "실수": 2 },
+      "samples": [], "promote_sa": false, "related_notes": [] },
+    { "conceptKey": "민법 무효행위 추인의 효력", "subject": "민법", "status": "재도전", "timesWrong": 1,
+      "retryMissed": 0, "missedTop": [], "causeTop": "개념부재", "errorCauses": { "개념부재": 1 },
+      "samples": [], "promote_sa": false, "related_notes": [] },
+    { "conceptKey": "민법 통정허위표시-선의의 제3자", "subject": "민법", "status": "재도전", "timesWrong": 2,
+      "retryMissed": 1, "missedTop": ["선의 추정"], "causeTop": "함정", "errorCauses": { "함정": 2 },
+      "samples": [], "promote_sa": false, "related_notes": [] },
+    { "conceptKey": "세법 취득세-법인 전용 간접비용", "subject": "부동산세법", "status": "재도전", "timesWrong": 1,
+      "retryMissed": 0, "missedTop": [], "causeTop": "혼동", "errorCauses": { "혼동": 1 },
+      "samples": [], "promote_sa": false, "related_notes": [] },
+    { "conceptKey": "세법 취득세-면세점 50만원", "subject": "부동산세법", "status": "재도전", "timesWrong": 1,
+      "retryMissed": 0, "missedTop": [], "causeTop": "실수", "errorCauses": { "실수": 1 },
+      "samples": [], "promote_sa": false, "related_notes": [] }
+  ]
+}
