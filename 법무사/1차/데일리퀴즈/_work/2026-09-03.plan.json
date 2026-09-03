@@ -1,0 +1,43 @@
+{
+ "schema": 1,
+ "status": "skip",
+ "exam": "bupsa1",
+ "kind": "daily",
+ "date": "2026-09-03",
+ "root": "/sessions/amazing-admiring-bohr/mnt/velog-posts",
+ "generated_at": "2026-09-03T09:30:47+09:00",
+ "mode": "rampup",
+ "stage": "스킵",
+ "quotas": {
+  "total": 0,
+  "new": 0,
+  "longrev": 0,
+  "monthly": 0,
+  "sa_swap_max": 0,
+  "mini": 0
+ },
+ "counts": {
+  "new_notes": 0,
+  "blank_reviews": 0,
+  "long_candidates": 0,
+  "monthly_window_files": 0
+ },
+ "new_sources": [],
+ "longrev_picks": [],
+ "monthly_block": [],
+ "monthly_src_range": null,
+ "past_questions": [],
+ "past_total": 0,
+ "due_backlog": null,
+ "alert_html": "",
+ "ingest": {
+  "copied": 0,
+  "downloads": "mounted",
+  "ledger_exit": 2,
+  "ledger_summary": "⚠️  접근 실패/0건 — _raw 와 _inbox 에서 채점결과 JSON을 찾지 못했다. | (조용히 넘어가지 않는다. 퀴즈 결과 JSON을 _inbox/ 에 넣고 다시 실행.) | 찾아본 곳: /sessions/amazing-admiring-bohr/mnt/velog-posts/법무사/1차/claude_ox_오답/_raw · /sessions/amazing-admiring-bohr/mnt/velog-posts/법무사/1차/claude_ox_오답/_inbox"
+ },
+ "warnings": [
+  "원장: 원천 0건(exit 2) — 정상 범위"
+ ],
+ "ai_brief": "신규 0·장기 0 — 오늘은 bupsa1 데일리 문제지를 만들지 않는다(스킵)."
+}

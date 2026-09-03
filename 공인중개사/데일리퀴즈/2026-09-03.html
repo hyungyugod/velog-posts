@@ -1,0 +1,1850 @@
+<!DOCTYPE html>
+<!-- ═══════════════════════════════════════════════════════════════
+  HG 무한복습체계 · 퀴즈 단일 템플릿 v4.0 (2026-09-02)
+  - 종전 6벌(공인중개사 데일리/오답 · 법무사 1차 데일리/오답 · 법무사 2차 데일리/오답)을
+    기능의 합집합으로 단일화한 정본. 6벌은 이 파일로 대체된다.
+  - 채점·결과 저장(downloadResult)·payload 스키마는 이 파일에서만 수정한다.
+  - 생성기(engine/render_quiz.py)가 치환하는 것: 이중 중괄호 토큰
+    QUIZ_DATE(2곳)·TITLE·EYEBROW·H1·META_LINE·TAGS_HTML·ALERT_HTML·DESC_HTML·
+    SUBJECT·RESULT_PREFIX·QUIZ_ID_SUFFIX·EXAM_DEFAULT·INBOX_NOTE·
+    ACCENT·ACCENT2·WARM·COOL·ON_ACCENT·ACCENT_GRAD2·REVEAL_HOVER·T_MCQ·T_SA·RESULT_MSGS
+    그리고 QUESTIONS 마커 사이의 문항 배열. 그 외 로직 수정 금지.
+    (⚠ 이 주석에는 실제 토큰 표기를 쓰지 않는다 — 치환·잔존 검사가 주석에 걸리지 않게)
+  - 결과 JSON 스키마 v2: results[](전 문항 정오 기록) + wrong[](v1 하위호환).
+    results[] 필드: id·cat·type·q·options·myAnswer·correct·expl·src·conceptKey·
+      correctAnswered·retryOf(+exam·monthlyOf·calc·selfGraded·keywords·fixTyped·
+      missedKeys·errorCause·causeNote 조건부)
+  - 문항 필드 계약: 공통 type·cat·q·expl·src·conceptKey (+exam·sub·retryOf·monthlyOf)
+    객관식(일반|조합|판례|사례|개수|계산|OX): opts[] · answer(정답 인덱스)
+    계산형: calc{expr,expected}  /  단답형: answer(모범답)·keywords[]·opts 없음
+  - 합집합 기능: 계산형 calc · 보기별 O·X 마킹 · 단답 자가채점/교정 게이트/놓친 포인트 칩/기타 입력 ·
+    모르겠음(무답) · 객관식 오답 원인 진단 게이트 · ㄱㄴㄷ O·X 마킹 · 목표시간 표시 · 미제출 경보 배너
+  - exam 키는 EXAM_DEFAULT가 빈 문자열이 아닐 때만 payload에 실린다(공인중개사는 종전대로 없음).
+  - v2(2026-09-02) ①: 보기 소거 눈동자(👁)를 보기별 O·X 토글(·→O→X)로 대체 — ㄱㄴㄷ 마킹과 같은
+    시각 문법, 선택과 독립(전파 차단), 채점 후 잠금·표시 유지, payload·채점에 영향 없음.
+  - v2 ②: 중간 제출(✂ 여기까지 제출) — 푼 것만 채점하고 미응답은 정답·해설을 열지 않는다. 부분 제출
+    payload에만 partial·answeredCount·skippedCount가 실리고 results[]의 미응답 항목은 skipped 축약형.
+  - v2 ③: 진행 저장·복원(localStorage 키 hgq:과목:퀴즈ID) — 답·마킹·진단·채점 상태를 저장하고
+    재방문 시 복원 배너를 띄운다. 저장 불가 환경(file:// origin 등)에서는 조용히 건너뛴다.
+═══════════════════════════════════════════════════════════════ -->
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📚 데일리 문제지 · 2026-09-03</title>
+<style>
+  :root{
+    --bg:#0f1115; --card:#191c23; --card2:#20242d; --line:#2c313b;
+    --txt:#e7e9ee; --sub:#9aa3b2;
+    --accent:#ffd24a; --accent2:#7c9cff;
+    /* 역할 고정색 — 시험별 accent/accent2 배치와 무관하게 항상 같은 자리에 같은 색이 온다 */
+    --warm:#ffd24a; --cool:#7c9cff;
+    --onaccent:#1a1a1a; --grad2:#ffb347; --revealhov:#26261a;
+    --ok:#34d399; --no:#f87171; --okbg:#10261d; --nobg:#2a1414;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);
+    font-family:'Pretendard','Apple SD Gothic Neo',system-ui,-apple-system,sans-serif;
+    line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:760px;margin:0 auto;padding:32px 20px 80px}
+  header{margin-bottom:24px}
+  .eyebrow{color:var(--accent);font-weight:700;font-size:14px;letter-spacing:.04em}
+  h1{font-size:28px;margin:6px 0 4px;font-weight:800}
+  .meta{color:var(--sub);font-size:14px}
+  .tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px}
+  .tag{background:var(--card2);border:1px solid var(--line);color:var(--sub);
+    padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600}
+  .alertbanner{background:#2a1414;border:1px solid var(--no);color:#ffb4b4;border-radius:12px;
+    padding:12px 16px;margin:14px 0 0;font-size:13.5px;font-weight:700}
+  .alertbanner:empty{display:none}
+  .bar{position:sticky;top:0;z-index:5;background:rgba(15,17,21,.88);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--line);
+    padding:12px 0;margin:18px 0 24px}
+  .progress{height:8px;background:var(--card2);border-radius:999px;overflow:hidden}
+  .progress>i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));
+    border-radius:999px;transition:width .35s ease}
+  .pmeta{display:flex;justify-content:space-between;font-size:12.5px;color:var(--sub);margin-bottom:7px}
+  .sec{font-size:13px;font-weight:800;color:var(--cool);margin:26px 0 10px;letter-spacing:.02em;
+    border-top:1px dashed var(--line);padding-top:18px}
+  .sec:first-of-type{border-top:none;padding-top:0}
+  .q{background:var(--card);border:1px solid var(--line);border-radius:16px;
+    padding:18px 18px 16px;margin-bottom:14px}
+  .q.saok{border-color:var(--ok)} .q.sano{border-color:var(--no)}
+  .qhead{display:flex;align-items:center;gap:9px;margin-bottom:11px}
+  .qno{background:var(--accent);color:var(--onaccent);font-weight:800;font-size:13px;
+    width:26px;height:26px;border-radius:8px;display:grid;place-items:center;flex:0 0 auto}
+  .qtype{font-size:11.5px;font-weight:700;color:var(--accent2);border:1px solid var(--accent2);
+    padding:1px 8px;border-radius:999px}
+  .qtype.t2{color:var(--ok);border-color:var(--ok)}
+  .qcat{font-size:12px;color:var(--sub);margin-left:auto}
+  .qtext{font-size:16px;font-weight:600;margin:2px 0 14px}
+  .opts{display:flex;flex-direction:column;gap:8px}
+  .opt{display:flex;align-items:center;gap:11px;padding:11px 13px;border:1px solid var(--line);
+    border-radius:11px;cursor:pointer;background:var(--card2);transition:.15s;user-select:none}
+  .opt:hover{border-color:var(--cool)}
+  .opt.sel{border-color:var(--warm);background:#26261a}
+  .opt .mk{width:22px;height:22px;border-radius:50%;border:2px solid var(--line);flex:0 0 auto;
+    display:grid;place-items:center;font-size:12px;font-weight:800}
+  .opt.sel .mk{border-color:var(--warm);background:var(--warm);color:#1a1a1a}
+  /* 보기별 O·X 마킹(·→O→X) — ㄱㄴㄷ 지문 마킹과 같은 시각 문법. 순수 시각용, 채점·저장에 영향 없음 */
+  .opt .optox{margin-left:auto;flex:0 0 auto;width:26px;height:26px;padding:0;border-radius:7px;
+    display:grid;place-items:center;font:inherit;font-size:12.5px;font-weight:700;line-height:1;
+    background:var(--card2);border:1px solid var(--line);color:var(--sub);
+    opacity:.55;cursor:pointer;transition:border-color .1s,background .1s,color .1s,opacity .1s}
+  .opt .optox:hover{opacity:1;border-color:var(--accent)}
+  .opt .optox.o{opacity:1;border-color:var(--ok);background:var(--okbg);color:var(--ok)}
+  .opt .optox.x{opacity:1;border-color:var(--no);background:var(--nobg);color:var(--no)}
+  .opt.mk-o{border-color:var(--ok)}
+  .opt.mk-x{opacity:.45;background:var(--card);border-color:var(--no)}
+  .opt.mk-x span:not(.mk){text-decoration:line-through;text-decoration-color:var(--no)}
+  .opt.sel.mk-x{opacity:.62}
+  .ox{flex-direction:row;gap:10px}
+  .ox .opt{flex:1;justify-content:center;font-size:18px;font-weight:800}
+  .opt.correct{border-color:var(--ok);background:var(--okbg)}
+  .opt.correct .mk{border-color:var(--ok);background:var(--ok);color:#06281c}
+  .opt.wrong{border-color:var(--no);background:var(--nobg)}
+  .opt.wrong .mk{border-color:var(--no);background:var(--no);color:#2a0d0d}
+  /* 채점 후: 마킹은 그대로 두되 정답 보기만은 희미해지지 않게(정답이 가려지면 복습이 안 된다) */
+  .opt.correct.mk-x{opacity:1;background:var(--okbg)}
+  .opt.correct.mk-x span:not(.mk){text-decoration:none}
+  /* ── 단답형 UI ── */
+  .sa-input{width:100%;min-height:74px;resize:vertical;background:var(--card2);color:var(--txt);
+    border:1px solid var(--line);border-radius:11px;padding:12px 13px;font-size:14.5px;
+    font-family:inherit;line-height:1.6}
+  .sa-input:focus{outline:none;border-color:var(--accent)}
+  .sa-input:disabled{opacity:.7}
+  .sa-reveal{margin-top:10px;padding:10px 16px;border-radius:10px;border:1px solid var(--accent);
+    background:transparent;color:var(--accent);font-weight:800;font-size:13.5px;cursor:pointer}
+  .sa-reveal:hover{background:var(--revealhov)}
+  .sa-reveal:disabled{opacity:.35;cursor:default}
+  .sa-answer{margin-top:12px;padding:13px 14px;border-radius:11px;background:var(--okbg);
+    border:1px solid #1d4634;font-size:14px}
+  .sa-answer[hidden]{display:none}
+  .sa-modela{font-weight:700}
+  .sa-modela b{color:var(--ok)}
+  .sa-keys{margin-top:9px;display:flex;gap:6px;flex-wrap:wrap;align-items:center;
+    font-size:12px;color:var(--sub)}
+  .sa-keys .kw{background:var(--card2);border:1px solid var(--line);border-radius:999px;
+    padding:2px 9px;font-size:12px;color:var(--txt);font-weight:600}
+  .sa-grade{margin-top:12px;display:flex;gap:9px;align-items:center;font-size:13px;color:var(--sub)}
+  .sa-grade button{flex:0 0 auto;padding:8px 15px;border-radius:10px;border:1px solid var(--line);
+    background:var(--card2);color:var(--txt);font-weight:800;font-size:13.5px;cursor:pointer;transition:.15s}
+  .sa-grade button.on-ok{border-color:var(--ok);background:var(--okbg);color:var(--ok)}
+  .sa-grade button.on-no{border-color:var(--no);background:var(--nobg);color:var(--no)}
+  /* ── 단답 오답 교정 입력 ── */
+  .sa-fix{margin-top:11px;padding:12px 13px;border-radius:11px;
+    background:var(--nobg);border:1px solid var(--no)}
+  .sa-fix[hidden]{display:none}
+  .sa-fixhead{font-size:13px;color:var(--sub);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .sa-fixhead b{color:var(--no)}
+  .sa-meter{flex:1 1 90px;min-width:80px;height:6px;border-radius:99px;background:var(--card2);overflow:hidden}
+  .sa-meter i{display:block;height:100%;width:0;background:var(--no);transition:width .12s linear}
+  .sa-pct{font-variant-numeric:tabular-nums;font-weight:700;color:var(--no);min-width:40px;text-align:right}
+  .sa-fixinput{width:100%;min-height:64px;margin-top:9px;resize:vertical;background:var(--card2);
+    color:var(--txt);border:1px solid var(--line);border-radius:10px;padding:11px 12px;
+    font:inherit;font-size:15px;line-height:1.6}
+  .sa-fixinput:focus{outline:none;border-color:var(--no)}
+  .sa-fixinput:disabled{opacity:.7}
+  .sa-fixnote{margin-top:7px;font-size:12px;color:var(--sub)}
+  .sa-fix.done{background:var(--okbg);border-color:var(--ok)}
+  .sa-fix.done .sa-fixhead b,.sa-fix.done .sa-pct{color:var(--ok)}
+  .sa-fix.done .sa-meter i{background:var(--ok)}
+  .sa-fix.done .sa-fixinput:focus{border-color:var(--ok)}
+  .sa-answer.veil .sa-modela{filter:blur(5px);cursor:pointer;user-select:none;transition:filter .15s}
+  .sa-answer.veil .sa-modela:hover,.sa-answer.veil.peek .sa-modela{filter:none}
+  .sa-misshead{font-size:13px;color:var(--sub)}
+  .sa-misshead b{color:var(--no)}
+  .sa-misschips{margin-top:9px;display:flex;gap:7px;flex-wrap:wrap}
+  .sa-chip{background:var(--card2);border:1px solid var(--line);border-radius:999px;
+    padding:6px 12px;font-size:13px;color:var(--txt);cursor:pointer;user-select:none;
+    transition:background .12s,border-color .12s,color .12s}
+  .sa-chip:hover{border-color:var(--no)}
+  .sa-chip.on{background:var(--no);border-color:var(--no);color:#1a0b0b;font-weight:700}
+  .sa-fix.done .sa-chip.on{background:var(--ok);border-color:var(--ok);color:#06231a}
+  .sa-chip.etc{border-style:dashed}
+  .sa-etcwrap{margin-top:9px}
+  .sa-etcwrap[hidden]{display:none}
+  .sa-etcinput{width:100%;background:var(--card2);color:var(--txt);border:1px solid var(--no);
+    border-radius:10px;padding:9px 12px;font:inherit;font-size:14px}
+  .sa-etcinput:focus{outline:none;border-color:var(--accent)}
+  .sa-etcinput:disabled{opacity:.7}
+  .sa-fixbody{margin-top:12px;padding-top:11px;border-top:1px dashed var(--line)}
+  .sa-fixbody[hidden]{display:none}
+  /* ── 객관식 오답 원인 진단 ── */
+  .mcq-diag{margin-top:11px;padding:12px 13px;border-radius:11px;
+    background:var(--nobg);border:1px solid var(--no)}
+  .mcq-diag .dhead{font-size:13px;color:var(--sub)}
+  .mcq-diag .dhead b{color:var(--no)}
+  .mcq-diag .dchips{margin-top:9px;display:flex;gap:7px;flex-wrap:wrap}
+  .mcq-diag .dmemo{width:100%;margin-top:9px;background:var(--card2);color:var(--txt);
+    border:1px solid var(--line);border-radius:10px;padding:9px 12px;font:inherit;font-size:14px}
+  .mcq-diag .dmemo:focus{outline:none;border-color:var(--no)}
+  .mcq-diag .dmemo:disabled{opacity:.7}
+  .mcq-diag.done{background:var(--okbg);border-color:var(--ok)}
+  .mcq-diag.done .dhead b{color:var(--ok)}
+  .mcq-diag.done .sa-chip.on{background:var(--ok);border-color:var(--ok);color:#06231a}
+  .copybtn:disabled{opacity:.4;cursor:default}
+  /* ── 객관식 모르겠음(무답) 버튼 ── */
+  .dk-btn{display:block;margin:8px 0 0 auto;padding:6px 13px;border-radius:999px;
+    border:1px dashed var(--line);background:transparent;color:var(--sub);
+    font:inherit;font-size:12.5px;cursor:pointer;transition:border-color .12s,color .12s,background .12s}
+  .dk-btn:hover{border-color:var(--no);color:var(--txt)}
+  .dk-btn.on{border-style:solid;border-color:var(--no);background:var(--nobg);color:var(--no);font-weight:700}
+  .dk-btn:disabled{opacity:.45;cursor:default}
+  /* ── ㄱㄴㄷ 지문 O·X 마킹 — 채점 무관 시각 메모 ── */
+  .ox-mark{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;
+    margin-right:6px;border-radius:6px;border:1px solid var(--line);background:var(--card2);
+    color:var(--sub);font:inherit;font-size:12.5px;font-weight:700;cursor:pointer;
+    vertical-align:middle;padding:0;transition:border-color .1s,background .1s,color .1s}
+  .ox-mark:hover{border-color:var(--accent)}
+  .ox-mark.o{border-color:var(--ok);background:var(--okbg);color:var(--ok)}
+  .ox-mark.x{border-color:var(--no);background:var(--nobg);color:var(--no)}
+  /* ── 진행 복원 배너 ── */
+  .restorebar{display:block;background:var(--card2);border:1px solid var(--cool);border-radius:12px;
+    padding:10px 14px;margin:14px 0 0;font-size:13px;color:var(--sub)}
+  .restorebar[hidden]{display:none}
+  .restorebar b{color:var(--cool)}
+  .restorebar a{color:var(--warm);font-weight:700;cursor:pointer;text-decoration:underline}
+  /* ── 중간제출 미응답 배지 ── */
+  .q.skipped{border-style:dashed}
+  .skipbadge{display:inline-block;margin:0 0 10px;padding:3px 11px;border-radius:999px;
+    border:1px dashed var(--sub);color:var(--sub);font-size:12px;font-weight:700}
+  .expl{margin-top:12px;padding:12px 14px;border-radius:11px;background:var(--card2);
+    border-left:3px solid var(--cool);font-size:13.5px;color:#d4d9e2;display:none}
+  .expl.show{display:block;animation:fade .3s ease}
+  .expl .verdict{font-weight:800;margin-right:6px}
+  .expl .src{display:block;margin-top:7px;color:var(--sub);font-size:12px}
+  @keyframes fade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+  .submit{width:100%;padding:16px;border:none;border-radius:14px;font-size:17px;font-weight:800;
+    background:linear-gradient(90deg,var(--accent),var(--grad2));color:var(--onaccent);cursor:pointer;margin-top:10px}
+  .submit:disabled{opacity:.45;cursor:not-allowed}
+  .submit.retry{background:var(--card2);color:var(--txt);border:1px solid var(--line)}
+  .submit.partial{margin-top:9px;padding:12px;font-size:14.5px;background:var(--card2);
+    color:var(--txt);border:1px dashed var(--line)}
+  .submit.partial:hover:not(:disabled){border-color:var(--warm);color:var(--warm)}
+  #result{display:none;text-align:center;background:var(--card);border:1px solid var(--line);
+    border-radius:18px;padding:28px 20px;margin-bottom:18px}
+  #result.show{display:block;animation:fade .4s ease}
+  .ring{font-size:46px;font-weight:900;margin:4px 0}
+  .ring small{font-size:18px;color:var(--sub);font-weight:700}
+  #rmsg{color:var(--sub);font-size:15px;margin-top:4px}
+  #dlnote{font-size:12.5px;color:var(--warm);margin-top:12px}
+  .copybtn{display:none;margin-top:12px;padding:10px 16px;border-radius:10px;border:1px solid var(--line);
+    background:var(--card2);color:var(--txt);font-weight:700;cursor:pointer;font-size:13px}
+  .copybtn.show{display:inline-block}
+  .foot{text-align:center;margin-top:30px;color:var(--sub);font-size:12.5px;line-height:1.8}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">DAILY QUIZ · 공인중개사</div>
+    <h1>오늘의 복습 문제지</h1>
+    <div class="meta">2026년 9월 3일 (목) · 실전형 50문항(본편 40 + 한달전 복원 10) · 장기복습 20(⏪) · 한달전 10(🔄) · 단답 4(자가채점)</div>
+    <div class="tags"><span class="tag">🔥 심화</span><span class="tag">📝 실전 4지선다</span><span class="tag">⏪ 장기복습 20</span><span class="tag">🔄 한달전 복원 10</span><span class="tag">🎯 정답분산</span><span class="tag">✍️ 단답 4</span><span class="tag">부동산학개론</span><span class="tag">민법</span><span class="tag">공인중개사법</span><span class="tag">부동산공법</span><span class="tag">부동산공시법</span><span class="tag">부동산세법</span></div>
+    <div class="alertbanner"></div>
+    <div class="restorebar" id="restoreBar" hidden></div>
+  </header>
+
+  <div class="bar">
+    <div class="pmeta"><span id="pcount">0 / 0 완료</span><span id="ptime"></span></div>
+    <div class="progress"><i id="pbar"></i></div>
+  </div>
+
+  <div id="result">
+    <div class="ring"><span id="score">0</span><small id="total"> / 0</small></div>
+    <div id="rmsg"></div>
+    <div id="dlnote"></div>
+    <button class="copybtn" id="copyBtn">📋 결과 JSON 복사 (다운로드 실패 대비)</button>
+  </div>
+
+  <form id="quiz"></form>
+
+  <button class="submit" id="submitBtn" disabled>제출하고 채점하기</button>
+  <button class="submit partial" id="partialBtn" disabled>✂ 여기까지 제출 (푼 것만 채점)</button>
+
+  <div class="foot">
+    최근 7일 학습 노트로 자동 생성됩니다.<br>제출 결과는 JSON으로 저장 → 오답 원장(FSRS)·오답노트로 자동 반영됩니다.
+  </div>
+</div>
+
+<script>
+const SCHEMA_VERSION = 2;
+const QUIZ_DATE = "2026-09-03";
+const SUBJECT = "공인중개사";
+const QUIZ_ID_SUFFIX = "";
+const RESULT_PREFIX = "공인중개사_오답_";
+const EXAM_DEFAULT = "";
+const INBOX_NOTE = "velog-posts/공인중개사/claude_ox_오답/_inbox/";
+const T_MCQ = 72;
+const T_SA = 90;
+const RESULT_MSGS = ["만점. 오늘 등록증 발급해도 되겠는데요? 🏆", "합격권. 틀린 거 해설만 한 번 더 보면 완벽합니다.", "절반은 넘었어요. 오답 노트행 직행하는 개념들이 보이네요.", "아직 흔들리는 개념이 있어요. 해설 정독하고 내일 재도전!", "괜찮아요, 회독이 쌓이면 올라갑니다. 해설부터 차근차근."];
+const QUESTIONS = [
+/*__QUESTIONS_START__*/
+{
+ "type": "일반",
+ "cat": "부동산학개론",
+ "q": "⏪ 지대이론과 입지이론에서 각 학자가 본 기준에 관한 설명으로 옳은 것은?",
+ "opts": [
+  "마샬은 영구적으로 토지와 유사한 성격을 갖는 생산요소에 귀속되는 소득을 준지대라고 보았다",
+  "헤이그의 마찰비용이론에서 마찰비용은 지대와 교통비로 구성된다",
+  "뢰쉬는 생산비가 최소화되는 지점이 기업의 최적 입지라고 보았다",
+  "알론소의 입찰지대곡선에서 도심에 대한 지불용의가 가장 큰 용도는 주거용도이다"
+ ],
+ "answer": 1,
+ "expl": "[정답 근거] 헤이그의 마찰비용이론에서 마찰비용은 지대와 교통비로 구성된다. [메커니즘] 도심 접근이라는 하나의 가치를 지대로 치를지 교통비로 치를지만 달라져 총액은 같아진다. [함정] 준지대는 영구적이 아니라 일시적으로 토지와 유사한 성격을 갖는 생산요소의 소득이다.",
+ "src": "2026-07-26 공인중개사 1-2 입지·지대 이론 (장기복습·39일전)",
+ "conceptKey": "학개론 마찰비용이론-지대와 교통비"
+},
+{
+ "type": "일반",
+ "cat": "부동산학개론",
+ "q": "⏪ 부동산시장의 효율성과 부동산정책에 관한 설명으로 <b>옳지 않은</b> 것은?",
+ "opts": [
+  "약성 효율적 시장에서는 과거의 정보를 이용하여 초과이윤을 얻을 수 없다",
+  "PIR이 클수록 가구소득에 비해 주택가격이 높아 주택 구입이 쉽지 않다는 것을 의미한다",
+  "불완전경쟁시장에서는 초과이윤이 없더라도 할당 효율성을 달성할 수 없다",
+  "택지소유상한제는 현재 시행되고 있지 않은 정책이다"
+ ],
+ "answer": 2,
+ "expl": "[정답 근거] 불완전경쟁시장이라도 초과이윤이 없으면 할당 효율성을 달성할 수 있으므로 달성할 수 없다는 서술은 옳지 않다. [메커니즘] 할당 효율성의 판단 기준은 시장구조가 아니라 초과이윤의 존재 여부다. [함정] 완전경쟁시장이어야만 할당 효율적이라는 지문과 세트로 나온다.",
+ "src": "2026-06-11 부동산학개론 1-2 할당 효율성 (장기복습·84일전)",
+ "conceptKey": "학개론 할당효율성-초과이윤 유무가 기준"
+},
+{
+ "type": "OX",
+ "cat": "부동산학개론",
+ "q": "⏪ 여과과정에서 주거분리를 주도하는 것은 저소득가구이다.",
+ "opts": [
+  "O",
+  "X"
+ ],
+ "answer": 1,
+ "expl": "X. 여과과정에서 주거분리를 주도하는 것은 고소득가구다. [메커니즘] 정의 외부효과는 좇고 부의 외부효과는 피하려는 동기가 고소득층을 먼저 움직이게 한다. [함정] 하향여과는 그 결과로 나타나는 현상이지 주도 주체가 아니다.",
+ "src": "2026-06-11 부동산학개론 2-4 주거분리의 주도자 (장기복습·84일전)",
+ "conceptKey": "학개론 주거분리-주도 주체는 고소득가구"
+},
+{
+ "type": "계산",
+ "cat": "부동산학개론",
+ "q": "투자된 총자산이 200,000만원이고 연간 총소득이 30,000만원인 부동산의 총자산회전율은? (단, 주어진 조건에 한함)",
+ "opts": [
+  "0.15",
+  "0.3",
+  "0.6",
+  "6.67"
+ ],
+ "answer": 0,
+ "calc": {
+  "expr": "30000 / 200000",
+  "expected": 0.15
+ },
+ "expl": "[정답 근거] 총자산회전율은 총소득을 총자산으로 나눈 값이므로 30,000만원을 200,000만원으로 나눈 0.15가 된다. [메커니즘] 회전율은 자산 한 단위가 한 해 동안 만들어내는 소득의 크기를 뜻한다. [함정] 분자에 순영업소득을 넣거나 분모와 분자를 뒤집으면 값이 통째로 달라진다.",
+ "src": "2026-08-28 부동산학개론 6-3 수익률·승수 지표",
+ "conceptKey": "학개론 총자산회전율-총소득 나누기 총자산"
+},
+{
+ "type": "조합",
+ "cat": "부동산학개론",
+ "q": "감정평가와 부동산금융에 관한 설명으로 옳은 것을 모두 고른 것은?<br>ㄱ. 사용료를 징수하기 어려운 학교시설·문화시설에는 주로 BTL 방식이 활용된다<br>ㄴ. 프로젝트금융에서 부외금융효과를 얻는 쪽은 시공자이다<br>ㄷ. 실효이자율은 수수료 등을 제외하고 표면상으로만 계산한 이자율이다<br>ㄹ. 비교방식은 시장성의 원리에 기초한 방식이며 공시지가기준법이 여기에 속한다",
+ "opts": [
+  "ㄱ",
+  "ㄱ, ㄴ",
+  "ㄱ, ㄹ",
+  "ㄴ, ㄹ"
+ ],
+ "answer": 2,
+ "expl": "[정답 근거] 비교방식이 시장성의 원리에 기초한다는 점과 사용료 징수가 어려운 시설에 BTL이 활용된다는 점이 옳다. [메커니즘] 요금을 매기기 어려운 시설은 국가가 임차해 임대료를 지급하는 구조로 사업시행자를 끌어들인다. [함정] 부외금융효과는 시행자의 몫이고 실효이자율은 수수료까지 포함한 이자율이다.",
+ "src": "2026-08-28 부동산학개론 5·7·9 감정평가와 부동산금융",
+ "conceptKey": "학개론 비교방식과 BTL-시장성 원리와 사용료 징수"
+},
+{
+ "type": "일반",
+ "cat": "부동산학개론",
+ "q": "도시내부구조와 상업입지에 관한 설명으로 <b>옳지 않은</b> 것은?",
+ "opts": [
+  "해리스와 울만의 다핵심이론은 동종의 활동이 서로 분산되어 입지한다고 본다",
+  "알론소는 튀넨의 입찰지대를 도시에 적용하여 대상을 농작물별에서 산업별로 바꾸었다",
+  "크리스탈러의 중심지이론에서 편의점은 낮은 계층, 백화점은 높은 계층의 중심지에 해당한다",
+  "넬슨의 소매입지이론은 특정 점포가 최대 이익을 얻기 위한 입지 선정을 다룬다"
+ ],
+ "answer": 0,
+ "expl": "[정답 근거] 다핵심이론은 동종의 활동이 서로 모여 기능별로 구역이 나뉜다고 보므로 분산되어 입지한다는 서술은 옳지 않다. [메커니즘] 같은 기능끼리 모일 때 이익이 생겨 도시의 핵이 여러 개로 갈라진다. [함정] 동심원이론의 침입·경쟁·천이 과정과 뒤섞어 출제한다.",
+ "src": "2026-08-28 부동산학개론 2·4 도시내부구조와 상업입지",
+ "conceptKey": "학개론 다핵심이론-동종활동의 집적"
+},
+{
+ "type": "일반",
+ "cat": "민법",
+ "q": "⏪ 공유·전세권·저당권에 관한 설명으로 <b>옳지 않은</b> 것은?",
+ "opts": [
+  "공유지분이 과반수에 미치지 못하는 공유자도 보존행위로서 제3자에게 공유물 전부의 인도를 청구할 수 있다",
+  "전세권자는 목적물의 통상의 필요비를 지출한 경우 그 상환을 청구할 수 있다",
+  "토지에 저당권이 설정된 후 저당권설정자가 그 토지에 건물을 신축한 경우 일괄경매를 청구할 수 있다",
+  "전세권의 존속기간이 시작되기 전에 마친 전세권설정등기도 특별한 사정이 없으면 유효한 것으로 추정된다"
+ ],
+ "answer": 1,
+ "expl": "[정답 근거] 전세권자는 통상의 필요비를 스스로 부담하므로 이를 지출하여도 그 상환을 청구할 수 없다. [메커니즘] 전세권은 목적물을 직접 쓰는 용익물권이어서 유지에 드는 통상의 비용까지 전세권자에게 돌린 것이다. [함정] 임대차의 필요비상환청구권과 뒤섞어 출제한다.",
+ "src": "2026-07-26 공인중개사 2-2 전세권 (장기복습·39일전)",
+ "conceptKey": "민법 전세권-통상 필요비는 전세권자 부담"
+},
+{
+ "type": "일반",
+ "cat": "민법",
+ "q": "⏪ 토지거래허가구역 내 토지에 관하여 허가를 받기 전인 매매계약의 효력에 관한 설명으로 옳은 것은?",
+ "opts": [
+  "매수인은 협력의무 위반을 이유로 매매계약을 해제할 수 있다",
+  "매도인이 사기를 이유로 그 계약을 취소하는 것은 허용되지 않는다",
+  "허가를 받더라도 매매계약은 허가를 받은 때부터 장래를 향하여 유효로 된다",
+  "당사자는 계약금에 의한 해약금 해제를 할 수 있다"
+ ],
+ "answer": 3,
+ "expl": "[정답 근거] 유동적 무효 상태에서도 계약금에 의한 해약금 해제는 할 수 있다. [메커니즘] 해약금 해제는 계약의 효력 발생 여부와 무관하게 계약금 수수 자체에서 나오는 권리다. [함정] 채무불이행이나 협력의무 위반을 이유로 한 해제는 허용되지 않는다.",
+ "src": "2026-07-28 민법 1-1 유동적 무효 (장기복습·37일전)",
+ "conceptKey": "민법 유동적무효-해약금 해제만 가능"
+},
+{
+ "type": "OX",
+ "cat": "민법",
+ "q": "⏪ 기한은 반드시 도래하므로 당사자가 특약을 하더라도 그 효력을 소급시킬 수 없다.",
+ "opts": [
+  "O",
+  "X"
+ ],
+ "answer": 0,
+ "expl": "O. 기한은 반드시 도래하므로 당사자의 의사로도 그 효력을 소급시킬 수 없다. [메커니즘] 언제 오느냐만 정해지지 않았을 뿐 오는 것 자체는 확정되어 있어 소급을 인정할 실익이 없다. [함정] 조건은 당사자가 소급의 의사를 표시하면 소급효를 인정할 수 있다.",
+ "src": "2026-07-28 민법 1-3 조건과 기한 (장기복습·37일전)",
+ "conceptKey": "민법 기한-소급효 특약 불가"
+},
+{
+ "type": "단답",
+ "cat": "민법",
+ "q": "가등기담보 부동산의 매매예약 당시의 시가가 피담보채권액에 미치지 못하는 경우, 채권자가 실행통지를 할 필요가 없는 이유를 쓰시오.",
+ "answer": "폭리의 위험성이 없어 가등기담보법의 적용을 받지 않기 때문이다",
+ "keywords": [
+  "폭리 위험성 없음",
+  "가등기담보법 적용 배제"
+ ],
+ "expl": "[정답 근거] 매매예약 당시의 시가가 피담보채권액에 미치지 못하면 폭리의 위험이 없어 가등기담보법 자체가 적용되지 않으므로 실행통지가 필요 없다. [메커니즘] 이 법은 빌려준 돈에 붙는 폭리를 막는 법이라 폭리의 여지가 없으면 절차도 따라오지 않는다. [함정] 실행통지 시점에 미달한 경우에는 청산금이 없어도 실행통지를 해야 한다.",
+ "src": "2026-08-31 민법 1-3 가등기담보법의 적용 범위",
+ "conceptKey": "민법 가담법-실행통지 불요의 이유"
+},
+{
+ "type": "사례",
+ "cat": "민법",
+ "q": "갑과 을은 1필의 토지를 위치를 특정하여 나누어 소유하기로 하고 각 지분에 관하여 공유등기를 마쳤다. 이에 관한 설명으로 옳은 것은?",
+ "opts": [
+  "갑은 을을 상대로 공유물분할을 청구하여 자신의 특정 부분에 관한 단독 소유권 등기를 마칠 수 있다",
+  "갑과 을 사이에서는 1필지 전체를 지분비율로 공유하는 관계가 성립한다",
+  "갑은 을이 특정하여 점유하는 부분에 대해서도 제3자를 상대로 보존행위를 할 수 있다",
+  "갑이 자신의 특정 부분을 제3자에게 처분하려면 을의 동의를 받아야 한다"
+ ],
+ "answer": 2,
+ "expl": "[정답 근거] 구분소유적 공유는 대외적으로 공유관계이므로 갑은 을이 점유하는 부분에 대해서도 제3자를 상대로 보존행위를 할 수 있다. [메커니즘] 안에서는 각자 특정 부분의 소유자지만 밖에서는 지분을 가진 공유자로 보이기 때문이다. [함정] 대내적으로는 구분소유관계여서 공유물분할청구는 하지 못하고 확정분할등기만 가능하다.",
+ "src": "2026-08-31 민법 1-4 구분소유적 공유",
+ "conceptKey": "민법 구분소유적공유-대내 구분소유 대외 공유"
+},
+{
+ "type": "사례",
+ "cat": "민법",
+ "q": "갑은 미등기 무허가 건물인 주택을 을로부터 임차하여 인도받고 전입신고를 마쳤다. 임대차기간이 만료되었으나 갑은 아직 보증금을 반환받지 못하였다. 이에 관한 설명으로 옳은 것은?",
+ "opts": [
+  "임대차가 종료하였어도 갑이 보증금을 반환받을 때까지는 임대차관계가 존속하는 것으로 본다",
+  "미등기이거나 무허가인 건물을 임차한 경우에는 주거용이더라도 주택임대차보호법이 적용되지 않는다",
+  "임대차기간이 만료된 때에 임대차관계는 종료하고 갑의 대항력도 함께 소멸한다",
+  "갑이 대항력을 잃은 뒤 임차권등기를 마치더라도 새로운 대항력은 발생하지 않는다"
+ ],
+ "answer": 0,
+ "expl": "[정답 근거] 임대차가 종료하였더라도 임차인이 보증금을 반환받을 때까지는 임대차관계가 존속하는 것으로 본다. [메커니즘] 보증금을 쥐고 있는 쪽이 유리해지지 않도록 반환 시점까지 관계를 붙들어 둔 것이다. [함정] 주거용이기만 하면 미등기·무허가 건물에도 이 법이 적용된다.",
+ "src": "2026-08-31 민법 1-1 주택임대차보호법의 적용과 존속 의제",
+ "conceptKey": "민법 주임법-종료 후 존속 의제의 종기"
+},
+{
+ "type": "조합",
+ "cat": "민법",
+ "q": "민사특별법상 담보와 집합건물의 관리에 관한 설명으로 옳은 것을 모두 고른 것은?<br>ㄱ. 명의신탁약정은 강행규정 위반으로 무효이고 동시에 사회질서에도 위반된다<br>ㄴ. 구분소유자가 10인 이상인 때에는 관리인을 선임하여야 하며 임차인도 관리인이 될 수 있다<br>ㄷ. 청산금에 대해서는 선순위담보권자가 후순위담보권자보다 우선한다<br>ㄹ. 양도담보권자는 목적 부동산의 소유자가 아니다",
+ "opts": [
+  "ㄹ",
+  "ㄴ, ㄹ",
+  "ㄱ, ㄴ",
+  "ㄴ"
+ ],
+ "answer": 1,
+ "expl": "[정답 근거] 양도담보권자가 소유자가 아니라는 점과 구분소유자 10인 이상이면 관리인을 선임해야 하고 임차인도 관리인이 될 수 있다는 점이 옳다. [메커니즘] 담보 목적으로 넘어간 등기는 담보권의 외형일 뿐이고 관리인은 규모가 커진 건물의 의사결정을 세우는 장치다. [함정] 청산금은 후순위담보권자가 우선하고 명의신탁약정은 사회질서 위반은 아니다.",
+ "src": "2026-08-31 민법 1-3·1-5 가등기담보와 집합건물",
+ "conceptKey": "민법 민사특별법-양도담보권자와 관리인 선임"
+},
+{
+ "type": "일반",
+ "cat": "공인중개사법",
+ "q": "⏪ 전속중개계약의 유효기간과 개업공인중개사의 의무에 관한 설명으로 <b>옳지 않은</b> 것은?",
+ "opts": [
+  "전속중개계약은 당사자 간에 다른 약정이 없으면 그 유효기간을 3개월로 한다",
+  "개업공인중개사는 전속중개계약서를 3년 동안 보존하여야 한다",
+  "임대차에 대한 전속중개계약을 체결한 경우에는 중개대상물의 공시지가를 공개하지 아니할 수 있다",
+  "개업공인중개사는 중개업무 처리상황을 2주일에 1회 이상 구두로 통지할 수 있다"
+ ],
+ "answer": 3,
+ "expl": "[정답 근거] 전속중개계약의 업무처리상황 통지는 2주일에 1회 이상 문서로만 하여야 하므로 구두 통지는 허용되지 않는다. [메커니즘] 전속은 의뢰인의 선택지를 묶는 대신 개업공인중개사의 의무를 문서로 남기게 한 구조다. [함정] 정보공개는 계약 체결 후 7일 이내라는 기한과 세트로 출제된다.",
+ "src": "2026-06-10 공인중개사법 1-1 전속중개계약의 운영 규칙 (장기복습·85일전)",
+ "conceptKey": "중개사법 전속중개계약-처리상황 문서 통지"
+},
+{
+ "type": "일반",
+ "cat": "공인중개사법",
+ "q": "⏪ 중개대상물 확인·설명서의 서식별 기재사항에 관한 설명으로 옳은 것은?",
+ "opts": [
+  "입목·광업재단·공장재단 확인·설명서에는 공법상 제한인 건폐율과 용적률의 상한이 포함된다",
+  "비선호시설에 관한 사항은 토지와 주거용 건축물에는 적고 비주거용 건축물에는 적지 않는다",
+  "관리비에 관한 사항은 주거용 건축물과 비주거용 건축물 모두에 적어야 한다",
+  "환경조건은 주거용 건축물과 비주거용 건축물 모두에 적어야 한다"
+ ],
+ "answer": 1,
+ "expl": "[정답 근거] 비선호시설에 관한 사항은 토지와 주거용 건축물에만 적고 비주거용 건축물에는 적지 않는다. [메커니즘] 일하는 공간에서는 주거 만족도를 좌우하는 요소가 거래 판단에 잘 걸리지 않기 때문이다. [함정] 관리비와 환경조건은 주거용에만 적는 항목이라는 점과 묶어 출제된다.",
+ "src": "2026-06-10 공인중개사법 1-4 확인·설명서 항목별 포함 여부 (장기복습·85일전)",
+ "conceptKey": "중개사법 확인설명서-비선호시설 기재 범위"
+},
+{
+ "type": "OX",
+ "cat": "공인중개사법",
+ "q": "⏪ 거래정보사업자가 의뢰받은 내용과 다르게 정보를 공개한 경우 국토교통부장관은 그 지정을 취소하여야 한다.",
+ "opts": [
+  "O",
+  "X"
+ ],
+ "answer": 1,
+ "expl": "X. 이 경우 국토교통부장관은 그 지정을 취소할 수 있을 뿐 반드시 취소하여야 하는 것은 아니다. [메커니즘] 거래정보사업자의 지정취소 사유는 모두 임의적 취소로 설계되어 있다. [함정] 해산으로 인한 취소만 청문 없이 바로 할 수 있다는 점과 세트로 나온다.",
+ "src": "2026-06-10 공인중개사법 1-9 거래정보사업자 (장기복습·85일전)",
+ "conceptKey": "중개사법 거래정보사업자-임의적 지정취소"
+},
+{
+ "type": "일반",
+ "cat": "공인중개사법",
+ "q": "⏪ 개업공인중개사의 손해배상책임과 보증설정에 관한 설명으로 <b>옳지 않은</b> 것은?",
+ "opts": [
+  "개업공인중개사는 업무를 개시하기 전에 보증보험·공제 또는 공탁으로 보증을 설정하여야 한다",
+  "자기의 중개사무소를 다른 사람에게 사용하게 하여 그가 중개사고를 낸 경우에도 손해배상책임을 진다",
+  "중개가 완성된 때에는 손해배상책임에 관한 사항을 설명하고 관련 문서를 교부하여야 한다",
+  "개업공인중개사가 폐업한 경우 폐업한 날부터 1년 이내에는 공탁금을 회수할 수 없다"
+ ],
+ "answer": 3,
+ "expl": "[정답 근거] 폐업한 경우 공탁금은 폐업한 날부터 3년 이내에 회수할 수 없으므로 1년이라는 서술은 옳지 않다. [메커니즘] 폐업 뒤에도 남아 있는 중개사고의 손해를 메울 재원을 일정 기간 묶어두는 장치다. [함정] 보증 설정 시기는 등록 후가 아니라 업무개시 전이라는 점과 함께 나온다.",
+ "src": "2026-02-28 공인중개사법 2-1 손해배상과 보증설정의무 (장기복습·187일전)",
+ "conceptKey": "중개사법 공탁금 회수-폐업 후 3년 제한"
+},
+{
+ "type": "조합",
+ "cat": "공인중개사법",
+ "q": "⏪ 인장등록과 휴업·폐업 신고에 관한 설명으로 옳은 것을 모두 고른 것은?<br>ㄱ. 개업공인중개사는 업무를 개시하기 전에 중개행위에 사용할 인장을 등록하여야 한다<br>ㄴ. 법인인 개업공인중개사의 인장등록은 인감증명서의 제출로 갈음한다<br>ㄷ. 법인인 개업공인중개사의 분사무소 휴업신고에는 분사무소설치신고확인서를 첨부하지 않아도 된다<br>ㄹ. 3개월을 초과하는 휴업의 신고는 전자문서에 의하여 할 수 있다",
+ "opts": [
+  "ㄱ, ㄴ, ㄹ",
+  "ㄴ, ㄷ",
+  "ㄱ, ㄴ",
+  "ㄱ, ㄷ"
+ ],
+ "answer": 2,
+ "expl": "[정답 근거] 인장은 업무개시 전에 등록하여야 한다는 점과 법인의 인장등록은 인감증명서의 제출로 갈음한다는 점이 옳다. [메커니즘] 법인의 인감은 이미 공적으로 증명되어 있어 별도의 등록 절차를 되풀이할 필요가 없다. [함정] 3개월 초과 휴업·폐업 신고는 전자문서로 할 수 없고 분사무소는 설치신고확인서를 첨부한다.",
+ "src": "2026-02-28 공인중개사법 1-1 인장등록과 휴업·폐업 (장기복습·187일전)",
+ "conceptKey": "중개사법 인장등록-업무개시 전과 인감증명 갈음"
+},
+{
+ "type": "계산",
+ "cat": "공인중개사법",
+ "q": "⏪ 주택의 임대차를 중개한 경우 중개보수 산정의 기준이 되는 거래금액은? 보증금 1,000만원, 월차임 30만원 (단, 주어진 조건에 한함)",
+ "opts": [
+  "3,100만원",
+  "4,000만원",
+  "3,000만원",
+  "1,300만원"
+ ],
+ "answer": 0,
+ "calc": {
+  "expr": "1000 + 30 * 70",
+  "expected": 3100
+ },
+ "expl": "[정답 근거] 보증금 1,000만원에 월차임의 100배인 3,000만원을 더한 4,000만원이 5,000만원에 미치지 못하므로 월차임에 70을 곱하여 3,100만원이 거래금액이 된다. [메커니즘] 소액 임대차에서 보수가 과도해지지 않도록 환산 배수를 낮춘 장치다. [함정] 처음부터 70을 곱하면 5,000만원 기준의 판정 단계를 건너뛰게 된다.",
+ "src": "2026-02-28 공인중개사법 2-2 중개보수 (장기복습·187일전)",
+ "conceptKey": "중개사법 중개보수-환산보증금 5천만원 미만 70 적용"
+},
+{
+ "type": "일반",
+ "cat": "공인중개사법",
+ "q": "⏪ 자격정지·업무정지 등 행정처분의 절차에 관한 설명으로 <b>옳지 않은</b> 것은?",
+ "opts": [
+  "소속공인중개사에 대한 자격정지는 6개월의 범위에서 한다",
+  "자격정지와 업무정지 처분을 하는 경우에도 청문을 실시하여야 한다",
+  "시·도지사는 공인중개사의 자격을 취소하거나 자격을 정지한다",
+  "개업공인중개사에 대한 등록취소에는 반드시 취소해야 하는 절대적 등록취소와 취소할 수 있는 임의적 등록취소가 있다"
+ ],
+ "answer": 1,
+ "expl": "[정답 근거] 자격정지와 업무정지는 청문 대상이 아니므로 청문을 실시하여야 한다는 서술은 옳지 않다. [메커니즘] 자격이나 등록을 아예 없애는 처분에만 미리 말할 기회를 주도록 설계되어 있다. [함정] 자격정지·업무정지는 5일 통보와 7일 반납 절차도 따르지 않는다.",
+ "src": "2026-03-01 공인중개사법 1-2 행정처분 (장기복습·186일전)",
+ "conceptKey": "중개사법 행정처분-자격정지·업무정지는 청문 제외"
+},
+{
+ "type": "OX",
+ "cat": "공인중개사법",
+ "q": "⏪ 공인중개사협회의 공제사업 책임준비금은 공제료 수입액의 100분의 10 이상으로 적립하여야 한다.",
+ "opts": [
+  "O",
+  "X"
+ ],
+ "answer": 0,
+ "expl": "O. 책임준비금은 공제료 수입액의 100분의 10 이상으로 한다. [메커니즘] 공제사고가 몰릴 때를 대비해 들어온 공제료의 일부를 미리 묶어두게 한 것이다. [함정] 협회는 공제사업을 다른 회계와 구분하여 별도의 회계로 관리해야 한다는 점과 함께 나온다.",
+ "src": "2026-03-01 공인중개사법 1-1 공인중개사협회 (장기복습·186일전)",
+ "conceptKey": "중개사법 협회-책임준비금 100분의 10"
+},
+{
+ "type": "조합",
+ "cat": "공인중개사법",
+ "q": "⏪ 토지거래허가구역의 지정과 선매제도에 관한 설명으로 옳은 것을 모두 고른 것은?<br>ㄱ. 토지거래계약의 허가를 받은 경우에는 부동산 거래신고를 하지 아니하여도 된다<br>ㄴ. 선매는 허가신청이 있고 공공단체 등이 매수를 원하는 경우에 그 대상이 된다<br>ㄷ. 허가구역이 둘 이상의 시·도에 걸쳐 있는 경우 지정권자는 국토교통부장관이다<br>ㄹ. 이용목적과 크게 다른 면적의 토지에 대해서도 토지거래계약을 허가하여야 한다",
+ "opts": [
+  "ㄴ, ㄷ",
+  "ㄷ, ㄹ",
+  "ㄷ",
+  "ㄱ, ㄴ"
+ ],
+ "answer": 0,
+ "expl": "[정답 근거] 둘 이상의 시·도에 걸친 허가구역의 지정권자가 국토교통부장관이라는 점과 선매가 허가신청이 있고 공공단체 등이 매수를 원할 때 대상이 된다는 점이 옳다. [메커니즘] 관할이 갈리는 구역은 위에서 묶고 선매는 허가 절차 안에서만 작동한다. [함정] 이용목적과 크게 다른 토지는 허가해서는 안 되고 허가를 받아도 거래신고는 해야 한다.",
+ "src": "2026-03-02 공인중개사법 1-3 토지거래허가구역 (장기복습·185일전)",
+ "conceptKey": "중개사법 토지거래허가-지정권자와 선매 대상"
+},
+{
+ "type": "사례",
+ "cat": "공인중개사법",
+ "q": "⏪ 갑은 을 소유의 주택을 2년간 임차하였고 그 계약은 묵시적으로 갱신되었다. 갱신된 임대차 기간 중 갑이 을에게 계약해지를 통지하였다. 이에 관한 설명으로 옳은 것은?",
+ "opts": [
+  "갑이 주택을 먼저 비우면 그 시점에 곧바로 을의 보증금 반환의무가 생긴다",
+  "묵시적으로 갱신된 임대차에서 갑은 계약해지를 통지할 수 없다",
+  "해지의 효력은 을이 통지를 받은 날부터 3개월이 지나야 발생한다",
+  "해지의 효력은 을에게 통지가 도달한 때에 곧바로 발생한다"
+ ],
+ "answer": 2,
+ "expl": "[정답 근거] 묵시적으로 갱신된 임대차에서 임차인의 해지 효력은 임대인이 통지를 받은 날부터 3개월이 지나야 발생한다. [메커니즘] 임차인에게는 탈출구를 주되 임대인에게는 새 임차인을 구할 시간을 주는 구조다. [함정] 명시적 재계약은 약정기간을 존중하므로 이 3개월 해지권이 붙지 않는다.",
+ "src": "2026-03-02 공인중개사법 4-2 묵시적 갱신과 해지통지 (장기복습·185일전)",
+ "conceptKey": "중개사법 묵시적갱신-해지 효력 3개월"
+},
+{
+ "type": "일반",
+ "cat": "부동산공법",
+ "q": "⏪ 국토계획법과 도시개발법상 기간에 관한 설명으로 <b>옳지 않은</b> 것은?",
+ "opts": [
+  "도시개발사업의 시행면적을 100분의 10의 범위에서 감소시키는 경우에는 변경인가를 받지 아니한다",
+  "지정권자가 도시개발사업의 시행자인 경우 공사완료 공고일부터 60일 이내에 환지처분을 하여야 한다",
+  "도시개발구역이 330만 제곱미터 이상인 경우 개발계획 수립과 실시계획 인가신청의 기간이 5년으로 늘어난다",
+  "기반시설부담구역은 지정고시일부터 3년이 되는 날까지 설치계획을 수립하지 않으면 해제된 것으로 본다"
+ ],
+ "answer": 3,
+ "expl": "[정답 근거] 기반시설부담구역은 지정고시일부터 1년이 되는 날까지 설치계획을 수립하지 않으면 그 다음 날 해제된 것으로 보므로 3년이라는 서술은 옳지 않다. [메커니즘] 부담금을 매기는 구역이라 계획 없이 오래 묶어두지 못하게 기간을 짧게 잡았다. [함정] 지구단위계획구역·도시혁신구역 등의 3년과 섞어 출제한다.",
+ "src": "2026-07-27 공인중개사 2-1 국토계획법 실효·해제 기간 (장기복습·38일전)",
+ "conceptKey": "공법 기반시설부담구역-1년 해제"
+},
+{
+ "type": "단답",
+ "cat": "부동산공법",
+ "q": "주택법령상 주택상환사채를 발행할 수 있는 자 두 곳과, 그중 등록사업자에게 추가로 요구되는 요건을 쓰시오.",
+ "answer": "한국토지주택공사와 등록사업자<br>등록사업자는 보증을 받아야 발행할 수 있다",
+ "keywords": [
+  "한국토지주택공사",
+  "등록사업자",
+  "보증"
+ ],
+ "expl": "[정답 근거] 주택상환사채는 한국토지주택공사와 등록사업자가 발행할 수 있고 등록사업자는 보증을 받아야 발행할 수 있다. [메커니즘] 공적 신용을 가진 공사와 보증으로 신용을 보충한 등록사업자에게만 문을 열어준 것이다. [함정] 주택조합은 발행할 수 없고 발행하는 자는 국토교통부장관의 승인을 받아야 한다.",
+ "src": "2026-09-02 부동산공법 1-1 주택상환사채",
+ "conceptKey": "공법 주택상환사채-발행 주체와 보증"
+},
+{
+ "type": "단답",
+ "cat": "부동산공법",
+ "q": "농지법령상 농지전용허가를 받거나 농지전용신고를 하고 2년 이내에 목적사업에 착수하지 아니한 경우의 처분의무 기간과, 시장·군수·구청장의 처분명령 기간을 쓰시오.",
+ "answer": "처분의무는 1년 이내<br>처분명령은 6개월 이내",
+ "keywords": [
+  "1년 이내 처분",
+  "6개월 이내 처분명령"
+ ],
+ "expl": "[정답 근거] 2년 이내에 착수하지 않으면 1년 이내에 처분하여야 하고 시장·군수·구청장은 6개월 이내에 처분을 명할 수 있다. [메커니즘] 놀리는 농지를 2년·1년·6개월로 단계를 좁혀가며 시장으로 되돌려 놓는 구조다. [함정] 이 사유에는 면제사유가 없어 질병으로 착수하지 못하여도 처분의무를 면하지 못한다.",
+ "src": "2026-09-02 부동산공법 2-4 농업경영에 이용하지 아니하는 농지의 처분",
+ "conceptKey": "공법 농지처분-2년 1년 6개월"
+},
+{
+ "type": "일반",
+ "cat": "부동산공법",
+ "q": "주택법령상 사업계획승인의 권한과 절차에 관한 설명으로 옳은 것은?",
+ "opts": [
+  "구청장은 주택법령상 사업계획승인권자에 해당한다",
+  "사업계획승인권자는 신청을 받은 날부터 60일 이내에 승인 여부를 통보하여야 한다",
+  "사업주체가 대지의 소유권을 상실한 경우 사업계획승인권자는 반드시 그 승인을 취소하여야 한다",
+  "주택조합은 사업계획의 변경승인을 받지 아니하여도 되는 대상에 해당한다"
+ ],
+ "answer": 1,
+ "expl": "[정답 근거] 사업계획승인권자는 신청을 받은 날부터 60일 이내에 사업주체에게 승인 여부를 통보하여야 한다. [메커니즘] 대규모 주택공급의 착수 시점을 예측할 수 있게 하려고 회신 기한을 못 박은 것이다. [함정] 승인권자에는 구청장이 없고 취소는 하여야 한다가 아니라 할 수 있다이다.",
+ "src": "2026-09-02 부동산공법 1-2 사업계획승인",
+ "conceptKey": "공법 사업계획승인-60일 통보"
+},
+{
+ "type": "일반",
+ "cat": "부동산공법",
+ "q": "주택법령상 분양가상한제와 지정지역에 관한 설명으로 <b>옳지 않은</b> 것은?",
+ "opts": [
+  "도시형 생활주택은 분양가상한제의 적용을 받지 아니한다",
+  "시·도지사가 투기과열지구를 지정하거나 해제하려면 국토교통부장관과 협의하여야 한다",
+  "조정대상지역은 과열지역과 위축지역으로 나뉜다",
+  "공공택지에서 공급하는 주택의 분양가격은 시장·군수·구청장이 공시한다"
+ ],
+ "answer": 3,
+ "expl": "[정답 근거] 공공택지에서 공급하는 주택의 분양가격은 사업주체가 공시하므로 시장·군수·구청장이 공시한다는 서술은 옳지 않다. [메커니즘] 공공택지는 땅값이 이미 공적으로 정해져 있어 짓는 쪽이 직접 내역을 밝히면 된다. [함정] 공공택지 외의 택지에서는 시장·군수·구청장이 공시한다는 점을 뒤집어 낸다.",
+ "src": "2026-09-02 부동산공법 1-7·1-8 분양가상한제와 지정지역",
+ "conceptKey": "공법 분양가 공시-공공택지는 사업주체"
+},
+{
+ "type": "조합",
+ "cat": "부동산공법",
+ "q": "농지법령상 농지의 소유와 농지취득자격증명에 관한 설명으로 옳은 것을 모두 고른 것은?<br>ㄱ. 상속으로 취득하는 농지는 농지취득자격증명을 발급받아야 취득할 수 있다<br>ㄴ. 학교가 농지를 취득하는 경우에는 농지취득자격증명은 필요하나 농업경영계획서는 필요하지 아니하다<br>ㄷ. 주말·체험영농을 하려고 농업진흥지역 외의 농지를 소유하는 것은 경자유전의 예외에 해당한다<br>ㄹ. 8년 이상 농업경영을 하다가 이농한 자는 3천 제곱미터까지 농지를 소유할 수 있다",
+ "opts": [
+  "ㄱ, ㄴ",
+  "ㄴ, ㄷ, ㄹ",
+  "ㄴ, ㄷ",
+  "ㄱ, ㄷ"
+ ],
+ "answer": 2,
+ "expl": "[정답 근거] 주말·체험영농을 위한 농업진흥지역 밖 농지 소유가 경자유전의 예외라는 점과 학교는 농지취득자격증명은 필요하되 농업경영계획서는 면제된다는 점이 옳다. [메커니즘] 농사지을 사람만 땅을 갖게 하되 취지가 다른 취득에는 계획서를 요구할 실익이 없다. [함정] 상속은 농지취득자격증명 없이 취득할 수 있고 이농자의 소유 상한은 1만 제곱미터다.",
+ "src": "2026-09-02 부동산공법 2-2·2-3 농지의 소유와 농취증",
+ "conceptKey": "공법 농지-경자유전 예외와 농취증 면제"
+},
+{
+ "type": "OX",
+ "cat": "부동산공법",
+ "q": "증축형 리모델링을 하려는 자는 시장·군수·구청장에게 안전진단을 요청하여야 하며, 대수선인 리모델링은 이에 해당하지 아니한다.",
+ "opts": [
+  "O",
+  "X"
+ ],
+ "answer": 0,
+ "expl": "O. 증축형 리모델링은 안전진단을 요청하여야 하고 대수선인 리모델링은 이에 해당하지 아니한다. [메커니즘] 무게와 하중이 늘어나는 증축에서만 구조 안전을 미리 확인할 실익이 있기 때문이다. [함정] 대도시 시장은 리모델링 기본계획을 수립·변경할 때 도지사의 승인을 받아야 한다는 점과 세트다.",
+ "src": "2026-09-02 부동산공법 1-10 리모델링",
+ "conceptKey": "공법 리모델링-증축형만 안전진단"
+},
+{
+ "type": "일반",
+ "cat": "부동산공시법",
+ "q": "⏪ 신탁등기와 멸실등기의 신청에 관한 설명으로 옳은 것은?",
+ "opts": [
+  "법원이 신탁 관련 재판을 하여 신탁원부를 변경할 때에는 법원이 등기소에 촉탁한다",
+  "수익자가 수탁자를 대위하여 신탁등기를 신청하는 경우에는 권리의 설정등기와 동시에 신청하여야 한다",
+  "존재하지 아니하는 건물에 대한 등기의 명의인은 멸실등기를 신청할 의무가 없다",
+  "지방지적위원회는 지적측량 적부재심사를, 중앙지적위원회는 적부심사를 담당한다"
+ ],
+ "answer": 0,
+ "expl": "[정답 근거] 법원이 신탁 관련 재판을 한 뒤 신탁원부를 변경할 때에는 수탁자가 아니라 법원이 등기소에 촉탁한다. [메커니즘] 재판으로 생긴 변경은 법원이 스스로 등기부에 반영하게 하여 절차를 줄인 것이다. [함정] 수익자의 대위신청은 뒤늦게 하는 것이라 권리의 설정등기와 동시에 할 수 없다.",
+ "src": "2026-07-27 공인중개사 3-4 신탁등기 (장기복습·38일전)",
+ "conceptKey": "공시법 신탁등기-법원 촉탁"
+},
+{
+ "type": "일반",
+ "cat": "부동산공시법",
+ "q": "⏪ 지적측량의 의뢰와 성과 검사에 관한 설명으로 <b>옳지 않은</b> 것은?",
+ "opts": [
+  "지적재조사측량과 검사측량은 토지소유자 등 이해관계인이 지적측량수행자에게 의뢰할 수 없다",
+  "바다로 된 토지의 등록을 말소하는 경우에도 지적측량을 실시한다",
+  "경계복원측량과 지적현황측량을 실시한 때에도 측량성과에 대한 검사를 받아야 한다",
+  "도시개발사업 등의 시행지역에서 토지의 이동이 있는 경우 이해관계인도 지적측량을 의뢰할 수 있다"
+ ],
+ "answer": 2,
+ "expl": "[정답 근거] 경계복원측량과 지적현황측량은 측량성과에 대한 검사를 받을 필요가 없으므로 검사를 받아야 한다는 서술은 옳지 않다. [메커니즘] 지적공부를 바꾸는 측량만 검사 대상이고 확인만 하는 측량은 검사할 실익이 없다. [함정] 신규등록·등록전환·분할·합병·지적확정측량은 검사 대상이라는 점과 짝지어 나온다.",
+ "src": "2026-06-12 부동산공시법 1-5 지적측량 (장기복습·83일전)",
+ "conceptKey": "공시법 지적측량-경계복원·현황측량 검사 불요"
+},
+{
+ "type": "조합",
+ "cat": "부동산공시법",
+ "q": "⏪ 등기신청의 당사자와 단독신청에 관한 설명으로 옳은 것을 모두 고른 것은?<br>ㄱ. 국립·공립·사립을 불문하고 학교 명의로는 등기를 신청할 수 없다<br>ㄴ. 법인 아닌 사단은 자기 명의의 부동산에 관하여 등기를 신청할 수 있다<br>ㄷ. 상속을 원인으로 농지에 관한 소유권이전등기를 신청할 때에는 농지취득자격증명이 필요하다<br>ㄹ. 법인의 합병으로 인한 포괄승계에 따른 등기는 공동으로 신청하여야 한다",
+ "opts": [
+  "ㄱ, ㄴ",
+  "ㄱ, ㄷ",
+  "ㄱ, ㄴ, ㄹ",
+  "ㄱ, ㄹ"
+ ],
+ "answer": 0,
+ "expl": "[정답 근거] 법인 아닌 사단이 자기 명의로 등기를 신청할 수 있다는 점과 학교 명의로는 등기를 신청할 수 없다는 점이 옳다. [메커니즘] 스스로 권리주체가 될 수 있는지가 명의 인정의 갈림길이고 학교는 시설일 뿐이다. [함정] 합병에 따른 포괄승계는 단독신청이고 상속에 의한 농지 취득에는 농지취득자격증명이 필요 없다.",
+ "src": "2026-06-12 부동산공시법 1-7·1-8 등기신청의 당사자와 단독신청 (장기복습·83일전)",
+ "conceptKey": "공시법 등기신청-법인 아닌 사단과 단독신청"
+},
+{
+ "type": "일반",
+ "cat": "부동산공시법",
+ "q": "지적재조사와 축척변경 등 지적행정의 주체에 관한 설명으로 <b>옳지 않은</b> 것은?",
+ "opts": [
+  "지적소관청은 축척변경에 관한 측량을 완료한 때에 지번별 조서를 작성하여야 한다",
+  "지적재조사에 관한 기본계획은 지적소관청이 수립한다",
+  "중앙지적위원회는 위원장 및 부위원장 각 1명을 포함하여 5명 이상 10명 이하의 위원으로 구성한다",
+  "토지이동정리결의서의 내용과 다르게 정리된 경우 지적소관청은 직권으로 조사·측량할 수 있다"
+ ],
+ "answer": 1,
+ "expl": "[정답 근거] 지적재조사에 관한 기본계획은 지적소관청이 아니라 국토교통부장관이 수립하므로 옳지 않다. [메커니즘] 전국 단위로 지적을 다시 짜는 사업이라 계획의 층위를 중앙에 둔 것이다. [함정] 축척변경 측량을 완료한 뒤 작성하는 것은 청산금 조서가 아니라 지번별 조서다.",
+ "src": "2026-08-30 공인중개사 5-4 지적재조사",
+ "conceptKey": "공시법 지적재조사-기본계획 수립권자"
+},
+{
+ "type": "단답",
+ "cat": "부동산세법",
+ "q": "미등기 양도자산에 적용되는 100분의 70의 세율이 곱해지는 대상이 무엇인지 쓰시오.",
+ "answer": "과세표준",
+ "keywords": [
+  "과세표준",
+  "산출세액 아님"
+ ],
+ "expl": "[정답 근거] 미등기 양도자산의 100분의 70은 세율이므로 곱해지는 자리는 과세표준이다. [메커니즘] 산출세액은 이미 과세표준에 세율을 곱한 결과물이라 거기에 세율을 다시 곱할 자리가 없다. [함정] 산출세액에 100분의 70을 곱한다는 지문으로 바꾸어 출제한다.",
+ "src": "2026-08-28 부동산세법 미등기 양도자산의 세율",
+ "conceptKey": "세법 미등기 양도-70%는 과세표준에"
+},
+{
+ "type": "계산",
+ "cat": "부동산세법",
+ "q": "실지거래가액에 의하여 양도차익을 계산한다. 양도가액 50,000만원, 취득가액 30,000만원, 자본적지출액 2,000만원, 양도비 1,000만원일 때 양도차익은? (단, 주어진 조건에 한함)",
+ "opts": [
+  "18,000만원",
+  "19,000만원",
+  "20,000만원",
+  "17,000만원"
+ ],
+ "answer": 3,
+ "calc": {
+  "expr": "50000 - (30000 + 2000 + 1000)",
+  "expected": 17000
+ },
+ "expl": "[정답 근거] 양도가액 50,000만원에서 취득가액 30,000만원과 자본적지출액 2,000만원, 양도비 1,000만원을 빼면 17,000만원이 된다. [메커니즘] 실지거래가액으로 계산할 때에는 취득가액에 자본적지출액과 양도비가 함께 따라붙는다. [함정] 수익적지출액이나 대출금 이자지급액은 필요경비에 산입하지 않는다.",
+ "src": "2026-08-28 부동산세법 필요경비의 구성",
+ "conceptKey": "세법 양도차익-실지거래가액 필요경비 3종"
+},
+{
+ "type": "일반",
+ "cat": "부동산세법",
+ "q": "재산세의 비과세 대상에 관한 설명으로 <b>옳지 않은</b> 것은?",
+ "opts": [
+  "사설도로는 도로와 함께 재산세가 비과세된다",
+  "대지 안의 공지는 도로에 해당하여 재산세가 비과세된다",
+  "통제보호구역 안에 있는 전·답·과수원·대지에 대해서는 재산세가 과세된다",
+  "휴게시설과 연구시설 등은 도로 안에 있더라도 재산세가 과세된다"
+ ],
+ "answer": 1,
+ "expl": "[정답 근거] 대지 안의 공지는 도로여도 과세되므로 비과세된다는 서술은 옳지 않다. [메커니즘] 건물을 짓기 위해 남겨 둔 여백은 소유자가 그 이익을 누리는 땅이라 도로로 보지 않는다. [함정] 도로와 함께 비과세되는 것은 고속도로가 아니라 사설도로다.",
+ "src": "2026-08-28 부동산세법 재산세 비과세",
+ "conceptKey": "세법 재산세 비과세-사설도로와 대지 안의 공지"
+},
+{
+ "type": "일반",
+ "cat": "부동산세법",
+ "q": "양도차익을 추계로 결정할 때의 방법에 관한 설명으로 <b>옳지 않은</b> 것은?",
+ "opts": [
+  "매매사례가액은 양도일 또는 취득일 전후 3개월 이내의 거래가액을 말한다",
+  "실지거래가액에 의할 때에는 취득가액에 자본적지출액과 양도비가 함께 산입된다",
+  "감가상각비로 필요경비에 산입한 금액은 취득가액에서 차감한다",
+  "추계 방법에는 매매사례가액·감정가액·환산취득가액·기본가액이 있다"
+ ],
+ "answer": 3,
+ "expl": "[정답 근거] 추계 방법은 매매사례가액·감정가액·환산취득가액·기준시가이므로 기본가액이 들어간 서술은 옳지 않다. [메커니즘] 실지거래가액을 확인할 수 없을 때 시장 자료에서 값을 되짚는 순서로 짜인 목록이다. [함정] 감정가액을 감정평가액으로, 환산취득가액을 환산거래가액으로 바꾸어 쓰는 오답이 함께 나온다.",
+ "src": "2026-08-28 부동산세법 추계 결정과 필요경비",
+ "conceptKey": "세법 추계-매감환기와 기준시가"
+},
+{
+ "type": "조합",
+ "cat": "부동산세법",
+ "q": "양도소득세의 미등기 제외 자산과 취득시기에 관한 설명으로 옳은 것을 모두 고른 것은?<br>ㄱ. 상속받은 자산의 취득시기는 상속등기 접수일이다<br>ㄴ. 취득세는 납부영수증이 없으면 필요경비로 산입할 수 없다<br>ㄷ. 농지의 교환·분합으로 비과세를 받으려면 교환 후 3년 이상 경작하여야 한다<br>ㄹ. 장기할부조건으로 취득한 자산은 미등기 양도자산으로 보지 않는다",
+ "opts": [
+  "ㄴ, ㄹ",
+  "ㄴ, ㄷ, ㄹ",
+  "ㄷ, ㄹ",
+  "ㄱ, ㄷ, ㄹ"
+ ],
+ "answer": 2,
+ "expl": "[정답 근거] 장기할부조건으로 취득한 자산을 미등기로 보지 않는다는 점과 농지 교환·분합 비과세의 사후 경작 요건이 3년이라는 점이 옳다. [메커니즘] 등기를 하지 못할 사정이 있는 자산까지 중과할 이유가 없고 교환 비과세는 계속 농사를 짓는 것이 조건이다. [함정] 상속의 취득시기는 상속개시일이고 취득세는 납부영수증이 없어도 필요경비로 인정된다.",
+ "src": "2026-08-28 부동산세법 미등기 제외 자산과 취득시기",
+ "conceptKey": "세법 미등기 제외 자산-장기할부와 경작 요건"
+},
+{
+ "type": "사례",
+ "cat": "부동산세법",
+ "q": "갑은 상가건물을 취득한 뒤 용도변경 공사비 3,000만원과 도배 등 수익적지출액 500만원을 지출하고, 취득과 관련한 소송비용 200만원을 부담한 후 그 건물을 양도하였다. 이에 관한 설명으로 옳은 것은?",
+ "opts": [
+  "용도변경 공사비와 취득 관련 소송비용은 필요경비에 산입되고 수익적지출액은 산입되지 않는다",
+  "취득과 관련하여 지출한 소송비용은 취득 이후에 발생한 비용이므로 필요경비에 산입되지 않는다",
+  "세 항목은 모두 자본적지출에 해당하여 필요경비에 산입된다",
+  "수익적지출액도 건물의 가치에 화체되므로 필요경비에 산입된다"
+ ],
+ "answer": 0,
+ "expl": "[정답 근거] 용도변경 공사비는 자본적지출이고 취득 관련 소송비용도 필요경비에 산입되지만 수익적지출액은 산입되지 않는다. [메커니즘] 지출이 자산의 가치에 화체되어 남아 있는지가 산입 여부를 가른다. [함정] 상속세와 대출금 이자지급액도 필요경비 불산입 항목이다.",
+ "src": "2026-08-28 부동산세법 자본적지출과 필요경비",
+ "conceptKey": "세법 필요경비-자본적지출과 수익적지출의 구분"
+},
+{
+ "type": "조합",
+ "cat": "민법",
+ "q": "🔄 등기 없이도 부동산물권이 변동하는 경우를 <b>모두 고른 것</b>은?<br>ㄱ. 상속에 의한 부동산소유권의 취득<br>ㄴ. 포괄유증에 의한 부동산소유권의 취득<br>ㄷ. 공유자의 자기 지분 포기에 의한 지분의 귀속<br>ㄹ. 점유취득시효의 완성에 의한 소유권의 취득",
+ "opts": [
+  "ㄱ, ㄷ",
+  "ㄴ, ㄹ",
+  "ㄱ, ㄴ",
+  "ㄷ, ㄹ"
+ ],
+ "answer": 2,
+ "expl": "[정답 근거] 사망에 의한 상속과 포괄유증은 등기 없이 물권이 이전되지만, 지분 포기와 시효완성은 등기하여야 효력이 생긴다. [메커니즘] 등기 없이 변동하는 것은 법률규정에 의한 승계라 공시를 기다릴 수 없는 경우다. [함정] 지분 포기는 법률행위이므로 화해·조정과 마찬가지로 등기가 필요하다.",
+ "src": "2026-07-28 민법 1-5 부동산등기 (한달전 재출제·원본 2026-08-03)",
+ "conceptKey": "민법 1-5 등기 없이 하는 물권변동",
+ "monthlyOf": "2026-08-03"
+},
+{
+ "type": "일반",
+ "cat": "민법",
+ "q": "🔄 취소권의 행사와 그 효과에 관한 설명으로 <b>옳지 않은</b> 것은?",
+ "opts": [
+  "취소할 수 있는 법률행위로 취득한 권리가 제3자에게 양도된 경우 취소권자는 그 양수인에게 취소의 의사표시를 하여야 한다",
+  "제한능력을 이유로 법률행위를 취소한 경우에는 선의의 제3자에게도 취소로써 대항할 수 있다",
+  "취소권은 형성권이므로 그 행사기간은 제척기간이고 법원이 직권으로 조사한다",
+  "취소권은 추인할 수 있는 날부터 3년, 법률행위를 한 날부터 10년 내에 행사하여야 한다"
+ ],
+ "answer": 0,
+ "expl": "[정답 근거] 취소의 의사표시는 원래의 계약 상대방인 양도인에게 하여야 하고 양수인에게 하는 것이 아니다. [메커니즘] 취소는 그 법률행위의 당사자 사이에서 효력을 되돌리는 것이라 상대방이 고정된다. [함정] 제한능력 취소는 절대적 취소여서 선의의 제3자에게도 대항할 수 있다는 점과 세트로 나온다.",
+ "src": "2026-07-28 민법 1-2 취소와 추인 (한달전 재출제·원본 2026-08-03)",
+ "conceptKey": "민법 1-2 취소의 상대방",
+ "monthlyOf": "2026-08-03"
+},
+{
+ "type": "OX",
+ "cat": "부동산학개론",
+ "q": "🔄 세전현금수지는 지분투자자에게 귀속되는 수익이므로, 세전현금수지승수를 구할 때 분자에는 총투자액이 아니라 지분투자액을 사용한다.",
+ "opts": [
+  "O",
+  "X"
+ ],
+ "answer": 0,
+ "expl": "O. 승수는 투자금액을 소득으로 나눈 구조인데, 소득이 지분수익이면 분자의 투자액도 지분투자액으로 눈높이를 맞춰야 한다. 이것이 승수법의 원리다. 반면 순소득승수의 분모인 순영업소득은 총자본 전체가 만들어낸 소득이므로 분자에 총투자액이 들어간다.",
+ "src": "2026-07-29 부동산학개론 1-3 투자분석기법 (한달전 재출제·원본 2026-08-03)",
+ "conceptKey": "부동산학개론 1-3 승수와 세전현금수지",
+ "monthlyOf": "2026-08-03"
+},
+{
+ "type": "계산",
+ "cat": "부동산학개론",
+ "q": "🔄 다음 자료를 이용하여 계산한 부채감당률은? (다른 조건은 동일)<br>ㆍ순영업소득: 연 8,400만원<br>ㆍ부채서비스액(연간 원리금상환액): 연 5,600만원<br>ㆍ영업경비: 연 3,600만원",
+ "opts": [
+  "0.67",
+  "1.2",
+  "1.4",
+  "1.5"
+ ],
+ "answer": 3,
+ "calc": {
+  "expr": "8400/5600",
+  "expected": 1.5
+ },
+ "expl": "[정답 근거] 부채감당률 = 순영업소득 ÷ 부채서비스액 = 8,400 ÷ 5,600 = 1.5. [메커니즘] 그 부동산이 스스로 벌어들인 순영업소득으로 원리금을 몇 배나 감당할 수 있는지 보는 은행 관점의 지표다. [함정] 영업경비는 이미 순영업소득에서 차감된 값이므로 다시 빼면 안 된다.",
+ "src": "2026-07-29 부동산학개론 1-4 비율분석 (한달전 재출제·원본 2026-08-03)",
+ "conceptKey": "부동산학개론 1-4 부채감당률",
+ "monthlyOf": "2026-08-03"
+},
+{
+ "type": "일반",
+ "cat": "부동산공법",
+ "q": "🔄 국토의 계획 및 이용에 관한 법령상 청문 대상과 기반시설의 분류에 관한 설명으로 <b>옳지 않은</b> 것은?",
+ "opts": [
+  "개발행위허가의 취소는 청문을 거쳐야 하는 처분에 해당한다",
+  "도시·군계획시설사업 시행자 지정의 취소와 실시계획인가의 취소는 청문 대상이다",
+  "관광호텔은 그 명칭에 따라 관광 휴게시설로 분류된다",
+  "여객자동차터미널은 운수시설로, 유스호스텔은 수련시설로 분류된다"
+ ],
+ "answer": 2,
+ "expl": "[정답 근거] 관광호텔은 이름에 관광이 들어가도 실제 분류는 숙박시설이다. [메커니즘] 시설 분류는 간판이 아니라 그 건물에서 이루어지는 주된 행위로 정해진다. [함정] 청문은 개발행위허가 취소·시행자 지정 취소·실시계획인가 취소 세 가지로 묶어 기억한다.",
+ "src": "2026-07-30 부동산공법 1-11 기타 암기 포인트 (한달전 재출제·원본 2026-08-03)",
+ "conceptKey": "부동산공법 1-11 청문과 시설분류",
+ "monthlyOf": "2026-08-03"
+},
+{
+ "type": "조합",
+ "cat": "부동산공법",
+ "q": "🔄 개발행위허가 대상에서 제외되어 허가를 받지 아니하여도 되는 행위를 <b>모두 고른 것</b>은?<br>ㄱ. 경작을 위한 토지의 형질변경<br>ㄴ. 농림지역에서 물건을 쌓아놓는 행위<br>ㄷ. 관리지역에서 30,000제곱미터 미만의 토지 형질변경<br>ㄹ. 분할제한면적 미만으로 하는 토지의 분할",
+ "opts": [
+  "ㄱ, ㄷ",
+  "ㄱ, ㄴ",
+  "ㄴ, ㄹ",
+  "ㄱ, ㄴ, ㄷ"
+ ],
+ "answer": 1,
+ "expl": "[정답 근거] 경작을 위한 형질변경과 농림지역에서의 물건 적치는 허가대상이 아니다. [메커니즘] 그 지역에서 원래 하던 일은 새로운 개발로 보지 않기 때문이다. [함정] 관리지역 3만제곱미터 미만은 허가를 받고 개발할 수 있는 규모 상한이지 허가가 면제된다는 뜻이 아니다.",
+ "src": "2026-07-30 부동산공법 1-5 개발행위허가 대상과 제외 (한달전 재출제·원본 2026-08-03)",
+ "conceptKey": "부동산공법 1-5 개발행위허가 제외",
+ "monthlyOf": "2026-08-03"
+},
+{
+ "type": "일반",
+ "cat": "공인중개사법",
+ "q": "🔄 공인중개사법령상 서명·날인 및 문서의 보존에 관한 설명으로 <b>옳지 않은</b> 것은?",
+ "opts": [
+  "거래계약서에는 개업공인중개사가 서명 및 날인을 하여야 한다",
+  "중개대상물 확인·설명서에도 서명 및 날인이 요구된다",
+  "전속중개계약서와 일반중개계약서처럼 의뢰인과 둘이서 작성하는 중개계약서의 경우에는 서명 또는 날인을 하면 된다",
+  "거래계약서가 공인전자문서센터에 보관된 경우에도 개업공인중개사는 그 사본을 따로 보존하여야 한다"
+ ],
+ "answer": 3,
+ "expl": "[정답 근거] 공인전자문서센터에 보관된 거래계약서는 따로 보존할 필요가 없다. [메커니즘] 보존의무의 목적이 분쟁 시 원본 확보인데 센터 보관으로 그 목적이 이미 달성되기 때문이다. [함정] 거래계약서와 확인설명서는 서명 및 날인, 중개계약서는 서명 또는 날인으로 요건이 갈린다.",
+ "src": "2026-07-31 공인중개사법 1-1 서명·날인과 문서 보존 (한달전 재출제·원본 2026-08-03)",
+ "conceptKey": "공인중개사법 1-1 서명날인과 보존의무",
+ "monthlyOf": "2026-08-03"
+},
+{
+ "type": "조합",
+ "cat": "공인중개사법",
+ "q": "🔄 주거용 건축물 확인·설명서의 세부 확인사항에 해당하는 것을 <b>모두 고른 것</b>은?<br>ㄱ. 실제 권리관계 또는 공시되지 아니한 물건의 권리사항<br>ㄴ. 내부·외부 시설물의 상태<br>ㄷ. 벽면·바닥면 및 도배의 상태<br>ㄹ. 환경조건",
+ "opts": [
+  "ㄱ, ㄴ",
+  "ㄱ, ㄴ, ㄷ, ㄹ",
+  "ㄴ, ㄷ",
+  "ㄴ, ㄷ, ㄹ"
+ ],
+ "answer": 1,
+ "expl": "[정답 근거] 네 가지 모두 세부 확인사항이며 여기에 현장안내까지 더해 실내벽환 현장안내로 묶인다. [메커니즘] 기본확인사항이 서류로 확인되는 항목이라면 세부확인사항은 현장에 가야 알 수 있는 항목이다. [함정] 현장안내는 주거용 서식에만 있으므로 비주거용 지문에서는 걸러야 한다.",
+ "src": "2026-07-31 공인중개사법 1-3 확인·설명서 서식 구조 (한달전 재출제·원본 2026-08-03)",
+ "conceptKey": "공인중개사법 1-3 세부확인사항",
+ "monthlyOf": "2026-08-03"
+},
+{
+ "type": "일반",
+ "cat": "부동산세법",
+ "q": "🔄 지방세법령상 등록면허세에 관한 설명으로 <b>옳지 않은</b> 것은?",
+ "opts": [
+  "묘지인 토지에 관한 등기에 대하여는 등록면허세를 부과하지 아니한다",
+  "등기·등록관서의 장은 납부부족액을 발견한 경우 납세지를 관할하는 시장·군수·구청장에게 다음 달 10일까지 통보하여야 한다",
+  "같은 채권을 위하여 목적물이 다른 둘 이상의 등기를 할 때에는 먼저 등록한 금액을 뺀 나머지 채권액을 과세표준으로 한다",
+  "묘지인 토지는 등록면허세는 비과세되지만 재산세는 과세된다"
+ ],
+ "answer": 3,
+ "expl": "[정답 근거] 묘지는 등록면허세와 재산세가 모두 비과세된다. [메커니즘] 묘지는 수익을 낳는 재산이 아니라 사자를 모시는 공간이라 담세력을 인정하지 않는다. [함정] 납부부족액을 발견했을 때의 조치는 주체가 누구인지에 따라 갈리므로 등기·등록관서의 장인지부터 확인한다.",
+ "src": "2026-08-01 부동산세법 1-1 등록면허세 (한달전 재출제·원본 2026-08-03)",
+ "conceptKey": "부동산세법 1-1 등록면허세 비과세와 통보",
+ "monthlyOf": "2026-08-03"
+},
+{
+ "type": "조합",
+ "cat": "부동산공시법",
+ "q": "🔄 등기관의 처분에 대한 이의신청에 관한 설명으로 옳은 것을 <b>모두 고른 것</b>은?<br>ㄱ. 이의신청이 있더라도 그 부동산에 대한 다른 등기신청은 수리하여야 한다<br>ㄴ. 여기서 수리란 각하사유가 없으면 그대로 등기부에 기록하여야 한다는 의미이다<br>ㄷ. 이의신청에는 집행정지의 효력이 있다<br>ㄹ. 이의신청이 있으면 등기관은 다른 등기신청을 모두 각하하여야 한다",
+ "opts": [
+  "ㄱ, ㄴ",
+  "ㄷ, ㄹ",
+  "ㄱ, ㄷ",
+  "ㄴ, ㄹ"
+ ],
+ "answer": 0,
+ "expl": "[정답 근거] 이의신청이 있어도 다른 등기신청은 정상적으로 심사하여 각하사유가 없으면 기록하여야 한다. [메커니즘] 이의신청에 집행정지의 효력을 주면 한 사람의 이의로 등기부가 멈춰 거래 안전이 무너진다. [함정] 수리를 접수만 한다는 뜻으로 읽으면 ㄴ을 틀린 것으로 오해하기 쉽다.",
+ "src": "2026-07-27 부동산공시법 3-3 멸실등기와 이의신청 (한달전 재출제·원본 2026-08-03)",
+ "conceptKey": "부동산공시법 3-3 이의신청의 효력",
+ "monthlyOf": "2026-08-03"
+}
+/*__QUESTIONS_END__*/
+];
+
+/*__BUILD_PAYLOAD_START__*/
+// ── 순수 함수 레이어: DOM 없이 채점 결과(payload v2)를 만든다. node로 단위테스트 가능.
+// sel[qi]: 객관식 = 선택 인덱스(number) 또는 "DK"(무답) / 단답형 = {typed, revealed, self, fix, fixed, missed}
+function conceptFromSrc(src){
+  return String(src||"").replace(/^\s*\d{4}-\d{2}-\d{2}\s*/,"").replace(/\s*\(재도전\)\s*$/,"").trim();
+}
+// answered: 중간 제출용 마스크(문항별 true/false). 생략·전부 true면 종전 전체 제출과 100% 동일한 payload.
+//           부분일 때만 최상위 partial·answeredCount·skippedCount가 붙고, 미응답 항목은 축약형으로만 실린다
+//           (정답·해설·options를 넣지 않는다 — 다음 회차 재출제가 오염되지 않게).
+function buildPayload(questions, sel, quizDate, nowIso, schemaVersion, answered){
+  let score = 0; const results = [], wrong = [];
+  const partial = Array.isArray(answered) && answered.indexOf(false) >= 0;
+  let answeredCount = 0;
+  questions.forEach((item, qi)=>{
+    const isSA = item.type === "단답";
+    const st = sel[qi];
+    const ck = item.conceptKey || conceptFromSrc(item.src);
+    const isRetry = !!item.retryOf || /\(재도전\)/.test(item.src||"") || String(item.q||"").indexOf("🔁") >= 0;
+    if(partial && !answered[qi]){
+      results.push({
+        id: quizDate + "-q" + (qi+1), cat: item.cat, type: item.type, q: item.q,
+        conceptKey: ck, retryOf: isRetry ? (item.retryOf || ck) : null,
+        skipped: true, correctAnswered: null, myAnswer: null
+      });
+      return;
+    }
+    answeredCount++;
+    const isCorrect = isSA ? !!(st && st.self === true) : (st === item.answer);
+    if(isCorrect) score++;
+    const base = isSA ? {
+      id: quizDate + "-q" + (qi+1), cat: item.cat, type: item.type, q: item.q,
+      myAnswer: (st && st.typed) || "", correct: item.answer,
+      expl: item.expl, src: item.src
+    } : {
+      id: quizDate + "-q" + (qi+1), cat: item.cat, type: item.type, q: item.q,
+      options: item.opts, myAnswer: (st === "DK" ? "모르겠음" : item.opts[st]), correct: item.opts[item.answer],
+      expl: item.expl, src: item.src
+    };
+    const r = Object.assign({}, base, {
+      conceptKey: ck,
+      retryOf: isRetry ? (item.retryOf || ck) : null,
+      correctAnswered: isCorrect
+    });
+    // exam 키는 시험 기본값이 비어 있지 않을 때만 실린다(공인중개사는 종전대로 키 없음)
+    const examVal = item.exam || EXAM_DEFAULT;
+    if(examVal) r.exam = examVal;
+    if(isSA){ r.selfGraded = true; r.keywords = item.keywords || [];
+      if(st && st.self === false){
+        if(st.fix){ r.fixTyped = st.fix; base.fixTyped = st.fix; }
+        if(st.missed && st.missed.length){ r.missedKeys = st.missed.slice(); base.missedKeys = st.missed.slice(); }
+      } }
+    if(item.calc) r.calc = item.calc;
+    if(item.monthlyOf) r.monthlyOf = item.monthlyOf;
+    results.push(r);
+    if(!isCorrect) wrong.push(base);   // v1 하위호환 필드 (기존 수거 파이프라인용)
+  });
+  const payload = {
+    schemaVersion: schemaVersion, subject: SUBJECT, date: quizDate, quizId: quizDate + QUIZ_ID_SUFFIX,
+    score: score, total: partial ? answeredCount : questions.length, wrongCount: wrong.length,
+    results: results, wrong: wrong, generatedAt: nowIso
+  };
+  if(partial){
+    payload.partial = true;
+    payload.answeredCount = answeredCount;
+    payload.skippedCount = questions.length - answeredCount;
+  }
+  return { score: score, wrong: wrong, payload: payload };
+}
+/*__BUILD_PAYLOAD_END__*/
+/*__SA_FIX_START__*/
+// ── 단답 오답 진단·교정 ──────────────────────────────────────────
+// "❌ 틀렸다" → ① 채점 포인트 중 놓친 것 선택(1개 이상 필수 · 없으면 '기타'에 직접 입력)
+//              → ② 모범답을 가린 채 재인출 타이핑.
+// ①은 다음 오답퀴즈의 출제 조준점이 되고(payload missedKeys → 원장), ②는 회독을 인출로 바꾼다.
+// 근거: 오답 뒤 정답을 눈으로만 읽으면 다음 회차에 같은 자리가 그대로 빈다.
+const SA_FIX_PASS = 0.55;          // 통과 일치도(0~1). 낮추면 관대해진다
+// 모범답 가림은 상시 적용 — 보고 베끼면 전사(轉寫)지 인출이 아니다.
+// 막히면 모범답에 마우스를 올리거나(데스크톱) 탭해서(터치) 잠깐 열어볼 수 있다.
+function saNorm(s){
+  return String(s == null ? '' : s)
+    .replace(/<[^>]*>/g, ' ')
+    .replace(/&[a-z]+;/gi, ' ')
+    .replace(/[\s.,·․、，。()（）\[\]「」『』"'`~\-–—_:;!?\/\\]/g, '')
+    .toLowerCase();
+}
+function saSim(a, b){   // 문자 2-gram Dice 계수 — 오탈자·어순 흔들림에 관대
+  a = saNorm(a); b = saNorm(b);
+  if(!a || !b) return 0;
+  if(a.length < 2 || b.length < 2) return a === b ? 1 : 0;
+  const gram = s => { const m = new Map();
+    for(let i=0;i<s.length-1;i++){ const k = s.slice(i,i+2); m.set(k, (m.get(k)||0)+1); }
+    return m; };
+  const ga = gram(a), gb = gram(b);
+  let inter = 0, na = 0, nb = 0;
+  ga.forEach(v => na += v); gb.forEach(v => nb += v);
+  ga.forEach((v,k) => { inter += Math.min(v, gb.get(k) || 0); });
+  return 2*inter/(na+nb);
+}
+/*__SA_FIX_END__*/
+
+/*__MCQ_DIAG_START__*/
+// ── 객관식 오답 원인 진단 ─────────────────────────────────────────
+// 채점 후 틀린 객관식마다 원인 1개를 골라야(메모는 선택) 결과 JSON이 저장된다.
+// 원인은 원장에 누적되어 Anki 편입(실수 전용 개념 제외)·재출제 각도(혼동→판별식 등)를 정한다.
+// 근거: 해설을 눈으로 읽고 넘어간 오답은 원인 미상으로 남아 같은 방식으로 또 틀린다.
+const MCQ_CAUSES = [
+  ['개념부재', '몰랐다 — 개념 자체를'],
+  ['혼동',     '헷갈렸다 — 다른 보기·개념과'],
+  ['함정',     '함정 — 발문·지문에 걸림'],
+  ['실수',     '실수 — 알았는데 잘못 체크·계산']
+];
+const mcqDiag = {};        // qi → {cause, note}
+let diagPending = [];      // 진단 대기 중인 틀린 객관식 qi 목록
+let DIAG_SAVED = false;
+function diagDone(){ return diagPending.every(qi => mcqDiag[qi] && mcqDiag[qi].cause); }
+function attachCauses(payload){
+  diagPending.forEach(qi => {
+    const d = mcqDiag[qi];
+    if(!d || !d.cause) return;
+    const res = payload.results && payload.results[qi];
+    if(res){ res.errorCause = d.cause; if(d.note) res.causeNote = d.note; }
+  });
+  (payload.wrong || []).forEach(w => {
+    const qi = parseInt(String(w.id || '').split('-q').pop(), 10) - 1;
+    const d = mcqDiag[qi];
+    if(d && d.cause){ w.errorCause = d.cause; if(d.note) w.causeNote = d.note; }
+  });
+  return payload;
+}
+function diagUpdate(){
+  const bd = document.getElementById('diagSave');
+  if(!bd) return;
+  const left = diagPending.filter(qi => !(mcqDiag[qi] && mcqDiag[qi].cause)).length;
+  bd.disabled = left > 0;
+  bd.textContent = left > 0 ? ('🩺 오답 진단 저장 — ' + left + '개 남음') : '🩺 오답 진단 저장 (준비 완료)';
+}
+function makeDiag(qi){
+  const d = document.createElement('div');
+  d.className = 'mcq-diag'; d.id = 'diag-' + qi;
+  d.innerHTML = `
+    <div class="dhead"><b>🩺 왜 틀렸나요?</b> — 1개 선택 · 원인에 따라 Anki 편입과 재출제 각도가 달라집니다</div>
+    <div class="dchips">${MCQ_CAUSES.map((c,ci)=>`<span class="sa-chip" data-c="${ci}">${c[1]}</span>`).join('')}</div>
+    <input type="text" class="dmemo" maxlength="80" placeholder="한 줄 메모 (선택) — 예: 임의적·필요적 감경을 반대로 알고 있었음">`;
+  d.querySelectorAll('.sa-chip').forEach(ch => {
+    ch.addEventListener('click', () => {
+      if(DIAG_SAVED || d.classList.contains('done')) return;   // 저장된 라운드의 진단은 잠긴다
+      d.querySelectorAll('.sa-chip').forEach(x => x.classList.remove('on'));
+      ch.classList.add('on');
+      mcqDiag[qi] = mcqDiag[qi] || {};
+      mcqDiag[qi].cause = MCQ_CAUSES[+ch.dataset.c][0];
+      diagUpdate();
+      saveProgress();
+    });
+  });
+  d.querySelector('.dmemo').addEventListener('input', (ev) => {
+    if(DIAG_SAVED || d.classList.contains('done')) return;
+    mcqDiag[qi] = mcqDiag[qi] || {};
+    mcqDiag[qi].note = ev.target.value.trim().replace(/\s+/g, ' ');
+    saveProgress();
+  });
+  return d;
+}
+// 저장된 진단(중간제출 후 재방문)을 잠긴 상태로 되살린다
+function restoreDiagBox(qi){
+  const d0 = mcqDiag[qi];
+  if(!d0 || !d0.cause) return;
+  if(document.getElementById('diag-' + qi)) return;
+  const ex = document.getElementById('expl-' + qi);
+  if(!ex) return;
+  const d = makeDiag(qi);
+  const ci = MCQ_CAUSES.findIndex(c => c[0] === d0.cause);
+  if(ci >= 0){ const ch = d.querySelector('.sa-chip[data-c="' + ci + '"]'); if(ch) ch.classList.add('on'); }
+  const memo = d.querySelector('.dmemo');
+  if(memo){ memo.value = d0.note || ''; memo.disabled = true; }
+  d.classList.add('done');
+  d.querySelectorAll('.sa-chip').forEach(x => { x.style.cursor = 'default'; });
+  ex.insertAdjacentElement('afterend', d);
+}
+/*__MCQ_DIAG_END__*/
+
+const form = document.getElementById('quiz');
+// 객관식은 null(선택 인덱스 또는 "DK"가 들어간다) / 단답형만 상태 객체
+const selected = QUESTIONS.map(q => q.type === '단답' ? {typed:'', revealed:false, self:null, fix:'', fixed:false, missed:[]} : null);
+let graded = false;                                  // 전체 제출 완료(페이지 전체 잠금)
+const GRADED = QUESTIONS.map(() => false);           // 문항별 채점 완료 — 중간제출로 확정된 것은 재채점하지 않는다
+const RESTORERS = [];                                // 문항별 복원 함수(카드 생성 때 등록)
+let PARTIAL_DONE = false;                            // 중간제출을 한 번이라도 했는가
+let LAST_PAYLOAD = null;
+let lastCat = null;
+
+/*__PROGRESS_STORE_START__*/
+// ── 진행 저장·복원 ────────────────────────────────────────────────
+// file://로 열리는 문제지라 브라우저에 따라 localStorage가 아예 없거나(origin 불투명) 예외를 던진다.
+// 저장은 어디까지나 편의 기능이므로 실패는 조용히 삼키고 페이지는 그대로 동작해야 한다.
+const QUIZ_ID = QUIZ_DATE + QUIZ_ID_SUFFIX;
+const SAVE_KEY = 'hgq:' + SUBJECT + ':' + QUIZ_ID;
+let SAVE_ON = false;                                 // 복원이 끝난 뒤에만 저장한다
+function lsStore(){
+  try{ return window.localStorage || null; }catch(e){ return null; }
+}
+function isAnswered(qi){
+  const q = QUESTIONS[qi], s = selected[qi];
+  if(q.type === '단답') return !!(s && (s.self === true || (s.self === false && s.fixed && s.missed.length > 0)));
+  return s !== null;
+}
+function answeredCount(){ let n = 0; QUESTIONS.forEach((q, qi)=>{ if(isAnswered(qi)) n++; }); return n; }
+function markStateOf(b){ return b.classList.contains('o') ? 'o' : (b.classList.contains('x') ? 'x' : ''); }
+function snapshot(){
+  const optMarks = {}, oxMarks = {};
+  QUESTIONS.forEach((q, qi)=>{
+    const card = document.getElementById('card-' + qi);
+    if(!card) return;
+    const om = [].slice.call(card.querySelectorAll('.optox')).map(markStateOf);
+    if(om.some(v => v)) optMarks[qi] = om;
+    const xm = [].slice.call(card.querySelectorAll('.ox-mark')).map(markStateOf);
+    if(xm.some(v => v)) oxMarks[qi] = xm;
+  });
+  const gradedIdx = [];
+  GRADED.forEach((g, i)=>{ if(g) gradedIdx.push(i); });
+  return {
+    v: 2, quizId: QUIZ_ID,
+    sel: selected.map(s => (s && typeof s === 'object') ? {
+      typed: s.typed, revealed: s.revealed, self: s.self,
+      fix: s.fix, fixed: s.fixed, missed: (s.missed || []).slice()
+    } : s),
+    diag: mcqDiag, optMarks: optMarks, oxMarks: oxMarks,
+    gradedIdx: gradedIdx, partialDone: PARTIAL_DONE, savedAt: new Date().toISOString()
+  };
+}
+function isBlank(s){
+  const noSel = s.sel.every(v => v === null || (v && typeof v === 'object' && !v.typed && !v.revealed && v.self === null));
+  return noSel && !s.gradedIdx.length
+    && !Object.keys(s.optMarks).length && !Object.keys(s.oxMarks).length && !Object.keys(s.diag).length;
+}
+function saveProgress(){
+  if(!SAVE_ON) return;
+  const ls = lsStore();
+  if(!ls) return;
+  try{
+    const s = snapshot();
+    if(isBlank(s)) ls.removeItem(SAVE_KEY);
+    else ls.setItem(SAVE_KEY, JSON.stringify(s));
+  }catch(e){}
+}
+function loadProgress(){
+  const ls = lsStore();
+  if(!ls) return null;
+  try{
+    const raw = ls.getItem(SAVE_KEY);
+    if(!raw) return null;
+    const s = JSON.parse(raw);
+    return (s && Array.isArray(s.sel) && s.sel.length === QUESTIONS.length) ? s : null;
+  }catch(e){ return null; }
+}
+function clearProgress(){
+  const ls = lsStore();
+  if(!ls) return;
+  try{ ls.removeItem(SAVE_KEY); }catch(e){}
+}
+/*__PROGRESS_STORE_END__*/
+
+document.getElementById('total').textContent = ' / ' + QUESTIONS.length;
+(function(){   // 목표시간 표시
+  const sa = QUESTIONS.filter(q=>q.type==='단답').length;
+  const mc = QUESTIONS.length - sa;
+  const min = Math.round((mc*T_MCQ + sa*T_SA)/60);
+  document.getElementById('ptime').textContent =
+    '🎯 목표 ' + min + '분 (객관식 ' + T_MCQ + '초·단답 ' + T_SA + '초/문)';
+})();
+
+QUESTIONS.forEach((item, qi)=>{
+  const isSA = item.type === '단답';
+  if(item.cat !== lastCat){
+    const s = document.createElement('div');
+    s.className = 'sec';
+    s.textContent = '▍' + item.cat + (item.exam === '2차' ? ' · 2차 단답' : '');
+    form.appendChild(s);
+    lastCat = item.cat;
+  }
+  const card = document.createElement('div');
+  card.className = 'q';
+  card.id = 'card-' + qi;
+  const isOX = item.type === 'OX';
+  card.innerHTML = `
+    <div class="qhead">
+      <span class="qno">${qi+1}</span>
+      <span class="qtype ${isSA?'t2':''}">${item.type}${item.exam==='2차'?' · 2차':''}</span>
+      <span class="qcat">${item.cat}</span>
+    </div>
+    <div class="qtext">${item.q}</div>`;
+
+  if(isSA){
+    // ── 단답형: 타이핑 인출 → 정답 공개 → 자가채점 ──
+    const ta = document.createElement('textarea');
+    ta.className = 'sa-input';
+    ta.placeholder = '답을 먼저 쓰세요 (쓰기 전에 정답을 열면 인출이 아니라 인풋이 됩니다)';
+    card.appendChild(ta);
+    const btnR = document.createElement('button');
+    btnR.type = 'button'; btnR.className = 'sa-reveal';
+    btnR.textContent = '✍️ 정답·해설 확인';
+    card.appendChild(btnR);
+    const box = document.createElement('div');
+    box.className = 'sa-answer'; box.hidden = true;
+    const kws = (item.keywords||[]).map(k=>`<span class="kw">${k}</span>`).join('');
+    box.innerHTML = `
+      <div class="sa-modela"><b>📌 모범답</b> — ${item.answer}</div>
+      ${kws?`<div class="sa-keys">채점 포인트:${kws}</div>`:''}
+      <div class="sa-grade"><span>스스로 채점 →</span>
+        <button type="button" data-g="ok">⭕ 맞았다</button>
+        <button type="button" data-g="no">❌ 틀렸다</button>
+      </div>`;
+    card.appendChild(box);
+    // ── 오답 교정 입력칸 — "틀렸다"일 때만 열린다 ──
+    const fix = document.createElement('div');
+    fix.className = 'sa-fix'; fix.hidden = true;
+    const MISS_OPTS = (item.keywords || []).concat(['결론·방향 자체']);
+    const FIXNOTE = `일치도 ${Math.round(SA_FIX_PASS*100)}% 이상이면 자동 통과 (오탈자·어순은 봐줍니다 / 붙여넣기는 막혀 있습니다)`;
+    fix.innerHTML = `
+      <div class="sa-misshead"><b>① 뭘 놓쳤나요?</b> — 해당되는 것 전부 (1개 이상 · 다음 오답퀴즈가 여길 조준합니다)</div>
+      <div class="sa-misschips">${MISS_OPTS.map((k,ki)=>`<span class="sa-chip" data-k="${ki}">${k}</span>`).join('')}<span class="sa-chip etc" data-etc="1">＋ 기타(직접 입력)</span></div>
+      <div class="sa-etcwrap" hidden><input type="text" class="sa-etcinput" maxlength="60"
+        placeholder="채점 포인트에 없던 것 — 짧게 (예: 예외 사유를 빠뜨림 / 주체를 반대로 씀)"></div>
+      <div class="sa-fixbody" hidden>
+        <div class="sa-fixhead"><b>② 교정 입력</b> — 모범답은 가려집니다. 기억으로 다시 쓰세요
+          <span class="sa-meter"><i></i></span><span class="sa-pct">0%</span></div>
+        <textarea class="sa-fixinput" placeholder="기억나는 대로 다시 쓰세요 — 막히면 위 모범답에 마우스를 올리거나 탭하면 잠깐 열립니다"></textarea>
+        <div class="sa-fixnote">${FIXNOTE}</div>
+      </div>`;
+    card.appendChild(fix);
+    const fixBody = fix.querySelector('.sa-fixbody');
+    const etcChip = fix.querySelector('.sa-chip.etc');
+    const etcWrap = fix.querySelector('.sa-etcwrap');
+    const etcInput= fix.querySelector('.sa-etcinput');
+    const fixTa   = fix.querySelector('.sa-fixinput');
+    const fixBar  = fix.querySelector('.sa-meter i');
+    const fixPct  = fix.querySelector('.sa-pct');
+    const fixNote = fix.querySelector('.sa-fixnote');
+    const modela  = box.querySelector('.sa-modela');
+    function fixCheck(){
+      const sim  = saSim(fixTa.value, item.answer);
+      const pass = sim >= SA_FIX_PASS;
+      fixBar.style.width = Math.min(100, Math.round(sim / SA_FIX_PASS * 100)) + '%';
+      fixPct.textContent = pass ? '통과 ✓' : Math.round(sim*100) + '%';
+      fix.classList.toggle('done', pass);
+      selected[qi].fix = fixTa.value;
+      selected[qi].fixed = pass;
+      if(pass) box.classList.remove('veil','peek');   // 재현했으면 모범답을 열어 대조
+      updateProgress();
+    }
+    function missSync(){
+      const on = [].slice.call(fix.querySelectorAll('.sa-chip.on'))
+        .filter(c=>!c.dataset.etc).map(c=>MISS_OPTS[+c.dataset.k]);
+      const etcOn = etcChip.classList.contains('on');
+      etcWrap.hidden = !etcOn;
+      const etcTxt = etcOn ? etcInput.value.trim().replace(/\s+/g,' ') : '';
+      if(etcTxt) on.push('기타: ' + etcTxt);   // 빈 기타는 선택으로 치지 않는다 — 적어야 조준점이 된다
+      selected[qi].missed = on;
+      fixBody.hidden = (on.length === 0);
+      fixCheck();
+    }
+    fix.querySelectorAll('.sa-chip').forEach(c=>{
+      c.addEventListener('click', ()=>{
+        if(graded || GRADED[qi] || selected[qi].self !== false) return;
+        c.classList.toggle('on');
+        missSync();
+        if(c.dataset.etc && c.classList.contains('on')){ setTimeout(()=>etcInput.focus(), 0); return; }
+        if(!fixBody.hidden) setTimeout(()=>fixTa.focus(), 0);
+      });
+    });
+    etcInput.addEventListener('input', missSync);
+    etcInput.addEventListener('keydown', (ev)=>{ if(ev.key === 'Enter'){ ev.preventDefault(); if(!fixBody.hidden) fixTa.focus(); } });
+    if(modela) modela.addEventListener('click', ()=>{   // 터치 기기용 훔쳐보기(hover 대체)
+      if(box.classList.contains('veil')) box.classList.toggle('peek');
+    });
+    fixTa.addEventListener('input', fixCheck);
+    fixTa.addEventListener('paste', (ev)=>{
+      ev.preventDefault();
+      fixNote.textContent = '⚠️ 붙여넣기는 막혀 있습니다 — 손으로 쳐야 남습니다';
+      setTimeout(()=>{ fixNote.textContent = FIXNOTE; }, 2200);
+    });
+    const ex = document.createElement('div');
+    ex.className = 'expl'; ex.id = 'expl-'+qi;
+    card.appendChild(ex);
+
+    function doReveal(){
+      selected[qi].typed = ta.value;
+      selected[qi].revealed = true;
+      ta.disabled = true; btnR.disabled = true;
+      box.hidden = false;
+      ex.innerHTML = `${item.expl}<span class="src">📄 출처: ${item.src}</span>`;
+      ex.classList.add('show');
+    }
+    function doSelfGrade(isOk){
+      selected[qi].self = isOk;
+      const gb = box.querySelectorAll('.sa-grade button');
+      gb.forEach(x=>x.classList.remove('on-ok','on-no'));
+      gb[isOk ? 0 : 1].classList.add(isOk ? 'on-ok' : 'on-no');
+      const isWrong = (selected[qi].self === false);
+      fix.hidden = !isWrong;
+      if(isWrong){
+        box.classList.add('veil'); box.classList.remove('peek');
+        missSync();
+      } else {
+        selected[qi].fix = ''; selected[qi].fixed = false; selected[qi].missed = [];
+        fix.querySelectorAll('.sa-chip').forEach(c=>c.classList.remove('on'));
+        etcInput.value = ''; etcWrap.hidden = true;
+        fix.classList.remove('done'); fixBody.hidden = true;
+        box.classList.remove('veil','peek');
+      }
+      updateProgress();
+    }
+    btnR.addEventListener('click', ()=>{
+      if(graded || GRADED[qi] || selected[qi].revealed) return;
+      doReveal();
+      saveProgress();
+    });
+    box.querySelectorAll('.sa-grade button').forEach(b=>{
+      b.addEventListener('click', ()=>{
+        if(graded || GRADED[qi] || !selected[qi].revealed) return;
+        doSelfGrade(b.dataset.g === 'ok');
+      });
+    });
+    // 저장분 복원 — 클릭 경로와 같은 함수를 태워 상태가 갈라지지 않게 한다
+    RESTORERS[qi] = function(s){
+      if(!s || typeof s !== 'object') return;
+      ta.value = s.typed || '';
+      selected[qi].typed = s.typed || '';
+      if(!s.revealed) return;
+      doReveal();
+      if(s.self === true){ doSelfGrade(true); return; }
+      if(s.self !== false) return;
+      doSelfGrade(false);
+      (s.missed || []).forEach(k=>{
+        if(String(k).indexOf('기타: ') === 0){
+          etcChip.classList.add('on');
+          etcInput.value = String(k).slice(4);
+          return;
+        }
+        const ki = MISS_OPTS.indexOf(k);
+        if(ki >= 0){ const c = fix.querySelector('.sa-chip[data-k="' + ki + '"]'); if(c) c.classList.add('on'); }
+      });
+      fixTa.value = s.fix || '';
+      missSync();
+    };
+  } else {
+    // ── 객관식 ──
+    const optsWrap = document.createElement('div');
+    optsWrap.className = 'opts ' + (isOX?'ox':'');
+    optsWrap.dataset.q = qi;
+    card.appendChild(optsWrap);
+    const ex = document.createElement('div');
+    ex.className = 'expl'; ex.id = 'expl-'+qi;
+    card.appendChild(ex);
+    item.opts.forEach((o, oi)=>{
+      const el = document.createElement('div');
+      el.className = 'opt';
+      el.dataset.q = qi; el.dataset.o = oi;
+      el.innerHTML = isOX
+        ? `<span>${o}</span>`
+        : `<span class="mk">${String.fromCharCode(65+oi)}</span><span>${o}</span>`;
+      el.addEventListener('click', ()=>{
+        if(graded || GRADED[qi]) return;
+        selected[qi] = oi;
+        optsWrap.querySelectorAll('.opt').forEach(x=>x.classList.remove('sel'));
+        el.classList.add('sel');
+        updateProgress();
+      });
+      // 보기 O·X 토글(·→O→X→·) — X는 종전 소거(희미하게)를 승계한다.
+      // 선택과 무관(전파 차단) · 채점·저장에 영향 없음 · ㄱㄴㄷ 지문 마킹과 같은 색·같은 순서.
+      if(!isOX){
+        const mk = document.createElement('button');
+        mk.type = 'button';
+        mk.className = 'optox';
+        mk.textContent = '·';
+        mk.dataset.q = qi; mk.dataset.o = oi;
+        mk.title = '보기 O·X 메모 — 채점과 무관 (· → O → X)';
+        mk.setAttribute('aria-label', '이 보기에 O·X 메모');
+        mk.addEventListener('click', (ev)=>{
+          ev.stopPropagation();
+          ev.preventDefault();
+          if(graded || GRADED[qi]) return;
+          setOptMark(el, mk, markStateOf(mk) === '' ? 'o' : (markStateOf(mk) === 'o' ? 'x' : ''));
+          saveProgress();
+        });
+        el.appendChild(mk);
+      }
+      optsWrap.appendChild(el);
+    });
+    RESTORERS[qi] = function(s){
+      if(s === 'DK'){ selected[qi] = 'DK'; return; }
+      if(typeof s !== 'number' || !item.opts || item.opts[s] === undefined) return;
+      selected[qi] = s;
+      const el = optsWrap.querySelector('.opt[data-o="' + s + '"]');
+      if(el){ optsWrap.querySelectorAll('.opt').forEach(x=>x.classList.remove('sel')); el.classList.add('sel'); }
+    };
+  }
+  form.appendChild(card);
+});
+
+// 보기 O·X 마킹 적용 — '' → 표시 없음 / 'o' → 초록 / 'x' → 빨강 + 희미하게(소거 승계)
+function setOptMark(el, mk, state){
+  mk.classList.remove('o','x');
+  el.classList.remove('mk-o','mk-x');
+  if(state === 'o'){ mk.classList.add('o'); el.classList.add('mk-o'); mk.textContent = 'O'; }
+  else if(state === 'x'){ mk.classList.add('x'); el.classList.add('mk-x'); mk.textContent = 'X'; }
+  else { mk.textContent = '·'; }
+}
+
+function updateProgress(){
+  document.querySelectorAll('.dk-btn').forEach(b => { const k = +b.dataset.q; b.classList.toggle('on', selected[k] === 'DK'); });
+  // 단답형은 '자가채점까지 끝난 것'만 완료로 센다(객관식은 선택 여부)
+  const done = selected.filter((s,i)=> QUESTIONS[i].type==='단답' ? (s && (s.self===true || (s.self===false && s.fixed && s.missed.length>0))) : (s!==null)).length;
+  document.getElementById('pcount').textContent = `${done} / ${QUESTIONS.length} 완료`;
+  document.getElementById('pbar').style.width = (done/QUESTIONS.length*100)+'%';
+  document.getElementById('submitBtn').disabled = done !== QUESTIONS.length;
+  const pb = document.getElementById('partialBtn');
+  // 중간 제출: 답한 게 1개 이상이고 아직 전 문항 완료가 아닐 때만
+  if(pb) pb.disabled = graded || done < 1 || done === QUESTIONS.length;
+  QUESTIONS.forEach((q, qi)=>{ if(!GRADED[qi] && isAnswered(qi)) unmarkSkipped(qi); });
+  saveProgress();
+}
+
+// ── 모르겠음(무답) 버튼: 아예 모르면 찍지 말 것 — 찍어서 맞으면 구멍이 기록되지 않는다 ──
+QUESTIONS.forEach((it, qi) => {
+  if(it.type === '단답') return;
+  const ow = document.querySelector('.opts[data-q="' + qi + '"]');
+  if(!ow) return;
+  const b = document.createElement('button');
+  b.type = 'button'; b.className = 'dk-btn'; b.dataset.q = qi;
+  b.textContent = '🤷 모르겠음 — 찍지 않기';
+  b.title = '무답 처리: 오답으로 집계되고 원인은 자동으로 [개념부재]가 됩니다';
+  b.addEventListener('click', () => {
+    if(graded || GRADED[qi]) return;
+    selected[qi] = (selected[qi] === 'DK') ? null : 'DK';
+    ow.querySelectorAll('.opt').forEach(x => x.classList.remove('sel'));
+    updateProgress();
+  });
+  ow.insertAdjacentElement('afterend', b);
+  // ── ㄱㄴㄷ 지문 O·X 마킹: 시험지 여백 체크의 화면판 — 판정을 머리에 안 들고 있게 ──
+  const qt = ow.closest('.q') && ow.closest('.q').querySelector('.qtext');
+  if(qt && !qt.dataset.oxDone && /(^|<br\s*\/?>)\s*[ㄱㄴㄷㄹㅁㅂ]\.\s/.test(qt.innerHTML)){
+    qt.innerHTML = qt.innerHTML.replace(/(^|<br\s*\/?>)(\s*)([ㄱㄴㄷㄹㅁㅂ])(\.\s*)/g,
+      '$1$2<button type="button" class="ox-mark" title="지문 O·X 메모 — 채점과 무관한 체크용">·</button>$3$4');
+    qt.dataset.oxDone = '1';
+  }
+});
+function setOxMark(t, state){
+  t.classList.remove('o','x');
+  if(state === 'o'){ t.classList.add('o'); t.textContent = 'O'; }
+  else if(state === 'x'){ t.classList.add('x'); t.textContent = 'X'; }
+  else { t.textContent = '·'; }
+}
+form.addEventListener('click', (e) => {
+  const t = e.target.closest('.ox-mark');
+  if(!t) return;
+  e.preventDefault();
+  const card = t.closest('.q');
+  const qi = card ? +String(card.id).split('-')[1] : -1;
+  if(graded || GRADED[qi]) return;
+  setOxMark(t, markStateOf(t) === '' ? 'o' : (markStateOf(t) === 'o' ? 'x' : ''));
+  saveProgress();
+});
+
+const btn = document.getElementById('submitBtn');
+btn.addEventListener('click', ()=>{ if(!graded){ grade(); } else { location.reload(); } });
+
+// ── 중간 제출: 푼 것만 채점 · 미응답은 정답을 열지 않고 다음 퀴즈로 넘긴다 ──
+const btnP = document.getElementById('partialBtn');
+btnP.addEventListener('click', ()=>{
+  if(graded || btnP.disabled) return;
+  const n = answeredCount(), m = QUESTIONS.length - n;
+  if(n < 1 || m < 1) return;
+  const ok = window.confirm(n + '문항만 채점하고 나머지 ' + m
+    + '문항은 미응답으로 남깁니다. 미응답은 정답이 공개되지 않고 다음 퀴즈에서 다시 나옵니다.');
+  if(!ok) return;
+  grade(true);
+});
+
+document.getElementById('copyBtn').addEventListener('click', ()=>{
+  if(!LAST_PAYLOAD) return;
+  const txt = JSON.stringify(LAST_PAYLOAD, null, 2);
+  const done = ()=>{ document.getElementById('dlnote').textContent = "📋 복사 완료 — " + INBOX_NOTE + "에 붙여넣어 저장해도 된다"; };
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(txt).then(done).catch(()=>fallbackCopy(txt, done));
+  } else { fallbackCopy(txt, done); }
+});
+function fallbackCopy(txt, done){
+  const ta = document.createElement('textarea');
+  ta.value = txt; document.body.appendChild(ta); ta.select();
+  try{ document.execCommand('copy'); done(); }catch(e){}
+  ta.remove();
+}
+
+// 문항 하나를 채점 상태로 확정한다(정답·해설 공개 + 잠금). 복원 때도 같은 함수를 태운다.
+function applyGrade(qi){
+  const item = QUESTIONS[qi];
+  const ex = document.getElementById('expl-'+qi);
+  if(item.type === '단답'){          // 단답형은 자가채점 결과로 확정
+    const st = selected[qi];
+    const okSA = !!(st && st.self === true);
+    const cardSA = document.getElementById('card-'+qi);
+    if(cardSA){
+      cardSA.classList.add(okSA ? 'saok' : 'sano');
+      cardSA.querySelectorAll('.sa-grade button').forEach(b=>{ b.style.cursor='default'; });
+      cardSA.querySelectorAll('.sa-fixinput').forEach(t=>{ t.disabled = true; });
+      cardSA.querySelectorAll('.sa-chip').forEach(c=>{ c.style.cursor = 'default'; });
+      cardSA.querySelectorAll('.sa-etcinput').forEach(t=>{ t.disabled = true; });
+      cardSA.querySelectorAll('.sa-answer').forEach(x=>x.classList.remove('veil'));
+    }
+    ex.innerHTML = `<span class="verdict" style="color:${okSA?'var(--ok)':'var(--no)'}">${okSA?'정답(자가채점)':'오답(자가채점)'}</span>${item.expl}<span class="src">📄 출처: ${item.src}</span>`;
+    ex.classList.add('show');
+    return;
+  }
+  const opts = document.querySelectorAll(`.opt[data-q="${qi}"]`);
+  opts.forEach((el, oi)=>{
+    el.style.cursor='default';
+    el.querySelectorAll('.optox').forEach(m=>{ m.style.cursor='default'; });  // 마킹은 남기되 잠근다
+    if(oi === item.answer) el.classList.add('correct');
+    if(oi === selected[qi] && oi !== item.answer) el.classList.add('wrong');
+  });
+  const dk = document.querySelector('.dk-btn[data-q="' + qi + '"]');
+  if(dk) dk.disabled = true;
+  const correct = selected[qi] === item.answer;
+  ex.innerHTML = `<span class="verdict" style="color:${correct?'var(--ok)':'var(--no)'}">${correct?'정답!':(selected[qi]==='DK'?'모르겠음(무답)':'오답')}</span>${item.expl}<span class="src">📄 출처: ${item.src}</span>`;
+  ex.classList.add('show');
+}
+// 중간제출에서 빠진 문항 — 배지만 붙이고 정답·해설은 열지 않는다(재출제 오염 방지). 계속 풀 수 있다.
+function markSkipped(qi){
+  const card = document.getElementById('card-'+qi);
+  if(!card || card.querySelector('.skipbadge')) return;
+  card.classList.add('skipped');
+  const b = document.createElement('div');
+  b.className = 'skipbadge'; b.dataset.q = qi;
+  b.textContent = '미응답(중간제출)';
+  const head = card.querySelector('.qhead');
+  if(head) head.insertAdjacentElement('afterend', b); else card.insertBefore(b, card.firstChild);
+}
+function unmarkSkipped(qi){
+  const card = document.getElementById('card-'+qi);
+  if(!card) return;
+  card.classList.remove('skipped');
+  const b = card.querySelector('.skipbadge');
+  if(b) b.remove();
+}
+
+function grade(isPartial){
+  const answered = QUESTIONS.map((q, qi)=> isAnswered(qi));
+  if(isPartial){
+    if(answered.every(Boolean) || !answered.some(Boolean)) return;
+    PARTIAL_DONE = true;
+  } else {
+    graded = true;
+  }
+  const built = buildPayload(QUESTIONS, selected, QUIZ_DATE, new Date().toISOString(),
+                             SCHEMA_VERSION, isPartial ? answered : null);
+  LAST_PAYLOAD = built.payload;
+  QUESTIONS.forEach((item, qi)=>{
+    if(GRADED[qi]) return;                       // 이미 확정된 문항은 재채점하지 않는다(결과 고정)
+    if(isPartial && !answered[qi]){ markSkipped(qi); return; }
+    GRADED[qi] = true;
+    unmarkSkipped(qi);
+    applyGrade(qi);
+  });
+  const r = document.getElementById('result');
+  document.getElementById('score').textContent = built.score;
+  document.getElementById('total').textContent = ' / ' + built.payload.total;
+  document.getElementById('rmsg').textContent = msgFor(built.score, built.payload.total)
+    + (isPartial ? ` (중간 제출 — 미응답 ${built.payload.skippedCount}문항은 다음 퀴즈로)` : '');
+  r.classList.add('show');
+  if(!isPartial){
+    btn.textContent = '🔄 다시 풀기';
+    btn.classList.add('retry');
+    document.querySelectorAll('.dk-btn').forEach(b => { b.disabled = true; });
+  }
+  updateProgress();
+  const wrongMCQ = [];
+  QUESTIONS.forEach((it, qi) => { if(it.type !== '단답' && GRADED[qi] && selected[qi] !== it.answer) wrongMCQ.push(qi); });
+  // 모르겠음(무답)은 원인 자동 진단: 개념부재 — 본인이 이미 "모른다"고 선언한 것이라 다시 묻지 않는다
+  wrongMCQ.forEach(qi => { if(selected[qi] === 'DK') mcqDiag[qi] = { cause: '개념부재' }; });
+  const needDiag = wrongMCQ.filter(qi => selected[qi] !== 'DK' && !(mcqDiag[qi] && mcqDiag[qi].cause));
+  DIAG_SAVED = false;
+  const oldSave = document.getElementById('diagSave');
+  if(oldSave) oldSave.remove();
+  if(needDiag.length === 0){
+    if(wrongMCQ.length > 0){ diagPending = wrongMCQ; attachCauses(built.payload); }
+    document.getElementById('copyBtn').classList.add('show');
+    // 결과 자동 다운로드 (수거·원장 갱신이 읽는 파일)
+    downloadResult(built.payload);
+    afterSave(isPartial);
+  } else {
+    // ── 오답 원인 진단 게이트: 원인을 다 골라야 저장된다 ──
+    diagPending = wrongMCQ;
+    needDiag.forEach(qi => {
+      if(document.getElementById('diag-' + qi)) return;    // 앞 라운드에 이미 열린 진단은 그대로 둔다
+      const ex = document.getElementById('expl-' + qi);
+      if(ex) ex.insertAdjacentElement('afterend', makeDiag(qi));
+    });
+    const dn = document.getElementById('dlnote');
+    dn.textContent = '⚠️ 아직 저장 전 — 틀린 문제(빨간 칸)마다 원인을 고르고 아래 버튼으로 저장하세요';
+    const bd = document.createElement('button');
+    bd.type = 'button'; bd.className = 'copybtn show'; bd.id = 'diagSave'; bd.disabled = true;
+    bd.addEventListener('click', () => {
+      if(DIAG_SAVED || !diagDone()) return;
+      DIAG_SAVED = true;
+      attachCauses(LAST_PAYLOAD);
+      document.getElementById('copyBtn').classList.add('show');
+      downloadResult(LAST_PAYLOAD);
+      document.querySelectorAll('.mcq-diag').forEach(x => x.classList.add('done'));
+      document.querySelectorAll('.mcq-diag .dmemo').forEach(x => { x.disabled = true; });
+      document.querySelectorAll('.mcq-diag .sa-chip').forEach(x => { x.style.cursor = 'default'; });
+      bd.textContent = '✅ 진단 저장됨'; bd.disabled = true;
+      afterSave(isPartial);
+    });
+    dn.insertAdjacentElement('afterend', bd);
+    diagUpdate();
+  }
+
+  r.scrollIntoView({behavior:'smooth', block:'center'});
+}
+// 저장(다운로드)이 끝난 시점 — 전체 제출이면 진행 저장분을 버리고, 중간 제출이면 이어서 풀 수 있게 남긴다
+function afterSave(isPartial){
+  if(isPartial){ saveProgress(); return; }
+  clearProgress();
+  SAVE_ON = false;
+}
+
+function downloadResult(payload){
+  try{
+    const blob = new Blob([JSON.stringify(payload,null,2)], {type:"application/json"});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${RESULT_PREFIX}${QUIZ_DATE}${QUIZ_ID_SUFFIX}.json`;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url), 1500);
+    document.getElementById('dlnote').textContent =
+      payload.wrongCount>0 ? `💾 결과 저장됨(오답 ${payload.wrongCount}개) — 다운로드 폴더 확인` : "💾 만점 기록 저장됨";
+  }catch(e){
+    document.getElementById('dlnote').textContent = "⚠️ 자동 저장 실패 — 아래 '결과 JSON 복사'를 눌러 수동 저장";
+  }
+}
+
+function msgFor(s, tot){
+  const t = tot || QUESTIONS.length;   // 중간 제출이면 '답한 문항 수'가 분모
+  const r = s/t;
+  if(s===t)   return RESULT_MSGS[0];
+  if(r>=0.8)  return RESULT_MSGS[1];
+  if(r>=0.6)  return RESULT_MSGS[2];
+  if(r>=0.4)  return RESULT_MSGS[3];
+  return RESULT_MSGS[4];
+}
+
+/*__RESTORE_START__*/
+// ── 저장분 복원 — 답·마킹·진단·중간제출 채점 상태를 되살린다 ────────
+function restoreProgress(){
+  const st = loadProgress();
+  if(!st) return 0;
+  try{
+    st.sel.forEach((s, qi)=>{
+      if(s === null || s === undefined) return;
+      if(RESTORERS[qi]) RESTORERS[qi](s);
+    });
+    Object.keys(st.optMarks || {}).forEach(qi=>{
+      const card = document.getElementById('card-' + qi);
+      if(!card) return;
+      const btns = card.querySelectorAll('.optox');
+      (st.optMarks[qi] || []).forEach((v, i)=>{ if(btns[i] && v) setOptMark(btns[i].closest('.opt'), btns[i], v); });
+    });
+    Object.keys(st.oxMarks || {}).forEach(qi=>{
+      const card = document.getElementById('card-' + qi);
+      if(!card) return;
+      const btns = card.querySelectorAll('.ox-mark');
+      (st.oxMarks[qi] || []).forEach((v, i)=>{ if(btns[i] && v) setOxMark(btns[i], v); });
+    });
+    Object.keys(st.diag || {}).forEach(qi=>{ mcqDiag[qi] = st.diag[qi]; });
+    PARTIAL_DONE = !!st.partialDone;
+    (st.gradedIdx || []).forEach(qi=>{
+      if(!QUESTIONS[qi] || !isAnswered(qi)) return;
+      GRADED[qi] = true;
+      applyGrade(qi);
+      if(QUESTIONS[qi].type !== '단답' && selected[qi] !== 'DK' && selected[qi] !== QUESTIONS[qi].answer) restoreDiagBox(qi);
+    });
+    if(PARTIAL_DONE) QUESTIONS.forEach((q, qi)=>{ if(!GRADED[qi] && !isAnswered(qi)) markSkipped(qi); });
+  }catch(e){ return 0; }
+  return answeredCount();
+}
+(function(){
+  const n = restoreProgress();
+  SAVE_ON = true;
+  updateProgress();
+  if(!n) return;
+  const bar = document.getElementById('restoreBar');
+  if(!bar) return;
+  bar.innerHTML = '<b>↩ 이전 진행 복원됨</b> — 답 ' + n + '개 · <a id="restoreReset" href="javascript:void(0)">처음부터 다시</a>';
+  bar.hidden = false;
+  const a = document.getElementById('restoreReset');
+  if(a) a.addEventListener('click', (ev)=>{
+    ev.preventDefault();
+    SAVE_ON = false;
+    clearProgress();
+    try{ location.reload(); }catch(e){}
+  });
+})();
+/*__RESTORE_END__*/
+</script>
+</body>
+</html>

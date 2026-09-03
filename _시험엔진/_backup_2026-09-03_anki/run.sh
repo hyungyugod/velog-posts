@@ -22,8 +22,6 @@ for f in "$HERE"/*.test.js; do
   node "$f" || rc=1
 done
 
-bash "$HERE/apkg_smoke.sh" || rc=1
-
 echo
 if [ "$rc" -eq 0 ]; then echo "✅ 전체 통과"; else echo "❌ 실패한 테스트가 있습니다"; fi
 exit "$rc"

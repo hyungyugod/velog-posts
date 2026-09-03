@@ -1,84 +1,52 @@
 {
   "ledgerSchema": 3,
-  "generatedAt": "2026-09-02T15:47:25",
+  "generatedAt": "2026-09-03T09:09:13",
   "fsrsMeta": {
     "version": "6.3.2",
     "desiredRetention": 0.9,
-    "maximumInterval": 52,
+    "maximumInterval": 51,
     "fuzzing": false,
     "ratingMap": "wrong=Again, retryCorrect=Good"
   },
-  "sourceFiles": 56,
-  "v2Files": 25,
-  "submissions": 56,
-  "avgScore": 33.0,
+  "sourceFiles": 58,
+  "v2Files": 27,
+  "submissions": 58,
+  "avgScore": 32.8,
   "avgTotal": 36,
   "perfectRuns": 4,
-  "totalWrongItems": 171,
-  "uniqueConcepts": 141,
+  "totalWrongItems": 185,
+  "uniqueConcepts": 150,
   "dateRange": [
     "2026-06-02",
-    "2026-09-01"
+    "2026-09-02"
   ],
   "statusCounts": {
-    "상습": 8,
+    "상습": 9,
     "재도전중": 105,
-    "졸업후보": 19,
+    "졸업후보": 27,
     "졸업": 9
   },
   "fsrsFallbacks": 0,
   "subjectWeakness": {
-    "부동산공법": 42,
-    "민법": 41,
-    "부동산세법": 32,
-    "공인중개사법": 23,
-    "부동산학개론": 19,
-    "부동산공시법": 14
+    "부동산공법": 45,
+    "민법": 42,
+    "부동산세법": 35,
+    "공인중개사법": 25,
+    "부동산학개론": 21,
+    "부동산공시법": 17
   },
   "dueQueue": [
-    {
-      "conceptKey": "부동산세법 5-1",
-      "subject": "부동산세법",
-      "status": "상습",
-      "timesWrong": 6,
-      "retryMissed": 5,
-      "consecutiveCorrect": 0,
-      "lastWrong": "2026-09-01",
-      "nextReviewDate": "2026-09-02",
-      "retrievability": 0.693,
-      "stability": 0.1,
-      "pick": true,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "부동산세법 1-1 임대업 자산 양도",
-      "subject": "부동산세법",
-      "status": "상습",
-      "timesWrong": 2,
-      "retryMissed": 1,
-      "consecutiveCorrect": 0,
-      "lastWrong": "2026-09-01",
-      "nextReviewDate": "2026-09-02",
-      "retrievability": 0.721,
-      "stability": 0.134,
-      "pick": true,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
     {
       "conceptKey": "공인중개사법 1 상가임대차",
       "subject": "공인중개사법",
       "status": "상습",
       "timesWrong": 4,
       "retryMissed": 3,
-      "consecutiveCorrect": 0,
+      "consecutiveCorrect": 1,
       "lastWrong": "2026-09-01",
-      "nextReviewDate": "2026-09-02",
-      "retrievability": 0.726,
-      "stability": 0.14,
+      "nextReviewDate": "2026-09-03",
+      "retrievability": 1.0,
+      "stability": 0.494,
       "pick": true,
       "missedTop": [
         "임대인이 받은 날"
@@ -90,16 +58,72 @@
       "conceptKey": "공인중개사법 1-5 과태료 개별금액",
       "subject": "공인중개사법",
       "status": "상습",
+      "timesWrong": 4,
+      "retryMissed": 3,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-09-02",
+      "nextReviewDate": "2026-09-03",
+      "retrievability": 1.0,
+      "stability": 0.141,
+      "pick": true,
+      "missedTop": [
+        "등록증 50만원",
+        "표시·광고"
+      ],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "부동산공시법 등기신청기간",
+      "subject": "부동산공시법",
+      "status": "상습",
+      "timesWrong": 2,
+      "retryMissed": 1,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-09-02",
+      "nextReviewDate": "2026-09-03",
+      "retrievability": 1.0,
+      "stability": 1.23,
+      "pick": true,
+      "missedTop": [],
+      "causeTop": "혼동",
+      "errorCauses": {
+        "혼동": 1
+      }
+    },
+    {
+      "conceptKey": "부동산공시법 등록전환-허용범위와 무관",
+      "subject": "부동산공시법",
+      "status": "상습",
+      "timesWrong": 2,
+      "retryMissed": 1,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-09-02",
+      "nextReviewDate": "2026-09-03",
+      "retrievability": 1.0,
+      "stability": 0.13,
+      "pick": true,
+      "missedTop": [],
+      "causeTop": "혼동",
+      "errorCauses": {
+        "혼동": 1
+      }
+    },
+    {
+      "conceptKey": "부동산세법 1-1 임대업 자산 양도",
+      "subject": "부동산세법",
+      "status": "상습",
       "timesWrong": 3,
       "retryMissed": 2,
       "consecutiveCorrect": 0,
-      "lastWrong": "2026-09-01",
-      "nextReviewDate": "2026-09-02",
-      "retrievability": 0.811,
-      "stability": 0.339,
+      "lastWrong": "2026-09-02",
+      "nextReviewDate": "2026-09-03",
+      "retrievability": 1.0,
+      "stability": 0.069,
       "pick": true,
       "missedTop": [
-        "등록증 50만원"
+        "고정자산 양도소득",
+        "재고자산 사업소득"
       ],
       "causeTop": null,
       "errorCauses": {}
@@ -110,11 +134,11 @@
       "status": "상습",
       "timesWrong": 3,
       "retryMissed": 2,
-      "consecutiveCorrect": 0,
+      "consecutiveCorrect": 1,
       "lastWrong": "2026-09-01",
-      "nextReviewDate": "2026-09-02",
-      "retrievability": 0.811,
-      "stability": 0.339,
+      "nextReviewDate": "2026-09-03",
+      "retrievability": 1.0,
+      "stability": 0.944,
       "pick": true,
       "missedTop": [
         "양도해도 영향 없음"
@@ -128,107 +152,27 @@
       "status": "상습",
       "timesWrong": 3,
       "retryMissed": 2,
-      "consecutiveCorrect": 0,
+      "consecutiveCorrect": 1,
       "lastWrong": "2026-09-01",
-      "nextReviewDate": "2026-09-02",
-      "retrievability": 0.811,
-      "stability": 0.339,
+      "nextReviewDate": "2026-09-03",
+      "retrievability": 1.0,
+      "stability": 0.944,
       "pick": true,
       "missedTop": [],
       "causeTop": null,
       "errorCauses": {}
     },
     {
-      "conceptKey": "부동산공법 1-6 시설채권과 매수청구",
-      "subject": "부동산공법",
+      "conceptKey": "부동산세법 5-1",
+      "subject": "부동산세법",
       "status": "상습",
-      "timesWrong": 2,
-      "retryMissed": 1,
+      "timesWrong": 6,
+      "retryMissed": 5,
       "consecutiveCorrect": 1,
-      "lastWrong": "2026-08-31",
-      "nextReviewDate": "2026-09-02",
-      "retrievability": 0.884,
-      "stability": 0.806,
-      "pick": true,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "부동산학개론 금융론-원금균등상환 원리금",
-      "subject": "부동산학개론",
-      "status": "상습",
-      "timesWrong": 2,
-      "retryMissed": 1,
-      "consecutiveCorrect": 1,
-      "lastWrong": "2026-08-31",
-      "nextReviewDate": "2026-09-02",
-      "retrievability": 0.886,
-      "stability": 0.828,
-      "pick": true,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "학개론 거치기간-이자만 납부 월액",
-      "subject": "부동산학개론",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "lastWrong": "2026-08-27",
-      "nextReviewDate": "2026-08-28",
-      "retrievability": 0.596,
-      "stability": 0.212,
-      "pick": true,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "민법 1-5 무권대리인의 본인 상속",
-      "subject": "민법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "lastWrong": "2026-08-28",
-      "nextReviewDate": "2026-08-29",
-      "retrievability": 0.612,
-      "stability": 0.212,
-      "pick": true,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "민법 대리-의사능력과 복대리 묵시적 승낙",
-      "subject": "민법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "lastWrong": "2026-08-28",
-      "nextReviewDate": "2026-08-29",
-      "retrievability": 0.612,
-      "stability": 0.212,
-      "pick": true,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "부동산공시법 등록전환-허용범위와 무관",
-      "subject": "부동산공시법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "lastWrong": "2026-08-28",
-      "nextReviewDate": "2026-08-29",
-      "retrievability": 0.612,
-      "stability": 0.212,
+      "lastWrong": "2026-09-01",
+      "nextReviewDate": "2026-09-03",
+      "retrievability": 1.0,
+      "stability": 0.375,
       "pick": true,
       "missedTop": [],
       "causeTop": null,
@@ -237,46 +181,112 @@
     {
       "conceptKey": "시행방식 환지",
       "subject": "부동산공법",
+      "status": "상습",
+      "timesWrong": 2,
+      "retryMissed": 1,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-09-02",
+      "nextReviewDate": "2026-09-03",
+      "retrievability": 1.0,
+      "stability": 1.237,
+      "pick": true,
+      "missedTop": [],
+      "causeTop": "개념부재",
+      "errorCauses": {
+        "개념부재": 1
+      }
+    },
+    {
+      "conceptKey": "공법 도정법-조합임원 수·대의원회",
+      "subject": "부동산공법",
       "status": "재도전중",
       "timesWrong": 1,
       "retryMissed": 0,
-      "consecutiveCorrect": 1,
-      "lastWrong": "2026-06-21-부동산공법",
-      "nextReviewDate": "2026-07-12",
-      "retrievability": 0.663,
-      "stability": 4.126,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-08-31",
+      "nextReviewDate": "2026-09-01",
+      "retrievability": 0.698,
+      "stability": 0.212,
       "pick": true,
       "missedTop": [],
       "causeTop": null,
       "errorCauses": {}
     },
     {
-      "conceptKey": "민법 2-5 담보책임",
+      "conceptKey": "공법 주택조합 청약철회-발송주의·7일·10일",
+      "subject": "부동산공법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-08-31",
+      "nextReviewDate": "2026-09-01",
+      "retrievability": 0.698,
+      "stability": 0.212,
+      "pick": true,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "공법 집단취락지구-개발제한구역법 적용",
+      "subject": "부동산공법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-08-31",
+      "nextReviewDate": "2026-09-01",
+      "retrievability": 0.698,
+      "stability": 0.212,
+      "pick": true,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "민법 물권적청구권 미등기매수인",
       "subject": "민법",
       "status": "재도전중",
       "timesWrong": 1,
       "retryMissed": 0,
-      "consecutiveCorrect": 1,
-      "lastWrong": "2026-06-29",
-      "nextReviewDate": "2026-07-17",
-      "retrievability": 0.669,
-      "stability": 3.98,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-08-31",
+      "nextReviewDate": "2026-09-01",
+      "retrievability": 0.698,
+      "stability": 0.212,
       "pick": true,
       "missedTop": [],
       "causeTop": null,
       "errorCauses": {}
     },
     {
-      "conceptKey": "부동산학개론 주택저당유동화증권",
-      "subject": "부동산학개론",
+      "conceptKey": "부동산세법 1-5 신고납부 절차",
+      "subject": "부동산세법",
       "status": "재도전중",
       "timesWrong": 1,
       "retryMissed": 0,
-      "consecutiveCorrect": 1,
-      "lastWrong": "2026-06-25",
-      "nextReviewDate": "2026-07-17",
-      "retrievability": 0.673,
-      "stability": 4.168,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-08-31",
+      "nextReviewDate": "2026-09-01",
+      "retrievability": 0.698,
+      "stability": 0.212,
+      "pick": true,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "부동산세법 1-6 등록면허세 납세절차",
+      "subject": "부동산세법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-08-31",
+      "nextReviewDate": "2026-09-01",
+      "retrievability": 0.698,
+      "stability": 0.212,
       "pick": true,
       "missedTop": [],
       "causeTop": null,
@@ -358,118 +368,6 @@
       "retrievability": 0.771,
       "stability": 4.221,
       "pick": true,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "부동산공시법 등기신청기간",
-      "subject": "부동산공시법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 1,
-      "lastWrong": "2026-06-24",
-      "nextReviewDate": "2026-07-17",
-      "retrievability": 0.674,
-      "stability": 4.208,
-      "pick": false,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "공법 도정법-조합임원 수·대의원회",
-      "subject": "부동산공법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "lastWrong": "2026-08-31",
-      "nextReviewDate": "2026-09-01",
-      "retrievability": 0.698,
-      "stability": 0.212,
-      "pick": false,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "공법 주택조합 청약철회-발송주의·7일·10일",
-      "subject": "부동산공법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "lastWrong": "2026-08-31",
-      "nextReviewDate": "2026-09-01",
-      "retrievability": 0.698,
-      "stability": 0.212,
-      "pick": false,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "공법 집단취락지구-개발제한구역법 적용",
-      "subject": "부동산공법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "lastWrong": "2026-08-31",
-      "nextReviewDate": "2026-09-01",
-      "retrievability": 0.698,
-      "stability": 0.212,
-      "pick": false,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "민법 물권적청구권 미등기매수인",
-      "subject": "민법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "lastWrong": "2026-08-31",
-      "nextReviewDate": "2026-09-01",
-      "retrievability": 0.698,
-      "stability": 0.212,
-      "pick": false,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "부동산세법 1-5 신고납부 절차",
-      "subject": "부동산세법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "lastWrong": "2026-08-31",
-      "nextReviewDate": "2026-09-01",
-      "retrievability": 0.698,
-      "stability": 0.212,
-      "pick": false,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "부동산세법 1-6 등록면허세 납세절차",
-      "subject": "부동산세법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "lastWrong": "2026-08-31",
-      "nextReviewDate": "2026-09-01",
-      "retrievability": 0.698,
-      "stability": 0.212,
-      "pick": false,
       "missedTop": [],
       "causeTop": null,
       "errorCauses": {}
@@ -1550,6 +1448,248 @@
       "errorCauses": {}
     },
     {
+      "conceptKey": "부동산공법 2-2 허가권자와 허가 취소",
+      "subject": "부동산공법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "lastWrong": "2026-08-25",
+      "nextReviewDate": "2026-09-03",
+      "retrievability": 0.931,
+      "stability": 3.32,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "부동산공법 2-5 안전관리 예치금",
+      "subject": "부동산공법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "lastWrong": "2026-08-25",
+      "nextReviewDate": "2026-09-03",
+      "retrievability": 0.931,
+      "stability": 3.32,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "공인중개사법 1-5 허가구역 지정효력",
+      "subject": "공인중개사법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "lastWrong": "2026-08-24",
+      "nextReviewDate": "2026-09-03",
+      "retrievability": 0.933,
+      "stability": 3.442,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "부동산공법 1-11 주택법",
+      "subject": "부동산공법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "lastWrong": "2026-08-24",
+      "nextReviewDate": "2026-09-03",
+      "retrievability": 0.933,
+      "stability": 3.442,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "부동산세법 1-4 세율 구조",
+      "subject": "부동산세법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "lastWrong": "2026-08-24",
+      "nextReviewDate": "2026-09-03",
+      "retrievability": 0.933,
+      "stability": 3.442,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "공시법 직권정정-토지이동정리결의서 기준",
+      "subject": "부동산공시법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-09-02",
+      "nextReviewDate": "2026-09-03",
+      "retrievability": 1.0,
+      "stability": 0.212,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": "혼동",
+      "errorCauses": {
+        "혼동": 1
+      }
+    },
+    {
+      "conceptKey": "민법 집합건물-공용부분 수익금 지분비율",
+      "subject": "민법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-09-02",
+      "nextReviewDate": "2026-09-03",
+      "retrievability": 1.0,
+      "stability": 0.212,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": "혼동",
+      "errorCauses": {
+        "혼동": 1
+      }
+    },
+    {
+      "conceptKey": "부동산공법 1-2 장기미집행 해제 절차",
+      "subject": "부동산공법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-09-02",
+      "nextReviewDate": "2026-09-03",
+      "retrievability": 1.0,
+      "stability": 0.212,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": "개념부재",
+      "errorCauses": {
+        "개념부재": 1
+      }
+    },
+    {
+      "conceptKey": "부동산공법 1-7 공공시설의 귀속",
+      "subject": "부동산공법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-09-02",
+      "nextReviewDate": "2026-09-03",
+      "retrievability": 1.0,
+      "stability": 0.212,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": "개념부재",
+      "errorCauses": {
+        "개념부재": 1
+      }
+    },
+    {
+      "conceptKey": "부동산세법 1-3 비과세와 연부취득 납세의무자",
+      "subject": "부동산세법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-09-02",
+      "nextReviewDate": "2026-09-03",
+      "retrievability": 1.0,
+      "stability": 0.212,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": "개념부재",
+      "errorCauses": {
+        "개념부재": 1
+      }
+    },
+    {
+      "conceptKey": "부동산학개론 1-4 승수와 비율지표",
+      "subject": "부동산학개론",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-09-02",
+      "nextReviewDate": "2026-09-03",
+      "retrievability": 1.0,
+      "stability": 0.212,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": "혼동",
+      "errorCauses": {
+        "혼동": 1
+      }
+    },
+    {
+      "conceptKey": "세법 원시취득-면적 증가분",
+      "subject": "부동산세법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-09-02",
+      "nextReviewDate": "2026-09-03",
+      "retrievability": 1.0,
+      "stability": 0.212,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": "혼동",
+      "errorCauses": {
+        "혼동": 1
+      }
+    },
+    {
+      "conceptKey": "중개사법 결격사유-피특정후견인 제외",
+      "subject": "공인중개사법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-09-02",
+      "nextReviewDate": "2026-09-03",
+      "retrievability": 1.0,
+      "stability": 0.212,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": "혼동",
+      "errorCauses": {
+        "혼동": 1
+      }
+    },
+    {
+      "conceptKey": "학개론 거래사례비교법-절차 3단계",
+      "subject": "부동산학개론",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-09-02",
+      "nextReviewDate": "2026-09-03",
+      "retrievability": 1.0,
+      "stability": 0.212,
+      "pick": false,
+      "missedTop": [
+        "가치형성요인"
+      ],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
       "conceptKey": "부동산세법 4-1",
       "subject": "부동산세법",
       "status": "졸업후보",
@@ -1708,6 +1848,54 @@
       "missedTop": [],
       "causeTop": null,
       "errorCauses": {}
+    },
+    {
+      "conceptKey": "민법 11 상가·주택임대차",
+      "subject": "민법",
+      "status": "졸업후보",
+      "timesWrong": 2,
+      "retryMissed": 1,
+      "consecutiveCorrect": 2,
+      "lastWrong": "2026-08-27",
+      "nextReviewDate": "2026-09-03",
+      "retrievability": 0.929,
+      "stability": 3.198,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "담보책임 제척기간-물건하자 6개월",
+      "subject": "민법",
+      "status": "졸업후보",
+      "timesWrong": 2,
+      "retryMissed": 1,
+      "consecutiveCorrect": 2,
+      "lastWrong": "2026-08-28",
+      "nextReviewDate": "2026-09-03",
+      "retrievability": 0.95,
+      "stability": 2.474,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "주임법-2기연체·나대지·채무승계",
+      "subject": "민법",
+      "status": "졸업후보",
+      "timesWrong": 2,
+      "retryMissed": 1,
+      "consecutiveCorrect": 2,
+      "lastWrong": "2026-08-28",
+      "nextReviewDate": "2026-09-03",
+      "retrievability": 0.95,
+      "stability": 2.474,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
     }
   ],
   "ledger": [
@@ -1719,13 +1907,13 @@
       "status": "상습",
       "timesWrong": 6,
       "retryMissed": 5,
-      "consecutiveCorrect": 0,
+      "consecutiveCorrect": 1,
       "firstWrong": "2026-06-08-5",
       "lastWrong": "2026-09-01",
-      "lastCorrect": "2026-08-31",
-      "lastResult": "wrong",
-      "lastDp": "2026-09-01",
-      "nextReviewDate": "2026-09-02",
+      "lastCorrect": "2026-09-02",
+      "lastResult": "correct",
+      "lastDp": "2026-09-02",
+      "nextReviewDate": "2026-09-03",
       "dates": [
         "2026-06-08-5",
         "2026-08-25",
@@ -1775,13 +1963,13 @@
       "missedKeys": {},
       "errorCauses": {},
       "fsrs": {
-        "stability": 0.1,
-        "difficulty": 9.959,
-        "due": "2026-09-02",
+        "stability": 0.375,
+        "difficulty": 9.945,
+        "due": "2026-09-03",
         "state": "Review",
-        "reps": 7,
+        "reps": 8,
         "lapses": 6,
-        "retrievability": 0.693
+        "retrievability": 1.0
       },
       "fsrsFallback": false
     },
@@ -1793,13 +1981,13 @@
       "status": "상습",
       "timesWrong": 4,
       "retryMissed": 3,
-      "consecutiveCorrect": 0,
+      "consecutiveCorrect": 1,
       "firstWrong": "2026-07-08",
       "lastWrong": "2026-09-01",
-      "lastCorrect": "2026-08-28",
-      "lastResult": "wrong",
-      "lastDp": "2026-09-01",
-      "nextReviewDate": "2026-09-02",
+      "lastCorrect": "2026-09-02",
+      "lastResult": "correct",
+      "lastDp": "2026-09-02",
+      "nextReviewDate": "2026-09-03",
       "dates": [
         "2026-07-08",
         "2026-08-27",
@@ -1851,13 +2039,13 @@
       },
       "errorCauses": {},
       "fsrs": {
-        "stability": 0.14,
-        "difficulty": 9.85,
-        "due": "2026-09-02",
+        "stability": 0.494,
+        "difficulty": 9.835,
+        "due": "2026-09-03",
         "state": "Review",
-        "reps": 5,
+        "reps": 6,
         "lapses": 4,
-        "retrievability": 0.726
+        "retrievability": 1.0
       },
       "fsrsFallback": false
     },
@@ -1867,33 +2055,22 @@
       "subject": "공인중개사법",
       "concept": "공인중개사법 1-5 과태료 개별금액",
       "status": "상습",
-      "timesWrong": 3,
-      "retryMissed": 2,
+      "timesWrong": 4,
+      "retryMissed": 3,
       "consecutiveCorrect": 0,
       "firstWrong": "2026-08-14",
-      "lastWrong": "2026-09-01",
+      "lastWrong": "2026-09-02",
       "lastCorrect": "2026-08-31",
       "lastResult": "wrong",
-      "lastDp": "2026-09-01",
-      "nextReviewDate": "2026-09-02",
+      "lastDp": "2026-09-02",
+      "nextReviewDate": "2026-09-03",
       "dates": [
         "2026-08-14",
         "2026-08-28",
-        "2026-09-01"
+        "2026-09-01",
+        "2026-09-02"
       ],
       "samples": [
-        {
-          "date": "2026-08-14",
-          "type": "일반",
-          "q": "공인중개사법령상 100만원 이하의 과태료 부과사유별 개별 기준금액에 관한 설명으로 옳은 것은?",
-          "myAnswer": "중개사무소등록증을 반납하지 아니한 경우는 20만원이다",
-          "correct": "중개대상물의 표시·광고 규정을 위반한 경우는 50만원이다",
-          "expl": "등록증·광고·문자 계열이 50만원 라인이므로 표시·광고 위반은 50만원이다. 금액을 셋으로 쪼갠 이유는 의무의 공공성 크기(대외적 광고 > 신분증표 > 내부 신고)에 따라 제재 강도를 계단으로 나눈 것이다. 자격증 반납은 30만원, 폐업 계열은 20만원으로 세 칸을 섞어 내는 것이 전형적 함정이다.",
-          "missedKeys": [],
-          "fixTyped": null,
-          "errorCause": null,
-          "causeNote": null
-        },
         {
           "date": "2026-08-28",
           "type": "일반",
@@ -1919,20 +2096,35 @@
           "fixTyped": "등록증 미반납은 50만원 자격증 미반납은 30만원 폐업사실 미신고는 20만원이다.",
           "errorCause": null,
           "causeNote": null
+        },
+        {
+          "date": "2026-09-02",
+          "type": "단답",
+          "q": "🔁 공인중개사법령상 100만원 이하 과태료에서 중개사무소등록증을 반납하지 아니한 경우의 개별 기준금액과, 그와 같은 금액 라인에 묶이는 위반 계열 두 가지를 쓰시오.",
+          "myAnswer": "50만원이고 허위광고 같은거",
+          "correct": "50만원이며 표시·광고 규정 위반과 문자 사용 관련 위반이 같은 50만원 라인이다",
+          "expl": "[정답 근거] 등록증 반납 미이행은 50만원이고 광고·문자 계열이 같은 라인에 묶인다. [메커니즘] 의무의 대외적 파급력 순서로 제재를 계단화해 등록증·광고·문자 50만원, 이보게·자격증 30만원, 폐업 계열 20만원으로 나뉜다. [함정] 등록증과 자격증의 금액을 맞바꿔 외우면 그대로 틀린다.",
+          "missedKeys": [
+            "표시·광고"
+          ],
+          "fixTyped": "50만원이고 표시광고 규정위반 관련과 문자사용관련한 내용이다.",
+          "errorCause": null,
+          "causeNote": null
         }
       ],
       "missedKeys": {
-        "등록증 50만원": 1
+        "등록증 50만원": 1,
+        "표시·광고": 1
       },
       "errorCauses": {},
       "fsrs": {
-        "stability": 0.339,
-        "difficulty": 9.588,
-        "due": "2026-09-02",
+        "stability": 0.141,
+        "difficulty": 9.85,
+        "due": "2026-09-03",
         "state": "Review",
-        "reps": 4,
-        "lapses": 3,
-        "retrievability": 0.811
+        "reps": 5,
+        "lapses": 4,
+        "retrievability": 1.0
       },
       "fsrsFallback": false
     },
@@ -1944,13 +2136,13 @@
       "status": "상습",
       "timesWrong": 3,
       "retryMissed": 2,
-      "consecutiveCorrect": 0,
+      "consecutiveCorrect": 1,
       "firstWrong": "2026-08-14",
       "lastWrong": "2026-09-01",
-      "lastCorrect": "2026-08-31",
-      "lastResult": "wrong",
-      "lastDp": "2026-09-01",
-      "nextReviewDate": "2026-09-02",
+      "lastCorrect": "2026-09-02",
+      "lastResult": "correct",
+      "lastDp": "2026-09-02",
+      "nextReviewDate": "2026-09-03",
       "dates": [
         "2026-08-14",
         "2026-08-28",
@@ -1997,13 +2189,13 @@
       "missedKeys": {},
       "errorCauses": {},
       "fsrs": {
-        "stability": 0.339,
-        "difficulty": 9.588,
-        "due": "2026-09-02",
+        "stability": 0.944,
+        "difficulty": 9.574,
+        "due": "2026-09-03",
         "state": "Review",
-        "reps": 4,
+        "reps": 5,
         "lapses": 3,
-        "retrievability": 0.811
+        "retrievability": 1.0
       },
       "fsrsFallback": false
     },
@@ -2015,13 +2207,13 @@
       "status": "상습",
       "timesWrong": 3,
       "retryMissed": 2,
-      "consecutiveCorrect": 0,
+      "consecutiveCorrect": 1,
       "firstWrong": "2026-08-14",
       "lastWrong": "2026-09-01",
-      "lastCorrect": "2026-08-31",
-      "lastResult": "wrong",
-      "lastDp": "2026-09-01",
-      "nextReviewDate": "2026-09-02",
+      "lastCorrect": "2026-09-02",
+      "lastResult": "correct",
+      "lastDp": "2026-09-02",
+      "nextReviewDate": "2026-09-03",
       "dates": [
         "2026-08-14",
         "2026-08-28",
@@ -2072,129 +2264,13 @@
       },
       "errorCauses": {},
       "fsrs": {
-        "stability": 0.339,
-        "difficulty": 9.588,
-        "due": "2026-09-02",
+        "stability": 0.944,
+        "difficulty": 9.574,
+        "due": "2026-09-03",
         "state": "Review",
-        "reps": 4,
+        "reps": 5,
         "lapses": 3,
-        "retrievability": 0.811
-      },
-      "fsrsFallback": false
-    },
-    {
-      "conceptKey": "부동산학개론 금융론-원금균등상환 원리금",
-      "aliases": [],
-      "subject": "부동산학개론",
-      "concept": "부동산학개론 금융론-원금균등상환 원리금",
-      "status": "상습",
-      "timesWrong": 2,
-      "retryMissed": 1,
-      "consecutiveCorrect": 1,
-      "firstWrong": "2026-08-21",
-      "lastWrong": "2026-08-31",
-      "lastCorrect": "2026-09-01",
-      "lastResult": "correct",
-      "lastDp": "2026-09-01",
-      "nextReviewDate": "2026-09-02",
-      "dates": [
-        "2026-08-21",
-        "2026-08-31"
-      ],
-      "samples": [
-        {
-          "date": "2026-08-21",
-          "type": "계산",
-          "q": "대출원금 3억원을 연이자율 5%, 30년 만기 원금균등분할상환 조건으로 빌렸다. 연 1회 상환할 때 2회차에 상환하는 원리금은? (다른 조건은 동일)",
-          "myAnswer": "24,000,000원",
-          "correct": "24,500,000원",
-          "expl": "매기 원금상환액은 3억÷30년=1,000만원으로 고정되고, 2회차 이자는 1회차 상환 후 잔액 2억9천만원×5%=1,450만원이다. 따라서 1,000만+1,450만=2,450만원이다. 1회차 이자(1,500만원)를 그대로 써서 2,500만원으로 계산하는 것이 대표적 함정이다.",
-          "missedKeys": [],
-          "fixTyped": null,
-          "errorCause": null,
-          "causeNote": null
-        },
-        {
-          "date": "2026-08-31",
-          "type": "계산",
-          "q": "🔁 대출원금 4억원을 연이자율 6%, 20년 만기 원금균등분할상환 조건으로 빌렸다. 연 1회 상환할 때 3회차에 상환하는 원리금은? (다른 조건은 동일)",
-          "myAnswer": "2,160만원",
-          "correct": "4,160만원",
-          "expl": "[정답 근거] 매기 원금 2,000만원에 3회차 이자인 잔액 3억 6,000만원의 6퍼센트 2,160만원을 더하면 4,160만원이다. [메커니즘] 원금균등은 원금상환분이 고정되고 이자만 직전 상환 후 잔액에서 계산되어 매기 줄어든다. [함정] 1회차나 2회차 이자를 그대로 쓰면 4,400만원·4,280만원으로 미끄러진다.",
-          "missedKeys": [],
-          "fixTyped": null,
-          "errorCause": null,
-          "causeNote": null
-        }
-      ],
-      "missedKeys": {},
-      "errorCauses": {},
-      "fsrs": {
-        "stability": 0.828,
-        "difficulty": 8.793,
-        "due": "2026-09-02",
-        "state": "Review",
-        "reps": 3,
-        "lapses": 2,
-        "retrievability": 0.886
-      },
-      "fsrsFallback": false
-    },
-    {
-      "conceptKey": "부동산공법 1-6 시설채권과 매수청구",
-      "aliases": [],
-      "subject": "부동산공법",
-      "concept": "부동산공법 1-6 시설채권과 매수청구",
-      "status": "상습",
-      "timesWrong": 2,
-      "retryMissed": 1,
-      "consecutiveCorrect": 1,
-      "firstWrong": "2026-08-24",
-      "lastWrong": "2026-08-31",
-      "lastCorrect": "2026-09-01",
-      "lastResult": "correct",
-      "lastDp": "2026-09-01",
-      "nextReviewDate": "2026-09-02",
-      "dates": [
-        "2026-08-24",
-        "2026-08-31"
-      ],
-      "samples": [
-        {
-          "date": "2026-08-24",
-          "type": "일반",
-          "q": "⏪ 국토의 계획 및 이용에 관한 법령상 도시·군계획시설채권과 기반시설부담구역에 관한 설명으로 <b>옳지 않은</b> 것은?",
-          "myAnswer": "매수의무자는 매수청구를 받은 날부터 6개월 이내에 매수 여부를 결정하여 통지하여야 한다",
-          "correct": "한국토지주택공사는 매수의무자가 되더라도 도시·군계획시설채권을 발행하여 매수대금을 지급할 수 있다",
-          "expl": "도시·군계획시설채권은 지방자치단체가 발행하는 것이므로 지방자치단체가 아닌 한국토지주택공사는 발행할 수 없고 그 채권으로 매수대금을 지급할 수도 없다. 채권 지급은 지자체의 재정 사정을 배려해 현금 대신 허용한 예외여서, 그 예외를 누릴 주체도 지자체로 한정된다. 매수 결정 6개월, 계획 미수립 해제 1년, 비용 부과 2개월이라는 숫자 묶음과 함께 정리한다.",
-          "missedKeys": [],
-          "fixTyped": null,
-          "errorCause": null,
-          "causeNote": null
-        },
-        {
-          "date": "2026-08-31",
-          "type": "일반",
-          "q": "🔁 국토의 계획 및 이용에 관한 법령상 도시·군계획시설 부지의 매수청구와 도시·군계획시설채권에 관한 설명으로 옳은 것은?",
-          "myAnswer": "한국토지주택공사는 매수의무자인 경우 도시·군계획시설채권을 발행하여 매수대금을 지급할 수 있다",
-          "correct": "매수의무자는 매수청구를 받은 날부터 6개월 이내에 매수 여부를 결정하여 통지하여야 한다",
-          "expl": "[정답 근거] 매수의무자는 매수청구를 받은 날부터 6개월 이내에 매수 여부를 결정하여 통지하여야 한다. [메커니즘] 매수 여부를 빨리 확정해 토지소유자의 재산권 제한 상태를 오래 방치하지 않으려는 기간 설계다. [함정] 시설채권은 지방자치단체만 발행하므로 한국토지주택공사나 국토교통부장관 발행 지문은 모두 틀린다.",
-          "missedKeys": [],
-          "fixTyped": null,
-          "errorCause": null,
-          "causeNote": null
-        }
-      ],
-      "missedKeys": {},
-      "errorCauses": {},
-      "fsrs": {
-        "stability": 0.806,
-        "difficulty": 8.793,
-        "due": "2026-09-02",
-        "state": "Review",
-        "reps": 3,
-        "lapses": 2,
-        "retrievability": 0.884
+        "retrievability": 1.0
       },
       "fsrsFallback": false
     },
@@ -2204,18 +2280,19 @@
       "subject": "부동산세법",
       "concept": "부동산세법 1-1 임대업 자산 양도",
       "status": "상습",
-      "timesWrong": 2,
-      "retryMissed": 1,
+      "timesWrong": 3,
+      "retryMissed": 2,
       "consecutiveCorrect": 0,
       "firstWrong": "2026-08-26",
-      "lastWrong": "2026-09-01",
+      "lastWrong": "2026-09-02",
       "lastCorrect": null,
       "lastResult": "wrong",
-      "lastDp": "2026-09-01",
-      "nextReviewDate": "2026-09-02",
+      "lastDp": "2026-09-02",
+      "nextReviewDate": "2026-09-03",
       "dates": [
         "2026-08-26",
-        "2026-09-01"
+        "2026-09-01",
+        "2026-09-02"
       ],
       "samples": [
         {
@@ -2241,18 +2318,36 @@
           "fixTyped": null,
           "errorCause": null,
           "causeNote": null
+        },
+        {
+          "date": "2026-09-02",
+          "type": "단답",
+          "q": "🔁 부동산 임대업에 사용하던 건물을 양도한 경우의 소득 구분을, 부동산매매업자가 판매 목적으로 보유하던 건물을 양도한 경우와 대비하여 쓰시오.",
+          "myAnswer": "부동산 임대업에 사용하던 건물은 매매라는 사업의 직접적인 대상이 아니므로 매매는 양도소득이고 판매목적으로 보유하던 건물을 양도한 경우는 사업소득이다.",
+          "correct": "임대업에 사용하던 건물은 고정자산이므로 양도소득이고 매매업자가 판매 목적으로 보유한 건물은 재고자산이므로 사업소득이다",
+          "expl": "[정답 근거] 임대업 사용 건물은 고정자산이라 양도소득, 매매업자의 판매 목적 건물은 재고자산이라 사업소득이다. [메커니즘] 팔려고 가진 재고를 파는 것은 영업활동 자체이고 쓰려고 보유한 자산을 파는 것은 자산의 처분이라 소득 구분이 갈린다. [함정] 임대료가 사업소득인 점을 건물 처분이익까지 넓히면 양도소득세 대상이 아니라고 잘못 답한다.",
+          "missedKeys": [
+            "고정자산 양도소득",
+            "재고자산 사업소득"
+          ],
+          "fixTyped": "임대업에 해당하는 건물은 고정자산 양도소득이고 건물 판매업에 사용되던 건물은 고정자산이 아닌 재고자산이므로 사업소득에 해당한다.",
+          "errorCause": null,
+          "causeNote": null
         }
       ],
-      "missedKeys": {},
+      "missedKeys": {
+        "고정자산 양도소득": 1,
+        "재고자산 사업소득": 1
+      },
       "errorCauses": {},
       "fsrs": {
-        "stability": 0.134,
-        "difficulty": 8.806,
-        "due": "2026-09-02",
+        "stability": 0.069,
+        "difficulty": 9.593,
+        "due": "2026-09-03",
         "state": "Review",
-        "reps": 2,
-        "lapses": 2,
-        "retrievability": 0.721
+        "reps": 3,
+        "lapses": 3,
+        "retrievability": 1.0
       },
       "fsrsFallback": false
     },
@@ -2261,18 +2356,19 @@
       "aliases": [],
       "subject": "부동산공법",
       "concept": "시행방식 환지",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 1,
+      "status": "상습",
+      "timesWrong": 2,
+      "retryMissed": 1,
+      "consecutiveCorrect": 0,
       "firstWrong": "2026-06-21-부동산공법",
-      "lastWrong": "2026-06-21-부동산공법",
+      "lastWrong": "2026-09-02",
       "lastCorrect": "2026-07-08",
-      "lastResult": "correct",
-      "lastDp": "2026-07-08",
-      "nextReviewDate": "2026-07-12",
+      "lastResult": "wrong",
+      "lastDp": "2026-09-02",
+      "nextReviewDate": "2026-09-03",
       "dates": [
-        "2026-06-21-부동산공법"
+        "2026-06-21-부동산공법",
+        "2026-09-02"
       ],
       "samples": [
         {
@@ -2286,18 +2382,32 @@
           "fixTyped": null,
           "errorCause": null,
           "causeNote": null
+        },
+        {
+          "date": "2026-09-02",
+          "type": "일반",
+          "q": "🔁 도시개발법령상 시행방식과 환지에 관한 설명으로 옳은 것은?",
+          "myAnswer": "모르겠음",
+          "correct": "시행자는 준공검사를 받은 경우 60일 이내에 환지처분을 하여야 한다",
+          "expl": "[정답 근거] 시행자는 준공검사를 받은 경우 60일 이내에 환지처분을 하여야 한다. [메커니즘] 공사 완료를 공적으로 확인한 뒤에야 권리관계를 확정할 수 있고, 확정을 오래 미루면 토지소유자의 권리가 떠 있게 되므로 기한을 못 박았다. [함정] 지방자치단체가 전부환지방식으로 시행할 때 작성하는 것은 규약이 아니라 시행규정이다.",
+          "missedKeys": [],
+          "fixTyped": null,
+          "errorCause": "개념부재",
+          "causeNote": null
         }
       ],
       "missedKeys": {},
-      "errorCauses": {},
+      "errorCauses": {
+        "개념부재": 1
+      },
       "fsrs": {
-        "stability": 4.126,
-        "difficulty": 6.402,
-        "due": "2026-07-12",
+        "stability": 1.237,
+        "difficulty": 8.803,
+        "due": "2026-09-03",
         "state": "Review",
-        "reps": 2,
-        "lapses": 1,
-        "retrievability": 0.663
+        "reps": 3,
+        "lapses": 2,
+        "retrievability": 1.0
       },
       "fsrsFallback": false
     },
@@ -2306,18 +2416,19 @@
       "aliases": [],
       "subject": "부동산공시법",
       "concept": "부동산공시법 등기신청기간",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 1,
+      "status": "상습",
+      "timesWrong": 2,
+      "retryMissed": 1,
+      "consecutiveCorrect": 0,
       "firstWrong": "2026-06-24",
-      "lastWrong": "2026-06-24",
+      "lastWrong": "2026-09-02",
       "lastCorrect": "2026-07-13-2",
-      "lastResult": "correct",
-      "lastDp": "2026-07-13",
-      "nextReviewDate": "2026-07-17",
+      "lastResult": "wrong",
+      "lastDp": "2026-09-02",
+      "nextReviewDate": "2026-09-03",
       "dates": [
-        "2026-06-24"
+        "2026-06-24",
+        "2026-09-02"
       ],
       "samples": [
         {
@@ -2331,108 +2442,92 @@
           "fixTyped": null,
           "errorCause": null,
           "causeNote": null
+        },
+        {
+          "date": "2026-09-02",
+          "type": "일반",
+          "q": "🔁 부동산등기법령상 등기의 신청기간과 등기원인일자에 관한 설명으로 옳은 것은?",
+          "myAnswer": "매매로 인한 소유권이전등기는 매매계약일부터 60일 이내에 신청하여야 한다",
+          "correct": "상속재산분할협의에 따라 등기하는 경우 등기원인일자는 협의성립일이 아니라 피상속인의 사망일이다",
+          "expl": "[정답 근거] 상속재산분할협의로 등기하더라도 등기원인일자는 협의성립일이 아니라 피상속인의 사망일이다. [메커니즘] 상속은 사망과 동시에 개시되고 협의는 이미 개시된 상속분을 나누는 절차에 불과하기 때문이다. [함정] 표시변경은 1개월, 매매 이전등기는 잔금지급일부터 60일이라 기간과 기준일을 항목별로 갈라 두어야 한다.",
+          "missedKeys": [],
+          "fixTyped": null,
+          "errorCause": "혼동",
+          "causeNote": "이전등기는 잔금계약일이고 부동산거래신고는 계약일부터 기산점인데 이걸 헷갈렸다."
         }
       ],
       "missedKeys": {},
-      "errorCauses": {},
+      "errorCauses": {
+        "혼동": 1
+      },
       "fsrs": {
-        "stability": 4.208,
-        "difficulty": 6.402,
-        "due": "2026-07-17",
+        "stability": 1.23,
+        "difficulty": 8.803,
+        "due": "2026-09-03",
         "state": "Review",
-        "reps": 2,
-        "lapses": 1,
-        "retrievability": 0.674
+        "reps": 3,
+        "lapses": 2,
+        "retrievability": 1.0
       },
       "fsrsFallback": false
     },
     {
-      "conceptKey": "부동산학개론 주택저당유동화증권",
+      "conceptKey": "부동산공시법 등록전환-허용범위와 무관",
       "aliases": [],
-      "subject": "부동산학개론",
-      "concept": "부동산학개론 주택저당유동화증권",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 1,
-      "firstWrong": "2026-06-25",
-      "lastWrong": "2026-06-25",
-      "lastCorrect": "2026-07-13-2",
-      "lastResult": "correct",
-      "lastDp": "2026-07-13",
-      "nextReviewDate": "2026-07-17",
+      "subject": "부동산공시법",
+      "concept": "부동산공시법 등록전환-허용범위와 무관",
+      "status": "상습",
+      "timesWrong": 2,
+      "retryMissed": 1,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-08-28",
+      "lastWrong": "2026-09-02",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-09-02",
+      "nextReviewDate": "2026-09-03",
       "dates": [
-        "2026-06-25"
+        "2026-08-28",
+        "2026-09-02"
       ],
       "samples": [
         {
-          "date": "2026-06-25",
-          "type": "객관식",
-          "q": "주택저당유동화증권(MBS)에 관한 설명으로 옳은 것은?",
-          "myAnswer": "MPTB에서 채무불이행위험은 투자자가 부담한다",
-          "correct": "MPTS는 지분형으로, 주택저당채권의 소유권이 투자자에게 이전된다",
-          "expl": "MPTS는 지분형(pass-through)이라 저당채권의 소유권이 투자자에게 넘어가 투자자가 위험을 진다 — ①이 옳다. 혼합형 MPTB는 소유권을 발행자가 갖되 원리금수취권은 투자자가 가지므로 ②는 틀리고, 조기상환위험은 투자자가·채무불이행위험은 발행자가 부담하므로 ③·④도 뒤바뀐 함정이다. '소유권을 누가 갖느냐가 위험 부담을 결정.'",
+          "date": "2026-08-28",
+          "type": "일반",
+          "q": "⏪ 공간정보의 구축 및 관리 등에 관한 법령상 지번의 부여와 등록전환에 관한 설명으로 <b>옳지 않은</b> 것은?",
+          "myAnswer": "지번은 지적소관청이 지번부여지역별로 순차적으로 부여한다.",
+          "correct": "등록전환으로 면적이 달라진 경우 오차가 허용범위 이내일 때에는 종전 임야대장의 면적을 그대로 둔다.",
+          "expl": "[정답 근거] 등록전환에서는 오차가 허용범위를 넘든 이내든 관계없이 등록전환될 면적으로 정한다. [메커니즘] 지적도로 옮겨 실측한 면적이 앞으로의 공적 기준이 되므로 종전 임야대장의 수치를 남겨둘 이유가 없다. [함정] 허용범위를 넘을 때만 새 면적을 쓴다는 식으로 조건을 붙이는 지문이 나온다.",
           "missedKeys": [],
           "fixTyped": null,
           "errorCause": null,
           "causeNote": null
+        },
+        {
+          "date": "2026-09-02",
+          "type": "OX",
+          "q": "🔁 등록전환으로 면적이 달라진 경우, 오차가 허용범위 이내이면 종전 임야대장의 면적을 그대로 두고 허용범위를 초과할 때에만 등록전환될 면적으로 정한다.",
+          "myAnswer": "O",
+          "correct": "X",
+          "expl": "X. [정답 근거] 등록전환에서는 오차가 허용범위 이내이든 초과이든 관계없이 등록전환될 면적으로 정한다. [메커니즘] 지적도로 옮겨 실측한 면적이 앞으로의 공적 기준이 되므로 종전 임야대장의 수치를 남겨둘 이유가 없다. [함정] 허용범위를 조건으로 붙여 예외를 만드는 지문이 반복 출제된다.",
+          "missedKeys": [],
+          "fixTyped": null,
+          "errorCause": "혼동",
+          "causeNote": "종전임야대장의 면적 변경여부만 묻는 문제가 많이 나오기 때문에 그 논점인 줄 알았다."
         }
       ],
       "missedKeys": {},
-      "errorCauses": {},
-      "fsrs": {
-        "stability": 4.168,
-        "difficulty": 6.402,
-        "due": "2026-07-17",
-        "state": "Review",
-        "reps": 2,
-        "lapses": 1,
-        "retrievability": 0.673
+      "errorCauses": {
+        "혼동": 1
       },
-      "fsrsFallback": false
-    },
-    {
-      "conceptKey": "민법 2-5 담보책임",
-      "aliases": [],
-      "subject": "민법",
-      "concept": "민법 2-5 담보책임",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 1,
-      "firstWrong": "2026-06-29",
-      "lastWrong": "2026-06-29",
-      "lastCorrect": "2026-07-13-2",
-      "lastResult": "correct",
-      "lastDp": "2026-07-13",
-      "nextReviewDate": "2026-07-17",
-      "dates": [
-        "2026-06-29"
-      ],
-      "samples": [
-        {
-          "date": "2026-06-29",
-          "type": "객관식",
-          "q": "매도인의 담보책임에 관한 설명으로 옳은 것을 모두 고른 것은?<br>ㄱ. 수량을 지정한 매매에서 수량부족을 안 매수인은 대금감액을 청구할 수 없다<br>ㄴ. 전부 타인의 권리인 매매에서 악의의 매수인도 계약을 해제할 수 있다<br>ㄷ. 저당권의 행사로 매수인이 소유권을 잃은 경우 악의의 매수인은 담보책임으로 보호받지 못한다<br>ㄹ. 물건의 하자로 인한 담보책임을 묻기 위해 매수인은 선의·무과실이어야 한다",
-          "myAnswer": "ㄱ, ㄴ, ㄷ",
-          "correct": "ㄱ, ㄴ, ㄹ",
-          "expl": "수량부족·일부멸실은 악의면 담보책임이 없고(ㄱ), 전부 타인권리는 악의라도 해제는 가능하다(ㄴ). 저당권·전세권 행사로 인한 담보책임은 선의·악의를 불문하고 보호하므로 ㄷ은 틀렸다. 물건의 하자담보는 선의·무과실이 요건(ㄹ).",
-          "missedKeys": [],
-          "fixTyped": null,
-          "errorCause": null,
-          "causeNote": null
-        }
-      ],
-      "missedKeys": {},
-      "errorCauses": {},
       "fsrs": {
-        "stability": 3.98,
-        "difficulty": 6.402,
-        "due": "2026-07-17",
+        "stability": 0.13,
+        "difficulty": 8.806,
+        "due": "2026-09-03",
         "state": "Review",
         "reps": 2,
-        "lapses": 1,
-        "retrievability": 0.669
+        "lapses": 2,
+        "retrievability": 1.0
       },
       "fsrsFallback": false
     },
@@ -2482,51 +2577,6 @@
       "fsrsFallback": false
     },
     {
-      "conceptKey": "학개론 거치기간-이자만 납부 월액",
-      "aliases": [],
-      "subject": "부동산학개론",
-      "concept": "학개론 거치기간-이자만 납부 월액",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "firstWrong": "2026-08-27",
-      "lastWrong": "2026-08-27",
-      "lastCorrect": null,
-      "lastResult": "wrong",
-      "lastDp": "2026-08-27",
-      "nextReviewDate": "2026-08-28",
-      "dates": [
-        "2026-08-27"
-      ],
-      "samples": [
-        {
-          "date": "2026-08-27",
-          "type": "계산",
-          "q": "갑은 대출원금 2억 4,000만원을 연 이자율 5퍼센트로 빌리면서 3년의 거치기간을 두었다. 거치기간 중 갑이 매월 납부하여야 하는 금액은? (월 단위 균등 계산)",
-          "myAnswer": "120만원",
-          "correct": "100만원",
-          "expl": "[정답 근거] 거치기간은 원금 상환 없이 이자만 내는 기간이므로 월 납부액은 2억 4,000만원 × 5퍼센트 ÷ 12 = 100만원이다. 원금이 그대로 남아 있어 매월 이자가 동일하게 계산된다. 거치기간이 길수록 초기 부담은 작아지지만 원금이 줄지 않아 총이자는 늘어난다는 점이 함정 포인트다.",
-          "missedKeys": [],
-          "fixTyped": null,
-          "errorCause": null,
-          "causeNote": null
-        }
-      ],
-      "missedKeys": {},
-      "errorCauses": {},
-      "fsrs": {
-        "stability": 0.212,
-        "difficulty": 6.413,
-        "due": "2026-08-28",
-        "state": "Review",
-        "reps": 1,
-        "lapses": 1,
-        "retrievability": 0.596
-      },
-      "fsrsFallback": false
-    },
-    {
       "conceptKey": "공인중개사법 1-11",
       "aliases": [],
       "subject": "공인중개사법",
@@ -2568,141 +2618,6 @@
         "reps": 2,
         "lapses": 1,
         "retrievability": 0.858
-      },
-      "fsrsFallback": false
-    },
-    {
-      "conceptKey": "민법 대리-의사능력과 복대리 묵시적 승낙",
-      "aliases": [],
-      "subject": "민법",
-      "concept": "민법 대리-의사능력과 복대리 묵시적 승낙",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "firstWrong": "2026-08-28",
-      "lastWrong": "2026-08-28",
-      "lastCorrect": null,
-      "lastResult": "wrong",
-      "lastDp": "2026-08-28",
-      "nextReviewDate": "2026-08-29",
-      "dates": [
-        "2026-08-28"
-      ],
-      "samples": [
-        {
-          "date": "2026-08-28",
-          "type": "일반",
-          "q": "⏪ 민법상 대리인의 능력과 복대리인의 선임에 관한 설명으로 <b>옳지 않은</b> 것은? (다툼이 있으면 판례에 따름)",
-          "myAnswer": "대리행위의 효과는 본인에게 귀속되므로 대리인 자신을 보호할 필요가 크지 않다.",
-          "correct": "추인은 상대방에게 일정한 사실을 알리는 데 그치므로 의사표시가 아니라 의사의 통지에 해당한다.",
-          "expl": "[정답 근거] 추인은 단순한 사실의 통지가 아니라 법률효과의 발생을 의도하는 행위이므로 의사표시에 해당한다. [메커니즘] 의사의 통지는 알리는 것 자체가 목적이지만 추인은 불확정한 상태를 확정시키려는 효과의사를 담고 있다. [함정] 시효중단을 위한 최고 같은 통지와 나란히 놓아 같은 범주로 보이게 만든다.",
-          "missedKeys": [],
-          "fixTyped": null,
-          "errorCause": null,
-          "causeNote": null
-        }
-      ],
-      "missedKeys": {},
-      "errorCauses": {},
-      "fsrs": {
-        "stability": 0.212,
-        "difficulty": 6.413,
-        "due": "2026-08-29",
-        "state": "Review",
-        "reps": 1,
-        "lapses": 1,
-        "retrievability": 0.612
-      },
-      "fsrsFallback": false
-    },
-    {
-      "conceptKey": "부동산공시법 등록전환-허용범위와 무관",
-      "aliases": [],
-      "subject": "부동산공시법",
-      "concept": "부동산공시법 등록전환-허용범위와 무관",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "firstWrong": "2026-08-28",
-      "lastWrong": "2026-08-28",
-      "lastCorrect": null,
-      "lastResult": "wrong",
-      "lastDp": "2026-08-28",
-      "nextReviewDate": "2026-08-29",
-      "dates": [
-        "2026-08-28"
-      ],
-      "samples": [
-        {
-          "date": "2026-08-28",
-          "type": "일반",
-          "q": "⏪ 공간정보의 구축 및 관리 등에 관한 법령상 지번의 부여와 등록전환에 관한 설명으로 <b>옳지 않은</b> 것은?",
-          "myAnswer": "지번은 지적소관청이 지번부여지역별로 순차적으로 부여한다.",
-          "correct": "등록전환으로 면적이 달라진 경우 오차가 허용범위 이내일 때에는 종전 임야대장의 면적을 그대로 둔다.",
-          "expl": "[정답 근거] 등록전환에서는 오차가 허용범위를 넘든 이내든 관계없이 등록전환될 면적으로 정한다. [메커니즘] 지적도로 옮겨 실측한 면적이 앞으로의 공적 기준이 되므로 종전 임야대장의 수치를 남겨둘 이유가 없다. [함정] 허용범위를 넘을 때만 새 면적을 쓴다는 식으로 조건을 붙이는 지문이 나온다.",
-          "missedKeys": [],
-          "fixTyped": null,
-          "errorCause": null,
-          "causeNote": null
-        }
-      ],
-      "missedKeys": {},
-      "errorCauses": {},
-      "fsrs": {
-        "stability": 0.212,
-        "difficulty": 6.413,
-        "due": "2026-08-29",
-        "state": "Review",
-        "reps": 1,
-        "lapses": 1,
-        "retrievability": 0.612
-      },
-      "fsrsFallback": false
-    },
-    {
-      "conceptKey": "민법 1-5 무권대리인의 본인 상속",
-      "aliases": [],
-      "subject": "민법",
-      "concept": "민법 1-5 무권대리인의 본인 상속",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "firstWrong": "2026-08-28",
-      "lastWrong": "2026-08-28",
-      "lastCorrect": null,
-      "lastResult": "wrong",
-      "lastDp": "2026-08-28",
-      "nextReviewDate": "2026-08-29",
-      "dates": [
-        "2026-08-28"
-      ],
-      "samples": [
-        {
-          "date": "2026-08-28",
-          "type": "사례",
-          "q": "🔄 을은 대리권 없이 아버지 갑을 대리하여 갑 소유의 X토지를 병에게 매도하였다. 그 후 갑이 추인도 거절도 하지 아니한 채 사망하여 을이 갑을 단독으로 상속하였다. 이에 관한 설명으로 옳은 것은? (다툼이 있으면 판례에 따름)",
-          "myAnswer": "을은 상속인의 지위에서 추인을 거절할 수 있고 이는 신의칙에 반하지 아니한다.",
-          "correct": "을이 상속인의 지위에서 추인을 거절하는 것은 신의칙상 허용되지 아니한다.",
-          "expl": "스스로 계약의 효력을 만들려 했던 자가 본인 자리에 올라선 뒤 이를 뒤집는 것은 앞선 행동과 모순되어 신의칙상 허용되지 않는다. 상대방의 신뢰를 자기 손으로 만들어 놓았기 때문이다. 상대방이 악의라면 무권대리인의 책임은 면제된다는 점도 함께 봐야 한다.",
-          "missedKeys": [],
-          "fixTyped": null,
-          "errorCause": null,
-          "causeNote": null
-        }
-      ],
-      "missedKeys": {},
-      "errorCauses": {},
-      "fsrs": {
-        "stability": 0.212,
-        "difficulty": 6.413,
-        "due": "2026-08-29",
-        "state": "Review",
-        "reps": 1,
-        "lapses": 1,
-        "retrievability": 0.612
       },
       "fsrsFallback": false
     },
@@ -6133,6 +6048,431 @@
       "fsrsFallback": false
     },
     {
+      "conceptKey": "학개론 거래사례비교법-절차 3단계",
+      "aliases": [],
+      "subject": "부동산학개론",
+      "concept": "학개론 거래사례비교법-절차 3단계",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-09-02",
+      "lastWrong": "2026-09-02",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-09-02",
+      "nextReviewDate": "2026-09-03",
+      "dates": [
+        "2026-09-02"
+      ],
+      "samples": [
+        {
+          "date": "2026-09-02",
+          "type": "단답",
+          "q": "거래사례비교법의 절차 3단계를 순서대로 쓰시오.",
+          "myAnswer": "사정보정 -> 시점보정 -> ",
+          "correct": "사정보정 → 시점수정 → 가치형성요인 비교",
+          "expl": "사정보정으로 급매·친인척 거래 같은 비정상적 사정을 걷어내고, 시점수정으로 사례의 시점을 기준시점에 맞춘 뒤, 마지막으로 가치형성요인을 비교한다. 지역요인 비교는 별도의 4단계가 아니라 가치형성요인 비교 안에 포함된다는 점이 핵심이다. 순서를 뒤집거나 지역요인을 따로 세우는 지문이 함정이다.",
+          "missedKeys": [
+            "가치형성요인"
+          ],
+          "fixTyped": "사정보정, 시점수정, 가치형성요인",
+          "errorCause": null,
+          "causeNote": null
+        }
+      ],
+      "missedKeys": {
+        "가치형성요인": 1
+      },
+      "errorCauses": {},
+      "fsrs": {
+        "stability": 0.212,
+        "difficulty": 6.413,
+        "due": "2026-09-03",
+        "state": "Review",
+        "reps": 1,
+        "lapses": 1,
+        "retrievability": 1.0
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "민법 집합건물-공용부분 수익금 지분비율",
+      "aliases": [],
+      "subject": "민법",
+      "concept": "민법 집합건물-공용부분 수익금 지분비율",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-09-02",
+      "lastWrong": "2026-09-02",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-09-02",
+      "nextReviewDate": "2026-09-03",
+      "dates": [
+        "2026-09-02"
+      ],
+      "samples": [
+        {
+          "date": "2026-09-02",
+          "type": "OX",
+          "q": "규약으로 달리 정한 바가 없으면 공용부분에서 생긴 수익금은 지분비율과 관계없이 구분소유자 전원에게 균등하게 배분된다.",
+          "myAnswer": "O",
+          "correct": "X",
+          "expl": "X. 규약에 다른 정함이 없으면 각 구분소유자는 공용부분에서 생긴 수익금 중 자신의 지분비율에 상당하는 부분의 지급을 청구할 수 있고, 머릿수에 따른 균등 배분이 아니다. 공용부분에 대한 권리 자체가 지분으로 짜여 있으니 거기서 나온 과실도 지분을 따라간다. 청구 주체를 전유부분 소유자로 바꾸거나 배분 기준을 균등으로 바꾸는 것이 함정이다.",
+          "missedKeys": [],
+          "fixTyped": null,
+          "errorCause": "혼동",
+          "causeNote": "지분비율로 배분해야하는데 균등배분해야한다는 선지에 넘어갔다."
+        }
+      ],
+      "missedKeys": {},
+      "errorCauses": {
+        "혼동": 1
+      },
+      "fsrs": {
+        "stability": 0.212,
+        "difficulty": 6.413,
+        "due": "2026-09-03",
+        "state": "Review",
+        "reps": 1,
+        "lapses": 1,
+        "retrievability": 1.0
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "중개사법 결격사유-피특정후견인 제외",
+      "aliases": [],
+      "subject": "공인중개사법",
+      "concept": "중개사법 결격사유-피특정후견인 제외",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-09-02",
+      "lastWrong": "2026-09-02",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-09-02",
+      "nextReviewDate": "2026-09-03",
+      "dates": [
+        "2026-09-02"
+      ],
+      "samples": [
+        {
+          "date": "2026-09-02",
+          "type": "일반",
+          "q": "⏪ 공인중개사법령상 중개사무소 개설등록의 기준과 결격사유에 관한 설명으로 옳은 것은?",
+          "myAnswer": "가설건축물대장에 기재된 건축물에도 중개사무소 개설등록을 할 수 있다",
+          "correct": "피특정후견인은 중개사무소 개설등록의 결격사유에 해당하지 아니한다",
+          "expl": "[정답 근거] 피특정후견인은 개설등록의 결격사유에 해당하지 않는다. [메커니즘] 특정후견은 일시적·부분적 도움을 주는 제도라 업무수행 능력을 통째로 부정할 근거가 되지 않는다. [함정] 선고유예는 결격이 아니고, 가설건축물대장 건물에는 등록이 불가능하며, 3분의 1 요건은 대표자를 제외하고 센다.",
+          "missedKeys": [],
+          "fixTyped": null,
+          "errorCause": "혼동",
+          "causeNote": "피특정후견인을 잘못본 것 같다"
+        }
+      ],
+      "missedKeys": {},
+      "errorCauses": {
+        "혼동": 1
+      },
+      "fsrs": {
+        "stability": 0.212,
+        "difficulty": 6.413,
+        "due": "2026-09-03",
+        "state": "Review",
+        "reps": 1,
+        "lapses": 1,
+        "retrievability": 1.0
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "공시법 직권정정-토지이동정리결의서 기준",
+      "aliases": [],
+      "subject": "부동산공시법",
+      "concept": "공시법 직권정정-토지이동정리결의서 기준",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-09-02",
+      "lastWrong": "2026-09-02",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-09-02",
+      "nextReviewDate": "2026-09-03",
+      "dates": [
+        "2026-09-02"
+      ],
+      "samples": [
+        {
+          "date": "2026-09-02",
+          "type": "OX",
+          "q": "지적소관청이 직권으로 등록사항을 정정할 수 있는 것은 토지이동현황조사서의 내용과 다르게 정리된 경우이다.",
+          "myAnswer": "O",
+          "correct": "X",
+          "expl": "X. 직권정정의 기준이 되는 문서는 토지이동현황조사서가 아니라 토지이동정리결의서다. 토지이동정리결의서는 신청이든 직권조사든 언제나 작성되는 지적공부 반영 결재 문서인 반면, 토지이동현황조사서는 직권조사일 때만 만들어져 결의서에 첨부되는 조사 기록이다. 두 문서의 이름을 바꿔 놓는 것이 전형적인 함정이다.",
+          "missedKeys": [],
+          "fixTyped": null,
+          "errorCause": "혼동",
+          "causeNote": "조사서인 것을 확인을 못했다. 집중력이슈"
+        }
+      ],
+      "missedKeys": {},
+      "errorCauses": {
+        "혼동": 1
+      },
+      "fsrs": {
+        "stability": 0.212,
+        "difficulty": 6.413,
+        "due": "2026-09-03",
+        "state": "Review",
+        "reps": 1,
+        "lapses": 1,
+        "retrievability": 1.0
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "세법 원시취득-면적 증가분",
+      "aliases": [],
+      "subject": "부동산세법",
+      "concept": "세법 원시취득-면적 증가분",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-09-02",
+      "lastWrong": "2026-09-02",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-09-02",
+      "nextReviewDate": "2026-09-03",
+      "dates": [
+        "2026-09-02"
+      ],
+      "samples": [
+        {
+          "date": "2026-09-02",
+          "type": "일반",
+          "q": "⏪ 지방세법령상 취득세의 원시취득과 세율의 특례에 관한 설명으로 <b>옳지 않은</b> 것은?",
+          "myAnswer": "주택을 신축한 이후 그 주거용 건축물의 소유자가 부속토지를 취득한 경우에는 주택 취득세율이 아니라 부속토지의 취득세율을 적용한다",
+          "correct": "건축이나 개수로 인하여 건축물의 면적이 증가한 부분은 신축·재축이 아니므로 원시취득으로 보지 아니한다",
+          "expl": "[정답 근거] 건축이나 개수로 면적이 늘어난 부분은 신축·재축이 아니더라도 그 늘어난 부분만은 원시취득으로 본다. [메커니즘] 세상에 없던 면적이 새로 생긴 것이므로 승계가 아니라 창설로 보아 증분만 원시취득으로 끌어온다. [함정] 원시취득이 아닌 것으로 뒤집거나 증가분 전체가 아니라 건물 전부를 원시취득으로 넓히는 서술이 나온다.",
+          "missedKeys": [],
+          "fixTyped": null,
+          "errorCause": "혼동",
+          "causeNote": "신재축시 원시취득 개념을 놓치고 있었고 부속토지 관련 내용도 잊고 있었어"
+        }
+      ],
+      "missedKeys": {},
+      "errorCauses": {
+        "혼동": 1
+      },
+      "fsrs": {
+        "stability": 0.212,
+        "difficulty": 6.413,
+        "due": "2026-09-03",
+        "state": "Review",
+        "reps": 1,
+        "lapses": 1,
+        "retrievability": 1.0
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "부동산공법 1-2 장기미집행 해제 절차",
+      "aliases": [],
+      "subject": "부동산공법",
+      "concept": "부동산공법 1-2 장기미집행 해제 절차",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-09-02",
+      "lastWrong": "2026-09-02",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-09-02",
+      "nextReviewDate": "2026-09-03",
+      "dates": [
+        "2026-09-02"
+      ],
+      "samples": [
+        {
+          "date": "2026-09-02",
+          "type": "일반",
+          "q": "🔄 지방의회의 해제 권고를 포함한 장기미집행 도시·군계획시설의 해제 절차에 관한 설명으로 옳은 것은?",
+          "myAnswer": "모르겠음",
+          "correct": "지방의회의 해제 권고를 받은 경우 원칙적으로 1년 이내에 해당 사항을 도시·군관리계획으로 결정하여야 한다",
+          "expl": "[정답 근거] 지방의회는 90일 이내에 해제를 권고하고, 권고를 받으면 1년 이내에 도시·군관리계획으로 결정하며, 해제할 수 없으면 6개월 이내에 소명한다. [메커니즘] 판단·결정·해명의 세 단계로 이어지며 기간이 점점 짧아진다. [함정] 각 단계의 숫자를 서로 바꿔 놓는 것이 전형적인 함정이다.",
+          "missedKeys": [],
+          "fixTyped": null,
+          "errorCause": "개념부재",
+          "causeNote": null
+        }
+      ],
+      "missedKeys": {},
+      "errorCauses": {
+        "개념부재": 1
+      },
+      "fsrs": {
+        "stability": 0.212,
+        "difficulty": 6.413,
+        "due": "2026-09-03",
+        "state": "Review",
+        "reps": 1,
+        "lapses": 1,
+        "retrievability": 1.0
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "부동산공법 1-7 공공시설의 귀속",
+      "aliases": [],
+      "subject": "부동산공법",
+      "concept": "부동산공법 1-7 공공시설의 귀속",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-09-02",
+      "lastWrong": "2026-09-02",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-09-02",
+      "nextReviewDate": "2026-09-03",
+      "dates": [
+        "2026-09-02"
+      ],
+      "samples": [
+        {
+          "date": "2026-09-02",
+          "type": "OX",
+          "q": "🔄 개발행위허가를 받은 자가 새로 설치한 공공시설은 그 시행자가 행정청인지 여부를 묻지 아니하고 그 시설을 관리할 관리청에 무상으로 귀속된다.",
+          "myAnswer": "모르겠음",
+          "correct": "O",
+          "expl": "O. 새로 만든 공공시설은 처음부터 공공의 이용에 제공될 것이 예정된 시설이라 시행 주체가 행정청이든 아니든 관리청에 무상으로 귀속된다. 반면 종전에 있다가 용도폐지된 공공시설은 시행자가 행정청인지에 따라 처리가 달라진다. 새로 설치는 주체 불문, 용도폐지는 주체별로가 정리 기준이다.",
+          "missedKeys": [],
+          "fixTyped": null,
+          "errorCause": "개념부재",
+          "causeNote": null
+        }
+      ],
+      "missedKeys": {},
+      "errorCauses": {
+        "개념부재": 1
+      },
+      "fsrs": {
+        "stability": 0.212,
+        "difficulty": 6.413,
+        "due": "2026-09-03",
+        "state": "Review",
+        "reps": 1,
+        "lapses": 1,
+        "retrievability": 1.0
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "부동산학개론 1-4 승수와 비율지표",
+      "aliases": [],
+      "subject": "부동산학개론",
+      "concept": "부동산학개론 1-4 승수와 비율지표",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-09-02",
+      "lastWrong": "2026-09-02",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-09-02",
+      "nextReviewDate": "2026-09-03",
+      "dates": [
+        "2026-09-02"
+      ],
+      "samples": [
+        {
+          "date": "2026-09-02",
+          "type": "조합",
+          "q": "🔄 부동산학개론상 승수와 비율분석 지표에 관한 설명으로 옳은 것을 모두 고른 것은?<br>ㄱ. 순소득승수는 총투자액을 순영업소득으로 나눈 값이다<br>ㄴ. 세전현금수지승수의 분자에는 지분투자액을 사용한다<br>ㄷ. 부채감당률은 순영업소득을 부채서비스액으로 나눈 값이다<br>ㄹ. 대부비율(LTV)은 차입자의 소득 대비 원리금상환액의 비율이다",
+          "myAnswer": "ㄱ, ㄷ",
+          "correct": "ㄱ, ㄴ, ㄷ",
+          "expl": "ㄹ만 틀렸다. LTV는 담보가치 대비 대출금의 비율로 담보를 보는 지표이고, 소득 대비 원리금상환액을 보는 것은 DTI·DSR이다. 승수는 투자금액을 소득으로 나눈 회수기간이라 분모의 소득이 누구 몫인지에 따라 분자의 투자액도 총투자액과 지분투자액으로 짝을 맞춰야 한다.",
+          "missedKeys": [],
+          "fixTyped": null,
+          "errorCause": "혼동",
+          "causeNote": "세전현금수지승수의 분자에는 지분투자액을 사용한다 이걸 분모라고 생각했다."
+        }
+      ],
+      "missedKeys": {},
+      "errorCauses": {
+        "혼동": 1
+      },
+      "fsrs": {
+        "stability": 0.212,
+        "difficulty": 6.413,
+        "due": "2026-09-03",
+        "state": "Review",
+        "reps": 1,
+        "lapses": 1,
+        "retrievability": 1.0
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "부동산세법 1-3 비과세와 연부취득 납세의무자",
+      "aliases": [],
+      "subject": "부동산세법",
+      "concept": "부동산세법 1-3 비과세와 연부취득 납세의무자",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-09-02",
+      "lastWrong": "2026-09-02",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-09-02",
+      "nextReviewDate": "2026-09-03",
+      "dates": [
+        "2026-09-02"
+      ],
+      "samples": [
+        {
+          "date": "2026-09-02",
+          "type": "일반",
+          "q": "🔄 재산세의 비과세와 납세의무자에 관한 설명으로 옳은 것은?",
+          "myAnswer": "공원자연환경지구 안의 임야는 재산세가 비과세된다",
+          "correct": "보호지역의 임야는 재산세 비과세대상에 해당한다",
+          "expl": "[정답 근거] 보호지역의 임야는 재산세 비과세대상이다. [메커니즘] 법으로 이용이 묶여 수익을 낼 수 없는 토지에는 담세력을 인정하지 않는다. [함정] 국가등으로부터 연부취득하며 무상사용하면 무상사용자가 납세의무를 지지만, 국가등이 아닌 자로부터 취득한 경우에는 매도인이 그대로 납세의무자다.",
+          "missedKeys": [],
+          "fixTyped": null,
+          "errorCause": "개념부재",
+          "causeNote": "보호지역의 임야는 재산세 비과세대상이다. [메커니즘] 법으로 이용이 묶여 수익을 낼 수 없는 토지에는 담세력을 인정하지 않는다. 이걸 아예 몰"
+        }
+      ],
+      "missedKeys": {},
+      "errorCauses": {
+        "개념부재": 1
+      },
+      "fsrs": {
+        "stability": 0.212,
+        "difficulty": 6.413,
+        "due": "2026-09-03",
+        "state": "Review",
+        "reps": 1,
+        "lapses": 1,
+        "retrievability": 1.0
+      },
+      "fsrsFallback": false
+    },
+    {
       "conceptKey": "부동산학개론 1-2 위험과 수익률 지표",
       "aliases": [],
       "subject": "부동산학개론",
@@ -6763,128 +7103,139 @@
       "fsrsFallback": false
     },
     {
-      "conceptKey": "민법 1-1 반사회질서",
+      "conceptKey": "학개론 거치기간-이자만 납부 월액",
       "aliases": [],
-      "subject": "민법",
-      "concept": "민법 1-1 반사회질서",
+      "subject": "부동산학개론",
+      "concept": "학개론 거치기간-이자만 납부 월액",
       "status": "재도전중",
-      "timesWrong": 0,
+      "timesWrong": 1,
       "retryMissed": 0,
       "consecutiveCorrect": 1,
-      "firstWrong": null,
-      "lastWrong": null,
-      "lastCorrect": "2026-08-14-민법특화",
+      "firstWrong": "2026-08-27",
+      "lastWrong": "2026-08-27",
+      "lastCorrect": "2026-09-02",
       "lastResult": "correct",
-      "lastDp": "2026-08-14",
-      "nextReviewDate": "2026-08-16",
-      "dates": [],
-      "samples": [],
+      "lastDp": "2026-09-02",
+      "nextReviewDate": "2026-09-05",
+      "dates": [
+        "2026-08-27"
+      ],
+      "samples": [
+        {
+          "date": "2026-08-27",
+          "type": "계산",
+          "q": "갑은 대출원금 2억 4,000만원을 연 이자율 5퍼센트로 빌리면서 3년의 거치기간을 두었다. 거치기간 중 갑이 매월 납부하여야 하는 금액은? (월 단위 균등 계산)",
+          "myAnswer": "120만원",
+          "correct": "100만원",
+          "expl": "[정답 근거] 거치기간은 원금 상환 없이 이자만 내는 기간이므로 월 납부액은 2억 4,000만원 × 5퍼센트 ÷ 12 = 100만원이다. 원금이 그대로 남아 있어 매월 이자가 동일하게 계산된다. 거치기간이 길수록 초기 부담은 작아지지만 원금이 줄지 않아 총이자는 늘어난다는 점이 함정 포인트다.",
+          "missedKeys": [],
+          "fixTyped": null,
+          "errorCause": null,
+          "causeNote": null
+        }
+      ],
       "missedKeys": {},
       "errorCauses": {},
       "fsrs": {
-        "stability": 2.307,
-        "difficulty": 2.118,
-        "due": "2026-08-16",
+        "stability": 3.32,
+        "difficulty": 6.402,
+        "due": "2026-09-05",
         "state": "Review",
-        "reps": 1,
-        "lapses": 0,
-        "retrievability": 0.712
+        "reps": 2,
+        "lapses": 1,
+        "retrievability": 1.0
       },
-      "fsrsFallback": false,
-      "orphan": true
+      "fsrsFallback": false
     },
     {
-      "conceptKey": "민법 1-1 통정허위표시 제3자",
+      "conceptKey": "민법 대리-의사능력과 복대리 묵시적 승낙",
       "aliases": [],
       "subject": "민법",
-      "concept": "민법 1-1 통정허위표시 제3자",
+      "concept": "민법 대리-의사능력과 복대리 묵시적 승낙",
       "status": "재도전중",
-      "timesWrong": 0,
+      "timesWrong": 1,
       "retryMissed": 0,
       "consecutiveCorrect": 1,
-      "firstWrong": null,
-      "lastWrong": null,
-      "lastCorrect": "2026-08-14-민법특화",
+      "firstWrong": "2026-08-28",
+      "lastWrong": "2026-08-28",
+      "lastCorrect": "2026-09-02",
       "lastResult": "correct",
-      "lastDp": "2026-08-14",
-      "nextReviewDate": "2026-08-16",
-      "dates": [],
-      "samples": [],
+      "lastDp": "2026-09-02",
+      "nextReviewDate": "2026-09-05",
+      "dates": [
+        "2026-08-28"
+      ],
+      "samples": [
+        {
+          "date": "2026-08-28",
+          "type": "일반",
+          "q": "⏪ 민법상 대리인의 능력과 복대리인의 선임에 관한 설명으로 <b>옳지 않은</b> 것은? (다툼이 있으면 판례에 따름)",
+          "myAnswer": "대리행위의 효과는 본인에게 귀속되므로 대리인 자신을 보호할 필요가 크지 않다.",
+          "correct": "추인은 상대방에게 일정한 사실을 알리는 데 그치므로 의사표시가 아니라 의사의 통지에 해당한다.",
+          "expl": "[정답 근거] 추인은 단순한 사실의 통지가 아니라 법률효과의 발생을 의도하는 행위이므로 의사표시에 해당한다. [메커니즘] 의사의 통지는 알리는 것 자체가 목적이지만 추인은 불확정한 상태를 확정시키려는 효과의사를 담고 있다. [함정] 시효중단을 위한 최고 같은 통지와 나란히 놓아 같은 범주로 보이게 만든다.",
+          "missedKeys": [],
+          "fixTyped": null,
+          "errorCause": null,
+          "causeNote": null
+        }
+      ],
       "missedKeys": {},
       "errorCauses": {},
       "fsrs": {
-        "stability": 2.307,
-        "difficulty": 2.118,
-        "due": "2026-08-16",
+        "stability": 3.174,
+        "difficulty": 6.402,
+        "due": "2026-09-05",
         "state": "Review",
-        "reps": 1,
-        "lapses": 0,
-        "retrievability": 0.712
+        "reps": 2,
+        "lapses": 1,
+        "retrievability": 1.0
       },
-      "fsrsFallback": false,
-      "orphan": true
+      "fsrsFallback": false
     },
     {
-      "conceptKey": "민법 1-4 복대리",
+      "conceptKey": "민법 1-5 무권대리인의 본인 상속",
       "aliases": [],
       "subject": "민법",
-      "concept": "민법 1-4 복대리",
+      "concept": "민법 1-5 무권대리인의 본인 상속",
       "status": "재도전중",
-      "timesWrong": 0,
+      "timesWrong": 1,
       "retryMissed": 0,
       "consecutiveCorrect": 1,
-      "firstWrong": null,
-      "lastWrong": null,
-      "lastCorrect": "2026-08-14-민법특화",
+      "firstWrong": "2026-08-28",
+      "lastWrong": "2026-08-28",
+      "lastCorrect": "2026-09-02",
       "lastResult": "correct",
-      "lastDp": "2026-08-14",
-      "nextReviewDate": "2026-08-16",
-      "dates": [],
-      "samples": [],
+      "lastDp": "2026-09-02",
+      "nextReviewDate": "2026-09-05",
+      "dates": [
+        "2026-08-28"
+      ],
+      "samples": [
+        {
+          "date": "2026-08-28",
+          "type": "사례",
+          "q": "🔄 을은 대리권 없이 아버지 갑을 대리하여 갑 소유의 X토지를 병에게 매도하였다. 그 후 갑이 추인도 거절도 하지 아니한 채 사망하여 을이 갑을 단독으로 상속하였다. 이에 관한 설명으로 옳은 것은? (다툼이 있으면 판례에 따름)",
+          "myAnswer": "을은 상속인의 지위에서 추인을 거절할 수 있고 이는 신의칙에 반하지 아니한다.",
+          "correct": "을이 상속인의 지위에서 추인을 거절하는 것은 신의칙상 허용되지 아니한다.",
+          "expl": "스스로 계약의 효력을 만들려 했던 자가 본인 자리에 올라선 뒤 이를 뒤집는 것은 앞선 행동과 모순되어 신의칙상 허용되지 않는다. 상대방의 신뢰를 자기 손으로 만들어 놓았기 때문이다. 상대방이 악의라면 무권대리인의 책임은 면제된다는 점도 함께 봐야 한다.",
+          "missedKeys": [],
+          "fixTyped": null,
+          "errorCause": null,
+          "causeNote": null
+        }
+      ],
       "missedKeys": {},
       "errorCauses": {},
       "fsrs": {
-        "stability": 2.307,
-        "difficulty": 2.118,
-        "due": "2026-08-16",
+        "stability": 3.174,
+        "difficulty": 6.402,
+        "due": "2026-09-05",
         "state": "Review",
-        "reps": 1,
-        "lapses": 0,
-        "retrievability": 0.712
+        "reps": 2,
+        "lapses": 1,
+        "retrievability": 1.0
       },
-      "fsrsFallback": false,
-      "orphan": true
-    },
-    {
-      "conceptKey": "유치권",
-      "aliases": [],
-      "subject": "민법",
-      "concept": "유치권",
-      "status": "재도전중",
-      "timesWrong": 0,
-      "retryMissed": 0,
-      "consecutiveCorrect": 1,
-      "firstWrong": null,
-      "lastWrong": null,
-      "lastCorrect": "2026-08-14-민법특화",
-      "lastResult": "correct",
-      "lastDp": "2026-08-14",
-      "nextReviewDate": "2026-08-16",
-      "dates": [],
-      "samples": [],
-      "missedKeys": {},
-      "errorCauses": {},
-      "fsrs": {
-        "stability": 2.307,
-        "difficulty": 2.118,
-        "due": "2026-08-16",
-        "state": "Review",
-        "reps": 1,
-        "lapses": 0,
-        "retrievability": 0.712
-      },
-      "fsrsFallback": false,
-      "orphan": true
+      "fsrsFallback": false
     },
     {
       "conceptKey": "유치권 소멸",
@@ -7582,6 +7933,122 @@
       "fsrsFallback": false
     },
     {
+      "conceptKey": "부동산학개론 금융론-원금균등상환 원리금",
+      "aliases": [],
+      "subject": "부동산학개론",
+      "concept": "부동산학개론 금융론-원금균등상환 원리금",
+      "status": "졸업후보",
+      "timesWrong": 2,
+      "retryMissed": 1,
+      "consecutiveCorrect": 2,
+      "firstWrong": "2026-08-21",
+      "lastWrong": "2026-08-31",
+      "lastCorrect": "2026-09-02",
+      "lastResult": "correct",
+      "lastDp": "2026-09-02",
+      "nextReviewDate": "2026-09-04",
+      "dates": [
+        "2026-08-21",
+        "2026-08-31"
+      ],
+      "samples": [
+        {
+          "date": "2026-08-21",
+          "type": "계산",
+          "q": "대출원금 3억원을 연이자율 5%, 30년 만기 원금균등분할상환 조건으로 빌렸다. 연 1회 상환할 때 2회차에 상환하는 원리금은? (다른 조건은 동일)",
+          "myAnswer": "24,000,000원",
+          "correct": "24,500,000원",
+          "expl": "매기 원금상환액은 3억÷30년=1,000만원으로 고정되고, 2회차 이자는 1회차 상환 후 잔액 2억9천만원×5%=1,450만원이다. 따라서 1,000만+1,450만=2,450만원이다. 1회차 이자(1,500만원)를 그대로 써서 2,500만원으로 계산하는 것이 대표적 함정이다.",
+          "missedKeys": [],
+          "fixTyped": null,
+          "errorCause": null,
+          "causeNote": null
+        },
+        {
+          "date": "2026-08-31",
+          "type": "계산",
+          "q": "🔁 대출원금 4억원을 연이자율 6%, 20년 만기 원금균등분할상환 조건으로 빌렸다. 연 1회 상환할 때 3회차에 상환하는 원리금은? (다른 조건은 동일)",
+          "myAnswer": "2,160만원",
+          "correct": "4,160만원",
+          "expl": "[정답 근거] 매기 원금 2,000만원에 3회차 이자인 잔액 3억 6,000만원의 6퍼센트 2,160만원을 더하면 4,160만원이다. [메커니즘] 원금균등은 원금상환분이 고정되고 이자만 직전 상환 후 잔액에서 계산되어 매기 줄어든다. [함정] 1회차나 2회차 이자를 그대로 쓰면 4,400만원·4,280만원으로 미끄러진다.",
+          "missedKeys": [],
+          "fixTyped": null,
+          "errorCause": null,
+          "causeNote": null
+        }
+      ],
+      "missedKeys": {},
+      "errorCauses": {},
+      "fsrs": {
+        "stability": 1.987,
+        "difficulty": 8.779,
+        "due": "2026-09-04",
+        "state": "Review",
+        "reps": 4,
+        "lapses": 2,
+        "retrievability": 1.0
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "부동산공법 1-6 시설채권과 매수청구",
+      "aliases": [],
+      "subject": "부동산공법",
+      "concept": "부동산공법 1-6 시설채권과 매수청구",
+      "status": "졸업후보",
+      "timesWrong": 2,
+      "retryMissed": 1,
+      "consecutiveCorrect": 2,
+      "firstWrong": "2026-08-24",
+      "lastWrong": "2026-08-31",
+      "lastCorrect": "2026-09-02",
+      "lastResult": "correct",
+      "lastDp": "2026-09-02",
+      "nextReviewDate": "2026-09-04",
+      "dates": [
+        "2026-08-24",
+        "2026-08-31"
+      ],
+      "samples": [
+        {
+          "date": "2026-08-24",
+          "type": "일반",
+          "q": "⏪ 국토의 계획 및 이용에 관한 법령상 도시·군계획시설채권과 기반시설부담구역에 관한 설명으로 <b>옳지 않은</b> 것은?",
+          "myAnswer": "매수의무자는 매수청구를 받은 날부터 6개월 이내에 매수 여부를 결정하여 통지하여야 한다",
+          "correct": "한국토지주택공사는 매수의무자가 되더라도 도시·군계획시설채권을 발행하여 매수대금을 지급할 수 있다",
+          "expl": "도시·군계획시설채권은 지방자치단체가 발행하는 것이므로 지방자치단체가 아닌 한국토지주택공사는 발행할 수 없고 그 채권으로 매수대금을 지급할 수도 없다. 채권 지급은 지자체의 재정 사정을 배려해 현금 대신 허용한 예외여서, 그 예외를 누릴 주체도 지자체로 한정된다. 매수 결정 6개월, 계획 미수립 해제 1년, 비용 부과 2개월이라는 숫자 묶음과 함께 정리한다.",
+          "missedKeys": [],
+          "fixTyped": null,
+          "errorCause": null,
+          "causeNote": null
+        },
+        {
+          "date": "2026-08-31",
+          "type": "일반",
+          "q": "🔁 국토의 계획 및 이용에 관한 법령상 도시·군계획시설 부지의 매수청구와 도시·군계획시설채권에 관한 설명으로 옳은 것은?",
+          "myAnswer": "한국토지주택공사는 매수의무자인 경우 도시·군계획시설채권을 발행하여 매수대금을 지급할 수 있다",
+          "correct": "매수의무자는 매수청구를 받은 날부터 6개월 이내에 매수 여부를 결정하여 통지하여야 한다",
+          "expl": "[정답 근거] 매수의무자는 매수청구를 받은 날부터 6개월 이내에 매수 여부를 결정하여 통지하여야 한다. [메커니즘] 매수 여부를 빨리 확정해 토지소유자의 재산권 제한 상태를 오래 방치하지 않으려는 기간 설계다. [함정] 시설채권은 지방자치단체만 발행하므로 한국토지주택공사나 국토교통부장관 발행 지문은 모두 틀린다.",
+          "missedKeys": [],
+          "fixTyped": null,
+          "errorCause": null,
+          "causeNote": null
+        }
+      ],
+      "missedKeys": {},
+      "errorCauses": {},
+      "fsrs": {
+        "stability": 1.96,
+        "difficulty": 8.779,
+        "due": "2026-09-04",
+        "state": "Review",
+        "reps": 4,
+        "lapses": 2,
+        "retrievability": 1.0
+      },
+      "fsrsFallback": false
+    },
+    {
       "conceptKey": "공법 OX 오답 8번",
       "aliases": [],
       "subject": "부동산공법",
@@ -7979,6 +8446,220 @@
         "retrievability": 0.86
       },
       "fsrsFallback": false
+    },
+    {
+      "conceptKey": "민법 2-5 담보책임",
+      "aliases": [],
+      "subject": "민법",
+      "concept": "민법 2-5 담보책임",
+      "status": "졸업후보",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 2,
+      "firstWrong": "2026-06-29",
+      "lastWrong": "2026-06-29",
+      "lastCorrect": "2026-09-02",
+      "lastResult": "correct",
+      "lastDp": "2026-09-02",
+      "nextReviewDate": "2026-10-04",
+      "dates": [
+        "2026-06-29"
+      ],
+      "samples": [
+        {
+          "date": "2026-06-29",
+          "type": "객관식",
+          "q": "매도인의 담보책임에 관한 설명으로 옳은 것을 모두 고른 것은?<br>ㄱ. 수량을 지정한 매매에서 수량부족을 안 매수인은 대금감액을 청구할 수 없다<br>ㄴ. 전부 타인의 권리인 매매에서 악의의 매수인도 계약을 해제할 수 있다<br>ㄷ. 저당권의 행사로 매수인이 소유권을 잃은 경우 악의의 매수인은 담보책임으로 보호받지 못한다<br>ㄹ. 물건의 하자로 인한 담보책임을 묻기 위해 매수인은 선의·무과실이어야 한다",
+          "myAnswer": "ㄱ, ㄴ, ㄷ",
+          "correct": "ㄱ, ㄴ, ㄹ",
+          "expl": "수량부족·일부멸실은 악의면 담보책임이 없고(ㄱ), 전부 타인권리는 악의라도 해제는 가능하다(ㄴ). 저당권·전세권 행사로 인한 담보책임은 선의·악의를 불문하고 보호하므로 ㄷ은 틀렸다. 물건의 하자담보는 선의·무과실이 요건(ㄹ).",
+          "missedKeys": [],
+          "fixTyped": null,
+          "errorCause": null,
+          "causeNote": null
+        }
+      ],
+      "missedKeys": {},
+      "errorCauses": {},
+      "fsrs": {
+        "stability": 32.48,
+        "difficulty": 6.391,
+        "due": "2026-10-04",
+        "state": "Review",
+        "reps": 3,
+        "lapses": 1,
+        "retrievability": 1.0
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "부동산학개론 주택저당유동화증권",
+      "aliases": [],
+      "subject": "부동산학개론",
+      "concept": "부동산학개론 주택저당유동화증권",
+      "status": "졸업후보",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 2,
+      "firstWrong": "2026-06-25",
+      "lastWrong": "2026-06-25",
+      "lastCorrect": "2026-09-02",
+      "lastResult": "correct",
+      "lastDp": "2026-09-02",
+      "nextReviewDate": "2026-10-05",
+      "dates": [
+        "2026-06-25"
+      ],
+      "samples": [
+        {
+          "date": "2026-06-25",
+          "type": "객관식",
+          "q": "주택저당유동화증권(MBS)에 관한 설명으로 옳은 것은?",
+          "myAnswer": "MPTB에서 채무불이행위험은 투자자가 부담한다",
+          "correct": "MPTS는 지분형으로, 주택저당채권의 소유권이 투자자에게 이전된다",
+          "expl": "MPTS는 지분형(pass-through)이라 저당채권의 소유권이 투자자에게 넘어가 투자자가 위험을 진다 — ①이 옳다. 혼합형 MPTB는 소유권을 발행자가 갖되 원리금수취권은 투자자가 가지므로 ②는 틀리고, 조기상환위험은 투자자가·채무불이행위험은 발행자가 부담하므로 ③·④도 뒤바뀐 함정이다. '소유권을 누가 갖느냐가 위험 부담을 결정.'",
+          "missedKeys": [],
+          "fixTyped": null,
+          "errorCause": null,
+          "causeNote": null
+        }
+      ],
+      "missedKeys": {},
+      "errorCauses": {},
+      "fsrs": {
+        "stability": 33.34,
+        "difficulty": 6.391,
+        "due": "2026-10-05",
+        "state": "Review",
+        "reps": 3,
+        "lapses": 1,
+        "retrievability": 1.0
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "민법 1-1 반사회질서",
+      "aliases": [],
+      "subject": "민법",
+      "concept": "민법 1-1 반사회질서",
+      "status": "졸업후보",
+      "timesWrong": 0,
+      "retryMissed": 0,
+      "consecutiveCorrect": 2,
+      "firstWrong": null,
+      "lastWrong": null,
+      "lastCorrect": "2026-09-02",
+      "lastResult": "correct",
+      "lastDp": "2026-09-02",
+      "nextReviewDate": "2026-10-04",
+      "dates": [],
+      "samples": [],
+      "missedKeys": {},
+      "errorCauses": {},
+      "fsrs": {
+        "stability": 32.203,
+        "difficulty": 2.111,
+        "due": "2026-10-04",
+        "state": "Review",
+        "reps": 2,
+        "lapses": 0,
+        "retrievability": 1.0
+      },
+      "fsrsFallback": false,
+      "orphan": true
+    },
+    {
+      "conceptKey": "민법 1-1 통정허위표시 제3자",
+      "aliases": [],
+      "subject": "민법",
+      "concept": "민법 1-1 통정허위표시 제3자",
+      "status": "졸업후보",
+      "timesWrong": 0,
+      "retryMissed": 0,
+      "consecutiveCorrect": 2,
+      "firstWrong": null,
+      "lastWrong": null,
+      "lastCorrect": "2026-09-02",
+      "lastResult": "correct",
+      "lastDp": "2026-09-02",
+      "nextReviewDate": "2026-10-04",
+      "dates": [],
+      "samples": [],
+      "missedKeys": {},
+      "errorCauses": {},
+      "fsrs": {
+        "stability": 32.203,
+        "difficulty": 2.111,
+        "due": "2026-10-04",
+        "state": "Review",
+        "reps": 2,
+        "lapses": 0,
+        "retrievability": 1.0
+      },
+      "fsrsFallback": false,
+      "orphan": true
+    },
+    {
+      "conceptKey": "민법 1-4 복대리",
+      "aliases": [],
+      "subject": "민법",
+      "concept": "민법 1-4 복대리",
+      "status": "졸업후보",
+      "timesWrong": 0,
+      "retryMissed": 0,
+      "consecutiveCorrect": 2,
+      "firstWrong": null,
+      "lastWrong": null,
+      "lastCorrect": "2026-09-02",
+      "lastResult": "correct",
+      "lastDp": "2026-09-02",
+      "nextReviewDate": "2026-10-04",
+      "dates": [],
+      "samples": [],
+      "missedKeys": {},
+      "errorCauses": {},
+      "fsrs": {
+        "stability": 32.203,
+        "difficulty": 2.111,
+        "due": "2026-10-04",
+        "state": "Review",
+        "reps": 2,
+        "lapses": 0,
+        "retrievability": 1.0
+      },
+      "fsrsFallback": false,
+      "orphan": true
+    },
+    {
+      "conceptKey": "유치권",
+      "aliases": [],
+      "subject": "민법",
+      "concept": "유치권",
+      "status": "졸업후보",
+      "timesWrong": 0,
+      "retryMissed": 0,
+      "consecutiveCorrect": 2,
+      "firstWrong": null,
+      "lastWrong": null,
+      "lastCorrect": "2026-09-02",
+      "lastResult": "correct",
+      "lastDp": "2026-09-02",
+      "nextReviewDate": "2026-10-04",
+      "dates": [],
+      "samples": [],
+      "missedKeys": {},
+      "errorCauses": {},
+      "fsrs": {
+        "stability": 32.203,
+        "difficulty": 2.111,
+        "due": "2026-10-04",
+        "state": "Review",
+        "reps": 2,
+        "lapses": 0,
+        "retrievability": 1.0
+      },
+      "fsrsFallback": false,
+      "orphan": true
     },
     {
       "conceptKey": "부동산공법 개발행위허가 제한",

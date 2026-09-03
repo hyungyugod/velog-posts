@@ -3,3 +3,8 @@
 2026-09-02T15:47:26	bupsa2	retry	EXISTS	이미 생성됨: /sessions/tender-cool-cerf/mnt/velog-posts/법무사/2차/오답퀴즈/2026-09-02.html
 2026-09-02T15:47:26	bupsa1	daily	SKIP	스킵 — 신규 0·장기 0 (문제지 미생성)
 2026-09-02T15:47:26	bupsa1	retry	DUE0	듀 0 — 오답퀴즈 없음
+2026-09-03T09:17:06	gongin	retry	OK	20문항 (단답 5 · 한달전 0 · 장기복습 0) → 2026-09-03.html
+2026-09-03T09:18:15	bupsa1	retry	DUE0	듀 0 — 오답퀴즈 없음
+2026-09-03T09:26:02	bupsa2	daily	OK	6문항 (단답 6 · 한달전 0 · 장기복습 0) → 2026-09-03.html
+2026-09-03T09:30:47	bupsa1	daily	SKIP	스킵 — 신규 0·장기 0 (문제지 미생성)
+2026-09-03T09:35:36	gongin	daily	OK	50문항 (단답 4 · 한달전 10 · 장기복습 20) → 2026-09-03.html

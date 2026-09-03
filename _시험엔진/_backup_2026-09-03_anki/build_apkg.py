@@ -18,9 +18,6 @@ build_apkg.py — 카드_YYYY-MM-DD.tsv 를 Anki .apkg 로 굽는 결정론적 �
 
 출력
     <TSV 폴더>/출고/YYYY-MM-DD.apkg   (날짜는 TSV 파일명에서 뽑는다)
-    정규 덱(파일명 날짜가 YYYY-MM-DD 정확히 일치)이면 "주간 상한 : N/M장" 1줄을 덧붙이고,
-    exams.json `_anki.weekly.card_ceiling` 을 넘으면 [경고]만 낸다 — 차단·절단 없음(exit 0),
-    특집 덱은 상한 밖. 테스트 전용으로 환경변수 HG_ANKI_CEILING_OVERRIDE(정수)가 상한을 덮어쓴다.
 
 결정론 보장
     · 모델 ID  : 아래 고정 상수 (랜덤 금지)
@@ -365,35 +362,6 @@ def inspect_apkg(apkg_path):
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# 주간 공급 소프트 상한 (2026-09-03 신설) — 경고만 낸다. 자르지도, 막지도 않는다.
-# ─────────────────────────────────────────────────────────────────────────────
-REGULAR_DECK_DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
-
-
-def load_anki_ceiling():
-    """exams.json `_anki` 에서 (card_ceiling, new_per_day) 를 읽는다.
-
-    exams.json 이 없거나 `_anki` 가 없으면 None — 빌더는 exams.json 없이도 동작해야 한다.
-    환경변수 HG_ANKI_CEILING_OVERRIDE(정수)가 있으면 card_ceiling 만 덮어쓴다(테스트 전용).
-    """
-    try:
-        cfg_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "exams.json")
-        with open(cfg_path, "r", encoding="utf-8") as fh:
-            cfg = json.load(fh)
-        anki = cfg["_anki"]
-        ceiling = int(anki["weekly"]["card_ceiling"])
-        new_per_day = int(anki["preset"]["new_per_day"])
-        override = os.environ.get("HG_ANKI_CEILING_OVERRIDE")
-        if override:
-            ceiling = int(override)
-        if ceiling <= 0 or new_per_day <= 0:
-            return None
-        return ceiling, new_per_day
-    except Exception:
-        return None
-
-
-# ─────────────────────────────────────────────────────────────────────────────
 def main(argv):
     if len(argv) != 2:
         print("사용법: python3 build_apkg.py <카드_YYYY-MM-DD.tsv 경로>", file=sys.stderr)
@@ -482,21 +450,6 @@ def main(argv):
         print(f"    · {name} — {per_deck[name]}장  (덱 id {deck_id_for(name)})")
     print(f"  모델 ID    : basic={MODEL_ID_BASIC} / cloze={MODEL_ID_CLOZE} (고정)")
     print(f"  파일 크기  : {os.path.getsize(out_path):,} 바이트")
-
-    # ── 주간 공급 소프트 상한 (정규 덱만 — 특집 덱은 상한 밖). 경고만, 차단 없음
-    if REGULAR_DECK_DATE_RE.match(date_str):
-        cap = load_anki_ceiling()
-        if cap:
-            ceiling, new_per_day = cap
-            days = card_count / new_per_day
-            if card_count > ceiling:
-                print(
-                    f"\n[경고] 총 카드 {card_count}장 > 주간 소프트 상한 {ceiling}장"
-                    f" — 신규 {new_per_day}/일 기준 {days:.1f}일치."
-                    f" 8일치 초과면 다음 주 lane_cap 하향 (exams.json _anki)"
-                )
-            else:
-                print(f"  주간 상한 : {card_count}/{ceiling}장 (신규 {new_per_day}/일 기준 {days:.1f}일치)")
 
     mismatch = []
     if note_count != expected_notes:

@@ -63,25 +63,6 @@
     "recent_concept_days": 7,
     "recent_concept_policy": "2026-09-02 신설 — 데일리 신규 문항(⏪·🔄·🔁 아닌 것)의 conceptKey가 같은 폴더 최근 N일 데일리 문제지(오늘 제외)의 conceptKey와 정확히 일치하면 FAIL(recent_concept_dup). 백지복습 '남은 구멍' 재조준은 N일이 지나면 허용."
   },
-  "_anki": {
-    "_note": "2026-09-03 신설 — 주간 Anki 덱 공급 상한·프리셋 정본. spec/앙키덱.md·공부루틴_OS §6이 이 값을 인용한다. 종전: 경쟁 레인 25노트 고정(spec 하드코딩).",
-    "preset": { "new_per_day": 20, "max_reviews_per_day": 200, "desired_retention": 0.90, "_where": "데스크톱 Anki 덱 옵션 프리셋 — 자격증::공인중개사 / 자격증::법무사 공통. 여기 값은 문서화용(엔진이 Anki를 제어하지 않는다)" },
-    "weekly": {
-      "lane_cap_notes": 60,
-      "card_ceiling": 140,
-      "_rule": "lane_cap_notes = 경쟁 레인(상습+백지구멍+★+n:+이월) 주간 상한(노트 기준, 1노트≈1.9카드 실측). ★★는 상한 제외·전량 의무. card_ceiling = 총 카드 소프트 상한(= new_per_day×7) — 자르지 않고 빌더 WARN + 검수리포트 '신규 N일치' 표기, 8일치 초과 시 다음 주 lane_cap을 그만큼 낮춘다.",
-      "lane_priority": ["상습", "백지구멍", "★", "n:"],
-      "tiebreak": "같은 레인 안에서 ① 이월(전주 잘림) 먼저 ② 시험일 가까운 시험 먼저(exams[].exam_date) ③ 노트 날짜 오름차순. 2주 연속 잘린 항목은 3주째 '상습' 앞으로 승격",
-      "independent_review_min_cards": 30
-    },
-    "phase2_gate": {
-      "_rule": "자동 아님 — 사용자 확인 후 수동 승격. 조건 3개가 2주 연속 성립: ① 월요일 밀린 리뷰 0 ② 정규 덱 총 카드 ≥ 120 ③ 사용자가 '시간 남는다' 확인",
-      "on_pass": { "new_per_day": 30, "max_reviews_per_day": 300, "lane_cap_notes": 90, "card_ceiling": 210 }
-    },
-    "final_phase": {
-      "gongin": { "from": "2026-10-01", "new_per_day": 5, "lane_cap_notes": 15, "card_ceiling": 35, "stop_from_days_before_exam": 14, "_note": "10/17(D-14)부터 공인중개사 카드 출고 0 — 법무사 덱만 계속. OS §7 국면 2와 동일" }
-    }
-  },
   "exams": {
     "gongin": {
       "name": "공인중개사",
