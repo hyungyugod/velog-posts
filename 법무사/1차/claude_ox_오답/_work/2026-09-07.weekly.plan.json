@@ -1,0 +1,80 @@
+{
+ "schema": 1,
+ "status": "ready",
+ "exam": "bupsa1",
+ "kind": "weekly",
+ "date": "2026-09-07",
+ "root": "/sessions/tender-hopeful-allen/mnt/velog-posts",
+ "generated_at": "2026-09-07T14:39:44+09:00",
+ "note_path": "/sessions/tender-hopeful-allen/mnt/velog-posts/법무사/1차/claude_ox_오답/2026-09-07-claude_oxquize.md",
+ "week": {
+  "from": "2026-08-31",
+  "to": "2026-09-06",
+  "dates": [
+   "2026-08-31",
+   "2026-09-01",
+   "2026-09-02",
+   "2026-09-03",
+   "2026-09-04",
+   "2026-09-05",
+   "2026-09-06"
+  ]
+ },
+ "stats": {
+  "submissions": null,
+  "avgScore": null,
+  "avgTotal": null,
+  "perfectRuns": null,
+  "totalWrongItems": null,
+  "uniqueConcepts": null,
+  "dateRange": null,
+  "statusCounts": null,
+  "subjectWeakness": null,
+  "generatedAt": null,
+  "due_total": 0
+ },
+ "due_top8": [],
+ "expectation": {
+  "daily": [],
+  "retry": [],
+  "missing": [],
+  "alert": "",
+  "ingest_check": []
+ },
+ "last_week_wrong": [],
+ "graduated": [],
+ "grad_candidates": [],
+ "chronic": [],
+ "marks": {
+  "per_note": [],
+  "stat": {
+   "notes": 0,
+   "total": {},
+   "per_note": {}
+  }
+ },
+ "runs": {
+  "daily": {
+   "SKIP": 2
+  },
+  "retry": {
+   "DUE0": 3
+  },
+  "schedule_days": "화·목 (11/1 평일 전환 예정 — 프로파일 체크리스트)",
+  "schedule_days_daily": "화·목 (11/1 평일 전환 예정 — 프로파일 체크리스트)",
+  "schedule_days_retry": null,
+  "not_run": [],
+  "note": "로그 부족(수집 시작 2026-09-02)"
+ },
+ "ingest": {
+  "copied": 0,
+  "downloads": "mounted",
+  "ledger_exit": 2,
+  "ledger_summary": "⚠️  접근 실패/0건 — _raw 와 _inbox 에서 채점결과 JSON을 찾지 못했다. | (조용히 넘어가지 않는다. 퀴즈 결과 JSON을 _inbox/ 에 넣고 다시 실행.) | 찾아본 곳: /sessions/tender-hopeful-allen/mnt/velog-posts/법무사/1차/claude_ox_오답/_raw · /sessions/tender-hopeful-allen/mnt/velog-posts/법무사/1차/claude_ox_오답/_inbox"
+ },
+ "warnings": [
+  "원장: 원천 0건(exit 2) — 정상 범위",
+  "원장 없음: /sessions/tender-hopeful-allen/mnt/velog-posts/법무사/1차/claude_ox_오답/_ledger/오답_원장.json"
+ ],
+ "ai_brief": "법무사 1차 주간리포트(2026-09-07) — 지난 7일 2026-08-31~2026-09-06. 원장 통계·지난주 오답 0개(2회+ 0개)·졸업 0·졸업후보 0·상습 0·듀 큐 0개가 사실 원천이다. 여기 없는 수치는 쓰지 않는다."
+}

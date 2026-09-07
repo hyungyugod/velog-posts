@@ -1,6 +1,6 @@
 {
   "ledgerSchema": 3,
-  "generatedAt": "2026-09-03T09:18:10",
+  "generatedAt": "2026-09-07T14:38:41",
   "fsrsMeta": {
     "version": "6.3.2",
     "desiredRetention": 0.9,
@@ -8,42 +8,42 @@
     "fuzzing": false,
     "ratingMap": "wrong=Again, retryCorrect=Good"
   },
-  "sourceFiles": 9,
-  "v2Files": 9,
-  "submissions": 9,
-  "avgScore": 6.9,
+  "sourceFiles": 10,
+  "v2Files": 10,
+  "submissions": 10,
+  "avgScore": 6.3,
   "avgTotal": 13,
   "perfectRuns": 0,
-  "totalWrongItems": 59,
-  "uniqueConcepts": 30,
+  "totalWrongItems": 64,
+  "uniqueConcepts": 35,
   "dateRange": [
     "2026-08-24",
-    "2026-09-02"
+    "2026-09-03"
   ],
   "statusCounts": {
     "상습": 5,
-    "재도전중": 8,
+    "재도전중": 13,
     "졸업후보": 17
   },
   "fsrsFallbacks": 0,
   "subjectWeakness": {
-    "형법": 59
+    "형법": 64
   },
   "dueQueue": [
     {
-      "conceptKey": "형법 1-2 작위의무 발생근거 6개(법계조선신사) → 보증인지위",
+      "conceptKey": "형법 1-8 싸움에서 정당방위가 인정될 수 있는 경우",
       "subject": "형법",
       "status": "상습",
-      "timesWrong": 4,
-      "retryMissed": 3,
+      "timesWrong": 5,
+      "retryMissed": 4,
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-02",
       "nextReviewDate": "2026-09-03",
-      "retrievability": 1.0,
-      "stability": 0.317,
+      "retrievability": 0.522,
+      "stability": 0.073,
       "pick": true,
       "missedTop": [
-        "기타: 해당 사례가 부진정 부작위범 사례인지 몰랐다."
+        "결론·방향 자체"
       ],
       "causeTop": null,
       "errorCauses": {}
@@ -57,7 +57,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-02",
       "nextReviewDate": "2026-09-03",
-      "retrievability": 1.0,
+      "retrievability": 0.559,
       "stability": 0.115,
       "pick": true,
       "missedTop": [
@@ -76,7 +76,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-02",
       "nextReviewDate": "2026-09-03",
-      "retrievability": 1.0,
+      "retrievability": 0.559,
       "stability": 0.115,
       "pick": true,
       "missedTop": [
@@ -88,19 +88,19 @@
       "errorCauses": {}
     },
     {
-      "conceptKey": "형법 1-8 싸움에서 정당방위가 인정될 수 있는 경우",
+      "conceptKey": "형법 1-2 작위의무 발생근거 6개(법계조선신사) → 보증인지위",
       "subject": "형법",
       "status": "상습",
-      "timesWrong": 5,
-      "retryMissed": 4,
+      "timesWrong": 4,
+      "retryMissed": 3,
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-02",
       "nextReviewDate": "2026-09-03",
-      "retrievability": 1.0,
-      "stability": 0.073,
+      "retrievability": 0.649,
+      "stability": 0.317,
       "pick": true,
       "missedTop": [
-        "결론·방향 자체"
+        "기타: 해당 사례가 부진정 부작위범 사례인지 몰랐다."
       ],
       "causeTop": null,
       "errorCauses": {}
@@ -114,7 +114,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-08-31",
       "nextReviewDate": "2026-09-03",
-      "retrievability": 1.0,
+      "retrievability": 0.693,
       "stability": 0.502,
       "pick": true,
       "missedTop": [],
@@ -130,7 +130,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-31",
       "nextReviewDate": "2026-09-01",
-      "retrievability": 0.698,
+      "retrievability": 0.582,
       "stability": 0.212,
       "pick": true,
       "missedTop": [],
@@ -146,7 +146,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-31",
       "nextReviewDate": "2026-09-01",
-      "retrievability": 0.698,
+      "retrievability": 0.582,
       "stability": 0.212,
       "pick": true,
       "missedTop": [],
@@ -162,7 +162,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-31",
       "nextReviewDate": "2026-09-01",
-      "retrievability": 0.698,
+      "retrievability": 0.582,
       "stability": 0.212,
       "pick": true,
       "missedTop": [],
@@ -178,7 +178,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-31",
       "nextReviewDate": "2026-09-01",
-      "retrievability": 0.698,
+      "retrievability": 0.582,
       "stability": 0.212,
       "pick": true,
       "missedTop": [],
@@ -194,7 +194,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-26",
       "nextReviewDate": "2026-08-29",
-      "retrievability": 0.754,
+      "retrievability": 0.686,
       "stability": 0.933,
       "pick": true,
       "missedTop": [],
@@ -210,7 +210,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-25",
       "nextReviewDate": "2026-08-29",
-      "retrievability": 0.8,
+      "retrievability": 0.741,
       "stability": 1.806,
       "pick": true,
       "missedTop": [],
@@ -226,7 +226,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-26",
       "nextReviewDate": "2026-08-30",
-      "retrievability": 0.817,
+      "retrievability": 0.751,
       "stability": 1.806,
       "pick": true,
       "missedTop": [],
@@ -242,7 +242,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-31",
       "nextReviewDate": "2026-09-01",
-      "retrievability": 0.698,
+      "retrievability": 0.582,
       "stability": 0.212,
       "pick": false,
       "missedTop": [],
@@ -258,7 +258,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-31",
       "nextReviewDate": "2026-09-01",
-      "retrievability": 0.698,
+      "retrievability": 0.582,
       "stability": 0.212,
       "pick": false,
       "missedTop": [],
@@ -274,7 +274,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-31",
       "nextReviewDate": "2026-09-01",
-      "retrievability": 0.698,
+      "retrievability": 0.582,
       "stability": 0.212,
       "pick": false,
       "missedTop": [],
@@ -290,10 +290,105 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-31",
       "nextReviewDate": "2026-09-01",
-      "retrievability": 0.698,
+      "retrievability": 0.582,
       "stability": 0.212,
       "pick": false,
       "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "형법 고의와목적-구별",
+      "subject": "형법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-09-03",
+      "nextReviewDate": "2026-09-04",
+      "retrievability": 0.633,
+      "stability": 0.212,
+      "pick": false,
+      "missedTop": [
+        "의사·희망의 영역인가가 기준",
+        "목적은 초과주관적 구성요건요소"
+      ],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "형법 공동가공의사-인식용인부족",
+      "subject": "형법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-09-03",
+      "nextReviewDate": "2026-09-04",
+      "retrievability": 0.633,
+      "stability": 0.212,
+      "pick": false,
+      "missedTop": [
+        "공동가공의 의사",
+        "인식·용인만으로는 부족"
+      ],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "형법 신분-구성적가감적판별",
+      "subject": "형법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-09-03",
+      "nextReviewDate": "2026-09-04",
+      "retrievability": 0.633,
+      "stability": 0.212,
+      "pick": false,
+      "missedTop": [
+        "성립에 신분이 필요한가가 기준"
+      ],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "형법 예비방조-불인정",
+      "subject": "형법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-09-03",
+      "nextReviewDate": "2026-09-04",
+      "retrievability": 0.633,
+      "stability": 0.212,
+      "pick": false,
+      "missedTop": [
+        "방조범 불성립(결론 선행)",
+        "예비·방조 모두 행위태양이 넓음",
+        "예비의 방조는 인정하지 않음"
+      ],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "형법 추정적승낙-특유요건3",
+      "subject": "형법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-09-03",
+      "nextReviewDate": "2026-09-04",
+      "retrievability": 0.633,
+      "stability": 0.212,
+      "pick": false,
+      "missedTop": [
+        "승낙이 객관적으로 기대될 것",
+        "양심에 따른 심사"
+      ],
       "causeTop": null,
       "errorCauses": {}
     },
@@ -306,7 +401,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-26",
       "nextReviewDate": "2026-08-30",
-      "retrievability": 0.817,
+      "retrievability": 0.751,
       "stability": 1.806,
       "pick": false,
       "missedTop": [],
@@ -322,7 +417,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-27",
       "nextReviewDate": "2026-09-01",
-      "retrievability": 0.868,
+      "retrievability": 0.754,
       "stability": 1.31,
       "pick": false,
       "missedTop": [],
@@ -338,8 +433,24 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-27",
       "nextReviewDate": "2026-09-01",
-      "retrievability": 0.868,
+      "retrievability": 0.754,
       "stability": 1.31,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "형법 1-3 결과범과 형식범의 판별식",
+      "subject": "형법",
+      "status": "졸업후보",
+      "timesWrong": 3,
+      "retryMissed": 2,
+      "consecutiveCorrect": 2,
+      "lastWrong": "2026-08-28",
+      "nextReviewDate": "2026-09-04",
+      "retrievability": 0.838,
+      "stability": 2.29,
       "pick": false,
       "missedTop": [],
       "causeTop": null,
@@ -354,7 +465,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-24",
       "nextReviewDate": "2026-09-02",
-      "retrievability": 0.903,
+      "retrievability": 0.857,
       "stability": 6.269,
       "pick": false,
       "missedTop": [],
@@ -370,7 +481,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-24",
       "nextReviewDate": "2026-09-02",
-      "retrievability": 0.903,
+      "retrievability": 0.857,
       "stability": 6.269,
       "pick": false,
       "missedTop": [],
@@ -386,7 +497,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-24",
       "nextReviewDate": "2026-09-02",
-      "retrievability": 0.903,
+      "retrievability": 0.857,
       "stability": 6.269,
       "pick": false,
       "missedTop": [],
@@ -402,7 +513,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-25",
       "nextReviewDate": "2026-09-03",
-      "retrievability": 0.915,
+      "retrievability": 0.865,
       "stability": 6.269,
       "pick": false,
       "missedTop": [],
@@ -418,7 +529,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-25",
       "nextReviewDate": "2026-09-03",
-      "retrievability": 0.915,
+      "retrievability": 0.865,
       "stability": 6.269,
       "pick": false,
       "missedTop": [],
@@ -434,7 +545,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-25",
       "nextReviewDate": "2026-09-03",
-      "retrievability": 0.915,
+      "retrievability": 0.865,
       "stability": 6.269,
       "pick": false,
       "missedTop": [],
@@ -450,7 +561,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-25",
       "nextReviewDate": "2026-09-03",
-      "retrievability": 0.915,
+      "retrievability": 0.865,
       "stability": 6.269,
       "pick": false,
       "missedTop": [],
@@ -466,8 +577,40 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-25",
       "nextReviewDate": "2026-09-03",
-      "retrievability": 0.915,
+      "retrievability": 0.865,
       "stability": 6.269,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "형법 1-1 포괄일죄 진행 중 개정은 실행행위 종료시법",
+      "subject": "형법",
+      "status": "졸업후보",
+      "timesWrong": 2,
+      "retryMissed": 1,
+      "consecutiveCorrect": 2,
+      "lastWrong": "2026-08-27",
+      "nextReviewDate": "2026-09-07",
+      "retrievability": 0.901,
+      "stability": 5.082,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "형법 1-6 교사의 양적 초과와 예견가능성",
+      "subject": "형법",
+      "status": "졸업후보",
+      "timesWrong": 2,
+      "retryMissed": 1,
+      "consecutiveCorrect": 2,
+      "lastWrong": "2026-08-27",
+      "nextReviewDate": "2026-09-07",
+      "retrievability": 0.901,
+      "stability": 5.082,
       "pick": false,
       "missedTop": [],
       "causeTop": null,
@@ -548,7 +691,7 @@
         "state": "Review",
         "reps": 6,
         "lapses": 5,
-        "retrievability": 1.0
+        "retrievability": 0.522
       },
       "fsrsFallback": false
     },
@@ -624,7 +767,7 @@
         "state": "Review",
         "reps": 6,
         "lapses": 4,
-        "retrievability": 1.0
+        "retrievability": 0.649
       },
       "fsrsFallback": false
     },
@@ -696,7 +839,7 @@
         "state": "Review",
         "reps": 6,
         "lapses": 4,
-        "retrievability": 1.0
+        "retrievability": 0.693
       },
       "fsrsFallback": false
     },
@@ -774,7 +917,7 @@
         "state": "Review",
         "reps": 5,
         "lapses": 4,
-        "retrievability": 1.0
+        "retrievability": 0.559
       },
       "fsrsFallback": false
     },
@@ -854,7 +997,7 @@
         "state": "Review",
         "reps": 5,
         "lapses": 4,
-        "retrievability": 1.0
+        "retrievability": 0.559
       },
       "fsrsFallback": false
     },
@@ -899,7 +1042,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.698
+        "retrievability": 0.582
       },
       "fsrsFallback": false
     },
@@ -944,7 +1087,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.698
+        "retrievability": 0.582
       },
       "fsrsFallback": false
     },
@@ -989,7 +1132,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.698
+        "retrievability": 0.582
       },
       "fsrsFallback": false
     },
@@ -1034,7 +1177,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.698
+        "retrievability": 0.582
       },
       "fsrsFallback": false
     },
@@ -1079,7 +1222,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.698
+        "retrievability": 0.582
       },
       "fsrsFallback": false
     },
@@ -1124,7 +1267,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.698
+        "retrievability": 0.582
       },
       "fsrsFallback": false
     },
@@ -1169,7 +1312,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.698
+        "retrievability": 0.582
       },
       "fsrsFallback": false
     },
@@ -1214,7 +1357,262 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.698
+        "retrievability": 0.582
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "형법 추정적승낙-특유요건3",
+      "aliases": [],
+      "subject": "형법",
+      "concept": "형법 추정적승낙-특유요건3",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-09-03",
+      "lastWrong": "2026-09-03",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-09-03",
+      "nextReviewDate": "2026-09-04",
+      "dates": [
+        "2026-09-03"
+      ],
+      "samples": [
+        {
+          "date": "2026-09-03",
+          "type": "단답",
+          "q": "추정적 승낙이 인정되기 위한 특유의 요건을 답안에 쓰는 순서대로 서술하시오.",
+          "myAnswer": "추정적 승낙이 인정되려면 승낙이 불가능해야하고 일반적으로 그 승낙이 타당한 상황이어야한다.",
+          "correct": "추정적 승낙이 인정되기 위해서는 ① 승낙의 불가능 ② 승낙이 객관적으로 기대될 것 ③ 양심에 따른 심사가 필요하다. 추정적 승낙은 피해자의 승낙에 해당하는 위법성조각사유이다.",
+          "expl": "추정적 승낙에는 승낙의 불가능, 승낙이 객관적으로 기대될 것, 양심에 따른 심사라는 세 가지 특유 요건이 요구된다. 양심에 따른 심사는 대충 그럴 것 같다고 넘겨짚은 것이 아니라 자기가 아는 모든 사정을 진지하게 따져 그 사람이라면 승낙하였을 것이라는 결론에 이르렀을 것을 뜻한다. 세 요건 중 양심에 따른 심사를 빠뜨리고 둘만 나열하는 것이 전형적인 감점 포인트다.",
+          "missedKeys": [
+            "승낙이 객관적으로 기대될 것",
+            "양심에 따른 심사"
+          ],
+          "fixTyped": "추정적 승낙이 인정되려면 승낙이 불가능해야하고 승낙이 객관적으로 기대되어야 하며 이에 양심적 심사가 있어야한다. 추정적 승낙은 피해자의 승낙에 해당하는 위법성 조각사유에 해당한다.",
+          "errorCause": null,
+          "causeNote": null
+        }
+      ],
+      "missedKeys": {
+        "승낙이 객관적으로 기대될 것": 1,
+        "양심에 따른 심사": 1
+      },
+      "errorCauses": {},
+      "fsrs": {
+        "stability": 0.212,
+        "difficulty": 6.413,
+        "due": "2026-09-04",
+        "state": "Review",
+        "reps": 1,
+        "lapses": 1,
+        "retrievability": 0.633
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "형법 예비방조-불인정",
+      "aliases": [],
+      "subject": "형법",
+      "concept": "형법 예비방조-불인정",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-09-03",
+      "lastWrong": "2026-09-03",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-09-03",
+      "nextReviewDate": "2026-09-04",
+      "dates": [
+        "2026-09-03"
+      ],
+      "samples": [
+        {
+          "date": "2026-09-03",
+          "type": "단답",
+          "q": "甲은 乙이 강도를 예비하고 있음을 알고 乙에게 범행 도구를 마련해 주었으나, 乙은 실행에 착수하지 아니한 채 예비에 그쳤다. 甲에게 강도예비죄의 방조범이 성립하는지에 대한 결론과 그 이유를 기재하시오. (성립·불성립)",
+          "myAnswer": "본 사안은 미수범에 예비나 방조가 성립하는지가 문제가 된다. 강도는 예비나 방조가 성립할 수 있는 사안으로 해당 사안에서 강도예비죄의 방조범이 성립한다.",
+          "correct": "강도예비죄의 방조범은 성립하지 아니한다. 예비도 방조범도 그 행위태양이 너무 넓어 이를 모두 인정하면 처벌범위가 과도하게 확장되므로, 예비의 방조는 인정하지 아니한다. 사안의 경우 乙이 실행에 착수하지 아니하여 예비에 그쳤으므로 甲에게 방조범은 성립하지 아니한다 할 것이다.",
+          "expl": "예비의 방조는 인정되지 아니하므로 정범이 예비에 그친 이상 방조범은 성립하지 않는다. 예비와 방조는 모두 행위태양의 외연이 넓어 둘을 겹쳐 인정하면 처벌범위가 감당할 수 없이 확장되기 때문이다. 다만 정범이 미수에 이르면 예비단계에서 방조하였더라도 미수의 방조가 성립하므로, 착수 여부를 확인하지 않고 방조를 일률적으로 부정하면 감점 포인트다.",
+          "missedKeys": [
+            "방조범 불성립(결론 선행)",
+            "예비·방조 모두 행위태양이 넓음",
+            "예비의 방조는 인정하지 않음"
+          ],
+          "fixTyped": "강도예비죄의 방조범은 성립하지 아니한다. 예비도 방조범도 그 행위태양의 외연이 너무 넓어서 예비의 방조를 인정하게 되면 처벌범위가 과도하게 확장된다. 본 사안은 을이 실행에 착수하지 않아 예비에 그쳤으므로 갑의 강도예비 방조는 성립하지 아니한다할 것이다.",
+          "errorCause": null,
+          "causeNote": null
+        }
+      ],
+      "missedKeys": {
+        "방조범 불성립(결론 선행)": 1,
+        "예비·방조 모두 행위태양이 넓음": 1,
+        "예비의 방조는 인정하지 않음": 1
+      },
+      "errorCauses": {},
+      "fsrs": {
+        "stability": 0.212,
+        "difficulty": 6.413,
+        "due": "2026-09-04",
+        "state": "Review",
+        "reps": 1,
+        "lapses": 1,
+        "retrievability": 0.633
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "형법 신분-구성적가감적판별",
+      "aliases": [],
+      "subject": "형법",
+      "concept": "형법 신분-구성적가감적판별",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-09-03",
+      "lastWrong": "2026-09-03",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-09-03",
+      "nextReviewDate": "2026-09-04",
+      "dates": [
+        "2026-09-03"
+      ],
+      "samples": [
+        {
+          "date": "2026-09-03",
+          "type": "단답",
+          "q": "구성적 신분과 가감적 신분의 구별 기준을 밝히고, 그에 따라 성립하는 신분범의 유형이 어떻게 달라지는지 서술하시오.",
+          "myAnswer": "구성적 신분은 구성요건적 신분을 의미하고 구성요건에 이 신분을 요구하는 범죄가 성립하면 신분범이 된다. 가감적 신분은 구성요건적 신분을 요구하지는 않지만 특정 신분일때 형이 가감되는 경우에 해당하며 부진정 신분범이라 한다.",
+          "correct": "양자는 범죄의 성립 자체에 그 신분을 필요로 하는가에 따라 구별된다. 성립에 신분을 필요로 하면 구성적 신분으로서 진정신분범이 되고, 신분을 필요로 하지 아니한 채 신분에 의하여 형벌이 가중되거나 감경될 뿐이면 가감적 신분으로서 부진정신분범이 된다 할 것이다.",
+          "expl": "구성적 신분은 범죄의 성립에 신분을 요구하므로 진정신분범이 되고, 가감적 신분은 성립이 아니라 형벌의 가중·감경만을 좌우하므로 부진정신분범이 된다. 신분이 성립을 좌우하는지 형의 경중만을 좌우하는지에 따라 답안에서 검토할 지점이 갈리기 때문에 이 구별이 먼저 서야 한다. 두 신분을 뭉뚱그린 채 신분범이라고만 쓰면 논점이 흐려지는 감점 포인트다.",
+          "missedKeys": [
+            "성립에 신분이 필요한가가 기준"
+          ],
+          "fixTyped": "양자는 범죄 성립자체에 신분을 요구하는가로 구분된다. 범죄 성립에 신분이 필요하면 구성적신분으로서 진정신분범이 성립하며 신분이 필요하지 않고 단지 형이 감경될 뿐이라면 가감적신분으로서 부진정신분범이 성립한다할 것이다.",
+          "errorCause": null,
+          "causeNote": null
+        }
+      ],
+      "missedKeys": {
+        "성립에 신분이 필요한가가 기준": 1
+      },
+      "errorCauses": {},
+      "fsrs": {
+        "stability": 0.212,
+        "difficulty": 6.413,
+        "due": "2026-09-04",
+        "state": "Review",
+        "reps": 1,
+        "lapses": 1,
+        "retrievability": 0.633
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "형법 고의와목적-구별",
+      "aliases": [],
+      "subject": "형법",
+      "concept": "형법 고의와목적-구별",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-09-03",
+      "lastWrong": "2026-09-03",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-09-03",
+      "nextReviewDate": "2026-09-04",
+      "dates": [
+        "2026-09-03"
+      ],
+      "samples": [
+        {
+          "date": "2026-09-03",
+          "type": "단답",
+          "q": "고의와 목적의 구별 기준을 밝히고, 그에 따라 답안에서 검토하는 방식이 어떻게 달라지는지 서술하시오.",
+          "myAnswer": "고의와 목적은 객관적 구성요건에 대응하는가로 구분된다. 고의는 성립가능성에 대한 객관적 인식과 이를 용인하는 의사를 의미하며 객관적 구성요건들에 대응한다. 목적은 객관적 구성요건에 대응되지 않고 추가로 요구하는 특정 목적이 있는가에 대한 판단이다. 만약 목적까지 검토해야 성립하는 범죄라면 고의까지 모두 검토한 후 목적을 검토해야한다.",
+          "correct": "양자는 그것이 인식의 영역인가 의사·희망의 영역인가에 따라 구별된다. 고의는 객관적 범죄사실의 인식과 실행 의사로서 주관적 구성요건요소이므로 모든 고의범에서 검토되고, 목적은 의사·희망의 영역에 속하는 초과주관적 구성요건요소이므로 목적범에서만 별도로 검토된다 할 것이다.",
+          "expl": "고의는 객관적 범죄사실의 인식과 실행 의사인 반면 목적은 의사·희망의 영역에 속하는 초과주관적 구성요건요소여서, 필요한 범죄에서만 별도로 검토한다. 고의가 인정된다고 하여 목적까지 인정되는 것이 아니므로 목적범에서는 고의와 별개의 항목으로 목적을 세워야 한다. 목적을 고의 안에 녹여 한 문장으로 처리하면 초과주관적 요소를 통째로 빠뜨리는 감점 포인트다.",
+          "missedKeys": [
+            "의사·희망의 영역인가가 기준",
+            "목적은 초과주관적 구성요건요소"
+          ],
+          "fixTyped": "양자는 그것이 인식의 영역인가 희망, 의사의 영역인가에 따라 구분된다. 고의는 객관적 범죄사실에 대한 인식과 실행의사로 주관적구성요소이고 모든 고의범에서 검토된다. 목적은 의사와 희망의 영역으로 초과주관적구성요소로 그것을 요하는 목적범에서만 추가 검토된다할 것이다.",
+          "errorCause": null,
+          "causeNote": null
+        }
+      ],
+      "missedKeys": {
+        "의사·희망의 영역인가가 기준": 1,
+        "목적은 초과주관적 구성요건요소": 1
+      },
+      "errorCauses": {},
+      "fsrs": {
+        "stability": 0.212,
+        "difficulty": 6.413,
+        "due": "2026-09-04",
+        "state": "Review",
+        "reps": 1,
+        "lapses": 1,
+        "retrievability": 0.633
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "형법 공동가공의사-인식용인부족",
+      "aliases": [],
+      "subject": "형법",
+      "concept": "형법 공동가공의사-인식용인부족",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-09-03",
+      "lastWrong": "2026-09-03",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-09-03",
+      "nextReviewDate": "2026-09-04",
+      "dates": [
+        "2026-09-03"
+      ],
+      "samples": [
+        {
+          "date": "2026-09-03",
+          "type": "단답",
+          "q": "甲과 乙은 함께 丙을 강간하기로 공모하였으나, 甲은 현장에서 丙과 대화만 나눈 뒤 丙을 그대로 돌려보냈다. 甲에게 강간죄의 공동정범이 성립하는지에 대한 결론과 그 이유를 기재하시오. (10점)",
+          "myAnswer": "갑에게는 강간죄의 공동정범이 성립하지 않는다. 을에게는 실제 강간의 의사를 가지고 강간을 행했으므로 강간죄의 구성요건이 성립, 위법성, 책임성 조각사유도 없으므로 강간죄가 성립한다. 이때 갑이 공동정범으로 인정되기 위해서는 갑의 행동으로 자신의 범죄의사를 실현할 정도로 범죄에 직접 가담해야하며 갑은 그렇지 않앗으므로 공동정립이 성립하지 않는다고 봄이 타당하다.",
+          "correct": "강간죄의 공동정범은 성립하지 아니한다.<br>공동정범이 성립하기 위해서는 공동가공의 의사가 있어야 한다. 공동가공의 의사는 다른 사람의 범행을 인식하고 용인하는 것으로는 부족하고, 공동의 의사로 일체가 되어 서로 다른 사람의 행위를 통하여 자신의 의사를 실행에 옮기는 것이어야 한다.<br>사안의 경우 甲은 공모에 가담하였으나 현장에서 丙과 대화만 나눈 뒤 돌려보냈을 뿐 다른 사람의 행위를 통하여 자신의 의사를 실행에 옮겼다고 볼 수 없으므로, 공동가공의 의사가 인정되지 아니하여 강간죄의 공동정범은 성립하지 아니한다 할 것이다.",
+          "expl": "공동가공의 의사는 인식과 용인을 넘어 공동의 의사로 일체가 되어 서로의 행위를 통해 자신의 의사를 실행에 옮기는 것이어야 하므로, 대화만 하고 돌려보낸 甲에게는 인정되지 않는다. 공동정범이 전체 결과에 대하여 책임을 지는 근거가 이러한 상호이용 관계에 있기 때문에 인식과 용인만으로는 부족하다. 공모에 가담한 사실만 적고 실행에 옮겼는지의 포섭을 생략하면 감점 포인트다.",
+          "missedKeys": [
+            "공동가공의 의사",
+            "인식·용인만으로는 부족"
+          ],
+          "fixTyped": "갑에게는 강간죄의 공동정범이 성립하지 아니한다. 공동정범이 성립하기위해서는 공동가공의 의사가 필요하다. 공동가공의 의사는 다른사람의 범행을 인식하고 용인한 것만으로는 부족하고 공동의 의사로 일체가 되어 서로가 서로다른 사람의 행위를 통하여 자신의 의사를 실행에 옮겨야한다. 본 사안에서 갑은 공모에 가담하였으나 병과 대화만 하고 보내준 것은 자신의 의사를 행위로 옮겼다고 볼 수 없으므로, 공동가공의 의사가 인정되지 아니하여 강간죄의 공동정범은 성립하지 않는다고 할 것이다.",
+          "errorCause": null,
+          "causeNote": null
+        }
+      ],
+      "missedKeys": {
+        "공동가공의 의사": 1,
+        "인식·용인만으로는 부족": 1
+      },
+      "errorCauses": {},
+      "fsrs": {
+        "stability": 0.212,
+        "difficulty": 6.413,
+        "due": "2026-09-04",
+        "state": "Review",
+        "reps": 1,
+        "lapses": 1,
+        "retrievability": 0.633
       },
       "fsrsFallback": false
     },
@@ -1285,7 +1683,7 @@
         "state": "Review",
         "reps": 5,
         "lapses": 3,
-        "retrievability": 0.754
+        "retrievability": 0.686
       },
       "fsrsFallback": false
     },
@@ -1356,7 +1754,7 @@
         "state": "Review",
         "reps": 5,
         "lapses": 3,
-        "retrievability": 0.868
+        "retrievability": 0.754
       },
       "fsrsFallback": false
     },
@@ -1427,7 +1825,7 @@
         "state": "Review",
         "reps": 5,
         "lapses": 3,
-        "retrievability": 0.868
+        "retrievability": 0.754
       },
       "fsrsFallback": false
     },
@@ -1498,7 +1896,7 @@
         "state": "Review",
         "reps": 6,
         "lapses": 3,
-        "retrievability": 1.0
+        "retrievability": 0.838
       },
       "fsrsFallback": false
     },
@@ -1556,7 +1954,7 @@
         "state": "Review",
         "reps": 4,
         "lapses": 2,
-        "retrievability": 0.8
+        "retrievability": 0.741
       },
       "fsrsFallback": false
     },
@@ -1614,7 +2012,7 @@
         "state": "Review",
         "reps": 4,
         "lapses": 2,
-        "retrievability": 0.817
+        "retrievability": 0.751
       },
       "fsrsFallback": false
     },
@@ -1672,7 +2070,7 @@
         "state": "Review",
         "reps": 4,
         "lapses": 2,
-        "retrievability": 0.817
+        "retrievability": 0.751
       },
       "fsrsFallback": false
     },
@@ -1730,7 +2128,7 @@
         "state": "Review",
         "reps": 5,
         "lapses": 2,
-        "retrievability": 1.0
+        "retrievability": 0.901
       },
       "fsrsFallback": false
     },
@@ -1788,7 +2186,7 @@
         "state": "Review",
         "reps": 5,
         "lapses": 2,
-        "retrievability": 1.0
+        "retrievability": 0.901
       },
       "fsrsFallback": false
     },
@@ -1833,7 +2231,7 @@
         "state": "Review",
         "reps": 3,
         "lapses": 1,
-        "retrievability": 0.903
+        "retrievability": 0.857
       },
       "fsrsFallback": false
     },
@@ -1878,7 +2276,7 @@
         "state": "Review",
         "reps": 3,
         "lapses": 1,
-        "retrievability": 0.903
+        "retrievability": 0.857
       },
       "fsrsFallback": false
     },
@@ -1923,7 +2321,7 @@
         "state": "Review",
         "reps": 3,
         "lapses": 1,
-        "retrievability": 0.903
+        "retrievability": 0.857
       },
       "fsrsFallback": false
     },
@@ -1968,7 +2366,7 @@
         "state": "Review",
         "reps": 3,
         "lapses": 1,
-        "retrievability": 0.915
+        "retrievability": 0.865
       },
       "fsrsFallback": false
     },
@@ -2013,7 +2411,7 @@
         "state": "Review",
         "reps": 3,
         "lapses": 1,
-        "retrievability": 0.915
+        "retrievability": 0.865
       },
       "fsrsFallback": false
     },
@@ -2058,7 +2456,7 @@
         "state": "Review",
         "reps": 3,
         "lapses": 1,
-        "retrievability": 0.915
+        "retrievability": 0.865
       },
       "fsrsFallback": false
     },
@@ -2103,7 +2501,7 @@
         "state": "Review",
         "reps": 3,
         "lapses": 1,
-        "retrievability": 0.915
+        "retrievability": 0.865
       },
       "fsrsFallback": false
     },
@@ -2148,7 +2546,7 @@
         "state": "Review",
         "reps": 3,
         "lapses": 1,
-        "retrievability": 0.915
+        "retrievability": 0.865
       },
       "fsrsFallback": false
     }
