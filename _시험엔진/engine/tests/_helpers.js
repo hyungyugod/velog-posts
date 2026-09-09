@@ -46,8 +46,9 @@ function warmCool(a, b) {
 }
 const DERIVED = { '#ffd24a': ['#1a1a1a', '#ffb347', '#26261a'], '#7c9cff': ['#10131c', '#5f7fe8', '#1a2138'] };
 
-/** 새 단일 템플릿을 exam/kind로 토큰 치환 (render_quiz.py의 토큰 규칙과 동일) */
-function renderUnified(exam, kind, date) {
+/** 새 단일 템플릿을 exam/kind로 토큰 치환 (render_quiz.py의 토큰 규칙과 동일)
+ *  extra: 토큰 덮어쓰기 */
+function renderUnified(exam, kind, date, extra) {
   const ex = EXAMS[exam], ui = ex.ui;
   const [warm, cool] = warmCool(ui.accent, ui.accent2);
   const [onAccent, grad2, reveal] = DERIVED[ui.accent.toLowerCase()] || ['#1a1a1a', ui.accent, '#26261a'];
@@ -65,6 +66,7 @@ function renderUnified(exam, kind, date) {
     ON_ACCENT: onAccent, ACCENT_GRAD2: grad2, REVEAL_HOVER: reveal,
     T_MCQ: ui.time_per_mcq_sec, T_SA: ui.time_per_sa_sec,
     RESULT_MSGS: JSON.stringify(RESULT_MSGS[exam]),
+    ...(extra || {}),
   };
   let html = fs.readFileSync(path.join(ENGINE, 'quiz_template.html'), 'utf8');
   for (const [k, v] of Object.entries(t)) html = html.split('{{' + k + '}}').join(String(v));

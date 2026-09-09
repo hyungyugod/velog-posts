@@ -736,6 +736,12 @@ def synth_bupsa2_retry(plan, date, cfg, log):
         uid, oid = uid_of(date, i + 1), 5500 + i * 4
         cat, topic = p.get("subject") or "기타", phrase(oid + 2000, 2)
         body = sa_body(oid, subs[i % len(subs)], cat, topic, uid, mini=(i == 0))
+        # missedTop 조준(sa_missedtop) — bupsa1·gongin 재도전 합성과 같은 규칙.
+        # 놓친 포인트가 있으면 keywords 앞에 실어야 검사기를 통과한다(결론·방향/기타: 는 제외 대상).
+        mt = [k for k in (p.get("missedTop") or [])
+              if k != "결론·방향 자체" and not str(k).startswith("기타:")]
+        if mt:
+            body["keywords"] = (mt[:2] + list(body.get("keywords") or []))[:4]
         it = {"type": "단답", "exam": "2차", "cat": cat, "conceptKey": p["conceptKey"],
               "src": "%s %s %s" % (date, cat, topic)}
         it.update(body)
