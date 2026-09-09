@@ -1085,6 +1085,8 @@ def main(argv=None):
         # ⑤ META / TAGS / ALERT
         meta, tags, alert, counts = build_meta(ex, a.exam, a.kind, cfg, date, ordered, plan)
 
+        # ⑤-2 읽기 블록(읽기 전용 — 채점·payload 무관)
+
         ui = ex["ui"]
         warm, cool, on_accent, grad2, reveal = _derive_colors(ui["accent"], ui["accent2"])
         tokens = {

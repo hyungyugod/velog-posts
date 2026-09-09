@@ -20,7 +20,7 @@ _시험엔진/
 │   ├── prepare_quiz.py      ← 수거·원장 갱신·원천 선정·플랜 (daily/retry/weekly)
 │   ├── render_quiz.py       ← questions.json → 정답 배정·렌더·검증·부수 산출
 │   ├── validate_quiz.js     ← 검증 (exam×kind 분기, 레거시 6벌 통합)
-│   ├── quiz_template.html   ← 퀴즈 템플릿 단일본 (토큰 렌더)
+│   ├── quiz_template.html   ← 퀴즈 템플릿 단일본 v2.1 (토큰 렌더 · O/X/? 마킹 · 중간제출 · 진행저장 · ❓ 해설 모음)
 │   ├── build_ledger.py      ← 오답 원장 (FSRS-6, --exam) + fsrs_vendor/
 │   ├── build_dashboard.py   ← 퀘스트 보드 (gongin)
 │   ├── build_apkg.py        ← Anki 덱 빌더 (anki/에서 이동)

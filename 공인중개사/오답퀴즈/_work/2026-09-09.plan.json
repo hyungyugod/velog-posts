@@ -1,0 +1,865 @@
+{
+ "schema": 1,
+ "status": "ready",
+ "exam": "gongin",
+ "kind": "retry",
+ "date": "2026-09-09",
+ "root": "/sessions/elegant-pensive-wozniak/mnt/velog-posts",
+ "generated_at": "2026-09-09T09:24:16+09:00",
+ "cap": 20,
+ "n": 20,
+ "due_total": 136,
+ "rest": 116,
+ "picks": [
+  {
+   "conceptKey": "부동산공시법 등록전환-허용범위와 무관",
+   "subject": "부동산공시법",
+   "status": "상습",
+   "timesWrong": 3,
+   "retryMissed": 2,
+   "consecutiveCorrect": 0,
+   "nextReviewDate": "2026-09-04",
+   "retrievability": 0.515,
+   "missedTop": [
+    "허용범위와 무관"
+   ],
+   "causeTop": "혼동",
+   "errorCauses": {
+    "혼동": 1
+   },
+   "samples": [
+    {
+     "date": "2026-08-28",
+     "type": "일반",
+     "q": "⏪ 공간정보의 구축 및 관리 등에 관한 법령상 지번의 부여와 등록전환에 관한 설명으로 <b>옳지 않은</b> 것은?",
+     "expl": "[정답 근거] 등록전환에서는 오차가 허용범위를 넘든 이내든 관계없이 등록전환될 면적으로 정한다. [메커니즘] 지적도로 옮겨 실측한 면적이 앞으로의 공적 기준이 되므로 종전 임야대장의 수치를 남겨둘 이유가 없다. [함정] 허용범위를 넘을 때만 새 면적을 쓴다는 식으로 조건을 붙이는 지문이 나온다.",
+     "myAnswer": "지번은 지적소관청이 지번부여지역별로 순차적으로 부여한다.",
+     "correct": "등록전환으로 면적이 달라진 경우 오차가 허용범위 이내일 때에는 종전 임야대장의 면적을 그대로 둔다.",
+     "missedKeys": [],
+     "errorCause": null,
+     "causeNote": null
+    },
+    {
+     "date": "2026-09-02",
+     "type": "OX",
+     "q": "🔁 등록전환으로 면적이 달라진 경우, 오차가 허용범위 이내이면 종전 임야대장의 면적을 그대로 두고 허용범위를 초과할 때에만 등록전환될 면적으로 정한다.",
+     "expl": "X. [정답 근거] 등록전환에서는 오차가 허용범위 이내이든 초과이든 관계없이 등록전환될 면적으로 정한다. [메커니즘] 지적도로 옮겨 실측한 면적이 앞으로의 공적 기준이 되므로 종전 임야대장의 수치를 남겨둘 이유가 없다. [함정] 허용범위를 조건으로 붙여 예외를 만드는 지문이 반복 출제된다.",
+     "myAnswer": "O",
+     "correct": "X",
+     "missedKeys": [],
+     "errorCause": "혼동",
+     "causeNote": "종전임야대장의 면적 변경여부만 묻는 문제가 많이 나오기 때문에 그 논점인 줄 알았다."
+    },
+    {
+     "date": "2026-09-03",
+     "type": "단답",
+     "q": "🔁 공간정보의 구축 및 관리 등에 관한 법령상 등록전환으로 임야대장의 면적과 등록전환될 면적에 차이가 생긴 경우, 새로 정하는 면적의 기준을 오차의 허용범위 초과 여부와 관련지어 쓰시오.",
+     "expl": "[정답 근거] 오차가 허용범위를 넘든 이내든 관계없이 등록전환될 면적으로 정한다. [메커니즘] 지적도로 옮겨 실측한 면적이 앞으로의 공적 기준이 되므로 종전 임야대장의 수치를 남겨 둘 이유가 없다. [함정] 허용범위를 조건으로 붙여 종전 면적을 유지하는 예외를 만드는 지문이 반복된다.",
+     "myAnswer": "등록전환할 면적이 허용범위를 초과하느냐로 갈린다",
+     "correct": "오차가 허용범위 이내이든 초과이든 관계없이 등록전환될 면적으로 결정한다",
+     "missedKeys": [
+      "허용범위와 무관"
+     ],
+     "errorCause": null,
+     "causeNote": null
+    }
+   ],
+   "related_notes": [
+    "/sessions/elegant-pensive-wozniak/mnt/velog-posts/공인중개사/2026-08-28-부동산학개론-(토지경제와 지리경제~감정평가론 4회독 + 단원별모의고사).md",
+    "/sessions/elegant-pensive-wozniak/mnt/velog-posts/공인중개사/2026-09-02-부동산공법-(주택건설자금~농업경영에 이용하지 아니하는 농지의 처분 3회독 + 단원별모의고사).md",
+    "/sessions/elegant-pensive-wozniak/mnt/velog-posts/공인중개사/2026-09-03-공인중개사법-(임대차 정보제공 등~공인중개사의 매수신청대리인 등록 등에 관한 규칙 3회독 + 단원별모의고사).md"
+   ],
+   "promote_sa": true
+  },
+  {
+   "conceptKey": "부동산세법 5-1",
+   "subject": "부동산세법",
+   "status": "상습",
+   "timesWrong": 7,
+   "retryMissed": 6,
+   "consecutiveCorrect": 0,
+   "nextReviewDate": "2026-09-04",
+   "retrievability": 0.582,
+   "missedTop": [],
+   "causeTop": "개념부재",
+   "errorCauses": {
+    "개념부재": 1
+   },
+   "samples": [
+    {
+     "date": "2026-08-28",
+     "type": "계산",
+     "q": "🔁 고지서 방식으로 부과된 재산세 30만원을 납부기한까지 내지 않고 3개월이 지났다. 지방세 납부지연가산세는 모두 얼마인가? (신고납부 세목이 아닌 고지서 방식이며 다른 조건은 동일)",
+     "expl": "[정답 근거] 고지분은 3퍼센트가 즉시 붙어 9,000원이고, 세액이 45만원 미만이라 월할로 더 붙는 부분은 적용되지 않는다. [메커니즘] 소액 고지분까지 매달 가산하면 징수비용이 세액을 넘어서므로 하한을 두고 잘라낸 것이다. [함정] 신고납부 세목의 1일 10만분의 22 일할 계산을 그대로 끌어오면 1,980원 같은 답이 나온다.",
+     "myAnswer": "1,980원",
+     "correct": "9,000원",
+     "missedKeys": [],
+     "errorCause": null,
+     "causeNote": null
+    },
+    {
+     "date": "2026-09-01",
+     "type": "일반",
+     "q": "🔁 고지서에 따라 납부하는 지방세를 납부기한까지 내지 아니한 경우의 납부지연가산세에 관한 설명으로 옳은 것은?",
+     "expl": "[정답 근거] 고지서 방식은 납부기한이 지나면 미납세액의 3퍼센트를 가산하고 그 후에는 월 단위로 가산한다. [메커니즘] 관청이 세액을 계산해 통지하는 구조라 하루 단위로 쌓지 않고 정액 가산과 월할로 단순화한 것이다. [함정] 45만원 이하 미적용은 월할 가산에만 붙는 단서이고 1일 10만분의 22와 75퍼센트 한도는 신고납부 세목의 규칙이다.",
+     "myAnswer": "미납세액에 1일 10만분의 22를 곱하여 일할로 계산한다",
+     "correct": "납부기한이 지나면 미납세액의 3퍼센트를 가산하고 그 후에는 월 단위로 가산한다",
+     "missedKeys": [],
+     "errorCause": null,
+     "causeNote": null
+    },
+    {
+     "date": "2026-09-03",
+     "type": "사례",
+     "q": "🔁 갑은 신고납부 방식인 취득세를 납부기한까지 내지 아니하였고, 을은 고지서로 부과된 재산세를 납부기한까지 내지 아니하였다. 두 사람의 납부지연가산세 계산 방식으로 옳은 것은?",
+     "expl": "[정답 근거] 신고납부 세목인 갑은 1일 10만분의 22로 일할 계산하고 고지분인 을은 미납세액의 3퍼센트가 먼저 가산된다. [메커니즘] 고지분은 관청이 세액을 계산해 통지하는 구조라 하루 단위로 쌓지 않고 정액 가산과 월할로 단순화한 것이다. [함정] 45만원 미만 고지분에는 월할 가산이 붙지 않는다.",
+     "myAnswer": "갑은 미납세액의 3퍼센트가 먼저 가산되고, 을은 1일 10만분의 22를 곱하여 계산한다",
+     "correct": "갑은 미납일수에 1일 10만분의 22를 곱하여 계산하고, 을은 미납세액의 3퍼센트가 먼저 가산된다",
+     "missedKeys": [],
+     "errorCause": "개념부재",
+     "causeNote": "신고는 일할계산, 고지분은 3퍼센트 가산 이제 알겠다."
+    }
+   ],
+   "related_notes": [
+    "/sessions/elegant-pensive-wozniak/mnt/velog-posts/공인중개사/2026-08-28-부동산학개론-(토지경제와 지리경제~감정평가론 4회독 + 단원별모의고사).md",
+    "/sessions/elegant-pensive-wozniak/mnt/velog-posts/공인중개사/2026-09-01-부동산학개론-(관리·마케팅·학자,평가론 단원별모의고사).md",
+    "/sessions/elegant-pensive-wozniak/mnt/velog-posts/공인중개사/2026-09-03-공인중개사법-(임대차 정보제공 등~공인중개사의 매수신청대리인 등록 등에 관한 규칙 3회독 + 단원별모의고사).md"
+   ],
+   "promote_sa": true
+  },
+  {
+   "conceptKey": "부동산세법 1-1 임대업 자산 양도",
+   "subject": "부동산세법",
+   "status": "상습",
+   "timesWrong": 3,
+   "retryMissed": 2,
+   "consecutiveCorrect": 1,
+   "nextReviewDate": "2026-09-04",
+   "retrievability": 0.666,
+   "missedTop": [
+    "고정자산 양도소득",
+    "재고자산 사업소득"
+   ],
+   "causeTop": null,
+   "errorCauses": {},
+   "samples": [
+    {
+     "date": "2026-08-26",
+     "type": "OX",
+     "q": "부동산 임대업에 사용하던 건물을 양도하여 발생한 소득은 사업소득으로 과세되므로 양도소득세의 과세대상이 되지 아니한다.",
+     "expl": "X. 임대업에 쓰던 건물은 재고자산이 아니라 고정자산이므로 이를 팔면 원칙적으로 양도소득세 과세대상이다. 임대에서 나오는 임대료가 사업소득일 뿐, 그 부동산 자체의 처분이익까지 사업소득이 되는 것은 아니다. 재고자산 양도로 사업소득이 되는 쪽은 건설업과 부동산매매업이다.",
+     "myAnswer": "O",
+     "correct": "X",
+     "missedKeys": [],
+     "errorCause": null,
+     "causeNote": null
+    },
+    {
+     "date": "2026-09-01",
+     "type": "사례",
+     "q": "🔁 갑은 부동산 임대업에 사용하던 상가건물을 양도하였고, 을은 부동산매매업자로서 판매할 목적으로 보유하던 상가건물을 양도하였다. 두 사람의 양도차익에 대한 소득 구분으로 옳은 것은?",
+     "expl": "[정답 근거] 임대업에 쓰던 건물은 고정자산이라 양도소득이고 매매업자가 판매 목적으로 가진 건물은 재고자산이라 사업소득이다. [메커니즘] 팔려고 가진 재고를 파는 것은 영업활동 자체이고 쓰려고 보유한 자산을 파는 것은 자산의 처분이라 소득 구분이 갈린다. [함정] 임대료가 사업소득인 것을 건물 처분이익까지 넓히면 갑을 사업소득으로 잘못 넣는다.",
+     "myAnswer": "갑과 을 모두 사업소득이다",
+     "correct": "갑은 양도소득, 을은 사업소득이다",
+     "missedKeys": [],
+     "errorCause": null,
+     "causeNote": null
+    },
+    {
+     "date": "2026-09-02",
+     "type": "단답",
+     "q": "🔁 부동산 임대업에 사용하던 건물을 양도한 경우의 소득 구분을, 부동산매매업자가 판매 목적으로 보유하던 건물을 양도한 경우와 대비하여 쓰시오.",
+     "expl": "[정답 근거] 임대업 사용 건물은 고정자산이라 양도소득, 매매업자의 판매 목적 건물은 재고자산이라 사업소득이다. [메커니즘] 팔려고 가진 재고를 파는 것은 영업활동 자체이고 쓰려고 보유한 자산을 파는 것은 자산의 처분이라 소득 구분이 갈린다. [함정] 임대료가 사업소득인 점을 건물 처분이익까지 넓히면 양도소득세 대상이 아니라고 잘못 답한다.",
+     "myAnswer": "부동산 임대업에 사용하던 건물은 매매라는 사업의 직접적인 대상이 아니므로 매매는 양도소득이고 판매목적으로 보유하던 건물을 양도한 경우는 사업소득이다.",
+     "correct": "임대업에 사용하던 건물은 고정자산이므로 양도소득이고 매매업자가 판매 목적으로 보유한 건물은 재고자산이므로 사업소득이다",
+     "missedKeys": [
+      "고정자산 양도소득",
+      "재고자산 사업소득"
+     ],
+     "errorCause": null,
+     "causeNote": null
+    }
+   ],
+   "related_notes": [
+    "/sessions/elegant-pensive-wozniak/mnt/velog-posts/공인중개사/2026-08-26-공인중개사법-(포상금지급사유~임대차실무 관련 법령 3회독 + 단원별모의고사).md",
+    "/sessions/elegant-pensive-wozniak/mnt/velog-posts/공인중개사/2026-09-01-부동산학개론-(관리·마케팅·학자,평가론 단원별모의고사).md",
+    "/sessions/elegant-pensive-wozniak/mnt/velog-posts/공인중개사/2026-09-02-부동산공법-(주택건설자금~농업경영에 이용하지 아니하는 농지의 처분 3회독 + 단원별모의고사).md"
+   ],
+   "promote_sa": true
+  },
+  {
+   "conceptKey": "공인중개사법 1-5 과태료 개별금액",
+   "subject": "공인중개사법",
+   "status": "상습",
+   "timesWrong": 4,
+   "retryMissed": 3,
+   "consecutiveCorrect": 1,
+   "nextReviewDate": "2026-09-04",
+   "retrievability": 0.692,
+   "missedTop": [
+    "등록증 50만원",
+    "표시·광고"
+   ],
+   "causeTop": null,
+   "errorCauses": {},
+   "samples": [
+    {
+     "date": "2026-08-28",
+     "type": "일반",
+     "q": "🔁 공인중개사법령상 공인중개사자격증을 반납하지 아니한 경우의 과태료 개별 기준금액은?",
+     "expl": "[정답 근거] 자격증을 반납하지 않은 경우는 30만원이다. [메커니즘] 개별 금액을 세 칸으로 쪼갠 것은 의무의 대외적 파급력 순서로 제재를 계단화한 것이라 등록증·광고 계열 50만원, 자격증 30만원, 폐업 계열 20만원이 된다. [함정] 등록증 반납과 자격증 반납의 금액을 맞바꿔 외우면 그대로 틀린다.",
+     "myAnswer": "10만원",
+     "correct": "30만원",
+     "missedKeys": [],
+     "errorCause": null,
+     "causeNote": null
+    },
+    {
+     "date": "2026-09-01",
+     "type": "단답",
+     "q": "🔁 공인중개사법령상 100만원 이하의 과태료 부과사유 중 ① 중개사무소등록증을 반납하지 아니한 경우 ② 공인중개사자격증을 반납하지 아니한 경우 ③ 폐업사실을 신고하지 아니한 경우의 개별 기준금액을 각각 쓰시오.",
+     "expl": "[정답 근거] 등록증 미반납 50만원, 자격증 미반납 30만원, 폐업 미신고 20만원의 세 칸이다. [메커니즘] 의무의 대외적 파급력 순서로 등록증·표시광고, 자격증, 폐업 계열을 계단처럼 나눠 제재 강도를 달리한 설계다. [함정] 등록증과 자격증의 금액을 맞바꿔 외우면 세 칸이 통째로 어긋난다.",
+     "myAnswer": "1. 20만원, 2. 30만원, 3.20만원",
+     "correct": "등록증 미반납은 50만원, 자격증 미반납은 30만원, 폐업사실 미신고는 20만원이다.",
+     "missedKeys": [
+      "등록증 50만원"
+     ],
+     "errorCause": null,
+     "causeNote": null
+    },
+    {
+     "date": "2026-09-02",
+     "type": "단답",
+     "q": "🔁 공인중개사법령상 100만원 이하 과태료에서 중개사무소등록증을 반납하지 아니한 경우의 개별 기준금액과, 그와 같은 금액 라인에 묶이는 위반 계열 두 가지를 쓰시오.",
+     "expl": "[정답 근거] 등록증 반납 미이행은 50만원이고 광고·문자 계열이 같은 라인에 묶인다. [메커니즘] 의무의 대외적 파급력 순서로 제재를 계단화해 등록증·광고·문자 50만원, 이보게·자격증 30만원, 폐업 계열 20만원으로 나뉜다. [함정] 등록증과 자격증의 금액을 맞바꿔 외우면 그대로 틀린다.",
+     "myAnswer": "50만원이고 허위광고 같은거",
+     "correct": "50만원이며 표시·광고 규정 위반과 문자 사용 관련 위반이 같은 50만원 라인이다",
+     "missedKeys": [
+      "표시·광고"
+     ],
+     "errorCause": null,
+     "causeNote": null
+    }
+   ],
+   "related_notes": [
+    "/sessions/elegant-pensive-wozniak/mnt/velog-posts/공인중개사/2026-08-28-부동산학개론-(토지경제와 지리경제~감정평가론 4회독 + 단원별모의고사).md",
+    "/sessions/elegant-pensive-wozniak/mnt/velog-posts/공인중개사/2026-09-01-부동산학개론-(관리·마케팅·학자,평가론 단원별모의고사).md",
+    "/sessions/elegant-pensive-wozniak/mnt/velog-posts/공인중개사/2026-09-02-부동산공법-(주택건설자금~농업경영에 이용하지 아니하는 농지의 처분 3회독 + 단원별모의고사).md"
+   ],
+   "promote_sa": true
+  },
+  {
+   "conceptKey": "부동산공시법 등기신청기간",
+   "subject": "부동산공시법",
+   "status": "상습",
+   "timesWrong": 2,
+   "retryMissed": 1,
+   "consecutiveCorrect": 1,
+   "nextReviewDate": "2026-09-05",
+   "retrievability": 0.844,
+   "missedTop": [],
+   "causeTop": "혼동",
+   "errorCauses": {
+    "혼동": 1
+   },
+   "samples": [
+    {
+     "date": "2026-06-24",
+     "type": "객관식",
+     "q": "부동산등기법령상 등기의 <b>신청기간 등</b>에 관한 설명으로 <b>옳지 않은</b> 것은?",
+     "expl": "표시변경(지번·대지권·지목변경)은 변경일부터 '1개월' 이내가 원칙인데, ④는 이를 매매의 60일과 섞어 60일로 적은 함정이다. 매매 이전등기만 잔금지급일부터 60일이고, 상속재산분할협의로 등기해도 원인일자는 협의일이 아니라 '사망일'이다 — 기간과 기준일을 항목별로 구분한다.",
+     "myAnswer": "매매로 인한 소유권이전등기는 매매계약일이 아니라 잔금지급일부터 60일 이내에 신청하여야 한다",
+     "correct": "건물 대지의 지번이 변경된 경우 변경일부터 60일 이내에 변경등기를 신청하여야 한다",
+     "missedKeys": [],
+     "errorCause": null,
+     "causeNote": null
+    },
+    {
+     "date": "2026-09-02",
+     "type": "일반",
+     "q": "🔁 부동산등기법령상 등기의 신청기간과 등기원인일자에 관한 설명으로 옳은 것은?",
+     "expl": "[정답 근거] 상속재산분할협의로 등기하더라도 등기원인일자는 협의성립일이 아니라 피상속인의 사망일이다. [메커니즘] 상속은 사망과 동시에 개시되고 협의는 이미 개시된 상속분을 나누는 절차에 불과하기 때문이다. [함정] 표시변경은 1개월, 매매 이전등기는 잔금지급일부터 60일이라 기간과 기준일을 항목별로 갈라 두어야 한다.",
+     "myAnswer": "매매로 인한 소유권이전등기는 매매계약일부터 60일 이내에 신청하여야 한다",
+     "correct": "상속재산분할협의에 따라 등기하는 경우 등기원인일자는 협의성립일이 아니라 피상속인의 사망일이다",
+     "missedKeys": [],
+     "errorCause": "혼동",
+     "causeNote": "이전등기는 잔금계약일이고 부동산거래신고는 계약일부터 기산점인데 이걸 헷갈렸다."
+    }
+   ],
+   "related_notes": [
+    "/sessions/elegant-pensive-wozniak/mnt/velog-posts/공인중개사/2026-06-24-공인중개사법-(공인중개사법 wox 7~8회차 5회독).md",
+    "/sessions/elegant-pensive-wozniak/mnt/velog-posts/공인중개사/2026-09-02-부동산공법-(주택건설자금~농업경영에 이용하지 아니하는 농지의 처분 3회독 + 단원별모의고사).md"
+   ],
+   "promote_sa": true
+  },
+  {
+   "conceptKey": "시행방식 환지",
+   "subject": "부동산공법",
+   "status": "상습",
+   "timesWrong": 2,
+   "retryMissed": 1,
+   "consecutiveCorrect": 1,
+   "nextReviewDate": "2026-09-05",
+   "retrievability": 0.844,
+   "missedTop": [],
+   "causeTop": "개념부재",
+   "errorCauses": {
+    "개념부재": 1
+   },
+   "samples": [
+    {
+     "date": "2026-06-21-부동산공법",
+     "type": "객관식",
+     "q": "도시개발법상 시행방식과 환지에 관한 설명으로 <b>옳지 않은</b> 것은?",
+     "expl": "지자체가 전부환지방식을 사용할 때는 규약이 아니라 시행규정을 작성한다. 사용방식은 소유권을 두고 사용권만 받으며 환지처분은 준공검사 후 60일 이내, 시행방식은 수용에서 혼용으로 변경이 가능하다.",
+     "myAnswer": "시행자는 준공검사를 받은 경우 60일 이내에 환지처분을 하여야 한다",
+     "correct": "지자체가 전부환지방식을 사용할 때는 규약을 정한다",
+     "missedKeys": [],
+     "errorCause": null,
+     "causeNote": null
+    },
+    {
+     "date": "2026-09-02",
+     "type": "일반",
+     "q": "🔁 도시개발법령상 시행방식과 환지에 관한 설명으로 옳은 것은?",
+     "expl": "[정답 근거] 시행자는 준공검사를 받은 경우 60일 이내에 환지처분을 하여야 한다. [메커니즘] 공사 완료를 공적으로 확인한 뒤에야 권리관계를 확정할 수 있고, 확정을 오래 미루면 토지소유자의 권리가 떠 있게 되므로 기한을 못 박았다. [함정] 지방자치단체가 전부환지방식으로 시행할 때 작성하는 것은 규약이 아니라 시행규정이다.",
+     "myAnswer": "모르겠음",
+     "correct": "시행자는 준공검사를 받은 경우 60일 이내에 환지처분을 하여야 한다",
+     "missedKeys": [],
+     "errorCause": "개념부재",
+     "causeNote": null
+    }
+   ],
+   "related_notes": [
+    "/sessions/elegant-pensive-wozniak/mnt/velog-posts/공인중개사/2026-06-21-부동산공시법-(부동산공시법 wox 6회차 5회독).md",
+    "/sessions/elegant-pensive-wozniak/mnt/velog-posts/공인중개사/2026-09-02-부동산공법-(주택건설자금~농업경영에 이용하지 아니하는 농지의 처분 3회독 + 단원별모의고사).md"
+   ],
+   "promote_sa": false
+  },
+  {
+   "conceptKey": "세법 재산세 비과세-도로·사설도로 한정",
+   "subject": "부동산세법",
+   "status": "재도전중",
+   "timesWrong": 1,
+   "retryMissed": 0,
+   "consecutiveCorrect": 0,
+   "nextReviewDate": "2026-09-01",
+   "retrievability": 0.571,
+   "missedTop": [],
+   "causeTop": null,
+   "errorCauses": {},
+   "samples": [
+    {
+     "date": "2026-08-31",
+     "type": "일반",
+     "q": "지방세법령상 재산세의 비과세 대상인 도로와 통제보호구역 안의 토지에 관한 설명으로 <b>옳지 않은</b> 것은?",
+     "expl": "비과세되는 것은 길 그 자체(도로·사설도로)이고, 길에 딸린 휴게시설·연구시설과 대지 안의 공지는 과세된다. 공공용 통행로의 성격이 없는 부대 부분까지 세금을 빼줄 이유가 없기 때문이다. 통제보호구역도 전·답·과수원·대지는 과세하므로, 구역이나 시설의 이름만 보고 비과세 범위를 넓히는 지문이 함정이다.",
+     "myAnswer": "도로의 부속시설인 연구시설 등은 재산세 과세 대상이다",
+     "correct": "도로에 딸린 휴게시설과 대지 안의 공지도 도로에 준하여 비과세된다",
+     "missedKeys": [],
+     "errorCause": null,
+     "causeNote": null
+    }
+   ],
+   "related_notes": [
+    "/sessions/elegant-pensive-wozniak/mnt/velog-posts/공인중개사/2026-08-31-민법-(주택임대차보호법~집합건물의 소유 및 관리에 관한 법률 3회독 + 단원별모의고사).md"
+   ],
+   "promote_sa": false
+  },
+  {
+   "conceptKey": "민법 물권소멸-취득시효",
+   "subject": "민법",
+   "status": "재도전중",
+   "timesWrong": 1,
+   "retryMissed": 0,
+   "consecutiveCorrect": 0,
+   "nextReviewDate": "2026-09-02",
+   "retrievability": 0.582,
+   "missedTop": [],
+   "causeTop": null,
+   "errorCauses": {},
+   "samples": [
+    {
+     "date": "2026-09-01",
+     "type": "일반",
+     "q": "🔄 민법상 점유취득시효와 등기부취득시효에 관한 설명으로 <b>옳지 않은</b> 것은? (다툼이 있으면 판례에 따름)",
+     "expl": "구분소유자들의 대지 전체에 대한 공동점유도 점유취득시효 요건인 점유에 해당한다. 집합건물은 건물을 매개로 대지 전부를 사실상 지배하는 구조여서 전유부분 소유자라도 대지 전체를 점유한 것으로 평가되기 때문이다. 등기부취득시효 10년·선의무과실, 동일 명의자 아래의 기산점 임의선택, 일반재산의 시효취득은 모두 옳다.",
+     "myAnswer": "시효기간 중 등기명의자가 계속 동일한 경우 점유자는 임의의 시점을 기산점으로 삼을 수 있다",
+     "correct": "1동 집합건물 구분소유자들의 대지 전체에 대한 공동점유는 점유취득시효의 요건인 점유에 해당하지 않는다",
+     "missedKeys": [],
+     "errorCause": null,
+     "causeNote": null
+    }
+   ],
+   "related_notes": [
+    "/sessions/elegant-pensive-wozniak/mnt/velog-posts/공인중개사/2026-09-01-부동산학개론-(관리·마케팅·학자,평가론 단원별모의고사).md"
+   ],
+   "promote_sa": false
+  },
+  {
+   "conceptKey": "부동산공법 1-8 성장관리계획 건폐율완화",
+   "subject": "부동산공법",
+   "status": "재도전중",
+   "timesWrong": 1,
+   "retryMissed": 0,
+   "consecutiveCorrect": 0,
+   "nextReviewDate": "2026-09-02",
+   "retrievability": 0.582,
+   "missedTop": [],
+   "causeTop": null,
+   "errorCauses": {},
+   "samples": [
+    {
+     "date": "2026-09-01",
+     "type": "계산",
+     "q": "🔄 성장관리계획구역으로 지정된 계획관리지역에 있는 대지면적 1,200제곱미터의 토지에 건축물을 신축하려 한다. 성장관리계획으로 건폐율이 최대한도까지 완화되어 적용되는 경우 건축할 수 있는 최대 건축면적은? (다른 조건은 동일)",
+     "expl": "[정답 근거] 성장관리계획구역 내 계획관리지역은 건폐율을 50퍼센트 이하까지 완화할 수 있으므로 1,200 × 0.5 = 600제곱미터다. [메커니즘] 계획관리지역은 개발 수요를 흡수하는 지역이라 한 단계 더 완화해준다. [함정] 그 밖의 지역은 30퍼센트 이하여서 40퍼센트를 곱하면 480이 나와 오답이 된다.",
+     "myAnswer": "480제곱미터",
+     "correct": "600제곱미터",
+     "missedKeys": [],
+     "errorCause": null,
+     "causeNote": null
+    }
+   ],
+   "related_notes": [
+    "/sessions/elegant-pensive-wozniak/mnt/velog-posts/공인중개사/2026-09-01-부동산학개론-(관리·마케팅·학자,평가론 단원별모의고사).md"
+   ],
+   "promote_sa": false
+  },
+  {
+   "conceptKey": "부동산공법 리모델링-세대수 증가 15퍼센트",
+   "subject": "부동산공법",
+   "status": "재도전중",
+   "timesWrong": 1,
+   "retryMissed": 0,
+   "consecutiveCorrect": 0,
+   "nextReviewDate": "2026-09-02",
+   "retrievability": 0.582,
+   "missedTop": [],
+   "causeTop": null,
+   "errorCauses": {},
+   "samples": [
+    {
+     "date": "2026-09-01",
+     "type": "계산",
+     "q": "갑 아파트는 사용검사일부터 18년이 지난 300세대 규모의 공동주택이다. 주택법령상 세대수를 증가하는 리모델링으로 늘릴 수 있는 세대수의 최대 한도는? (다른 조건은 동일)",
+     "expl": "[정답 근거] 세대수 증가형 리모델링은 기존 세대수의 15퍼센트 이내이므로 300 × 0.15 = 45세대다. [메커니즘] 기존 단지의 기반시설이 감당할 수 있는 범위 안에서만 세대를 늘리도록 상한을 비율로 묶어 둔 것이다. [함정] 15퍼센트를 15세대로 읽거나 증축 면적 기준인 30퍼센트와 섞으면 값이 달라진다.",
+     "myAnswer": "30세대",
+     "correct": "45세대",
+     "missedKeys": [],
+     "errorCause": null,
+     "causeNote": null
+    }
+   ],
+   "related_notes": [
+    "/sessions/elegant-pensive-wozniak/mnt/velog-posts/공인중개사/2026-09-01-부동산학개론-(관리·마케팅·학자,평가론 단원별모의고사).md"
+   ],
+   "promote_sa": false
+  },
+  {
+   "conceptKey": "부동산세법 농지교환-환지예정지 지정 후 3년",
+   "subject": "부동산세법",
+   "status": "재도전중",
+   "timesWrong": 1,
+   "retryMissed": 0,
+   "consecutiveCorrect": 0,
+   "nextReviewDate": "2026-09-02",
+   "retrievability": 0.582,
+   "missedTop": [],
+   "causeTop": null,
+   "errorCauses": {},
+   "samples": [
+    {
+     "date": "2026-09-01",
+     "type": "OX",
+     "q": "농지 외의 토지로 환지예정지 지정이 있는 경우, 그 지정일 이후 5년이 지나면 농지의 교환·분합에 대한 비과세에서 제외된다.",
+     "expl": "X. 5년이 아니라 3년이다. 농지의 교환·분합 비과세는 실제로 농사를 계속 짓는 것을 전제로 하는 혜택이라, 개발이 예정된 땅으로 바뀌고 일정 기간이 지나면 더 이상 농지로 보아 줄 이유가 사라지기 때문이다. 교환 후 3년간 실제 경작해야 한다는 사후 요건의 3년과 숫자가 같아 함께 묶어 두면 흔들리지 않는다.",
+     "myAnswer": "O",
+     "correct": "X",
+     "missedKeys": [],
+     "errorCause": null,
+     "causeNote": null
+    }
+   ],
+   "related_notes": [
+    "/sessions/elegant-pensive-wozniak/mnt/velog-posts/공인중개사/2026-09-01-부동산학개론-(관리·마케팅·학자,평가론 단원별모의고사).md"
+   ],
+   "promote_sa": false
+  },
+  {
+   "conceptKey": "부동산세법 추계-매감환기 4종",
+   "subject": "부동산세법",
+   "status": "재도전중",
+   "timesWrong": 1,
+   "retryMissed": 0,
+   "consecutiveCorrect": 0,
+   "nextReviewDate": "2026-09-02",
+   "retrievability": 0.582,
+   "missedTop": [
+    "감정가액",
+    "기준시가"
+   ],
+   "causeTop": null,
+   "errorCauses": {},
+   "samples": [
+    {
+     "date": "2026-09-01",
+     "type": "단답",
+     "q": "소득세법령상 취득가액을 추계할 때 적용하는 4가지 방법을 그 적용 순서대로 모두 쓰시오.",
+     "expl": "[정답 근거] 추계는 매매사례가액 → 감정가액 → 환산취득가액 → 기준시가의 순서로 간다. [메커니즘] 실제 거래에 가까운 자료부터 쓰고 그것이 없을 때 점점 간접적인 지표로 내려가는 배열이다. [함정] 감정평가액·환산거래가액·기본가액처럼 비슷한 이름으로 바꿔 쓰면 백지복습에서 3건이 한꺼번에 틀렸던 그 형태가 된다.",
+     "myAnswer": "매매사례가액, 감, 환산취득가액, 기초가액",
+     "correct": "매매사례가액, 감정가액, 환산취득가액, 기준시가 (두문자 매감환기)",
+     "missedKeys": [
+      "감정가액",
+      "기준시가"
+     ],
+     "errorCause": null,
+     "causeNote": null
+    }
+   ],
+   "related_notes": [
+    "/sessions/elegant-pensive-wozniak/mnt/velog-posts/공인중개사/2026-09-01-부동산학개론-(관리·마케팅·학자,평가론 단원별모의고사).md"
+   ],
+   "promote_sa": false
+  },
+  {
+   "conceptKey": "부동산세법 필요경비-부담금은 법이 따로 인정",
+   "subject": "부동산세법",
+   "status": "재도전중",
+   "timesWrong": 1,
+   "retryMissed": 0,
+   "consecutiveCorrect": 0,
+   "nextReviewDate": "2026-09-02",
+   "retrievability": 0.582,
+   "missedTop": [],
+   "causeTop": null,
+   "errorCauses": {},
+   "samples": [
+    {
+     "date": "2026-09-01",
+     "type": "일반",
+     "q": "소득세법령상 양도차익 계산에서 소송비용과 각종 부담금의 필요경비 산입에 관한 설명으로 <b>옳지 않은</b> 것은?",
+     "expl": "[정답 근거] 개발부담금과 재건축부담금은 성격상 자본적지출과 다르지만 개별 법령이 따로 산입을 인정해 준 항목이다. [메커니즘] 자본적지출은 자산에 화체되어 나중의 양도차익을 줄여 주는 지출이라는 논리로 들어간다. [함정] 이유를 자본적지출이라서로 바꿔 붙이는 것이 이 자리의 함정이다.",
+     "myAnswer": "수익적지출액은 원상회복이나 유지보수의 성격이므로 필요경비에 산입되지 아니한다",
+     "correct": "개발부담금과 재건축부담금은 자본적지출에 해당하기 때문에 필요경비에 산입된다",
+     "missedKeys": [],
+     "errorCause": null,
+     "causeNote": null
+    }
+   ],
+   "related_notes": [
+    "/sessions/elegant-pensive-wozniak/mnt/velog-posts/공인중개사/2026-09-01-부동산학개론-(관리·마케팅·학자,평가론 단원별모의고사).md"
+   ],
+   "promote_sa": false
+  },
+  {
+   "conceptKey": "부동산학개론 세후지분투자수익률-분모는 지분투자액",
+   "subject": "부동산학개론",
+   "status": "재도전중",
+   "timesWrong": 1,
+   "retryMissed": 0,
+   "consecutiveCorrect": 0,
+   "nextReviewDate": "2026-09-02",
+   "retrievability": 0.582,
+   "missedTop": [],
+   "causeTop": null,
+   "errorCauses": {},
+   "samples": [
+    {
+     "date": "2026-09-01",
+     "type": "계산",
+     "q": "어느 부동산 투자에서 연간 세후현금흐름은 3,600만원이고 지분투자액은 4억 5,000만원이다. 이 투자의 세후지분투자수익률은? (다른 조건은 동일)",
+     "expl": "[정답 근거] 세후지분투자수익률 = 세후현금흐름 ÷ 지분투자액 = 3,600 ÷ 45,000 = 0.08, 곧 8퍼센트다. [메커니즘] 지분투자자에게 실제로 남는 돈을 그가 넣은 돈으로 나누므로 분모는 총투자액이 아니라 지분투자액이다. [함정] 분모에 총투자액을 넣으면 종합수익률이 되어 값이 작아진다.",
+     "myAnswer": "7.5퍼센트",
+     "correct": "8퍼센트",
+     "missedKeys": [],
+     "errorCause": null,
+     "causeNote": null
+    }
+   ],
+   "related_notes": [
+    "/sessions/elegant-pensive-wozniak/mnt/velog-posts/공인중개사/2026-09-01-부동산학개론-(관리·마케팅·학자,평가론 단원별모의고사).md"
+   ],
+   "promote_sa": false
+  },
+  {
+   "conceptKey": "부동산학개론 지대·도시구조-선형이론 고소득층 축",
+   "subject": "부동산학개론",
+   "status": "재도전중",
+   "timesWrong": 1,
+   "retryMissed": 0,
+   "consecutiveCorrect": 0,
+   "nextReviewDate": "2026-09-02",
+   "retrievability": 0.582,
+   "missedTop": [],
+   "causeTop": null,
+   "errorCauses": {},
+   "samples": [
+    {
+     "date": "2026-09-01",
+     "type": "일반",
+     "q": "부동산학개론상 알론소의 입찰지대이론과 도시내부구조 이론에 관한 설명으로 <b>옳지 않은</b> 것은?",
+     "expl": "[정답 근거] 선형이론에서 접근성이 좋은 도로 주변에 형성되는 것은 고소득층 주거지다. [메커니즘] 주거지가 소득계층별로 도로를 축 삼아 부채꼴로 뻗어 나가는데, 좋은 접근성을 살 수 있는 쪽이 고소득층이다. [함정] 동심원은 원, 선형은 부채꼴, 다핵심은 여러 개의 핵으로 확장되는 계보를 함께 묶어 둔다.",
+     "myAnswer": "호이트의 선형이론에 따르면 접근성이 좋은 간선도로 주변에는 저소득층 주거지가 형성된다",
+     "correct": "해리스와 울만의 다핵심이론은 도시가 하나의 중심이 아니라 기능별로 나뉜 여러 개의 핵을 갖는다고 본다",
+     "missedKeys": [],
+     "errorCause": null,
+     "causeNote": null
+    }
+   ],
+   "related_notes": [
+    "/sessions/elegant-pensive-wozniak/mnt/velog-posts/공인중개사/2026-09-01-부동산학개론-(관리·마케팅·학자,평가론 단원별모의고사).md"
+   ],
+   "promote_sa": false
+  },
+  {
+   "conceptKey": "부동산세법 3-4",
+   "subject": "부동산세법",
+   "status": "졸업후보",
+   "timesWrong": 2,
+   "retryMissed": 1,
+   "consecutiveCorrect": 2,
+   "nextReviewDate": "2026-08-29",
+   "retrievability": 0.748,
+   "missedTop": [],
+   "causeTop": null,
+   "errorCauses": {},
+   "samples": [
+    {
+     "date": "2026-06-08-4",
+     "type": "OX",
+     "q": "다른 주택의 부속토지만 소유한 경우에도 재산세 1세대 1주택 판단 시 주택 수에 포함된다.",
+     "expl": "X. 다른 주택의 부속토지만 소유한 것은 1세대 1주택 계산에 포함되지 않는다. 건물 없이 땅만 가진 것을 '주택 보유'로 보지 않는 것이다.",
+     "myAnswer": "O",
+     "correct": "X",
+     "missedKeys": [],
+     "errorCause": null,
+     "causeNote": null
+    },
+    {
+     "date": "2026-08-25",
+     "type": "OX",
+     "q": "🔁 다른 주택의 부속토지만을 소유한 자는 재산세 1세대 1주택 판정에서 주택 수에 산입되지 아니한다.",
+     "expl": "[정답 근거] 다른 주택의 부속토지만 소유한 것은 1세대 1주택 계산에서 주택 수에 넣지 않는다. [메커니즘] 주택 수는 주거용 건물의 보유를 기준으로 세는 것이라 건물 없는 땅만으로는 주택 보유로 보지 않는다. [함정] 재산세 과세대상이 된다는 사실과 주택 수 산입을 같은 것으로 묶어 버린다.",
+     "myAnswer": "X",
+     "correct": "O",
+     "missedKeys": [],
+     "errorCause": null,
+     "causeNote": null
+    }
+   ],
+   "related_notes": [
+    "/sessions/elegant-pensive-wozniak/mnt/velog-posts/공인중개사/2026-06-08-민법-(민법 wox 4~5회차 5회독).md",
+    "/sessions/elegant-pensive-wozniak/mnt/velog-posts/공인중개사/2026-08-25-부동산공법-(대지가 지역 지구 또는 구역에 걸치는 경우~주택조합 3회독 + 단원별모의고사).md"
+   ],
+   "promote_sa": false
+  },
+  {
+   "conceptKey": "부동산공법 도시개발구역 분할",
+   "subject": "부동산공법",
+   "status": "졸업후보",
+   "timesWrong": 2,
+   "retryMissed": 1,
+   "consecutiveCorrect": 2,
+   "nextReviewDate": "2026-08-30",
+   "retrievability": 0.756,
+   "missedTop": [],
+   "causeTop": null,
+   "errorCauses": {},
+   "samples": [
+    {
+     "date": "2026-06-22",
+     "type": "객관식",
+     "q": "도시개발구역(면적 45,000㎡)을 둘 이상의 사업시행지구로 분할하려고 한다. 분할 후 각 지구가 법령상 최소면적 요건을 갖추도록 할 때, 나눌 수 있는 사업시행지구의 <b>최대 개수</b>는? (다른 조건은 동일)",
+     "expl": "분할 후 각 사업시행지구는 1만㎡ 이상이어야 한다. 45,000㎡ ÷ 10,000㎡ = 4.5이므로 1만㎡ 이상을 만족하는 지구는 최대 4개다(예: 10,000×3 + 15,000). 5개로 나누면 한 지구가 1만㎡ 미만이 되어 불가 — 나머지를 버리고 4개에서 끊는 게 포인트.",
+     "myAnswer": "3개",
+     "correct": "4개",
+     "missedKeys": [],
+     "errorCause": null,
+     "causeNote": null
+    },
+    {
+     "date": "2026-08-26",
+     "type": "계산",
+     "q": "🔁 도시개발구역(면적 68,000제곱미터)을 둘 이상의 사업시행지구로 분할하려 한다. 분할 후 각 지구가 법령상 최소면적 요건을 갖추도록 할 때 나눌 수 있는 지구의 <b>최대 개수</b>는? (다른 조건은 동일)",
+     "expl": "[정답 근거] 분할 후 각 지구가 1만제곱미터 이상이어야 하므로 68,000 ÷ 10,000 = 6.8에서 소수점을 버린 6개가 최대다. [메커니즘] 남는 8,000제곱미터는 다른 지구에 붙을 뿐 독립 지구가 되지 못한다. [함정] 반올림해 7개로 올리면 한 지구가 기준에 미달한다.",
+     "myAnswer": "7개",
+     "correct": "6개",
+     "missedKeys": [],
+     "errorCause": null,
+     "causeNote": null
+    }
+   ],
+   "related_notes": [
+    "/sessions/elegant-pensive-wozniak/mnt/velog-posts/공인중개사/2026-06-22-민법-(민법 wox 8~9회차 5회독).md",
+    "/sessions/elegant-pensive-wozniak/mnt/velog-posts/공인중개사/2026-08-26-공인중개사법-(포상금지급사유~임대차실무 관련 법령 3회독 + 단원별모의고사).md"
+   ],
+   "promote_sa": false
+  },
+  {
+   "conceptKey": "부동산세법 4-1",
+   "subject": "부동산세법",
+   "status": "졸업후보",
+   "timesWrong": 2,
+   "retryMissed": 0,
+   "consecutiveCorrect": 2,
+   "nextReviewDate": "2026-08-19",
+   "retrievability": 0.758,
+   "missedTop": [],
+   "causeTop": null,
+   "errorCauses": {},
+   "samples": [
+    {
+     "date": "2026-06-08-3",
+     "type": "OX",
+     "q": "공동소유 부동산을 양도한 경우, 공유자들은 양도소득세를 연대하여 납부할 의무를 진다.",
+     "expl": "X. 연대납부가 아니라 각자 자기 지분만큼 개별 납세한다. 양도소득은 인별 과세가 원칙이므로 지분별로 쪼개어 각자의 세액을 계산한다.",
+     "myAnswer": "O",
+     "correct": "X",
+     "missedKeys": [],
+     "errorCause": null,
+     "causeNote": null
+    },
+    {
+     "date": "2026-06-11-2",
+     "type": "OX",
+     "q": "양도 당시 실지거래가액의 합계액이 정확히 12억원인 주택은 양도소득세법상 고가주택에 해당한다.",
+     "expl": "X. 고가주택은 실지거래가액 합계액이 12억원을 '초과'하는 주택이다. 딱 12억원이면 초과가 아니므로 고가주택이 아니다. '기준시가 12억'으로 바꾸는 함정과 '이상/초과' 경계값 함정이 모두 출제되는 지점 — 실지거래가액 + 초과, 두 단어로 기억.",
+     "myAnswer": "O",
+     "correct": "X",
+     "missedKeys": [],
+     "errorCause": null,
+     "causeNote": null
+    }
+   ],
+   "related_notes": [
+    "/sessions/elegant-pensive-wozniak/mnt/velog-posts/공인중개사/2026-06-08-민법-(민법 wox 4~5회차 5회독).md",
+    "/sessions/elegant-pensive-wozniak/mnt/velog-posts/공인중개사/2026-06-11-부동산학개론-(부동산학개론 wox 3~4회차 5회독).md"
+   ],
+   "promote_sa": false
+  },
+  {
+   "conceptKey": "공인중개사법 1 상가임대차",
+   "subject": "공인중개사법",
+   "status": "졸업후보",
+   "timesWrong": 4,
+   "retryMissed": 3,
+   "consecutiveCorrect": 2,
+   "nextReviewDate": "2026-09-04",
+   "retrievability": 0.765,
+   "missedTop": [
+    "임대인이 받은 날"
+   ],
+   "causeTop": null,
+   "errorCauses": {},
+   "samples": [
+    {
+     "date": "2026-08-27",
+     "type": "일반",
+     "q": "🔁 상가건물 임대차보호법령상 경제사정의 중대한 변동으로 폐업한 임차인이 계약 해지를 통고하였다. 해지의 효력이 생기는 시점은?",
+     "expl": "[정답 근거] 폐업에 따른 해지는 임대인이 통고를 받은 날부터 3개월이 지나야 효력이 생긴다. [메커니즘] 임대인에게 새 임차인을 구할 최소한의 유예를 주려는 완충 기간이다. [함정] 통고 즉시 종료로 앞당긴 지문이 반복 출제된다.",
+     "myAnswer": "통고를 받은 날부터 1개월이 지난 때",
+     "correct": "통고를 받은 날부터 3개월이 지난 때",
+     "missedKeys": [],
+     "errorCause": null,
+     "causeNote": null
+    },
+    {
+     "date": "2026-08-31",
+     "type": "OX",
+     "q": "🔁 상가건물 임대차보호법령상 경제사정의 중대한 변동으로 폐업한 임차인의 계약 해지 통고는 임대인이 통고를 받은 날부터 3개월이 지나면 효력이 생긴다.",
+     "expl": "O. [정답 근거] 폐업에 따른 해지는 임대인이 통고를 받은 날부터 3개월이 지나야 효력이 생긴다. [메커니즘] 임대인에게 새 임차인을 구할 최소한의 유예를 주려는 완충 기간이다. [함정] 즉시·1개월로 앞당긴 지문에 두 번 걸렸다 — 이번엔 옳은 숫자를 옳다고 확정하는 방향의 검증이다.",
+     "myAnswer": "X",
+     "correct": "O",
+     "missedKeys": [],
+     "errorCause": null,
+     "causeNote": null
+    },
+    {
+     "date": "2026-09-01",
+     "type": "단답",
+     "q": "🔁 상가건물 임대차보호법령상 경제사정의 중대한 변동으로 폐업한 임차인이 임대차계약의 해지를 통고한 경우, 그 해지의 효력이 발생하는 시점을 기산점과 기간을 모두 포함하여 쓰시오.",
+     "expl": "[정답 근거] 폐업에 따른 해지는 임대인이 통고를 받은 날부터 3개월이 지나야 효력이 생긴다. [메커니즘] 임대인에게 새 임차인을 구할 최소한의 유예를 주려는 완충 기간이다. [함정] 즉시·1개월로 앞당긴 지문에 두 번 걸린 자리라 이번엔 보기 없이 기산점과 기간을 직접 인출한다.",
+     "myAnswer": "임대차 계약 종료시점 부터 3개월 후에 해지의 효력이 발생한다.",
+     "correct": "임대인이 해지 통고를 받은 날부터 3개월이 지난 때에 해지의 효력이 생긴다.",
+     "missedKeys": [
+      "임대인이 받은 날"
+     ],
+     "errorCause": null,
+     "causeNote": null
+    }
+   ],
+   "related_notes": [
+    "/sessions/elegant-pensive-wozniak/mnt/velog-posts/공인중개사/2026-08-27-부동산공시법-(부기등기~시건이 등기할 것이 아닌 경우 3회독 + 단원별모의고사).md",
+    "/sessions/elegant-pensive-wozniak/mnt/velog-posts/공인중개사/2026-08-27-부동산세법-(농지의 교환 또는 분합에 대한 비과세~양도가액과 취득가액의 산정원리 3회독 + 단원별모의고사).md",
+    "/sessions/elegant-pensive-wozniak/mnt/velog-posts/공인중개사/2026-08-31-민법-(주택임대차보호법~집합건물의 소유 및 관리에 관한 법률 3회독 + 단원별모의고사).md",
+    "/sessions/elegant-pensive-wozniak/mnt/velog-posts/공인중개사/2026-09-01-부동산학개론-(관리·마케팅·학자,평가론 단원별모의고사).md"
+   ],
+   "promote_sa": false
+  },
+  {
+   "conceptKey": "부동산공시법 1-3",
+   "subject": "부동산공시법",
+   "status": "졸업후보",
+   "timesWrong": 3,
+   "retryMissed": 1,
+   "consecutiveCorrect": 2,
+   "nextReviewDate": "2026-08-30",
+   "retrievability": 0.783,
+   "missedTop": [],
+   "causeTop": null,
+   "errorCauses": {},
+   "samples": [
+    {
+     "date": "2026-06-09",
+     "type": "객관식",
+     "q": "지목 구분에 관한 설명으로 <b>옳지 않은</b> 것은?",
+     "expl": "학교·공장·종교용지 안의 토지는 그 자체가 독립된 기능 단위라 내부 토지 전체를 그 용도(학교용지 등)로 본다('대'가 아님). 반면 집은 과수원·목장 운영과 독립적으로 존재 가능해 '대'로 분리. '사람이 심고 관리=전/과수원, 자연=임야'도 함께 기억.",
+     "myAnswer": "자연적으로 자라는 산림·원야의 자갈땅·습지·황무지는 '임야'다",
+     "correct": "학교용지 안에 있는 토지는 기능과 무관하게 모두 '대'로 한다",
+     "missedKeys": [],
+     "errorCause": null,
+     "causeNote": null
+    },
+    {
+     "date": "2026-06-11-2",
+     "type": "OX",
+     "q": "돌을 캐내는 토지라도 '원상회복을 조건으로' 채굴이 허가된 경우에는 지목을 잡종지로 하지 않는다.",
+     "expl": "O. 캐내기·파내기·쌓기(돌·흙·쓰레기 등)는 잡종지지만, 원상회복 조건부 허가라면 그 이용은 일시적이고 땅의 본래 용도가 유지될 예정이므로 잡종지로 바꾸지 않는다. 지목은 '토지의 지속적인 주된 용도'를 따른다는 원리에서 나오는 예외.",
+     "myAnswer": "X",
+     "correct": "O",
+     "missedKeys": [],
+     "errorCause": null,
+     "causeNote": null
+    },
+    {
+     "date": "2026-08-24",
+     "type": "사례",
+     "q": "🔁 갑은 A토지에서 관상수를 심어 기르고 있고, 을은 B토지에서 원상회복을 조건으로 허가를 받아 돌을 캐내고 있으며, 병은 학교용지 안의 작은 화단 부지 C를 소유하고 있다. 지목의 결정에 관한 설명으로 옳은 것은?",
+     "expl": "학교·공장·종교용지 안의 토지는 그 자체가 독립된 기능 단위이므로 내부 토지 전체를 그 용도로 보아 학교용지가 되고 대로 하지 않는다. 지목은 토지의 지속적인 주된 용도를 따르는데, 학교 안 화단은 학교의 기능에 종속되어 있어 별도의 대지로 쪼개지지 않는다. 물을 상시 이용하지 않고 관상수를 기르면 전이고, 원상회복 조건부 채굴허가는 이용이 일시적이어서 잡종지로 바꾸지 않는다는 예외가 함께 나오는 함정이다.",
+     "myAnswer": "A토지는 상시적으로 물을 대지 아니하고 관상수를 재배하므로 지목을 과수원으로 한다",
+     "correct": "C토지는 학교용지 안에 있으므로 별도의 기능 단위로 보아 지목을 학교용지로 한다",
+     "missedKeys": [],
+     "errorCause": null,
+     "causeNote": null
+    }
+   ],
+   "related_notes": [
+    "/sessions/elegant-pensive-wozniak/mnt/velog-posts/공인중개사/2026-06-09-부동산공법-(부동산공법 wox 3회차 5회독, 익힘장 1회독).md",
+    "/sessions/elegant-pensive-wozniak/mnt/velog-posts/공인중개사/2026-06-11-부동산학개론-(부동산학개론 wox 3~4회차 5회독).md",
+    "/sessions/elegant-pensive-wozniak/mnt/velog-posts/공인중개사/2026-08-24-민법-(계약의 해제~계약법 3회독 + 단원별모의고사).md"
+   ],
+   "promote_sa": false
+  }
+ ],
+ "sa_promote_cap": 5,
+ "promoted": 5,
+ "ingest": {
+  "copied": 0,
+  "downloads": "mounted",
+  "ledger_exit": 0,
+  "ledger_summary": "🗓️ 듀 큐 136개(상위 20개 소비 · 졸업후보 예약 5칸): 부동산공시법 등록전환-허용범위와 무관(R52%), 부동산세법 5-1(R58%), 부동산세법 1-1 임대업 자산 양도(R67%), 공인중개사법 1-5 과태료 개별금액(R69%), 부동산공시법 등기신청기간(R84%), 시행방식 환지(R84%) | ⚠️ 복습 적체 136개 — 하루 8개 기준 17일치다. | 과목별 약점 TOP3: 부동산공법(47), 민법(43), 부동산세법(37)"
+ },
+ "warnings": [],
+ "ai_brief": "공인중개사 2026-09-09 오답 재도전 — 듀 큐 136개 중 상위 20문. picks 의 conceptKey 를 그대로 쓰고(retryOf 동일), samples 의 원 문제를 복사하지 말고 같은 개념을 다른 각도로 변형한다. missedTop 이 있으면 그 포인트를 정면 조준하고, causeTop 은 각도(개념부재=정면·혼동=판별식·함정=같은 유형 변형·실수=각도 변경 없음)로 쓴다. 단답 문항에 evidence{note, quote} 를 달면 렌더가 원문 대조로 검사한다 — note 는 samples 근거면 'samples', 노트 근거면 related_notes 의 파일명. 그중 5문은 단답으로 승격(상한 5)."
+}

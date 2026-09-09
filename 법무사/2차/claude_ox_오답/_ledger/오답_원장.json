@@ -1,6 +1,6 @@
 {
   "ledgerSchema": 3,
-  "generatedAt": "2026-09-07T14:38:41",
+  "generatedAt": "2026-09-09T15:35:30",
   "fsrsMeta": {
     "version": "6.3.2",
     "desiredRetention": 0.9,
@@ -39,7 +39,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-02",
       "nextReviewDate": "2026-09-03",
-      "retrievability": 0.522,
+      "retrievability": 0.496,
       "stability": 0.073,
       "pick": true,
       "missedTop": [
@@ -57,7 +57,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-02",
       "nextReviewDate": "2026-09-03",
-      "retrievability": 0.559,
+      "retrievability": 0.531,
       "stability": 0.115,
       "pick": true,
       "missedTop": [
@@ -76,7 +76,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-02",
       "nextReviewDate": "2026-09-03",
-      "retrievability": 0.559,
+      "retrievability": 0.531,
       "stability": 0.115,
       "pick": true,
       "missedTop": [
@@ -96,7 +96,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-02",
       "nextReviewDate": "2026-09-03",
-      "retrievability": 0.649,
+      "retrievability": 0.618,
       "stability": 0.317,
       "pick": true,
       "missedTop": [
@@ -114,7 +114,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-08-31",
       "nextReviewDate": "2026-09-03",
-      "retrievability": 0.693,
+      "retrievability": 0.661,
       "stability": 0.502,
       "pick": true,
       "missedTop": [],
@@ -130,55 +130,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-31",
       "nextReviewDate": "2026-09-01",
-      "retrievability": 0.582,
-      "stability": 0.212,
-      "pick": true,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "형법 기대가능성-친족범인은닉",
-      "subject": "형법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "lastWrong": "2026-08-31",
-      "nextReviewDate": "2026-09-01",
-      "retrievability": 0.582,
-      "stability": 0.212,
-      "pick": true,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "형법 긴급피난-요건3",
-      "subject": "형법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "lastWrong": "2026-08-31",
-      "nextReviewDate": "2026-09-01",
-      "retrievability": 0.582,
-      "stability": 0.212,
-      "pick": true,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "형법 불능미수-위험성판단",
-      "subject": "형법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 0,
-      "lastWrong": "2026-08-31",
-      "nextReviewDate": "2026-09-01",
-      "retrievability": 0.582,
+      "retrievability": 0.561,
       "stability": 0.212,
       "pick": true,
       "missedTop": [],
@@ -194,7 +146,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-26",
       "nextReviewDate": "2026-08-29",
-      "retrievability": 0.686,
+      "retrievability": 0.669,
       "stability": 0.933,
       "pick": true,
       "missedTop": [],
@@ -210,7 +162,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-25",
       "nextReviewDate": "2026-08-29",
-      "retrievability": 0.741,
+      "retrievability": 0.725,
       "stability": 1.806,
       "pick": true,
       "missedTop": [],
@@ -218,17 +170,49 @@
       "errorCauses": {}
     },
     {
-      "conceptKey": "형법 1-3 계속범과 기수 후 공범 성립",
+      "conceptKey": "형법 기대가능성-친족범인은닉",
       "subject": "형법",
-      "status": "졸업후보",
-      "timesWrong": 2,
-      "retryMissed": 1,
-      "consecutiveCorrect": 2,
-      "lastWrong": "2026-08-26",
-      "nextReviewDate": "2026-08-30",
-      "retrievability": 0.751,
-      "stability": 1.806,
-      "pick": true,
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-08-31",
+      "nextReviewDate": "2026-09-01",
+      "retrievability": 0.561,
+      "stability": 0.212,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "형법 긴급피난-요건3",
+      "subject": "형법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-08-31",
+      "nextReviewDate": "2026-09-01",
+      "retrievability": 0.561,
+      "stability": 0.212,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "형법 불능미수-위험성판단",
+      "subject": "형법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-08-31",
+      "nextReviewDate": "2026-09-01",
+      "retrievability": 0.561,
+      "stability": 0.212,
+      "pick": false,
       "missedTop": [],
       "causeTop": null,
       "errorCauses": {}
@@ -242,7 +226,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-31",
       "nextReviewDate": "2026-09-01",
-      "retrievability": 0.582,
+      "retrievability": 0.561,
       "stability": 0.212,
       "pick": false,
       "missedTop": [],
@@ -258,7 +242,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-31",
       "nextReviewDate": "2026-09-01",
-      "retrievability": 0.582,
+      "retrievability": 0.561,
       "stability": 0.212,
       "pick": false,
       "missedTop": [],
@@ -274,7 +258,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-31",
       "nextReviewDate": "2026-09-01",
-      "retrievability": 0.582,
+      "retrievability": 0.561,
       "stability": 0.212,
       "pick": false,
       "missedTop": [],
@@ -290,7 +274,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-31",
       "nextReviewDate": "2026-09-01",
-      "retrievability": 0.582,
+      "retrievability": 0.561,
       "stability": 0.212,
       "pick": false,
       "missedTop": [],
@@ -306,7 +290,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-03",
       "nextReviewDate": "2026-09-04",
-      "retrievability": 0.633,
+      "retrievability": 0.596,
       "stability": 0.212,
       "pick": false,
       "missedTop": [
@@ -325,7 +309,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-03",
       "nextReviewDate": "2026-09-04",
-      "retrievability": 0.633,
+      "retrievability": 0.596,
       "stability": 0.212,
       "pick": false,
       "missedTop": [
@@ -344,7 +328,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-03",
       "nextReviewDate": "2026-09-04",
-      "retrievability": 0.633,
+      "retrievability": 0.596,
       "stability": 0.212,
       "pick": false,
       "missedTop": [
@@ -362,7 +346,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-03",
       "nextReviewDate": "2026-09-04",
-      "retrievability": 0.633,
+      "retrievability": 0.596,
       "stability": 0.212,
       "pick": false,
       "missedTop": [
@@ -382,29 +366,13 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-03",
       "nextReviewDate": "2026-09-04",
-      "retrievability": 0.633,
+      "retrievability": 0.596,
       "stability": 0.212,
       "pick": false,
       "missedTop": [
         "승낙이 객관적으로 기대될 것",
         "양심에 따른 심사"
       ],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "형법 1-4 개괄적 고의의 처리",
-      "subject": "형법",
-      "status": "졸업후보",
-      "timesWrong": 2,
-      "retryMissed": 1,
-      "consecutiveCorrect": 2,
-      "lastWrong": "2026-08-26",
-      "nextReviewDate": "2026-08-30",
-      "retrievability": 0.751,
-      "stability": 1.806,
-      "pick": false,
-      "missedTop": [],
       "causeTop": null,
       "errorCauses": {}
     },
@@ -417,7 +385,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-27",
       "nextReviewDate": "2026-09-01",
-      "retrievability": 0.754,
+      "retrievability": 0.729,
       "stability": 1.31,
       "pick": false,
       "missedTop": [],
@@ -433,8 +401,40 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-27",
       "nextReviewDate": "2026-09-01",
-      "retrievability": 0.754,
+      "retrievability": 0.729,
       "stability": 1.31,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "형법 1-3 계속범과 기수 후 공범 성립",
+      "subject": "형법",
+      "status": "졸업후보",
+      "timesWrong": 2,
+      "retryMissed": 1,
+      "consecutiveCorrect": 2,
+      "lastWrong": "2026-08-26",
+      "nextReviewDate": "2026-08-30",
+      "retrievability": 0.733,
+      "stability": 1.806,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "형법 1-4 개괄적 고의의 처리",
+      "subject": "형법",
+      "status": "졸업후보",
+      "timesWrong": 2,
+      "retryMissed": 1,
+      "consecutiveCorrect": 2,
+      "lastWrong": "2026-08-26",
+      "nextReviewDate": "2026-08-30",
+      "retrievability": 0.733,
+      "stability": 1.806,
       "pick": false,
       "missedTop": [],
       "causeTop": null,
@@ -449,7 +449,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-28",
       "nextReviewDate": "2026-09-04",
-      "retrievability": 0.838,
+      "retrievability": 0.808,
       "stability": 2.29,
       "pick": false,
       "missedTop": [],
@@ -465,7 +465,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-24",
       "nextReviewDate": "2026-09-02",
-      "retrievability": 0.857,
+      "retrievability": 0.843,
       "stability": 6.269,
       "pick": false,
       "missedTop": [],
@@ -481,7 +481,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-24",
       "nextReviewDate": "2026-09-02",
-      "retrievability": 0.857,
+      "retrievability": 0.843,
       "stability": 6.269,
       "pick": false,
       "missedTop": [],
@@ -497,7 +497,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-24",
       "nextReviewDate": "2026-09-02",
-      "retrievability": 0.857,
+      "retrievability": 0.843,
       "stability": 6.269,
       "pick": false,
       "missedTop": [],
@@ -513,7 +513,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-25",
       "nextReviewDate": "2026-09-03",
-      "retrievability": 0.865,
+      "retrievability": 0.85,
       "stability": 6.269,
       "pick": false,
       "missedTop": [],
@@ -529,7 +529,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-25",
       "nextReviewDate": "2026-09-03",
-      "retrievability": 0.865,
+      "retrievability": 0.85,
       "stability": 6.269,
       "pick": false,
       "missedTop": [],
@@ -545,7 +545,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-25",
       "nextReviewDate": "2026-09-03",
-      "retrievability": 0.865,
+      "retrievability": 0.85,
       "stability": 6.269,
       "pick": false,
       "missedTop": [],
@@ -561,7 +561,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-25",
       "nextReviewDate": "2026-09-03",
-      "retrievability": 0.865,
+      "retrievability": 0.85,
       "stability": 6.269,
       "pick": false,
       "missedTop": [],
@@ -577,7 +577,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-25",
       "nextReviewDate": "2026-09-03",
-      "retrievability": 0.865,
+      "retrievability": 0.85,
       "stability": 6.269,
       "pick": false,
       "missedTop": [],
@@ -593,7 +593,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-27",
       "nextReviewDate": "2026-09-07",
-      "retrievability": 0.901,
+      "retrievability": 0.877,
       "stability": 5.082,
       "pick": false,
       "missedTop": [],
@@ -609,7 +609,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-27",
       "nextReviewDate": "2026-09-07",
-      "retrievability": 0.901,
+      "retrievability": 0.877,
       "stability": 5.082,
       "pick": false,
       "missedTop": [],
@@ -691,7 +691,7 @@
         "state": "Review",
         "reps": 6,
         "lapses": 5,
-        "retrievability": 0.522
+        "retrievability": 0.496
       },
       "fsrsFallback": false
     },
@@ -767,7 +767,7 @@
         "state": "Review",
         "reps": 6,
         "lapses": 4,
-        "retrievability": 0.649
+        "retrievability": 0.618
       },
       "fsrsFallback": false
     },
@@ -839,7 +839,7 @@
         "state": "Review",
         "reps": 6,
         "lapses": 4,
-        "retrievability": 0.693
+        "retrievability": 0.661
       },
       "fsrsFallback": false
     },
@@ -917,7 +917,7 @@
         "state": "Review",
         "reps": 5,
         "lapses": 4,
-        "retrievability": 0.559
+        "retrievability": 0.531
       },
       "fsrsFallback": false
     },
@@ -997,7 +997,7 @@
         "state": "Review",
         "reps": 5,
         "lapses": 4,
-        "retrievability": 0.559
+        "retrievability": 0.531
       },
       "fsrsFallback": false
     },
@@ -1042,7 +1042,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.582
+        "retrievability": 0.561
       },
       "fsrsFallback": false
     },
@@ -1087,7 +1087,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.582
+        "retrievability": 0.561
       },
       "fsrsFallback": false
     },
@@ -1132,7 +1132,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.582
+        "retrievability": 0.561
       },
       "fsrsFallback": false
     },
@@ -1177,7 +1177,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.582
+        "retrievability": 0.561
       },
       "fsrsFallback": false
     },
@@ -1222,7 +1222,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.582
+        "retrievability": 0.561
       },
       "fsrsFallback": false
     },
@@ -1267,7 +1267,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.582
+        "retrievability": 0.561
       },
       "fsrsFallback": false
     },
@@ -1312,7 +1312,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.582
+        "retrievability": 0.561
       },
       "fsrsFallback": false
     },
@@ -1357,7 +1357,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.582
+        "retrievability": 0.561
       },
       "fsrsFallback": false
     },
@@ -1408,7 +1408,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.633
+        "retrievability": 0.596
       },
       "fsrsFallback": false
     },
@@ -1461,7 +1461,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.633
+        "retrievability": 0.596
       },
       "fsrsFallback": false
     },
@@ -1510,7 +1510,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.633
+        "retrievability": 0.596
       },
       "fsrsFallback": false
     },
@@ -1561,7 +1561,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.633
+        "retrievability": 0.596
       },
       "fsrsFallback": false
     },
@@ -1612,7 +1612,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.633
+        "retrievability": 0.596
       },
       "fsrsFallback": false
     },
@@ -1683,7 +1683,7 @@
         "state": "Review",
         "reps": 5,
         "lapses": 3,
-        "retrievability": 0.686
+        "retrievability": 0.669
       },
       "fsrsFallback": false
     },
@@ -1754,7 +1754,7 @@
         "state": "Review",
         "reps": 5,
         "lapses": 3,
-        "retrievability": 0.754
+        "retrievability": 0.729
       },
       "fsrsFallback": false
     },
@@ -1825,7 +1825,7 @@
         "state": "Review",
         "reps": 5,
         "lapses": 3,
-        "retrievability": 0.754
+        "retrievability": 0.729
       },
       "fsrsFallback": false
     },
@@ -1896,7 +1896,7 @@
         "state": "Review",
         "reps": 6,
         "lapses": 3,
-        "retrievability": 0.838
+        "retrievability": 0.808
       },
       "fsrsFallback": false
     },
@@ -1954,7 +1954,7 @@
         "state": "Review",
         "reps": 4,
         "lapses": 2,
-        "retrievability": 0.741
+        "retrievability": 0.725
       },
       "fsrsFallback": false
     },
@@ -2012,7 +2012,7 @@
         "state": "Review",
         "reps": 4,
         "lapses": 2,
-        "retrievability": 0.751
+        "retrievability": 0.733
       },
       "fsrsFallback": false
     },
@@ -2070,7 +2070,7 @@
         "state": "Review",
         "reps": 4,
         "lapses": 2,
-        "retrievability": 0.751
+        "retrievability": 0.733
       },
       "fsrsFallback": false
     },
@@ -2128,7 +2128,7 @@
         "state": "Review",
         "reps": 5,
         "lapses": 2,
-        "retrievability": 0.901
+        "retrievability": 0.877
       },
       "fsrsFallback": false
     },
@@ -2186,7 +2186,7 @@
         "state": "Review",
         "reps": 5,
         "lapses": 2,
-        "retrievability": 0.901
+        "retrievability": 0.877
       },
       "fsrsFallback": false
     },
@@ -2231,7 +2231,7 @@
         "state": "Review",
         "reps": 3,
         "lapses": 1,
-        "retrievability": 0.857
+        "retrievability": 0.843
       },
       "fsrsFallback": false
     },
@@ -2276,7 +2276,7 @@
         "state": "Review",
         "reps": 3,
         "lapses": 1,
-        "retrievability": 0.857
+        "retrievability": 0.843
       },
       "fsrsFallback": false
     },
@@ -2321,7 +2321,7 @@
         "state": "Review",
         "reps": 3,
         "lapses": 1,
-        "retrievability": 0.857
+        "retrievability": 0.843
       },
       "fsrsFallback": false
     },
@@ -2366,7 +2366,7 @@
         "state": "Review",
         "reps": 3,
         "lapses": 1,
-        "retrievability": 0.865
+        "retrievability": 0.85
       },
       "fsrsFallback": false
     },
@@ -2411,7 +2411,7 @@
         "state": "Review",
         "reps": 3,
         "lapses": 1,
-        "retrievability": 0.865
+        "retrievability": 0.85
       },
       "fsrsFallback": false
     },
@@ -2456,7 +2456,7 @@
         "state": "Review",
         "reps": 3,
         "lapses": 1,
-        "retrievability": 0.865
+        "retrievability": 0.85
       },
       "fsrsFallback": false
     },
@@ -2501,7 +2501,7 @@
         "state": "Review",
         "reps": 3,
         "lapses": 1,
-        "retrievability": 0.865
+        "retrievability": 0.85
       },
       "fsrsFallback": false
     },
@@ -2546,7 +2546,7 @@
         "state": "Review",
         "reps": 3,
         "lapses": 1,
-        "retrievability": 0.865
+        "retrievability": 0.85
       },
       "fsrsFallback": false
     }

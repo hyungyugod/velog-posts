@@ -26,29 +26,21 @@
     payload에만 partial·answeredCount·skippedCount가 실리고 results[]의 미응답 항목은 skipped 축약형.
   - v2 ③: 진행 저장·복원(localStorage 키 hgq:과목:퀴즈ID) — 답·마킹·진단·채점 상태를 저장하고
     재방문 시 복원 배너를 띄운다. 저장 불가 환경(file:// origin 등)에서는 조용히 건너뛴다.
-  - v2.1(2026-09-09) ①: 보기·ㄱㄴㄷ 지문 마킹을 4상태(· → O → X → ?)로 확장 — ?(호박색)는 "확신 없음".
-  - v2.1 ②: 채점 시 점수 요약 바로 아래 ❓ 물음표 모음(#qmarks) — ? 항목의 판정과 해설을 한자리에 모은다.
-  - v2.1 ③: OX형은 보기별 마킹 대신 문항 단위 ? 플래그(·↔?, data-o=-1) — 물음표 모음에 '정답 O/X'로 묶인다.
-  - v2.1 ④: 🤷 모르겠음(무답) 문항은 채점 후 카드 테두리를 무지개 그라데이션 + 헤더 배지로 표시(복원 경로 동일).
-    payload에는 ?가 있을 때만 results[].uncertain·최상위 uncertainCount가 붙는다(없으면 종전과 동일).
-    제출 전엔 접혀 있고 채점(전체·중간·복원) 시 자동으로 열리며 결과 요약에 앵커 1줄. 채점·payload와 무관하다.
 ═══════════════════════════════════════════════════════════════ -->
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{{TITLE}} · {{QUIZ_DATE}}</title>
+<title>⚖️ 법무사 2차 데일리 문제지 · 2026-09-09</title>
 <style>
   :root{
     --bg:#0f1115; --card:#191c23; --card2:#20242d; --line:#2c313b;
     --txt:#e7e9ee; --sub:#9aa3b2;
-    --accent:{{ACCENT}}; --accent2:{{ACCENT2}};
+    --accent:#7c9cff; --accent2:#ffd24a;
     /* 역할 고정색 — 시험별 accent/accent2 배치와 무관하게 항상 같은 자리에 같은 색이 온다 */
-    --warm:{{WARM}}; --cool:{{COOL}};
-    --onaccent:{{ON_ACCENT}}; --grad2:{{ACCENT_GRAD2}}; --revealhov:{{REVEAL_HOVER}};
+    --warm:#ffd24a; --cool:#7c9cff;
+    --onaccent:#10131c; --grad2:#5f7fe8; --revealhov:#1a2138;
     --ok:#34d399; --no:#f87171; --okbg:#10261d; --nobg:#2a1414;
-    /* ? 마킹(확신 없음) 전용 호박색 — O 초록·X 빨강과 한눈에 갈린다 */
-    --qm:#f5b942; --qmbg:#2b2312;
   }
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--txt);
@@ -75,10 +67,9 @@
   .sec{font-size:13px;font-weight:800;color:var(--cool);margin:26px 0 10px;letter-spacing:.02em;
     border-top:1px dashed var(--line);padding-top:18px}
   .sec:first-of-type{border-top:none;padding-top:0}
-  /* 문항 카드는 div.q — ? 마킹 상태 클래스(.q)가 버튼에 붙으므로 요소 이름으로 못을 박는다 */
-  div.q{background:var(--card);border:1px solid var(--line);border-radius:16px;
+  .q{background:var(--card);border:1px solid var(--line);border-radius:16px;
     padding:18px 18px 16px;margin-bottom:14px}
-  div.q.saok{border-color:var(--ok)} div.q.sano{border-color:var(--no)}
+  .q.saok{border-color:var(--ok)} .q.sano{border-color:var(--no)}
   .qhead{display:flex;align-items:center;gap:9px;margin-bottom:11px}
   .qno{background:var(--accent);color:var(--onaccent);font-weight:800;font-size:13px;
     width:26px;height:26px;border-radius:8px;display:grid;place-items:center;flex:0 0 auto}
@@ -95,7 +86,7 @@
   .opt .mk{width:22px;height:22px;border-radius:50%;border:2px solid var(--line);flex:0 0 auto;
     display:grid;place-items:center;font-size:12px;font-weight:800}
   .opt.sel .mk{border-color:var(--warm);background:var(--warm);color:#1a1a1a}
-  /* 보기별 O·X·? 마킹(·→O→X→?) — ㄱㄴㄷ 지문 마킹과 같은 시각 문법. 순수 시각용, 채점에 영향 없음 */
+  /* 보기별 O·X 마킹(·→O→X) — ㄱㄴㄷ 지문 마킹과 같은 시각 문법. 순수 시각용, 채점·저장에 영향 없음 */
   .opt .optox{margin-left:auto;flex:0 0 auto;width:26px;height:26px;padding:0;border-radius:7px;
     display:grid;place-items:center;font:inherit;font-size:12.5px;font-weight:700;line-height:1;
     background:var(--card2);border:1px solid var(--line);color:var(--sub);
@@ -103,17 +94,12 @@
   .opt .optox:hover{opacity:1;border-color:var(--accent)}
   .opt .optox.o{opacity:1;border-color:var(--ok);background:var(--okbg);color:var(--ok)}
   .opt .optox.x{opacity:1;border-color:var(--no);background:var(--nobg);color:var(--no)}
-  .opt .optox.q{opacity:1;border-color:var(--qm);background:var(--qmbg);color:var(--qm)}
   .opt.mk-o{border-color:var(--ok)}
-  /* ?는 흐리게 하지 않는다 — 확신 없는 보기일수록 눈에 남아야 한다 */
-  .opt.mk-q{border-color:var(--qm)}
   .opt.mk-x{opacity:.45;background:var(--card);border-color:var(--no)}
   .opt.mk-x span:not(.mk){text-decoration:line-through;text-decoration-color:var(--no)}
   .opt.sel.mk-x{opacity:.62}
   .ox{flex-direction:row;gap:10px}
   .ox .opt{flex:1;justify-content:center;font-size:18px;font-weight:800}
-  .ox .opt.qflag{flex:0 0 auto;padding:6px 8px;border-style:dashed;cursor:default;font-size:13px}
-  .ox .opt.qflag .optox{margin-left:0}
   .opt.correct{border-color:var(--ok);background:var(--okbg)}
   .opt.correct .mk{border-color:var(--ok);background:var(--ok);color:#06281c}
   .opt.wrong{border-color:var(--no);background:var(--nobg)}
@@ -205,7 +191,7 @@
   .dk-btn:hover{border-color:var(--no);color:var(--txt)}
   .dk-btn.on{border-style:solid;border-color:var(--no);background:var(--nobg);color:var(--no);font-weight:700}
   .dk-btn:disabled{opacity:.45;cursor:default}
-  /* ── ㄱㄴㄷ 지문 O·X·? 마킹 — 채점 무관 시각 메모 ── */
+  /* ── ㄱㄴㄷ 지문 O·X 마킹 — 채점 무관 시각 메모 ── */
   .ox-mark{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;
     margin-right:6px;border-radius:6px;border:1px solid var(--line);background:var(--card2);
     color:var(--sub);font:inherit;font-size:12.5px;font-weight:700;cursor:pointer;
@@ -213,7 +199,6 @@
   .ox-mark:hover{border-color:var(--accent)}
   .ox-mark.o{border-color:var(--ok);background:var(--okbg);color:var(--ok)}
   .ox-mark.x{border-color:var(--no);background:var(--nobg);color:var(--no)}
-  .ox-mark.q{border-color:var(--qm);background:var(--qmbg);color:var(--qm)}
   /* ── 진행 복원 배너 ── */
   .restorebar{display:block;background:var(--card2);border:1px solid var(--cool);border-radius:12px;
     padding:10px 14px;margin:14px 0 0;font-size:13px;color:var(--sub)}
@@ -221,31 +206,9 @@
   .restorebar b{color:var(--cool)}
   .restorebar a{color:var(--warm);font-weight:700;cursor:pointer;text-decoration:underline}
   /* ── 중간제출 미응답 배지 ── */
-  div.q.skipped{border-style:dashed}
-  /* 🤷 모르겠음(무답) 문항 — 채점 후 무지개 테두리로 눈에 띄게(정답·해설은 그대로 공개) */
-  div.q.dkq{border:2px solid transparent;
-    background:linear-gradient(var(--card),var(--card)) padding-box,
-               linear-gradient(135deg,#ff5f6d,#ffc371,#47e39c,#5b8cff,#b46bff) border-box}
-  .dkbadge{margin-left:auto;font-size:11.5px;font-weight:800;padding:3px 9px;border-radius:999px;color:#111;
-    background:linear-gradient(90deg,#ff5f6d,#ffc371,#47e39c,#5b8cff,#b46bff);white-space:nowrap}
+  .q.skipped{border-style:dashed}
   .skipbadge{display:inline-block;margin:0 0 10px;padding:3px 11px;border-radius:999px;
     border:1px dashed var(--sub);color:var(--sub);font-size:12px;font-weight:700}
-  /* ── ❓ 물음표 모음 — 채점 후 점수 요약 바로 아래. 표시 전용(결과 JSON과 무관) ── */
-  #qmarks{background:var(--card);border:1px solid var(--line);border-radius:18px;
-    padding:18px 18px 16px;margin-bottom:18px}
-  .qm-title{font-size:15px;font-weight:800;color:var(--qm);margin-bottom:4px}
-  .qm-note{font-size:12.5px;color:var(--sub)}
-  .qm-item{background:var(--card2);border:1px solid var(--line);border-left:3px solid var(--qm);
-    border-radius:12px;padding:12px 14px;margin-top:12px}
-  .qm-head{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--sub);font-weight:700}
-  .qm-jump{margin-left:auto;color:var(--cool);font-weight:700;text-decoration:none;font-size:12.5px}
-  .qm-jump:hover{text-decoration:underline}
-  .qm-line{margin-top:8px;font-size:14px;line-height:1.6}
-  .qm-v{margin-left:7px;font-weight:800;white-space:nowrap}
-  .qm-v.ok{color:var(--ok)} .qm-v.no{color:var(--no)}
-  .qm-expl{margin-top:11px;padding-top:10px;border-top:1px dashed var(--line);
-    font-size:13.5px;color:#d4d9e2}
-  .qm-expl .src{display:block;margin-top:7px;color:var(--sub);font-size:12px}
   .expl{margin-top:12px;padding:12px 14px;border-radius:11px;background:var(--card2);
     border-left:3px solid var(--cool);font-size:13.5px;color:#d4d9e2;display:none}
   .expl.show{display:block;animation:fade .3s ease}
@@ -275,11 +238,11 @@
 <body>
 <div class="wrap">
   <header>
-    <div class="eyebrow">{{EYEBROW}}</div>
-    <h1>{{H1}}</h1>
-    <div class="meta">{{META_LINE}}</div>
-    <div class="tags">{{TAGS_HTML}}</div>
-    <div class="alertbanner">{{ALERT_HTML}}</div>
+    <div class="eyebrow">DAILY QUIZ · 법무사 2차</div>
+    <h1>오늘의 인출 문제지</h1>
+    <div class="meta">2026년 9월 9일 (수) · S2 단답 12문항(미니답안 2) · 장기복습 3(⏪) · 한달전 0(🔄)</div>
+    <div class="tags"><span class="tag">⚖️ 법무사 2차</span><span class="tag">✍️ 단답 인출 12</span><span class="tag">⏪ 장기복습 3</span><span class="tag">📚 형법</span></div>
+    <div class="alertbanner"></div>
     <div class="restorebar" id="restoreBar" hidden></div>
   </header>
 
@@ -301,23 +264,223 @@
   <button class="submit partial" id="partialBtn" disabled>✂ 여기까지 제출 (푼 것만 채점)</button>
 
   <div class="foot">
-    {{DESC_HTML}}
+    법무사 폴더의 날짜 정리본으로 자동 생성됩니다. 2차 과목은 전부 단답형 — 먼저 쓰고, 정답을 확인하세요.<br>제출 결과 JSON은 수거 → 법무사 오답 원장(FSRS)으로 반영됩니다.
   </div>
 </div>
 
 <script>
 const SCHEMA_VERSION = 2;
-const QUIZ_DATE = "{{QUIZ_DATE}}";
-const SUBJECT = "{{SUBJECT}}";
-const QUIZ_ID_SUFFIX = "{{QUIZ_ID_SUFFIX}}";
-const RESULT_PREFIX = "{{RESULT_PREFIX}}";
-const EXAM_DEFAULT = "{{EXAM_DEFAULT}}";
-const INBOX_NOTE = "{{INBOX_NOTE}}";
-const T_MCQ = {{T_MCQ}};
-const T_SA = {{T_SA}};
-const RESULT_MSGS = {{RESULT_MSGS}};
+const QUIZ_DATE = "2026-09-09";
+const SUBJECT = "법무사2차";
+const QUIZ_ID_SUFFIX = "";
+const RESULT_PREFIX = "법무사2차_오답_";
+const EXAM_DEFAULT = "2차";
+const INBOX_NOTE = "velog-posts/법무사/2차/claude_ox_오답/_inbox/";
+const T_MCQ = 72;
+const T_SA = 90;
+const RESULT_MSGS = ["만점. 이 페이스면 동차가 농담이 아니게 됩니다 ⚖️", "합격권. 틀린 개념만 해설 한 번 더 — 그게 오늘의 회독입니다.", "절반 이상. 단답에서 막힌 건 백지 인출감이 아직이라는 신호예요.", "흔들리는 개념이 보입니다. 해설 정독 후 다음 회차에서 재도전.", "괜찮아요. 인출 실패 + 피드백이 읽기보다 낫다는 게 연구 결론입니다."];
 const QUESTIONS = [
 /*__QUESTIONS_START__*/
+{
+ "type": "단답",
+ "exam": "2차",
+ "sub": "미니답안",
+ "cat": "형법",
+ "q": "甲은 야간에 乙의 주거에 침입하여 그곳에 있던 재물을 절취하였다. 甲의 죄수에 대한 결론과 그 이유를 기재하시오. (10점)",
+ "answer": "야간주거침입절도죄의 일죄가 성립한다.<br>주거침입과 절도는 별개의 행위이므로 원칙적으로 실체적 경합에 해당한다. 다만 수개의 행위라도 법이 이를 하나의 구성요건으로 결합하여 두었다면 결합범으로서 일죄가 된다.<br>사안의 경우 야간의 주거침입과 절취행위는 야간주거침입절도라는 하나의 구성요건으로 결합되어 있으므로, 주거침입죄를 따로 세우지 아니하고 야간주거침입절도죄 일죄로 처리함이 타당하다.",
+ "keywords": [
+  "야간주거침입절도죄 일죄",
+  "주거침입 후 절도는 원칙적으로 실체적 경합",
+  "결합범 = 법이 하나의 구성요건으로 결합",
+  "사안의 경우 야간 + 침입 + 절취"
+ ],
+ "expl": "[정답 근거] 주거침입 후 절도는 행위가 2개여서 실체적 경합이나, 야간이면 결합범인 야간주거침입절도죄 일죄가 된다. [메커니즘] 결합범은 입법자가 수개의 행위를 하나의 구성요건 안에 묶어 둔 것이어서 죄수 계산이 그 단계에서 끝난다. [함정] 야간이라는 사정을 빠뜨리고 주거침입죄와 절도죄를 병렬로 세우면 죄수 결론이 통째로 어긋난다.",
+ "src": "2026-09-05 형법 죄수론",
+ "conceptKey": "형법 죄수-야간주거침입절도 결합범 일죄"
+},
+{
+ "type": "단답",
+ "exam": "2차",
+ "sub": "판별식",
+ "cat": "형법",
+ "q": "불가벌적 수반행위와 불가벌적 사후행위의 구별 기준을 밝히고, 그에 따라 별죄를 세우지 아니하는 이유가 어떻게 달라지는지 서술하시오.",
+ "answer": "양자는 별죄를 세우지 아니하는 근거가 불법의 경미성인가 이미 이루어진 평가인가에 따라 구별된다. 한 구성요건의 불법내용이 주된 범죄에 비하여 경미하기 때문에 고려되지 아니하면 불가벌적 수반행위로서 살인에 수반된 의복손괴가 이에 해당한다. 반면 주된 범죄로 획득한 위법한 이익을 사용·처분하는 행위가 주된 범죄의 불법에 의하여 완전히 평가되었기 때문이면 불가벌적 사후행위로서 절취한 물건을 손괴한 경우가 이에 해당한다 할 것이다.",
+ "keywords": [
+  "불법의 경미성 vs 이미 완전히 평가됨",
+  "수반행위 — 살인과 의복손괴",
+  "사후행위 — 절도 후 손괴",
+  "양자 모두 별죄 불성립"
+ ],
+ "expl": "[정답 근거] 수반행위는 불법이 경미하기 때문에, 사후행위는 불법이 주된 범죄에서 이미 완전히 평가되었기 때문에 별죄를 세우지 아니한다. [메커니즘] 흡수의 근거가 다르므로 답안에 적어야 하는 논거도 달라진다. [함정] 두 개념을 뭉뚱그려 흡수관계라고만 쓰면 왜 별죄가 아닌지의 이유가 빠져 감점된다.",
+ "src": "2026-09-05 형법 불가벌 유형 2종",
+ "conceptKey": "형법 불가벌-수반행위와 사후행위의 구별"
+},
+{
+ "type": "단답",
+ "exam": "2차",
+ "sub": "목차순서",
+ "cat": "형법",
+ "q": "형법 사례형 답안의 문장을 어떤 순서로 배치하는지 목차 순서로 서술하고, 시간이 부족할 때 끝까지 남겨야 하는 요소를 함께 기재하시오.",
+ "answer": "죄의 성부 제기 → 죄의 정의 → 구성요건 해석 → 쟁점 좁히기 → 판례 → 평가 → 위법성·책임 검토 → 결론의 순서로 검토한다. 첫 문장과 끝 문장에는 반드시 죄를 언급하고, 결론에서는 죄와 죄수를 함께 밝힌다. 시간이 부족하더라도 정의·판례·죄수는 마지막까지 버리지 아니한다.",
+ "keywords": [
+  "성부 제기 → 정의 → 해석 → 쟁점 → 판례 → 평가 → 위법성·책임 → 결론",
+  "첫 문장과 끝 문장에 죄 언급",
+  "결론은 죄 + 죄수",
+  "시간 붕괴 시 정의·판례·죄수 사수"
+ ],
+ "expl": "[정답 근거] 답안 문장은 성부 제기·정의·해석·쟁점·판례·평가·위법성책임·결론의 순서로 배치하고, 시간이 없으면 정의와 판례와 죄수만 남긴다. [메커니즘] 앞 단계가 뒤 단계의 전제이므로 순서를 바꾸면 논증 자체가 성립하지 않는다. [함정] 결론에 죄명만 쓰고 죄수를 빠뜨리면 마지막 배점을 통째로 놓친다.",
+ "src": "2026-09-05 형법 답안 문장 템플릿",
+ "conceptKey": "형법 답안-문장 템플릿 순서와 사수 3요소"
+},
+{
+ "type": "단답",
+ "exam": "2차",
+ "sub": "요건개수",
+ "cat": "형법",
+ "q": "합동범에서 합동이 인정되기 위한 요건을 답안에 쓰는 순서대로 서술하시오.",
+ "answer": "합동이 인정되기 위해서는 ① 공동가공의사 ② 역할분담 ③ 시간적·장소적 협동관계가 필요하다. 앞의 두 요건은 일반 공동정범과 같고, 시간적·장소적 협동관계가 추가로 요구되는 점에 차이가 있다.",
+ "keywords": [
+  "공동가공의사",
+  "역할분담",
+  "시간적·장소적 협동관계",
+  "일반 공동정범 + 협동관계"
+ ],
+ "expl": "[정답 근거] 합동은 공동가공의사와 역할분담에 더하여 시간적·장소적 협동관계를 갖추어야 인정된다. [메커니즘] 현장성이 추가 요건이므로 현장에 함께 있게 되는 절도에서 합동범 논점이 잦다. [함정] 일반 공동정범의 요건만 나열하고 시간적·장소적 협동을 빠뜨리면 합동을 논한 것이 아니다.",
+ "src": "2026-09-06 형법 정범·공범의 특례",
+ "conceptKey": "형법 공범특례-합동의 요건 3개"
+},
+{
+ "type": "단답",
+ "exam": "2차",
+ "sub": "결론이유",
+ "cat": "형법",
+ "q": "甲은 乙을 감금한 상태에서 강도상해를 범하였고, 강도상해의 범행이 끝난 뒤에도 감금 상태를 계속 유지하였다. 甲의 감금죄와 강도상해죄의 죄수에 대한 결론과 그 이유를 기재하시오.",
+ "answer": "감금죄와 강도상해죄는 경합범 관계에 있다. 판례는 감금행위가 단순히 강도상해 범행의 수단이 되는 데 그치지 않고 강도상해의 범행이 끝난 뒤에도 계속된 경우에는 1개의 행위가 두 죄에 해당하는 경우로 볼 수 없다는 입장이다(형법 제37조). 사안의 경우 감금이 강도상해 종료 후에도 존속하였으므로, 양죄는 실체적 경합에 해당한다 할 것이다.",
+ "keywords": [
+  "경합범(실체적 경합)",
+  "수단에 그치지 않고 종료 후에도 계속",
+  "1개의 행위로 볼 수 없음(형법 제37조)",
+  "사안의 경우 감금 존속"
+ ],
+ "expl": "[정답 근거] 감금이 강도상해의 수단을 넘어 범행 종료 후에도 계속되었으므로 두 죄는 경합범이다. [메커니즘] 행위가 1개인지 수개인지가 죄수의 갈림길인데, 종료 후에도 존속한 감금은 별개의 행위로 평가된다. [함정] 강도를 위한 감금이라는 이유로 흡수된다고 쓰면 판례와 정반대의 결론이 된다.",
+ "src": "2026-09-06 형법 감금과 약취·유인",
+ "conceptKey": "형법 감금-강도상해 종료 후 존속 시 경합범"
+},
+{
+ "type": "단답",
+ "exam": "2차",
+ "sub": "미니답안",
+ "cat": "형법",
+ "q": "甲은 乙에게 폭행을 가하여 겁을 먹게 하였고, 이에 乙이 스스로 자신의 지갑을 甲에게 건네주었다. 甲에게 강도죄와 공갈죄 중 어느 죄가 성립하는지에 대한 결론과 그 이유를 기재하시오. (10점)",
+ "answer": "공갈죄가 성립한다.<br>재산죄는 피해자의 처분행위가 있었는가에 따라 갈린다. 처분행위 없이 피해자의 의사에 반하여 탈취하면 절도 또는 강도이고, 이때 상대방의 반항을 억압하거나 불가능하게 할 정도의 폭행·협박이 있으면 강도가 된다. 반면 피해자가 스스로 처분행위를 하였다면 그 원인이 공포심인 경우는 공갈, 착오인 경우는 사기이다.<br>사안의 경우 乙이 겁을 먹고 스스로 지갑을 건네준 이상 처분행위가 있었고 그 원인이 공포심이므로, 甲에게는 강도죄가 아니라 공갈죄가 성립한다 할 것이다.",
+ "keywords": [
+  "공갈죄 성립",
+  "처분행위의 유무가 판별식",
+  "반항 억압 정도의 폭행이면 강도",
+  "사안의 경우 공포심에 의한 처분행위"
+ ],
+ "expl": "[정답 근거] 乙이 공포심에 스스로 지갑을 교부한 이상 처분행위가 있으므로 공갈죄가 성립한다. [메커니즘] 탈취범과 편취범은 처분행위로 갈리고, 편취범 안에서는 처분의 원인이 공포심인가 착오인가로 다시 갈린다. [함정] 폭행이 있었다는 사정만 보고 강도로 결론내면 처분행위 포섭을 생략한 것이 된다.",
+ "src": "2026-09-06 형법 재산죄 총설",
+ "conceptKey": "형법 재산죄-처분행위 유무에 따른 공갈과 강도의 구별"
+},
+{
+ "type": "단답",
+ "exam": "2차",
+ "sub": "판례문구",
+ "cat": "형법",
+ "q": "보이스피싱 피해자가 지시에 따라 집 앞에 걸어 둔 돈을 가져간 자의 죄책에 관한 판례의 태도를 답안에 현출하는 문장으로 쓰시오.",
+ "answer": "판례는 피해자가 집 앞에 돈을 걸어 둔 것만으로는 이를 직접 넘겨준 것이 아니어서 그 돈이 아직 피해자의 점유에 있다고 보아, 이를 가져간 행위에는 사기죄가 아니라 절도죄가 성립한다는 입장이다.",
+ "keywords": [
+  "직접 넘겨준 것이 아님",
+  "아직 피해자의 점유에 있음",
+  "사기죄가 아니라 절도죄"
+ ],
+ "expl": "[정답 근거] 판례는 집 앞에 둔 돈은 직접 교부된 것이 아니어서 여전히 피해자의 점유에 있으므로 절도죄가 성립한다고 본다. [메커니즘] 처분행위로 점유가 넘어갔는지가 절도와 사기를 가르는 지점이다. [함정] 피해자가 지시에 따랐다는 사정만 보고 처분행위가 있었다며 사기죄로 쓰면 결론이 뒤집힌다.",
+ "src": "2026-09-06 형법 절도죄 심화",
+ "conceptKey": "형법 절도-보이스피싱 인출금은 피해자 점유"
+},
+{
+ "type": "단답",
+ "exam": "2차",
+ "sub": "요건개수",
+ "cat": "형법",
+ "q": "사용절도로서 처벌되지 아니하기 위한 요건을 답안에 쓰는 순서대로 서술하시오.",
+ "answer": "사용절도가 불가벌이 되기 위해서는 ① 반환의사가 있을 것 ② 일시사용에 그칠 것 ③ 제자리에 반환할 것 ④ 고유한 가치를 훼손하지 아니할 것이 필요하다. 네 요건 중 하나라도 결여되면 절도죄가 성립한다.",
+ "keywords": [
+  "반환의사",
+  "일시사용에 그칠 것",
+  "제자리 반환",
+  "고유한 가치 훼손 없을 것"
+ ],
+ "expl": "[정답 근거] 사용절도가 불가벌이 되려면 반환의사·일시사용·제자리 반환·고유가치 불훼손의 네 요건을 모두 갖추어야 한다. [메커니즘] 이 요건들은 불법영득의사가 없다는 것을 드러내는 표지여서, 하나가 빠지면 영득의사가 인정된다. [함정] 돌려줄 생각이었다는 반환의사만 적고 나머지 세 요건을 빠뜨리면 결론이 뒤집힌다.",
+ "src": "2026-09-06 형법 절도죄 심화",
+ "conceptKey": "형법 절도-사용절도 불가벌 4요건"
+},
+{
+ "type": "단답",
+ "exam": "2차",
+ "sub": "용어정의",
+ "cat": "형법",
+ "q": "장물의 의의를 답안 첫 문장으로 쓰시오.",
+ "answer": "장물이란 재산범죄로 영득한 재물 그 자체를 말한다. 이때의 재산범죄는 구성요건만 갖춘 범죄를 의미하므로, 미성년자가 훔친 물건도 장물죄의 장물에 해당한다.",
+ "keywords": [
+  "재산범죄로 영득한 재물 그 자체",
+  "본범은 구성요건만 갖추면 족함",
+  "미성년자가 훔친 것도 장물"
+ ],
+ "expl": "[정답 근거] 장물은 재산범죄로 영득한 재물 그 자체이고, 여기서의 재산범죄는 구성요건만 갖춘 범죄를 뜻한다. [메커니즘] 장물성은 본범의 책임이나 처벌 가능성과 무관하게 정해지므로 미성년자의 절취물도 장물이 된다. [함정] 본범이 처벌되어야 장물이라고 쓰면 구성요건 충족으로 족하다는 핵심이 빠진다.",
+ "src": "2026-09-06 형법 장물죄",
+ "conceptKey": "형법 장물-장물의 의의와 본범의 요건"
+},
+{
+ "type": "단답",
+ "exam": "2차",
+ "sub": "결론이유",
+ "cat": "형법",
+ "q": "⏪ 甲의 행위 당시에는 그 행위를 처벌하는 형벌법규의 법정형이 무거웠으나, 재판을 받는 시점에는 그 형벌법규가 개정되어 형이 가벼워졌다. 甲에게 적용할 법률에 대한 결론과 그 이유를 기재하시오.",
+ "answer": "개정되어 형이 가벼워진 신법을 적용하여야 한다. 형법의 시간적 적용범위는 행위시법주의를 원칙으로 하나, 형벌이 가벼워지면 피고인에게 유리한 그 법을 적용한다. 사안의 경우 형벌법규 자체가 개정되어 형이 가벼워졌으므로, 재판 시의 신법을 적용함이 타당하다.",
+ "keywords": [
+  "신법 적용",
+  "행위시법주의가 원칙",
+  "형 경감 시 피고인에게 유리한 법",
+  "사안의 경우 형벌법규 자체의 변경"
+ ],
+ "expl": "[정답 근거] 원칙은 행위시법이나 형이 가벼워졌으므로 피고인에게 유리한 신법을 적용한다. [메커니즘] 행위시법주의는 소급처벌 금지에서 나오고, 형 경감 시 신법 적용은 피고인에게 유리한 방향이므로 예외가 허용된다. [함정] 재판 시의 현행법을 당연히 적용한다고 쓰면 원칙과 예외가 뒤집혀 감점된다.",
+ "src": "2026-08-22 형법 시간적 적용범위 (장기복습·18일전)",
+ "conceptKey": "형법 시간적적용-행위시법 원칙과 형 경감 시 신법"
+},
+{
+ "type": "단답",
+ "exam": "2차",
+ "sub": "결론이유",
+ "cat": "형법",
+ "q": "⏪ 유효기간을 정하여 시행된 한시법이 있고, 그 유효기간이 지난 뒤에 기간 중의 행위에 대하여 재판하게 되었다. 적용할 법률에 대한 결론과 그 이유를 기재하시오.",
+ "answer": "유효기간이 지났더라도 행위시법인 한시법을 적용하여 처벌한다. 한시법에는 해당 기간에 처벌하겠다는 입법자의 의도가 있기 때문이다. 사안의 경우 유효기간의 경과는 형이 가벼워진 경우에 해당하지 아니하므로, 행위시법에 따라 처벌함이 타당하다.",
+ "keywords": [
+  "행위시법인 한시법 적용",
+  "해당 기간에 처벌하겠다는 입법자의 의도",
+  "유효기간 경과는 형 경감이 아님"
+ ],
+ "expl": "[정답 근거] 한시법은 유효기간이 지나도 그 기간 중의 행위에 대하여 행위시법으로 처벌한다. [메커니즘] 유효기간 만료는 형벌 평가의 변경이 아니라 처음부터 예정된 실효여서 형 경감의 취지가 없다. [함정] 법이 없어졌으니 처벌할 수 없다고 쓰면 한시법을 둔 이유를 정면으로 부정하게 된다.",
+ "src": "2026-08-22 형법 시간적 적용범위 (장기복습·18일전)",
+ "conceptKey": "형법 시간적적용-한시법은 행위시법으로 처벌"
+},
+{
+ "type": "단답",
+ "exam": "2차",
+ "sub": "판별식",
+ "cat": "형법",
+ "q": "⏪ 부진정 결과적 가중범과 그에 포함된 고의범 중 어느 것이 성립하는지를 가르는 기준을 밝히고, 그에 따라 죄수 결론이 어떻게 달라지는지 서술하시오.",
+ "answer": "양자는 결과적 가중범과 고의범 중 어느 쪽의 불법이 더 큰가에 따라 구별된다. 결과적 가중범이 고의범보다 무거우면 고의범이 그 안에 포함된 것으로 보아 고의범은 따로 성립하지 아니한다. 반대로 불법의 크기가 더 큰 중한 범죄 구성요건이 있으면 둘 다 성립하여 상상적 경합이 된다 할 것이다.",
+ "keywords": [
+  "불법의 크기가 기준",
+  "결과적 가중범이 무거우면 고의범 불성립",
+  "고의범의 불법이 더 크면 상상적 경합"
+ ],
+ "expl": "[정답 근거] 불법의 크기를 비교하여 결과적 가중범이 무거우면 고의범을 흡수하고, 고의범의 불법이 더 크면 상상적 경합이 된다. [메커니즘] 부진정 결과적 가중범은 중한 결과에 고의가 있어도 성립하므로 고의범과의 죄수 정리가 반드시 뒤따른다. [함정] 언제나 결과적 가중범 하나만 성립한다고 단정하면 반대 사안에서 상상적 경합을 놓친다.",
+ "src": "2026-08-23 형법 죄수 경합과 흡수 (장기복습·17일전)",
+ "conceptKey": "형법 죄수-결과적가중범과 고의범의 불법 크기 비교"
+}
 /*__QUESTIONS_END__*/
 ];
 
@@ -330,13 +493,9 @@ function conceptFromSrc(src){
 // answered: 중간 제출용 마스크(문항별 true/false). 생략·전부 true면 종전 전체 제출과 100% 동일한 payload.
 //           부분일 때만 최상위 partial·answeredCount·skippedCount가 붙고, 미응답 항목은 축약형으로만 실린다
 //           (정답·해설·options를 넣지 않는다 — 다음 회차 재출제가 오염되지 않게).
-// uncertain: qi → ["? 마킹한 보기/지문 텍스트", …] (태그 제거된 순수 텍스트). 마킹이 하나도 없으면
-//            payload는 종전과 문자열 단위로 동일하다 — 있는 항목에만 uncertain, 있을 때만 uncertainCount.
-function buildPayload(questions, sel, quizDate, nowIso, schemaVersion, answered, uncertain){
+function buildPayload(questions, sel, quizDate, nowIso, schemaVersion, answered){
   let score = 0; const results = [], wrong = [];
   const partial = Array.isArray(answered) && answered.indexOf(false) >= 0;
-  const unc = uncertain || {};
-  let uncertainCount = 0;
   let answeredCount = 0;
   questions.forEach((item, qi)=>{
     const isSA = item.type === "단답";
@@ -378,9 +537,6 @@ function buildPayload(questions, sel, quizDate, nowIso, schemaVersion, answered,
       } }
     if(item.calc) r.calc = item.calc;
     if(item.monthlyOf) r.monthlyOf = item.monthlyOf;
-    // ? 마킹(확신 없음)은 있을 때만 실린다 — 없으면 종전 payload와 한 글자도 달라지지 않는다
-    const um = unc[qi];
-    if(um && um.length){ r.uncertain = um.slice(); uncertainCount += um.length; }
     results.push(r);
     if(!isCorrect) wrong.push(base);   // v1 하위호환 필드 (기존 수거 파이프라인용)
   });
@@ -394,7 +550,6 @@ function buildPayload(questions, sel, quizDate, nowIso, schemaVersion, answered,
     payload.answeredCount = answeredCount;
     payload.skippedCount = questions.length - answeredCount;
   }
-  if(uncertainCount > 0) payload.uncertainCount = uncertainCount;
   return { score: score, wrong: wrong, payload: payload };
 }
 /*__BUILD_PAYLOAD_END__*/
@@ -535,12 +690,7 @@ function isAnswered(qi){
   return s !== null;
 }
 function answeredCount(){ let n = 0; QUESTIONS.forEach((q, qi)=>{ if(isAnswered(qi)) n++; }); return n; }
-// 마킹 4상태: '' · → 'o' O → 'x' X → 'q' ? → ''  (보기 .optox · ㄱㄴㄷ .ox-mark 공통)
-function markStateOf(b){
-  return b.classList.contains('o') ? 'o'
-       : (b.classList.contains('x') ? 'x' : (b.classList.contains('q') ? 'q' : ''));
-}
-function nextMark(s){ return s === '' ? 'o' : (s === 'o' ? 'x' : (s === 'x' ? 'q' : '')); }
+function markStateOf(b){ return b.classList.contains('o') ? 'o' : (b.classList.contains('x') ? 'x' : ''); }
 function snapshot(){
   const optMarks = {}, oxMarks = {};
   QUESTIONS.forEach((q, qi)=>{
@@ -801,47 +951,27 @@ QUESTIONS.forEach((item, qi)=>{
         el.classList.add('sel');
         updateProgress();
       });
-      // 보기 O·X·? 토글(·→O→X→?→·) — X는 종전 소거(희미하게)를, ?는 "확신 없음"을 표시한다.
-      // 선택과 무관(전파 차단) · 채점에 영향 없음 · ㄱㄴㄷ 지문 마킹과 같은 색·같은 순서.
+      // 보기 O·X 토글(·→O→X→·) — X는 종전 소거(희미하게)를 승계한다.
+      // 선택과 무관(전파 차단) · 채점·저장에 영향 없음 · ㄱㄴㄷ 지문 마킹과 같은 색·같은 순서.
       if(!isOX){
         const mk = document.createElement('button');
         mk.type = 'button';
         mk.className = 'optox';
         mk.textContent = '·';
         mk.dataset.q = qi; mk.dataset.o = oi;
-        mk.title = '보기 O·X·? 메모 — 채점과 무관 (· → O → X → ?)';
-        mk.setAttribute('aria-label', '이 보기에 O·X·? 메모');
+        mk.title = '보기 O·X 메모 — 채점과 무관 (· → O → X)';
+        mk.setAttribute('aria-label', '이 보기에 O·X 메모');
         mk.addEventListener('click', (ev)=>{
           ev.stopPropagation();
           ev.preventDefault();
           if(graded || GRADED[qi]) return;
-          setOptMark(el, mk, nextMark(markStateOf(mk)));
+          setOptMark(el, mk, markStateOf(mk) === '' ? 'o' : (markStateOf(mk) === 'o' ? 'x' : ''));
           saveProgress();
         });
         el.appendChild(mk);
       }
       optsWrap.appendChild(el);
     });
-    // OX형은 보기가 O/X 두 글자뿐이라 보기별 마킹이 무의미 — 문항 단위 ? 플래그 하나를 둔다(·↔?).
-    // .opt 홀더 + .optox 버튼 구조를 그대로 써서 저장·복원·물음표 모음이 같은 경로를 탄다(data-o=-1).
-    if(isOX){
-      const holder = document.createElement('div');
-      holder.className = 'opt qflag';
-      holder.title = '이 문항이 확신 없으면 ? — 채점 후 해설 모음에 묶인다';
-      const mk = document.createElement('button');
-      mk.type = 'button'; mk.className = 'optox'; mk.textContent = '·';
-      mk.dataset.q = qi; mk.dataset.o = -1;
-      mk.title = '문항 ? 메모(확신 없음) — 채점과 무관';
-      mk.setAttribute('aria-label', '이 문항에 ? 메모');
-      mk.addEventListener('click', (ev)=>{
-        ev.stopPropagation(); ev.preventDefault();
-        if(graded || GRADED[qi]) return;
-        setOptMark(holder, mk, markStateOf(mk) === 'q' ? '' : 'q');
-        saveProgress();
-      });
-      holder.appendChild(mk);
-      optsWrap.appendChild(holder);
-    }
     RESTORERS[qi] = function(s){
       if(s === 'DK'){ selected[qi] = 'DK'; return; }
       if(typeof s !== 'number' || !item.opts || item.opts[s] === undefined) return;
@@ -853,13 +983,12 @@ QUESTIONS.forEach((item, qi)=>{
   form.appendChild(card);
 });
 
-// 보기 O·X·? 마킹 적용 — '' 표시 없음 / 'o' 초록 / 'x' 빨강+희미(소거 승계) / 'q' 호박(흐리지 않게)
+// 보기 O·X 마킹 적용 — '' → 표시 없음 / 'o' → 초록 / 'x' → 빨강 + 희미하게(소거 승계)
 function setOptMark(el, mk, state){
-  mk.classList.remove('o','x','q');
-  el.classList.remove('mk-o','mk-x','mk-q');
+  mk.classList.remove('o','x');
+  el.classList.remove('mk-o','mk-x');
   if(state === 'o'){ mk.classList.add('o'); el.classList.add('mk-o'); mk.textContent = 'O'; }
   else if(state === 'x'){ mk.classList.add('x'); el.classList.add('mk-x'); mk.textContent = 'X'; }
-  else if(state === 'q'){ mk.classList.add('q'); el.classList.add('mk-q'); mk.textContent = '?'; }
   else { mk.textContent = '·'; }
 }
 
@@ -893,30 +1022,28 @@ QUESTIONS.forEach((it, qi) => {
     updateProgress();
   });
   ow.insertAdjacentElement('afterend', b);
-  // ── ㄱㄴㄷ 지문 O·X·? 마킹: 시험지 여백 체크의 화면판 — 판정을 머리에 안 들고 있게 ──
-  //     data-l에 지문 라벨을 심어 둔다(물음표 모음이 지문 텍스트·정답 조합을 되찾는 열쇠).
-  const qt = ow.closest('div.q') && ow.closest('div.q').querySelector('.qtext');
+  // ── ㄱㄴㄷ 지문 O·X 마킹: 시험지 여백 체크의 화면판 — 판정을 머리에 안 들고 있게 ──
+  const qt = ow.closest('.q') && ow.closest('.q').querySelector('.qtext');
   if(qt && !qt.dataset.oxDone && /(^|<br\s*\/?>)\s*[ㄱㄴㄷㄹㅁㅂ]\.\s/.test(qt.innerHTML)){
     qt.innerHTML = qt.innerHTML.replace(/(^|<br\s*\/?>)(\s*)([ㄱㄴㄷㄹㅁㅂ])(\.\s*)/g,
-      '$1$2<button type="button" class="ox-mark" data-l="$3" title="지문 O·X·? 메모 — 채점과 무관한 체크용">·</button>$3$4');
+      '$1$2<button type="button" class="ox-mark" title="지문 O·X 메모 — 채점과 무관한 체크용">·</button>$3$4');
     qt.dataset.oxDone = '1';
   }
 });
 function setOxMark(t, state){
-  t.classList.remove('o','x','q');
+  t.classList.remove('o','x');
   if(state === 'o'){ t.classList.add('o'); t.textContent = 'O'; }
   else if(state === 'x'){ t.classList.add('x'); t.textContent = 'X'; }
-  else if(state === 'q'){ t.classList.add('q'); t.textContent = '?'; }
   else { t.textContent = '·'; }
 }
 form.addEventListener('click', (e) => {
   const t = e.target.closest('.ox-mark');
   if(!t) return;
   e.preventDefault();
-  const card = t.closest('div.q');           // 'q'는 ? 마킹 상태 클래스이기도 하다 — 카드는 div로 특정
+  const card = t.closest('.q');
   const qi = card ? +String(card.id).split('-')[1] : -1;
   if(graded || GRADED[qi]) return;
-  setOxMark(t, nextMark(markStateOf(t)));
+  setOxMark(t, markStateOf(t) === '' ? 'o' : (markStateOf(t) === 'o' ? 'x' : ''));
   saveProgress();
 });
 
@@ -979,17 +1106,6 @@ function applyGrade(qi){
   });
   const dk = document.querySelector('.dk-btn[data-q="' + qi + '"]');
   if(dk) dk.disabled = true;
-  if(selected[qi] === 'DK'){                         // 무답 문항 — 무지개 테두리 + 배지(복원 경로도 같은 함수를 탄다)
-    const c = document.getElementById('card-' + qi);
-    if(c){
-      c.classList.add('dkq');
-      const h = c.querySelector('.qhead');
-      if(h && !h.querySelector('.dkbadge')){
-        const b = document.createElement('span'); b.className = 'dkbadge'; b.textContent = '🤷 모르겠음';
-        h.appendChild(b);
-      }
-    }
-  }
   const correct = selected[qi] === item.answer;
   ex.innerHTML = `<span class="verdict" style="color:${correct?'var(--ok)':'var(--no)'}">${correct?'정답!':(selected[qi]==='DK'?'모르겠음(무답)':'오답')}</span>${item.expl}<span class="src">📄 출처: ${item.src}</span>`;
   ex.classList.add('show');
@@ -1013,116 +1129,6 @@ function unmarkSkipped(qi){
   if(b) b.remove();
 }
 
-/*__QMARKS_START__*/
-// ── ❓ 물음표 모음 ────────────────────────────────────────────────
-// ? 마킹은 "찍긴 했는데 확신이 없다"는 자백이다. 맞았어도 다음엔 틀린다 — 채점 직후 한자리에 모아
-// 판정(정답/오답 보기 · 참/거짓 지문)과 해설을 붙여 준다. 표시 전용이며 결과 JSON과는 무관하다.
-// 미응답(중간제출) 문항의 ?는 넣지 않는다 — 정답·해설 비공개 원칙이 우선한다.
-const NEG_Q = /옳지 않은|틀린|아닌/;
-function plainText(s){
-  return String(s == null ? '' : s)
-    .replace(/<br\s*\/?>/gi, ' ').replace(/<[^>]*>/g, '')
-    .replace(/&nbsp;/gi, ' ').replace(/&lt;/gi, '<').replace(/&gt;/gi, '>').replace(/&amp;/gi, '&')
-    .replace(/\s+/g, ' ').trim();
-}
-function esc(s){
-  return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-}
-// 발문 HTML에서 ㄱ./ㄴ. 지문 줄을 라벨 → 전문으로 뽑는다 (마킹 DOM이 아니라 원문에서 읽는다)
-function stmtMap(qhtml){
-  const m = {};
-  String(qhtml || '').split(/<br\s*\/?>/i).forEach(seg=>{
-    const t = plainText(seg);
-    const g = t.match(/^([ㄱㄴㄷㄹㅁㅂ])\.\s*(.+)$/);
-    if(g && !m[g[1]]) m[g[1]] = t;
-  });
-  return m;
-}
-// 조합형 지문의 참·거짓: 정답 조합에 그 라벨이 있는가 × 발문이 부정형인가
-function comboVerdict(item, label){
-  const combo = plainText((item.opts || [])[item.answer]);
-  const inCombo = combo.split(/[^ㄱ-ㅎ]+/).filter(Boolean).indexOf(label) >= 0;
-  const neg = NEG_Q.test(plainText(String(item.q || '').split(/<br\s*\/?>/i)[0]));
-  return { truth: neg ? !inCombo : inCombo,
-           why: '정답 조합 ' + combo + ' · ' + (neg ? '부정형' : '긍정형') + ' 발문' };
-}
-// 한 문항의 ? 마킹을 DOM 순서(지문 → 보기)로 모은다
-function collectMarks(qi){
-  const item = QUESTIONS[qi];
-  const card = document.getElementById('card-' + qi);
-  const out = [];
-  if(!card || !item) return out;
-  const sm = stmtMap(item.q), labels = Object.keys(sm);
-  card.querySelectorAll('.ox-mark').forEach((b, i)=>{
-    if(markStateOf(b) !== 'q') return;
-    const lb = b.dataset.l || labels[i] || '';
-    out.push({ kind: 'stmt', label: lb, text: sm[lb] || (lb + '.') });
-  });
-  card.querySelectorAll('.optox').forEach(b=>{
-    if(markStateOf(b) !== 'q') return;
-    const oi = +b.dataset.o;
-    if(oi < 0){ out.push({ kind: 'ox', text: plainText(item.q) }); return; }   // OX형 문항 플래그
-    out.push({ kind: 'opt', oi: oi, text: plainText((item.opts || [])[oi]) });
-  });
-  return out;
-}
-// payload용 — qi → 텍스트 배열. 미응답 항목은 buildPayload가 축약형으로 떨궈 자연히 빠진다.
-function collectUncertain(){
-  const m = {};
-  QUESTIONS.forEach((item, qi)=>{
-    const marks = collectMarks(qi);
-    if(marks.length) m[qi] = marks.map(x => x.text);
-  });
-  return m;
-}
-function qmCard(qi, marks){
-  const item = QUESTIONS[qi];
-  const lines = marks.map(mk=>{
-    let v, cls, why = '';
-    if(mk.kind === 'opt'){
-      const ok = mk.oi === item.answer;
-      v = ok ? '✅ 정답 보기' : '❌ 오답 보기'; cls = ok ? 'ok' : 'no';
-    } else if(mk.kind === 'ox'){
-      const ans = plainText((item.opts || [])[item.answer]);
-      v = '정답 ' + ans; cls = ans === 'O' ? 'ok' : 'no';
-    } else {
-      const c = comboVerdict(item, mk.label);
-      v = c.truth ? '⭕ 참인 지문' : '❌ 거짓 지문'; cls = c.truth ? 'ok' : 'no'; why = c.why;
-    }
-    return '<div class="qm-line"><span class="qm-txt">' + esc(mk.text) + '</span>'
-      + '<b class="qm-v ' + cls + '"' + (why ? ' title="' + esc(why) + '"' : '') + '>' + v + '</b></div>';
-  }).join('');
-  return '<div class="qm-item" data-q="' + qi + '">'
-    + '<div class="qm-head"><span>Q' + (qi + 1) + ' · ' + esc(item.cat) + '</span>'
-    + '<a class="qm-jump" href="#card-' + qi + '">문항으로 ↗</a></div>'
-    + lines
-    + '<div class="qm-expl">' + item.expl + '<span class="src">📄 출처: ' + item.src + '</span></div>'
-    + '</div>';
-}
-function renderQmarks(){
-  const old = document.getElementById('qmarks');
-  if(old) old.remove();
-  let n = 0; const cards = [];
-  QUESTIONS.forEach((item, qi)=>{
-    if(!GRADED[qi]) return;                    // 미응답(중간제출)은 다음 회차로 넘긴다
-    const marks = collectMarks(qi);
-    if(!marks.length) return;
-    n += marks.length;
-    cards.push(qmCard(qi, marks));
-  });
-  if(!n) return;                               // 0개면 섹션 자체를 만들지 않는다
-  const sec = document.createElement('section');
-  sec.id = 'qmarks';
-  sec.innerHTML = '<div class="qm-title">❓ 확신 없던 것 ' + n + '개 — 해설 모음</div>'
-    + '<div class="qm-note">찍어서 맞은 것은 다음 회차에 틀린다 — 여기부터 다시 읽는다</div>'
-    + cards.join('');
-  const r = document.getElementById('result');
-  r.insertAdjacentElement('afterend', sec);
-}
-/*__QMARKS_END__*/
-
-
 function grade(isPartial){
   const answered = QUESTIONS.map((q, qi)=> isAnswered(qi));
   if(isPartial){
@@ -1132,7 +1138,7 @@ function grade(isPartial){
     graded = true;
   }
   const built = buildPayload(QUESTIONS, selected, QUIZ_DATE, new Date().toISOString(),
-                             SCHEMA_VERSION, isPartial ? answered : null, collectUncertain());
+                             SCHEMA_VERSION, isPartial ? answered : null);
   LAST_PAYLOAD = built.payload;
   QUESTIONS.forEach((item, qi)=>{
     if(GRADED[qi]) return;                       // 이미 확정된 문항은 재채점하지 않는다(결과 고정)
@@ -1141,7 +1147,6 @@ function grade(isPartial){
     unmarkSkipped(qi);
     applyGrade(qi);
   });
-  renderQmarks();                                // ❓ 물음표 모음 — 채점 확정된 문항의 ?만
   const r = document.getElementById('result');
   document.getElementById('score').textContent = built.score;
   document.getElementById('total').textContent = ' / ' + built.payload.total;
@@ -1195,6 +1200,7 @@ function grade(isPartial){
     dn.insertAdjacentElement('afterend', bd);
     diagUpdate();
   }
+
   r.scrollIntoView({behavior:'smooth', block:'center'});
 }
 // 저장(다운로드)이 끝난 시점 — 전체 제출이면 진행 저장분을 버리고, 중간 제출이면 이어서 풀 수 있게 남긴다

@@ -3,7 +3,8 @@
 """
 engine/rerender_quiz.py — 이미 생성된 문제지를 **현재 템플릿**으로 다시 렌더한다 (템플릿 업그레이드용, 2026-09-02)
 
-  python3 rerender_quiz.py --exam gongin|bupsa1|bupsa2 --kind daily|retry --date YYYY-MM-DD [--root ROOT] [--dry-run]
+  python3 rerender_quiz.py --exam gongin|bupsa1|bupsa2 --kind daily|retry --date YYYY-MM-DD
+                           [--root ROOT] [--dry-run]
 
 문항(QUESTIONS 배열)·META_LINE·TAGS_HTML·ALERT_HTML은 기존 HTML에서 그대로 뽑아 쓰고, 나머지 토큰은
 exams.json에서 채운다. 문항 내용·정답 위치는 손대지 않는다(채점 payload 동일 — tests/payload_regression 근거).
@@ -118,7 +119,6 @@ def main(argv=None):
         raise SystemExit("❌ 구조 검사 실패 — 재렌더하지 않음 (기존 파일 유지)")
     if bad:
         print("↪ 생성 당시 규칙 차이로 걸린 검사(허용):", ", ".join(c.get("id") for c in bad))
-
     if a.dry_run:
         print("✅ 드라이런 통과 (쓰지 않음): %s" % src)
         return 0
