@@ -22,6 +22,10 @@ Downloads 는 불변, 원장 갱신은 build_ledger.py 에 위임).
 소비자: engine/render_quiz.py (plan 계약 — longrev_picks[].path/age_days, monthly_block
         확정본, stage · rest · alert_html · monthly_src_range · due_backlog).
 
+💬 단답 코멘트(2026-09-10): 원장 `comments` 블록을 plan 으로 옮긴다 — retry `picks[].comments`(개념별
+   최신 ≤3) · daily `recent_comments`(최근 14일 ≤30, 0건이면 키 없음) · weekly `comments_week`(최근 7일).
+   **주석 전용**이라 쿼터·듀 큐 선정·승격 판정에는 일절 쓰지 않는다(AI의 조준 각도 재료).
+
 표준 라이브러리만 사용(python 3.10). 종료 코드는 항상 0(종료 사유는 plan.status).
 """
 
@@ -110,6 +114,43 @@ def js_eval(expr, env):
     if m:
         s = "(%s) if (%s) else (%s)" % (m.group(2), m.group(1), m.group(3))
     return eval(s, {"__builtins__": {}}, dict(env))              # noqa: S307
+
+
+# ────────────────────────────────────────────────── 💬 단답 코멘트 (2026-09-10)
+#   원장 `comments` 블록(build_ledger.py)을 plan 으로 옮기는 얇은 층이다.
+#   코멘트는 **주석 전용** — 쿼터·듀 큐 선정·승격 판정 어디에도 쓰지 않고,
+#   AI가 다음 문항의 '조준 각도'로 참고할 재료로만 전달한다.
+
+def canon(s):
+    """원장 comments.byConcept 의 키 규칙과 동일 — 공백 정규화 후 공백·`/` 제거."""
+    return re.sub(r"[\s/]+", "", re.sub(r"\s+", " ", str(s or "")).strip())
+
+
+def comments_cfg(cfg):
+    return cfg.get("_comments") or {}
+
+
+def comments_by_concept(ledger, key, keep):
+    """개념 하나의 최근 코멘트 ≤keep개(최신순). 없으면 빈 리스트."""
+    if not ledger or keep <= 0:
+        return []
+    by = ((ledger.get("comments") or {}).get("byConcept") or {})
+    return list(by.get(canon(key)) or [])[:keep]
+
+
+def comments_recent(ledger, date, window_days, keep):
+    """최근 window_days 일 코멘트 ≤keep개(최신순) — plan 전달용 축약 필드만 남긴다."""
+    if not ledger or keep <= 0:
+        return []
+    cutoff = (date - _dt.timedelta(days=window_days)).isoformat()
+    out = []
+    for c in ((ledger.get("comments") or {}).get("recent") or []):
+        if str(c.get("date") or "") < cutoff:
+            continue
+        out.append({k: c.get(k) for k in ("date", "conceptKey", "subject", "grade", "text", "q")})
+        if len(out) >= keep:
+            break
+    return out
 
 
 def append_runs_log(root, exam, kind, status, summary):
@@ -630,6 +671,14 @@ def do_daily(root, exam, ex, cfg, date, ing, warnings):
     plan = {"schema": SCHEMA, "status": "ready", "exam": exam, "kind": "daily", "date": ds,
             "root": str(root), "generated_at": _dt.datetime.now(KST).replace(microsecond=0).isoformat()}
 
+    # 💬 최근 코멘트 — 데일리는 원장을 출제 원천으로 쓰지 않는다. 각도 참고용 재료일 뿐이고
+    #    0건이면 키 자체를 만들지 않는다(재출제 강제 아님 — ai_brief 문장도 그때만 붙는다).
+    ccfg = comments_cfg(cfg)
+    recent_cm = comments_recent(ledger, date, int(ccfg.get("window_days_daily", 14)),
+                                int(ccfg.get("daily_recent_max", 30)))
+    if recent_cm:
+        plan["recent_comments"] = recent_cm
+
     out = qdir / ("%s.html" % ds)
     if out.exists():
         plan.update({"status": "exists", "quiz_path": str(out), "due_backlog": due_backlog,
@@ -770,6 +819,9 @@ def do_daily(root, exam, ex, cfg, date, ing, warnings):
         brief += " 신규 중 최대 %d문은 단답으로 치환한다." % q["sa_swap_max"]
     if q["mini"]:
         brief += " 미니답안형 %d문 고정 편성." % q["mini"]
+    if recent_cm:
+        brief += (" 최근 코멘트 %d건(recent_comments) — 신규·장기복습 문항이 같은 개념·같은 노트를"
+                  " 다룰 때 그 각도를 반영한다(재출제 강제 아님)." % len(recent_cm))
 
     plan.update({"quotas": q, "new_sources": new_srcs, "longrev_picks": picks,
                  "monthly_block": block, "monthly_src_range": src_range,
@@ -869,6 +921,10 @@ def do_retry(root, exam, ex, cfg, date, ing, warnings):
             sa_cap = 0
     promoted = 0
 
+    # 💬 pick 개념의 최근 코멘트(주석 전용) — 승격·문항 수·듀 큐 선정에는 관여하지 않는다.
+    cm_keep = int(comments_cfg(cfg).get("retry_by_concept_max", 3))
+    n_cm_picks = 0
+
     picks = []
     for d in picks_src:
         key = d.get("conceptKey")
@@ -893,8 +949,12 @@ def do_retry(root, exam, ex, cfg, date, ing, warnings):
                 "errorCauses": d.get("errorCauses") or {},
                 "samples": [{k: s.get(k) for k in
                              ("date", "type", "q", "expl", "myAnswer", "correct",
-                              "missedKeys", "errorCause", "causeNote")} for s in samples],
+                              "missedKeys", "errorCause", "causeNote", "comment")} for s in samples],
                 "related_notes": rel}
+        cm = comments_by_concept(ledger, key, cm_keep)     # 💬 있을 때만 키 추가
+        if cm:
+            item["comments"] = cm
+            n_cm_picks += 1
         if all_sa:
             item["promote_sa"] = None                    # 전 문항 단답 트랙 — 승격 개념 없음
         else:
@@ -912,6 +972,9 @@ def do_retry(root, exam, ex, cfg, date, ing, warnings):
              % (ex.get("name"), ds, due_total, len(picks)))
     brief += (" 단답 문항에 evidence{note, quote} 를 달면 렌더가 원문 대조로 검사한다 —"
               " note 는 samples 근거면 'samples', 노트 근거면 related_notes 의 파일명.")
+    if n_cm_picks:
+        brief += (" 코멘트 있는 pick %d개 — 코멘트가 지적한 아쉬운 점(예: 순서·예외·판례 문구)을"
+                  " 이번 문항의 조준 각도로 삼는다(missedTop 다음 우선순위)." % n_cm_picks)
     if all_sa:
         brief += " 이 트랙은 전 문항 단답이라 승격 개념이 없다."
     elif promoted:
@@ -923,10 +986,10 @@ def do_retry(root, exam, ex, cfg, date, ing, warnings):
                  "promoted": (None if all_sa else promoted),
                  "ingest": ing, "warnings": warnings, "ai_brief": brief})
 
-    summary = ("재도전 %d문 (상한 %d · 듀 %d · 잔여 %d) · 승격 %s · pick 플래그 %s"
+    summary = ("재도전 %d문 (상한 %d · 듀 %d · 잔여 %d) · 승격 %s · pick 플래그 %s · 코멘트 pick %d"
                % (len(picks), cap, due_total, due_total - len(picks),
                   "전 문항 단답" if all_sa else "%d/%d" % (promoted, sa_cap),
-                  "있음(%d)" % len(flagged) if flagged else "없음(상위 N 폴백)"))
+                  "있음(%d)" % len(flagged) if flagged else "없음(상위 N 폴백)", n_cm_picks))
     return plan, work / ("%s.plan.json" % ds), summary, None
 
 
@@ -1014,7 +1077,7 @@ def do_weekly(root, exam, ex, cfg, date, ing, warnings):
                               "errorCauses": r.get("errorCauses") or {},
                               "samples": [{k: s.get(k) for k in
                                            ("date", "type", "q", "expl", "myAnswer", "correct",
-                                            "missedKeys", "errorCause", "causeNote")}
+                                            "missedKeys", "errorCause", "causeNote", "comment")}
                                           for s in (r.get("samples") or [])]})
     last_week.sort(key=lambda x: (not x["repeat"], x["subject"] or "", x["conceptKey"] or ""))
 
@@ -1080,13 +1143,27 @@ def do_weekly(root, exam, ex, cfg, date, ing, warnings):
                     "schedule_days_retry": ex.get("schedule_days_retry"),
                     "not_run": not_run, "note": log_note}
 
+    # ── 💬 이번 주 코멘트 (주석 전용 — 보고서 ⑩ 표의 유일한 원천)
+    ccfg = comments_cfg(cfg)
+    cm_cut = (date - _dt.timedelta(days=int(ccfg.get("window_days_weekly", 7)))).isoformat()
+    cm_week = [c for c in ((ledger.get("comments") or {}).get("recent") or [])
+               if cm_cut <= str(c.get("date") or "")[:10] < ds]
+    cm_week = [{k: c.get(k) for k in ("date", "conceptKey", "subject", "grade", "retry", "text", "q")}
+               for c in cm_week][:int(ccfg.get("recent_keep", 100))]
+
     brief = ("%s 주간리포트(%s) — 지난 7일 %s. 원장 통계·지난주 오답 %d개(2회+ %d개)·"
              "졸업 %d·졸업후보 %d·상습 %d·듀 큐 %d개가 사실 원천이다. 여기 없는 수치는 쓰지 않는다."
              % (ex.get("name"), ds, "%s~%s" % (week[-1], week[0]), len(last_week),
                 sum(1 for x in last_week if x["repeat"]), len(graduated), len(grad_cand),
                 len(chronic), len(due)))
+    if cm_week:
+        brief += (" 💬 이번 주 단답 코멘트 %d건(comments_week) — 구성 ⑩ '💬 코멘트' 표로 그대로 싣는다"
+                  "(열 고정 `날짜 | 개념 | ⭕/❌ | 코멘트 | 이번 주 재출제 여부`, 재출제 여부는 같은"
+                  " conceptKey가 last_week_wrong·due_top8에 있는지로 판정). 코멘트는 주석 전용이라"
+                  " 점수·스케줄 수치에는 반영하지 않는다." % len(cm_week))
 
-    plan.update({"week": {"from": week[-1], "to": week[0], "dates": sorted(week)},
+    plan.update({"comments_week": cm_week,
+                 "week": {"from": week[-1], "to": week[0], "dates": sorted(week)},
                  "stats": stats, "due_top8": due[:8],
                  "expectation": {"daily": daily_rows, "retry": retry_rows,
                                  "missing": missing, "alert": alert,
@@ -1097,10 +1174,10 @@ def do_weekly(root, exam, ex, cfg, date, ing, warnings):
                  "runs": runs_summary, "ingest": ing, "warnings": warnings, "ai_brief": brief})
 
     summary = ("주간 사실 수집 — 제출 %s · 평균 %s/%s · 지난주 오답 %d(2회+ %d) · 졸업 %d/후보 %d · "
-               "상습 %d · 듀 %d · 결과 미도착 %d%s · 표식 노트 %d(★★%d ★%d) · 미실행일 %s"
+               "상습 %d · 듀 %d · 코멘트 %d · 결과 미도착 %d%s · 표식 노트 %d(★★%d ★%d) · 미실행일 %s"
                % (stats.get("submissions"), stats.get("avgScore"), stats.get("avgTotal"),
                   len(last_week), sum(1 for x in last_week if x["repeat"]), len(graduated),
-                  len(grad_cand), len(chronic), len(due), len(missing),
+                  len(grad_cand), len(chronic), len(due), len(cm_week), len(missing),
                   " ⚠경보" if alert else "", marks_stat["notes"], tot.get("★★", 0), tot.get("★", 0),
                   (", ".join(not_run) if not_run else (log_note or "없음"))))
     return plan, work / ("%s.weekly.plan.json" % ds), summary, None

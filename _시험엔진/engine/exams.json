@@ -39,6 +39,15 @@
     "orphan_exclude": true,
     "orphan_policy": "timesWrong==0 개념(오답 이벤트 없이 재도전 정답만 있는 것)은 듀 큐에서 제외 — 2026-09-02 신설"
   },
+  "_comments": {
+    "_note": "2026-09-10 신설 — 💬 단답 코멘트(템플릿 v2.2 results[].comment) 수집·전달 파라미터. 시험 공통. 코멘트는 주석 전용이라 FSRS 스케줄·상태·카운터와 무관하다 — 다음 출제의 조준 각도와 주간리포트 표시에만 쓴다.",
+    "window_days_daily": 14,
+    "window_days_weekly": 7,
+    "by_concept_keep": 5,
+    "recent_keep": 100,
+    "daily_recent_max": 30,
+    "retry_by_concept_max": 3
+  },
   "_marks": {
     "anchor_regex": "^\\s*(?:[-*]|\\d+\\.)?\\s*(★★|★|n:)",
     "warn_regex": "⚠️?|확인 ?필요",

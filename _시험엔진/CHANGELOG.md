@@ -2,6 +2,15 @@
 
 > 실행자는 이 파일을 읽지 않는다. 사고·교훈·개정 이력을 여기에만 남긴다(최신이 위). 각 항목: 날짜 · 무엇 · 왜 · 영향 파일.
 
+## 2026-09-10 — 💬 단답 코멘트 (템플릿 v2.2 → 원장 → 다음 출제 플랜)
+
+- **무엇(템플릿 v2.2)**: 단답 자가채점(⭕·❌) 직후 **≤120자 코멘트 칸**(`.sa-comment`)이 열린다. 적은 문항만 payload `results[].comment`로 실리고(빈 칸이면 키 자체가 없어 종전 제출과 payload 문자열 단위 동일 · `wrong[]`엔 넣지 않음 · 중간제출 미응답분 제외), 진행 저장·복원에 포함되며 채점 후에는 잠긴다. `#result` 요약에 `💬 코멘트 N개` 1줄. `tests/template.test.js` 37→**47건**.
+- **무엇(엔진)**: 원장이 **모든 결과 항목**(⭕ 비재도전 포함)의 코멘트를 모은다 — 최상위 `comments{count, recent[≤100], byConcept{개념:[≤5]}}` · `dueQueue[].commentCount/lastComment` · `samples[].comment`(있을 때만 키) · md 보고서 `## 💬 코멘트 (최근 14일)` 표. 플랜으로는 retry `picks[].comments`(개념별 최신 ≤3) · daily `recent_comments`(최근 14일 ≤30, 0건이면 키 없음) · weekly `comments_week`(최근 7일)로 흐르고, 각 `ai_brief`에 조준 문장 1줄(우선순위 missedTop → **comments** → causeTop 각도)이 붙는다. 파라미터는 `exams.json._comments` 신설(시험 공통).
+- **왜**: 채점 직후 1초의 자기진단("요건 순서를 반대로 씀")이 가장 정확한 조준 정보인데, 종전에는 ❌의 missedKeys/errorCause만 남고 **⭕로 맞힌 문항의 아쉬움은 통째로 버려졌다**(⭕ 비재도전은 이벤트 자체가 없어 원장에 흔적이 없다). 사용자 결정: 코멘트는 **주석 전용 — FSRS 스케줄·상태·카운터에 영향 0**. 재출제를 강제하지 않고 "다음에 그 개념이 나올 때의 각도"와 주간리포트 표시로만 쓴다.
+- **주석 전용 보증**: 코멘트는 이벤트 스트림(w/c)과 분리된 리스트에 모으고 상태·FSRS 계산이 끝난 뒤에 블록을 만든다. E2E가 **코멘트 유무만 다른 두 결과 세트로 원장을 두 번 빌드해** comments 블록·lastComment/commentCount·samples[].comment를 뺀 나머지가 동일함을 assert한다(망각위험 R만 허용오차 0.002 — 실행 시각 함수). `build_ledger.py --v3-compat`이면 `PATCH["comments"]`가 꺼져 `comments` 키 자체가 없다(프로덕션 복사본에서 v3.1 출력과 바이트 동일 재확인).
+- **영향 파일**: `engine/quiz_template.html`(v2.2) · `engine/build_ledger.py`(코멘트 수집·`PATCH["comments"]`) · `engine/prepare_quiz.py`(daily/retry/weekly 플랜 필드·brief) · `engine/exams.json`(`_comments`) · `engine/tests/e2e_smoke.py`(seed-ledger 픽스처에 코멘트 3건 + `comment_contract` A/B 회귀) · `spec/문항작성.md`·`오답퀴즈.md`·`데일리퀴즈.md`·`주간리포트.md`(구성 ⑩)·`프로파일_법무사2차.md` · `README.md`.
+- **검증**: `tests/run.sh` 98건(payload 10·render 31·template 47·apkg 10) + E2E 10케이스 전부 PASS. 프로덕션 복사본 재빌드에서 코멘트 0건(`count 0`)·기존 원장과 그 외 전부 동일.
+
 ## 2026-09-09 — 템플릿 v2.1: ? 마킹 + ❓ 물음표 해설 모음
 
 - **무엇**: 보기·ㄱㄴㄷ 지문 마킹을 4상태(`· → O → X → ?`)로 확장(`?` 호박색, 흐림 없음). OX형은 보기 대신 **문항 ? 플래그**(·↔?). 채점(전체·중간) 시 점수 요약 아래 **`❓ 확신 없던 것 N개 — 해설 모음`** 섹션: ? 항목마다 판정(정답/오답 보기 · 참/거짓 지문 — 정답 조합×부정형 발문으로 산출, 툴팁에 근거 · OX는 정답 O/X)과 그 문항 해설·출처를 한자리에, 문항 앵커 링크. 미응답(중간제출) 문항의 ?는 제외. payload는 ?가 있을 때만 `results[].uncertain[]`·`uncertainCount` 추가(없으면 문자열 단위 불변). 진행 저장·복원에 `?` 포함.

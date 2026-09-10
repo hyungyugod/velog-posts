@@ -765,6 +765,161 @@ t('④ ? 없는 제출 payload는 O·X만 찍은 제출과 문자열 단위로 �
   assert.ok(run(false).indexOf('uncertain') < 0, 'uncertain 키가 새어나옴');
 });
 
+// ══ ⑦ 💬 단답 코멘트 (v2.2) ═════════════════════════════════════
+// 주석 전용 칸 — 정오·진행률·FSRS 스케줄과 무관하고, 적은 것만 results[].comment로 실린다.
+const cmOf = (doc, qi) => doc.querySelector('#card-' + qi + ' .sa-comment');
+const cmTaOf = (doc, qi) => doc.querySelector('#card-' + qi + ' .sa-cminput');
+
+t('⑦ 코멘트 칸은 자가채점 뒤에 열린다 (⭕·❌ 둘 다) · 위치는 교정칸 다음·해설 앞', () => {
+  const { doc, win } = page(null);
+  const c11 = doc.getElementById('card-11');
+  assert.ok(cmOf(doc, 11).hidden, '자가채점 전인데 코멘트 칸이 열려 있음');
+  H.setVal(c11.querySelector('.sa-input'), BASE[11].answer);
+  H.click(c11.querySelector('.sa-reveal'));
+  assert.ok(cmOf(doc, 11).hidden, '정답 공개만으로 코멘트 칸이 열림');
+  H.click(c11.querySelectorAll('.sa-grade button')[0]);          // ⭕
+  assert.ok(!cmOf(doc, 11).hidden, '⭕ 뒤에 코멘트 칸이 닫혀 있음');
+  assert.ok(c11.querySelector('.sa-fix').hidden, '⭕인데 교정칸이 열림(= 코멘트가 정답칸 바로 아래)');
+
+  saWrong(doc, BASE, 6);                                          // ❌ 경로
+  const c6 = doc.getElementById('card-6');
+  assert.ok(!cmOf(doc, 6).hidden, '❌ 뒤에 코멘트 칸이 닫혀 있음');
+  assert.ok(!c6.querySelector('.sa-fix').hidden, '❌인데 교정칸이 닫힘');
+  const kids = [].slice.call(c6.children);
+  assert.ok(kids.indexOf(c6.querySelector('.sa-comment')) > kids.indexOf(c6.querySelector('.sa-fix')),
+    '코멘트가 교정칸보다 앞에 있음');
+  assert.ok(kids.indexOf(c6.querySelector('.sa-comment')) < kids.indexOf(c6.querySelector('.expl')),
+    '코멘트가 해설보다 뒤에 있음');
+  win.close();
+});
+
+t('⑦ 객관식 카드에는 코멘트 칸이 없다 (단답 카드에만 1개)', () => {
+  const { doc, win } = page(null);
+  BASE.forEach((q, qi) => {
+    assert.strictEqual(doc.querySelectorAll('#card-' + qi + ' .sa-comment').length,
+      q.type === '단답' ? 1 : 0, 'q' + qi + '(' + q.type + ') 코멘트 칸 수');
+  });
+  win.close();
+});
+
+t('⑦ 입력 → selected[qi].comment 정규화(양끝·연속 공백) · 글자 수 표시 · 120자 상한', () => {
+  const { doc, win } = page(null);
+  saOk(doc, BASE, 11);
+  const ta = cmTaOf(doc, 11);
+  assert.strictEqual(ta.getAttribute('maxlength'), '120');
+  assert.strictEqual(doc.querySelector('#card-11 .sa-cmcount').textContent, '0/120');
+  H.setVal(ta, '  요건   순서를  반대로 씀 ');
+  assert.strictEqual(state(win, 'selected[11]').comment, '요건 순서를 반대로 씀', '정규화 실패');
+  assert.strictEqual(doc.querySelector('#card-11 .sa-cmcount').textContent, ta.value.length + '/120');
+  H.setVal(ta, '   ');
+  assert.strictEqual(state(win, 'selected[11]').comment, '', '공백만 남겼는데 코멘트로 잡힘');
+  win.close();
+});
+
+t('⑦ 전체 제출 payload — 코멘트 적은 문항에만 comment 키 · wrong[]엔 없음 · 요약 1줄', () => {
+  const { doc, win } = page(null);
+  answerFirst7(doc, BASE); answerLast5(doc, BASE);      // q6 단답 ❌ · q11 단답 ⭕
+  H.setVal(cmTaOf(doc, 6), '연체료를  통째로 빠뜨림');
+  H.click(doc.getElementById('submitBtn'));
+  passDiag(doc);
+  const p = state(win, 'LAST_PAYLOAD');
+  assert.strictEqual(p.results[6].comment, '연체료를 통째로 빠뜨림');
+  const withCm = p.results.map((r, i) => ('comment' in r) ? i : -1).filter(i => i >= 0);
+  assert.deepStrictEqual(withCm, [6], '코멘트 없는 문항에 comment 키가 붙음');
+  assert.ok(p.wrong.every(w => !('comment' in w)), 'wrong[](v1 하위호환)에 comment가 샘');
+  const k = Object.keys(p.results[6]);
+  assert.ok(k.indexOf('comment') > k.indexOf('missedKeys'), 'comment는 종전 단답 키 뒤');
+  assert.strictEqual(doc.getElementById('cmnote').hidden, false);
+  assert.strictEqual(doc.getElementById('cmnote').textContent, '💬 코멘트 1개');
+  win.close();
+});
+
+t('⑦ 코멘트 0개 제출 payload는 코멘트를 건드리지 않은 제출과 문자열 단위로 동일하다', () => {
+  const run = (touch) => {
+    const { doc, win } = page(null);
+    answerFirst7(doc, BASE); answerLast5(doc, BASE);
+    if (touch) { H.setVal(cmTaOf(doc, 6), '  '); H.setVal(cmTaOf(doc, 11), ''); }   // 만졌지만 빈 칸
+    H.click(doc.getElementById('submitBtn'));
+    passDiag(doc);
+    const p = state(win, 'LAST_PAYLOAD');
+    const cmHidden = doc.getElementById('cmnote').hidden;
+    win.close();
+    p.generatedAt = 'X';
+    return { json: JSON.stringify(p, null, 2), cmHidden };
+  };
+  const a = run(false), b = run(true);
+  assert.strictEqual(a.json, b.json, '빈 코멘트가 payload 문자열을 흔들었다');
+  assert.ok(a.json.indexOf('comment') < 0, 'comment 키가 새어나옴');
+  assert.ok(a.cmHidden && b.cmHidden, '코멘트 0개인데 결과 요약에 코멘트 줄이 뜸');
+});
+
+t('⑦ 중간 제출 — 답한 문항의 코멘트만 실린다 (미응답 축약형엔 키 자체가 없다)', () => {
+  const { doc, win } = page(null);
+  answerFirst7(doc, BASE);                              // q6 단답 ❌ 포함 · q11 단답은 미응답
+  H.setVal(cmTaOf(doc, 6), '예외 사유를 빠뜨림');
+  assert.ok(cmOf(doc, 11).hidden, '자가채점도 안 한 문항에 코멘트 칸이 열림');
+  H.click(doc.getElementById('partialBtn'));
+  passDiag(doc);
+  const p = state(win, 'LAST_PAYLOAD');
+  assert.strictEqual(p.partial, true);
+  assert.strictEqual(p.results[6].comment, '예외 사유를 빠뜨림');
+  assert.ok(p.results[11].skipped, 'q11이 미응답 축약형이 아님');
+  assert.ok(!('comment' in p.results[11]), '미응답 축약형에 comment');
+  assert.strictEqual(doc.getElementById('cmnote').textContent, '💬 코멘트 1개');
+  win.close();
+});
+
+t('⑦ 진행 저장·복원 왕복 — 값·글자수·열린 상태 · 채점된 문항은 readOnly', () => {
+  const store = makeStore();
+  const a = page(store);
+  answerFirst7(a.doc, BASE);
+  H.setVal(cmTaOf(a.doc, 6), '판례 문구가 흐릿함');
+  saOk(a.doc, BASE, 11);
+  H.setVal(cmTaOf(a.doc, 11), '결론은 맞았는데 근거 조문을 못 댐');
+  const snap = state(a.win, 'snapshot()');
+  assert.strictEqual(snap.sel[6].comment, '판례 문구가 흐릿함', 'snapshot에 코멘트 미기록(❌ 경로)');
+  assert.strictEqual(snap.sel[11].comment, '결론은 맞았는데 근거 조문을 못 댐', 'snapshot에 코멘트 미기록(⭕ 경로)');
+  H.click(a.doc.getElementById('partialBtn'));          // 중간 제출 → 저장분 유지
+  passDiag(a.doc);
+  a.win.close();
+
+  const b = page(store);
+  const ta6 = cmTaOf(b.doc, 6), ta11 = cmTaOf(b.doc, 11);
+  assert.strictEqual(ta6.value, '판례 문구가 흐릿함', '코멘트 복원 실패(❌ 경로)');
+  assert.strictEqual(ta11.value, '결론은 맞았는데 근거 조문을 못 댐', '코멘트 복원 실패(⭕ 경로)');
+  assert.strictEqual(state(b.win, 'selected[6]').comment, '판례 문구가 흐릿함');
+  assert.ok(!cmOf(b.doc, 6).hidden && !cmOf(b.doc, 11).hidden, '복원 후 코멘트 칸이 닫혀 있음');
+  assert.strictEqual(b.doc.querySelector('#card-6 .sa-cmcount').textContent, ta6.value.length + '/120');
+  assert.ok(ta6.readOnly && ta11.readOnly, '채점 상태로 복원됐는데 코멘트가 열려 있음');
+  assert.ok(cmOf(b.doc, 6).classList.contains('locked'), '복원된 코멘트에 잠금 표시(.locked) 없음');
+  b.win.close();
+});
+
+t('⑦ 채점 후 — 빈 코멘트 칸은 사라지고 적은 칸은 남아 잠긴다 (더는 바뀌지 않는다)', () => {
+  const { doc, win } = page(null);
+  answerFirst7(doc, BASE); answerLast5(doc, BASE);
+  H.setVal(cmTaOf(doc, 6), '요건 순서를 반대로 씀');   // q11은 빈 칸으로 둔다
+  H.click(doc.getElementById('submitBtn'));
+  passDiag(doc);
+  assert.ok(!cmOf(doc, 6).hidden, '적은 코멘트가 채점 후 사라짐');
+  assert.ok(cmOf(doc, 6).classList.contains('locked'), '잠금 표시(.locked) 없음');
+  assert.ok(cmTaOf(doc, 6).readOnly, '채점 뒤에도 편집 가능');
+  assert.ok(cmOf(doc, 11).hidden, '빈 코멘트 칸이 채점 후에도 남음');
+  H.setVal(cmTaOf(doc, 6), '뒤늦게 고쳐 씀');
+  assert.strictEqual(state(win, 'selected[6]').comment, '요건 순서를 반대로 씀', '채점 후 코멘트가 바뀜');
+  win.close();
+});
+
+t('⑦ 템플릿 머리 주석에 v2.2 변경 1줄 · results[] 필드에 comment · 주석에 토큰 표기 없음', () => {
+  const raw = fs.readFileSync(path.join(H.ENGINE, 'quiz_template.html'), 'utf8');
+  const head = raw.slice(0, raw.indexOf('-->'));
+  const v22 = head.split('\n').filter(l => /-\s*v2\.2/.test(l));
+  assert.ok(v22.length >= 1, 'v2.2 변경 주석 없음');
+  assert.ok(/코멘트/.test(v22[0]), 'v2.2 주석 내용');
+  assert.ok(/comment/.test(head), 'results[] 필드 목록에 comment 미기재');
+  assert.strictEqual(head.match(/\{\{[A-Z0-9_]+\}\}/g), null, '주석에 토큰 표기가 있으면 잔존 검사에 걸린다');
+});
+
 // ══ 렌더러 연동 ═════════════════════════════════════════════════
 t('render_quiz.py 렌더 → 토큰 잔존 0 → jsdom에서 채점·중간제출까지 동작', () => {
   const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'hg-tpl2-'));

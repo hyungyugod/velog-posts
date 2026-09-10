@@ -1,0 +1,19 @@
+{
+ "schema": 1,
+ "status": "exists",
+ "exam": "bupsa2",
+ "kind": "daily",
+ "date": "2026-09-10",
+ "root": "/sessions/elegant-busy-edison/mnt/velog-posts",
+ "generated_at": "2026-09-10T09:28:46+09:00",
+ "quiz_path": "/sessions/elegant-busy-edison/mnt/velog-posts/법무사/2차/데일리퀴즈/2026-09-10.html",
+ "due_backlog": 35,
+ "ingest": {
+  "copied": 0,
+  "downloads": "mounted",
+  "ledger_exit": 0,
+  "ledger_summary": "상태: 상습 5 · 재도전중 13 · 졸업후보 17 | 🗓️ 듀 큐 35개(상위 12개 소비 · 졸업후보 예약 3칸): 형법 1-9 위법성 착오는 책임 단계, 정당한 이유 요구(R66%), 형법 1-2 작위의무 발생근거 6개(법계조선신사) → 보증인지위(R100%), 형법 1-3 구체적 위험범과 추상적 위험범의 판별식(R100%), 형법 1-7 부진정 결과적 가중범과 고의범의 죄수(R100%), 형법 1-8 싸움에서 정당방위가 인정될 수 있는 경우(R100%), 형법 공모이탈-영향력제거(R56%) | 과목별 약점 TOP3: 형법(65)"
+ },
+ "warnings": [],
+ "ai_brief": "오늘(2026-09-10) 데일리 문제지가 이미 있다 — 재생성 금지."
+}

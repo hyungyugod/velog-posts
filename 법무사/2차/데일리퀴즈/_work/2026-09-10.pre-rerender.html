@@ -13,7 +13,7 @@
   - 결과 JSON 스키마 v2: results[](전 문항 정오 기록) + wrong[](v1 하위호환).
     results[] 필드: id·cat·type·q·options·myAnswer·correct·expl·src·conceptKey·
       correctAnswered·retryOf(+exam·monthlyOf·calc·selfGraded·keywords·fixTyped·
-      missedKeys·comment·errorCause·causeNote 조건부)
+      missedKeys·errorCause·causeNote 조건부)
   - 문항 필드 계약: 공통 type·cat·q·expl·src·conceptKey (+exam·sub·retryOf·monthlyOf)
     객관식(일반|조합|판례|사례|개수|계산|OX): opts[] · answer(정답 인덱스)
     계산형: calc{expr,expected}  /  단답형: answer(모범답)·keywords[]·opts 없음
@@ -32,21 +32,20 @@
   - v2.1 ④: 🤷 모르겠음(무답) 문항은 채점 후 카드 테두리를 무지개 그라데이션 + 헤더 배지로 표시(복원 경로 동일).
     payload에는 ?가 있을 때만 results[].uncertain·최상위 uncertainCount가 붙는다(없으면 종전과 동일).
     제출 전엔 접혀 있고 채점(전체·중간·복원) 시 자동으로 열리며 결과 요약에 앵커 1줄. 채점·payload와 무관하다.
-  - v2.2(2026-09-10): 💬 단답 코멘트 — 자가채점(⭕·❌) 직후 120자 코멘트 칸이 열린다. 주석 전용이라 정오·진행률·FSRS 스케줄과 무관하고, 적은 게 있는 문항만 results[].comment로 실려(빈 칸이면 키 자체가 없어 payload는 종전과 문자열 단위로 동일) 다음 출제의 조준 각도가 된다. wrong[]에는 넣지 않는다.
 ═══════════════════════════════════════════════════════════════ -->
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{{TITLE}} · {{QUIZ_DATE}}</title>
+<title>⚖️ 법무사 2차 데일리 문제지 · 2026-09-10</title>
 <style>
   :root{
     --bg:#0f1115; --card:#191c23; --card2:#20242d; --line:#2c313b;
     --txt:#e7e9ee; --sub:#9aa3b2;
-    --accent:{{ACCENT}}; --accent2:{{ACCENT2}};
+    --accent:#7c9cff; --accent2:#ffd24a;
     /* 역할 고정색 — 시험별 accent/accent2 배치와 무관하게 항상 같은 자리에 같은 색이 온다 */
-    --warm:{{WARM}}; --cool:{{COOL}};
-    --onaccent:{{ON_ACCENT}}; --grad2:{{ACCENT_GRAD2}}; --revealhov:{{REVEAL_HOVER}};
+    --warm:#ffd24a; --cool:#7c9cff;
+    --onaccent:#10131c; --grad2:#5f7fe8; --revealhov:#1a2138;
     --ok:#34d399; --no:#f87171; --okbg:#10261d; --nobg:#2a1414;
     /* ? 마킹(확신 없음) 전용 호박색 — O 초록·X 빨강과 한눈에 갈린다 */
     --qm:#f5b942; --qmbg:#2b2312;
@@ -185,21 +184,6 @@
   .sa-etcinput:disabled{opacity:.7}
   .sa-fixbody{margin-top:12px;padding-top:11px;border-top:1px dashed var(--line)}
   .sa-fixbody[hidden]{display:none}
-  /* 💬 코멘트 — 자가채점 뒤에 열리는 주석 칸(채점·스케줄과 무관) */
-  .sa-comment{margin-top:11px;padding:11px 13px;border-radius:11px;
-    background:var(--card2);border:1px solid var(--line)}
-  .sa-comment[hidden]{display:none}
-  .sa-cmhead{font-size:13px;font-weight:700;color:var(--txt)}
-  .sa-cmhead span{font-weight:400;font-size:12px;color:var(--sub);margin-left:6px}
-  .sa-cminput{display:block;width:100%;max-width:100%;margin-top:8px;resize:vertical;
-    background:var(--card);color:var(--txt);border:1px solid var(--line);border-radius:9px;
-    padding:9px 11px;font-family:inherit;font-size:13.5px;line-height:1.6}
-  .sa-cminput:focus{outline:none;border-color:var(--accent)}
-  .sa-cminput:read-only{opacity:.75;cursor:default}
-  .sa-cmcount{margin-top:5px;font-size:11.5px;color:var(--sub);text-align:right;
-    font-variant-numeric:tabular-nums}
-  .sa-comment.locked{background:var(--card);border-style:dashed}
-  .sa-comment.locked .sa-cmhead,.sa-comment.locked .sa-cmhead span{color:var(--sub)}
   /* ── 객관식 오답 원인 진단 ── */
   .mcq-diag{margin-top:11px;padding:12px 13px;border-radius:11px;
     background:var(--nobg);border:1px solid var(--no)}
@@ -281,8 +265,6 @@
   .ring{font-size:46px;font-weight:900;margin:4px 0}
   .ring small{font-size:18px;color:var(--sub);font-weight:700}
   #rmsg{color:var(--sub);font-size:15px;margin-top:4px}
-  #cmnote{color:var(--sub);font-size:12.5px;margin-top:6px}
-  #cmnote[hidden]{display:none}
   #dlnote{font-size:12.5px;color:var(--warm);margin-top:12px}
   .copybtn{display:none;margin-top:12px;padding:10px 16px;border-radius:10px;border:1px solid var(--line);
     background:var(--card2);color:var(--txt);font-weight:700;cursor:pointer;font-size:13px}
@@ -293,11 +275,11 @@
 <body>
 <div class="wrap">
   <header>
-    <div class="eyebrow">{{EYEBROW}}</div>
-    <h1>{{H1}}</h1>
-    <div class="meta">{{META_LINE}}</div>
-    <div class="tags">{{TAGS_HTML}}</div>
-    <div class="alertbanner">{{ALERT_HTML}}</div>
+    <div class="eyebrow">DAILY QUIZ · 법무사 2차</div>
+    <h1>오늘의 인출 문제지</h1>
+    <div class="meta">2026년 9월 10일 (목) · S2 단답 12문항(미니답안 2) · 장기복습 3(⏪) · 한달전 0(🔄)</div>
+    <div class="tags"><span class="tag">⚖️ 법무사 2차</span><span class="tag">✍️ 단답 인출 12</span><span class="tag">⏪ 장기복습 3</span><span class="tag">📚 형법</span></div>
+    <div class="alertbanner"></div>
     <div class="restorebar" id="restoreBar" hidden></div>
   </header>
 
@@ -309,7 +291,6 @@
   <div id="result">
     <div class="ring"><span id="score">0</span><small id="total"> / 0</small></div>
     <div id="rmsg"></div>
-    <div id="cmnote" hidden></div>
     <div id="dlnote"></div>
     <button class="copybtn" id="copyBtn">📋 결과 JSON 복사 (다운로드 실패 대비)</button>
   </div>
@@ -320,23 +301,223 @@
   <button class="submit partial" id="partialBtn" disabled>✂ 여기까지 제출 (푼 것만 채점)</button>
 
   <div class="foot">
-    {{DESC_HTML}}
+    법무사 폴더의 날짜 정리본으로 자동 생성됩니다. 2차 과목은 전부 단답형 — 먼저 쓰고, 정답을 확인하세요.<br>제출 결과 JSON은 수거 → 법무사 오답 원장(FSRS)으로 반영됩니다.
   </div>
 </div>
 
 <script>
 const SCHEMA_VERSION = 2;
-const QUIZ_DATE = "{{QUIZ_DATE}}";
-const SUBJECT = "{{SUBJECT}}";
-const QUIZ_ID_SUFFIX = "{{QUIZ_ID_SUFFIX}}";
-const RESULT_PREFIX = "{{RESULT_PREFIX}}";
-const EXAM_DEFAULT = "{{EXAM_DEFAULT}}";
-const INBOX_NOTE = "{{INBOX_NOTE}}";
-const T_MCQ = {{T_MCQ}};
-const T_SA = {{T_SA}};
-const RESULT_MSGS = {{RESULT_MSGS}};
+const QUIZ_DATE = "2026-09-10";
+const SUBJECT = "법무사2차";
+const QUIZ_ID_SUFFIX = "";
+const RESULT_PREFIX = "법무사2차_오답_";
+const EXAM_DEFAULT = "2차";
+const INBOX_NOTE = "velog-posts/법무사/2차/claude_ox_오답/_inbox/";
+const T_MCQ = 72;
+const T_SA = 90;
+const RESULT_MSGS = ["만점. 이 페이스면 동차가 농담이 아니게 됩니다 ⚖️", "합격권. 틀린 개념만 해설 한 번 더 — 그게 오늘의 회독입니다.", "절반 이상. 단답에서 막힌 건 백지 인출감이 아직이라는 신호예요.", "흔들리는 개념이 보입니다. 해설 정독 후 다음 회차에서 재도전.", "괜찮아요. 인출 실패 + 피드백이 읽기보다 낫다는 게 연구 결론입니다."];
 const QUESTIONS = [
 /*__QUESTIONS_START__*/
+{
+ "type": "단답",
+ "exam": "2차",
+ "sub": "판별식",
+ "cat": "형법",
+ "q": "상상적 경합과 실체적 경합의 구별 기준을 밝히고, 그에 따라 처벌이 어떻게 달라지는지 서술하시오.",
+ "answer": "양자는 행위가 1개인가 수개인가에 따라 구별된다. 행위가 1개이면 상상적 경합으로서 실질적 수죄이나 과형상 일죄이므로 가장 무거운 죄에 정한 형으로 처벌한다(형법 제40조). 행위가 수개이면 실체적 경합으로서 실질적으로도 과형상으로도 수죄이므로, 장기 또는 다액의 2분의 1까지 가중하되 각 형을 합산한 형기를 초과할 수 없다(형법 제37조 내지 제39조).",
+ "keywords": [
+  "행위가 1개인가 수개인가",
+  "상상적 경합 — 과형상 일죄·가장 무거운 죄의 형(형법 제40조)",
+  "실체적 경합 — 장기·다액의 2분의 1 가중",
+  "합산한 형기 초과 금지"
+ ],
+ "expl": "[정답 근거] 행위가 1개이면 상상적 경합으로 가장 무거운 죄의 형으로, 행위가 수개이면 실체적 경합으로 가중하여 처벌한다. [메커니즘] 죄의 개수를 행위의 개수로 세기 때문에 행위 수를 확정하는 순간 처벌 원칙까지 함께 정해진다. [함정] 결론에서 죄명만 밝히고 어느 경합인지와 그 처벌 원칙을 빠뜨리면 죄수 배점을 통째로 놓친다.",
+ "src": "2026-09-05 형법 죄수론",
+ "conceptKey": "형법 죄수-행위 수에 따른 상상적경합과 실체적경합의 처벌"
+},
+{
+ "type": "단답",
+ "exam": "2차",
+ "sub": "미니답안",
+ "cat": "형법",
+ "q": "甲과 乙은 서로 의사연락 없이 각자 丙을 폭행하였고, 丙에게 상해가 발생하였으나 누구의 폭행으로 인한 것인지 판명되지 아니하였다. 甲과 乙의 죄책에 대한 결론과 그 이유를 기재하시오. (10점)",
+ "answer": "甲과 乙은 각각 상해죄에 대하여 공동정범의 예에 의하여 처벌된다.<br>동시 또는 이시의 독립행위가 경합한 경우 그 결과발생의 원인된 행위가 판명되지 아니한 때에는 각 행위를 미수범으로 처벌함이 원칙이다. 다만 상해죄는 특례를 규정하여 인과관계를 전체적으로 판단해 공동정범의 예에 의하도록 하고 있다.<br>사안의 경우 甲과 乙 사이에 의사연락이 없어 독립행위의 경합에 해당하고 상해의 원인된 행위도 판명되지 아니하였으나, 발생한 결과가 상해인 이상 특례에 따라 공동정범의 예에 의하여 상해의 책임을 지움이 타당하다.",
+ "keywords": [
+  "상해죄 공동정범의 예",
+  "독립행위 경합·원인행위 불명 → 각 미수가 원칙",
+  "상해죄의 특례 = 인과관계를 전체적으로 판단",
+  "사안의 경우 의사연락 없음·원인행위 불명"
+ ],
+ "expl": "[정답 근거] 원인된 행위가 판명되지 아니한 독립행위의 경합은 각 미수가 원칙이나, 상해죄는 특례로 공동정범의 예에 의한다. [메커니즘] 인과관계 불명의 불이익을 행위자 쪽에 돌린 예외 규정이어서 원칙과 반대 방향으로 작동한다. [함정] 상해죄의 특례를 빠뜨리고 원칙대로 각 미수라고만 쓰면 결론 카테고리가 통째로 어긋난다.",
+ "src": "2026-09-06 형법 정범·공범의 특례",
+ "conceptKey": "형법 동시범-상해죄 특례로 공동정범의 예"
+},
+{
+ "type": "단답",
+ "exam": "2차",
+ "sub": "판별식",
+ "cat": "형법",
+ "q": "업무상과실치사상죄의 업무와 업무방해죄의 업무의 구별 기준을 밝히고, 그에 따라 업무의 범위가 어떻게 달라지는지 서술하시오.",
+ "answer": "양자는 생명·신체에 대한 위험성이 기준인가 보호할 가치가 있는가에 따라 구별된다. 업무상과실치사상죄의 업무는 생명·신체에 위험성 있는 업무에 제한되며, 공무도 이에 포함된다. 반면 업무방해죄의 업무는 보호할 가치가 있는 업무에 제한된다 할 것이다.",
+ "keywords": [
+  "위험성 기준인가 보호가치 기준인가",
+  "업무상과실치사상 — 생명·신체 위험성 있는 업무(공무 포함)",
+  "업무방해 — 보호할 가치가 있는 업무"
+ ],
+ "expl": "[정답 근거] 업무상과실치사상죄의 업무는 생명·신체에 위험성 있는 업무이고, 업무방해죄의 업무는 보호할 가치가 있는 업무이다. [메커니즘] 같은 단어라도 각 죄가 지키려는 것이 달라 업무의 외연이 따로 정해진다. [함정] 두 업무를 같은 개념으로 보고 공무 포함 여부를 뒤바꿔 쓰면 곧바로 설문 범위를 벗어난다.",
+ "src": "2026-09-06 형법 두 개의 업무",
+ "conceptKey": "형법 업무-업무상과실치사상과 업무방해의 업무 구별"
+},
+{
+ "type": "단답",
+ "exam": "2차",
+ "sub": "요건개수",
+ "cat": "형법",
+ "q": "협박죄가 기수에 이르기 위한 요건을 답안에 쓰는 순서대로 서술하시오.",
+ "answer": "협박죄가 기수에 이르기 위해서는 ① 객관적으로 사람으로 하여금 공포심을 일으킬 수 있는 정도의 해악의 고지 ② 그 고지의 도달 ③ 상대방이 그 의미 내용을 인식할 것이 필요하다. 세 단계 중 어느 하나가 결여되면 미수에 그친다.",
+ "keywords": [
+  "해악의 고지",
+  "도달",
+  "의미 내용의 인식",
+  "결여 시 미수"
+ ],
+ "expl": "[정답 근거] 해악의 고지가 상대방에게 도달하고 상대방이 그 의미 내용을 인식한 때 협박죄는 기수가 된다. [메커니즘] 미수가 도달 전·지각 전·의미 인식 전의 3유형으로 나뉘는 것은 기수 요건이 그 세 단계로 이루어져 있기 때문이다. [함정] 고지만 하고 도달하지 아니한 단계까지 기수로 묶어 쓰면 미수 3유형과 앞뒤가 맞지 않게 된다.",
+ "src": "2026-09-06 형법 협박죄",
+ "conceptKey": "형법 협박-기수 요건 3단계"
+},
+{
+ "type": "단답",
+ "exam": "2차",
+ "sub": "결론이유",
+ "cat": "형법",
+ "q": "甲은 乙의 주택을 둘러싼 담장 안 마당까지 들어갔다가 발각되어 건물 내부에는 이르지 못하였다. 甲에게 주거침입죄가 성립하는지에 대한 결론과 그 이유를 기재하시오. (성립·불성립)",
+ "answer": "주거침입죄가 성립한다. 위요지란 건조물에 인접한 주변 토지로서 주거침입죄의 객체인 건조물에 포함되고, 담장으로 둘러싸인 마당이 이에 해당한다. 사안의 경우 甲이 들어간 담장 안 마당은 위요지로서 객체에 포함되므로, 건물 내부에 이르지 못하였더라도 주거침입죄가 성립한다 할 것이다.",
+ "keywords": [
+  "주거침입죄 성립",
+  "위요지 = 건조물에 인접한 주변 토지",
+  "위요지도 객체인 건조물에 포함",
+  "사안의 경우 담장으로 둘러싸인 마당"
+ ],
+ "expl": "[정답 근거] 담장 안 마당은 위요지로서 주거침입죄의 객체인 건조물에 포함되므로 그곳에만 침입하여도 주거침입죄가 성립한다. [메커니즘] 위요지는 객체의 외연을 넓히는 개념이어서 객체 판단을 먼저 세워 두지 않으면 침입 여부의 포섭이 시작되지 않는다. [함정] 건물 안으로 들어가지 않았다는 사정만으로 곧바로 불성립이라고 쓰면 객체 단계를 통째로 건너뛴 것이 된다.",
+ "src": "2026-09-06 형법 주거침입",
+ "conceptKey": "형법 주거침입-위요지도 객체인 건조물에 포함"
+},
+{
+ "type": "단답",
+ "exam": "2차",
+ "sub": "요건개수",
+ "cat": "형법",
+ "q": "강간치상죄에서 상해에 해당하는지를 판단하는 요소를 답안에 쓰는 순서대로 서술하시오.",
+ "answer": "강간치상죄의 상해 개념은 ① 상처의 부위와 정도 ② 일상생활에 지장이 있는지 여부 ③ 별도의 치료 없이도 자연치유가 가능한지 여부 ④ 피해자의 나이를 종합적으로 검토하여 판단한다.",
+ "keywords": [
+  "상처의 부위와 정도",
+  "일상생활 지장 여부",
+  "별도 치료 없는 자연치유 가능성",
+  "피해자의 나이"
+ ],
+ "expl": "[정답 근거] 상처의 부위와 정도, 일상생활 지장 여부, 자연치유 가능성, 피해자의 나이를 종합적으로 검토하여 상해 여부를 판단한다. [메커니즘] 상해의 인정 여부가 결합범의 성부를 가르므로 판단요소를 나열하는 것 자체가 논증 단계가 된다. [함정] 네 요소 중 일부만 들고 결론으로 직행하면 종합적 검토라는 판단구조가 답안에 드러나지 않는다.",
+ "src": "2026-09-06 형법 강간치상·치사의 상해 판단",
+ "conceptKey": "형법 강간치상-상해 판단 4요소"
+},
+{
+ "type": "단답",
+ "exam": "2차",
+ "sub": "결론이유",
+ "cat": "형법",
+ "q": "甲은 乙의 신용카드를 절취한 후 사용권한 없이 가맹점에서 물건을 구입하고, 현금자동지급기에서 현금을 인출하였으며, 예금을 자신의 계좌로 이체하였다. 각 행위의 죄책에 대한 결론과 그 이유를 기재하시오.",
+ "answer": "물건 구입은 사기죄, 현금 인출은 절도죄, 계좌이체는 컴퓨터등사용사기죄가 성립한다. 절취한 카드를 사용권한 없이 사용하는 제2행위는 무엇을 취득하였는가에 따라 죄명이 갈리기 때문이다. 사안의 경우 물건은 가맹점마다 사기죄가, 현금은 절도죄가, 계좌이체는 컴퓨터등사용사기죄가 각 성립한다 할 것이다.",
+ "keywords": [
+  "물건 — 가맹점마다 사기죄",
+  "현금 — 절도죄",
+  "계좌이체 — 컴퓨터등사용사기죄",
+  "제2행위는 취득 대상에 따라 죄명이 갈림"
+ ],
+ "expl": "[정답 근거] 카드 제2행위는 물건이면 사기죄, 현금이면 절도죄, 계좌이체이면 컴퓨터등사용사기죄가 된다. [메커니즘] 무엇을 취득하였는가에 따라 침해 대상과 처분행위의 유무가 달라져 죄명이 갈린다. [함정] 물건 구입 부분을 하나의 죄로만 세면 가맹점마다 사기죄가 성립한다는 부분을 놓친다.",
+ "src": "2026-09-06 형법 절도죄 심화",
+ "conceptKey": "형법 절도-카드 제2행위 물사·현절·계범"
+},
+{
+ "type": "단답",
+ "exam": "2차",
+ "sub": "미니답안",
+ "cat": "형법",
+ "q": "甲은 乙의 자전거를 절취한 후 그 자전거를 자신의 창고에 보관하였다. 甲에게 절도죄와 별도로 장물보관죄가 성립하는지에 대한 결론과 그 이유를 기재하시오. (10점)",
+ "answer": "장물보관죄는 성립하지 아니한다.<br>장물이란 재산범죄로 영득한 재물 그 자체를 말하고, 장물죄의 보관은 그 장물을 보관하는 것을 의미한다. 다만 장물범은 본범의 정범은 될 수 없으니, 본범의 정범은 이미 그 재산범죄로 처벌받기 때문이다. 본범의 공범인 자는 장물죄의 주체가 될 수 있다.<br>사안의 경우 甲은 자전거를 절취한 본범의 정범 자신이므로 장물보관죄의 주체가 될 수 없고, 절도죄로만 처벌함이 타당하다.",
+ "keywords": [
+  "장물보관죄 불성립",
+  "장물 = 재산범죄로 영득한 재물 그 자체",
+  "본범의 정범은 장물죄의 주체가 될 수 없음",
+  "사안의 경우 甲은 절도죄의 정범"
+ ],
+ "expl": "[정답 근거] 본범의 정범은 이미 그 재산범죄로 처벌받으므로 장물죄의 주체가 될 수 없어 장물보관죄가 성립하지 아니한다. [메커니즘] 절취한 물건을 그대로 가지고 있는 것은 절도죄의 불법에 이미 포함되어 별죄를 세울 자리가 없다. [함정] 본범의 공범도 장물죄가 안 된다고 일반화하면 주체가 될 수 있는 경우까지 지워 버린다.",
+ "src": "2026-09-06 형법 장물죄",
+ "conceptKey": "형법 장물-본범의 정범은 장물죄 주체 불가"
+},
+{
+ "type": "단답",
+ "exam": "2차",
+ "sub": "목차순서",
+ "cat": "형법",
+ "q": "형법 사례형 답안에서 대분류를 무엇으로 잡을 것인지를 사안 유형별로 목차 순서로 서술하시오.",
+ "answer": "행위자가 1명이고 사실관계가 1개이면 죄명별로 병렬하여 대분류한다. 행위자가 1명이더라도 행위가 시간적으로 분리되면 제1행위와 제2행위로 대분류한 뒤 그 안에서 죄명을 검토한다. 행위자가 2명이면 사람별로 대분류하여 각자의 죄책을 차례로 검토한다.",
+ "keywords": [
+  "1인·사실관계 1개 → 죄명별 병렬",
+  "1인·시간적 분리 → 행위별(제1·제2행위) 대분류",
+  "2인 → 사람별 대분류"
+ ],
+ "expl": "[정답 근거] 죄명별·행위별·사람별 중 무엇으로 대분류할지는 행위자 수와 행위의 시간적 분리 여부로 정해진다. [메커니즘] 대분류가 답안의 뼈대여서 이것을 잘못 잡으면 같은 논점을 여러 목차에 중복 서술하게 된다. [함정] 행위가 시간적으로 나뉜 사안을 죄명별로 묶어 쓰면 각 행위마다 같은 죄를 다시 검토하게 되어 목차가 무너진다.",
+ "src": "2026-09-05 형법 케이스 답안 목차",
+ "conceptKey": "형법 답안-사례형 목차 대분류 기준"
+},
+{
+ "type": "단답",
+ "exam": "2차",
+ "sub": "결론이유",
+ "cat": "형법",
+ "q": "⏪ 甲은 자신의 범행에 관하여 유죄의 확정판결을 받은 뒤, 같은 범행에 관한 재판에 증인으로 출석하여 선서하고 허위의 진술을 하였다. 甲에게 위증죄가 성립하는지에 대한 결론과 그 이유를 기재하시오. (성립·불성립)",
+ "answer": "위증죄가 성립한다. 유죄의 확정판결을 받으면 그 사건으로 다시 처벌받지 아니하므로 스스로 처벌받을 위험이 없어지고, 그 결과 적법행위를 기대할 수 없다고 볼 사정이 사라진다. 사안의 경우 甲은 이미 유죄의 확정판결을 받아 처벌 위험이 없는 상태에서 허위의 진술을 하였으므로, 위증죄가 성립한다 할 것이다.",
+ "keywords": [
+  "위증죄 성립",
+  "유죄 확정으로 다시 처벌받지 아니함",
+  "처벌 위험 소멸 → 기대가능성 인정",
+  "사안의 경우 확정판결 후의 허위진술"
+ ],
+ "expl": "[정답 근거] 유죄가 확정되어 다시 처벌받을 위험이 없어진 뒤의 허위진술이므로 위증죄가 성립한다. [메커니즘] 기대가능성은 그 상황에서 적법행위를 기대할 수 있었는가의 문제여서, 자기 처벌의 위험이 사라지면 기대가능성이 되살아난다. [함정] 자기 범행에 관한 진술이라는 이유만으로 언제나 죄가 되지 않는다고 쓰면 확정판결 전후의 구분을 놓친다.",
+ "src": "2026-08-29 형법 기대가능성 (장기복습·12일전)",
+ "conceptKey": "형법 기대가능성-유죄 확정 후 허위진술은 위증죄"
+},
+{
+ "type": "단답",
+ "exam": "2차",
+ "sub": "판별식",
+ "cat": "형법",
+ "q": "⏪ 음모·예비와 미수의 구별 기준을 밝히고, 그에 따라 처벌 가부가 어떻게 달라지는지 서술하시오.",
+ "answer": "양자는 실행의 착수가 있었는가에 따라 구별된다. 실행의 착수가 없으면 음모·예비에 그치므로 강도·살인·강간과 같이 예비를 처벌하는 규정이 있는 범죄에서만 처벌할 수 있다. 반면 실행의 착수가 있으면 미수가 되고, 사기·절도와 같이 예비 처벌규정이 없는 범죄는 착수하지 아니한 이상 무죄라 할 것이다.",
+ "keywords": [
+  "실행의 착수 유무가 기준",
+  "예비 처벌규정 있는 범죄 — 강도·살인·강간",
+  "사기·절도는 착수 전이면 무죄"
+ ],
+ "expl": "[정답 근거] 실행의 착수가 있었는지로 음모·예비와 미수가 갈리고, 예비 처벌규정이 없는 범죄는 착수 전이면 무죄가 된다. [메커니즘] 기수가 되면 예비와 미수가 흡수되므로 이 구분은 기수에 이르지 못한 사안에서만 실익이 있다. [함정] 예비 단계의 행위를 곧바로 미수로 포섭하면 처벌규정이 없는 범죄에서 없는 죄를 만들게 된다.",
+ "src": "2026-08-29 형법 예비·음모와 미수범 (장기복습·12일전)",
+ "conceptKey": "형법 미수-실행착수에 따른 예비와 미수의 구별"
+},
+{
+ "type": "단답",
+ "exam": "2차",
+ "sub": "용어정의",
+ "cat": "형법",
+ "q": "⏪ 정범과 공범을 가르는 행위지배의 의의를 답안 첫 문장으로 쓰시오.",
+ "answer": "행위지배란 행위자가 범죄 과정을 주체적으로 지배·통제하는 상태를 말한다. 행위지배가 있으면 정범이고 없으면 공범이며, 정범의 행위지배는 실행지배·기능적 행위지배·의사지배로 나타난다.",
+ "keywords": [
+  "범죄 과정을 주체적으로 지배·통제하는 상태",
+  "있으면 정범·없으면 공범",
+  "실행지배·기능적 행위지배·의사지배"
+ ],
+ "expl": "[정답 근거] 행위지배란 행위자가 범죄 과정을 주체적으로 지배·통제하는 상태를 말한다. [메커니즘] 정범과 공범의 분기점이 행위지배 하나이므로 이 정의를 먼저 세워야 이후의 포섭이 시작된다. [함정] 가담 정도가 크다는 사정만으로 정범이라고 쓰면 지배·통제라는 기준을 빠뜨리게 된다.",
+ "src": "2026-08-22 형법 정범과 공범 (장기복습·19일전)",
+ "conceptKey": "형법 정범공범-행위지배의 의의"
+}
 /*__QUESTIONS_END__*/
 ];
 
@@ -394,12 +575,7 @@ function buildPayload(questions, sel, quizDate, nowIso, schemaVersion, answered,
       if(st && st.self === false){
         if(st.fix){ r.fixTyped = st.fix; base.fixTyped = st.fix; }
         if(st.missed && st.missed.length){ r.missedKeys = st.missed.slice(); base.missedKeys = st.missed.slice(); }
-      }
-      // 💬 코멘트(⭕·❌ 공통) — 적은 게 있을 때만 실린다. 주석 전용이라 정오·스케줄과 무관하고,
-      // 비어 있으면 키 자체가 붙지 않아 payload는 코멘트 기능 이전과 문자열 단위로 같다.
-      // wrong[](v1 하위호환)에는 넣지 않는다 — 기존 수거 파이프라인의 모양을 바꾸지 않는다.
-      if(st && st.comment) r.comment = st.comment;
-    }
+      } }
     if(item.calc) r.calc = item.calc;
     if(item.monthlyOf) r.monthlyOf = item.monthlyOf;
     // ? 마킹(확신 없음)은 있을 때만 실린다 — 없으면 종전 payload와 한 글자도 달라지지 않는다
@@ -535,7 +711,7 @@ function restoreDiagBox(qi){
 
 const form = document.getElementById('quiz');
 // 객관식은 null(선택 인덱스 또는 "DK"가 들어간다) / 단답형만 상태 객체
-const selected = QUESTIONS.map(q => q.type === '단답' ? {typed:'', revealed:false, self:null, fix:'', fixed:false, missed:[], comment:''} : null);
+const selected = QUESTIONS.map(q => q.type === '단답' ? {typed:'', revealed:false, self:null, fix:'', fixed:false, missed:[]} : null);
 let graded = false;                                  // 전체 제출 완료(페이지 전체 잠금)
 const GRADED = QUESTIONS.map(() => false);           // 문항별 채점 완료 — 중간제출로 확정된 것은 재채점하지 않는다
 const RESTORERS = [];                                // 문항별 복원 함수(카드 생성 때 등록)
@@ -581,8 +757,7 @@ function snapshot(){
     v: 2, quizId: QUIZ_ID,
     sel: selected.map(s => (s && typeof s === 'object') ? {
       typed: s.typed, revealed: s.revealed, self: s.self,
-      fix: s.fix, fixed: s.fixed, missed: (s.missed || []).slice(),
-      comment: s.comment || ''
+      fix: s.fix, fixed: s.fixed, missed: (s.missed || []).slice()
     } : s),
     diag: mcqDiag, optMarks: optMarks, oxMarks: oxMarks,
     gradedIdx: gradedIdx, partialDone: PARTIAL_DONE, savedAt: new Date().toISOString()
@@ -739,27 +914,6 @@ QUESTIONS.forEach((item, qi)=>{
       fixNote.textContent = '⚠️ 붙여넣기는 막혀 있습니다 — 손으로 쳐야 남습니다';
       setTimeout(()=>{ fixNote.textContent = FIXNOTE; }, 2200);
     });
-    // ── 💬 코멘트 — 자가채점(⭕·❌) 직후 열린다 ──────────────────
-    // 맞았어도 아쉬운 점(순서·문구·빠진 예외)을 그 자리에서 한 줄 남긴다. 주석 전용이라
-    // 정오·진행률·FSRS 스케줄에는 손대지 않고, 적힌 것만 payload로 넘어가 다음 출제의 조준 각도가 된다.
-    const cm = document.createElement('div');
-    cm.className = 'sa-comment'; cm.hidden = true;
-    cm.innerHTML = `
-      <div class="sa-cmhead">💬 코멘트 <span>맞았어도 아쉬운 점 · 다음에 확인할 것 (선택)</span></div>
-      <textarea class="sa-cminput" maxlength="120" rows="2" placeholder="예) 요건 순서를 반대로 씀 / 판례 문구가 흐릿함 / 예외를 빠뜨림"></textarea>
-      <div class="sa-cmcount">0/120</div>`;
-    card.appendChild(cm);
-    const cmTa = cm.querySelector('.sa-cminput');
-    const cmCount = cm.querySelector('.sa-cmcount');
-    function cmSync(){
-      selected[qi].comment = cmTa.value.trim().replace(/\s+/g,' ');
-      cmCount.textContent = cmTa.value.length + '/120';
-    }
-    cmTa.addEventListener('input', ()=>{
-      if(graded || GRADED[qi]) return;
-      cmSync();
-      saveProgress();
-    });
     const ex = document.createElement('div');
     ex.className = 'expl'; ex.id = 'expl-'+qi;
     card.appendChild(ex);
@@ -779,7 +933,6 @@ QUESTIONS.forEach((item, qi)=>{
       gb[isOk ? 0 : 1].classList.add(isOk ? 'on-ok' : 'on-no');
       const isWrong = (selected[qi].self === false);
       fix.hidden = !isWrong;
-      cm.hidden = false;              // ⭕든 ❌든 자가채점을 누른 뒤에만 코멘트 칸이 열린다
       if(isWrong){
         box.classList.add('veil'); box.classList.remove('peek');
         missSync();
@@ -810,7 +963,7 @@ QUESTIONS.forEach((item, qi)=>{
       selected[qi].typed = s.typed || '';
       if(!s.revealed) return;
       doReveal();
-      if(s.self === true){ doSelfGrade(true); cmRestore(s); return; }
+      if(s.self === true){ doSelfGrade(true); return; }
       if(s.self !== false) return;
       doSelfGrade(false);
       (s.missed || []).forEach(k=>{
@@ -824,12 +977,7 @@ QUESTIONS.forEach((item, qi)=>{
       });
       fixTa.value = s.fix || '';
       missSync();
-      cmRestore(s);
     };
-    function cmRestore(s){          // 코멘트 복원 — 값·글자수·열림 상태(자가채점이 복원됐으면 이미 열려 있다)
-      cmTa.value = (s && s.comment) || '';
-      cmSync();
-    }
   } else {
     // ── 객관식 ──
     const optsWrap = document.createElement('div');
@@ -1017,14 +1165,6 @@ function applyGrade(qi){
       cardSA.querySelectorAll('.sa-chip').forEach(c=>{ c.style.cursor = 'default'; });
       cardSA.querySelectorAll('.sa-etcinput').forEach(t=>{ t.disabled = true; });
       cardSA.querySelectorAll('.sa-answer').forEach(x=>x.classList.remove('veil'));
-      // 💬 코멘트: 적은 게 있으면 회색으로 잠가 남기고, 빈 칸은 채점 후 치운다(빈 상자를 남기지 않는다)
-      cardSA.querySelectorAll('.sa-comment').forEach(c=>{
-        const t = c.querySelector('.sa-cminput');
-        if(!t || !t.value.trim()){ c.hidden = true; return; }
-        c.hidden = false;
-        c.classList.add('locked');
-        t.readOnly = true;
-      });
     }
     ex.innerHTML = `<span class="verdict" style="color:${okSA?'var(--ok)':'var(--no)'}">${okSA?'정답(자가채점)':'오답(자가채점)'}</span>${item.expl}<span class="src">📄 출처: ${item.src}</span>`;
     ex.classList.add('show');
@@ -1207,10 +1347,6 @@ function grade(isPartial){
   document.getElementById('total').textContent = ' / ' + built.payload.total;
   document.getElementById('rmsg').textContent = msgFor(built.score, built.payload.total)
     + (isPartial ? ` (중간 제출 — 미응답 ${built.payload.skippedCount}문항은 다음 퀴즈로)` : '');
-  // 💬 남긴 코멘트 개수 — 있을 때만 한 줄 (원장이 모아 다음 출제의 조준 각도로 쓴다)
-  const cmN = built.payload.results.filter(x => x.comment).length;
-  const cmNote = document.getElementById('cmnote');
-  if(cmNote){ cmNote.textContent = cmN ? ('💬 코멘트 ' + cmN + '개') : ''; cmNote.hidden = !cmN; }
   r.classList.add('show');
   if(!isPartial){
     btn.textContent = '🔄 다시 풀기';

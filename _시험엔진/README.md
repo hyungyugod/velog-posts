@@ -20,7 +20,7 @@ _시험엔진/
 │   ├── prepare_quiz.py      ← 수거·원장 갱신·원천 선정·플랜 (daily/retry/weekly)
 │   ├── render_quiz.py       ← questions.json → 정답 배정·렌더·검증·부수 산출
 │   ├── validate_quiz.js     ← 검증 (exam×kind 분기, 레거시 6벌 통합)
-│   ├── quiz_template.html   ← 퀴즈 템플릿 단일본 v2.1 (토큰 렌더 · O/X/? 마킹 · 중간제출 · 진행저장 · ❓ 해설 모음)
+│   ├── quiz_template.html   ← 퀴즈 템플릿 단일본 v2.2 (토큰 렌더 · O/X/? 마킹 · 중간제출 · 진행저장 · ❓ 해설 모음 · 💬 단답 코멘트)
 │   ├── build_ledger.py      ← 오답 원장 (FSRS-6, --exam) + fsrs_vendor/
 │   ├── build_dashboard.py   ← 퀘스트 보드 (gongin)
 │   ├── build_apkg.py        ← Anki 덱 빌더 (anki/에서 이동)
@@ -39,6 +39,8 @@ prepare_quiz.py  → plan.json   (수거·원장·원천·쿼터·장기복습·
 (AI)             → questions.json  (문항 작성만 — 정답 위치 없음)
 render_quiz.py   → HTML         (정답 배정·조합 셔플·검증·로그·푸시 — 기계적)
 ```
+결과 JSON은 되돌아와 원장이 된다: 풀면서 단답에 적은 💬 코멘트(`results[].comment`)가 원장 `comments`(+`dueQueue[].lastComment`)로 쌓여 다음 plan(`picks[].comments`·`recent_comments`·`comments_week`)의 조준 각도가 된다 — 주석 전용이라 FSRS 스케줄·상태에는 영향이 없다.
+
 실행자(스케줄러·스킬)는 `spec/<절차>.md` + `spec/프로파일_<시험>.md`(+ 참조)만 읽는다. 우선순위: 프로파일 > 문항작성 > 절차 > 위임문. **엔진·템플릿·스크립트는 실행 중 수정 금지.**
 
 ## 스케줄러 (사이클 독립 — 시험 1개 = 3개 + 시험 횡단 1개)

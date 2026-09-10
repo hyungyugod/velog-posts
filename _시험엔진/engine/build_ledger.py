@@ -43,6 +43,11 @@ v2에서 **그대로 유지**한 것:
 - (2026-09-01 추가) ledger[].missedKeys{포인트:횟수} · samples[].missedKeys/fixTyped ·
   dueQueue[].missedTop[≤3] — 단답 자가채점에서 고른 '놓친 채점 포인트'. 재도전 출제의 조준점.
 - (2026-09-01 추가) ledger[].errorCauses{원인:횟수} · samples[].errorCause/causeNote · dueQueue[].causeTop — 객관식 오답 원인 진단. 재출제 각도·Anki 편입 라우팅의 원천.
+- (2026-09-10 추가) **💬 단답 코멘트** — 템플릿 v2.2가 단답 자가채점 직후 받는 ≤120자 메모(results[].comment).
+  ⭕·❌ 가리지 않고 전부 모아 최상위 `comments{count, recent[≤100], byConcept{키:[≤5]}}` ·
+  `dueQueue[].commentCount/lastComment` · `samples[].comment` 로 싣는다.
+  **주석 전용이다** — FSRS 시퀀스·timesWrong·status·consecutiveCorrect·samples 선정·듀 큐 선정에 영향 0.
+  (⭕ 비재도전 문항은 종전대로 이벤트가 없어 ledger[] 레코드도 안 생긴다 — 코멘트만 comments 블록에 남는다.)
 
 사용:  python3 build_ledger.py --exam gongin              (원장 재생성 — 프로덕션 _ledger/)
        python3 build_ledger.py --exam bupsa1 --ingest     (수거 모드 — _inbox 개수 보고; _raw 복사는 2026-09-02 폐지)
@@ -127,6 +132,11 @@ REVIEW_HOUR_KST = _FSRS.get("review_hour_kst", 12)   # 이벤트 시각을 그�
 DUE_BACKLOG_WARN = _FSRS.get("due_backlog_warn", 100)  # 듀 큐가 이보다 크면 적체 경고
 LADDER = list(_FSRS.get("ladder_fallback", [3, 7, 16, 35]))  # v2 사다리 — FSRS 실패 개념 폴백용
 
+_CMT = CFG.get("_comments", {})                      # 2026-09-10: 💬 단답 코멘트(주석 전용)
+COMMENT_BY_CONCEPT_KEEP = int(_CMT.get("by_concept_keep", 5))   # 개념별 최근 N개
+COMMENT_RECENT_KEEP = int(_CMT.get("recent_keep", 100))         # 최상위 recent 상한
+COMMENT_MD_DAYS = int(_CMT.get("window_days_daily", 14))        # md 보고서 표에 싣는 창(일)
+
 SAMPLES_KEEP = _FSRS.get("samples_keep", 3)          # v4.0 ④: 최근 N개 유지(FIFO)
 GRADUATION_SLOTS = _FSRS.get("graduation_slots", 5)  # v4.0 ②: 듀 큐 상위 N 중 졸업후보 예약칸
 ORPHAN_EXCLUDE = bool(_FSRS.get("orphan_exclude", True))  # v4.0 ③: timesWrong==0 듀 큐 제외
@@ -142,6 +152,7 @@ PATCH = {
     "orphan":            True,   # ③ timesWrong==0 개념 듀 큐 제외 + ledger[].orphan
     "samples_fifo":      True,   # ④ samples 최근 3개 유지(FIFO)
     "exam_max_interval": True,   # ⑤ FSRS 최대 간격을 시험일 기반으로 산출
+    "comments":          True,   # (2026-09-10) 💬 단답 코멘트 수집 — 끄면 comments 키 자체가 없다
 }
 # v3.1 레거시 3벌이 공통으로 쓰던 최대 간격. 법무사판도 공인중개사 값 60을 그대로 승계했었다.
 V3_MAX_INTERVAL = 60
@@ -229,6 +240,28 @@ def cause_top(causes):
     """최빈 오답 원인 1개(동률이면 개념부재 > 혼동 > 함정 > 실수). 비면 None."""
     s = cause_sorted(causes)
     return s[0][0] if s else None
+
+# ─────────────────────────────────────────────────────────────────────────────
+# (2026-09-10) 💬 단답 코멘트 — 템플릿 v2.2의 results[].comment
+#   자가채점 직후 "왜 아쉬웠는지"를 본인이 적은 ≤120자 메모다. ⭕에도 붙는다.
+#   ⚠️ 주석 전용: 여기서 모으는 값은 이벤트 스트림(w/c)에 절대 들어가지 않는다.
+#      스케줄(FSRS)·상태·카운터는 코멘트를 넣기 전과 정확히 같아야 한다.
+# ─────────────────────────────────────────────────────────────────────────────
+COMMENT_MAX_LEN = 120
+COMMENT_Q_LEN = 90
+COMMENT_MARKER_RE = re.compile(r"^[\s🔁⏪🔄]+")     # 재도전·장기복습·한달전 접두 마커
+
+def comment_q(q):
+    """문제문을 코멘트 표시용으로 줄인다 — 태그 제거·공백 정규화·마커 접두 제거·90자."""
+    t = re.sub(r"<[^>]+>", " ", str(q or ""))
+    t = re.sub(r"\s+", " ", t).strip()
+    t = COMMENT_MARKER_RE.sub("", t).strip()
+    return t[:COMMENT_Q_LEN] + ("…" if len(t) > COMMENT_Q_LEN else "")
+
+def comment_text(v):
+    """비어 있으면 None(=키 없음). 공백 정규화 후 120자로 자른다."""
+    t = re.sub(r"\s+", " ", str(v or "")).strip()
+    return t[:COMMENT_MAX_LEN] if t else None
 
 def new_rec(subject, label):
     return {"conceptKey": label, "aliases": [], "subject": subject, "concept": label,
@@ -386,7 +419,9 @@ def main():
         print(f"  ↳ _inbox 결과 JSON {n_inbox}개 (원장 원천 — _raw 복사는 폐지)")
 
     # 1) 파일 -> 시간순 이벤트 스트림  ── v2와 동일(한 글자도 안 바꿨다)
-    events = []
+    #    (2026-09-10) 코멘트는 events 와 **완전히 분리된 리스트**에 모은다.
+    #    events 에 한 줄도 더하지 않으므로 스케줄·상태·카운터는 정의상 불변이다.
+    events, comments = [], []
     subs = score_sum = tot_sum = perfect = v2files = 0
     dps_all = set()
     for f in sorted(files, key=lambda p: os.path.basename(p)):
@@ -412,6 +447,16 @@ def main():
                 label = norm(label) or norm(str(r.get("cat", "")) + " " + str(r.get("q", ""))[:20])
                 retry = bool(r.get("retryOf")) or "(재도전)" in str(r.get("src", ""))
                 subject = norm_subject(r.get("cat"))          # v3.1 별칭 정규화(subject 전용)
+                # 💬 코멘트 — ⭕·❌ 모두. skipped(중간제출 미응답)는 제외.
+                #    ⭕ 비재도전은 아래에서 이벤트가 안 생기므로 여기서 안 모으면 통째로 유실된다.
+                ctext = comment_text(r.get("comment")) if PATCH["comments"] else None
+                if ctext and not r.get("skipped") and r.get("correctAnswered") is not None:
+                    comments.append({"date": dp, "quizId": d.get("quizId"),
+                                     "conceptKey": canon(label), "concept": label,
+                                     "subject": subject,
+                                     "grade": "⭕" if r.get("correctAnswered") else "❌",
+                                     "retry": retry, "type": r.get("type"),
+                                     "q": comment_q(r.get("q")), "text": ctext})
                 if r.get("correctAnswered") is False:
                     events.append((dp, fname, "w", canon(label), label, subject, date_raw, retry, r))
                 elif r.get("correctAnswered") is True and retry:
@@ -455,13 +500,18 @@ def main():
             #   상습 개념일수록 오래된 근거만 남아 재도전 출제가 최신 오답을 못 겨눴고,
             #   causeNote(원인 메모)도 4번째 오답부터 통째로 유실됐다.
             if sample is not None and (PATCH["samples_fifo"] or len(r["samples"]) < SAMPLES_KEEP):
-                r["samples"].append({"date": date_raw or dp, "type": sample.get("type"), "q": sample.get("q"),
-                                     "myAnswer": sample.get("myAnswer"), "correct": sample.get("correct"),
-                                     "expl": sample.get("expl"),
-                                     "missedKeys": sample.get("missedKeys") or [],
-                                     "fixTyped": sample.get("fixTyped"),
-                                     "errorCause": sample.get("errorCause"),
-                                     "causeNote": sample.get("causeNote")})
+                smp = {"date": date_raw or dp, "type": sample.get("type"), "q": sample.get("q"),
+                       "myAnswer": sample.get("myAnswer"), "correct": sample.get("correct"),
+                       "expl": sample.get("expl"),
+                       "missedKeys": sample.get("missedKeys") or [],
+                       "fixTyped": sample.get("fixTyped"),
+                       "errorCause": sample.get("errorCause"),
+                       "causeNote": sample.get("causeNote")}
+                if PATCH["comments"]:                 # 💬 있을 때만 키 추가(없으면 종전과 동일한 dict)
+                    _ct = comment_text(sample.get("comment"))
+                    if _ct:
+                        smp["comment"] = _ct
+                r["samples"].append(smp)
                 if len(r["samples"]) > SAMPLES_KEEP:
                     del r["samples"][0:len(r["samples"]) - SAMPLES_KEEP]
         else:
@@ -519,6 +569,18 @@ def main():
                 r["orphan"] = True          # 고아에만 붙인다(정상 레코드에는 키 자체가 없다)
                 orphans.append(r)
 
+    # 3-d) 💬 코멘트 블록 (2026-09-10) — 위의 상태 판정·FSRS가 전부 끝난 뒤에 만든다.
+    #   여기서 만드는 값은 아무 레코드도 고치지 않는다(읽기 전용 부가 정보).
+    comments_recent = sorted(comments, key=lambda c: c["date"], reverse=True)   # 안정 정렬 = 같은 날은 파일 순
+    comment_by_concept, comment_counts = {}, {}
+    for c in comments_recent:
+        comment_counts[c["conceptKey"]] = comment_counts.get(c["conceptKey"], 0) + 1
+        lst = comment_by_concept.setdefault(c["conceptKey"], [])
+        if len(lst) < COMMENT_BY_CONCEPT_KEEP:
+            lst.append({k: c[k] for k in ("date", "grade", "retry", "text", "q")})
+    comments_block = {"count": len(comments), "recent": comments_recent[:COMMENT_RECENT_KEEP],
+                      "byConcept": comment_by_concept}
+
     prio = {"상습": 0, "재도전중": 1, "졸업후보": 2, "졸업": 3}
     recs = sorted(ledger.values(), key=lambda r: (prio[r["status"]], -r["retryMissed"], -r["timesWrong"], r["nextReviewDate"] or "9999"))
 
@@ -573,6 +635,13 @@ def main():
                                                  key=lambda kv: -kv[1])[:3]]
         q["causeTop"] = cause_top(r.get("errorCauses"))
         q["errorCauses"] = r.get("errorCauses") or {}
+        if PATCH["comments"]:                       # 💬 있을 때만 — 0건이면 키 자체가 없다
+            n_c = comment_counts.get(canon(r["conceptKey"]), 0)
+            if n_c:
+                q["commentCount"] = n_c
+                last = (comment_by_concept.get(canon(r["conceptKey"])) or [{}])[0]
+                q["lastComment"] = {"date": last.get("date"), "grade": last.get("grade"),
+                                    "text": last.get("text")}
         return q
 
     dueQueue = [q_of(r, i) for i, r in enumerate(due)]
@@ -596,8 +665,11 @@ def main():
            "dateRange": [min(dps_all), max(dps_all)] if dps_all else None,
            "statusCounts": status_counts,
            "fsrsFallbacks": len(fsrs_failed),
-           "subjectWeakness": dict(sorted(subj_wrong.items(), key=lambda x: -x[1])),
-           "dueQueue": dueQueue, "ledger": recs}
+           "subjectWeakness": dict(sorted(subj_wrong.items(), key=lambda x: -x[1]))}
+    if PATCH["comments"]:                           # 💬 (2026-09-10) — --v3-compat이면 키 자체가 없다
+        out["comments"] = comments_block
+    out["dueQueue"] = dueQueue
+    out["ledger"] = recs
     json.dump(out, open(os.path.join(OUT, "오답_원장.json"), "w", encoding="utf-8"),
               ensure_ascii=False, indent=2)
 
@@ -645,6 +717,22 @@ def main():
     else:
         L.append("_오늘 복습 기한이 된 개념 없음_")
     L.append("")
+    # 💬 코멘트 (2026-09-10) — 단답 자가채점 직후 본인이 적은 메모. 없으면 섹션 자체를 생략한다.
+    if PATCH["comments"]:
+        cutoff = (datetime.date.today() - datetime.timedelta(days=COMMENT_MD_DAYS)).isoformat()
+        cm_rows = [c for c in comments_recent if c["date"] >= cutoff]
+        if cm_rows:
+            L.append("## 💬 코멘트 (최근 %d일) · %d건" % (COMMENT_MD_DAYS, len(cm_rows)))
+            L.append("")
+            L.append("_단답 자가채점 직후 본인이 적은 메모. **주석 전용** — 스케줄·상태·카운터에 영향이 없고,"
+                     " 다음에 그 개념이 나올 때 출제 각도로만 쓴다(⭕ 문항의 코멘트도 그대로 남는다)._")
+            L.append("")
+            L.append("| 날짜 | 과목 | 개념 | ⭕/❌ | 코멘트 |")
+            L.append("|---|---|---|---|---|")
+            for c in cm_rows:
+                L.append("| %s | %s | %s | %s | %s |"
+                         % (c["date"], c["subject"] or "—", c["concept"], c["grade"], c["text"]))
+            L.append("")
     sections = [("## 🔴 상습 (재도전 실패·반복 오답 — 최우선)", "상습"),
                 ("## 🟠 재도전중", "재도전중"),
                 ("## 🟡 졸업후보 (연속정답 2 — 마지막 확인 대기)", "졸업후보"),
@@ -686,6 +774,9 @@ def main():
     if len(dueQueue) > DUE_BACKLOG_WARN:
         print(f"   ⚠️ 복습 적체 {len(dueQueue)}개 — 하루 8개 기준 {-(-len(dueQueue)//8)}일치다.")
     print(f"   과목별 약점 TOP3: " + ", ".join(f"{k2}({v})" for k2, v in list(out['subjectWeakness'].items())[:3]))
+    if PATCH["comments"]:
+        print(f"   💬 코멘트 {comments_block['count']}건(개념 {len(comment_by_concept)}종 · 주석 전용, 스케줄 무관)"
+              + (" — 최근: " + comments_recent[0]["text"][:40] if comments_recent else ""))
 
 if __name__ == "__main__":
     main()

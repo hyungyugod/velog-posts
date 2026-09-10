@@ -22,7 +22,10 @@ engine/tests/e2e_smoke.py — 새 퀴즈 파이프라인 E2E 스모크 하네스
   gongin  allday      : 최근 7일 노트를 사본 밖으로 옮겨 신규 0 (→ 장기 40 + 한달전 10)
   bupsa1  S2          : -2차- 없는 신규 노트 3 + 장기 노트 3 (B1·B2·B3)
   bupsa2  S3          : -2차- 장기 노트 3 + 30일 전 데일리 html 1 (→ 신규 12 + 장기 4 + 한달전 4)
-  *       seed-ledger : _inbox에 합성 결과 JSON을 넣고 build_ledger.py --ingest 로 원장 생성
+  *       seed-ledger : _inbox에 합성 결과 JSON 4건을 넣고 build_ledger.py --ingest 로 원장 생성.
+                        4번째 제출에 💬 단답 코멘트 3건(⭕ 비재도전·❌·재도전 ⭕)이 실려 있고,
+                        comment_contract()가 원장 comments 블록 → 듀 큐 → 플랜까지 계약을 검사한다
+                        (코멘트 유무만 다른 두 결과 세트로 원장을 두 번 빌드하는 A/B 회귀 포함).
 
 프로덕션 보호: --root 가 이 파일이 속한 트리(velog-posts)면 즉시 거부한다.
 종료 코드: 0 통과 · 1 실패(어느 단계든) · 2 사용법·환경 오류
@@ -52,6 +55,8 @@ BUILD_LEDGER = ENGINE / "build_ledger.py"
 
 NEG_MARKUP = "<b>옳지 않은</b>"
 STASH = "_e2e_stash"
+# 💬 코멘트만 달린 ⭕(비재도전) 개념 — 이벤트가 없으니 ledger[] 레코드가 생기면 안 된다.
+CM_ONLY_CONCEPT = "E2E-CMONLY 형법 코멘트만 남는 개념"
 
 # ─────────────────────────────────────────────── 더미 문장 생성기 (결정론)
 #  같은 문항 안에서 보기끼리 2-gram이 겹치지 않아야 한다(해설↔정답 정합 휴리스틱 통과 조건).
@@ -207,6 +212,7 @@ def fixture(root, exam, kind, date, stage, cfg, log):
 
     if stage == "seed-ledger":
         seed_ledger(root, exam, date, cfg, log)
+        comment_contract(root, exam, date, cfg, log)
         return
 
     if stage == "rebuild-ledger":
@@ -251,6 +257,23 @@ def retry_contract(root, exam, plan, cfg, log):
         raise Fail("졸업후보 예약 %d칸 기대인데 상위 %d문에 %d개뿐" % (k, exp, got))
     log.append("오답 계약: %d문 = min(상한 %d, 듀 %d) · 졸업후보 예약 %d칸(현재 %d · 듀 전체 %d)"
                % (exp, cap, due_total, k, got, n_grad_due))
+    # 💬 코멘트 — 원장 byConcept 에 있는 pick 에만 키가 붙고, 없는 pick 엔 키 자체가 없다
+    by = ((led.get("comments") or {}).get("byConcept") or {})
+    keep = int((cfg.get("_comments") or {}).get("retry_by_concept_max", 3))
+    n_cm = 0
+    for p in (plan.get("picks") or []):
+        want = list(by.get(_canon(p.get("conceptKey"))) or [])[:keep]
+        got_cm = p.get("comments")
+        if want and got_cm != want:
+            raise Fail("picks[%r].comments 불일치 — 기대 %d건, 실제 %s"
+                       % (p.get("conceptKey"), len(want), (got_cm if got_cm is None else len(got_cm))))
+        if not want and got_cm is not None:
+            raise Fail("코멘트 없는 pick %r 에 comments 키가 붙었다" % p.get("conceptKey"))
+        n_cm += 1 if want else 0
+    if by and n_cm:
+        if ("코멘트" not in str(plan.get("ai_brief") or "")):
+            raise Fail("retry ai_brief 에 코멘트 조준 문장이 없다")
+        log.append("코멘트 pick %d개 — picks[].comments ✓ · ai_brief 조준 문장 ✓" % n_cm)
 
 
 def seed_ledger(root, exam, date, cfg, log):
@@ -287,13 +310,179 @@ def seed_ledger(root, exam, date, cfg, log):
                    "results": results}
         (inbox / ("%s%s.json" % (ex["result_prefix"], rd.isoformat()))).write_text(
             json.dumps(payload, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    # 💬 4번째 제출 — 단답 코멘트 3건(⭕ 비재도전 1 · ❌ 1 · 재도전 ⭕ 1).
+    #   코멘트는 주석 전용이므로 여기서 들어오는 comment 값은 스케줄·상태·카운터를 건드리면 안 된다.
+    #   날짜는 **실제 오늘 기준 −4일**로 못 박는다(--date 가 미래여도). 원장의 듀 판정은
+    #   '오늘'을 쓰므로, 미래 날짜로 넣으면 코멘트 개념이 듀 큐에서 빠져 계약을 못 본다.
+    cm_d = (min(d, _dt.date.today()) - _dt.timedelta(days=4)).isoformat()
+    cm_results = [
+        # ❌ + 코멘트 — 이미 2회 오답인 개념(상습·듀 큐 안) → dueQueue[].lastComment 가 붙어야 한다
+        {"id": "%s-c1" % cm_d, "cat": concepts[0][1], "type": "단답",
+         "q": "%s 요건을 기재하시오." % concepts[0][0], "myAnswer": phrase(4900, 6),
+         "correct": phrase(4901, 8), "expl": "합성 해설이다.",
+         "src": "%s %s 합성" % (cm_d, concepts[0][1]), "conceptKey": concepts[0][0],
+         "correctAnswered": False, "missedKeys": [phrase(4902, 2)], "errorCause": "혼동",
+         "comment": "요건 순서를 반대로 씀 — 다음엔 순서부터"},
+        # 재도전 ⭕ + 코멘트 — 재도전 정답(c 이벤트)에도 코멘트가 실린다
+        {"id": "%s-c2" % cm_d, "cat": concepts[1][1], "type": "단답",
+         "q": "🔁 %s 판단 순서를 쓰시오." % concepts[1][0], "myAnswer": phrase(4903, 8),
+         "correct": phrase(4903, 8), "expl": "합성 해설이다.",
+         "src": "%s %s 합성 (재도전)" % (cm_d, concepts[1][1]), "conceptKey": concepts[1][0],
+         "retryOf": concepts[1][0], "correctAnswered": True,
+         "comment": "맞긴 했는데 예외 하나가 흐릿했다"},
+        # ⭕ 비재도전 + 코멘트 — 이벤트가 없어 ledger[] 레코드가 안 생긴다(코멘트만 남아야 한다)
+        {"id": "%s-c3" % cm_d, "cat": "형법", "type": "단답",
+         "q": "%s 개념을 서술하시오." % CM_ONLY_CONCEPT, "myAnswer": phrase(4904, 8),
+         "correct": phrase(4904, 8), "expl": "합성 해설이다.",
+         "src": "%s 형법 합성" % cm_d, "conceptKey": CM_ONLY_CONCEPT,
+         "correctAnswered": True,
+         "comment": "판례 문구를 통째로는 못 외웠다"},
+    ]
+    cm_payload = {"schemaVersion": 2, "subject": ex["payload_subject"],
+                  "date": cm_d, "quizId": cm_d, "score": 2, "total": 3, "wrongCount": 1,
+                  "results": cm_results}
+    (inbox / ("%s%s.json" % (ex["result_prefix"], cm_d))).write_text(
+        json.dumps(cm_payload, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+
     rc, out = run([sys.executable, BUILD_LEDGER, "--exam", exam, "--ingest", "--root", root])
     if rc not in (0,):
         raise Fail("build_ledger 실패(exit %s):\n%s" % (rc, out[-1500:]))
     led = read_json(root / ex["dir"] / paths.get("ledger_dir", "claude_ox_오답")
                     / paths.get("ledger_subdir", "_ledger") / "오답_원장.json", {}) or {}
-    log.append("픽스처 seed-ledger(%s): 결과 JSON 3건 → 원장 듀 큐 %d개"
-               % (exam, len(led.get("dueQueue") or [])))
+    log.append("픽스처 seed-ledger(%s): 결과 JSON 4건(코멘트 3건 포함) → 원장 듀 큐 %d개 · 코멘트 %d건"
+               % (exam, len(led.get("dueQueue") or []),
+                  ((led.get("comments") or {}).get("count") or 0)))
+
+
+# ─────────────────────────────────────────────── 💬 코멘트 계약 (2026-09-10)
+
+def _canon(s):
+    return re.sub(r"[\s/]+", "", re.sub(r"\s+", " ", str(s or "")).strip())
+
+
+def _cm_strip(j):
+    """코멘트가 만든 것만 걷어낸다 → 나머지가 코멘트 유무와 무관하게 같아야 한다.
+       retrievability 는 '지금 시각' 함수라 두 실행 사이에 3자리 반올림이 갈릴 수 있으므로
+       따로 빼서 허용오차로 비교한다(코멘트와는 무관한 축)."""
+    j = json.loads(json.dumps(j))
+    j.pop("generatedAt", None)
+    j.pop("comments", None)
+    rs = []
+    for q in j.get("dueQueue") or []:
+        q.pop("commentCount", None)
+        q.pop("lastComment", None)
+        rs.append(q.pop("retrievability", None))
+    for r in j.get("ledger") or []:
+        for s in r.get("samples") or []:
+            s.pop("comment", None)
+        if isinstance(r.get("fsrs"), dict):
+            rs.append(r["fsrs"].pop("retrievability", None))
+    return j, rs
+
+
+def _cm_ab_regression(root, exam, cfg, log):
+    """같은 결과 JSON을 '코멘트 있음/없음' 두 벌로 만들어 원장을 두 번 빌드.
+       comments 블록·lastComment/commentCount·samples[].comment 를 뺀 나머지가 동일해야 한다."""
+    ex = cfg["exams"][exam]
+    paths = cfg.get("_paths") or {}
+    src = (root / ex["dir"] / paths.get("ledger_dir", "claude_ox_오답")
+           / paths.get("inbox_dir", "_inbox"))
+    base = root / STASH / "cm_ab"
+    if base.exists():
+        shutil.rmtree(base)
+    outs = {}
+    for tag, keep in (("a", True), ("b", False)):
+        ibx = base / tag / "_inbox"
+        ibx.mkdir(parents=True, exist_ok=True)
+        for p in sorted(src.glob("*.json")):
+            d = json.loads(p.read_text(encoding="utf-8"))
+            if not keep:
+                for r in d.get("results") or []:
+                    r.pop("comment", None)
+            p2 = ibx / p.name
+            p2.write_text(json.dumps(d, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+        outs[tag] = base / (tag + "_out")
+        rc, txt = run([sys.executable, BUILD_LEDGER, "--exam", exam,
+                       "--base", base / tag, "--out", outs[tag]])
+        if rc != 0:
+            raise Fail("코멘트 A/B 원장 빌드 실패(%s, exit %s):\n%s" % (tag, rc, txt[-800:]))
+    ja, ra = _cm_strip(read_json(outs["a"] / "오답_원장.json", {}) or {})
+    jb, rb = _cm_strip(read_json(outs["b"] / "오답_원장.json", {}) or {})
+    if ja != jb:
+        diff = [k for k in set(ja) | set(jb) if ja.get(k) != jb.get(k)]
+        raise Fail("코멘트가 원장의 다른 값을 바꿨다 — 주석 전용 위반. 다른 최상위 키: %s" % diff[:6])
+    if len(ra) != len(rb) or any(
+            (x is None) != (y is None) or (x is not None and abs(x - y) > 0.002)
+            for x, y in zip(ra, rb)):
+        raise Fail("코멘트 유무로 망각위험(R)이 달라졌다 — %s vs %s" % (ra[:5], rb[:5]))
+    cm_a = (read_json(outs["a"] / "오답_원장.json", {}) or {}).get("comments") or {}
+    cm_b = (read_json(outs["b"] / "오답_원장.json", {}) or {}).get("comments") or {}
+    if (cm_b.get("count") or 0) != 0:
+        raise Fail("코멘트를 뺀 결과 JSON인데 원장 comments.count=%s" % cm_b.get("count"))
+    log.append("코멘트 A/B 회귀: 코멘트 %d건 유무로 달라진 값 없음(R 허용오차 0.002 · 검사 %d개 축)"
+               % (cm_a.get("count") or 0, len(ra)))
+    shutil.rmtree(base, ignore_errors=True)
+
+
+def comment_contract(root, exam, date, cfg, log):
+    """💬 코멘트 계약 — 결과 JSON → 원장 → 플랜(retry picks / daily recent) 전 구간."""
+    ex = cfg["exams"][exam]
+    led = read_json(led_path(root, exam, cfg), {}) or {}
+    cm = led.get("comments") or {}
+    if (cm.get("count") or 0) != 3:
+        raise Fail("원장 comments.count=%s (기대 3)" % cm.get("count"))
+    by = cm.get("byConcept") or {}
+    subjects = ["민법", "부동산등기법", "민사집행법", "상법", "공탁법", "헌법"]
+    k_wrong = "E2E-%s-00 %s 쟁점" % (exam, subjects[0])
+    k_retry = "E2E-%s-01 %s 쟁점" % (exam, subjects[1])
+    for k in (k_wrong, k_retry, CM_ONLY_CONCEPT):
+        if _canon(k) not in by:
+            raise Fail("comments.byConcept 에 %r 없음 (키 %d종)" % (k, len(by)))
+    if (by[_canon(k_wrong)][0].get("grade") != "❌"
+            or by[_canon(k_retry)][0].get("grade") != "⭕"
+            or by[_canon(CM_ONLY_CONCEPT)][0].get("grade") != "⭕"):
+        raise Fail("코멘트 ⭕/❌ 표시가 뒤집혔다: %s" % {k: v[0].get("grade") for k, v in by.items()})
+    if not by[_canon(k_retry)][0].get("retry"):
+        raise Fail("재도전 ⭕ 코멘트에 retry 표시가 없다")
+    # ① ❌ 개념의 듀 큐 항목에 lastComment/commentCount
+    dq = {d.get("conceptKey"): d for d in (led.get("dueQueue") or [])}
+    q = dq.get(k_wrong)
+    if not q:
+        raise Fail("❌ 코멘트 개념 %r 이 듀 큐에 없다" % k_wrong)
+    if not q.get("lastComment") or q["lastComment"].get("grade") != "❌" or not q.get("commentCount"):
+        raise Fail("dueQueue[%r].lastComment/commentCount 누락: %s"
+                   % (k_wrong, {k: q.get(k) for k in ("commentCount", "lastComment")}))
+    # ② ⭕(비재도전)만 있는 개념은 이벤트가 없으므로 레코드 자체가 없어야 한다(스케줄 무관 증명)
+    keys = {r.get("conceptKey") for r in (led.get("ledger") or [])}
+    if CM_ONLY_CONCEPT in keys or _canon(CM_ONLY_CONCEPT) in {_canon(k) for k in keys}:
+        raise Fail("⭕(비재도전) 코멘트만 있는 개념이 ledger[] 에 레코드를 만들었다 — 스케줄 오염")
+    # ③ 코멘트 없는 문항에는 키가 붙지 않는다
+    stray = [c for c in (cm.get("recent") or []) if not str(c.get("text") or "").strip()]
+    if stray or len(cm.get("recent") or []) != 3:
+        raise Fail("comments.recent 이상 — %d건 · 빈 텍스트 %d건" % (len(cm.get("recent") or []), len(stray)))
+    # ④ A/B 회귀 — 코멘트 유무만 다른 두 결과 세트
+    _cm_ab_regression(root, exam, cfg, log)
+    # ⑤ daily plan 의 recent_comments (retry picks[].comments 는 retry_contract 에서 본다)
+    probe = (min(_dt.date.fromisoformat(date), _dt.date.today()) + _dt.timedelta(days=1)).isoformat()
+    qdir = root / ex["dir"] / "데일리퀴즈"
+    if (qdir / ("%s.html" % probe)).exists():
+        log.append("코멘트: daily plan 확인 생략(%s 문제지가 이미 있다)" % probe)
+    else:
+        rc, txt = run([sys.executable, PREPARE, "--exam", exam, "--kind", "daily",
+                       "--date", probe, "--root", root, "--no-ingest"])
+        if rc != 0:
+            raise Fail("daily plan 프로브 실패(exit %s):\n%s" % (rc, txt[-800:]))
+        dp = read_json(qdir / "_work" / ("%s.plan.json" % probe), {}) or {}
+        rcm = dp.get("recent_comments") or []
+        if len(rcm) != 3 or {c.get("grade") for c in rcm} != {"⭕", "❌"}:
+            raise Fail("daily plan recent_comments=%d건 (기대 3 · ⭕❌ 혼재): %s" % (len(rcm), rcm[:2]))
+        # ai_brief 의 코멘트 문장은 출제가 실제로 있는 ready 플랜에서만 의미가 있다
+        if dp.get("status") == "ready" and "코멘트" not in str(dp.get("ai_brief") or ""):
+            raise Fail("daily ai_brief 에 코멘트 문장이 없다")
+        log.append("코멘트: daily plan(%s, status=%s) recent_comments %d건 ✓"
+                   % (probe, dp.get("status"), len(rcm)))
+    log.append("코멘트 계약: 원장 %d건(개념 %d종) · dueQueue lastComment ✓ · ⭕전용 개념 레코드 없음 ✓"
+               % (cm.get("count") or 0, len(by)))
 
 
 # ─────────────────────────────────────────────── ① prepare
