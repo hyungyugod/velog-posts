@@ -1,6 +1,6 @@
 {
   "ledgerSchema": 3,
-  "generatedAt": "2026-09-10T09:28:46",
+  "generatedAt": "2026-09-12T15:02:11",
   "fsrsMeta": {
     "version": "6.3.2",
     "desiredRetention": 0.9,
@@ -8,62 +8,33 @@
     "fuzzing": false,
     "ratingMap": "wrong=Again, retryCorrect=Good"
   },
-  "sourceFiles": 11,
-  "v2Files": 11,
-  "submissions": 11,
+  "sourceFiles": 12,
+  "v2Files": 12,
+  "submissions": 12,
   "avgScore": 6.0,
   "avgTotal": 12,
   "perfectRuns": 0,
-  "totalWrongItems": 65,
-  "uniqueConcepts": 35,
+  "totalWrongItems": 71,
+  "uniqueConcepts": 41,
   "dateRange": [
     "2026-08-24",
-    "2026-09-09"
+    "2026-09-10"
   ],
   "statusCounts": {
     "상습": 5,
-    "재도전중": 13,
+    "재도전중": 19,
     "졸업후보": 17
   },
   "fsrsFallbacks": 0,
   "subjectWeakness": {
-    "형법": 65
+    "형법": 71
+  },
+  "comments": {
+    "count": 0,
+    "recent": [],
+    "byConcept": {}
   },
   "dueQueue": [
-    {
-      "conceptKey": "형법 1-9 위법성 착오는 책임 단계, 정당한 이유 요구",
-      "subject": "형법",
-      "status": "상습",
-      "timesWrong": 4,
-      "retryMissed": 3,
-      "consecutiveCorrect": 1,
-      "lastWrong": "2026-08-31",
-      "nextReviewDate": "2026-09-03",
-      "retrievability": 0.661,
-      "stability": 0.502,
-      "pick": true,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "형법 1-2 작위의무 발생근거 6개(법계조선신사) → 보증인지위",
-      "subject": "형법",
-      "status": "상습",
-      "timesWrong": 4,
-      "retryMissed": 3,
-      "consecutiveCorrect": 1,
-      "lastWrong": "2026-09-02",
-      "nextReviewDate": "2026-09-10",
-      "retrievability": 1.0,
-      "stability": 1.34,
-      "pick": true,
-      "missedTop": [
-        "기타: 해당 사례가 부진정 부작위범 사례인지 몰랐다."
-      ],
-      "causeTop": null,
-      "errorCauses": {}
-    },
     {
       "conceptKey": "형법 1-3 구체적 위험범과 추상적 위험범의 판별식",
       "subject": "형법",
@@ -73,13 +44,47 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-09",
       "nextReviewDate": "2026-09-10",
-      "retrievability": 1.0,
+      "retrievability": 0.572,
       "stability": 0.081,
       "pick": true,
       "missedTop": [
         "결론·방향 자체",
         "기타: 행위자체로 구성요건 충족하여 기수, 공공의 위험의 현실발생과 같은 표현을 잘 사용하지 못했다.",
         "구체적 위험범 = 공공의 위험의 현실 발생 요구"
+      ],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "형법 1-9 위법성 착오는 책임 단계, 정당한 이유 요구",
+      "subject": "형법",
+      "status": "상습",
+      "timesWrong": 4,
+      "retryMissed": 3,
+      "consecutiveCorrect": 1,
+      "lastWrong": "2026-08-31",
+      "nextReviewDate": "2026-09-03",
+      "retrievability": 0.627,
+      "stability": 0.502,
+      "pick": true,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "형법 1-8 싸움에서 정당방위가 인정될 수 있는 경우",
+      "subject": "형법",
+      "status": "상습",
+      "timesWrong": 5,
+      "retryMissed": 4,
+      "consecutiveCorrect": 1,
+      "lastWrong": "2026-09-02",
+      "nextReviewDate": "2026-09-10",
+      "retrievability": 0.735,
+      "stability": 0.461,
+      "pick": true,
+      "missedTop": [
+        "결론·방향 자체"
       ],
       "causeTop": null,
       "errorCauses": {}
@@ -93,7 +98,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-09-02",
       "nextReviewDate": "2026-09-10",
-      "retrievability": 1.0,
+      "retrievability": 0.772,
       "stability": 0.673,
       "pick": true,
       "missedTop": [
@@ -105,19 +110,19 @@
       "errorCauses": {}
     },
     {
-      "conceptKey": "형법 1-8 싸움에서 정당방위가 인정될 수 있는 경우",
+      "conceptKey": "형법 1-2 작위의무 발생근거 6개(법계조선신사) → 보증인지위",
       "subject": "형법",
       "status": "상습",
-      "timesWrong": 5,
-      "retryMissed": 4,
+      "timesWrong": 4,
+      "retryMissed": 3,
       "consecutiveCorrect": 1,
       "lastWrong": "2026-09-02",
       "nextReviewDate": "2026-09-10",
-      "retrievability": 1.0,
-      "stability": 0.461,
+      "retrievability": 0.836,
+      "stability": 1.34,
       "pick": true,
       "missedTop": [
-        "결론·방향 자체"
+        "기타: 해당 사례가 부진정 부작위범 사례인지 몰랐다."
       ],
       "causeTop": null,
       "errorCauses": {}
@@ -131,7 +136,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-31",
       "nextReviewDate": "2026-09-01",
-      "retrievability": 0.561,
+      "retrievability": 0.537,
       "stability": 0.212,
       "pick": true,
       "missedTop": [],
@@ -147,7 +152,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-31",
       "nextReviewDate": "2026-09-01",
-      "retrievability": 0.561,
+      "retrievability": 0.537,
       "stability": 0.212,
       "pick": true,
       "missedTop": [],
@@ -163,7 +168,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-31",
       "nextReviewDate": "2026-09-01",
-      "retrievability": 0.561,
+      "retrievability": 0.537,
       "stability": 0.212,
       "pick": true,
       "missedTop": [],
@@ -179,7 +184,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-31",
       "nextReviewDate": "2026-09-01",
-      "retrievability": 0.561,
+      "retrievability": 0.537,
       "stability": 0.212,
       "pick": true,
       "missedTop": [],
@@ -195,24 +200,8 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-26",
       "nextReviewDate": "2026-08-29",
-      "retrievability": 0.669,
+      "retrievability": 0.647,
       "stability": 0.933,
-      "pick": true,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "형법 1-5 주의의무 = 예견+방지, 신뢰의 원칙은 수직관계 배제",
-      "subject": "형법",
-      "status": "졸업후보",
-      "timesWrong": 2,
-      "retryMissed": 1,
-      "consecutiveCorrect": 2,
-      "lastWrong": "2026-08-25",
-      "nextReviewDate": "2026-08-29",
-      "retrievability": 0.725,
-      "stability": 1.806,
       "pick": true,
       "missedTop": [],
       "causeTop": null,
@@ -227,7 +216,23 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-27",
       "nextReviewDate": "2026-09-01",
-      "retrievability": 0.729,
+      "retrievability": 0.701,
+      "stability": 1.31,
+      "pick": true,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "형법 1-6 부진정 결과적 가중범의 정의와 예",
+      "subject": "형법",
+      "status": "졸업후보",
+      "timesWrong": 3,
+      "retryMissed": 2,
+      "consecutiveCorrect": 2,
+      "lastWrong": "2026-08-27",
+      "nextReviewDate": "2026-09-01",
+      "retrievability": 0.701,
       "stability": 1.31,
       "pick": true,
       "missedTop": [],
@@ -243,7 +248,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-31",
       "nextReviewDate": "2026-09-01",
-      "retrievability": 0.561,
+      "retrievability": 0.537,
       "stability": 0.212,
       "pick": false,
       "missedTop": [],
@@ -259,7 +264,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-31",
       "nextReviewDate": "2026-09-01",
-      "retrievability": 0.561,
+      "retrievability": 0.537,
       "stability": 0.212,
       "pick": false,
       "missedTop": [],
@@ -275,7 +280,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-31",
       "nextReviewDate": "2026-09-01",
-      "retrievability": 0.561,
+      "retrievability": 0.537,
       "stability": 0.212,
       "pick": false,
       "missedTop": [],
@@ -291,7 +296,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-31",
       "nextReviewDate": "2026-09-01",
-      "retrievability": 0.561,
+      "retrievability": 0.537,
       "stability": 0.212,
       "pick": false,
       "missedTop": [],
@@ -307,7 +312,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-03",
       "nextReviewDate": "2026-09-04",
-      "retrievability": 0.596,
+      "retrievability": 0.561,
       "stability": 0.212,
       "pick": false,
       "missedTop": [
@@ -326,7 +331,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-03",
       "nextReviewDate": "2026-09-04",
-      "retrievability": 0.596,
+      "retrievability": 0.561,
       "stability": 0.212,
       "pick": false,
       "missedTop": [
@@ -345,7 +350,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-03",
       "nextReviewDate": "2026-09-04",
-      "retrievability": 0.596,
+      "retrievability": 0.561,
       "stability": 0.212,
       "pick": false,
       "missedTop": [
@@ -363,7 +368,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-03",
       "nextReviewDate": "2026-09-04",
-      "retrievability": 0.596,
+      "retrievability": 0.561,
       "stability": 0.212,
       "pick": false,
       "missedTop": [
@@ -383,7 +388,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-03",
       "nextReviewDate": "2026-09-04",
-      "retrievability": 0.596,
+      "retrievability": 0.561,
       "stability": 0.212,
       "pick": false,
       "missedTop": [
@@ -394,16 +399,125 @@
       "errorCauses": {}
     },
     {
-      "conceptKey": "형법 1-6 부진정 결과적 가중범의 정의와 예",
+      "conceptKey": "형법 강간치상-상해 판단 4요소",
+      "subject": "형법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-09-10",
+      "nextReviewDate": "2026-09-11",
+      "retrievability": 0.698,
+      "stability": 0.212,
+      "pick": false,
+      "missedTop": [
+        "일상생활 지장 여부",
+        "피해자의 나이"
+      ],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "형법 기대가능성-유죄 확정 후 허위진술은 위증죄",
+      "subject": "형법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-09-10",
+      "nextReviewDate": "2026-09-11",
+      "retrievability": 0.698,
+      "stability": 0.212,
+      "pick": false,
+      "missedTop": [
+        "처벌 위험 소멸 → 기대가능성 인정"
+      ],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "형법 동시범-상해죄 특례로 공동정범의 예",
+      "subject": "형법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-09-10",
+      "nextReviewDate": "2026-09-11",
+      "retrievability": 0.698,
+      "stability": 0.212,
+      "pick": false,
+      "missedTop": [
+        "기타: 요지는 맞았는데 표현법이 아쉬웠다."
+      ],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "형법 장물-본범의 정범은 장물죄 주체 불가",
+      "subject": "형법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-09-10",
+      "nextReviewDate": "2026-09-11",
+      "retrievability": 0.698,
+      "stability": 0.212,
+      "pick": false,
+      "missedTop": [
+        "본범의 정범은 장물죄의 주체가 될 수 없음"
+      ],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "형법 정범공범-행위지배의 의의",
+      "subject": "형법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-09-10",
+      "nextReviewDate": "2026-09-11",
+      "retrievability": 0.698,
+      "stability": 0.212,
+      "pick": false,
+      "missedTop": [
+        "있으면 정범·없으면 공범"
+      ],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "형법 협박-기수 요건 3단계",
+      "subject": "형법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-09-10",
+      "nextReviewDate": "2026-09-11",
+      "retrievability": 0.698,
+      "stability": 0.212,
+      "pick": false,
+      "missedTop": [
+        "기타: 표현이 아쉬웠다."
+      ],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "형법 1-5 주의의무 = 예견+방지, 신뢰의 원칙은 수직관계 배제",
       "subject": "형법",
       "status": "졸업후보",
-      "timesWrong": 3,
-      "retryMissed": 2,
+      "timesWrong": 2,
+      "retryMissed": 1,
       "consecutiveCorrect": 2,
-      "lastWrong": "2026-08-27",
-      "nextReviewDate": "2026-09-01",
-      "retrievability": 0.729,
-      "stability": 1.31,
+      "lastWrong": "2026-08-25",
+      "nextReviewDate": "2026-08-29",
+      "retrievability": 0.705,
+      "stability": 1.806,
       "pick": false,
       "missedTop": [],
       "causeTop": null,
@@ -418,7 +532,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-26",
       "nextReviewDate": "2026-08-30",
-      "retrievability": 0.733,
+      "retrievability": 0.711,
       "stability": 1.806,
       "pick": false,
       "missedTop": [],
@@ -434,7 +548,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-26",
       "nextReviewDate": "2026-08-30",
-      "retrievability": 0.733,
+      "retrievability": 0.711,
       "stability": 1.806,
       "pick": false,
       "missedTop": [],
@@ -450,7 +564,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-28",
       "nextReviewDate": "2026-09-04",
-      "retrievability": 0.808,
+      "retrievability": 0.774,
       "stability": 2.29,
       "pick": false,
       "missedTop": [],
@@ -466,7 +580,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-24",
       "nextReviewDate": "2026-09-02",
-      "retrievability": 0.843,
+      "retrievability": 0.824,
       "stability": 6.269,
       "pick": false,
       "missedTop": [],
@@ -482,7 +596,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-24",
       "nextReviewDate": "2026-09-02",
-      "retrievability": 0.843,
+      "retrievability": 0.824,
       "stability": 6.269,
       "pick": false,
       "missedTop": [],
@@ -498,7 +612,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-24",
       "nextReviewDate": "2026-09-02",
-      "retrievability": 0.843,
+      "retrievability": 0.824,
       "stability": 6.269,
       "pick": false,
       "missedTop": [],
@@ -514,7 +628,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-25",
       "nextReviewDate": "2026-09-03",
-      "retrievability": 0.85,
+      "retrievability": 0.83,
       "stability": 6.269,
       "pick": false,
       "missedTop": [],
@@ -530,7 +644,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-25",
       "nextReviewDate": "2026-09-03",
-      "retrievability": 0.85,
+      "retrievability": 0.83,
       "stability": 6.269,
       "pick": false,
       "missedTop": [],
@@ -546,7 +660,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-25",
       "nextReviewDate": "2026-09-03",
-      "retrievability": 0.85,
+      "retrievability": 0.83,
       "stability": 6.269,
       "pick": false,
       "missedTop": [],
@@ -562,7 +676,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-25",
       "nextReviewDate": "2026-09-03",
-      "retrievability": 0.85,
+      "retrievability": 0.83,
       "stability": 6.269,
       "pick": false,
       "missedTop": [],
@@ -578,7 +692,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-25",
       "nextReviewDate": "2026-09-03",
-      "retrievability": 0.85,
+      "retrievability": 0.83,
       "stability": 6.269,
       "pick": false,
       "missedTop": [],
@@ -594,7 +708,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-27",
       "nextReviewDate": "2026-09-07",
-      "retrievability": 0.877,
+      "retrievability": 0.847,
       "stability": 5.082,
       "pick": false,
       "missedTop": [],
@@ -610,7 +724,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-27",
       "nextReviewDate": "2026-09-07",
-      "retrievability": 0.877,
+      "retrievability": 0.847,
       "stability": 5.082,
       "pick": false,
       "missedTop": [],
@@ -699,7 +813,7 @@
         "state": "Review",
         "reps": 6,
         "lapses": 5,
-        "retrievability": 1.0
+        "retrievability": 0.572
       },
       "fsrsFallback": false
     },
@@ -776,7 +890,7 @@
         "state": "Review",
         "reps": 7,
         "lapses": 5,
-        "retrievability": 1.0
+        "retrievability": 0.735
       },
       "fsrsFallback": false
     },
@@ -848,7 +962,7 @@
         "state": "Review",
         "reps": 6,
         "lapses": 4,
-        "retrievability": 0.661
+        "retrievability": 0.627
       },
       "fsrsFallback": false
     },
@@ -924,7 +1038,7 @@
         "state": "Review",
         "reps": 7,
         "lapses": 4,
-        "retrievability": 1.0
+        "retrievability": 0.836
       },
       "fsrsFallback": false
     },
@@ -1004,7 +1118,7 @@
         "state": "Review",
         "reps": 6,
         "lapses": 4,
-        "retrievability": 1.0
+        "retrievability": 0.772
       },
       "fsrsFallback": false
     },
@@ -1049,7 +1163,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.561
+        "retrievability": 0.537
       },
       "fsrsFallback": false
     },
@@ -1094,7 +1208,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.561
+        "retrievability": 0.537
       },
       "fsrsFallback": false
     },
@@ -1139,7 +1253,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.561
+        "retrievability": 0.537
       },
       "fsrsFallback": false
     },
@@ -1184,7 +1298,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.561
+        "retrievability": 0.537
       },
       "fsrsFallback": false
     },
@@ -1229,7 +1343,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.561
+        "retrievability": 0.537
       },
       "fsrsFallback": false
     },
@@ -1274,7 +1388,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.561
+        "retrievability": 0.537
       },
       "fsrsFallback": false
     },
@@ -1319,7 +1433,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.561
+        "retrievability": 0.537
       },
       "fsrsFallback": false
     },
@@ -1364,7 +1478,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.561
+        "retrievability": 0.537
       },
       "fsrsFallback": false
     },
@@ -1415,7 +1529,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.596
+        "retrievability": 0.561
       },
       "fsrsFallback": false
     },
@@ -1468,7 +1582,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.596
+        "retrievability": 0.561
       },
       "fsrsFallback": false
     },
@@ -1517,7 +1631,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.596
+        "retrievability": 0.561
       },
       "fsrsFallback": false
     },
@@ -1568,7 +1682,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.596
+        "retrievability": 0.561
       },
       "fsrsFallback": false
     },
@@ -1619,7 +1733,303 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.596
+        "retrievability": 0.561
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "형법 동시범-상해죄 특례로 공동정범의 예",
+      "aliases": [],
+      "subject": "형법",
+      "concept": "형법 동시범-상해죄 특례로 공동정범의 예",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-09-10",
+      "lastWrong": "2026-09-10",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-09-10",
+      "nextReviewDate": "2026-09-11",
+      "dates": [
+        "2026-09-10"
+      ],
+      "samples": [
+        {
+          "date": "2026-09-10",
+          "type": "단답",
+          "q": "甲과 乙은 서로 의사연락 없이 각자 丙을 폭행하였고, 丙에게 상해가 발생하였으나 누구의 폭행으로 인한 것인지 판명되지 아니하였다. 甲과 乙의 죄책에 대한 결론과 그 이유를 기재하시오. (10점)",
+          "myAnswer": "본 사안에서는 갑과 을의 폭행행위로 인해 상해죄가 문제가 된다. 원래 이와 같은 경우는 각각을 미수범으로 처벌하는 것이 원칙이나 사안의 경우는 상해죄인 사안이므로 이 둘을 공동정범으로 처벌하게 된다.",
+          "correct": "甲과 乙은 각각 상해죄에 대하여 공동정범의 예에 의하여 처벌된다.<br>동시 또는 이시의 독립행위가 경합한 경우 그 결과발생의 원인된 행위가 판명되지 아니한 때에는 각 행위를 미수범으로 처벌함이 원칙이다. 다만 상해죄는 특례를 규정하여 인과관계를 전체적으로 판단해 공동정범의 예에 의하도록 하고 있다.<br>사안의 경우 甲과 乙 사이에 의사연락이 없어 독립행위의 경합에 해당하고 상해의 원인된 행위도 판명되지 아니하였으나, 발생한 결과가 상해인 이상 특례에 따라 공동정범의 예에 의하여 상해의 책임을 지움이 타당하다.",
+          "expl": "[정답 근거] 원인된 행위가 판명되지 아니한 독립행위의 경합은 각 미수가 원칙이나, 상해죄는 특례로 공동정범의 예에 의한다. [메커니즘] 인과관계 불명의 불이익을 행위자 쪽에 돌린 예외 규정이어서 원칙과 반대 방향으로 작동한다. [함정] 상해죄의 특례를 빠뜨리고 원칙대로 각 미수라고만 쓰면 결론 카테고리가 통째로 어긋난다.",
+          "missedKeys": [
+            "기타: 요지는 맞았는데 표현법이 아쉬웠다."
+          ],
+          "fixTyped": "동시 또는 이시의 독립행위가 경합한 경우 그 결과발생의 원인된 행위가 판명되지 아니한 때에는 각 행위를 미수범으로 처벌하는 것이 원칙이다. 다만 상해죄는 특례를 구성하여 인과관계를 전체적으로 판단해 공동정범의 예에 의하도록 하고있다. 사안의 경우 갑과 을 사이의 의사연락이 없어 독립행위의 경합에 해당하고 상해의 원인도 밝혀지지 않았으나 발생한 결과가 상해인 이상 특례에 따라 공동정범의 예에 따라 상해의 책임을 지움이 타당하다.",
+          "errorCause": null,
+          "causeNote": null
+        }
+      ],
+      "missedKeys": {
+        "기타: 요지는 맞았는데 표현법이 아쉬웠다.": 1
+      },
+      "errorCauses": {},
+      "fsrs": {
+        "stability": 0.212,
+        "difficulty": 6.413,
+        "due": "2026-09-11",
+        "state": "Review",
+        "reps": 1,
+        "lapses": 1,
+        "retrievability": 0.698
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "형법 협박-기수 요건 3단계",
+      "aliases": [],
+      "subject": "형법",
+      "concept": "형법 협박-기수 요건 3단계",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-09-10",
+      "lastWrong": "2026-09-10",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-09-10",
+      "nextReviewDate": "2026-09-11",
+      "dates": [
+        "2026-09-10"
+      ],
+      "samples": [
+        {
+          "date": "2026-09-10",
+          "type": "단답",
+          "q": "협박죄가 기수에 이르기 위한 요건을 답안에 쓰는 순서대로 서술하시오.",
+          "myAnswer": "협박죄가 기수에 이르기 위해서는 명백한 해악을 고지해야하며 그 의사가 전달되고 전달받은 자가 이해했으며 공포심을 느껴야한다. 만약 제 3자에 대한 협박을 했다면 협박을 당한자와 그 제3자는 긴밀한 관계에 있어야한다.",
+          "correct": "협박죄가 기수에 이르기 위해서는 ① 객관적으로 사람으로 하여금 공포심을 일으킬 수 있는 정도의 해악의 고지 ② 그 고지의 도달 ③ 상대방이 그 의미 내용을 인식할 것이 필요하다. 세 단계 중 어느 하나가 결여되면 미수에 그친다.",
+          "expl": "[정답 근거] 해악의 고지가 상대방에게 도달하고 상대방이 그 의미 내용을 인식한 때 협박죄는 기수가 된다. [메커니즘] 미수가 도달 전·지각 전·의미 인식 전의 3유형으로 나뉘는 것은 기수 요건이 그 세 단계로 이루어져 있기 때문이다. [함정] 고지만 하고 도달하지 아니한 단계까지 기수로 묶어 쓰면 미수 3유형과 앞뒤가 맞지 않게 된다.",
+          "missedKeys": [
+            "기타: 표현이 아쉬웠다."
+          ],
+          "fixTyped": "협박죄가 성립하기 위해서는 1. 객관적으로 사람으로 하여금 공포심을 느끼게 할만한 정도의 해악의 고지, 2. 그 고지의 도달, 3. 상대방이 그 의미 내용을 인식할 것을 필요로 한다. 세 단계 중 어느 하나라도 결여되면 미수에 그치게 된다.",
+          "errorCause": null,
+          "causeNote": null
+        }
+      ],
+      "missedKeys": {
+        "기타: 표현이 아쉬웠다.": 1
+      },
+      "errorCauses": {},
+      "fsrs": {
+        "stability": 0.212,
+        "difficulty": 6.413,
+        "due": "2026-09-11",
+        "state": "Review",
+        "reps": 1,
+        "lapses": 1,
+        "retrievability": 0.698
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "형법 강간치상-상해 판단 4요소",
+      "aliases": [],
+      "subject": "형법",
+      "concept": "형법 강간치상-상해 판단 4요소",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-09-10",
+      "lastWrong": "2026-09-10",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-09-10",
+      "nextReviewDate": "2026-09-11",
+      "dates": [
+        "2026-09-10"
+      ],
+      "samples": [
+        {
+          "date": "2026-09-10",
+          "type": "단답",
+          "q": "강간치상죄에서 상해에 해당하는지를 판단하는 요소를 답안에 쓰는 순서대로 서술하시오.",
+          "myAnswer": "1. 상처의 부위 및 크기, 2. 스스로 회복이 가능한 정도인가, 3. 기능적 훼손",
+          "correct": "강간치상죄의 상해 개념은 ① 상처의 부위와 정도 ② 일상생활에 지장이 있는지 여부 ③ 별도의 치료 없이도 자연치유가 가능한지 여부 ④ 피해자의 나이를 종합적으로 검토하여 판단한다.",
+          "expl": "[정답 근거] 상처의 부위와 정도, 일상생활 지장 여부, 자연치유 가능성, 피해자의 나이를 종합적으로 검토하여 상해 여부를 판단한다. [메커니즘] 상해의 인정 여부가 결합범의 성부를 가르므로 판단요소를 나열하는 것 자체가 논증 단계가 된다. [함정] 네 요소 중 일부만 들고 결론으로 직행하면 종합적 검토라는 판단구조가 답안에 드러나지 않는다.",
+          "missedKeys": [
+            "일상생활 지장 여부",
+            "피해자의 나이"
+          ],
+          "fixTyped": "강간치상죄의 상해 개념은 상처의 부위와 정도, 일상생활 지장여부, 별도 치료없는 자연치유 가능성, 피해자의 나이를 의미한다.",
+          "errorCause": null,
+          "causeNote": null
+        }
+      ],
+      "missedKeys": {
+        "일상생활 지장 여부": 1,
+        "피해자의 나이": 1
+      },
+      "errorCauses": {},
+      "fsrs": {
+        "stability": 0.212,
+        "difficulty": 6.413,
+        "due": "2026-09-11",
+        "state": "Review",
+        "reps": 1,
+        "lapses": 1,
+        "retrievability": 0.698
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "형법 장물-본범의 정범은 장물죄 주체 불가",
+      "aliases": [],
+      "subject": "형법",
+      "concept": "형법 장물-본범의 정범은 장물죄 주체 불가",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-09-10",
+      "lastWrong": "2026-09-10",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-09-10",
+      "nextReviewDate": "2026-09-11",
+      "dates": [
+        "2026-09-10"
+      ],
+      "samples": [
+        {
+          "date": "2026-09-10",
+          "type": "단답",
+          "q": "甲은 乙의 자전거를 절취한 후 그 자전거를 자신의 창고에 보관하였다. 甲에게 절도죄와 별도로 장물보관죄가 성립하는지에 대한 결론과 그 이유를 기재하시오. (10점)",
+          "myAnswer": "갑은 자전거를 절취하였으므로 절도죄에 해당하고 훔친 물건인 장물을 보관했으므로 장물보관죄에도 해당한다.",
+          "correct": "장물보관죄는 성립하지 아니한다.<br>장물이란 재산범죄로 영득한 재물 그 자체를 말하고, 장물죄의 보관은 그 장물을 보관하는 것을 의미한다. 다만 장물범은 본범의 정범은 될 수 없으니, 본범의 정범은 이미 그 재산범죄로 처벌받기 때문이다. 본범의 공범인 자는 장물죄의 주체가 될 수 있다.<br>사안의 경우 甲은 자전거를 절취한 본범의 정범 자신이므로 장물보관죄의 주체가 될 수 없고, 절도죄로만 처벌함이 타당하다.",
+          "expl": "[정답 근거] 본범의 정범은 이미 그 재산범죄로 처벌받으므로 장물죄의 주체가 될 수 없어 장물보관죄가 성립하지 아니한다. [메커니즘] 절취한 물건을 그대로 가지고 있는 것은 절도죄의 불법에 이미 포함되어 별죄를 세울 자리가 없다. [함정] 본범의 공범도 장물죄가 안 된다고 일반화하면 주체가 될 수 있는 경우까지 지워 버린다.",
+          "missedKeys": [
+            "본범의 정범은 장물죄의 주체가 될 수 없음"
+          ],
+          "fixTyped": "장물이란 재산범죄로 영득한 재물 자체를 의미하고 장물죄의 보관은 그 장물을 보관하는 것을 의미한다. 다만 장물범은 본범의 정범은 될 수 없으니 본범의 정범은 이미 그 재산범죄로 처벌받기 때문이다. 이 사안의 갑은 본범에 해당하므로 장물보관죄로 처벌하지 않고 사안의 경우는 절도죄로 처벌함이 타당한다.",
+          "errorCause": null,
+          "causeNote": null
+        }
+      ],
+      "missedKeys": {
+        "본범의 정범은 장물죄의 주체가 될 수 없음": 1
+      },
+      "errorCauses": {},
+      "fsrs": {
+        "stability": 0.212,
+        "difficulty": 6.413,
+        "due": "2026-09-11",
+        "state": "Review",
+        "reps": 1,
+        "lapses": 1,
+        "retrievability": 0.698
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "형법 기대가능성-유죄 확정 후 허위진술은 위증죄",
+      "aliases": [],
+      "subject": "형법",
+      "concept": "형법 기대가능성-유죄 확정 후 허위진술은 위증죄",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-09-10",
+      "lastWrong": "2026-09-10",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-09-10",
+      "nextReviewDate": "2026-09-11",
+      "dates": [
+        "2026-09-10"
+      ],
+      "samples": [
+        {
+          "date": "2026-09-10",
+          "type": "단답",
+          "q": "⏪ 甲은 자신의 범행에 관하여 유죄의 확정판결을 받은 뒤, 같은 범행에 관한 재판에 증인으로 출석하여 선서하고 허위의 진술을 하였다. 甲에게 위증죄가 성립하는지에 대한 결론과 그 이유를 기재하시오. (성립·불성립)",
+          "myAnswer": "위증죄가 성립한다. 원래는 거짓증언을 해도 되나 유죄의 확정판결을 받으면 이제 그 죄로 판결받을 일이 없어서 위증죄가 성립한다.",
+          "correct": "위증죄가 성립한다. 유죄의 확정판결을 받으면 그 사건으로 다시 처벌받지 아니하므로 스스로 처벌받을 위험이 없어지고, 그 결과 적법행위를 기대할 수 없다고 볼 사정이 사라진다. 사안의 경우 甲은 이미 유죄의 확정판결을 받아 처벌 위험이 없는 상태에서 허위의 진술을 하였으므로, 위증죄가 성립한다 할 것이다.",
+          "expl": "[정답 근거] 유죄가 확정되어 다시 처벌받을 위험이 없어진 뒤의 허위진술이므로 위증죄가 성립한다. [메커니즘] 기대가능성은 그 상황에서 적법행위를 기대할 수 있었는가의 문제여서, 자기 처벌의 위험이 사라지면 기대가능성이 되살아난다. [함정] 자기 범행에 관한 진술이라는 이유만으로 언제나 죄가 되지 않는다고 쓰면 확정판결 전후의 구분을 놓친다.",
+          "missedKeys": [
+            "처벌 위험 소멸 → 기대가능성 인정"
+          ],
+          "fixTyped": "위증죄가 성립한다. 유죄의 확정판결을 받으면 일사부재리의 원칙에 따라 다시 처벌받지 않으므로 스스로 처벌받은 위험이 없어지고 적법한 행위를 기대할 수 없다고 볼 사정이 사라진다. 사안의 경우 갑은 이미 유죄의 판결을 받아 처벌위험이 없는 상황에서 허위의 진술을 하였으므로 별다른 책임성 조각사유가 인정되지 않을 것이다. 하여 갑의 위증죄는 성립한다. ",
+          "errorCause": null,
+          "causeNote": null
+        }
+      ],
+      "missedKeys": {
+        "처벌 위험 소멸 → 기대가능성 인정": 1
+      },
+      "errorCauses": {},
+      "fsrs": {
+        "stability": 0.212,
+        "difficulty": 6.413,
+        "due": "2026-09-11",
+        "state": "Review",
+        "reps": 1,
+        "lapses": 1,
+        "retrievability": 0.698
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "형법 정범공범-행위지배의 의의",
+      "aliases": [],
+      "subject": "형법",
+      "concept": "형법 정범공범-행위지배의 의의",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-09-10",
+      "lastWrong": "2026-09-10",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-09-10",
+      "nextReviewDate": "2026-09-11",
+      "dates": [
+        "2026-09-10"
+      ],
+      "samples": [
+        {
+          "date": "2026-09-10",
+          "type": "단답",
+          "q": "⏪ 정범과 공범을 가르는 행위지배의 의의를 답안 첫 문장으로 쓰시오.",
+          "myAnswer": "정범은 실질적 행위지배를 해야하고 공범의 경우 의사적 행위지배를 하는 경우에 해당한다.",
+          "correct": "행위지배란 행위자가 범죄 과정을 주체적으로 지배·통제하는 상태를 말한다. 행위지배가 있으면 정범이고 없으면 공범이며, 정범의 행위지배는 실행지배·기능적 행위지배·의사지배로 나타난다.",
+          "expl": "[정답 근거] 행위지배란 행위자가 범죄 과정을 주체적으로 지배·통제하는 상태를 말한다. [메커니즘] 정범과 공범의 분기점이 행위지배 하나이므로 이 정의를 먼저 세워야 이후의 포섭이 시작된다. [함정] 가담 정도가 크다는 사정만으로 정범이라고 쓰면 지배·통제라는 기준을 빠뜨리게 된다.",
+          "missedKeys": [
+            "있으면 정범·없으면 공범"
+          ],
+          "fixTyped": "행위지배란 행위자가 범죄과정을 주체적으로 통제, 지배하는 상태를 의미하고 이 행위지배가 있으면 정범, 없으면 공범이라고 할 것이다. 이 행위지배의 종류는 실행지배, 기능적 행위지배, 의사지배가 있다.",
+          "errorCause": null,
+          "causeNote": null
+        }
+      ],
+      "missedKeys": {
+        "있으면 정범·없으면 공범": 1
+      },
+      "errorCauses": {},
+      "fsrs": {
+        "stability": 0.212,
+        "difficulty": 6.413,
+        "due": "2026-09-11",
+        "state": "Review",
+        "reps": 1,
+        "lapses": 1,
+        "retrievability": 0.698
       },
       "fsrsFallback": false
     },
@@ -1690,7 +2100,7 @@
         "state": "Review",
         "reps": 5,
         "lapses": 3,
-        "retrievability": 0.669
+        "retrievability": 0.647
       },
       "fsrsFallback": false
     },
@@ -1761,7 +2171,7 @@
         "state": "Review",
         "reps": 5,
         "lapses": 3,
-        "retrievability": 0.729
+        "retrievability": 0.701
       },
       "fsrsFallback": false
     },
@@ -1832,7 +2242,7 @@
         "state": "Review",
         "reps": 5,
         "lapses": 3,
-        "retrievability": 0.729
+        "retrievability": 0.701
       },
       "fsrsFallback": false
     },
@@ -1903,7 +2313,7 @@
         "state": "Review",
         "reps": 6,
         "lapses": 3,
-        "retrievability": 0.808
+        "retrievability": 0.774
       },
       "fsrsFallback": false
     },
@@ -1961,7 +2371,7 @@
         "state": "Review",
         "reps": 4,
         "lapses": 2,
-        "retrievability": 0.725
+        "retrievability": 0.705
       },
       "fsrsFallback": false
     },
@@ -2019,7 +2429,7 @@
         "state": "Review",
         "reps": 4,
         "lapses": 2,
-        "retrievability": 0.733
+        "retrievability": 0.711
       },
       "fsrsFallback": false
     },
@@ -2077,7 +2487,7 @@
         "state": "Review",
         "reps": 4,
         "lapses": 2,
-        "retrievability": 0.733
+        "retrievability": 0.711
       },
       "fsrsFallback": false
     },
@@ -2135,7 +2545,7 @@
         "state": "Review",
         "reps": 5,
         "lapses": 2,
-        "retrievability": 0.877
+        "retrievability": 0.847
       },
       "fsrsFallback": false
     },
@@ -2193,7 +2603,7 @@
         "state": "Review",
         "reps": 5,
         "lapses": 2,
-        "retrievability": 0.877
+        "retrievability": 0.847
       },
       "fsrsFallback": false
     },
@@ -2238,7 +2648,7 @@
         "state": "Review",
         "reps": 3,
         "lapses": 1,
-        "retrievability": 0.843
+        "retrievability": 0.824
       },
       "fsrsFallback": false
     },
@@ -2283,7 +2693,7 @@
         "state": "Review",
         "reps": 3,
         "lapses": 1,
-        "retrievability": 0.843
+        "retrievability": 0.824
       },
       "fsrsFallback": false
     },
@@ -2328,7 +2738,7 @@
         "state": "Review",
         "reps": 3,
         "lapses": 1,
-        "retrievability": 0.843
+        "retrievability": 0.824
       },
       "fsrsFallback": false
     },
@@ -2373,7 +2783,7 @@
         "state": "Review",
         "reps": 3,
         "lapses": 1,
-        "retrievability": 0.85
+        "retrievability": 0.83
       },
       "fsrsFallback": false
     },
@@ -2418,7 +2828,7 @@
         "state": "Review",
         "reps": 3,
         "lapses": 1,
-        "retrievability": 0.85
+        "retrievability": 0.83
       },
       "fsrsFallback": false
     },
@@ -2463,7 +2873,7 @@
         "state": "Review",
         "reps": 3,
         "lapses": 1,
-        "retrievability": 0.85
+        "retrievability": 0.83
       },
       "fsrsFallback": false
     },
@@ -2508,7 +2918,7 @@
         "state": "Review",
         "reps": 3,
         "lapses": 1,
-        "retrievability": 0.85
+        "retrievability": 0.83
       },
       "fsrsFallback": false
     },
@@ -2553,7 +2963,7 @@
         "state": "Review",
         "reps": 3,
         "lapses": 1,
-        "retrievability": 0.85
+        "retrievability": 0.83
       },
       "fsrsFallback": false
     }
