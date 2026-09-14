@@ -160,13 +160,22 @@ def parse_warn_section(note):
     if rows:
         header = [c.replace("*", "").strip() for c in rows[0]]
     if header and "위치" in header:
-        note.warn_format = "v3.11"
+        note.warn_format = "v3.11" if "범위" in header else "v3.11-partial"
         idx = {h: k for k, h in enumerate(header)}
+        def pick(r, names):
+            for h in names:
+                if h in idx and idx[h] < len(r):
+                    return r[idx[h]].strip()
+            return ""
         for r in rows[1:]:
             if all(set(c) <= set("-: ") for c in r):
                 continue
-            g = lambda h: (r[idx[h]] if h in idx and idx[h] < len(r) else "").strip()
-            row = {"no": g("#"), "loc": g("위치"), "expr": g("원문 표현"), "point": g("확인 포인트"), "scope": g("범위") or "항목"}
+            row = {"no": pick(r, ["#"]), "loc": pick(r, ["위치"]),
+                   "expr": pick(r, ["원문 표현", "원문", "필기 내용", "내용", "필기", "항목"]),
+                   "point": pick(r, ["확인 포인트", "확인할 것", "확인", "비고", "사유"]),
+                   "scope": pick(r, ["범위"]) or "항목"}
+            if not row["expr"]:
+                row["expr"] = pick(r, ["확인 포인트", "확인할 것", "내용"])
             note.warn_table.append(row)
     else:
         note.warn_format = "legacy"
@@ -194,26 +203,74 @@ def parse_warn_section(note):
             note.warn_table.append({"no": num or str(n), "loc": "", "expr": txt, "point": "", "scope": "항목", "legacy": True})
 
 
+def resolve_locs_from_text(txt):
+    """텍스트에서 소제목 번호 목록 추정: '1-4' / '1-7 3)' / '1-1-2)' / '1-6 4)·6)' / '[1-2 주차장]' / '1-2 · 1-4'."""
+    locs = []
+    for m in re.finditer(r"(\d+)-(\d+)((?:\s*[-·,\s]?\s*\d+\))*)", txt):
+        base = f"{m.group(1)}-{m.group(2)}"
+        subs = re.findall(r"(\d+)\)", m.group(3) or "")
+        if subs:
+            locs += [f"{base} {k})" for k in subs]
+        else:
+            locs.append(base)
+    return locs
+
+
 def resolve_loc_from_text(txt):
-    """구양식 텍스트에서 소제목 번호 추정: '1-4', '1-7 3)', '[1-2 주차장]' 등."""
-    m = RE_LOC.search(txt)
-    if not m:
-        return ""
-    loc = f"{m.group(1)}-{m.group(2)}"
-    if m.group(3):
-        loc += f" {m.group(3)})"
-    return loc
+    l = resolve_locs_from_text(txt)
+    return l[0] if l else ""
 
 
 def keywords_from_expr(expr):
-    kws = RE_QUOTED.findall(expr)
-    kws += RE_NUMTOK.findall(expr)
-    # 굵은 글씨 **..**
-    kws += re.findall(r"\*\*([^*]{2,30})\*\*", expr)
-    # 폴백: 한글 명사 덩어리 4자 이상
-    if not kws:
-        kws = [w for w in re.findall(r"[가-힣]{4,}", expr)][:3]
-    return [k.strip() for k in kws if k.strip()]
+    """(강한 키워드, 약한 토큰) — 강한 키워드 1개 일치 또는 약한 토큰 2개 이상 일치면 지목으로 본다."""
+    strong = [k.strip() for k in RE_QUOTED.findall(expr) if k.strip()]
+    strong += [k.strip() for k in re.findall(r"\*\*([^*]{2,40})\*\*", expr) if k.strip()]
+    weak = [w for w in re.findall(r"[가-힣]{2,}", expr) if w not in STOP_TOKENS]
+    weak += RE_NUMTOK.findall(expr)
+    # 강한 키워드가 길면(>12자) 그 토큰도 약한 토큰으로 푼다 — 원문과 문장부호가 달라도 잡히게
+    for k in list(strong):
+        if len(k) > 12:
+            weak += [w for w in re.findall(r"[가-힣]{2,}", k) if w not in STOP_TOKENS]
+    return strong, list(dict.fromkeys(weak))
+
+
+STOP_TOKENS = {"확인", "필요", "원문", "판례", "번호", "확인필요", "원문확인", "이상", "이하", "초과", "미만", "경우", "여부", "표현", "메모", "필기",
+               "그대로", "본문에서", "고치지", "않고", "표기", "대조", "지문", "함정", "가능성", "확인할", "대상", "규정", "조문", "내용", "전체",
+               "항목", "참고", "기준", "현행", "개정", "법문", "법문이", "인지", "통설", "교재", "정리본", "강의", "때문", "관련", "포인트", "사유",
+               "상태", "미확인", "또는", "그리고", "이거나", "하나", "부분", "문언", "다시", "정도", "이유", "차이", "구조", "주의"}
+
+
+def _strong_ok(strong):
+    return [k for k in strong if len(k.replace(" ", "")) >= 4 and k not in STOP_TOKENS]
+
+
+def strong_hit(line, strong):
+    s = line.replace(" ", "")
+    return any(k.replace(" ", "") in s for k in _strong_ok(strong))
+
+
+def weak_hit(line, weak, threshold=3):
+    s = line.replace(" ", "")
+    hits = [w for w in weak if w.replace(" ", "") in s]
+    if len(hits) >= max(threshold, 2) and any(len(h) >= 3 for h in hits):
+        return True
+    return len(hits) >= 2 and any(len(h) >= 5 for h in hits)
+
+
+def find_hits(candidates, strong, weak, threshold=3):
+    """candidates = [(idx, line)]. 강한 키워드(따옴표·굵은 글씨, 4자 이상) 정확 일치를 먼저 쓰고,
+    강한 키워드가 없거나 아무 줄도 못 맞히면 약한 토큰 점수(threshold개 이상, 또는 5자 토큰 포함 2개)로 판정."""
+    if _strong_ok(strong):
+        hit = [i for i, l in candidates if strong_hit(l, strong)]
+        if hit:
+            return hit, "강"
+    return [i for i, l in candidates if weak_hit(l, weak, threshold)], "약"
+
+
+def line_hits(line, strong, weak, allow_weak=True):
+    if _strong_ok(strong) and strong_hit(line, strong):
+        return True
+    return allow_weak and not _strong_ok(strong) and weak_hit(line, weak)
 
 
 def ban(note, i, reason):
@@ -224,58 +281,64 @@ def ban(note, i, reason):
 
 def apply_bans(note, warn_re):
     # ⓐ 줄 안 경고
+    sec0 = find_warn_section(note)
+    sec0_range = range(sec0[0], sec0[1]) if sec0 else range(0, 0)
     for i, ln in enumerate(note.lines):
         s = ln.strip()
-        if not s or s.startswith("#") or s.startswith("|") or s.startswith(">"):
+        if i in sec0_range or not s or s.startswith("#") or s.startswith("|") or s.startswith(">"):
             continue
+        if re.match(r"^(?:[-*]\s*)?⚠️?\s*혼동\s*카드", s):
+            continue  # 코어엔진 §7 혼동 카드 머리의 ⚠️는 경고 표식이 아니다
         if warn_re.search(s) or re.match(r"^\s*(?:[-*]|\d+\.)?\s*\?", s):
             ban(note, i, "줄 안 ⚠️/확인 필요/?")
     # 하단 표 역참조 ⓑ
     sec = find_warn_section(note)
     sec_range = range(sec[0], sec[1]) if sec else range(0, 0)
     rows_by_no = {}
+
+    def in_locs(sub, locs):
+        if not locs:
+            return True
+        for loc in locs:
+            if sub == loc or sub.startswith(loc + " ") or (" " not in loc and sub.split(" ")[0] == loc):
+                return True
+        return False
+
     for row in note.warn_table:
         if row.get("no"):
             rows_by_no[str(row["no"])] = row
-        loc = row.get("loc") or resolve_loc_from_text(row.get("expr", ""))
-        if not loc and row.get("legacy"):
-            note.unresolved.append({"no": row.get("no"), "text": row.get("expr")})
-            continue
-        if loc == "전체" or row.get("scope") == "전체":
+        loc_cell = row.get("loc") or ""
+        text_all = (row.get("expr") or "") + " " + (row.get("point") or "")
+        if row.get("scope") == "전체" or loc_cell.strip().startswith("전체") or re.search(r"전반|전체", row.get("expr") or "") and not loc_cell:
             note.general.append({"no": row.get("no"), "expr": row.get("expr"), "point": row.get("point")})
             continue
-        if not loc:
-            note.unresolved.append({"no": row.get("no"), "text": row.get("expr")})
-            continue
-        kws = keywords_from_expr(row.get("expr", "") + " " + row.get("point", "") if row.get("legacy") else row.get("expr", ""))
-        hit = []
+        locs = resolve_locs_from_text(loc_cell) if loc_cell else resolve_locs_from_text(row.get("expr") or "")
+        strong, weak = keywords_from_expr(row.get("expr") or "")
+        if not strong and not weak:
+            strong, weak = keywords_from_expr(text_all)
+        cands = []
         for i, ln in enumerate(note.lines):
             if i in sec_range:
                 continue
-            sub = note.subsection_of(i)
-            if not (sub == loc or sub.startswith(loc + " ") or (" " not in loc and sub.split(" ")[0] == loc)):
+            s_ = ln.strip()
+            if not s_ or s_.startswith("#") or s_.startswith(">"):
                 continue
-            s = ln.strip()
-            if not s or s.startswith("#") or s.startswith(">"):
+            if not in_locs(note.subsection_of(i), locs):
                 continue
-            if any(k in s for k in kws):
-                hit.append(i)
+            cands.append((i, s_))
+        hit, mode = find_hits(cands, strong, weak, threshold=2 if locs else 3)
         if hit:
             for i in hit:
-                ban(note, i, f"하단 ⚠️표 #{row.get('no')} 역참조({loc})")
+                ban(note, i, f"하단 ⚠️표 #{row.get('no')} 역참조({'·'.join(locs) if locs else '키워드'}·{mode})")
+        elif locs:
+            marked_in = [i + 1 for i, ln in enumerate(note.lines)
+                         if i not in sec_range and in_locs(note.subsection_of(i), locs)
+                         and (re.match(r"^\s*(?:[-*]|\d+\.)?\s*(★★|★|n:|!!|!)", ln) or ("{{" not in ln and RE_BRACE.search(ln)))]
+            note.unresolved.append({"no": row.get("no"), "text": (row.get("expr") or "")[:120], "loc": "·".join(locs),
+                                    "candidate_lines": marked_in,
+                                    "note": "키워드 미매칭 — 소제목 %s 안의 표식 줄 %s 중 지목 줄을 사람이 판독해 금지할 것(판독 전 그 소제목 카드화 금지)" % ("·".join(locs), marked_in)})
         else:
-            # 키워드로 못 짚으면 그 소제목의 표식 줄을 전부 금지(보수적) + 표면화
-            broad = []
-            for i, ln in enumerate(note.lines):
-                if i in sec_range:
-                    continue
-                sub = note.subsection_of(i)
-                if sub == loc or sub.startswith(loc + " ") or (" " not in loc and sub.split(" ")[0] == loc):
-                    if re.match(r"^\s*(?:[-*]|\d+\.)?\s*(★★|★|n:)", ln) or RE_BRACE.search(ln):
-                        broad.append(i)
-            for i in broad:
-                ban(note, i, f"하단 ⚠️표 #{row.get('no')} 소제목 전체({loc}, 키워드 미매칭)")
-            note.unresolved.append({"no": row.get("no"), "text": row.get("expr"), "loc": loc, "note": "키워드 미매칭 → 소제목 표식 줄 %d개 보수 금지" % len(broad)})
+            note.unresolved.append({"no": row.get("no"), "text": (row.get("expr") or "")[:120], "note": "위치·키워드 모두 미매칭 — 사람 판독 필요(판독 전 이 노트의 관련 줄 카드화 금지)"})
     # 인라인 참조 (⚠️ N) / (하단 확인 필요 N)
     for i, ln in enumerate(note.lines):
         if i in sec_range:
@@ -371,7 +434,12 @@ def parse_blank_reports(root, ex, cfg, notes, date, window_days):
     if not bdir.is_dir():
         return out
     lo = dt.datetime.combine(date - dt.timedelta(days=window_days), dt.time.min)
+    track = ex.get("track") or {}
     for p in sorted(bdir.glob("*.md")):
+        if track:
+            has = track.get("token", "") in p.name
+            if bool(track.get("include")) != has:
+                continue
         text = read_text(p)
         fm = parse_front_matter(text)
         if fm.get("type", "").strip() != "백지복습보고서":
@@ -385,12 +453,28 @@ def parse_blank_reports(root, ex, cfg, notes, date, window_days):
                 matched = n
                 break
         if matched is None:
-            subj = fm.get("subject", "")
-            cands = [n for n in notes if subj and subj.split("·")[0] in n.name]
+            # 과목 일치 + 주제 토큰(2자 이상) 겹침이 있어야 짝짓는다 — 과목만으로 붙이면 다른 단원 보고서가 오염시킨다(09-14 실측)
+            subj = fm.get("subject", "").split("·")[0]
+            topic_toks = set(re.findall(r"[가-힣0-9]{2,}", fm.get("topic", "")))
+            cands = []
+            for n in notes:
+                if not subj or subj not in n.name:
+                    continue
+                title_toks = set(re.findall(r"[가-힣0-9]{2,}", n.name))
+                if topic_toks & title_toks:
+                    cands.append(n)
             matched = cands[0] if len(cands) == 1 else None
         holes = [l.strip() for l in section_lines(text, r"^##\s*③") if l.strip().startswith(("|", "-")) and "---" not in l]
         fixed = [l.strip() for l in section_lines(text, r"^##\s*④") if l.strip().startswith("|") and "---" not in l and "개념 |" not in l]
-        warns = [l.strip() for l in section_lines(text, r"^##\s*⑦") if l.strip().startswith(("|", "-")) and "---" not in l and "| # |" not in l]
+        warns = []
+        for l in section_lines(text, r"^##\s*⑦"):
+            t = l.strip()
+            if not t.startswith(("|", "-")) or "---" in t:
+                continue
+            cells = split_row(t) or []
+            if cells and (cells[0].replace("*", "").strip() in ("#", "항목", "필기 내용", "원문", "위치") or "사유" in cells[-1] and "확인" in " ".join(cells)):
+                continue
+            warns.append(t)
         rec = {"file": p.name, "mtime": mtime.isoformat(timespec="minutes"), "in_window": mtime >= lo,
                "source": src, "subject": fm.get("subject", ""), "status": fm.get("status", ""),
                "matched_note": matched.name if matched else None,
@@ -399,21 +483,22 @@ def parse_blank_reports(root, ex, cfg, notes, date, window_days):
         # ⓒ ⑦ 역참조 → 노트 금지
         if matched and warns:
             for w in warns:
-                loc = resolve_loc_from_text(w)
-                kws = keywords_from_expr(w)
-                hit = []
+                locs = resolve_locs_from_text(w)
+                strong, weak = keywords_from_expr(w)
                 sec = find_warn_section(matched)
                 sec_range = range(sec[0], sec[1]) if sec else range(0, 0)
+                cands = []
                 for i, ln in enumerate(matched.lines):
                     if i in sec_range:
                         continue
-                    if loc:
+                    if locs:
                         sub = matched.subsection_of(i)
-                        if not (sub == loc or sub.startswith(loc + " ") or sub.split(" ")[0] == loc):
+                        if not any(sub == loc or sub.startswith(loc + " ") or sub.split(" ")[0] == loc for loc in locs):
                             continue
                     s = ln.strip()
-                    if s and not s.startswith("#") and any(k in s for k in kws):
-                        hit.append(i)
+                    if s and not s.startswith("#") and not s.startswith(">"):
+                        cands.append((i, s))
+                hit, _mode = find_hits(cands, strong, weak, threshold=2 if locs else 3)
                 if hit:
                     for i in hit:
                         ban(matched, i, f"백지보고서 ⑦ ({p.name})")
@@ -489,18 +574,26 @@ def prev_report_tables(root, date):
 
     def table_after(head):
         rows = []
-        lines = section_lines(text, head)
-        for l in lines:
+        started = False
+        for l in section_lines(text, head):
             r = split_row(l)
-            if not r or all(set(c) <= set("-: ") for c in r):
+            if not r:
+                if started and l.strip() == "":
+                    break  # 첫 표가 끝나면 멈춘다(같은 섹션의 두 번째 표는 읽지 않는다)
                 continue
+            if all(set(c) <= set("-: ") for c in r):
+                continue
+            started = True
             rows.append(r)
         return rows[1:] if rows else []  # 첫 행은 헤더
 
     carry = []
-    for r in table_after(r"^##\s*이월"):
+    pre = " ".join(l for l in section_lines(text, r"^##\s*이월") if l.strip().startswith(">"))
+    m_skip = re.search(r"상단\s*(\d+)\s*행", pre) if "소진" in pre else None
+    skip_n = int(m_skip.group(1)) if m_skip else 0
+    for k, r in enumerate(table_after(r"^##\s*이월")):
         cell = " ".join(r)
-        if "~~" in cell or "소진" in cell:
+        if k < skip_n or "~~" in cell or "소진" in cell:
             continue
         carry.append({"원천": r[0], "레인": r[1] if len(r) > 1 else "", "항목": r[2] if len(r) > 2 else "",
                       "이월 횟수": r[3] if len(r) > 3 else "", "사유": r[4] if len(r) > 4 else ""})
@@ -524,7 +617,12 @@ def summary_hits(root, ex, n_line):
         return {"summary_file": None, "hits": []}
     text = read_text(p)
     nums = RE_NUMTOK.findall(n_line)
-    kws = [w for w in re.findall(r"[가-힣]{3,}", n_line) if w not in ("이내에", "경우는", "경우에", "이내")][:4]
+    kws = []
+    for w in re.findall(r"[가-힣]{3,}", n_line):
+        w = re.sub(r"(으로부터|로부터|에서는|에게|부터|까지|에서|으로|은|는|이|가|을|를|의|에|도|만|과|와|로)$", "", w)
+        if len(w) >= 2 and w not in STOP_TOKENS and w not in ("이내", "경우", "지날", "때까지", "없는"):
+            kws.append(w)
+    kws = list(dict.fromkeys(kws))[:6]
     hits = []
     for l in text.splitlines():
         if not l.startswith("|") and not l.startswith("- "):
@@ -639,7 +737,9 @@ def main(argv=None):
             "file": n.name, "exam": n.exam, "exam_name": n.exam_name, "track": n.track, "mtime": n.mtime,
             "marks": n.marks, "warn_format": n.warn_format, "warn_table": n.warn_table,
             "general_notices": n.general, "unresolved_warns": n.unresolved,
-            "banned": [{"line": i + 1, "text": n.lines[i].strip()[:160], "reasons": r} for i, r in sorted(n.banned.items())],
+            "banned": [{"line": i + 1, "text": n.lines[i].strip()[:160], "reasons": r,
+                        "marked": bool(re.match(r"^\s*(?:[-*]|\d+\.)?\s*(★★|★|n:|!!|!)", n.lines[i]) or ("{{" not in n.lines[i] and RE_BRACE.search(n.lines[i])))}
+                       for i, r in sorted(n.banned.items())],
             "items": n.items, "n_lines": n.n_lines,
         } for n in notes],
         "existing_keys": len(keys),
@@ -672,7 +772,7 @@ def render_md(r):
     L.append("|---|---|---|---|---|---|---|---|---|")
     for n in r["notes"]:
         m = n["marks"]
-        L.append(f"| {n['file']} | {n['exam']} | {m['★★']} | {m['★']} | {m['{}']} | {m['n:']} | {n['warn_format'] or '없음'} | {len(n['banned'])} | {len(n['unresolved_warns'])} |")
+        L.append(f"| {n['file']} | {n['exam']} | {m['★★']} | {m['★']} | {m['{}']} | {m['n:']} | {n['warn_format'] or '없음'} | {sum(1 for b in n['banned'] if b.get('marked'))} | {len(n['unresolved_warns'])} |")
     t = r["marks_total"]
     L.append(f"| **합계** | | **{t['★★']}** | **{t['★']}** | **{t['{}']}** | **{t['n:']}** | | | |\n")
     L.append(f"후보(표식 줄, 금지 제외): ★★ {r['candidates_by_lane']['★★']} · ★ {r['candidates_by_lane']['★']} · `{{}}` {r['candidates_by_lane']['{}']} — 표식 줄 금지 {r['banned_marked_items']}건. 밀도 규칙(줄 1 = 카드 1 · 분할 ≤2 · 빈칸 ≤3) 적용 시 예상 카드 ≈ 후보 줄 수 × 1.2.\n")
@@ -681,8 +781,14 @@ def render_md(r):
         if not n["banned"] and not n["general_notices"] and not n["unresolved_warns"]:
             continue
         L.append(f"### {n['file']}")
+        plain = 0
         for b in n["banned"]:
-            L.append(f"- L{b['line']} · {' / '.join(b['reasons'])} · `{b['text'][:90]}`")
+            if b.get("marked"):
+                L.append(f"- L{b['line']} · {' / '.join(b['reasons'])} · `{b['text'][:90]}`")
+            else:
+                plain += 1
+        if plain:
+            L.append(f"- (표식 없는 금지 줄 {plain}개 — JSON 참조)")
         for g in n["general_notices"]:
             L.append(f"- (일반 주의문 #{g.get('no')}) {g.get('expr')} — 항목 금지 아님, 해당 카드 뒷면 '현행 기준 확인'")
         for u in n["unresolved_warns"]:

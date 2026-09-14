@@ -24,6 +24,7 @@ _시험엔진/
 │   ├── build_ledger.py      ← 오답 원장 (FSRS-6, --exam) + fsrs_vendor/
 │   ├── build_dashboard.py   ← 퀘스트 보드 (gongin)
 │   ├── build_apkg.py        ← Anki 덱 빌더 (anki/에서 이동)
+│   ├── extract_anki_candidates.py ← Anki 후보 추출기(2026-09-14) — 창·표식·금지 3경로·기출고·상습·이월/보류 표 → anki/_work/후보_<date>.json (문안은 쓰지 않는다)
 │   ├── rerender_quiz.py     ← 기존 문제지를 현재 템플릿으로 재렌더 (템플릿 업그레이드용, 결과 수거된 것은 건너뜀)
 │   └── tests/               ← 회귀(run.sh) · E2E(e2e_smoke_all.sh)
 ├── anki/                    ← 카드_*.tsv · 출고/{*.apkg, 검수_*.md}
