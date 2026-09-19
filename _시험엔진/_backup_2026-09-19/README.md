@@ -46,15 +46,15 @@ render_quiz.py   → HTML         (정답 배정·조합 셔플·검증·로그�
 
 ## 스케줄러 (사이클 독립 — 시험 1개 = 3개 + 시험 횡단 1개)
 
-> **하루 1문제지 원칙 (2026-09-19, OS v2.9)**: 월·수·금 **공인 데일리 50** / 화·토 **공인 오답 25** / 목 **법무사 2차 데일리 ≤15** / 일 **없음**. 법무사 2차 오답은 스케줄 서빙 정지(온디맨드 스킬만 — 듀는 계속 쌓인다), 법무사 1차 2개는 노트 0이라 문제지를 만들지 않는다(스킵·DUE0 보고). 근거: 최근 14일 생성 30개·제출 9개 — 공급을 실소화량에 맞춘다(종전 09-16 하루 2문제지). 요일 정본은 `exams.json` `schedule_days_daily/retry`(주간리포트 미실행일 집계가 읽는다) — 스케줄드 태스크의 요일도 같아야 한다.
+> **하루 2문제지 원칙 (2026-09-16)**: 데일리 50(월~토)은 매일, 2번째 슬롯은 **공인 오답 25(월·수·금·토) ↔ 법무사 2차 12(화·목 데일리 · 일 오답)** 교대. Anki 병행 부담으로 하루 3개 → 2개. 요일 정본은 `exams.json` `schedule_days_daily/retry`(주간리포트 미실행일 집계가 읽는다) — 스케줄드 태스크의 요일도 같아야 한다.
 
 | 작업 | 공인중개사 | 법무사 1차 | 법무사 2차 |
 |---|---|---|---|
-| 오답 파이프라인 | `gongin-odap-quiz` **화·토** 08:40 | `bupsa-1cha-odap-quiz` 평일 08:55 (듀 0 — 문제지 없음) | `bupsa-2cha-odap-quiz` **일시정지** (09-19 — 삭제 금지) |
-| 데일리퀴즈 | `gongin-daily-quiz` **월·수·금** 09:00 | `bupsa-1cha-daily-quiz` 화·목 09:20 (노트 0 — 스킵) | `bupsa-2cha-daily-quiz` **목** 09:15 |
+| 오답 파이프라인 | `gongin-odap-quiz` **월·수·금·토** 08:40 | `bupsa-1cha-odap-quiz` 평일 08:55 | `bupsa-2cha-odap-quiz` **일** 08:50 |
+| 데일리퀴즈 | `gongin-daily-quiz` 월~토 09:00 | `bupsa-1cha-daily-quiz` 화·목 09:20 | `bupsa-2cha-daily-quiz` 화·목 09:15 |
 | 주간리포트(월) | `gongin-weekly-report` 07:00 | `bupsa-1cha-weekly-report` 07:40 | `bupsa-2cha-weekly-report` 07:30 |
 
-+ `anki-weekly-deck` 월 08:00 (`spec/앙키덱.md`). 법무사 2차는 **목요일 데일리 1개**(≤15 — 서술형 인출 한계 10~15문), 오답 재도전은 09-19 스케줄 서빙 정지(듀는 계속 쌓인다 — 11/2 이후 토요일 1개로 재개, OS §7 국면 3). ⚠️ `anki-weekly-deck` 실제 태스크 프롬프트는 위임문 정본(09-19 개정: '목표 280' → `card_target` 참조)으로 교체해야 한다. 위임문 정본은 `spec/스케줄러_위임문.md`. 온디맨드 스킬: `daily-quiz-gongin`·`daily-quiz-bupsa`·`odap-quiz-gongin`·`odap-quiz-bupsa`·`baekji-chaejeom`(백지채점).
++ `anki-weekly-deck` 월 08:00 (`spec/앙키덱.md`). 법무사 2차는 **하루 한 종류**(화·목 데일리 ≤15 / 일 복습 ≤12 — 서술형 인출 한계 10~15문; 수·금·토 복습은 09-16 공인 오답 슬롯에 양보, 11/1 이후 복원 검토). 위임문 정본은 `spec/스케줄러_위임문.md`. 온디맨드 스킬: `daily-quiz-gongin`·`daily-quiz-bupsa`·`odap-quiz-gongin`·`odap-quiz-bupsa`·`baekji-chaejeom`(백지채점).
 스케줄러는 맥이 켜져 있을 때 실행되며 놓친 회차는 다음 기동 시 몰아서 돈다 — 실제 실행 시각은 `_runs.log`가 정본.
 
 ## 규칙
