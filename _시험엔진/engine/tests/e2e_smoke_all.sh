@@ -33,7 +33,7 @@ run() {
 
 run "1. gongin daily (fixed 50 + 결정론)" --exam gongin --kind daily --date "$D0" --repeat 2
 run "2. gongin daily allday (장기 40)"     --exam gongin --kind daily --date "$D1" --stage allday
-run "3. gongin retry (듀 상위 20·승격 5)"  --exam gongin --kind retry --date "$D1"
+run "3. gongin retry (듀 상위 25·승격 5)"  --exam gongin --kind retry --date "$D1"
 run "4. bupsa2 daily (현행 램프업 단계)"    --exam bupsa2 --kind daily --date "$D1"
 run "5. bupsa2 daily S3 합성 15문 (+결정론)" --exam bupsa2 --kind daily --date "$D2" --stage S3 --repeat 2
 run "6. bupsa2 retry (전 문항 단답·상한 12·졸업후보 예약)" --exam bupsa2 --kind retry --date "$D2" --stage rebuild-ledger

@@ -1,6 +1,6 @@
 {
   "ledgerSchema": 3,
-  "generatedAt": "2026-09-14T09:49:02",
+  "generatedAt": "2026-09-17T09:22:09",
   "fsrsMeta": {
     "version": "6.3.2",
     "desiredRetention": 0.9,
@@ -44,7 +44,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-09",
       "nextReviewDate": "2026-09-10",
-      "retrievability": 0.548,
+      "retrievability": 0.504,
       "stability": 0.081,
       "pick": true,
       "missedTop": [
@@ -64,7 +64,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-08-31",
       "nextReviewDate": "2026-09-03",
-      "retrievability": 0.619,
+      "retrievability": 0.597,
       "stability": 0.502,
       "pick": true,
       "missedTop": [],
@@ -80,7 +80,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-09-02",
       "nextReviewDate": "2026-09-10",
-      "retrievability": 0.707,
+      "retrievability": 0.653,
       "stability": 0.461,
       "pick": true,
       "missedTop": [
@@ -98,7 +98,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-09-02",
       "nextReviewDate": "2026-09-10",
-      "retrievability": 0.744,
+      "retrievability": 0.689,
       "stability": 0.673,
       "pick": true,
       "missedTop": [
@@ -118,7 +118,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-09-02",
       "nextReviewDate": "2026-09-10",
-      "retrievability": 0.81,
+      "retrievability": 0.756,
       "stability": 1.34,
       "pick": true,
       "missedTop": [
@@ -136,7 +136,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-31",
       "nextReviewDate": "2026-09-01",
-      "retrievability": 0.53,
+      "retrievability": 0.514,
       "stability": 0.212,
       "pick": true,
       "missedTop": [],
@@ -152,7 +152,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-31",
       "nextReviewDate": "2026-09-01",
-      "retrievability": 0.53,
+      "retrievability": 0.514,
       "stability": 0.212,
       "pick": true,
       "missedTop": [],
@@ -168,7 +168,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-31",
       "nextReviewDate": "2026-09-01",
-      "retrievability": 0.53,
+      "retrievability": 0.514,
       "stability": 0.212,
       "pick": true,
       "missedTop": [],
@@ -184,7 +184,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-31",
       "nextReviewDate": "2026-09-01",
-      "retrievability": 0.53,
+      "retrievability": 0.514,
       "stability": 0.212,
       "pick": true,
       "missedTop": [],
@@ -200,7 +200,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-26",
       "nextReviewDate": "2026-08-29",
-      "retrievability": 0.641,
+      "retrievability": 0.626,
       "stability": 0.933,
       "pick": true,
       "missedTop": [],
@@ -216,7 +216,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-27",
       "nextReviewDate": "2026-09-01",
-      "retrievability": 0.694,
+      "retrievability": 0.674,
       "stability": 1.31,
       "pick": true,
       "missedTop": [],
@@ -232,7 +232,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-27",
       "nextReviewDate": "2026-09-01",
-      "retrievability": 0.694,
+      "retrievability": 0.674,
       "stability": 1.31,
       "pick": true,
       "missedTop": [],
@@ -248,7 +248,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-31",
       "nextReviewDate": "2026-09-01",
-      "retrievability": 0.53,
+      "retrievability": 0.514,
       "stability": 0.212,
       "pick": false,
       "missedTop": [],
@@ -264,7 +264,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-31",
       "nextReviewDate": "2026-09-01",
-      "retrievability": 0.53,
+      "retrievability": 0.514,
       "stability": 0.212,
       "pick": false,
       "missedTop": [],
@@ -280,7 +280,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-31",
       "nextReviewDate": "2026-09-01",
-      "retrievability": 0.53,
+      "retrievability": 0.514,
       "stability": 0.212,
       "pick": false,
       "missedTop": [],
@@ -296,7 +296,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-08-31",
       "nextReviewDate": "2026-09-01",
-      "retrievability": 0.53,
+      "retrievability": 0.514,
       "stability": 0.212,
       "pick": false,
       "missedTop": [],
@@ -312,7 +312,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-03",
       "nextReviewDate": "2026-09-04",
-      "retrievability": 0.552,
+      "retrievability": 0.53,
       "stability": 0.212,
       "pick": false,
       "missedTop": [
@@ -331,7 +331,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-03",
       "nextReviewDate": "2026-09-04",
-      "retrievability": 0.552,
+      "retrievability": 0.53,
       "stability": 0.212,
       "pick": false,
       "missedTop": [
@@ -350,7 +350,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-03",
       "nextReviewDate": "2026-09-04",
-      "retrievability": 0.552,
+      "retrievability": 0.53,
       "stability": 0.212,
       "pick": false,
       "missedTop": [
@@ -368,7 +368,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-03",
       "nextReviewDate": "2026-09-04",
-      "retrievability": 0.552,
+      "retrievability": 0.53,
       "stability": 0.212,
       "pick": false,
       "missedTop": [
@@ -388,7 +388,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-03",
       "nextReviewDate": "2026-09-04",
-      "retrievability": 0.552,
+      "retrievability": 0.53,
       "stability": 0.212,
       "pick": false,
       "missedTop": [
@@ -407,7 +407,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-10",
       "nextReviewDate": "2026-09-11",
-      "retrievability": 0.66,
+      "retrievability": 0.596,
       "stability": 0.212,
       "pick": false,
       "missedTop": [
@@ -426,7 +426,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-10",
       "nextReviewDate": "2026-09-11",
-      "retrievability": 0.66,
+      "retrievability": 0.596,
       "stability": 0.212,
       "pick": false,
       "missedTop": [
@@ -444,7 +444,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-10",
       "nextReviewDate": "2026-09-11",
-      "retrievability": 0.66,
+      "retrievability": 0.596,
       "stability": 0.212,
       "pick": false,
       "missedTop": [
@@ -462,7 +462,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-10",
       "nextReviewDate": "2026-09-11",
-      "retrievability": 0.66,
+      "retrievability": 0.596,
       "stability": 0.212,
       "pick": false,
       "missedTop": [
@@ -480,7 +480,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-10",
       "nextReviewDate": "2026-09-11",
-      "retrievability": 0.66,
+      "retrievability": 0.596,
       "stability": 0.212,
       "pick": false,
       "missedTop": [
@@ -498,7 +498,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-10",
       "nextReviewDate": "2026-09-11",
-      "retrievability": 0.66,
+      "retrievability": 0.596,
       "stability": 0.212,
       "pick": false,
       "missedTop": [
@@ -516,7 +516,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-25",
       "nextReviewDate": "2026-08-29",
-      "retrievability": 0.699,
+      "retrievability": 0.683,
       "stability": 1.806,
       "pick": false,
       "missedTop": [],
@@ -532,7 +532,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-26",
       "nextReviewDate": "2026-08-30",
-      "retrievability": 0.705,
+      "retrievability": 0.688,
       "stability": 1.806,
       "pick": false,
       "missedTop": [],
@@ -548,7 +548,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-26",
       "nextReviewDate": "2026-08-30",
-      "retrievability": 0.705,
+      "retrievability": 0.688,
       "stability": 1.806,
       "pick": false,
       "missedTop": [],
@@ -564,7 +564,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-28",
       "nextReviewDate": "2026-09-04",
-      "retrievability": 0.764,
+      "retrievability": 0.741,
       "stability": 2.29,
       "pick": false,
       "missedTop": [],
@@ -580,7 +580,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-24",
       "nextReviewDate": "2026-09-02",
-      "retrievability": 0.819,
+      "retrievability": 0.804,
       "stability": 6.269,
       "pick": false,
       "missedTop": [],
@@ -596,7 +596,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-24",
       "nextReviewDate": "2026-09-02",
-      "retrievability": 0.819,
+      "retrievability": 0.804,
       "stability": 6.269,
       "pick": false,
       "missedTop": [],
@@ -612,7 +612,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-24",
       "nextReviewDate": "2026-09-02",
-      "retrievability": 0.819,
+      "retrievability": 0.804,
       "stability": 6.269,
       "pick": false,
       "missedTop": [],
@@ -628,7 +628,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-25",
       "nextReviewDate": "2026-09-03",
-      "retrievability": 0.824,
+      "retrievability": 0.808,
       "stability": 6.269,
       "pick": false,
       "missedTop": [],
@@ -644,7 +644,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-25",
       "nextReviewDate": "2026-09-03",
-      "retrievability": 0.824,
+      "retrievability": 0.808,
       "stability": 6.269,
       "pick": false,
       "missedTop": [],
@@ -660,7 +660,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-25",
       "nextReviewDate": "2026-09-03",
-      "retrievability": 0.824,
+      "retrievability": 0.808,
       "stability": 6.269,
       "pick": false,
       "missedTop": [],
@@ -676,7 +676,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-25",
       "nextReviewDate": "2026-09-03",
-      "retrievability": 0.824,
+      "retrievability": 0.808,
       "stability": 6.269,
       "pick": false,
       "missedTop": [],
@@ -692,7 +692,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-25",
       "nextReviewDate": "2026-09-03",
-      "retrievability": 0.824,
+      "retrievability": 0.808,
       "stability": 6.269,
       "pick": false,
       "missedTop": [],
@@ -708,7 +708,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-27",
       "nextReviewDate": "2026-09-07",
-      "retrievability": 0.839,
+      "retrievability": 0.817,
       "stability": 5.082,
       "pick": false,
       "missedTop": [],
@@ -724,7 +724,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-27",
       "nextReviewDate": "2026-09-07",
-      "retrievability": 0.839,
+      "retrievability": 0.817,
       "stability": 5.082,
       "pick": false,
       "missedTop": [],
@@ -813,7 +813,7 @@
         "state": "Review",
         "reps": 6,
         "lapses": 5,
-        "retrievability": 0.548
+        "retrievability": 0.504
       },
       "fsrsFallback": false
     },
@@ -890,7 +890,7 @@
         "state": "Review",
         "reps": 7,
         "lapses": 5,
-        "retrievability": 0.707
+        "retrievability": 0.653
       },
       "fsrsFallback": false
     },
@@ -962,7 +962,7 @@
         "state": "Review",
         "reps": 6,
         "lapses": 4,
-        "retrievability": 0.619
+        "retrievability": 0.597
       },
       "fsrsFallback": false
     },
@@ -1038,7 +1038,7 @@
         "state": "Review",
         "reps": 7,
         "lapses": 4,
-        "retrievability": 0.81
+        "retrievability": 0.756
       },
       "fsrsFallback": false
     },
@@ -1118,7 +1118,7 @@
         "state": "Review",
         "reps": 6,
         "lapses": 4,
-        "retrievability": 0.744
+        "retrievability": 0.689
       },
       "fsrsFallback": false
     },
@@ -1163,7 +1163,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.53
+        "retrievability": 0.514
       },
       "fsrsFallback": false
     },
@@ -1208,7 +1208,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.53
+        "retrievability": 0.514
       },
       "fsrsFallback": false
     },
@@ -1253,7 +1253,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.53
+        "retrievability": 0.514
       },
       "fsrsFallback": false
     },
@@ -1298,7 +1298,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.53
+        "retrievability": 0.514
       },
       "fsrsFallback": false
     },
@@ -1343,7 +1343,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.53
+        "retrievability": 0.514
       },
       "fsrsFallback": false
     },
@@ -1388,7 +1388,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.53
+        "retrievability": 0.514
       },
       "fsrsFallback": false
     },
@@ -1433,7 +1433,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.53
+        "retrievability": 0.514
       },
       "fsrsFallback": false
     },
@@ -1478,7 +1478,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.53
+        "retrievability": 0.514
       },
       "fsrsFallback": false
     },
@@ -1529,7 +1529,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.552
+        "retrievability": 0.53
       },
       "fsrsFallback": false
     },
@@ -1582,7 +1582,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.552
+        "retrievability": 0.53
       },
       "fsrsFallback": false
     },
@@ -1631,7 +1631,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.552
+        "retrievability": 0.53
       },
       "fsrsFallback": false
     },
@@ -1682,7 +1682,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.552
+        "retrievability": 0.53
       },
       "fsrsFallback": false
     },
@@ -1733,7 +1733,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.552
+        "retrievability": 0.53
       },
       "fsrsFallback": false
     },
@@ -1782,7 +1782,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.66
+        "retrievability": 0.596
       },
       "fsrsFallback": false
     },
@@ -1831,7 +1831,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.66
+        "retrievability": 0.596
       },
       "fsrsFallback": false
     },
@@ -1882,7 +1882,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.66
+        "retrievability": 0.596
       },
       "fsrsFallback": false
     },
@@ -1931,7 +1931,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.66
+        "retrievability": 0.596
       },
       "fsrsFallback": false
     },
@@ -1980,7 +1980,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.66
+        "retrievability": 0.596
       },
       "fsrsFallback": false
     },
@@ -2029,7 +2029,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.66
+        "retrievability": 0.596
       },
       "fsrsFallback": false
     },
@@ -2100,7 +2100,7 @@
         "state": "Review",
         "reps": 5,
         "lapses": 3,
-        "retrievability": 0.641
+        "retrievability": 0.626
       },
       "fsrsFallback": false
     },
@@ -2171,7 +2171,7 @@
         "state": "Review",
         "reps": 5,
         "lapses": 3,
-        "retrievability": 0.694
+        "retrievability": 0.674
       },
       "fsrsFallback": false
     },
@@ -2242,7 +2242,7 @@
         "state": "Review",
         "reps": 5,
         "lapses": 3,
-        "retrievability": 0.694
+        "retrievability": 0.674
       },
       "fsrsFallback": false
     },
@@ -2313,7 +2313,7 @@
         "state": "Review",
         "reps": 6,
         "lapses": 3,
-        "retrievability": 0.764
+        "retrievability": 0.741
       },
       "fsrsFallback": false
     },
@@ -2371,7 +2371,7 @@
         "state": "Review",
         "reps": 4,
         "lapses": 2,
-        "retrievability": 0.699
+        "retrievability": 0.683
       },
       "fsrsFallback": false
     },
@@ -2429,7 +2429,7 @@
         "state": "Review",
         "reps": 4,
         "lapses": 2,
-        "retrievability": 0.705
+        "retrievability": 0.688
       },
       "fsrsFallback": false
     },
@@ -2487,7 +2487,7 @@
         "state": "Review",
         "reps": 4,
         "lapses": 2,
-        "retrievability": 0.705
+        "retrievability": 0.688
       },
       "fsrsFallback": false
     },
@@ -2545,7 +2545,7 @@
         "state": "Review",
         "reps": 5,
         "lapses": 2,
-        "retrievability": 0.839
+        "retrievability": 0.817
       },
       "fsrsFallback": false
     },
@@ -2603,7 +2603,7 @@
         "state": "Review",
         "reps": 5,
         "lapses": 2,
-        "retrievability": 0.839
+        "retrievability": 0.817
       },
       "fsrsFallback": false
     },
@@ -2648,7 +2648,7 @@
         "state": "Review",
         "reps": 3,
         "lapses": 1,
-        "retrievability": 0.819
+        "retrievability": 0.804
       },
       "fsrsFallback": false
     },
@@ -2693,7 +2693,7 @@
         "state": "Review",
         "reps": 3,
         "lapses": 1,
-        "retrievability": 0.819
+        "retrievability": 0.804
       },
       "fsrsFallback": false
     },
@@ -2738,7 +2738,7 @@
         "state": "Review",
         "reps": 3,
         "lapses": 1,
-        "retrievability": 0.819
+        "retrievability": 0.804
       },
       "fsrsFallback": false
     },
@@ -2783,7 +2783,7 @@
         "state": "Review",
         "reps": 3,
         "lapses": 1,
-        "retrievability": 0.824
+        "retrievability": 0.808
       },
       "fsrsFallback": false
     },
@@ -2828,7 +2828,7 @@
         "state": "Review",
         "reps": 3,
         "lapses": 1,
-        "retrievability": 0.824
+        "retrievability": 0.808
       },
       "fsrsFallback": false
     },
@@ -2873,7 +2873,7 @@
         "state": "Review",
         "reps": 3,
         "lapses": 1,
-        "retrievability": 0.824
+        "retrievability": 0.808
       },
       "fsrsFallback": false
     },
@@ -2918,7 +2918,7 @@
         "state": "Review",
         "reps": 3,
         "lapses": 1,
-        "retrievability": 0.824
+        "retrievability": 0.808
       },
       "fsrsFallback": false
     },
@@ -2963,7 +2963,7 @@
         "state": "Review",
         "reps": 3,
         "lapses": 1,
-        "retrievability": 0.824
+        "retrievability": 0.808
       },
       "fsrsFallback": false
     }

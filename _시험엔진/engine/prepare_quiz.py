@@ -14,8 +14,9 @@ engine/prepare_quiz.py — 문제지 준비(사실 수집 → plan.json)  (HG �
 산출(쓰기)은 두 곳뿐이다:
   · <시험폴더>/<데일리퀴즈|오답퀴즈|claude_ox_오답>/_work/*.plan.json
   · _시험엔진/_runs.log  (종료 사유 EXISTS/SKIP/DUE0 한 줄 — ready는 렌더러가 남긴다)
-노트·문제지·원장·_inbox 는 읽기만 한다(수거는 Downloads → _inbox 로의 cp -n 뿐이며
-Downloads 는 불변, 원장 갱신은 build_ledger.py 에 위임).
+노트·문제지·원장 은 읽기만 한다. 수거는 Downloads → _inbox 복사(cp -n + 2026-09-16 동명이본 가드)이고,
+_inbox 사본과 바이트 일치가 확인된 원본만 Downloads/<_paths.downloads_sweep_dir>/ 로 옮긴다(rename —
+Downloads 의 다른 파일은 불변, sweep_dir 가 null 이면 종전대로 이동 없음). 원장 갱신은 build_ledger.py 에 위임.
 
 절차 정본: _시험엔진/spec/데일리퀴즈.md · spec/오답퀴즈.md · spec/주간리포트.md
           + spec/프로파일_*.md 3종. 파라미터 정본: engine/exams.json.
@@ -295,33 +296,119 @@ def find_downloads(cfg, cli):
     return None
 
 
+def _same_bytes(a, b):
+    try:
+        if a.stat().st_size != b.stat().st_size:
+            return False
+        return a.read_bytes() == b.read_bytes()
+    except OSError:
+        return False
+
+
+def _numbered_variants(folder, name):
+    """'<base>[ (k)].json' → folder 안의 '<base> (N).json' 목록(N 오름차순)."""
+    base, ext = os.path.splitext(name)
+    base = re.sub(r" \(\d+\)$", "", base)
+    out = []
+    for cand in folder.glob(_glob.escape(base) + " (*)" + ext):
+        m = re.fullmatch(re.escape(base) + r" \((\d+)\)" + re.escape(ext), cand.name)
+        if m:
+            out.append((int(m.group(1)), cand))
+    return [c for _n, c in sorted(out)]
+
+
+def _free_numbered(folder, name, start=1):
+    base, ext = os.path.splitext(name)
+    base = re.sub(r" \(\d+\)$", "", base)
+    for n in range(start, 100):
+        cand = folder / ("%s (%d)%s" % (base, n, ext))
+        if not cand.exists():
+            return cand
+    return None
+
+
+def _collect_one(src, dst, inbox, stats):
+    """Downloads 결과 JSON 1개 수거 → 바이트 일치가 확인된 _inbox 사본 경로(없으면 None).
+    · dst 없음 → copy2(mtime 보존)
+    · dst 있고 내용 같음 → 그대로(종전 cp -n)
+    · dst 있고 내용 다름(2026-09-16 가드) → 같은 내용의 ' (N)' 사본이 이미 있으면 그것, 없으면 빈 ' (N).json' 으로
+      추가 수거. 원장(build_ledger.find_jsons)이 같은 base 중 mtime 최신본을 채택하므로 나중 저장분이 이긴다 —
+      원본이 Downloads 에서 치워진 뒤 같은 날 다시 저장한 파일이 '(1)' 없이 떨어져도 유실되지 않는다."""
+    if not dst.exists():
+        shutil.copy2(src, dst)
+        stats["copied"] += 1
+        return dst
+    if _same_bytes(src, dst):
+        return dst
+    for cand in _numbered_variants(inbox, dst.name):
+        if _same_bytes(src, cand):
+            return cand
+    alt = _free_numbered(inbox, dst.name)
+    if alt is None:
+        return None
+    shutil.copy2(src, alt)
+    stats["copied"] += 1
+    stats["collided"] += 1
+    return alt
+
+
+def _sweep_one(src, sweep_dir, stats, warnings):
+    """검증된 Downloads 원본을 Downloads/<sweep_dir>/ 로 이동(같은 볼륨 rename — 삭제 권한 불필요).
+    이름이 겹치면 ' (N)' 을 붙인다. 실패해도 수거는 이미 끝났으므로 경고만 남기고 원본은 둔다."""
+    try:
+        sweep_dir.mkdir(parents=True, exist_ok=True)
+        dst = sweep_dir / src.name
+        if dst.exists():
+            dst = _free_numbered(sweep_dir, src.name)
+        if dst is None:
+            warnings.append("수거 이동 건너뜀(이름 포화): %s" % src.name)
+            return
+        os.rename(src, dst)
+        stats["moved"] += 1
+    except OSError as e:
+        stats["move_failed"] += 1
+        warnings.append("수거 이동 실패(%s): %s" % (e.__class__.__name__, src.name))
+
+
 def ingest(root, exam, ex, cfg, dl_dir, warnings):
-    """Downloads → _inbox 복사(cp -n) 후 build_ledger.py 위임. Downloads 는 절대 불변."""
+    """Downloads → _inbox 수거 후 build_ledger.py 위임.
+    2026-09-16: (1) 같은 이름·다른 내용은 ' (N)' 사본으로 추가 수거(_collect_one 가드)
+                (2) _inbox 사본과 바이트 일치가 확인된 원본만 Downloads/<_paths.downloads_sweep_dir>/ 로 이동
+                    (sweep_dir 가 null/빈 값이면 종전대로 Downloads 불변). Downloads 의 다른 파일은 건드리지 않는다."""
     paths = cfg.get("_paths") or {}
     inbox = Path(root) / ex["dir"] / paths.get("ledger_dir", "claude_ox_오답") / paths.get("inbox_dir", "_inbox")
     inbox.mkdir(parents=True, exist_ok=True)
-    copied = 0
+    stats = {"copied": 0, "collided": 0, "moved": 0, "move_failed": 0}
+    sweep_name = (paths.get("downloads_sweep_dir") or "").strip()
+    sweep_dir = (dl_dir / sweep_name) if (dl_dir and sweep_name) else None
     if dl_dir:
+        jobs = []                                            # (src, dst) — 표준 글롭 + 레거시 접두어 변환
         for src in sorted(dl_dir.glob(ex["result_glob"])):
-            dst = inbox / src.name
-            if not dst.exists():
-                shutil.copy2(src, dst)
-                copied += 1
+            if src.is_file():
+                jobs.append((src, inbox / src.name))
         lg = ex.get("legacy_result_glob")
         if lg:
             pre_from, pre_to = ex.get("legacy_rename_prefix") or ["", ""]
             until = ex.get("legacy_until")
             for src in sorted(dl_dir.glob(lg)):
+                if not src.is_file():
+                    continue
                 m = DATE_RE.search(src.name)
                 if until and m and m.group(1) > until:
                     continue
                 name = src.name.replace(pre_from, pre_to, 1) if pre_from else src.name
-                dst = inbox / name
-                if not dst.exists():
-                    shutil.copy2(src, dst)
-                    copied += 1
+                jobs.append((src, inbox / name))
+        seen = set()
+        for src, dst in jobs:
+            if src in seen:
+                continue
+            seen.add(src)
+            verified = _collect_one(src, dst, inbox, stats)
+            if verified is not None and sweep_dir is not None and _same_bytes(src, verified):
+                _sweep_one(src, sweep_dir, stats, warnings)
     else:
         warnings.append("Downloads 미연결: 기존 _inbox 분으로 진행")
+    copied = stats["copied"]
 
     exit_code, summary = None, ""
     bl = ENGINE_DIR / "build_ledger.py"
@@ -345,7 +432,9 @@ def ingest(root, exam, ex, cfg, dl_dir, warnings):
     else:
         warnings.append("build_ledger.py 없음 — 원장 갱신 생략")
 
-    return {"copied": copied, "downloads": "mounted" if dl_dir else "unmounted",
+    return {"copied": copied, "collided": stats["collided"], "moved": stats["moved"],
+            "move_failed": stats["move_failed"], "sweep_dir": str(sweep_dir) if sweep_dir else None,
+            "downloads": "mounted" if dl_dir else "unmounted",
             "ledger_exit": exit_code, "ledger_summary": summary}
 
 
@@ -1226,8 +1315,9 @@ def main(argv=None):
 
     print("[%s %s %s] %s" % (a.exam, a.kind, date.isoformat(), summary))
     ig = plan["ingest"]
-    print("  수거 %s건 · Downloads %s · 원장 exit %s%s"
-          % (ig.get("copied"), ig.get("downloads"), ig.get("ledger_exit"),
+    print("  수거 %s건%s · 이동 %s건 · Downloads %s · 원장 exit %s%s"
+          % (ig.get("copied"), (" (동명이본 %s)" % ig["collided"]) if ig.get("collided") else "",
+             ig.get("moved", 0), ig.get("downloads"), ig.get("ledger_exit"),
              (" · " + ig["ledger_summary"][:120]) if ig.get("ledger_summary") else ""))
     for w in plan.get("warnings") or []:
         print("  ⚠ %s" % w)

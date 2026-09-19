@@ -46,18 +46,20 @@ render_quiz.py   → HTML         (정답 배정·조합 셔플·검증·로그�
 
 ## 스케줄러 (사이클 독립 — 시험 1개 = 3개 + 시험 횡단 1개)
 
+> **하루 2문제지 원칙 (2026-09-16)**: 데일리 50(월~토)은 매일, 2번째 슬롯은 **공인 오답 25(월·수·금·토) ↔ 법무사 2차 12(화·목 데일리 · 일 오답)** 교대. Anki 병행 부담으로 하루 3개 → 2개. 요일 정본은 `exams.json` `schedule_days_daily/retry`(주간리포트 미실행일 집계가 읽는다) — 스케줄드 태스크의 요일도 같아야 한다.
+
 | 작업 | 공인중개사 | 법무사 1차 | 법무사 2차 |
 |---|---|---|---|
-| 오답 파이프라인 | `gongin-odap-quiz` 월~토 08:40 | `bupsa-1cha-odap-quiz` 평일 08:55 | `bupsa-2cha-odap-quiz` **수·금·토·일** 08:50 |
+| 오답 파이프라인 | `gongin-odap-quiz` **월·수·금·토** 08:40 | `bupsa-1cha-odap-quiz` 평일 08:55 | `bupsa-2cha-odap-quiz` **일** 08:50 |
 | 데일리퀴즈 | `gongin-daily-quiz` 월~토 09:00 | `bupsa-1cha-daily-quiz` 화·목 09:20 | `bupsa-2cha-daily-quiz` 화·목 09:15 |
 | 주간리포트(월) | `gongin-weekly-report` 07:00 | `bupsa-1cha-weekly-report` 07:40 | `bupsa-2cha-weekly-report` 07:30 |
 
-+ `anki-weekly-deck` 월 08:00 (`spec/앙키덱.md`). 법무사 2차는 **하루 한 종류**(화·목 데일리 ≤15 / 수·금·토·일 복습 ≤12 — 서술형 인출 한계 10~15문). 위임문 정본은 `spec/스케줄러_위임문.md`. 온디맨드 스킬: `daily-quiz-gongin`·`daily-quiz-bupsa`·`odap-quiz-gongin`·`odap-quiz-bupsa`·`baekji-chaejeom`(백지채점).
++ `anki-weekly-deck` 월 08:00 (`spec/앙키덱.md`). 법무사 2차는 **하루 한 종류**(화·목 데일리 ≤15 / 일 복습 ≤12 — 서술형 인출 한계 10~15문; 수·금·토 복습은 09-16 공인 오답 슬롯에 양보, 11/1 이후 복원 검토). 위임문 정본은 `spec/스케줄러_위임문.md`. 온디맨드 스킬: `daily-quiz-gongin`·`daily-quiz-bupsa`·`odap-quiz-gongin`·`odap-quiz-bupsa`·`baekji-chaejeom`(백지채점).
 스케줄러는 맥이 켜져 있을 때 실행되며 놓친 회차는 다음 기동 시 몰아서 돈다 — 실제 실행 시각은 `_runs.log`가 정본.
 
 ## 규칙
 
-1. **정확성 > 절차**: 노트에 없는 내용·⚠️/확인 필요 항목 출제 금지, 검증 통과 전 종료 금지, Downloads 읽기 전용(`cp -n`).
+1. **정확성 > 절차**: 노트에 없는 내용·⚠️/확인 필요 항목 출제 금지, 검증 통과 전 종료 금지. Downloads 는 **엔진(prepare)만 만진다** — `cp -n` 수거 + 동명이본 가드(같은 이름·다른 내용 → `_inbox` ` (N).json`) + `_inbox` 사본과 바이트 일치가 확인된 원본만 `Downloads/_오답_수거완료/`로 이동(rename, 다른 파일 불변). AI 실행자는 Downloads 에 쓰지 않는다. 수거완료 폴더는 사용자가 비운다(원장 원천은 `_inbox`).
 2. 시험·트랙 간 파일 교차 금지. 항상 오늘 하루치 1개(밀린 날짜 생성 금지).
 3. 파라미터 변경 → `engine/exams.json`만. 절차 변경 → `spec/`. 코드 변경 → `engine/tests/run.sh` + `e2e_smoke_all.sh` 통과 후. 모든 변경은 `CHANGELOG.md`에 1줄.
 4. 새 시험 추가 = `exams.json`에 항목 1개 + 시험 폴더 스캐폴드(`데일리퀴즈/`, `오답퀴즈/`, `claude_ox_오답/_inbox/`) + 프로파일 md 1장 + 스케줄러 3개(velog-posts 연결 세션에서 생성, 첫 1회 Run now로 도구 승인).

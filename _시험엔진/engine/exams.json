@@ -5,6 +5,8 @@
     "engine_dir": "_시험엔진/engine",
     "runs_log": "_시험엔진/_runs.log",
     "downloads_glob": "/sessions/*/mnt/Downloads",
+    "downloads_sweep_dir": "_오답_수거완료",
+    "_downloads_sweep_note": "2026-09-16: 수거(cp -n) 후 _inbox 사본과 바이트 일치가 확인된 Downloads 결과 JSON만 Downloads/<downloads_sweep_dir>/ 로 이동(같은 볼륨 rename — 삭제 권한 불필요). null 이면 이동 없음(종전 Downloads 불변). 같은 이름·다른 내용이면 _inbox 에 ' (N).json' 사본으로 추가 수거(원장은 mtime 최신본 채택).",
     "note_pattern": "^20\\d{2}-\\d{2}-\\d{2}.*\\.md$",
     "blank_review_dir": "백지복습",
     "quiz_dirs": {
@@ -186,6 +188,9 @@
       },
       "fsrs_cap_days": 60,
       "schedule_days": "월~토",
+      "schedule_days_daily": "월~토",
+      "schedule_days_retry": "월·수·금·토",
+      "_schedule_note": "2026-09-16 하루 2문제지 원칙 — 데일리 50은 월~토 매일, 2번째 슬롯은 공인 오답(월·수·금·토) ↔ 법무사2차(화·목 데일리·일 오답) 교대. Anki 병행 부담으로 하루 3개→2개. schedule_days 는 구 소비자 호환용 = daily 요일.",
       "dashboard": true,
       "kakao_push": true,
       "ui": {
@@ -399,7 +404,8 @@
         }
       },
       "retry": {
-        "cap": 20,
+        "cap": 25,
+        "_cap_note": "2026-09-16: 20→25 (오답 요일 6→4일 보정 — 주 120문→100문). 졸업후보 예약칸 = min(5, 25//4) = 5. 종전 20은 2026-09-02 기준.",
         "sa_promote_cap": 5,
         "sa_promote_zero_from": "2026-10-17",
         "sa_promote_rule": "status==상습 ∨ retryMissed≥1 ∨ timesWrong≥3 → 듀 순서 상위부터",
@@ -823,8 +829,8 @@
       "fsrs_cap_days": 120,
       "schedule_days": "화·목 (11/1 평일 전환 예정)",
       "schedule_days_daily": "화·목",
-      "schedule_days_retry": "수·금·토·일",
-      "_schedule_note": "2026-09-02 재설계 — 화·목 데일리(신규) / 수·금·토·일 복습(오답 재도전) / 월 주간리포트. 하루 한 종류만 푼다(서술형 하루 10~15문 한계). schedule_days 는 구 소비자 호환용 = daily 요일.",
+      "schedule_days_retry": "일",
+      "_schedule_note": "2026-09-16 하루 2문제지 원칙 — 화·목 데일리(신규) / 일 복습(오답 재도전) / 월 주간리포트. 수·금·토 복습은 공인 오답 슬롯에 양보(09-02 설계의 수·금·토·일 → 일). 하루 한 종류만 푼다(서술형 하루 10~15문 한계). schedule_days 는 구 소비자 호환용 = daily 요일.",
       "dashboard": false,
       "kakao_push": false,
       "ui": {
@@ -998,7 +1004,7 @@
       },
       "retry": {
         "cap": 12,
-        "_cap_note": "2026-09-02: 8→12 (복습일이 주 4일 — 재도전이 인출량의 주력). 졸업후보 예약칸 = min(5, 12//4) = 3.",
+        "_cap_note": "2026-09-02: 8→12 (복습일이 주 4일 — 재도전이 인출량의 주력). 졸업후보 예약칸 = min(5, 12//4) = 3. 2026-09-16: 복습일 주 1일(일)로 축소해도 12 유지 — 일요일은 다른 문제지가 없고 서술형 한계(10~15)는 상한이 아니라 하루 총량 기준.",
         "sa_promote_cap": null,
         "sa_promote_unlimited": true,
         "_sa_promote_note": "전 문항 단답 트랙 — 승격 상한 개념이 없다(검사기 SA_CAP = Infinity). sa_promote_cap: null 의 의미는 종전대로 '해당 없음'.",

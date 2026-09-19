@@ -1,0 +1,874 @@
+{
+ "schema": 1,
+ "status": "ready",
+ "exam": "gongin",
+ "kind": "retry",
+ "date": "2026-09-16",
+ "root": "/sessions/lucid-awesome-darwin/mnt/velog-posts",
+ "generated_at": "2026-09-16T09:09:01+09:00",
+ "cap": 20,
+ "n": 20,
+ "due_total": 143,
+ "rest": 123,
+ "picks": [
+  {
+   "conceptKey": "공법 농지-경자유전 예외와 농취증 면제",
+   "subject": "부동산공법",
+   "status": "상습",
+   "timesWrong": 2,
+   "retryMissed": 1,
+   "consecutiveCorrect": 0,
+   "nextReviewDate": "2026-09-16",
+   "retrievability": 1.0,
+   "missedTop": [],
+   "causeTop": "개념부재",
+   "errorCauses": {
+    "개념부재": 1,
+    "함정": 1
+   },
+   "samples": [
+    {
+     "date": "2026-09-03",
+     "type": "조합",
+     "q": "농지법령상 농지의 소유와 농지취득자격증명에 관한 설명으로 옳은 것을 모두 고른 것은?<br>ㄱ. 상속으로 취득하는 농지는 농지취득자격증명을 발급받아야 취득할 수 있다<br>ㄴ. 학교가 농지를 취득하는 경우에는 농지취득자격증명은 필요하나 농업경영계획서는 필요하지 아니하다<br>ㄷ. 주말·체험영농을 하려고 농업진흥지역 외의 농지를 소유하는 것은 경자유전의 예외에 해당한다<br>ㄹ. 8년 이상 농업경영을 하다가 이농한 자는 3천 제곱미터까지 농지를 소유할 수 있다",
+     "expl": "[정답 근거] 주말·체험영농을 위한 농업진흥지역 밖 농지 소유가 경자유전의 예외라는 점과 학교는 농지취득자격증명은 필요하되 농업경영계획서는 면제된다는 점이 옳다. [메커니즘] 농사지을 사람만 땅을 갖게 하되 취지가 다른 취득에는 계획서를 요구할 실익이 없다. [함정] 상속은 농지취득자격증명 없이 취득할 수 있고 이농자의 소유 상한은 1만 제곱미터다.",
+     "myAnswer": "ㄴ, ㄷ, ㄹ",
+     "correct": "ㄴ, ㄷ",
+     "missedKeys": [],
+     "errorCause": "개념부재",
+     "causeNote": "이농자와 상속은 최대 제한이 1만이라는게 헷갈렸다.",
+     "comment": null
+    },
+    {
+     "date": "2026-09-15",
+     "type": "일반",
+     "q": "🔁 농지법령상 농지의 소유와 농지취득자격증명에 관한 설명으로 <b>옳지 않은</b> 것은?",
+     "expl": "[정답 근거] 8년 이상 농업경영을 하다가 이농한 자의 소유 상한은 3천 제곱미터가 아니라 1만 제곱미터여서 옳지 않다. [메커니즘] 농사지을 사람만 땅을 갖게 하되 취지가 다른 취득에는 계획서를 요구할 실익이 없다. [함정] 상속 농지는 농지취득자격증명 없이 취득한다는 점과 뒤섞기 쉽다.",
+     "myAnswer": "상속으로 농지를 취득하는 경우에는 농지취득자격증명을 발급받지 아니하여도 된다",
+     "correct": "8년 이상 농업경영을 하다가 이농한 자는 3천 제곱미터까지만 농지를 소유할 수 있다",
+     "missedKeys": [],
+     "errorCause": "함정",
+     "causeNote": "옳은 것으로 봤다.",
+     "comment": null
+    }
+   ],
+   "related_notes": [
+    "/sessions/lucid-awesome-darwin/mnt/velog-posts/공인중개사/2026-09-03-공인중개사법-(임대차 정보제공 등~공인중개사의 매수신청대리인 등록 등에 관한 규칙 3회독 + 단원별모의고사).md"
+   ],
+   "promote_sa": true
+  },
+  {
+   "conceptKey": "담보책임 제척기간-물건하자 6개월",
+   "subject": "민법",
+   "status": "상습",
+   "timesWrong": 3,
+   "retryMissed": 2,
+   "consecutiveCorrect": 0,
+   "nextReviewDate": "2026-09-16",
+   "retrievability": 1.0,
+   "missedTop": [],
+   "causeTop": "혼동",
+   "errorCauses": {
+    "혼동": 1
+   },
+   "samples": [
+    {
+     "date": "2026-07-20",
+     "type": "일반",
+     "q": "매도인의 담보책임에 관한 설명으로 옳은 것은?",
+     "expl": "물건의 하자에 대한 담보책임은 매수인이 선의·무과실인 경우 그 사실을 '안 날부터 6개월' 내에 물어야 한다. → 권리의 하자(선의: 안 날부터 1년)와 기산점·기간이 다르다. 함정: 법령상 제한으로 건물 신축이 불가능한 것은 토지라는 물건의 성상 흠결이어서 '물건의 하자'이고, 전부타인매매 시 선의 매수인에게는 이행이익을 배상해야 한다.",
+     "myAnswer": "권리의 일부가 타인에게 속한 경우, 선의의 매수인은 계약한 날부터 1년 내에 손해배상을 청구해야 한다.",
+     "correct": "매매목적물의 하자에 대하여 선의·무과실의 매수인은 그 사실을 안 날부터 6개월 내에 담보책임을 물어야 한다.",
+     "missedKeys": [],
+     "errorCause": null,
+     "causeNote": null,
+     "comment": null
+    },
+    {
+     "date": "2026-08-28",
+     "type": "사례",
+     "q": "🔁 갑은 을로부터 토지를 매수하였으나 법령상 제한 때문에 건물을 신축할 수 없는 토지임을 뒤늦게 알았다. 갑이 선의·무과실일 때 담보책임을 물어야 하는 기간은?",
+     "expl": "[정답 근거] 법령상 제한으로 신축이 불가능한 것은 토지의 성상 흠결이라 물건의 하자이고 선의·무과실 매수인은 안 날부터 6개월 내에 물어야 한다. [메커니즘] 물건의 흠은 쓰면서 드러나므로 기산점은 안 날로 두되 기간을 짧게 끊어 법률관계를 빨리 확정한다. [함정] 권리의 하자인 안 날부터 1년과 뒤섞으면 그대로 틀린다.",
+     "myAnswer": "계약한 날부터 6개월 이내",
+     "correct": "그 사실을 안 날부터 6개월 이내",
+     "missedKeys": [],
+     "errorCause": null,
+     "causeNote": null,
+     "comment": null
+    },
+    {
+     "date": "2026-09-15",
+     "type": "OX",
+     "q": "🔁 매매목적물의 하자에 대하여 선의·무과실인 매수인은 계약한 날부터 6개월 내에 담보책임을 물어야 한다.",
+     "expl": "X. [정답 근거] 물건의 하자에 대한 담보책임은 계약한 날이 아니라 그 사실을 안 날부터 6개월 내에 물어야 한다. [메커니즘] 물건의 흠은 쓰면서 드러나므로 기산점을 안 날로 두되 기간을 짧게 끊어 법률관계를 빨리 확정한다. [함정] 권리의 하자인 안 날부터 1년과 뒤섞기 쉽다.",
+     "myAnswer": "O",
+     "correct": "X",
+     "missedKeys": [],
+     "errorCause": "혼동",
+     "causeNote": "기산점이 계약한 날이 아니라 안날부터 6개월 내에 물어야함을 까먹었다.",
+     "comment": null
+    }
+   ],
+   "related_notes": [
+    "/sessions/lucid-awesome-darwin/mnt/velog-posts/공인중개사/2026-07-20-민법-(사기강박~표현대리 3회독 + 단원별모의고사).md",
+    "/sessions/lucid-awesome-darwin/mnt/velog-posts/공인중개사/2026-08-28-부동산학개론-(토지경제와 지리경제~감정평가론 4회독 + 단원별모의고사).md"
+   ],
+   "promote_sa": true
+  },
+  {
+   "conceptKey": "민법 집합건물-공용부분 수익금 지분비율",
+   "subject": "민법",
+   "status": "상습",
+   "timesWrong": 2,
+   "retryMissed": 1,
+   "consecutiveCorrect": 1,
+   "nextReviewDate": "2026-09-16",
+   "retrievability": 1.0,
+   "missedTop": [],
+   "causeTop": "혼동",
+   "errorCauses": {
+    "혼동": 1,
+    "함정": 1
+   },
+   "samples": [
+    {
+     "date": "2026-09-02",
+     "type": "OX",
+     "q": "규약으로 달리 정한 바가 없으면 공용부분에서 생긴 수익금은 지분비율과 관계없이 구분소유자 전원에게 균등하게 배분된다.",
+     "expl": "X. 규약에 다른 정함이 없으면 각 구분소유자는 공용부분에서 생긴 수익금 중 자신의 지분비율에 상당하는 부분의 지급을 청구할 수 있고, 머릿수에 따른 균등 배분이 아니다. 공용부분에 대한 권리 자체가 지분으로 짜여 있으니 거기서 나온 과실도 지분을 따라간다. 청구 주체를 전유부분 소유자로 바꾸거나 배분 기준을 균등으로 바꾸는 것이 함정이다.",
+     "myAnswer": "O",
+     "correct": "X",
+     "missedKeys": [],
+     "errorCause": "혼동",
+     "causeNote": "지분비율로 배분해야하는데 균등배분해야한다는 선지에 넘어갔다.",
+     "comment": null
+    },
+    {
+     "date": "2026-09-10",
+     "type": "일반",
+     "q": "🔁 집합건물의 소유 및 관리에 관한 법률상 공용부분에서 생긴 수익금의 배분에 관한 설명으로 옳은 것은? (규약에 다른 정함은 없음)",
+     "expl": "[정답 근거] 각 구분소유자는 공용부분에서 생긴 수익금 중 자신의 지분비율에 상당하는 부분의 지급을 청구할 수 있다. [메커니즘] 공용부분에 대한 권리 자체가 지분으로 짜여 있으니 거기서 나온 과실도 지분을 따라간다. [함정] 배분 기준을 머릿수 균등으로 바꾸는 지문에 넘어가기 쉽다.",
+     "myAnswer": "각 구분소유자는 공용부분에서 생긴 수익금을 구분소유자의 수에 따라 균등하게 배분받는다",
+     "correct": "각 구분소유자는 공용부분에서 생긴 수익금 중 자신의 지분비율에 상당하는 부분의 지급을 청구할 수 있다",
+     "missedKeys": [],
+     "errorCause": "함정",
+     "causeNote": "머릿수로 나누는게 아니라 지분비율로 나눠야하는데 이를 간과했다.",
+     "comment": null
+    }
+   ],
+   "related_notes": [
+    "/sessions/lucid-awesome-darwin/mnt/velog-posts/공인중개사/2026-09-02-부동산공법-(주택건설자금~농업경영에 이용하지 아니하는 농지의 처분 3회독 + 단원별모의고사).md",
+    "/sessions/lucid-awesome-darwin/mnt/velog-posts/공인중개사/2026-09-10-공인중개사법-(용어의 정의~금지행위 4회독).md"
+   ],
+   "promote_sa": true
+  },
+  {
+   "conceptKey": "부동산공법 1-2 장기미집행 해제 절차",
+   "subject": "부동산공법",
+   "status": "상습",
+   "timesWrong": 3,
+   "retryMissed": 2,
+   "consecutiveCorrect": 0,
+   "nextReviewDate": "2026-09-16",
+   "retrievability": 1.0,
+   "missedTop": [
+    "90일 해제 권고"
+   ],
+   "causeTop": "개념부재",
+   "errorCauses": {
+    "개념부재": 2
+   },
+   "samples": [
+    {
+     "date": "2026-09-02",
+     "type": "일반",
+     "q": "🔄 지방의회의 해제 권고를 포함한 장기미집행 도시·군계획시설의 해제 절차에 관한 설명으로 옳은 것은?",
+     "expl": "[정답 근거] 지방의회는 90일 이내에 해제를 권고하고, 권고를 받으면 1년 이내에 도시·군관리계획으로 결정하며, 해제할 수 없으면 6개월 이내에 소명한다. [메커니즘] 판단·결정·해명의 세 단계로 이어지며 기간이 점점 짧아진다. [함정] 각 단계의 숫자를 서로 바꿔 놓는 것이 전형적인 함정이다.",
+     "myAnswer": "모르겠음",
+     "correct": "지방의회의 해제 권고를 받은 경우 원칙적으로 1년 이내에 해당 사항을 도시·군관리계획으로 결정하여야 한다",
+     "missedKeys": [],
+     "errorCause": "개념부재",
+     "causeNote": null,
+     "comment": null
+    },
+    {
+     "date": "2026-09-10",
+     "type": "일반",
+     "q": "🔁 국토의 계획 및 이용에 관한 법령상 장기미집행 도시·군계획시설의 해제 절차에 관한 설명으로 옳은 것은?",
+     "expl": "[정답 근거] 지방의회의 해제 권고를 받으면 원칙적으로 1년 이내에 해당 사항을 도시·군관리계획으로 결정하여야 한다. [메커니즘] 판단·결정·해명의 세 단계로 이어져 권고는 90일, 결정은 1년, 소명은 6개월로 기간이 나뉜다. [함정] 각 단계의 숫자를 서로 바꿔 놓는 것이 전형적인 함정이다.",
+     "myAnswer": "모르겠음",
+     "correct": "지방의회의 해제 권고를 받은 경우 원칙적으로 1년 이내에 도시·군관리계획으로 결정하여야 한다",
+     "missedKeys": [],
+     "errorCause": "개념부재",
+     "causeNote": null,
+     "comment": null
+    },
+    {
+     "date": "2026-09-15",
+     "type": "단답",
+     "q": "🔁 장기미집행 도시·군계획시설에 관하여 ① 지방의회가 해제를 권고하여야 하는 기간 ② 권고를 받은 경우 도시·군관리계획으로 결정하여야 하는 기간 ③ 해제할 수 없는 경우 소명하여야 하는 기간을 각각 쓰시오.",
+     "expl": "[정답 근거] 지방의회는 90일 이내에 해제를 권고하고, 권고를 받으면 1년 이내에 도시·군관리계획으로 결정하며, 해제할 수 없으면 6개월 이내에 소명한다. [메커니즘] 판단·결정·해명의 세 단계다. [함정] 각 단계의 숫자를 서로 바꿔 놓는 것이 전형적인 함정이다.",
+     "myAnswer": "해제 권고는 2년이고 결정기간은 1년 소명기간은 6개월이다.",
+     "correct": "① 90일 이내에 해제를 권고한다.<br>② 권고를 받으면 원칙적으로 1년 이내에 도시·군관리계획으로 결정한다.<br>③ 해제할 수 없으면 6개월 이내에 소명한다.",
+     "missedKeys": [
+      "90일 해제 권고"
+     ],
+     "errorCause": null,
+     "causeNote": null,
+     "comment": null
+    }
+   ],
+   "related_notes": [
+    "/sessions/lucid-awesome-darwin/mnt/velog-posts/공인중개사/2026-09-02-부동산공법-(주택건설자금~농업경영에 이용하지 아니하는 농지의 처분 3회독 + 단원별모의고사).md",
+    "/sessions/lucid-awesome-darwin/mnt/velog-posts/공인중개사/2026-09-10-공인중개사법-(용어의 정의~금지행위 4회독).md"
+   ],
+   "promote_sa": true
+  },
+  {
+   "conceptKey": "부동산공법 1-8 성장관리계획 건폐율완화",
+   "subject": "부동산공법",
+   "status": "상습",
+   "timesWrong": 3,
+   "retryMissed": 2,
+   "consecutiveCorrect": 1,
+   "nextReviewDate": "2026-09-16",
+   "retrievability": 1.0,
+   "missedTop": [
+    "계획관리지역 50퍼센트"
+   ],
+   "causeTop": "개념부재",
+   "errorCauses": {
+    "개념부재": 1
+   },
+   "samples": [
+    {
+     "date": "2026-09-01",
+     "type": "계산",
+     "q": "🔄 성장관리계획구역으로 지정된 계획관리지역에 있는 대지면적 1,200제곱미터의 토지에 건축물을 신축하려 한다. 성장관리계획으로 건폐율이 최대한도까지 완화되어 적용되는 경우 건축할 수 있는 최대 건축면적은? (다른 조건은 동일)",
+     "expl": "[정답 근거] 성장관리계획구역 내 계획관리지역은 건폐율을 50퍼센트 이하까지 완화할 수 있으므로 1,200 × 0.5 = 600제곱미터다. [메커니즘] 계획관리지역은 개발 수요를 흡수하는 지역이라 한 단계 더 완화해준다. [함정] 그 밖의 지역은 30퍼센트 이하여서 40퍼센트를 곱하면 480이 나와 오답이 된다.",
+     "myAnswer": "480제곱미터",
+     "correct": "600제곱미터",
+     "missedKeys": [],
+     "errorCause": null,
+     "causeNote": null,
+     "comment": null
+    },
+    {
+     "date": "2026-09-09",
+     "type": "일반",
+     "q": "🔁 국토의 계획 및 이용에 관한 법령상 성장관리계획구역에서의 건폐율 완화에 관한 설명으로 옳은 것은?",
+     "expl": "[정답 근거] 계획관리지역에서는 성장관리계획으로 건폐율을 50퍼센트 이하까지 완화하여 적용할 수 있다. [메커니즘] 계획관리지역은 개발 수요를 흡수하는 지역이라 그 밖의 지역보다 한 단계 더 완화해 준다. [함정] 그 밖의 지역 기준인 30퍼센트를 계획관리지역에 옮겨 붙이는 지문이 나온다.",
+     "myAnswer": "모르겠음",
+     "correct": "계획관리지역에서는 성장관리계획으로 건폐율을 50퍼센트 이하까지 완화하여 적용할 수 있다",
+     "missedKeys": [],
+     "errorCause": "개념부재",
+     "causeNote": null,
+     "comment": null
+    },
+    {
+     "date": "2026-09-10",
+     "type": "단답",
+     "q": "🔁 국토의 계획 및 이용에 관한 법령상 성장관리계획구역에서 성장관리계획으로 건폐율을 완화하여 적용할 수 있는 한도를 ① 계획관리지역과 ② 그 밖의 지역으로 구분하여 쓰시오.",
+     "expl": "[정답 근거] 계획관리지역은 50퍼센트 이하까지, 그 밖의 지역은 30퍼센트 이하까지 건폐율을 완화할 수 있다. [메커니즘] 계획관리지역은 개발 수요를 흡수하는 지역이라 그 밖의 지역보다 한 단계 더 완화해 준다. [함정] 그 밖의 지역 기준을 계획관리지역에 옮겨 붙이면 대지면적에 0.4를 곱하는 식의 오답으로 이어진다.",
+     "myAnswer": "1. 60% 2. 나머지는 +10%p",
+     "correct": "① 계획관리지역은 50퍼센트 이하까지, ② 그 밖의 지역은 30퍼센트 이하까지 완화하여 적용할 수 있다",
+     "missedKeys": [
+      "계획관리지역 50퍼센트"
+     ],
+     "errorCause": null,
+     "causeNote": null,
+     "comment": null
+    }
+   ],
+   "related_notes": [
+    "/sessions/lucid-awesome-darwin/mnt/velog-posts/공인중개사/2026-09-01-부동산학개론-(관리·마케팅·학자,평가론 단원별모의고사).md",
+    "/sessions/lucid-awesome-darwin/mnt/velog-posts/공인중개사/2026-09-09-부동산공법-(국토의 계획 및 이용에 관한 법률 4회독).md",
+    "/sessions/lucid-awesome-darwin/mnt/velog-posts/공인중개사/2026-09-10-공인중개사법-(용어의 정의~금지행위 4회독).md"
+   ],
+   "promote_sa": true
+  },
+  {
+   "conceptKey": "세법 추계-매감환기와 기준시가",
+   "subject": "부동산세법",
+   "status": "상습",
+   "timesWrong": 2,
+   "retryMissed": 1,
+   "consecutiveCorrect": 0,
+   "nextReviewDate": "2026-09-16",
+   "retrievability": 1.0,
+   "missedTop": [],
+   "causeTop": "함정",
+   "errorCauses": {
+    "함정": 1,
+    "실수": 1
+   },
+   "samples": [
+    {
+     "date": "2026-09-03",
+     "type": "일반",
+     "q": "양도차익을 추계로 결정할 때의 방법에 관한 설명으로 <b>옳지 않은</b> 것은?",
+     "expl": "[정답 근거] 추계 방법은 매매사례가액·감정가액·환산취득가액·기준시가이므로 기본가액이 들어간 서술은 옳지 않다. [메커니즘] 실지거래가액을 확인할 수 없을 때 시장 자료에서 값을 되짚는 순서로 짜인 목록이다. [함정] 감정가액을 감정평가액으로, 환산취득가액을 환산거래가액으로 바꾸어 쓰는 오답이 함께 나온다.",
+     "myAnswer": "감가상각비로 필요경비에 산입한 금액은 취득가액에서 차감한다",
+     "correct": "추계 방법에는 매매사례가액·감정가액·환산취득가액·기본가액이 있다",
+     "missedKeys": [],
+     "errorCause": "함정",
+     "causeNote": "필요경비에 산입한 금액은 취득가액에서 빼는게 맞고 기본가액과 기준시가를 헷갈렸다.",
+     "comment": null
+    },
+    {
+     "date": "2026-09-15",
+     "type": "일반",
+     "q": "🔁 소득세법령상 양도차익을 추계로 결정·경정할 때 쓰는 가액에 해당하는 것은?",
+     "expl": "[정답 근거] 추계 방법은 매매사례가액·감정가액·환산취득가액·기준시가이므로 기준시가가 해당한다. [메커니즘] 실지거래가액을 확인할 수 없을 때 시장 자료에서 값을 되짚는 순서로 짜인 목록이다. [함정] 기본가액이라는 말을 기준시가 자리에 끼워 넣는 지문이 함께 나온다.",
+     "myAnswer": "환산거래가액",
+     "correct": "기준시가",
+     "missedKeys": [],
+     "errorCause": "실수",
+     "causeNote": null,
+     "comment": null
+    }
+   ],
+   "related_notes": [
+    "/sessions/lucid-awesome-darwin/mnt/velog-posts/공인중개사/2026-09-03-공인중개사법-(임대차 정보제공 등~공인중개사의 매수신청대리인 등록 등에 관한 규칙 3회독 + 단원별모의고사).md"
+   ],
+   "promote_sa": false
+  },
+  {
+   "conceptKey": "중개사법 중개보수-환산보증금 5천만원 미만 70 적용",
+   "subject": "공인중개사법",
+   "status": "상습",
+   "timesWrong": 2,
+   "retryMissed": 1,
+   "consecutiveCorrect": 0,
+   "nextReviewDate": "2026-09-16",
+   "retrievability": 1.0,
+   "missedTop": [],
+   "causeTop": "개념부재",
+   "errorCauses": {
+    "개념부재": 1,
+    "혼동": 1
+   },
+   "samples": [
+    {
+     "date": "2026-09-03",
+     "type": "계산",
+     "q": "⏪ 주택의 임대차를 중개한 경우 중개보수 산정의 기준이 되는 거래금액은? 보증금 1,000만원, 월차임 30만원 (단, 주어진 조건에 한함)",
+     "expl": "[정답 근거] 보증금 1,000만원에 월차임의 100배인 3,000만원을 더한 4,000만원이 5,000만원에 미치지 못하므로 월차임에 70을 곱하여 3,100만원이 거래금액이 된다. [메커니즘] 소액 임대차에서 보수가 과도해지지 않도록 환산 배수를 낮춘 장치다. [함정] 처음부터 70을 곱하면 5,000만원 기준의 판정 단계를 건너뛰게 된다.",
+     "myAnswer": "4,000만원",
+     "correct": "3,100만원",
+     "missedKeys": [],
+     "errorCause": "개념부재",
+     "causeNote": "환산보증금 구할때 5000안되면 70%를 곱해야하는 것을 까먹었다.",
+     "comment": null
+    },
+    {
+     "date": "2026-09-15",
+     "type": "사례",
+     "q": "🔁 갑이 주택의 임대차를 중개하였고 그 보증금은 2,000만원, 월차임은 20만원이다. 중개보수 산정의 기준이 되는 거래금액은? (다른 조건은 동일)",
+     "expl": "[정답 근거] 환산한 금액이 5,000만원에 미치지 못하므로 월차임에 70을 곱하는 규칙이 적용되어 거래금액은 3,400만원이 된다. [메커니즘] 소액 임대차에서 보수가 과도해지지 않도록 환산 배수를 낮춘 장치다. [함정] 처음부터 70을 곱하면 5,000만원 기준의 판정 단계를 건너뛴다.",
+     "myAnswer": "2,000만원",
+     "correct": "3,400만원",
+     "missedKeys": [],
+     "errorCause": "혼동",
+     "causeNote": "매매랑 임대차 같이한 케이스인줄 알았다. 빨리 읽다가 놓쳤다.",
+     "comment": null
+    }
+   ],
+   "related_notes": [
+    "/sessions/lucid-awesome-darwin/mnt/velog-posts/공인중개사/2026-09-03-공인중개사법-(임대차 정보제공 등~공인중개사의 매수신청대리인 등록 등에 관한 규칙 3회독 + 단원별모의고사).md"
+   ],
+   "promote_sa": false
+  },
+  {
+   "conceptKey": "민법 착오-중대한 과실만 상대방이 증명",
+   "subject": "민법",
+   "status": "재도전중",
+   "timesWrong": 1,
+   "retryMissed": 0,
+   "consecutiveCorrect": 0,
+   "nextReviewDate": "2026-09-10",
+   "retrievability": 0.596,
+   "missedTop": [
+    "중대한 과실"
+   ],
+   "causeTop": null,
+   "errorCauses": {},
+   "samples": [
+    {
+     "date": "2026-09-09",
+     "type": "단답",
+     "q": "착오를 이유로 한 취소에서 상대방(법률행위의 효력을 주장하는 자)이 증명책임을 지는 유일한 요건이 무엇인지 쓰시오.",
+     "expl": "[정답 근거] 상대방이 증명해야 하는 것은 표의자에게 중대한 과실이 있다는 사실이다. [메커니즘] 취소를 막으려는 쪽이 그 방어사유를 대야 하므로 중과실만 상대방 몫이고 나머지는 표의자가 다 증명한다. [함정] 중요부분의 착오까지 상대방이 증명한다고 뒤집어 낸다.",
+     "myAnswer": "표의자가 중요한 부분의 착오를 했을 경우",
+     "correct": "표의자에게 중대한 과실이 있다는 사실",
+     "missedKeys": [
+      "중대한 과실"
+     ],
+     "errorCause": null,
+     "causeNote": null,
+     "comment": null
+    }
+   ],
+   "related_notes": [
+    "/sessions/lucid-awesome-darwin/mnt/velog-posts/공인중개사/2026-09-09-부동산공법-(국토의 계획 및 이용에 관한 법률 4회독).md"
+   ],
+   "promote_sa": false
+  },
+  {
+   "conceptKey": "부동산공법 1-5 조성토지 추첨공급",
+   "subject": "부동산공법",
+   "status": "재도전중",
+   "timesWrong": 1,
+   "retryMissed": 0,
+   "consecutiveCorrect": 0,
+   "nextReviewDate": "2026-09-10",
+   "retrievability": 0.596,
+   "missedTop": [],
+   "causeTop": "개념부재",
+   "errorCauses": {
+    "개념부재": 1
+   },
+   "samples": [
+    {
+     "date": "2026-09-09",
+     "type": "조합",
+     "q": "🔄 도시개발법령상 조성토지등을 추첨의 방법으로 분양할 수 있는 것을 모두 고른 것은?<br>ㄱ. 국민주택규모 이하의 주택건설용지<br>ㄴ. 공공택지<br>ㄷ. 330제곱미터 이하의 단독주택용지<br>ㄹ. 공장용지",
+     "expl": "네 가지 모두 추첨의 방법으로 분양할 수 있다. 경쟁입찰에 붙이면 가격이 올라 서민 주거용지나 산업용지의 공급 취지가 무너지므로, 가격경쟁을 배제하는 추첨을 열어 둔 것이다. 반대로 원형지는 공적기관에는 수의계약, 학교·공장 부지로 직접 쓰는 자에게는 경쟁입찰이 원칙이라 방향이 반대다.",
+     "myAnswer": "ㄱ, ㄴ, ㄷ",
+     "correct": "ㄱ, ㄴ, ㄷ, ㄹ",
+     "missedKeys": [],
+     "errorCause": "개념부재",
+     "causeNote": "공장도 가격경쟁이 발생할 수 있으므로 추첨으로 가능하다.",
+     "comment": null
+    }
+   ],
+   "related_notes": [
+    "/sessions/lucid-awesome-darwin/mnt/velog-posts/공인중개사/2026-09-09-부동산공법-(국토의 계획 및 이용에 관한 법률 4회독).md"
+   ],
+   "promote_sa": false
+  },
+  {
+   "conceptKey": "세법 재산세 납부-분할납부는 납부기한까지",
+   "subject": "부동산세법",
+   "status": "재도전중",
+   "timesWrong": 1,
+   "retryMissed": 0,
+   "consecutiveCorrect": 0,
+   "nextReviewDate": "2026-09-10",
+   "retrievability": 0.596,
+   "missedTop": [],
+   "causeTop": "개념부재",
+   "errorCauses": {
+    "개념부재": 1
+   },
+   "samples": [
+    {
+     "date": "2026-09-09",
+     "type": "조합",
+     "q": "⏪ 재산세의 납부와 신탁재산의 납세의무에 관한 설명으로 옳은 것을 모두 고른 것은?<br>ㄱ. 종합합산과세대상 토지에 대한 재산세도 납부유예를 신청할 수 있다<br>ㄴ. 분할납부를 신청하려는 자는 납부기한까지 분할납부신청서를 제출하여야 한다<br>ㄷ. 고지 후 위탁자가 신탁재산을 양도하면 고지된 부분의 납세의무는 소멸한다<br>ㄹ. 신탁재산의 수탁자가 변경되면 새로운 수탁자는 이전 수탁자에게 고지된 납세의무를 승계한다",
+     "expl": "[정답 근거] 분할납부신청서는 납부기한까지 제출하고 새로운 수탁자는 이전 수탁자에게 고지된 납세의무를 승계한다. [메커니즘] 이미 고지로 확정된 채무는 재산을 누가 쥐든 따라가야 징수가 무너지지 않는다. [함정] 납부유예는 1세대 1주택 주택분 전용이라 종합합산토지가 나오면 그대로 틀린 지문이다.",
+     "myAnswer": "모르겠음",
+     "correct": "ㄴ, ㄹ",
+     "missedKeys": [],
+     "errorCause": "개념부재",
+     "causeNote": null,
+     "comment": null
+    }
+   ],
+   "related_notes": [
+    "/sessions/lucid-awesome-darwin/mnt/velog-posts/공인중개사/2026-09-09-부동산공법-(국토의 계획 및 이용에 관한 법률 4회독).md"
+   ],
+   "promote_sa": false
+  },
+  {
+   "conceptKey": "중개사법 외국인 토지취득-군사구역 30일과 분기 제출",
+   "subject": "공인중개사법",
+   "status": "재도전중",
+   "timesWrong": 1,
+   "retryMissed": 0,
+   "consecutiveCorrect": 0,
+   "nextReviewDate": "2026-09-10",
+   "retrievability": 0.596,
+   "missedTop": [],
+   "causeTop": "함정",
+   "errorCauses": {
+    "함정": 1
+   },
+   "samples": [
+    {
+     "date": "2026-09-09",
+     "type": "일반",
+     "q": "⏪ 외국인등의 토지취득 허가와 신고내용 제출에 관한 설명으로 옳은 것은?",
+     "expl": "[정답 근거] 군사시설보호구역 내 토지의 취득허가는 30일 이내에 처분하여야 한다. [메커니즘] 군사 관련 심사는 관계기관 협의가 길어 30일을 주고 천연·문화·생태·야생 구역은 15일로 짧게 잡는다. [함정] 허가권자를 국토교통부장관으로 올리거나 제출 주기를 분기에서 반기로 늘린다.",
+     "myAnswer": "군사시설보호구역 내 토지의 외국인 취득허가는 국토교통부장관이 한다",
+     "correct": "군사시설보호구역 내 토지의 취득허가는 30일 이내에 처분하여야 한다",
+     "missedKeys": [],
+     "errorCause": "함정",
+     "causeNote": "허가권자를 헷갈렸다",
+     "comment": null
+    }
+   ],
+   "related_notes": [
+    "/sessions/lucid-awesome-darwin/mnt/velog-posts/공인중개사/2026-09-09-부동산공법-(국토의 계획 및 이용에 관한 법률 4회독).md"
+   ],
+   "promote_sa": false
+  },
+  {
+   "conceptKey": "중개사법 응시제한-부정행위자는 중개보조원 가능",
+   "subject": "공인중개사법",
+   "status": "재도전중",
+   "timesWrong": 1,
+   "retryMissed": 0,
+   "consecutiveCorrect": 0,
+   "nextReviewDate": "2026-09-10",
+   "retrievability": 0.596,
+   "missedTop": [],
+   "causeTop": "실수",
+   "errorCauses": {
+    "실수": 1
+   },
+   "samples": [
+    {
+     "date": "2026-09-09",
+     "type": "일반",
+     "q": "⏪ 공인중개사 자격제도와 교육에 관한 설명으로 <b>옳지 않은</b> 것은?",
+     "expl": "[정답 근거] 시험 부정행위자가 응시제한 기간에 중개보조원도 될 수 없다는 서술은 옳지 않다. [메커니즘] 부정행위는 선발 절차를 속인 것이라 응시만 막으면 되고 거래 현장의 위법이 아니어서 자격이 필요 없는 보조원까지 막지는 않는다. [함정] 자격취소자의 시장 전면 배제를 부정행위자에게 옮겨 붙인다.",
+     "myAnswer": "자격이 취소된 자는 3년간 공인중개사 시험에 응시할 수 없다",
+     "correct": "시험 부정행위자는 응시제한 기간에 중개보조원도 될 수 없다",
+     "missedKeys": [],
+     "errorCause": "실수",
+     "causeNote": null,
+     "comment": null
+    }
+   ],
+   "related_notes": [
+    "/sessions/lucid-awesome-darwin/mnt/velog-posts/공인중개사/2026-09-09-부동산공법-(국토의 계획 및 이용에 관한 법률 4회독).md"
+   ],
+   "promote_sa": false
+  },
+  {
+   "conceptKey": "공법 자연취락지구-관광휴게시설과 병원 불가",
+   "subject": "부동산공법",
+   "status": "재도전중",
+   "timesWrong": 1,
+   "retryMissed": 0,
+   "consecutiveCorrect": 0,
+   "nextReviewDate": "2026-09-11",
+   "retrievability": 0.612,
+   "missedTop": [
+    "기타: 없는을 있는으로 읽었다."
+   ],
+   "causeTop": null,
+   "errorCauses": {},
+   "samples": [
+    {
+     "date": "2026-09-10",
+     "type": "단답",
+     "q": "국토의 계획 및 이용에 관한 법률령상 자연취락지구에서 건축할 수 없는 건축물 2가지를 쓰시오.",
+     "expl": "[정답 근거] 자연취락지구에서는 관광휴게시설과 병원을 건축할 수 없다. [메커니즘] 취락을 정비하는 지구라서 단독주택·근린생활시설·운동시설처럼 주민 생활에 바로 쓰이는 용도만 열어 둔 것이다. [함정] 병원은 개별 시설명이므로 의료시설이라는 시설군 전체가 금지된다고 넓혀 읽으면 틀린다.",
+     "myAnswer": "3층이하 단독주택, 1종근생(휴제일단안제외), 2종근생(놀자놀자제외), 공작물",
+     "correct": "관광휴게시설<br>병원",
+     "missedKeys": [
+      "기타: 없는을 있는으로 읽었다."
+     ],
+     "errorCause": null,
+     "causeNote": null,
+     "comment": null
+    }
+   ],
+   "related_notes": [
+    "/sessions/lucid-awesome-darwin/mnt/velog-posts/공인중개사/2026-09-10-공인중개사법-(용어의 정의~금지행위 4회독).md"
+   ],
+   "promote_sa": false
+  },
+  {
+   "conceptKey": "공시법 토지등록-지번부여방법과 지적확정측량 준용",
+   "subject": "부동산공시법",
+   "status": "재도전중",
+   "timesWrong": 1,
+   "retryMissed": 0,
+   "consecutiveCorrect": 0,
+   "nextReviewDate": "2026-09-11",
+   "retrievability": 0.612,
+   "missedTop": [],
+   "causeTop": "개념부재",
+   "errorCauses": {
+    "개념부재": 1
+   },
+   "samples": [
+    {
+     "date": "2026-09-10",
+     "type": "조합",
+     "q": "⏪ 공간정보의 구축 및 관리 등에 관한 법령상 토지의 조사·등록과 경계에 관한 설명으로 옳은 것을 모두 고른 것은?<br>ㄱ. 지적확정측량의 방법을 준용하는 지역에는 축척변경 시행지역과 지번변경지역이 포함된다<br>ㄴ. 토지를 분할하는 경우에는 새로운 경계점 표지를 설치하지 아니한다<br>ㄷ. 경계점을 지상에 복원하는 경우에도 지상경계점등록부를 작성·관리해야 한다<br>ㄹ. 신규등록과 등록전환은 지번부여방법이 같다",
+     "expl": "[정답 근거] 신규등록과 등록전환의 지번부여방법이 같고, 축척변경·지번변경 지역은 지적확정측량의 방법을 준용한다. [메커니즘] 둘 다 기존 지번 체계 안으로 새 필지를 끼워 넣는 상황이라 같은 규칙을 쓴다. [함정] 지상경계점등록부는 지상 경계를 새로 정한 경우에 작성하고 복원하는 경우에는 작성하지 않는다.",
+     "myAnswer": "ㄱ, ㄴ, ㄹ",
+     "correct": "ㄱ, ㄹ",
+     "missedKeys": [],
+     "errorCause": "개념부재",
+     "causeNote": "신규등록과 등록전환이 새로운 지번체계를 끼워넣는 방식이라 같은 방식을 사용한다는 생각을 못했다.",
+     "comment": null
+    }
+   ],
+   "related_notes": [
+    "/sessions/lucid-awesome-darwin/mnt/velog-posts/공인중개사/2026-09-10-공인중개사법-(용어의 정의~금지행위 4회독).md"
+   ],
+   "promote_sa": false
+  },
+  {
+   "conceptKey": "민법 구분지상권-설정권자는 소유자",
+   "subject": "민법",
+   "status": "재도전중",
+   "timesWrong": 1,
+   "retryMissed": 0,
+   "consecutiveCorrect": 0,
+   "nextReviewDate": "2026-09-11",
+   "retrievability": 0.612,
+   "missedTop": [],
+   "causeTop": "개념부재",
+   "errorCauses": {
+    "개념부재": 1
+   },
+   "samples": [
+    {
+     "date": "2026-09-10",
+     "type": "일반",
+     "q": "⏪ 지상권에 관한 설명으로 <b>옳지 않은</b> 것은? (다툼이 있으면 판례에 따름)",
+     "expl": "[정답 근거] 지상권자는 구분지상권을 설정해 줄 수 없다. [메커니즘] 지상권 설정은 처분행위여서 처분권한이 있는 소유자만 할 수 있고, 구분지상권은 토지의 일정 공간을 떼어 주는 권리라 더욱 그렇다. [함정] 구분지상권은 공간을 쓰는 권리이므로 수목을 목적으로는 설정하지 못한다.",
+     "myAnswer": "수목의 소유를 목적으로 하는 지상권의 최단 존속기간은 30년이다.",
+     "correct": "지상권자는 토지소유자의 동의가 없어도 그 토지에 구분지상권을 설정해 줄 수 있다.",
+     "missedKeys": [],
+     "errorCause": "개념부재",
+     "causeNote": "지상권자는 구분지상권을 설정해줄 수 없다는 것을 완전히 까먹고 있었다.",
+     "comment": null
+    }
+   ],
+   "related_notes": [
+    "/sessions/lucid-awesome-darwin/mnt/velog-posts/공인중개사/2026-09-10-공인중개사법-(용어의 정의~금지행위 4회독).md"
+   ],
+   "promote_sa": false
+  },
+  {
+   "conceptKey": "부동산공시법 등록전환-허용범위와 무관",
+   "subject": "부동산공시법",
+   "status": "졸업후보",
+   "timesWrong": 3,
+   "retryMissed": 2,
+   "consecutiveCorrect": 2,
+   "nextReviewDate": "2026-09-11",
+   "retrievability": 0.78,
+   "missedTop": [
+    "허용범위와 무관"
+   ],
+   "causeTop": "혼동",
+   "errorCauses": {
+    "혼동": 1
+   },
+   "samples": [
+    {
+     "date": "2026-08-28",
+     "type": "일반",
+     "q": "⏪ 공간정보의 구축 및 관리 등에 관한 법령상 지번의 부여와 등록전환에 관한 설명으로 <b>옳지 않은</b> 것은?",
+     "expl": "[정답 근거] 등록전환에서는 오차가 허용범위를 넘든 이내든 관계없이 등록전환될 면적으로 정한다. [메커니즘] 지적도로 옮겨 실측한 면적이 앞으로의 공적 기준이 되므로 종전 임야대장의 수치를 남겨둘 이유가 없다. [함정] 허용범위를 넘을 때만 새 면적을 쓴다는 식으로 조건을 붙이는 지문이 나온다.",
+     "myAnswer": "지번은 지적소관청이 지번부여지역별로 순차적으로 부여한다.",
+     "correct": "등록전환으로 면적이 달라진 경우 오차가 허용범위 이내일 때에는 종전 임야대장의 면적을 그대로 둔다.",
+     "missedKeys": [],
+     "errorCause": null,
+     "causeNote": null,
+     "comment": null
+    },
+    {
+     "date": "2026-09-02",
+     "type": "OX",
+     "q": "🔁 등록전환으로 면적이 달라진 경우, 오차가 허용범위 이내이면 종전 임야대장의 면적을 그대로 두고 허용범위를 초과할 때에만 등록전환될 면적으로 정한다.",
+     "expl": "X. [정답 근거] 등록전환에서는 오차가 허용범위 이내이든 초과이든 관계없이 등록전환될 면적으로 정한다. [메커니즘] 지적도로 옮겨 실측한 면적이 앞으로의 공적 기준이 되므로 종전 임야대장의 수치를 남겨둘 이유가 없다. [함정] 허용범위를 조건으로 붙여 예외를 만드는 지문이 반복 출제된다.",
+     "myAnswer": "O",
+     "correct": "X",
+     "missedKeys": [],
+     "errorCause": "혼동",
+     "causeNote": "종전임야대장의 면적 변경여부만 묻는 문제가 많이 나오기 때문에 그 논점인 줄 알았다.",
+     "comment": null
+    },
+    {
+     "date": "2026-09-03",
+     "type": "단답",
+     "q": "🔁 공간정보의 구축 및 관리 등에 관한 법령상 등록전환으로 임야대장의 면적과 등록전환될 면적에 차이가 생긴 경우, 새로 정하는 면적의 기준을 오차의 허용범위 초과 여부와 관련지어 쓰시오.",
+     "expl": "[정답 근거] 오차가 허용범위를 넘든 이내든 관계없이 등록전환될 면적으로 정한다. [메커니즘] 지적도로 옮겨 실측한 면적이 앞으로의 공적 기준이 되므로 종전 임야대장의 수치를 남겨 둘 이유가 없다. [함정] 허용범위를 조건으로 붙여 종전 면적을 유지하는 예외를 만드는 지문이 반복된다.",
+     "myAnswer": "등록전환할 면적이 허용범위를 초과하느냐로 갈린다",
+     "correct": "오차가 허용범위 이내이든 초과이든 관계없이 등록전환될 면적으로 결정한다",
+     "missedKeys": [
+      "허용범위와 무관"
+     ],
+     "errorCause": null,
+     "causeNote": null,
+     "comment": null
+    }
+   ],
+   "related_notes": [
+    "/sessions/lucid-awesome-darwin/mnt/velog-posts/공인중개사/2026-08-28-부동산학개론-(토지경제와 지리경제~감정평가론 4회독 + 단원별모의고사).md",
+    "/sessions/lucid-awesome-darwin/mnt/velog-posts/공인중개사/2026-09-02-부동산공법-(주택건설자금~농업경영에 이용하지 아니하는 농지의 처분 3회독 + 단원별모의고사).md",
+    "/sessions/lucid-awesome-darwin/mnt/velog-posts/공인중개사/2026-09-03-공인중개사법-(임대차 정보제공 등~공인중개사의 매수신청대리인 등록 등에 관한 규칙 3회독 + 단원별모의고사).md"
+   ],
+   "promote_sa": false
+  },
+  {
+   "conceptKey": "모의고사 2차 1-4",
+   "subject": "공인중개사법",
+   "status": "졸업후보",
+   "timesWrong": 1,
+   "retryMissed": 0,
+   "consecutiveCorrect": 2,
+   "nextReviewDate": "2026-08-28",
+   "retrievability": 0.798,
+   "missedTop": [],
+   "causeTop": null,
+   "errorCauses": {},
+   "samples": [
+    {
+     "date": "2026-06-08-2",
+     "type": "객관식",
+     "q": "공인중개사법령상 교육 제도에 대한 설명으로 옳지 <b>않은</b> 것은?",
+     "expl": "연수교육 미이수는 업무정지가 아니라 '과태료' 사유다. 실무교육은 2026년 개정으로 45시간이며, 이수 후 개업하지 않아도 교육 효력은 기간 제한 없이 유지된다.",
+     "myAnswer": "직무교육은 3~4시간이며 업무개시 전에 받는다",
+     "correct": "연수교육을 이수하지 않으면 업무정지 처분을 받는다",
+     "missedKeys": [],
+     "errorCause": null,
+     "causeNote": null,
+     "comment": null
+    }
+   ],
+   "related_notes": [
+    "/sessions/lucid-awesome-darwin/mnt/velog-posts/공인중개사/2026-06-08-민법-(민법 wox 4~5회차 5회독).md"
+   ],
+   "promote_sa": false
+  },
+  {
+   "conceptKey": "부동산세법 3-3",
+   "subject": "부동산세법",
+   "status": "졸업후보",
+   "timesWrong": 2,
+   "retryMissed": 1,
+   "consecutiveCorrect": 2,
+   "nextReviewDate": "2026-09-02",
+   "retrievability": 0.811,
+   "missedTop": [],
+   "causeTop": null,
+   "errorCauses": {},
+   "samples": [
+    {
+     "date": "2026-06-02-심화",
+     "type": "OX",
+     "q": "토지의 재산세 과세표준이 과세표준상한액보다 크면 상한액으로 한다.",
+     "expl": "틀린 설명이다. 토지는 과세표준상한액 자체가 없다. 상한액 규정은 주택에 적용되는 개념이다.",
+     "myAnswer": "O",
+     "correct": "X",
+     "missedKeys": [],
+     "errorCause": null,
+     "causeNote": null,
+     "comment": null
+    },
+    {
+     "date": "2026-08-21",
+     "type": "일반",
+     "q": "🔁 지방세법령상 재산세 과세표준상한액 제도의 적용 대상에 관한 설명으로 옳은 것은?",
+     "expl": "과세표준상한액은 주택에만 있는 제도로 공시가격 급등에 따른 주택 보유세 부담을 완충하기 위한 장치다. 주거라는 생활 기반의 세부담이 시가 변동에 그대로 노출되지 않도록 한 것이다. 토지·건축물·선박·항공기에는 상한액 자체가 없으므로 다른 과세대상으로 확장하는 지문이 함정이다.",
+     "myAnswer": "건축물에는 과세표준상한액이 적용되어 그 상한액을 초과할 수 없다.",
+     "correct": "과세표준상한액 제도는 주택의 재산세 과세표준에 적용된다.",
+     "missedKeys": [],
+     "errorCause": null,
+     "causeNote": null,
+     "comment": null
+    }
+   ],
+   "related_notes": [
+    "/sessions/lucid-awesome-darwin/mnt/velog-posts/공인중개사/2026-06-02-민법-(민법 wox 2~3회차 5회독).md",
+    "/sessions/lucid-awesome-darwin/mnt/velog-posts/공인중개사/2026-08-21-부동산학개론-(금융론~감정평가론 3회독 + 단원별모의고사).md"
+   ],
+   "promote_sa": false
+  },
+  {
+   "conceptKey": "공법 OX 오답 8번",
+   "subject": "부동산공법",
+   "status": "졸업후보",
+   "timesWrong": 1,
+   "retryMissed": 1,
+   "consecutiveCorrect": 2,
+   "nextReviewDate": "2026-08-27",
+   "retrievability": 0.828,
+   "missedTop": [],
+   "causeTop": null,
+   "errorCauses": {},
+   "samples": [
+    {
+     "date": "2026-06-11",
+     "type": "OX",
+     "q": "🔁 도시혁신구역·복합용도구역을 정하는 <b>공간재구조화계획</b>의 결정권자에는 시·도지사뿐 아니라 <b>대도시 시장</b>도 포함된다.",
+     "expl": "X. 공간재구조화계획 결정권자는 '국토교통부장관 + 시·도지사'다. 일반 도시·군관리계획은 '시·도지사 + 대도시 시장'인데, 공간재구조화는 국가급 큰 그림이라 대도시 시장이 빠지고 국장이 들어온다 — '대도시시장 OUT, 국장 IN'으로 기억.",
+     "myAnswer": "O",
+     "correct": "X",
+     "missedKeys": [],
+     "errorCause": null,
+     "causeNote": null,
+     "comment": null
+    }
+   ],
+   "related_notes": [
+    "/sessions/lucid-awesome-darwin/mnt/velog-posts/공인중개사/2026-06-11-부동산학개론-(부동산학개론 wox 3~4회차 5회독).md"
+   ],
+   "promote_sa": false
+  },
+  {
+   "conceptKey": "부동산공법 도시개발조합 동의요건",
+   "subject": "부동산공법",
+   "status": "졸업후보",
+   "timesWrong": 2,
+   "retryMissed": 2,
+   "consecutiveCorrect": 2,
+   "nextReviewDate": "2026-09-08",
+   "retrievability": 0.854,
+   "missedTop": [],
+   "causeTop": null,
+   "errorCauses": {},
+   "samples": [
+    {
+     "date": "2026-07-01",
+     "type": "OX",
+     "q": "🔁 도시개발법령상 도시개발조합의 설립인가를 받으려면 토지면적의 2분의 1 이상에 해당하는 토지소유자와 토지소유자 총수의 3분의 2 이상의 동의를 받아야 한다.",
+     "expl": "X. 도시개발조합은 토지면적 2/3 이상과 토지소유자 총수 1/2 이상의 동의가 필요하다(땅이 더 무겁다). 지문은 면적과 사람의 비율을 서로 뒤바꿔 놓은 함정이다 — 면적 쪽 요건이 더 높다는 점, 재개발(사람 3/4)과 반대라는 점을 함께 기억한다.",
+     "myAnswer": "O",
+     "correct": "X",
+     "missedKeys": [],
+     "errorCause": null,
+     "causeNote": null,
+     "comment": null
+    },
+    {
+     "date": "2026-08-24",
+     "type": "사례",
+     "q": "🔁 어느 도시개발구역의 토지소유자는 모두 40명이고 구역 안 토지면적은 총 30,000제곱미터이다. 이 중 25명이 동의하였고 그들이 소유한 토지면적의 합계는 18,000제곱미터이다. 조합설립인가에 관한 설명으로 옳은 것은? (국공유지는 없고 다른 조건은 동일)",
+     "expl": "조합설립인가에는 토지면적 3분의 2 이상과 토지소유자 총수 2분의 1 이상의 동의가 필요하다. 면적은 18,000 ÷ 30,000 = 60퍼센트로 기준인 20,000제곱미터에 미달하고, 인원은 25 ÷ 40 = 62.5퍼센트로 충족하므로 면적 요건만 어긋난다. 땅이 사람보다 무겁다는 것이 도시개발조합의 설계이고, 재개발조합이 사람 4분의 3을 요구하는 것과 방향이 반대라는 점이 함정이다.",
+     "myAnswer": "토지면적 요건과 토지소유자 총수 요건을 모두 충족하여 인가받을 수 있다",
+     "correct": "토지소유자 총수 요건은 충족하였으나 토지면적 요건에 미달하여 인가받을 수 없다",
+     "missedKeys": [],
+     "errorCause": null,
+     "causeNote": null,
+     "comment": null
+    }
+   ],
+   "related_notes": [
+    "/sessions/lucid-awesome-darwin/mnt/velog-posts/공인중개사/2026-07-01-민법-(민법 wox 10~1회차 5회독).md",
+    "/sessions/lucid-awesome-darwin/mnt/velog-posts/공인중개사/2026-08-24-민법-(계약의 해제~계약법 3회독 + 단원별모의고사).md"
+   ],
+   "promote_sa": false
+  }
+ ],
+ "sa_promote_cap": 5,
+ "promoted": 5,
+ "ingest": {
+  "copied": 0,
+  "downloads": "mounted",
+  "ledger_exit": 0,
+  "ledger_summary": "⚠️ 복습 적체 143개 — 하루 8개 기준 18일치다. | 과목별 약점 TOP3: 부동산공법(59), 민법(52), 부동산세법(47) | 💬 코멘트 0건(개념 0종 · 주석 전용, 스케줄 무관)"
+ },
+ "warnings": [],
+ "ai_brief": "공인중개사 2026-09-16 오답 재도전 — 듀 큐 143개 중 상위 20문. picks 의 conceptKey 를 그대로 쓰고(retryOf 동일), samples 의 원 문제를 복사하지 말고 같은 개념을 다른 각도로 변형한다. missedTop 이 있으면 그 포인트를 정면 조준하고, causeTop 은 각도(개념부재=정면·혼동=판별식·함정=같은 유형 변형·실수=각도 변경 없음)로 쓴다. 단답 문항에 evidence{note, quote} 를 달면 렌더가 원문 대조로 검사한다 — note 는 samples 근거면 'samples', 노트 근거면 related_notes 의 파일명. 그중 5문은 단답으로 승격(상한 5)."
+}
