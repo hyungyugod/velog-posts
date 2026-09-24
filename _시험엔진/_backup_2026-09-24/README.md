@@ -14,7 +14,7 @@ _시험엔진/
 │   ├── 데일리퀴즈.md · 오답퀴즈.md · 주간리포트.md · 앙키덱.md
 │   ├── 문항작성.md          ← questions.json 계약 + 문항 규칙 (전 시험 공통)
 │   ├── 프로파일_공인중개사.md · 프로파일_법무사1차.md · 프로파일_법무사2차.md  (특칙만)
-│   └── 참조_법무사1차_기출문형.md · 참조_법무사2차_문형사전.md · 참조_카드디자인.md(2026-09-24 — Anki 카드 v2.1 유형·뒷면·도식·스타일)  (형식 사전)
+│   └── 참조_법무사1차_기출문형.md · 참조_법무사2차_문형사전.md  (형식 사전)
 ├── engine/                  ← 코드 (시험 폴더에는 데이터만 남는다)
 │   ├── exams.json           ← 시험별 파라미터 단일 정본
 │   ├── prepare_quiz.py      ← 수거·원장 갱신·원천 선정·플랜 (daily/retry/weekly)
@@ -27,7 +27,7 @@ _시험엔진/
 │   ├── extract_anki_candidates.py ← Anki 후보 추출기(2026-09-14) — 창·표식·금지 3경로·기출고·상습·이월/보류 표 → anki/_work/후보_<date>.json (문안은 쓰지 않는다)
 │   ├── rerender_quiz.py     ← 기존 문제지를 현재 템플릿으로 재렌더 (템플릿 업그레이드용, 결과 수거된 것은 건너뜀)
 │   └── tests/               ← 회귀(run.sh) · E2E(e2e_smoke_all.sh)
-├── anki/                    ← 카드_*.tsv · 출고/{*.apkg, 검수_*.md} · _견본_v2/(카드 v2.1 작성 예시 TSV·검수리포트·실제 Anki 렌더 캡처 PNG — .apkg 없음, 추출기 수집 경로 밖) · _사용자메모.md(선택 — Anki 하루 시간·정답률, 참조 §7)
+├── anki/                    ← 카드_*.tsv · 출고/{*.apkg, 검수_*.md}
 └── _runs.log                ← 실행 로그 (ISO시각·exam·kind·결과·요약) — 주간리포트가 미실행일 집계
 ```
 
@@ -54,8 +54,7 @@ render_quiz.py   → HTML         (정답 배정·조합 셔플·검증·로그�
 | 데일리퀴즈 | `gongin-daily-quiz` **월·수·금** 09:00 | `bupsa-1cha-daily-quiz` 화·목 09:20 (노트 0 — 스킵) | `bupsa-2cha-daily-quiz` **목** 09:15 |
 | 주간리포트(월) | `gongin-weekly-report` 07:00 | `bupsa-1cha-weekly-report` 07:40 | `bupsa-2cha-weekly-report` 07:30 |
 
-+ `anki-weekly-deck` 월 08:00 (`spec/앙키덱.md` v2.1 + `spec/참조_카드디자인.md`). 법무사 2차는 **목요일 데일리 1개**(≤15 — 서술형 인출 한계 10~15문), 오답 재도전은 09-19 스케줄 서빙 정지(듀는 계속 쌓인다). **11/2 이후(법무사 v8.1)**: 1차 월·수·금 데일리 / 화·목·토 오답, 2차 문제지는 4/11까지 정지 → 4/12부터 토요일 1개(`exams.json transition_2026_11_01` 9/24 개정 문장, OS 2026-09-24 갱신 ④).
-+ **실행 위치(2026-09-24 확인)**: 퀴즈 6개·주간리포트 3개 = **클라우드 스케줄 태스크**(9/24 요일을 위 표와 `exams.json`대로 정정 — 공인 데일리 월·수·금 / 공인 오답 화·토 / 법무사 2차 데일리 목, 본문 불변) · `anki-weekly-deck` = **데스크톱 앱 로컬 태스크**. ⚠️ `anki-weekly-deck` 실제 프롬프트는 위임문 정본 v2.1(카드 디자인 v2.1)로 사용자가 붙여넣어 교체해야 한다(9/28 실행 전). 위임문 정본은 `spec/스케줄러_위임문.md`. 온디맨드 스킬: `daily-quiz-gongin`·`daily-quiz-bupsa`·`odap-quiz-gongin`·`odap-quiz-bupsa`·`baekji-chaejeom`(백지채점).
++ `anki-weekly-deck` 월 08:00 (`spec/앙키덱.md`). 법무사 2차는 **목요일 데일리 1개**(≤15 — 서술형 인출 한계 10~15문), 오답 재도전은 09-19 스케줄 서빙 정지(듀는 계속 쌓인다 — 11/2 이후 토요일 1개로 재개, OS §7 국면 3). ⚠️ `anki-weekly-deck` 실제 태스크 프롬프트는 위임문 정본(09-19 개정: '목표 280' → `card_target` 참조)으로 교체해야 한다. 위임문 정본은 `spec/스케줄러_위임문.md`. 온디맨드 스킬: `daily-quiz-gongin`·`daily-quiz-bupsa`·`odap-quiz-gongin`·`odap-quiz-bupsa`·`baekji-chaejeom`(백지채점).
 스케줄러는 맥이 켜져 있을 때 실행되며 놓친 회차는 다음 기동 시 몰아서 돈다 — 실제 실행 시각은 `_runs.log`가 정본.
 
 ## 규칙

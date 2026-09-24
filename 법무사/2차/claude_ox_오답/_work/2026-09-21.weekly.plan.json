@@ -1,0 +1,323 @@
+{
+ "schema": 1,
+ "status": "ready",
+ "exam": "bupsa2",
+ "kind": "weekly",
+ "date": "2026-09-21",
+ "root": "/sessions/lucid-relaxed-fermi/mnt/velog-posts",
+ "generated_at": "2026-09-21T09:45:50+09:00",
+ "note_path": "/sessions/lucid-relaxed-fermi/mnt/velog-posts/법무사/2차/claude_ox_오답/2026-09-21-claude_oxquize.md",
+ "comments_week": [],
+ "week": {
+  "from": "2026-09-14",
+  "to": "2026-09-20",
+  "dates": [
+   "2026-09-14",
+   "2026-09-15",
+   "2026-09-16",
+   "2026-09-17",
+   "2026-09-18",
+   "2026-09-19",
+   "2026-09-20"
+  ]
+ },
+ "stats": {
+  "submissions": 12,
+  "avgScore": 6.0,
+  "avgTotal": 12,
+  "perfectRuns": 0,
+  "totalWrongItems": 71,
+  "uniqueConcepts": 41,
+  "dateRange": [
+   "2026-08-24",
+   "2026-09-10"
+  ],
+  "statusCounts": {
+   "상습": 5,
+   "재도전중": 19,
+   "졸업후보": 17
+  },
+  "subjectWeakness": {
+   "형법": 71
+  },
+  "generatedAt": "2026-09-21T09:45:50",
+  "due_total": 41
+ },
+ "due_top8": [
+  {
+   "conceptKey": "형법 1-3 구체적 위험범과 추상적 위험범의 판별식",
+   "subject": "형법",
+   "status": "상습",
+   "timesWrong": 5,
+   "retryMissed": 4,
+   "consecutiveCorrect": 0,
+   "lastWrong": "2026-09-09",
+   "nextReviewDate": "2026-09-10",
+   "retrievability": 0.47,
+   "stability": 0.081,
+   "pick": true,
+   "missedTop": [
+    "결론·방향 자체",
+    "기타: 행위자체로 구성요건 충족하여 기수, 공공의 위험의 현실발생과 같은 표현을 잘 사용하지 못했다.",
+    "구체적 위험범 = 공공의 위험의 현실 발생 요구"
+   ],
+   "causeTop": null,
+   "errorCauses": {}
+  },
+  {
+   "conceptKey": "형법 1-9 위법성 착오는 책임 단계, 정당한 이유 요구",
+   "subject": "형법",
+   "status": "상습",
+   "timesWrong": 4,
+   "retryMissed": 3,
+   "consecutiveCorrect": 1,
+   "lastWrong": "2026-08-31",
+   "nextReviewDate": "2026-09-03",
+   "retrievability": 0.575,
+   "stability": 0.502,
+   "pick": true,
+   "missedTop": [],
+   "causeTop": null,
+   "errorCauses": {}
+  },
+  {
+   "conceptKey": "형법 1-8 싸움에서 정당방위가 인정될 수 있는 경우",
+   "subject": "형법",
+   "status": "상습",
+   "timesWrong": 5,
+   "retryMissed": 4,
+   "consecutiveCorrect": 1,
+   "lastWrong": "2026-09-02",
+   "nextReviewDate": "2026-09-10",
+   "retrievability": 0.611,
+   "stability": 0.461,
+   "pick": true,
+   "missedTop": [
+    "결론·방향 자체"
+   ],
+   "causeTop": null,
+   "errorCauses": {}
+  },
+  {
+   "conceptKey": "형법 1-7 부진정 결과적 가중범과 고의범의 죄수",
+   "subject": "형법",
+   "status": "상습",
+   "timesWrong": 4,
+   "retryMissed": 3,
+   "consecutiveCorrect": 1,
+   "lastWrong": "2026-09-02",
+   "nextReviewDate": "2026-09-10",
+   "retrievability": 0.646,
+   "stability": 0.673,
+   "pick": true,
+   "missedTop": [
+    "법정형 경중 비교 — 고의범이 더 무거움",
+    "남는 불법의 평가",
+    "1행위 수죄 → 과형상 일죄"
+   ],
+   "causeTop": null,
+   "errorCauses": {}
+  },
+  {
+   "conceptKey": "형법 1-2 작위의무 발생근거 6개(법계조선신사) → 보증인지위",
+   "subject": "형법",
+   "status": "상습",
+   "timesWrong": 4,
+   "retryMissed": 3,
+   "consecutiveCorrect": 1,
+   "lastWrong": "2026-09-02",
+   "nextReviewDate": "2026-09-10",
+   "retrievability": 0.712,
+   "stability": 1.34,
+   "pick": true,
+   "missedTop": [
+    "기타: 해당 사례가 부진정 부작위범 사례인지 몰랐다."
+   ],
+   "causeTop": null,
+   "errorCauses": {}
+  },
+  {
+   "conceptKey": "형법 공모이탈-영향력제거",
+   "subject": "형법",
+   "status": "재도전중",
+   "timesWrong": 1,
+   "retryMissed": 0,
+   "consecutiveCorrect": 0,
+   "lastWrong": "2026-08-31",
+   "nextReviewDate": "2026-09-01",
+   "retrievability": 0.497,
+   "stability": 0.212,
+   "pick": true,
+   "missedTop": [],
+   "causeTop": null,
+   "errorCauses": {}
+  },
+  {
+   "conceptKey": "형법 기대가능성-친족범인은닉",
+   "subject": "형법",
+   "status": "재도전중",
+   "timesWrong": 1,
+   "retryMissed": 0,
+   "consecutiveCorrect": 0,
+   "lastWrong": "2026-08-31",
+   "nextReviewDate": "2026-09-01",
+   "retrievability": 0.497,
+   "stability": 0.212,
+   "pick": true,
+   "missedTop": [],
+   "causeTop": null,
+   "errorCauses": {}
+  },
+  {
+   "conceptKey": "형법 긴급피난-요건3",
+   "subject": "형법",
+   "status": "재도전중",
+   "timesWrong": 1,
+   "retryMissed": 0,
+   "consecutiveCorrect": 0,
+   "lastWrong": "2026-08-31",
+   "nextReviewDate": "2026-09-01",
+   "retrievability": 0.497,
+   "stability": 0.212,
+   "pick": true,
+   "missedTop": [],
+   "causeTop": null,
+   "errorCauses": {}
+  }
+ ],
+ "expectation": {
+  "daily": [
+   {
+    "date": "2026-09-15",
+    "result": false
+   },
+   {
+    "date": "2026-09-17",
+    "result": false
+   }
+  ],
+  "retry": [
+   {
+    "date": "2026-09-16",
+    "result": false
+   },
+   {
+    "date": "2026-09-19",
+    "result": false
+   }
+  ],
+  "missing": [
+   "2026-09-15",
+   "2026-09-17",
+   "2026-09-16-RQ",
+   "2026-09-19-RQ"
+  ],
+  "alert": "⚠️ 결과 미수거 4건 — 문제지만 쌓이고 원장이 늙는 중",
+  "ingest_check": []
+ },
+ "last_week_wrong": [],
+ "graduated": [],
+ "grad_candidates": [
+  "형법 1-2 초과주관적 구성요건요소 = 목적범의 목적·불법영득의사",
+  "형법 1-5 제1조 제2항 적용의 판별식",
+  "형법 1-6 부진정 결과적 가중범의 정의와 예",
+  "형법 1-3 결과범과 형식범의 판별식",
+  "형법 1-5 주의의무 = 예견+방지, 신뢰의 원칙은 수직관계 배제",
+  "형법 1-3 계속범과 기수 후 공범 성립",
+  "형법 1-4 개괄적 고의의 처리",
+  "형법 1-1 포괄일죄 진행 중 개정은 실행행위 종료시법",
+  "형법 1-6 교사의 양적 초과와 예견가능성",
+  "형법 1-4 구체적 사실의 착오는 법정적부합설로 발생사실 고의",
+  "형법 1-6 결과적 가중범 구성요건 4개",
+  "형법 1-8 정당방위 요건 3개 순서",
+  "형법 1-1 답안 작성 순서 성립 후 소추조건",
+  "형법 1-4 행위지배의 세 종류",
+  "형법 1-6 상해치사 사례의 결론",
+  "형법 1-10 업무방해죄의 업무 요건",
+  "형법 1-10 업무방해의 수단과 위력의 의미"
+ ],
+ "chronic": [
+  {
+   "conceptKey": "형법 1-3 구체적 위험범과 추상적 위험범의 판별식",
+   "subject": "형법",
+   "timesWrong": 5,
+   "retryMissed": 4
+  },
+  {
+   "conceptKey": "형법 1-8 싸움에서 정당방위가 인정될 수 있는 경우",
+   "subject": "형법",
+   "timesWrong": 5,
+   "retryMissed": 4
+  },
+  {
+   "conceptKey": "형법 1-9 위법성 착오는 책임 단계, 정당한 이유 요구",
+   "subject": "형법",
+   "timesWrong": 4,
+   "retryMissed": 3
+  },
+  {
+   "conceptKey": "형법 1-2 작위의무 발생근거 6개(법계조선신사) → 보증인지위",
+   "subject": "형법",
+   "timesWrong": 4,
+   "retryMissed": 3
+  },
+  {
+   "conceptKey": "형법 1-7 부진정 결과적 가중범과 고의범의 죄수",
+   "subject": "형법",
+   "timesWrong": 4,
+   "retryMissed": 3
+  }
+ ],
+ "marks": {
+  "per_note": [
+   {
+    "file": "2026-09-19-민사소송법-2차-(민사소송의 절차~소장의 제출).md",
+    "date": "2026-09-19",
+    "marks": {
+     "★★": 11,
+     "★": 9,
+     "n:": 0
+    },
+    "warn_lines": 16
+   }
+  ],
+  "stat": {
+   "notes": 1,
+   "total": {
+    "★★": 11,
+    "★": 9,
+    "n:": 0
+   },
+   "per_note": {
+    "★★": 11.0,
+    "★": 9.0,
+    "n:": 0.0
+   }
+  }
+ },
+ "runs": {
+  "daily": {
+   "OK": 2
+  },
+  "retry": {
+   "OK": 3
+  },
+  "schedule_days": "목 (11/2 이후 재배치 — transition_2026_11_01 참조)",
+  "schedule_days_daily": "목",
+  "schedule_days_retry": "",
+  "not_run": [],
+  "note": ""
+ },
+ "ingest": {
+  "copied": 0,
+  "collided": 0,
+  "moved": 0,
+  "move_failed": 0,
+  "sweep_dir": "/sessions/lucid-relaxed-fermi/mnt/Downloads/_오답_수거완료",
+  "downloads": "mounted",
+  "ledger_exit": 0,
+  "ledger_summary": "🗓️ 듀 큐 41개(상위 12개 소비 · 졸업후보 예약 3칸): 형법 1-3 구체적 위험범과 추상적 위험범의 판별식(R47%), 형법 1-9 위법성 착오는 책임 단계, 정당한 이유 요구(R57%), 형법 1-8 싸움에서 정당방위가 인정될 수 있는 경우(R61%), 형법 1-7 부진정 결과적 가중범과 고의범의 죄수(R65%), 형법 1-2 작위의무 발생근거 6개(법계조선신사) → 보증인지위(R71%), 형법 공모이탈-영향력제거(R50%) | 과목별 약점 TOP3: 형법(71) | 💬 코멘트 0건(개념 0종 · 주석 전용, 스케줄 무관)"
+ },
+ "warnings": [],
+ "ai_brief": "법무사 2차 주간리포트(2026-09-21) — 지난 7일 2026-09-14~2026-09-20. 원장 통계·지난주 오답 0개(2회+ 0개)·졸업 0·졸업후보 17·상습 5·듀 큐 41개가 사실 원천이다. 여기 없는 수치는 쓰지 않는다."
+}

@@ -1,0 +1,85 @@
+{
+ "schema": 1,
+ "status": "ready",
+ "exam": "bupsa1",
+ "kind": "weekly",
+ "date": "2026-09-21",
+ "root": "/sessions/sleepy-nifty-faraday/mnt/velog-posts",
+ "generated_at": "2026-09-21T09:47:55+09:00",
+ "note_path": "/sessions/sleepy-nifty-faraday/mnt/velog-posts/법무사/1차/claude_ox_오답/2026-09-21-claude_oxquize.md",
+ "comments_week": [],
+ "week": {
+  "from": "2026-09-14",
+  "to": "2026-09-20",
+  "dates": [
+   "2026-09-14",
+   "2026-09-15",
+   "2026-09-16",
+   "2026-09-17",
+   "2026-09-18",
+   "2026-09-19",
+   "2026-09-20"
+  ]
+ },
+ "stats": {
+  "submissions": null,
+  "avgScore": null,
+  "avgTotal": null,
+  "perfectRuns": null,
+  "totalWrongItems": null,
+  "uniqueConcepts": null,
+  "dateRange": null,
+  "statusCounts": null,
+  "subjectWeakness": null,
+  "generatedAt": null,
+  "due_total": 0
+ },
+ "due_top8": [],
+ "expectation": {
+  "daily": [],
+  "retry": [],
+  "missing": [],
+  "alert": "",
+  "ingest_check": []
+ },
+ "last_week_wrong": [],
+ "graduated": [],
+ "grad_candidates": [],
+ "chronic": [],
+ "marks": {
+  "per_note": [],
+  "stat": {
+   "notes": 0,
+   "total": {},
+   "per_note": {}
+  }
+ },
+ "runs": {
+  "daily": {
+   "SKIP": 2
+  },
+  "retry": {
+   "DUE0": 5
+  },
+  "schedule_days": "화·목 (11/2 이후 재배치 — transition_2026_11_01 참조)",
+  "schedule_days_daily": "화·목 (11/2 이후 재배치 — transition_2026_11_01 참조)",
+  "schedule_days_retry": null,
+  "not_run": [],
+  "note": ""
+ },
+ "ingest": {
+  "copied": 0,
+  "collided": 0,
+  "moved": 0,
+  "move_failed": 0,
+  "sweep_dir": "/sessions/sleepy-nifty-faraday/mnt/Downloads/_오답_수거완료",
+  "downloads": "mounted",
+  "ledger_exit": 2,
+  "ledger_summary": "⚠️  접근 실패/0건 — _raw 와 _inbox 에서 채점결과 JSON을 찾지 못했다. | (조용히 넘어가지 않는다. 퀴즈 결과 JSON을 _inbox/ 에 넣고 다시 실행.) | 찾아본 곳: /sessions/sleepy-nifty-faraday/mnt/velog-posts/법무사/1차/claude_ox_오답/_raw · /sessions/sleepy-nifty-faraday/mnt/velog-posts/법무사/1차/claude_ox_오답/_inbox"
+ },
+ "warnings": [
+  "원장: 원천 0건(exit 2) — 정상 범위",
+  "원장 없음: /sessions/sleepy-nifty-faraday/mnt/velog-posts/법무사/1차/claude_ox_오답/_ledger/오답_원장.json"
+ ],
+ "ai_brief": "법무사 1차 주간리포트(2026-09-21) — 지난 7일 2026-09-14~2026-09-20. 원장 통계·지난주 오답 0개(2회+ 0개)·졸업 0·졸업후보 0·상습 0·듀 큐 0개가 사실 원천이다. 여기 없는 수치는 쓰지 않는다."
+}
