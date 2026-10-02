@@ -722,7 +722,7 @@
           "_long_max": 350
         },
         "trap_patterns": "참조_법무사1차_기출문형 §4 (T1 30% / T5·T7 20% / T6 15% / T3 15% / T8 10% / T2 10% ≤3문)",
-        "revision_filter": "ai-guidelines/20_프롬프트-라이브러리/19_법무사_개정법워치_v1.md §2 (미마운트 시 프로파일 최소 폴백)",
+        "revision_filter": "19_bupsa-law-amendment-watch_v1.md §2 (AI팀 프롬프트 라이브러리 — 개인 저장소라 경로는 적지 않음. 미마운트 시 프로파일 최소 폴백)",
         "subject_balance_max_diff": 1,
         "same_subject_contiguous": true,
         "meta_line": "{Y}년 {M}월 {D}일 ({W}) · {STAGE} 객관식 {N}문항{SA_SUFFIX} · 장기복습 {LR}(⏪) · 한달전 {MO}(🔄)",
@@ -990,7 +990,7 @@
           "confirm_tag": "\\((원문|판례 번호|예규 번호|현행 예규) 확인 필요\\)"
         },
         "answer_style": "참조_법무사2차_문형사전 §2 답안체 6규칙",
-        "revision_filter": "ai-guidelines/20_프롬프트-라이브러리/19_법무사_개정법워치_v1.md §2 (미마운트 시 프로파일 최소 폴백)",
+        "revision_filter": "19_bupsa-law-amendment-watch_v1.md §2 (AI팀 프롬프트 라이브러리 — 개인 저장소라 경로는 적지 않음. 미마운트 시 프로파일 최소 폴백)",
         "subject_balance_max_diff": 1,
         "same_subject_contiguous": true,
         "meta_line": "{Y}년 {M}월 {D}일 ({W}) · {STAGE} 단답 {N}문항(미니답안 {MINI}) · 장기복습 {LR}(⏪) · 한달전 {MO}(🔄)",
