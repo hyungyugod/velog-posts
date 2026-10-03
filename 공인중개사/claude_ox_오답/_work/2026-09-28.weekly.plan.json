@@ -1,0 +1,417 @@
+{
+ "schema": 1,
+ "status": "ready",
+ "exam": "gongin",
+ "kind": "weekly",
+ "date": "2026-09-28",
+ "root": "/sessions/rcw-01p7mjua6kry8djcempnagn8/mnt/velog-posts",
+ "generated_at": "2026-09-28T07:09:05+09:00",
+ "note_path": "/sessions/rcw-01p7mjua6kry8djcempnagn8/mnt/velog-posts/공인중개사/claude_ox_오답/2026-09-28-claude_oxquize.md",
+ "comments_week": [],
+ "week": {
+  "from": "2026-09-21",
+  "to": "2026-09-27",
+  "dates": [
+   "2026-09-21",
+   "2026-09-22",
+   "2026-09-23",
+   "2026-09-24",
+   "2026-09-25",
+   "2026-09-26",
+   "2026-09-27"
+  ]
+ },
+ "stats": {
+  "submissions": 67,
+  "avgScore": 32.1,
+  "avgTotal": 36,
+  "perfectRuns": 4,
+  "totalWrongItems": 236,
+  "uniqueConcepts": 186,
+  "dateRange": [
+   "2026-06-02",
+   "2026-09-15"
+  ],
+  "statusCounts": {
+   "상습": 7,
+   "재도전중": 134,
+   "졸업후보": 17,
+   "졸업": 28
+  },
+  "subjectWeakness": {
+   "부동산공법": 59,
+   "민법": 52,
+   "부동산세법": 47,
+   "공인중개사법": 33,
+   "부동산학개론": 24,
+   "부동산공시법": 21
+  },
+  "generatedAt": "2026-09-27T22:09:05",
+  "due_total": 151
+ },
+ "due_top8": [
+  {
+   "conceptKey": "부동산공법 1-2 장기미집행 해제 절차",
+   "subject": "부동산공법",
+   "status": "상습",
+   "timesWrong": 3,
+   "retryMissed": 2,
+   "consecutiveCorrect": 0,
+   "lastWrong": "2026-09-15",
+   "nextReviewDate": "2026-09-16",
+   "retrievability": 0.472,
+   "stability": 0.091,
+   "pick": true,
+   "missedTop": [
+    "90일 해제 권고"
+   ],
+   "causeTop": "개념부재",
+   "errorCauses": {
+    "개념부재": 2
+   }
+  },
+  {
+   "conceptKey": "공법 농지-경자유전 예외와 농취증 면제",
+   "subject": "부동산공법",
+   "status": "상습",
+   "timesWrong": 2,
+   "retryMissed": 1,
+   "consecutiveCorrect": 0,
+   "lastWrong": "2026-09-15",
+   "nextReviewDate": "2026-09-16",
+   "retrievability": 0.508,
+   "stability": 0.147,
+   "pick": true,
+   "missedTop": [],
+   "causeTop": "개념부재",
+   "errorCauses": {
+    "개념부재": 1,
+    "함정": 1
+   }
+  },
+  {
+   "conceptKey": "세법 추계-매감환기와 기준시가",
+   "subject": "부동산세법",
+   "status": "상습",
+   "timesWrong": 2,
+   "retryMissed": 1,
+   "consecutiveCorrect": 0,
+   "lastWrong": "2026-09-15",
+   "nextReviewDate": "2026-09-16",
+   "retrievability": 0.508,
+   "stability": 0.147,
+   "pick": true,
+   "missedTop": [],
+   "causeTop": "함정",
+   "errorCauses": {
+    "함정": 1,
+    "실수": 1
+   }
+  },
+  {
+   "conceptKey": "중개사법 중개보수-환산보증금 5천만원 미만 70 적용",
+   "subject": "공인중개사법",
+   "status": "상습",
+   "timesWrong": 2,
+   "retryMissed": 1,
+   "consecutiveCorrect": 0,
+   "lastWrong": "2026-09-15",
+   "nextReviewDate": "2026-09-16",
+   "retrievability": 0.508,
+   "stability": 0.147,
+   "pick": true,
+   "missedTop": [],
+   "causeTop": "개념부재",
+   "errorCauses": {
+    "개념부재": 1,
+    "혼동": 1
+   }
+  },
+  {
+   "conceptKey": "부동산공법 1-8 성장관리계획 건폐율완화",
+   "subject": "부동산공법",
+   "status": "상습",
+   "timesWrong": 3,
+   "retryMissed": 2,
+   "consecutiveCorrect": 1,
+   "lastWrong": "2026-09-10",
+   "nextReviewDate": "2026-09-16",
+   "retrievability": 0.618,
+   "stability": 0.543,
+   "pick": true,
+   "missedTop": [
+    "계획관리지역 50퍼센트"
+   ],
+   "causeTop": "개념부재",
+   "errorCauses": {
+    "개념부재": 1
+   }
+  },
+  {
+   "conceptKey": "담보책임 제척기간-물건하자 6개월",
+   "subject": "민법",
+   "status": "상습",
+   "timesWrong": 3,
+   "retryMissed": 2,
+   "consecutiveCorrect": 0,
+   "lastWrong": "2026-09-15",
+   "nextReviewDate": "2026-09-16",
+   "retrievability": 0.649,
+   "stability": 0.761,
+   "pick": true,
+   "missedTop": [],
+   "causeTop": "혼동",
+   "errorCauses": {
+    "혼동": 1
+   }
+  },
+  {
+   "conceptKey": "민법 집합건물-공용부분 수익금 지분비율",
+   "subject": "민법",
+   "status": "상습",
+   "timesWrong": 2,
+   "retryMissed": 1,
+   "consecutiveCorrect": 1,
+   "lastWrong": "2026-09-10",
+   "nextReviewDate": "2026-09-16",
+   "retrievability": 0.697,
+   "stability": 1.25,
+   "pick": true,
+   "missedTop": [],
+   "causeTop": "혼동",
+   "errorCauses": {
+    "혼동": 1,
+    "함정": 1
+   }
+  },
+  {
+   "conceptKey": "민법 착오-중대한 과실만 상대방이 증명",
+   "subject": "민법",
+   "status": "재도전중",
+   "timesWrong": 1,
+   "retryMissed": 0,
+   "consecutiveCorrect": 0,
+   "lastWrong": "2026-09-09",
+   "nextReviewDate": "2026-09-10",
+   "retrievability": 0.505,
+   "stability": 0.212,
+   "pick": true,
+   "missedTop": [
+    "중대한 과실"
+   ],
+   "causeTop": null,
+   "errorCauses": {}
+  }
+ ],
+ "expectation": {
+  "daily": [
+   {
+    "date": "2026-09-21",
+    "result": false
+   },
+   {
+    "date": "2026-09-25",
+    "result": false
+   }
+  ],
+  "retry": [
+   {
+    "date": "2026-09-21",
+    "result": false
+   },
+   {
+    "date": "2026-09-26",
+    "result": false
+   }
+  ],
+  "missing": [
+   "2026-09-21",
+   "2026-09-25",
+   "2026-09-21-RQ",
+   "2026-09-26-RQ"
+  ],
+  "alert": "⚠️ 결과 미수거 4건 — 문제지만 쌓이고 원장이 늙는 중",
+  "ingest_check": []
+ },
+ "last_week_wrong": [],
+ "graduated": [
+  "공인중개사법 1 상가임대차",
+  "부동산공법 1-5",
+  "부동산세법 1-4 종부세 과세표준 산정",
+  "부동산세법 1-3 신탁재산 납세의무",
+  "부동산공법 개발행위허가 제한",
+  "민법 1-4 대리권 소멸",
+  "부동산공시법 1-3",
+  "공인중개사법 1-2 포상금",
+  "부동산세법 3-4",
+  "부동산공법 도시개발구역 분할",
+  "부동산학개론 금융론-원금균등상환 원리금",
+  "부동산공법 1-6 시설채권과 매수청구",
+  "모의고사 2차 2-10",
+  "주임법-2기연체·나대지·채무승계",
+  "민법 11 상가·주택임대차",
+  "부동산공법 공간재구조화계획",
+  "민법 1-4",
+  "민법 1-1",
+  "부동산세법 4-1",
+  "부동산공시법 §1 등록사항정정",
+  "공인중개사법 §1 중개보수·업무보증",
+  "부동산학개론 §2 여과·주거분리",
+  "부동산학개론 §1 거미집이론",
+  "모의고사 1차 1-6",
+  "부동산공시법 3",
+  "민법 유치권",
+  "부동산세법 2-5 취득시기·9 물납/부과시점",
+  "부동산학개론 §1 시장이론"
+ ],
+ "grad_candidates": [
+  "부동산세법 5-1",
+  "공인중개사법 1-5 과태료 개별금액",
+  "부동산세법 1-1 임대업 자산 양도",
+  "부동산공시법 등록전환-허용범위와 무관",
+  "부동산공법 도시개발조합 동의요건",
+  "부동산세법 3-3",
+  "시행방식 환지",
+  "부동산공시법 등기신청기간",
+  "부동산공법 리모델링-세대수 증가 15퍼센트",
+  "공법 OX 오답 8번",
+  "모의고사 2차 1-4",
+  "부동산학개론 주택저당유동화증권",
+  "민법 2-5 담보책임",
+  "민법 1-1 반사회질서",
+  "민법 1-1 통정허위표시 제3자",
+  "민법 1-4 복대리",
+  "유치권"
+ ],
+ "chronic": [
+  {
+   "conceptKey": "담보책임 제척기간-물건하자 6개월",
+   "subject": "민법",
+   "timesWrong": 3,
+   "retryMissed": 2
+  },
+  {
+   "conceptKey": "부동산공법 1-8 성장관리계획 건폐율완화",
+   "subject": "부동산공법",
+   "timesWrong": 3,
+   "retryMissed": 2
+  },
+  {
+   "conceptKey": "부동산공법 1-2 장기미집행 해제 절차",
+   "subject": "부동산공법",
+   "timesWrong": 3,
+   "retryMissed": 2
+  },
+  {
+   "conceptKey": "민법 집합건물-공용부분 수익금 지분비율",
+   "subject": "민법",
+   "timesWrong": 2,
+   "retryMissed": 1
+  },
+  {
+   "conceptKey": "중개사법 중개보수-환산보증금 5천만원 미만 70 적용",
+   "subject": "공인중개사법",
+   "timesWrong": 2,
+   "retryMissed": 1
+  },
+  {
+   "conceptKey": "공법 농지-경자유전 예외와 농취증 면제",
+   "subject": "부동산공법",
+   "timesWrong": 2,
+   "retryMissed": 1
+  },
+  {
+   "conceptKey": "세법 추계-매감환기와 기준시가",
+   "subject": "부동산세법",
+   "timesWrong": 2,
+   "retryMissed": 1
+  }
+ ],
+ "marks": {
+  "per_note": [
+   {
+    "file": "2026-09-21-민법-(저당권~집합건축물 등 법률 4회독).md",
+    "date": "2026-09-21",
+    "marks": {
+     "★★": 19,
+     "★": 28,
+     "n:": 0
+    },
+    "warn_lines": 0
+   },
+   {
+    "file": "2026-09-22-부동산공법-(건축법~농지법 4회독).md",
+    "date": "2026-09-22",
+    "marks": {
+     "★★": 20,
+     "★": 24,
+     "n:": 0
+    },
+    "warn_lines": 0
+   },
+   {
+    "file": "2026-09-24-부동산공시법-(소유권외의 권리에 대한 등기~처분제한등기 4회독).md",
+    "date": "2026-09-24",
+    "marks": {
+     "★★": 8,
+     "★": 7,
+     "n:": 0
+    },
+    "warn_lines": 1
+   },
+   {
+    "file": "2026-09-24-부동산학개론-(비할인법~부동산가격공시제도 4회독).md",
+    "date": "2026-09-24",
+    "marks": {
+     "★★": 0,
+     "★": 0,
+     "n:": 0
+    },
+    "warn_lines": 0
+   }
+  ],
+  "stat": {
+   "notes": 4,
+   "total": {
+    "★★": 47,
+    "★": 59,
+    "n:": 0
+   },
+   "per_note": {
+    "★★": 11.75,
+    "★": 14.75,
+    "n:": 0.0
+   }
+  }
+ },
+ "runs": {
+  "daily": {
+   "OK": 2
+  },
+  "retry": {
+   "OK": 2,
+   "FAIL": 1
+  },
+  "schedule_days": "월·수·금",
+  "schedule_days_daily": "월·수·금",
+  "schedule_days_retry": "화·토",
+  "not_run": [
+   "2026-09-22-RQ",
+   "2026-09-23",
+   "2026-09-26-RQ"
+  ],
+  "note": ""
+ },
+ "ingest": {
+  "copied": 0,
+  "collided": 0,
+  "moved": 0,
+  "move_failed": 0,
+  "sweep_dir": "/sessions/rcw-01p7mjua6kry8djcempnagn8/mnt/Downloads/_오답_수거완료",
+  "downloads": "mounted",
+  "ledger_exit": 0,
+  "ledger_summary": "⚠️ 복습 적체 151개 — 하루 8개 기준 19일치다. | 과목별 약점 TOP3: 부동산공법(59), 민법(52), 부동산세법(47) | 💬 코멘트 0건(개념 0종 · 주석 전용, 스케줄 무관)"
+ },
+ "warnings": [],
+ "ai_brief": "공인중개사 주간리포트(2026-09-28) — 지난 7일 2026-09-21~2026-09-27. 원장 통계·지난주 오답 0개(2회+ 0개)·졸업 28·졸업후보 17·상습 7·듀 큐 151개가 사실 원천이다. 여기 없는 수치는 쓰지 않는다."
+}

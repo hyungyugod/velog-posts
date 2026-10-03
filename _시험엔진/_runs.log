@@ -84,3 +84,14 @@
 2026-09-25T03:38:43	gongin	daily	OK	50문항 (단답 3 · 한달전 10 · 장기복습 20) → 2026-09-25.html
 2026-09-25T23:45:04	gongin	retry	FAIL	plan 파일 없음: /sessions/rcw-01qztpcycz2f3p136y8itdqn/mnt/velog-posts/공인중개사/오답퀴즈/_work/2026-09-25.plan.json
 2026-09-25T23:45:51	gongin	retry	OK	25문항 (단답 5 · 한달전 0 · 장기복습 0) → 2026-09-26.html
+2026-09-27T22:10:18	gongin	weekly	OK	2026-09-28-claude_oxquize.md
+2026-09-28T07:37:12	bupsa2	weekly	OK	2026-09-28-claude_oxquize.md
+2026-09-28T09:57:43	anki	weekly	OK	카드 238장·n: 0건(신규 0) → 2026-09-28.apkg (재작성 3판 — 민소 09-26 09:51 저장판 반영 · 205행 · 독립검증 5분할)
+2026-09-28T10:33:47	bupsa1	retry	DUE0	듀 0 — 오답퀴즈 없음
+2026-09-28T01:45:48	gongin	daily	OK	50문항 (단답 3 · 한달전 10 · 장기복습 20) → 2026-09-28.html
+2026-09-29T09:20:38	bupsa1	daily	SKIP	스킵 — 신규 0·장기 0 (문제지 미생성)
+2026-09-29T09:55:26	bupsa1	retry	DUE0	듀 0 — 오답퀴즈 없음
+2026-09-29T00:59:29	gongin	retry	OK	25문항 (단답 5 · 한달전 0 · 장기복습 0) → 2026-09-29.html
+2026-10-01T09:13:02	bupsa1	retry	DUE0	듀 0 — 오답퀴즈 없음
+2026-10-01T09:20:32	bupsa1	daily	SKIP	스킵 — 신규 0·장기 0 (문제지 미생성)
+2026-10-01T00:24:16	gongin	daily	OK	50문항 (단답 3 · 한달전 10 · 장기복습 20) → 2026-10-01.html

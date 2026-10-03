@@ -310,5 +310,53 @@
   "longRevServed": 158,
   "longRevCandidates": 218,
   "coverage": 72
+ },
+ {
+  "date": "2026-09-27",
+  "generatedAt": "2026-09-27T22:09:05",
+  "streak": 0,
+  "submitted": false,
+  "dueCount": 151,
+  "graduated": 28,
+  "chronic": 7,
+  "longRevServed": 158,
+  "longRevCandidates": 219,
+  "coverage": 72
+ },
+ {
+  "date": "2026-09-28",
+  "generatedAt": "2026-09-28T01:33:15",
+  "streak": 0,
+  "submitted": false,
+  "dueCount": 153,
+  "graduated": 28,
+  "chronic": 7,
+  "longRevServed": 158,
+  "longRevCandidates": 220,
+  "coverage": 72
+ },
+ {
+  "date": "2026-09-29",
+  "generatedAt": "2026-09-29T00:55:32",
+  "streak": 1,
+  "submitted": false,
+  "dueCount": 161,
+  "graduated": 28,
+  "chronic": 7,
+  "longRevServed": 164,
+  "longRevCandidates": 221,
+  "coverage": 74
+ },
+ {
+  "date": "2026-10-01",
+  "generatedAt": "2026-10-01T00:13:15",
+  "streak": 0,
+  "submitted": false,
+  "dueCount": 161,
+  "graduated": 28,
+  "chronic": 7,
+  "longRevServed": 164,
+  "longRevCandidates": 222,
+  "coverage": 74
  }
 ]

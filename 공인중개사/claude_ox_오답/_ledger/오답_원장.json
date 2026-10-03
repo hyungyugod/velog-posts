@@ -1,39 +1,39 @@
 {
   "ledgerSchema": 3,
-  "generatedAt": "2026-09-25T23:40:53",
+  "generatedAt": "2026-10-01T00:13:15",
   "fsrsMeta": {
     "version": "6.3.2",
     "desiredRetention": 0.9,
-    "maximumInterval": 28,
+    "maximumInterval": 23,
     "fuzzing": false,
     "ratingMap": "wrong=Again, retryCorrect=Good"
   },
-  "sourceFiles": 67,
-  "v2Files": 36,
-  "submissions": 67,
-  "avgScore": 32.1,
+  "sourceFiles": 68,
+  "v2Files": 37,
+  "submissions": 68,
+  "avgScore": 32.3,
   "avgTotal": 36,
   "perfectRuns": 4,
-  "totalWrongItems": 236,
-  "uniqueConcepts": 186,
+  "totalWrongItems": 244,
+  "uniqueConcepts": 194,
   "dateRange": [
     "2026-06-02",
-    "2026-09-15"
+    "2026-09-28"
   ],
   "statusCounts": {
     "상습": 7,
-    "재도전중": 134,
+    "재도전중": 142,
     "졸업후보": 17,
     "졸업": 28
   },
   "fsrsFallbacks": 0,
   "subjectWeakness": {
-    "부동산공법": 59,
+    "부동산공법": 64,
     "민법": 52,
-    "부동산세법": 47,
+    "부동산세법": 48,
     "공인중개사법": 33,
-    "부동산학개론": 24,
-    "부동산공시법": 21
+    "부동산학개론": 25,
+    "부동산공시법": 22
   },
   "comments": {
     "count": 0,
@@ -50,7 +50,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-15",
       "nextReviewDate": "2026-09-16",
-      "retrievability": 0.485,
+      "retrievability": 0.456,
       "stability": 0.091,
       "pick": true,
       "missedTop": [
@@ -70,7 +70,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-15",
       "nextReviewDate": "2026-09-16",
-      "retrievability": 0.522,
+      "retrievability": 0.491,
       "stability": 0.147,
       "pick": true,
       "missedTop": [],
@@ -89,7 +89,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-15",
       "nextReviewDate": "2026-09-16",
-      "retrievability": 0.522,
+      "retrievability": 0.491,
       "stability": 0.147,
       "pick": true,
       "missedTop": [],
@@ -108,7 +108,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-15",
       "nextReviewDate": "2026-09-16",
-      "retrievability": 0.522,
+      "retrievability": 0.491,
       "stability": 0.147,
       "pick": true,
       "missedTop": [],
@@ -127,7 +127,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-09-10",
       "nextReviewDate": "2026-09-16",
-      "retrievability": 0.635,
+      "retrievability": 0.598,
       "stability": 0.543,
       "pick": true,
       "missedTop": [
@@ -147,7 +147,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-15",
       "nextReviewDate": "2026-09-16",
-      "retrievability": 0.667,
+      "retrievability": 0.629,
       "stability": 0.761,
       "pick": true,
       "missedTop": [],
@@ -165,7 +165,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-09-10",
       "nextReviewDate": "2026-09-16",
-      "retrievability": 0.715,
+      "retrievability": 0.675,
       "stability": 1.25,
       "pick": true,
       "missedTop": [],
@@ -184,7 +184,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-09",
       "nextReviewDate": "2026-09-10",
-      "retrievability": 0.514,
+      "retrievability": 0.493,
       "stability": 0.212,
       "pick": true,
       "missedTop": [
@@ -202,7 +202,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-09",
       "nextReviewDate": "2026-09-10",
-      "retrievability": 0.514,
+      "retrievability": 0.493,
       "stability": 0.212,
       "pick": true,
       "missedTop": [],
@@ -220,7 +220,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-09",
       "nextReviewDate": "2026-09-10",
-      "retrievability": 0.514,
+      "retrievability": 0.493,
       "stability": 0.212,
       "pick": true,
       "missedTop": [],
@@ -238,7 +238,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-09",
       "nextReviewDate": "2026-09-10",
-      "retrievability": 0.514,
+      "retrievability": 0.493,
       "stability": 0.212,
       "pick": true,
       "missedTop": [],
@@ -256,7 +256,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-09",
       "nextReviewDate": "2026-09-10",
-      "retrievability": 0.514,
+      "retrievability": 0.493,
       "stability": 0.212,
       "pick": true,
       "missedTop": [],
@@ -274,7 +274,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-10",
       "nextReviewDate": "2026-09-11",
-      "retrievability": 0.519,
+      "retrievability": 0.497,
       "stability": 0.212,
       "pick": true,
       "missedTop": [
@@ -292,7 +292,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-10",
       "nextReviewDate": "2026-09-11",
-      "retrievability": 0.519,
+      "retrievability": 0.497,
       "stability": 0.212,
       "pick": true,
       "missedTop": [],
@@ -310,7 +310,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-10",
       "nextReviewDate": "2026-09-11",
-      "retrievability": 0.519,
+      "retrievability": 0.497,
       "stability": 0.212,
       "pick": true,
       "missedTop": [],
@@ -328,7 +328,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-10",
       "nextReviewDate": "2026-09-11",
-      "retrievability": 0.519,
+      "retrievability": 0.497,
       "stability": 0.212,
       "pick": true,
       "missedTop": [
@@ -346,7 +346,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-10",
       "nextReviewDate": "2026-09-11",
-      "retrievability": 0.519,
+      "retrievability": 0.497,
       "stability": 0.212,
       "pick": true,
       "missedTop": [],
@@ -364,7 +364,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-10",
       "nextReviewDate": "2026-09-11",
-      "retrievability": 0.519,
+      "retrievability": 0.497,
       "stability": 0.212,
       "pick": true,
       "missedTop": [],
@@ -382,7 +382,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-10",
       "nextReviewDate": "2026-09-11",
-      "retrievability": 0.519,
+      "retrievability": 0.497,
       "stability": 0.212,
       "pick": true,
       "missedTop": [],
@@ -400,7 +400,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-10",
       "nextReviewDate": "2026-09-11",
-      "retrievability": 0.519,
+      "retrievability": 0.497,
       "stability": 0.212,
       "pick": true,
       "missedTop": [],
@@ -418,7 +418,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-09-03",
       "nextReviewDate": "2026-09-11",
-      "retrievability": 0.674,
+      "retrievability": 0.646,
       "stability": 1.228,
       "pick": true,
       "missedTop": [
@@ -438,7 +438,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-09-09",
       "nextReviewDate": "2026-09-16",
-      "retrievability": 0.717,
+      "retrievability": 0.677,
       "stability": 1.275,
       "pick": true,
       "missedTop": [
@@ -458,7 +458,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-09-09",
       "nextReviewDate": "2026-09-17",
-      "retrievability": 0.756,
+      "retrievability": 0.716,
       "stability": 1.902,
       "pick": true,
       "missedTop": [
@@ -477,7 +477,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-09-09",
       "nextReviewDate": "2026-09-17",
-      "retrievability": 0.756,
+      "retrievability": 0.717,
       "stability": 1.918,
       "pick": true,
       "missedTop": [
@@ -497,7 +497,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-06-08-2",
       "nextReviewDate": "2026-08-28",
-      "retrievability": 0.766,
+      "retrievability": 0.754,
       "stability": 7.639,
       "pick": true,
       "missedTop": [],
@@ -513,7 +513,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-10",
       "nextReviewDate": "2026-09-11",
-      "retrievability": 0.519,
+      "retrievability": 0.497,
       "stability": 0.212,
       "pick": false,
       "missedTop": [
@@ -532,7 +532,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-10",
       "nextReviewDate": "2026-09-11",
-      "retrievability": 0.519,
+      "retrievability": 0.497,
       "stability": 0.212,
       "pick": false,
       "missedTop": [],
@@ -550,7 +550,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-12",
       "nextReviewDate": "2026-09-13",
-      "retrievability": 0.53,
+      "retrievability": 0.505,
       "stability": 0.212,
       "pick": false,
       "missedTop": [
@@ -570,7 +570,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-15",
       "nextReviewDate": "2026-09-16",
-      "retrievability": 0.552,
+      "retrievability": 0.519,
       "stability": 0.212,
       "pick": false,
       "missedTop": [
@@ -590,7 +590,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-15",
       "nextReviewDate": "2026-09-16",
-      "retrievability": 0.552,
+      "retrievability": 0.519,
       "stability": 0.212,
       "pick": false,
       "missedTop": [],
@@ -608,7 +608,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-15",
       "nextReviewDate": "2026-09-16",
-      "retrievability": 0.552,
+      "retrievability": 0.519,
       "stability": 0.212,
       "pick": false,
       "missedTop": [],
@@ -626,7 +626,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-15",
       "nextReviewDate": "2026-09-16",
-      "retrievability": 0.552,
+      "retrievability": 0.519,
       "stability": 0.212,
       "pick": false,
       "missedTop": [],
@@ -644,7 +644,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-15",
       "nextReviewDate": "2026-09-16",
-      "retrievability": 0.552,
+      "retrievability": 0.519,
       "stability": 0.212,
       "pick": false,
       "missedTop": [],
@@ -662,7 +662,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-15",
       "nextReviewDate": "2026-09-16",
-      "retrievability": 0.552,
+      "retrievability": 0.519,
       "stability": 0.212,
       "pick": false,
       "missedTop": [],
@@ -680,7 +680,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-15",
       "nextReviewDate": "2026-09-16",
-      "retrievability": 0.552,
+      "retrievability": 0.519,
       "stability": 0.212,
       "pick": false,
       "missedTop": [],
@@ -698,7 +698,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-15",
       "nextReviewDate": "2026-09-16",
-      "retrievability": 0.552,
+      "retrievability": 0.519,
       "stability": 0.212,
       "pick": false,
       "missedTop": [
@@ -718,7 +718,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-15",
       "nextReviewDate": "2026-09-16",
-      "retrievability": 0.552,
+      "retrievability": 0.519,
       "stability": 0.212,
       "pick": false,
       "missedTop": [],
@@ -736,7 +736,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-15",
       "nextReviewDate": "2026-09-16",
-      "retrievability": 0.552,
+      "retrievability": 0.519,
       "stability": 0.212,
       "pick": false,
       "missedTop": [],
@@ -754,7 +754,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-15",
       "nextReviewDate": "2026-09-16",
-      "retrievability": 0.552,
+      "retrievability": 0.519,
       "stability": 0.212,
       "pick": false,
       "missedTop": [],
@@ -772,7 +772,7 @@
       "consecutiveCorrect": 0,
       "lastWrong": "2026-09-15",
       "nextReviewDate": "2026-09-16",
-      "retrievability": 0.552,
+      "retrievability": 0.519,
       "stability": 0.212,
       "pick": false,
       "missedTop": [],
@@ -790,7 +790,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-07-01",
       "nextReviewDate": "2026-08-19",
-      "retrievability": 0.706,
+      "retrievability": 0.695,
       "stability": 4.808,
       "pick": false,
       "missedTop": [],
@@ -806,7 +806,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-08-31",
       "nextReviewDate": "2026-09-06",
-      "retrievability": 0.715,
+      "retrievability": 0.695,
       "stability": 2.761,
       "pick": false,
       "missedTop": [],
@@ -822,7 +822,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-08-31",
       "nextReviewDate": "2026-09-06",
-      "retrievability": 0.715,
+      "retrievability": 0.695,
       "stability": 2.761,
       "pick": false,
       "missedTop": [],
@@ -838,7 +838,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-08-31",
       "nextReviewDate": "2026-09-06",
-      "retrievability": 0.715,
+      "retrievability": 0.695,
       "stability": 2.761,
       "pick": false,
       "missedTop": [],
@@ -854,7 +854,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-08-31",
       "nextReviewDate": "2026-09-06",
-      "retrievability": 0.715,
+      "retrievability": 0.695,
       "stability": 2.761,
       "pick": false,
       "missedTop": [],
@@ -870,7 +870,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-08-31",
       "nextReviewDate": "2026-09-06",
-      "retrievability": 0.715,
+      "retrievability": 0.695,
       "stability": 2.761,
       "pick": false,
       "missedTop": [],
@@ -886,12 +886,158 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-08-31",
       "nextReviewDate": "2026-09-06",
-      "retrievability": 0.715,
+      "retrievability": 0.695,
       "stability": 2.761,
       "pick": false,
       "missedTop": [],
       "causeTop": null,
       "errorCauses": {}
+    },
+    {
+      "conceptKey": "부동산공법 2-1 바닥면적 불산입",
+      "subject": "부동산공법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-09-28",
+      "nextReviewDate": "2026-09-29",
+      "retrievability": 0.698,
+      "stability": 0.212,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": "함정",
+      "errorCauses": {
+        "함정": 1
+      }
+    },
+    {
+      "conceptKey": "부동산공법 건축법 적용범위-분할제한 비적용",
+      "subject": "부동산공법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-09-28",
+      "nextReviewDate": "2026-09-29",
+      "retrievability": 0.698,
+      "stability": 0.212,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": "개념부재",
+      "errorCauses": {
+        "개념부재": 1
+      }
+    },
+    {
+      "conceptKey": "부동산공법 기반시설부담구역-1년 미수립 다음 날 해제",
+      "subject": "부동산공법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-09-28",
+      "nextReviewDate": "2026-09-29",
+      "retrievability": 0.698,
+      "stability": 0.212,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": "혼동",
+      "errorCauses": {
+        "혼동": 1
+      }
+    },
+    {
+      "conceptKey": "부동산공법 농업진흥구역-관광농원은 보호구역",
+      "subject": "부동산공법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-09-28",
+      "nextReviewDate": "2026-09-29",
+      "retrievability": 0.698,
+      "stability": 0.212,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": "개념부재",
+      "errorCauses": {
+        "개념부재": 1
+      }
+    },
+    {
+      "conceptKey": "부동산공법 주택조합-인가 후 2년 내 사업계획승인 신청",
+      "subject": "부동산공법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-09-28",
+      "nextReviewDate": "2026-09-29",
+      "retrievability": 0.698,
+      "stability": 0.212,
+      "pick": false,
+      "missedTop": [
+        "조합설립인가",
+        "2년"
+      ],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "부동산공시법 대지권 토지표시 변경-1동 표제부 직권",
+      "subject": "부동산공시법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-09-28",
+      "nextReviewDate": "2026-09-29",
+      "retrievability": 0.698,
+      "stability": 0.212,
+      "pick": false,
+      "missedTop": [
+        "1동 건물의 표제부",
+        "직권"
+      ],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "부동산세법 취득세 과세대상-임차권·유증·감자 과점주주",
+      "subject": "부동산세법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-09-28",
+      "nextReviewDate": "2026-09-29",
+      "retrievability": 0.698,
+      "stability": 0.212,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": "개념부재",
+      "errorCauses": {
+        "개념부재": 1
+      }
+    },
+    {
+      "conceptKey": "부동산학개론 유동화증권-지분형은 부채 미표시",
+      "subject": "부동산학개론",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "lastWrong": "2026-09-28",
+      "nextReviewDate": "2026-09-29",
+      "retrievability": 0.698,
+      "stability": 0.212,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": "개념부재",
+      "errorCauses": {
+        "개념부재": 1
+      }
     },
     {
       "conceptKey": "공인중개사법 1-7 법인 현황 신고",
@@ -902,40 +1048,8 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-08-19",
       "nextReviewDate": "2026-09-01",
-      "retrievability": 0.718,
+      "retrievability": 0.702,
       "stability": 3.64,
-      "pick": false,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "부동산공법 2-2 허가권자와 허가 취소",
-      "subject": "부동산공법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 1,
-      "lastWrong": "2026-08-25",
-      "nextReviewDate": "2026-09-03",
-      "retrievability": 0.72,
-      "stability": 3.32,
-      "pick": false,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "부동산공법 2-5 안전관리 예치금",
-      "subject": "부동산공법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 1,
-      "lastWrong": "2026-08-25",
-      "nextReviewDate": "2026-09-03",
-      "retrievability": 0.72,
-      "stability": 3.32,
       "pick": false,
       "missedTop": [],
       "causeTop": null,
@@ -950,7 +1064,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-08-27",
       "nextReviewDate": "2026-09-04",
-      "retrievability": 0.72,
+      "retrievability": 0.702,
       "stability": 3.174,
       "pick": false,
       "missedTop": [],
@@ -966,7 +1080,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-08-27",
       "nextReviewDate": "2026-09-04",
-      "retrievability": 0.72,
+      "retrievability": 0.702,
       "stability": 3.174,
       "pick": false,
       "missedTop": [],
@@ -982,7 +1096,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-08-27",
       "nextReviewDate": "2026-09-04",
-      "retrievability": 0.72,
+      "retrievability": 0.702,
       "stability": 3.174,
       "pick": false,
       "missedTop": [],
@@ -998,7 +1112,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-08-27",
       "nextReviewDate": "2026-09-04",
-      "retrievability": 0.72,
+      "retrievability": 0.702,
       "stability": 3.174,
       "pick": false,
       "missedTop": [],
@@ -1014,7 +1128,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-08-27",
       "nextReviewDate": "2026-09-04",
-      "retrievability": 0.72,
+      "retrievability": 0.702,
       "stability": 3.174,
       "pick": false,
       "missedTop": [],
@@ -1030,7 +1144,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-08-27",
       "nextReviewDate": "2026-09-04",
-      "retrievability": 0.72,
+      "retrievability": 0.702,
       "stability": 3.174,
       "pick": false,
       "missedTop": [],
@@ -1038,63 +1152,15 @@
       "errorCauses": {}
     },
     {
-      "conceptKey": "공인중개사법 1-5 허가구역 지정효력",
-      "subject": "공인중개사법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 1,
-      "lastWrong": "2026-08-24",
-      "nextReviewDate": "2026-09-03",
-      "retrievability": 0.724,
-      "stability": 3.442,
-      "pick": false,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "부동산공법 1-11 주택법",
+      "conceptKey": "부동산공법 2-2 허가권자와 허가 취소",
       "subject": "부동산공법",
       "status": "재도전중",
       "timesWrong": 1,
       "retryMissed": 0,
       "consecutiveCorrect": 1,
-      "lastWrong": "2026-08-24",
+      "lastWrong": "2026-08-25",
       "nextReviewDate": "2026-09-03",
-      "retrievability": 0.724,
-      "stability": 3.442,
-      "pick": false,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "부동산세법 1-4 세율 구조",
-      "subject": "부동산세법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 1,
-      "lastWrong": "2026-08-24",
-      "nextReviewDate": "2026-09-03",
-      "retrievability": 0.724,
-      "stability": 3.442,
-      "pick": false,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "공인중개사법 1-5 허가구역 지정 절차",
-      "subject": "공인중개사법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 1,
-      "lastWrong": "2026-08-26",
-      "nextReviewDate": "2026-09-04",
-      "retrievability": 0.724,
+      "retrievability": 0.703,
       "stability": 3.32,
       "pick": false,
       "missedTop": [],
@@ -1102,47 +1168,15 @@
       "errorCauses": {}
     },
     {
-      "conceptKey": "민법 1-1 과실수취와 비용상환",
-      "subject": "민법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 1,
-      "lastWrong": "2026-08-26",
-      "nextReviewDate": "2026-09-04",
-      "retrievability": 0.724,
-      "stability": 3.32,
-      "pick": false,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "부동산공법 2-3 도시정비법 토지등소유자",
+      "conceptKey": "부동산공법 2-5 안전관리 예치금",
       "subject": "부동산공법",
       "status": "재도전중",
       "timesWrong": 1,
       "retryMissed": 0,
       "consecutiveCorrect": 1,
-      "lastWrong": "2026-08-26",
-      "nextReviewDate": "2026-09-04",
-      "retrievability": 0.724,
-      "stability": 3.32,
-      "pick": false,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "부동산공법 6-5 리모델링 증축률",
-      "subject": "부동산공법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 1,
-      "lastWrong": "2026-08-26",
-      "nextReviewDate": "2026-09-04",
-      "retrievability": 0.724,
+      "lastWrong": "2026-08-25",
+      "nextReviewDate": "2026-09-03",
+      "retrievability": 0.703,
       "stability": 3.32,
       "pick": false,
       "missedTop": [],
@@ -1158,7 +1192,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-08-28",
       "nextReviewDate": "2026-09-05",
-      "retrievability": 0.724,
+      "retrievability": 0.705,
       "stability": 3.174,
       "pick": false,
       "missedTop": [],
@@ -1174,8 +1208,136 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-08-28",
       "nextReviewDate": "2026-09-05",
-      "retrievability": 0.724,
+      "retrievability": 0.705,
       "stability": 3.174,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "공인중개사법 1-5 허가구역 지정효력",
+      "subject": "공인중개사법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "lastWrong": "2026-08-24",
+      "nextReviewDate": "2026-09-03",
+      "retrievability": 0.706,
+      "stability": 3.442,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "부동산공법 1-11 주택법",
+      "subject": "부동산공법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "lastWrong": "2026-08-24",
+      "nextReviewDate": "2026-09-03",
+      "retrievability": 0.706,
+      "stability": 3.442,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "부동산세법 1-4 세율 구조",
+      "subject": "부동산세법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "lastWrong": "2026-08-24",
+      "nextReviewDate": "2026-09-03",
+      "retrievability": 0.706,
+      "stability": 3.442,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "공인중개사법 1-5 허가구역 지정 절차",
+      "subject": "공인중개사법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "lastWrong": "2026-08-26",
+      "nextReviewDate": "2026-09-04",
+      "retrievability": 0.706,
+      "stability": 3.32,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "민법 1-1 과실수취와 비용상환",
+      "subject": "민법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "lastWrong": "2026-08-26",
+      "nextReviewDate": "2026-09-04",
+      "retrievability": 0.706,
+      "stability": 3.32,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "부동산공법 2-3 도시정비법 토지등소유자",
+      "subject": "부동산공법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "lastWrong": "2026-08-26",
+      "nextReviewDate": "2026-09-04",
+      "retrievability": 0.706,
+      "stability": 3.32,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "부동산공법 6-5 리모델링 증축률",
+      "subject": "부동산공법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "lastWrong": "2026-08-26",
+      "nextReviewDate": "2026-09-04",
+      "retrievability": 0.706,
+      "stability": 3.32,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "학개론 거치기간-이자만 납부 월액",
+      "subject": "부동산학개론",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "lastWrong": "2026-08-27",
+      "nextReviewDate": "2026-09-05",
+      "retrievability": 0.709,
+      "stability": 3.32,
       "pick": false,
       "missedTop": [],
       "causeTop": null,
@@ -1190,7 +1352,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-08-14-민법특화",
       "nextReviewDate": "2026-09-01",
-      "retrievability": 0.727,
+      "retrievability": 0.711,
       "stability": 3.98,
       "pick": false,
       "missedTop": [],
@@ -1206,7 +1368,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-08-14-민법특화",
       "nextReviewDate": "2026-09-01",
-      "retrievability": 0.727,
+      "retrievability": 0.711,
       "stability": 3.98,
       "pick": false,
       "missedTop": [],
@@ -1222,24 +1384,8 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-08-14-민법특화",
       "nextReviewDate": "2026-09-01",
-      "retrievability": 0.727,
+      "retrievability": 0.711,
       "stability": 3.98,
-      "pick": false,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "학개론 거치기간-이자만 납부 월액",
-      "subject": "부동산학개론",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 1,
-      "lastWrong": "2026-08-27",
-      "nextReviewDate": "2026-09-05",
-      "retrievability": 0.729,
-      "stability": 3.32,
       "pick": false,
       "missedTop": [],
       "causeTop": null,
@@ -1254,7 +1400,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-08-21",
       "nextReviewDate": "2026-09-04",
-      "retrievability": 0.732,
+      "retrievability": 0.714,
       "stability": 3.722,
       "pick": false,
       "missedTop": [],
@@ -1270,7 +1416,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-08-21",
       "nextReviewDate": "2026-09-04",
-      "retrievability": 0.732,
+      "retrievability": 0.714,
       "stability": 3.722,
       "pick": false,
       "missedTop": [],
@@ -1286,7 +1432,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-08-19",
       "nextReviewDate": "2026-09-04",
-      "retrievability": 0.735,
+      "retrievability": 0.717,
       "stability": 3.862,
       "pick": false,
       "missedTop": [],
@@ -1302,7 +1448,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-08-19",
       "nextReviewDate": "2026-09-04",
-      "retrievability": 0.735,
+      "retrievability": 0.717,
       "stability": 3.862,
       "pick": false,
       "missedTop": [],
@@ -1318,7 +1464,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-06-08-5",
       "nextReviewDate": "2026-08-29",
-      "retrievability": 0.74,
+      "retrievability": 0.726,
       "stability": 5.183,
       "pick": false,
       "missedTop": [],
@@ -1334,7 +1480,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-07-24",
       "nextReviewDate": "2026-09-02",
-      "retrievability": 0.742,
+      "retrievability": 0.726,
       "stability": 4.649,
       "pick": false,
       "missedTop": [],
@@ -1350,280 +1496,8 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-07-24",
       "nextReviewDate": "2026-09-02",
-      "retrievability": 0.742,
+      "retrievability": 0.726,
       "stability": 4.649,
-      "pick": false,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "공법 오답노트(재건축 조합 동의요건)",
-      "subject": "부동산공법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 1,
-      "lastWrong": "2026-06-09",
-      "nextReviewDate": "2026-08-30",
-      "retrievability": 0.743,
-      "stability": 5.183,
-      "pick": false,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "공인중개사법 1-15",
-      "subject": "공인중개사법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 1,
-      "lastWrong": "2026-06-09-3",
-      "nextReviewDate": "2026-08-30",
-      "retrievability": 0.743,
-      "stability": 5.183,
-      "pick": false,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "모의고사 2차 1-5",
-      "subject": "공인중개사법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 1,
-      "lastWrong": "2026-06-08-3",
-      "nextReviewDate": "2026-08-30",
-      "retrievability": 0.743,
-      "stability": 5.191,
-      "pick": false,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "민법 1-2·1-3",
-      "subject": "민법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 1,
-      "lastWrong": "2026-06-08-민법",
-      "nextReviewDate": "2026-08-30",
-      "retrievability": 0.743,
-      "stability": 5.191,
-      "pick": false,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "민법 1-5",
-      "subject": "민법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 1,
-      "lastWrong": "2026-06-08-민법",
-      "nextReviewDate": "2026-08-30",
-      "retrievability": 0.743,
-      "stability": 5.191,
-      "pick": false,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "민법 1-8",
-      "subject": "민법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 1,
-      "lastWrong": "2026-06-08-4",
-      "nextReviewDate": "2026-08-30",
-      "retrievability": 0.743,
-      "stability": 5.191,
-      "pick": false,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "민법 1-9",
-      "subject": "민법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 1,
-      "lastWrong": "2026-06-08-5",
-      "nextReviewDate": "2026-08-30",
-      "retrievability": 0.743,
-      "stability": 5.191,
-      "pick": false,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "민법 3-1",
-      "subject": "민법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 1,
-      "lastWrong": "2026-06-08-민법",
-      "nextReviewDate": "2026-08-30",
-      "retrievability": 0.743,
-      "stability": 5.191,
-      "pick": false,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "민법 3-1·3-2",
-      "subject": "민법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 1,
-      "lastWrong": "2026-06-08-민법",
-      "nextReviewDate": "2026-08-30",
-      "retrievability": 0.743,
-      "stability": 5.191,
-      "pick": false,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "민법 6-2",
-      "subject": "민법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 1,
-      "lastWrong": "2026-06-09-2",
-      "nextReviewDate": "2026-08-30",
-      "retrievability": 0.743,
-      "stability": 5.183,
-      "pick": false,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "민법 §5 물권적 청구권",
-      "subject": "민법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 1,
-      "lastWrong": "2026-06-11",
-      "nextReviewDate": "2026-08-30",
-      "retrievability": 0.743,
-      "stability": 5.165,
-      "pick": false,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "부동산공법 1-3",
-      "subject": "부동산공법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 1,
-      "lastWrong": "2026-06-11-2",
-      "nextReviewDate": "2026-08-30",
-      "retrievability": 0.743,
-      "stability": 5.165,
-      "pick": false,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "부동산공시법 1-2 지번 부여",
-      "subject": "부동산공시법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 1,
-      "lastWrong": "2026-06-11",
-      "nextReviewDate": "2026-08-30",
-      "retrievability": 0.743,
-      "stability": 5.165,
-      "pick": false,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "부동산공시법 2-1",
-      "subject": "부동산공시법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 1,
-      "lastWrong": "2026-06-09",
-      "nextReviewDate": "2026-08-30",
-      "retrievability": 0.743,
-      "stability": 5.183,
-      "pick": false,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "오답노트 2026-05-20 #8",
-      "subject": "부동산공법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 1,
-      "lastWrong": "2026-06-08",
-      "nextReviewDate": "2026-08-30",
-      "retrievability": 0.743,
-      "stability": 5.191,
-      "pick": false,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "오답노트 2026-05-20 #9·10",
-      "subject": "부동산공법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 1,
-      "lastWrong": "2026-06-08",
-      "nextReviewDate": "2026-08-30",
-      "retrievability": 0.743,
-      "stability": 5.191,
-      "pick": false,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "민법 2-7 집합건물 공용부분 변경",
-      "subject": "민법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 1,
-      "lastWrong": "2026-06-29-2",
-      "nextReviewDate": "2026-08-31",
-      "retrievability": 0.743,
-      "stability": 4.996,
       "pick": false,
       "missedTop": [],
       "causeTop": null,
@@ -1638,7 +1512,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-07-13-2",
       "nextReviewDate": "2026-09-01",
-      "retrievability": 0.743,
+      "retrievability": 0.727,
       "stability": 4.824,
       "pick": false,
       "missedTop": [],
@@ -1654,7 +1528,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-07-13",
       "nextReviewDate": "2026-09-01",
-      "retrievability": 0.743,
+      "retrievability": 0.727,
       "stability": 4.824,
       "pick": false,
       "missedTop": [],
@@ -1670,7 +1544,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-07-13",
       "nextReviewDate": "2026-09-01",
-      "retrievability": 0.743,
+      "retrievability": 0.727,
       "stability": 4.824,
       "pick": false,
       "missedTop": [],
@@ -1686,7 +1560,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-07-13",
       "nextReviewDate": "2026-09-01",
-      "retrievability": 0.743,
+      "retrievability": 0.727,
       "stability": 4.824,
       "pick": false,
       "missedTop": [],
@@ -1694,176 +1568,128 @@
       "errorCauses": {}
     },
     {
-      "conceptKey": "건폐율 특별규정",
+      "conceptKey": "공법 오답노트(재건축 조합 동의요건)",
       "subject": "부동산공법",
       "status": "재도전중",
       "timesWrong": 1,
       "retryMissed": 0,
       "consecutiveCorrect": 1,
-      "lastWrong": "2026-06-21-부동산공법",
-      "nextReviewDate": "2026-08-31",
-      "retrievability": 0.744,
-      "stability": 5.082,
+      "lastWrong": "2026-06-09",
+      "nextReviewDate": "2026-08-30",
+      "retrievability": 0.728,
+      "stability": 5.183,
       "pick": false,
       "missedTop": [],
       "causeTop": null,
       "errorCauses": {}
     },
     {
-      "conceptKey": "공인중개사법 1-4 거래신고 의무자",
+      "conceptKey": "공인중개사법 1-15",
       "subject": "공인중개사법",
       "status": "재도전중",
       "timesWrong": 1,
       "retryMissed": 0,
       "consecutiveCorrect": 1,
-      "lastWrong": "2026-06-22",
-      "nextReviewDate": "2026-08-31",
-      "retrievability": 0.744,
-      "stability": 5.071,
+      "lastWrong": "2026-06-09-3",
+      "nextReviewDate": "2026-08-30",
+      "retrievability": 0.728,
+      "stability": 5.183,
       "pick": false,
       "missedTop": [],
       "causeTop": null,
       "errorCauses": {}
     },
     {
-      "conceptKey": "민법 3 점유자와 회복자",
+      "conceptKey": "민법 6-2",
       "subject": "민법",
       "status": "재도전중",
       "timesWrong": 1,
       "retryMissed": 0,
       "consecutiveCorrect": 1,
-      "lastWrong": "2026-06-22",
-      "nextReviewDate": "2026-08-31",
-      "retrievability": 0.744,
-      "stability": 5.071,
+      "lastWrong": "2026-06-09-2",
+      "nextReviewDate": "2026-08-30",
+      "retrievability": 0.728,
+      "stability": 5.183,
       "pick": false,
       "missedTop": [],
       "causeTop": null,
       "errorCauses": {}
     },
     {
-      "conceptKey": "부동산공법 도시개발구역 해제",
-      "subject": "부동산공법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 1,
-      "lastWrong": "2026-06-22",
-      "nextReviewDate": "2026-08-31",
-      "retrievability": 0.744,
-      "stability": 5.071,
-      "pick": false,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "부동산공법 정비구역 행위제한",
-      "subject": "부동산공법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 1,
-      "lastWrong": "2026-06-22",
-      "nextReviewDate": "2026-08-31",
-      "retrievability": 0.744,
-      "stability": 5.071,
-      "pick": false,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "부동산공법 토지등소유자 범위",
-      "subject": "부동산공법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 1,
-      "lastWrong": "2026-06-22",
-      "nextReviewDate": "2026-08-31",
-      "retrievability": 0.744,
-      "stability": 5.071,
-      "pick": false,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "부동산공법 토지상환채권·도시개발채권",
-      "subject": "부동산공법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 1,
-      "lastWrong": "2026-06-21",
-      "nextReviewDate": "2026-08-31",
-      "retrievability": 0.744,
-      "stability": 5.082,
-      "pick": false,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "부동산학개론 지분금융·MBS·리츠",
-      "subject": "부동산학개론",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 1,
-      "lastWrong": "2026-06-21",
-      "nextReviewDate": "2026-08-31",
-      "retrievability": 0.744,
-      "stability": 5.082,
-      "pick": false,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "사기·강박과 대리",
+      "conceptKey": "민법 §5 물권적 청구권",
       "subject": "민법",
       "status": "재도전중",
       "timesWrong": 1,
       "retryMissed": 0,
       "consecutiveCorrect": 1,
-      "lastWrong": "2026-06-21-민법",
-      "nextReviewDate": "2026-08-31",
-      "retrievability": 0.744,
-      "stability": 5.082,
+      "lastWrong": "2026-06-11",
+      "nextReviewDate": "2026-08-30",
+      "retrievability": 0.728,
+      "stability": 5.165,
       "pick": false,
       "missedTop": [],
       "causeTop": null,
       "errorCauses": {}
     },
     {
-      "conceptKey": "접도 건축선",
+      "conceptKey": "부동산공법 1-3",
       "subject": "부동산공법",
       "status": "재도전중",
       "timesWrong": 1,
       "retryMissed": 0,
       "consecutiveCorrect": 1,
-      "lastWrong": "2026-06-21-부동산공법",
-      "nextReviewDate": "2026-08-31",
-      "retrievability": 0.744,
-      "stability": 5.082,
+      "lastWrong": "2026-06-11-2",
+      "nextReviewDate": "2026-08-30",
+      "retrievability": 0.728,
+      "stability": 5.165,
       "pick": false,
       "missedTop": [],
       "causeTop": null,
       "errorCauses": {}
     },
     {
-      "conceptKey": "조합 설립",
-      "subject": "부동산공법",
+      "conceptKey": "부동산공시법 1-2 지번 부여",
+      "subject": "부동산공시법",
       "status": "재도전중",
       "timesWrong": 1,
       "retryMissed": 0,
       "consecutiveCorrect": 1,
-      "lastWrong": "2026-06-21-부동산공법",
+      "lastWrong": "2026-06-11",
+      "nextReviewDate": "2026-08-30",
+      "retrievability": 0.728,
+      "stability": 5.165,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "부동산공시법 2-1",
+      "subject": "부동산공시법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "lastWrong": "2026-06-09",
+      "nextReviewDate": "2026-08-30",
+      "retrievability": 0.728,
+      "stability": 5.183,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "민법 2-7 집합건물 공용부분 변경",
+      "subject": "민법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "lastWrong": "2026-06-29-2",
       "nextReviewDate": "2026-08-31",
-      "retrievability": 0.744,
-      "stability": 5.082,
+      "retrievability": 0.728,
+      "stability": 4.996,
       "pick": false,
       "missedTop": [],
       "causeTop": null,
@@ -1878,7 +1704,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-07-08",
       "nextReviewDate": "2026-09-01",
-      "retrievability": 0.744,
+      "retrievability": 0.728,
       "stability": 4.896,
       "pick": false,
       "missedTop": [],
@@ -1894,7 +1720,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-07-20",
       "nextReviewDate": "2026-09-02",
-      "retrievability": 0.744,
+      "retrievability": 0.728,
       "stability": 4.725,
       "pick": false,
       "missedTop": [],
@@ -1910,8 +1736,328 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-07-20",
       "nextReviewDate": "2026-09-02",
-      "retrievability": 0.744,
+      "retrievability": 0.728,
       "stability": 4.725,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "모의고사 2차 1-5",
+      "subject": "공인중개사법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "lastWrong": "2026-06-08-3",
+      "nextReviewDate": "2026-08-30",
+      "retrievability": 0.729,
+      "stability": 5.191,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "민법 1-2·1-3",
+      "subject": "민법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "lastWrong": "2026-06-08-민법",
+      "nextReviewDate": "2026-08-30",
+      "retrievability": 0.729,
+      "stability": 5.191,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "민법 1-5",
+      "subject": "민법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "lastWrong": "2026-06-08-민법",
+      "nextReviewDate": "2026-08-30",
+      "retrievability": 0.729,
+      "stability": 5.191,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "민법 1-8",
+      "subject": "민법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "lastWrong": "2026-06-08-4",
+      "nextReviewDate": "2026-08-30",
+      "retrievability": 0.729,
+      "stability": 5.191,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "민법 1-9",
+      "subject": "민법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "lastWrong": "2026-06-08-5",
+      "nextReviewDate": "2026-08-30",
+      "retrievability": 0.729,
+      "stability": 5.191,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "민법 3-1",
+      "subject": "민법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "lastWrong": "2026-06-08-민법",
+      "nextReviewDate": "2026-08-30",
+      "retrievability": 0.729,
+      "stability": 5.191,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "민법 3-1·3-2",
+      "subject": "민법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "lastWrong": "2026-06-08-민법",
+      "nextReviewDate": "2026-08-30",
+      "retrievability": 0.729,
+      "stability": 5.191,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "오답노트 2026-05-20 #8",
+      "subject": "부동산공법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "lastWrong": "2026-06-08",
+      "nextReviewDate": "2026-08-30",
+      "retrievability": 0.729,
+      "stability": 5.191,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "오답노트 2026-05-20 #9·10",
+      "subject": "부동산공법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "lastWrong": "2026-06-08",
+      "nextReviewDate": "2026-08-30",
+      "retrievability": 0.729,
+      "stability": 5.191,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "건폐율 특별규정",
+      "subject": "부동산공법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "lastWrong": "2026-06-21-부동산공법",
+      "nextReviewDate": "2026-08-31",
+      "retrievability": 0.729,
+      "stability": 5.082,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "공인중개사법 1-4 거래신고 의무자",
+      "subject": "공인중개사법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "lastWrong": "2026-06-22",
+      "nextReviewDate": "2026-08-31",
+      "retrievability": 0.729,
+      "stability": 5.071,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "민법 3 점유자와 회복자",
+      "subject": "민법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "lastWrong": "2026-06-22",
+      "nextReviewDate": "2026-08-31",
+      "retrievability": 0.729,
+      "stability": 5.071,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "부동산공법 도시개발구역 해제",
+      "subject": "부동산공법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "lastWrong": "2026-06-22",
+      "nextReviewDate": "2026-08-31",
+      "retrievability": 0.729,
+      "stability": 5.071,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "부동산공법 정비구역 행위제한",
+      "subject": "부동산공법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "lastWrong": "2026-06-22",
+      "nextReviewDate": "2026-08-31",
+      "retrievability": 0.729,
+      "stability": 5.071,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "부동산공법 토지등소유자 범위",
+      "subject": "부동산공법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "lastWrong": "2026-06-22",
+      "nextReviewDate": "2026-08-31",
+      "retrievability": 0.729,
+      "stability": 5.071,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "부동산공법 토지상환채권·도시개발채권",
+      "subject": "부동산공법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "lastWrong": "2026-06-21",
+      "nextReviewDate": "2026-08-31",
+      "retrievability": 0.729,
+      "stability": 5.082,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "부동산학개론 지분금융·MBS·리츠",
+      "subject": "부동산학개론",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "lastWrong": "2026-06-21",
+      "nextReviewDate": "2026-08-31",
+      "retrievability": 0.729,
+      "stability": 5.082,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "사기·강박과 대리",
+      "subject": "민법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "lastWrong": "2026-06-21-민법",
+      "nextReviewDate": "2026-08-31",
+      "retrievability": 0.729,
+      "stability": 5.082,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "접도 건축선",
+      "subject": "부동산공법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "lastWrong": "2026-06-21-부동산공법",
+      "nextReviewDate": "2026-08-31",
+      "retrievability": 0.729,
+      "stability": 5.082,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "조합 설립",
+      "subject": "부동산공법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "lastWrong": "2026-06-21-부동산공법",
+      "nextReviewDate": "2026-08-31",
+      "retrievability": 0.729,
+      "stability": 5.082,
       "pick": false,
       "missedTop": [],
       "causeTop": null,
@@ -1926,7 +2072,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-06-17",
       "nextReviewDate": "2026-08-31",
-      "retrievability": 0.745,
+      "retrievability": 0.73,
       "stability": 5.12,
       "pick": false,
       "missedTop": [],
@@ -1942,7 +2088,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-06-17",
       "nextReviewDate": "2026-08-31",
-      "retrievability": 0.745,
+      "retrievability": 0.73,
       "stability": 5.12,
       "pick": false,
       "missedTop": [],
@@ -1958,136 +2104,8 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-07-02",
       "nextReviewDate": "2026-09-01",
-      "retrievability": 0.745,
+      "retrievability": 0.73,
       "stability": 4.972,
-      "pick": false,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "부동산학개론 원금균등상환 계산",
-      "subject": "부동산학개론",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 1,
-      "lastWrong": "2026-07-02",
-      "nextReviewDate": "2026-09-01",
-      "retrievability": 0.745,
-      "stability": 4.972,
-      "pick": false,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "부동산학개론 1-1",
-      "subject": "부동산학개론",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 1,
-      "lastWrong": "2026-06-11-2",
-      "nextReviewDate": "2026-08-31",
-      "retrievability": 0.746,
-      "stability": 5.174,
-      "pick": false,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "부동산학개론 1-2",
-      "subject": "부동산학개론",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 1,
-      "lastWrong": "2026-06-11-2",
-      "nextReviewDate": "2026-08-31",
-      "retrievability": 0.746,
-      "stability": 5.174,
-      "pick": false,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "민법 §2·3 저당권 순위·채권최고액",
-      "subject": "민법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 1,
-      "lastWrong": "2026-06-29-2",
-      "nextReviewDate": "2026-09-01",
-      "retrievability": 0.746,
-      "stability": 5.007,
-      "pick": false,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "부동산공법 1-6 건축협정",
-      "subject": "부동산공법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 1,
-      "lastWrong": "2026-06-29-2",
-      "nextReviewDate": "2026-09-01",
-      "retrievability": 0.746,
-      "stability": 5.007,
-      "pick": false,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "부동산공법 2-2·2-5 주택조합·사업계획승인",
-      "subject": "부동산공법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 1,
-      "lastWrong": "2026-06-29-2",
-      "nextReviewDate": "2026-09-01",
-      "retrievability": 0.746,
-      "stability": 5.007,
-      "pick": false,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "부동산공시법 1 소유권보존등기",
-      "subject": "부동산공시법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 1,
-      "lastWrong": "2026-06-29",
-      "nextReviewDate": "2026-09-01",
-      "retrievability": 0.746,
-      "stability": 5.007,
-      "pick": false,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "부동산공시법 8 진정명의회복",
-      "subject": "부동산공시법",
-      "status": "재도전중",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 1,
-      "lastWrong": "2026-06-29",
-      "nextReviewDate": "2026-09-01",
-      "retrievability": 0.746,
-      "stability": 5.007,
       "pick": false,
       "missedTop": [],
       "causeTop": null,
@@ -2102,8 +2120,24 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-07-01",
       "nextReviewDate": "2026-09-01",
-      "retrievability": 0.746,
+      "retrievability": 0.73,
       "stability": 4.984,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "부동산학개론 원금균등상환 계산",
+      "subject": "부동산학개론",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "lastWrong": "2026-07-02",
+      "nextReviewDate": "2026-09-01",
+      "retrievability": 0.73,
+      "stability": 4.972,
       "pick": false,
       "missedTop": [],
       "causeTop": null,
@@ -2118,7 +2152,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-07-14",
       "nextReviewDate": "2026-09-02",
-      "retrievability": 0.746,
+      "retrievability": 0.73,
       "stability": 4.824,
       "pick": false,
       "missedTop": [],
@@ -2134,7 +2168,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-07-14",
       "nextReviewDate": "2026-09-02",
-      "retrievability": 0.746,
+      "retrievability": 0.73,
       "stability": 4.824,
       "pick": false,
       "missedTop": [],
@@ -2150,8 +2184,120 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-07-14",
       "nextReviewDate": "2026-09-02",
-      "retrievability": 0.746,
+      "retrievability": 0.73,
       "stability": 4.824,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "부동산학개론 1-1",
+      "subject": "부동산학개론",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "lastWrong": "2026-06-11-2",
+      "nextReviewDate": "2026-08-31",
+      "retrievability": 0.731,
+      "stability": 5.174,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "부동산학개론 1-2",
+      "subject": "부동산학개론",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "lastWrong": "2026-06-11-2",
+      "nextReviewDate": "2026-08-31",
+      "retrievability": 0.731,
+      "stability": 5.174,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "민법 §2·3 저당권 순위·채권최고액",
+      "subject": "민법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "lastWrong": "2026-06-29-2",
+      "nextReviewDate": "2026-09-01",
+      "retrievability": 0.731,
+      "stability": 5.007,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "부동산공법 1-6 건축협정",
+      "subject": "부동산공법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "lastWrong": "2026-06-29-2",
+      "nextReviewDate": "2026-09-01",
+      "retrievability": 0.731,
+      "stability": 5.007,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "부동산공법 2-2·2-5 주택조합·사업계획승인",
+      "subject": "부동산공법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "lastWrong": "2026-06-29-2",
+      "nextReviewDate": "2026-09-01",
+      "retrievability": 0.731,
+      "stability": 5.007,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "부동산공시법 1 소유권보존등기",
+      "subject": "부동산공시법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "lastWrong": "2026-06-29",
+      "nextReviewDate": "2026-09-01",
+      "retrievability": 0.731,
+      "stability": 5.007,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "부동산공시법 8 진정명의회복",
+      "subject": "부동산공시법",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 1,
+      "lastWrong": "2026-06-29",
+      "nextReviewDate": "2026-09-01",
+      "retrievability": 0.731,
+      "stability": 5.007,
       "pick": false,
       "missedTop": [],
       "causeTop": null,
@@ -2166,7 +2312,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-09-01",
       "nextReviewDate": "2026-09-13",
-      "retrievability": 0.771,
+      "retrievability": 0.744,
       "stability": 3.547,
       "pick": false,
       "missedTop": [],
@@ -2182,7 +2328,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-09-01",
       "nextReviewDate": "2026-09-13",
-      "retrievability": 0.771,
+      "retrievability": 0.744,
       "stability": 3.547,
       "pick": false,
       "missedTop": [],
@@ -2198,7 +2344,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-09-01",
       "nextReviewDate": "2026-09-13",
-      "retrievability": 0.771,
+      "retrievability": 0.744,
       "stability": 3.547,
       "pick": false,
       "missedTop": [
@@ -2217,7 +2363,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-09-01",
       "nextReviewDate": "2026-09-13",
-      "retrievability": 0.771,
+      "retrievability": 0.744,
       "stability": 3.547,
       "pick": false,
       "missedTop": [],
@@ -2233,7 +2379,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-09-01",
       "nextReviewDate": "2026-09-13",
-      "retrievability": 0.771,
+      "retrievability": 0.744,
       "stability": 3.547,
       "pick": false,
       "missedTop": [],
@@ -2249,7 +2395,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-09-01",
       "nextReviewDate": "2026-09-13",
-      "retrievability": 0.771,
+      "retrievability": 0.744,
       "stability": 3.547,
       "pick": false,
       "missedTop": [],
@@ -2265,7 +2411,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-08-31",
       "nextReviewDate": "2026-09-13",
-      "retrievability": 0.773,
+      "retrievability": 0.747,
       "stability": 3.64,
       "pick": false,
       "missedTop": [],
@@ -2281,7 +2427,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-09-02",
       "nextReviewDate": "2026-09-14",
-      "retrievability": 0.777,
+      "retrievability": 0.749,
       "stability": 3.547,
       "pick": false,
       "missedTop": [],
@@ -2299,7 +2445,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-09-02",
       "nextReviewDate": "2026-09-14",
-      "retrievability": 0.777,
+      "retrievability": 0.749,
       "stability": 3.547,
       "pick": false,
       "missedTop": [],
@@ -2317,7 +2463,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-09-02",
       "nextReviewDate": "2026-09-14",
-      "retrievability": 0.777,
+      "retrievability": 0.749,
       "stability": 3.547,
       "pick": false,
       "missedTop": [],
@@ -2335,7 +2481,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-09-02",
       "nextReviewDate": "2026-09-14",
-      "retrievability": 0.777,
+      "retrievability": 0.749,
       "stability": 3.547,
       "pick": false,
       "missedTop": [],
@@ -2353,7 +2499,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-09-02",
       "nextReviewDate": "2026-09-14",
-      "retrievability": 0.777,
+      "retrievability": 0.749,
       "stability": 3.547,
       "pick": false,
       "missedTop": [],
@@ -2371,7 +2517,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-09-02",
       "nextReviewDate": "2026-09-14",
-      "retrievability": 0.777,
+      "retrievability": 0.749,
       "stability": 3.547,
       "pick": false,
       "missedTop": [],
@@ -2389,7 +2535,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-09-02",
       "nextReviewDate": "2026-09-14",
-      "retrievability": 0.777,
+      "retrievability": 0.749,
       "stability": 3.547,
       "pick": false,
       "missedTop": [
@@ -2407,7 +2553,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-09-09",
       "nextReviewDate": "2026-09-18",
-      "retrievability": 0.809,
+      "retrievability": 0.77,
       "stability": 3.32,
       "pick": false,
       "missedTop": [],
@@ -2425,7 +2571,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-09-03",
       "nextReviewDate": "2026-09-19",
-      "retrievability": 0.823,
+      "retrievability": 0.785,
       "stability": 3.862,
       "pick": false,
       "missedTop": [],
@@ -2443,7 +2589,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-09-03",
       "nextReviewDate": "2026-09-19",
-      "retrievability": 0.823,
+      "retrievability": 0.785,
       "stability": 3.862,
       "pick": false,
       "missedTop": [],
@@ -2461,7 +2607,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-09-03",
       "nextReviewDate": "2026-09-19",
-      "retrievability": 0.823,
+      "retrievability": 0.785,
       "stability": 3.862,
       "pick": false,
       "missedTop": [],
@@ -2479,7 +2625,7 @@
       "consecutiveCorrect": 1,
       "lastWrong": "2026-09-03",
       "nextReviewDate": "2026-09-19",
-      "retrievability": 0.823,
+      "retrievability": 0.785,
       "stability": 3.862,
       "pick": false,
       "missedTop": [],
@@ -2497,40 +2643,8 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-08-21",
       "nextReviewDate": "2026-09-02",
-      "retrievability": 0.771,
+      "retrievability": 0.755,
       "stability": 6.444,
-      "pick": false,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "공법 OX 오답 8번",
-      "subject": "부동산공법",
-      "status": "졸업후보",
-      "timesWrong": 1,
-      "retryMissed": 1,
-      "consecutiveCorrect": 2,
-      "lastWrong": "2026-06-11",
-      "nextReviewDate": "2026-08-27",
-      "retrievability": 0.803,
-      "stability": 13.064,
-      "pick": false,
-      "missedTop": [],
-      "causeTop": null,
-      "errorCauses": {}
-    },
-    {
-      "conceptKey": "부동산공법 도시개발조합 동의요건",
-      "subject": "부동산공법",
-      "status": "졸업후보",
-      "timesWrong": 2,
-      "retryMissed": 2,
-      "consecutiveCorrect": 2,
-      "lastWrong": "2026-08-24",
-      "nextReviewDate": "2026-09-08",
-      "retrievability": 0.808,
-      "stability": 8.213,
       "pick": false,
       "missedTop": [],
       "causeTop": null,
@@ -2545,7 +2659,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-09-09",
       "nextReviewDate": "2026-09-19",
-      "retrievability": 0.816,
+      "retrievability": 0.778,
       "stability": 3.589,
       "pick": false,
       "missedTop": [],
@@ -2553,6 +2667,38 @@
       "errorCauses": {
         "혼동": 1
       }
+    },
+    {
+      "conceptKey": "부동산공법 도시개발조합 동의요건",
+      "subject": "부동산공법",
+      "status": "졸업후보",
+      "timesWrong": 2,
+      "retryMissed": 2,
+      "consecutiveCorrect": 2,
+      "lastWrong": "2026-08-24",
+      "nextReviewDate": "2026-09-08",
+      "retrievability": 0.791,
+      "stability": 8.213,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "공법 OX 오답 8번",
+      "subject": "부동산공법",
+      "status": "졸업후보",
+      "timesWrong": 1,
+      "retryMissed": 1,
+      "consecutiveCorrect": 2,
+      "lastWrong": "2026-06-11",
+      "nextReviewDate": "2026-08-27",
+      "retrievability": 0.792,
+      "stability": 13.064,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
     },
     {
       "conceptKey": "부동산공시법 등기신청기간",
@@ -2563,7 +2709,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-09-02",
       "nextReviewDate": "2026-09-16",
-      "retrievability": 0.833,
+      "retrievability": 0.808,
       "stability": 6.885,
       "pick": false,
       "missedTop": [],
@@ -2581,7 +2727,7 @@
       "consecutiveCorrect": 2,
       "lastWrong": "2026-09-02",
       "nextReviewDate": "2026-09-16",
-      "retrievability": 0.833,
+      "retrievability": 0.808,
       "stability": 6.897,
       "pick": false,
       "missedTop": [],
@@ -2589,6 +2735,38 @@
       "errorCauses": {
         "개념부재": 1
       }
+    },
+    {
+      "conceptKey": "민법 2-5 담보책임",
+      "subject": "민법",
+      "status": "졸업후보",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 2,
+      "lastWrong": "2026-06-29",
+      "nextReviewDate": "2026-09-25",
+      "retrievability": 0.91,
+      "stability": 32.48,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
+    },
+    {
+      "conceptKey": "부동산학개론 주택저당유동화증권",
+      "subject": "부동산학개론",
+      "status": "졸업후보",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 2,
+      "lastWrong": "2026-06-25",
+      "nextReviewDate": "2026-09-25",
+      "retrievability": 0.912,
+      "stability": 33.34,
+      "pick": false,
+      "missedTop": [],
+      "causeTop": null,
+      "errorCauses": {}
     }
   ],
   "ledger": [
@@ -2661,7 +2839,7 @@
         "state": "Review",
         "reps": 5,
         "lapses": 3,
-        "retrievability": 0.667
+        "retrievability": 0.629
       },
       "fsrsFallback": false
     },
@@ -2738,7 +2916,7 @@
         "state": "Review",
         "reps": 4,
         "lapses": 3,
-        "retrievability": 0.635
+        "retrievability": 0.598
       },
       "fsrsFallback": false
     },
@@ -2815,7 +2993,7 @@
         "state": "Review",
         "reps": 3,
         "lapses": 3,
-        "retrievability": 0.485
+        "retrievability": 0.456
       },
       "fsrsFallback": false
     },
@@ -2876,7 +3054,7 @@
         "state": "Review",
         "reps": 3,
         "lapses": 2,
-        "retrievability": 0.715
+        "retrievability": 0.675
       },
       "fsrsFallback": false
     },
@@ -2937,7 +3115,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 2,
-        "retrievability": 0.522
+        "retrievability": 0.491
       },
       "fsrsFallback": false
     },
@@ -2998,7 +3176,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 2,
-        "retrievability": 0.522
+        "retrievability": 0.491
       },
       "fsrsFallback": false
     },
@@ -3059,7 +3237,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 2,
-        "retrievability": 0.522
+        "retrievability": 0.491
       },
       "fsrsFallback": false
     },
@@ -3104,7 +3282,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.706
+        "retrievability": 0.695
       },
       "fsrsFallback": false
     },
@@ -3149,7 +3327,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.74
+        "retrievability": 0.726
       },
       "fsrsFallback": false
     },
@@ -3194,7 +3372,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.743
+        "retrievability": 0.729
       },
       "fsrsFallback": false
     },
@@ -3239,7 +3417,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.743
+        "retrievability": 0.729
       },
       "fsrsFallback": false
     },
@@ -3284,7 +3462,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.743
+        "retrievability": 0.729
       },
       "fsrsFallback": false
     },
@@ -3329,7 +3507,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.743
+        "retrievability": 0.729
       },
       "fsrsFallback": false
     },
@@ -3374,7 +3552,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.743
+        "retrievability": 0.729
       },
       "fsrsFallback": false
     },
@@ -3419,7 +3597,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.743
+        "retrievability": 0.729
       },
       "fsrsFallback": false
     },
@@ -3464,7 +3642,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.743
+        "retrievability": 0.729
       },
       "fsrsFallback": false
     },
@@ -3509,7 +3687,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.743
+        "retrievability": 0.729
       },
       "fsrsFallback": false
     },
@@ -3554,7 +3732,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.743
+        "retrievability": 0.729
       },
       "fsrsFallback": false
     },
@@ -3599,7 +3777,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.743
+        "retrievability": 0.728
       },
       "fsrsFallback": false
     },
@@ -3644,7 +3822,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.743
+        "retrievability": 0.728
       },
       "fsrsFallback": false
     },
@@ -3689,7 +3867,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.743
+        "retrievability": 0.728
       },
       "fsrsFallback": false
     },
@@ -3734,7 +3912,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.743
+        "retrievability": 0.728
       },
       "fsrsFallback": false
     },
@@ -3779,7 +3957,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.743
+        "retrievability": 0.728
       },
       "fsrsFallback": false
     },
@@ -3824,7 +4002,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.743
+        "retrievability": 0.728
       },
       "fsrsFallback": false
     },
@@ -3869,7 +4047,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.743
+        "retrievability": 0.728
       },
       "fsrsFallback": false
     },
@@ -3914,7 +4092,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.746
+        "retrievability": 0.731
       },
       "fsrsFallback": false
     },
@@ -3959,7 +4137,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.746
+        "retrievability": 0.731
       },
       "fsrsFallback": false
     },
@@ -4004,7 +4182,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.745
+        "retrievability": 0.73
       },
       "fsrsFallback": false
     },
@@ -4049,7 +4227,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.745
+        "retrievability": 0.73
       },
       "fsrsFallback": false
     },
@@ -4094,7 +4272,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.744
+        "retrievability": 0.729
       },
       "fsrsFallback": false
     },
@@ -4139,7 +4317,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.744
+        "retrievability": 0.729
       },
       "fsrsFallback": false
     },
@@ -4184,7 +4362,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.744
+        "retrievability": 0.729
       },
       "fsrsFallback": false
     },
@@ -4229,7 +4407,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.744
+        "retrievability": 0.729
       },
       "fsrsFallback": false
     },
@@ -4274,7 +4452,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.744
+        "retrievability": 0.729
       },
       "fsrsFallback": false
     },
@@ -4319,7 +4497,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.744
+        "retrievability": 0.729
       },
       "fsrsFallback": false
     },
@@ -4364,7 +4542,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.744
+        "retrievability": 0.729
       },
       "fsrsFallback": false
     },
@@ -4409,7 +4587,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.744
+        "retrievability": 0.729
       },
       "fsrsFallback": false
     },
@@ -4454,7 +4632,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.744
+        "retrievability": 0.729
       },
       "fsrsFallback": false
     },
@@ -4499,7 +4677,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.744
+        "retrievability": 0.729
       },
       "fsrsFallback": false
     },
@@ -4544,7 +4722,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.744
+        "retrievability": 0.729
       },
       "fsrsFallback": false
     },
@@ -4589,7 +4767,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.743
+        "retrievability": 0.728
       },
       "fsrsFallback": false
     },
@@ -4634,7 +4812,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.746
+        "retrievability": 0.731
       },
       "fsrsFallback": false
     },
@@ -4679,7 +4857,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.746
+        "retrievability": 0.731
       },
       "fsrsFallback": false
     },
@@ -4724,7 +4902,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.746
+        "retrievability": 0.731
       },
       "fsrsFallback": false
     },
@@ -4769,7 +4947,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.746
+        "retrievability": 0.731
       },
       "fsrsFallback": false
     },
@@ -4814,7 +4992,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.746
+        "retrievability": 0.731
       },
       "fsrsFallback": false
     },
@@ -4859,7 +5037,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.746
+        "retrievability": 0.73
       },
       "fsrsFallback": false
     },
@@ -4904,7 +5082,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.745
+        "retrievability": 0.73
       },
       "fsrsFallback": false
     },
@@ -4949,7 +5127,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.745
+        "retrievability": 0.73
       },
       "fsrsFallback": false
     },
@@ -4994,7 +5172,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.744
+        "retrievability": 0.728
       },
       "fsrsFallback": false
     },
@@ -5039,7 +5217,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.743
+        "retrievability": 0.727
       },
       "fsrsFallback": false
     },
@@ -5084,7 +5262,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.743
+        "retrievability": 0.727
       },
       "fsrsFallback": false
     },
@@ -5129,7 +5307,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.743
+        "retrievability": 0.727
       },
       "fsrsFallback": false
     },
@@ -5174,7 +5352,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.743
+        "retrievability": 0.727
       },
       "fsrsFallback": false
     },
@@ -5219,7 +5397,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.727
+        "retrievability": 0.711
       },
       "fsrsFallback": false
     },
@@ -5264,7 +5442,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.727
+        "retrievability": 0.711
       },
       "fsrsFallback": false
     },
@@ -5309,7 +5487,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.727
+        "retrievability": 0.711
       },
       "fsrsFallback": false
     },
@@ -5354,7 +5532,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.718
+        "retrievability": 0.702
       },
       "fsrsFallback": false
     },
@@ -5399,7 +5577,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.746
+        "retrievability": 0.73
       },
       "fsrsFallback": false
     },
@@ -5444,7 +5622,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.746
+        "retrievability": 0.73
       },
       "fsrsFallback": false
     },
@@ -5489,7 +5667,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.746
+        "retrievability": 0.73
       },
       "fsrsFallback": false
     },
@@ -5534,7 +5712,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.744
+        "retrievability": 0.728
       },
       "fsrsFallback": false
     },
@@ -5579,7 +5757,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.744
+        "retrievability": 0.728
       },
       "fsrsFallback": false
     },
@@ -5624,7 +5802,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.742
+        "retrievability": 0.726
       },
       "fsrsFallback": false
     },
@@ -5669,7 +5847,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.742
+        "retrievability": 0.726
       },
       "fsrsFallback": false
     },
@@ -5714,7 +5892,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.724
+        "retrievability": 0.706
       },
       "fsrsFallback": false
     },
@@ -5759,7 +5937,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.724
+        "retrievability": 0.706
       },
       "fsrsFallback": false
     },
@@ -5804,7 +5982,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.724
+        "retrievability": 0.706
       },
       "fsrsFallback": false
     },
@@ -5849,7 +6027,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.72
+        "retrievability": 0.703
       },
       "fsrsFallback": false
     },
@@ -5894,7 +6072,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.72
+        "retrievability": 0.703
       },
       "fsrsFallback": false
     },
@@ -5939,7 +6117,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.735
+        "retrievability": 0.717
       },
       "fsrsFallback": false
     },
@@ -5984,7 +6162,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.735
+        "retrievability": 0.717
       },
       "fsrsFallback": false
     },
@@ -6029,7 +6207,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.732
+        "retrievability": 0.714
       },
       "fsrsFallback": false
     },
@@ -6074,7 +6252,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.732
+        "retrievability": 0.714
       },
       "fsrsFallback": false
     },
@@ -6119,7 +6297,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.724
+        "retrievability": 0.706
       },
       "fsrsFallback": false
     },
@@ -6164,7 +6342,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.724
+        "retrievability": 0.706
       },
       "fsrsFallback": false
     },
@@ -6209,7 +6387,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.724
+        "retrievability": 0.706
       },
       "fsrsFallback": false
     },
@@ -6254,7 +6432,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.724
+        "retrievability": 0.706
       },
       "fsrsFallback": false
     },
@@ -6299,7 +6477,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.72
+        "retrievability": 0.702
       },
       "fsrsFallback": false
     },
@@ -6344,7 +6522,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.72
+        "retrievability": 0.702
       },
       "fsrsFallback": false
     },
@@ -6389,7 +6567,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.72
+        "retrievability": 0.702
       },
       "fsrsFallback": false
     },
@@ -6434,7 +6612,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.72
+        "retrievability": 0.702
       },
       "fsrsFallback": false
     },
@@ -6479,7 +6657,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.72
+        "retrievability": 0.702
       },
       "fsrsFallback": false
     },
@@ -6524,7 +6702,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.72
+        "retrievability": 0.702
       },
       "fsrsFallback": false
     },
@@ -6569,7 +6747,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.729
+        "retrievability": 0.709
       },
       "fsrsFallback": false
     },
@@ -6614,7 +6792,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.724
+        "retrievability": 0.705
       },
       "fsrsFallback": false
     },
@@ -6659,7 +6837,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.724
+        "retrievability": 0.705
       },
       "fsrsFallback": false
     },
@@ -6704,7 +6882,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.715
+        "retrievability": 0.695
       },
       "fsrsFallback": false
     },
@@ -6749,7 +6927,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.715
+        "retrievability": 0.695
       },
       "fsrsFallback": false
     },
@@ -6794,7 +6972,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.715
+        "retrievability": 0.695
       },
       "fsrsFallback": false
     },
@@ -6839,7 +7017,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.715
+        "retrievability": 0.695
       },
       "fsrsFallback": false
     },
@@ -6884,7 +7062,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.715
+        "retrievability": 0.695
       },
       "fsrsFallback": false
     },
@@ -6929,7 +7107,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.715
+        "retrievability": 0.695
       },
       "fsrsFallback": false
     },
@@ -6976,7 +7154,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.514
+        "retrievability": 0.493
       },
       "fsrsFallback": false
     },
@@ -7023,7 +7201,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.514
+        "retrievability": 0.493
       },
       "fsrsFallback": false
     },
@@ -7070,7 +7248,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.514
+        "retrievability": 0.493
       },
       "fsrsFallback": false
     },
@@ -7119,7 +7297,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.514
+        "retrievability": 0.493
       },
       "fsrsFallback": false
     },
@@ -7166,7 +7344,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.514
+        "retrievability": 0.493
       },
       "fsrsFallback": false
     },
@@ -7215,7 +7393,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.519
+        "retrievability": 0.497
       },
       "fsrsFallback": false
     },
@@ -7264,7 +7442,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.519
+        "retrievability": 0.497
       },
       "fsrsFallback": false
     },
@@ -7311,7 +7489,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.519
+        "retrievability": 0.497
       },
       "fsrsFallback": false
     },
@@ -7358,7 +7536,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.519
+        "retrievability": 0.497
       },
       "fsrsFallback": false
     },
@@ -7409,7 +7587,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.519
+        "retrievability": 0.497
       },
       "fsrsFallback": false
     },
@@ -7456,7 +7634,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.519
+        "retrievability": 0.497
       },
       "fsrsFallback": false
     },
@@ -7503,7 +7681,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.519
+        "retrievability": 0.497
       },
       "fsrsFallback": false
     },
@@ -7550,7 +7728,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.519
+        "retrievability": 0.497
       },
       "fsrsFallback": false
     },
@@ -7597,7 +7775,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.519
+        "retrievability": 0.497
       },
       "fsrsFallback": false
     },
@@ -7644,7 +7822,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.519
+        "retrievability": 0.497
       },
       "fsrsFallback": false
     },
@@ -7689,7 +7867,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.773
+        "retrievability": 0.747
       },
       "fsrsFallback": false
     },
@@ -7734,7 +7912,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.771
+        "retrievability": 0.744
       },
       "fsrsFallback": false
     },
@@ -7779,7 +7957,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.771
+        "retrievability": 0.744
       },
       "fsrsFallback": false
     },
@@ -7824,7 +8002,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.771
+        "retrievability": 0.744
       },
       "fsrsFallback": false
     },
@@ -7869,7 +8047,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.771
+        "retrievability": 0.744
       },
       "fsrsFallback": false
     },
@@ -7920,7 +8098,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.771
+        "retrievability": 0.744
       },
       "fsrsFallback": false
     },
@@ -7965,7 +8143,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.771
+        "retrievability": 0.744
       },
       "fsrsFallback": false
     },
@@ -8018,7 +8196,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.53
+        "retrievability": 0.505
       },
       "fsrsFallback": false
     },
@@ -8067,7 +8245,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.777
+        "retrievability": 0.749
       },
       "fsrsFallback": false
     },
@@ -8114,7 +8292,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.777
+        "retrievability": 0.749
       },
       "fsrsFallback": false
     },
@@ -8161,7 +8339,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.777
+        "retrievability": 0.749
       },
       "fsrsFallback": false
     },
@@ -8208,7 +8386,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.777
+        "retrievability": 0.749
       },
       "fsrsFallback": false
     },
@@ -8255,7 +8433,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.777
+        "retrievability": 0.749
       },
       "fsrsFallback": false
     },
@@ -8302,7 +8480,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.777
+        "retrievability": 0.749
       },
       "fsrsFallback": false
     },
@@ -8349,7 +8527,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.777
+        "retrievability": 0.749
       },
       "fsrsFallback": false
     },
@@ -8396,7 +8574,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.552
+        "retrievability": 0.519
       },
       "fsrsFallback": false
     },
@@ -8443,7 +8621,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.552
+        "retrievability": 0.519
       },
       "fsrsFallback": false
     },
@@ -8496,7 +8674,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.552
+        "retrievability": 0.519
       },
       "fsrsFallback": false
     },
@@ -8543,7 +8721,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.552
+        "retrievability": 0.519
       },
       "fsrsFallback": false
     },
@@ -8590,7 +8768,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.552
+        "retrievability": 0.519
       },
       "fsrsFallback": false
     },
@@ -8637,7 +8815,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.552
+        "retrievability": 0.519
       },
       "fsrsFallback": false
     },
@@ -8690,7 +8868,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.552
+        "retrievability": 0.519
       },
       "fsrsFallback": false
     },
@@ -8737,7 +8915,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.552
+        "retrievability": 0.519
       },
       "fsrsFallback": false
     },
@@ -8784,7 +8962,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.552
+        "retrievability": 0.519
       },
       "fsrsFallback": false
     },
@@ -8831,7 +9009,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.552
+        "retrievability": 0.519
       },
       "fsrsFallback": false
     },
@@ -8878,7 +9056,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.552
+        "retrievability": 0.519
       },
       "fsrsFallback": false
     },
@@ -8925,7 +9103,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 1,
-        "retrievability": 0.552
+        "retrievability": 0.519
       },
       "fsrsFallback": false
     },
@@ -8972,7 +9150,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.809
+        "retrievability": 0.77
       },
       "fsrsFallback": false
     },
@@ -9019,7 +9197,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.823
+        "retrievability": 0.785
       },
       "fsrsFallback": false
     },
@@ -9066,7 +9244,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.823
+        "retrievability": 0.785
       },
       "fsrsFallback": false
     },
@@ -9113,7 +9291,7 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.823
+        "retrievability": 0.785
       },
       "fsrsFallback": false
     },
@@ -9160,7 +9338,391 @@
         "state": "Review",
         "reps": 2,
         "lapses": 1,
-        "retrievability": 0.823
+        "retrievability": 0.785
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "부동산공법 건축법 적용범위-분할제한 비적용",
+      "aliases": [],
+      "subject": "부동산공법",
+      "concept": "부동산공법 건축법 적용범위-분할제한 비적용",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-09-28",
+      "lastWrong": "2026-09-28",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-09-28",
+      "nextReviewDate": "2026-09-29",
+      "dates": [
+        "2026-09-28"
+      ],
+      "samples": [
+        {
+          "date": "2026-09-28",
+          "type": "일반",
+          "q": "건축법령상 건축법의 적용 지역과 적용 제외에 관한 설명으로 <b>옳지 않은</b> 것은?",
+          "myAnswer": "모르겠음",
+          "correct": "전면적 적용대상지역 외의 지역에서도 분할제한 규정은 적용된다",
+          "expl": "[정답 근거] 전면적 적용대상지역 외의 지역에서도 분할제한 규정이 적용된다는 지문은 틀렸다. [메커니즘] 도시지역·비도시지역의 지구단위계획구역·동 또는 읍만 모든 규정을 적용하고, 그 밖에서는 도로 2개·건축선 2개·방화지구·분할제한이 빠진다. [함정] 수문조작실·컨테이너 간이창고는 아예 적용 제외다.",
+          "missedKeys": [],
+          "fixTyped": null,
+          "errorCause": "개념부재",
+          "causeNote": null
+        }
+      ],
+      "missedKeys": {},
+      "errorCauses": {
+        "개념부재": 1
+      },
+      "fsrs": {
+        "stability": 0.212,
+        "difficulty": 6.413,
+        "due": "2026-09-29",
+        "state": "Review",
+        "reps": 1,
+        "lapses": 1,
+        "retrievability": 0.698
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "부동산공법 주택조합-인가 후 2년 내 사업계획승인 신청",
+      "aliases": [],
+      "subject": "부동산공법",
+      "concept": "부동산공법 주택조합-인가 후 2년 내 사업계획승인 신청",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-09-28",
+      "lastWrong": "2026-09-28",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-09-28",
+      "nextReviewDate": "2026-09-29",
+      "dates": [
+        "2026-09-28"
+      ],
+      "samples": [
+        {
+          "date": "2026-09-28",
+          "type": "단답",
+          "q": "주택법령상 주택조합이 사업계획승인을 신청해야 하는 기한을 쓰시오.",
+          "myAnswer": "60일",
+          "correct": "조합설립인가를 받은 후 2년 이내",
+          "expl": "[정답 근거] 주택조합은 조합설립인가를 받은 후 2년 이내에 사업계획승인을 신청해야 한다. [메커니즘] 조합 성립 후 사업이 늘어지지 않도록 신청 기한을 둔다. [함정] 착공신고 수리 통지 20일, 추가모집 변경인가 신청은 사업계획승인신청일까지와 섞지 말 것.",
+          "missedKeys": [
+            "조합설립인가",
+            "2년"
+          ],
+          "fixTyped": "조합설립인가를 받은 이후로 2년 이내",
+          "errorCause": null,
+          "causeNote": null
+        }
+      ],
+      "missedKeys": {
+        "조합설립인가": 1,
+        "2년": 1
+      },
+      "errorCauses": {},
+      "fsrs": {
+        "stability": 0.212,
+        "difficulty": 6.413,
+        "due": "2026-09-29",
+        "state": "Review",
+        "reps": 1,
+        "lapses": 1,
+        "retrievability": 0.698
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "부동산공법 농업진흥구역-관광농원은 보호구역",
+      "aliases": [],
+      "subject": "부동산공법",
+      "concept": "부동산공법 농업진흥구역-관광농원은 보호구역",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-09-28",
+      "lastWrong": "2026-09-28",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-09-28",
+      "nextReviewDate": "2026-09-29",
+      "dates": [
+        "2026-09-28"
+      ],
+      "samples": [
+        {
+          "date": "2026-09-28",
+          "type": "일반",
+          "q": "농지법령상 농업진흥지역의 지정과 구역별 허용 행위에 관한 설명으로 <b>옳지 않은</b> 것은?",
+          "myAnswer": "농업보호구역에서는 주말농원사업을 할 수 있다",
+          "correct": "농업진흥구역에서는 관광농원사업을 할 수 있다",
+          "expl": "[정답 근거] 농업진흥구역에서 관광농원사업을 할 수 있다는 지문은 틀렸다(관광농원은 농업보호구역의 허용 행위). [메커니즘] 진흥구역은 농수산물 가공·처리, 시험·연구, 국가유산 보수·복원, 농업인 주택만 허용하고, 보호구역은 관광농원·주말농원·단독주택 등도 허용한다. [함정] 지정은 시·도지사, 승인은 장관이다.",
+          "missedKeys": [],
+          "fixTyped": null,
+          "errorCause": "개념부재",
+          "causeNote": "농업보호구역에서 관광농원, 주말농원이 허용된다는 것을 몰랐다."
+        }
+      ],
+      "missedKeys": {},
+      "errorCauses": {
+        "개념부재": 1
+      },
+      "fsrs": {
+        "stability": 0.212,
+        "difficulty": 6.413,
+        "due": "2026-09-29",
+        "state": "Review",
+        "reps": 1,
+        "lapses": 1,
+        "retrievability": 0.698
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "부동산공법 기반시설부담구역-1년 미수립 다음 날 해제",
+      "aliases": [],
+      "subject": "부동산공법",
+      "concept": "부동산공법 기반시설부담구역-1년 미수립 다음 날 해제",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-09-28",
+      "lastWrong": "2026-09-28",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-09-28",
+      "nextReviewDate": "2026-09-29",
+      "dates": [
+        "2026-09-28"
+      ],
+      "samples": [
+        {
+          "date": "2026-09-28",
+          "type": "일반",
+          "q": "⏪ 국토의 계획 및 이용에 관한 법률상 기반시설부담구역에 관한 설명으로 옳은 것은?",
+          "myAnswer": "연면적 100㎡를 초과하는 건축물의 신축·증축이 부과대상이다",
+          "correct": "1년 내 기반시설설치계획이 없으면 1년 되는 날의 다음 날 해제된다",
+          "expl": "[정답 근거] 지정고시일부터 1년 이내에 기반시설설치계획을 수립하지 않으면 1년이 되는 날의 다음 날 해제된다. [메커니즘] 비용은 사용승인 신청 시까지 납부하고, 부과대상은 연면적 200㎡ 초과 신축·증축이다. [함정] 주택법상 리모델링은 부과 제외다.",
+          "missedKeys": [],
+          "fixTyped": null,
+          "errorCause": "혼동",
+          "causeNote": "기반시설 부담금 기준이 연면적 200이상임을 건축법에서 신고사항 100이상 어쩌구가 있는데 그것과 헷갈렸다."
+        }
+      ],
+      "missedKeys": {},
+      "errorCauses": {
+        "혼동": 1
+      },
+      "fsrs": {
+        "stability": 0.212,
+        "difficulty": 6.413,
+        "due": "2026-09-29",
+        "state": "Review",
+        "reps": 1,
+        "lapses": 1,
+        "retrievability": 0.698
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "부동산공시법 대지권 토지표시 변경-1동 표제부 직권",
+      "aliases": [],
+      "subject": "부동산공시법",
+      "concept": "부동산공시법 대지권 토지표시 변경-1동 표제부 직권",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-09-28",
+      "lastWrong": "2026-09-28",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-09-28",
+      "nextReviewDate": "2026-09-29",
+      "dates": [
+        "2026-09-28"
+      ],
+      "samples": [
+        {
+          "date": "2026-09-28",
+          "type": "단답",
+          "q": "등기관이 구분건물의 대지권의 목적인 토지표시에 관하여 변경등기를 마쳤을 때 하여야 할 조치를 쓰시오.",
+          "myAnswer": "지적관청에 통지",
+          "correct": "1동 건물의 표제부에 직권으로 변경등기를 한다",
+          "expl": "[정답 근거] 등기관은 1동 건물의 표제부에 직권으로 변경등기를 해야 한다. [메커니즘] 대지권의 목적인 토지표시가 바뀌면 신청을 기다리지 않고 1동 건물 표제부를 맞춘다. [함정] 신청이 아니라 직권이며, 전유부분이 아니라 1동 건물 표제부다.",
+          "missedKeys": [
+            "1동 건물의 표제부",
+            "직권"
+          ],
+          "fixTyped": "1동건물의 표제부에 직권으로 변경등기를 한다.",
+          "errorCause": null,
+          "causeNote": null
+        }
+      ],
+      "missedKeys": {
+        "1동 건물의 표제부": 1,
+        "직권": 1
+      },
+      "errorCauses": {},
+      "fsrs": {
+        "stability": 0.212,
+        "difficulty": 6.413,
+        "due": "2026-09-29",
+        "state": "Review",
+        "reps": 1,
+        "lapses": 1,
+        "retrievability": 0.698
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "부동산학개론 유동화증권-지분형은 부채 미표시",
+      "aliases": [],
+      "subject": "부동산학개론",
+      "concept": "부동산학개론 유동화증권-지분형은 부채 미표시",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-09-28",
+      "lastWrong": "2026-09-28",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-09-28",
+      "nextReviewDate": "2026-09-29",
+      "dates": [
+        "2026-09-28"
+      ],
+      "samples": [
+        {
+          "date": "2026-09-28",
+          "type": "일반",
+          "q": "⏪ 부동산금융과 대출 규제 지표에 관한 설명으로 옳은 것은?",
+          "myAnswer": "총부채상환비율(DTI)은 차입자의 담보가치를 기준으로 한다",
+          "correct": "지분형 유동화증권은 유동화기관의 부채로 표시되지 않는다",
+          "expl": "[정답 근거] 지분형 유동화증권은 유동화기관의 부채로 표시되지 않는다. [메커니즘] 지분금융에는 주식·신디케이션·조인트벤처·리츠가 있고, 전환사채는 메자닌 금융이며, DTI·DSR은 차입자의 연소득을 기준으로 한다. [함정] DTI를 담보가치 기준으로 바꾼 지문은 틀렸다.",
+          "missedKeys": [],
+          "fixTyped": null,
+          "errorCause": "개념부재",
+          "causeNote": "DTI·DSR은 차입자의 연소득을 기준으로 하는건데 그거랑 담보가치랑 그게그거인 말인 줄 알았다. 지분형유동화증권이 유동화기관의 부채표시x도몰랐"
+        }
+      ],
+      "missedKeys": {},
+      "errorCauses": {
+        "개념부재": 1
+      },
+      "fsrs": {
+        "stability": 0.212,
+        "difficulty": 6.413,
+        "due": "2026-09-29",
+        "state": "Review",
+        "reps": 1,
+        "lapses": 1,
+        "retrievability": 0.698
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "부동산세법 취득세 과세대상-임차권·유증·감자 과점주주",
+      "aliases": [],
+      "subject": "부동산세법",
+      "concept": "부동산세법 취득세 과세대상-임차권·유증·감자 과점주주",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-09-28",
+      "lastWrong": "2026-09-28",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-09-28",
+      "nextReviewDate": "2026-09-29",
+      "dates": [
+        "2026-09-28"
+      ],
+      "samples": [
+        {
+          "date": "2026-09-28",
+          "type": "조합",
+          "q": "⏪ 지방세법령상 취득세 과세대상과 납세의무에 관한 설명으로 옳은 것을 모두 고른 것은?<br>ㄱ. 감자로 과점주주가 된 경우에도 과점주주에게 취득세를 부과한다<br>ㄴ. 상속인이 유증을 받으면 상속으로 본다<br>ㄷ. 등기된 임차권은 취득세 과세대상에서 제외된다<br>ㄹ. 지하에 설치하는 급수·배수시설은 건축물에서 제외된다",
+          "myAnswer": "ㄴ",
+          "correct": "ㄴ, ㄷ",
+          "expl": "[정답 근거] 옳은 것은 등기된 임차권이 과세대상에서 제외된다는 지문과 상속인의 유증은 상속으로 본다는 지문이다. [메커니즘] 감자로 과점주주가 된 경우는 과점주주 과세 케이스가 아니고, 지하 급수·배수시설도 건축물에 포함된다. [함정] 제외 목록과 포함 목록을 뒤집는 지문을 조심한다.",
+          "missedKeys": [],
+          "fixTyped": null,
+          "errorCause": "개념부재",
+          "causeNote": "등기된 임차권이 과세대상에 제외된다는 사실을 까먹고 있었다."
+        }
+      ],
+      "missedKeys": {},
+      "errorCauses": {
+        "개념부재": 1
+      },
+      "fsrs": {
+        "stability": 0.212,
+        "difficulty": 6.413,
+        "due": "2026-09-29",
+        "state": "Review",
+        "reps": 1,
+        "lapses": 1,
+        "retrievability": 0.698
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "부동산공법 2-1 바닥면적 불산입",
+      "aliases": [],
+      "subject": "부동산공법",
+      "concept": "부동산공법 2-1 바닥면적 불산입",
+      "status": "재도전중",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 0,
+      "firstWrong": "2026-09-28",
+      "lastWrong": "2026-09-28",
+      "lastCorrect": null,
+      "lastResult": "wrong",
+      "lastDp": "2026-09-28",
+      "nextReviewDate": "2026-09-29",
+      "dates": [
+        "2026-09-28"
+      ],
+      "samples": [
+        {
+          "date": "2026-09-28",
+          "type": "조합",
+          "q": "🔄 건축법령상 바닥면적에 산입하지 아니하는 것을 모두 고른 것은?<br>ㄱ. 필로티로 구성된 부분<br>ㄴ. 승강기탑·계단탑·장식탑<br>ㄷ. 주민이 함께 쓰는 어린이놀이터<br>ㄹ. 지상층에 설치한 주차용 부분",
+          "myAnswer": "ㄱ, ㄴ, ㄷ, ㄹ",
+          "correct": "ㄱ, ㄴ, ㄷ",
+          "expl": "[정답 근거] 필로티·승강기탑·계단탑·장식탑과 기계실·어린이놀이터 같은 공용시설은 바닥면적에 넣지 않는다. [메커니즘] 실제로 점유·사용하는 실내 면적이 아니어서 층별 면적을 재는 취지에서 벗어나기 때문이다. [함정] 지상층 주차장은 용적률 산정용 연면적에서 빠지는 항목이지 바닥면적 불산입 항목이 아니다.",
+          "missedKeys": [],
+          "fixTyped": null,
+          "errorCause": "함정",
+          "causeNote": "지상층 주차장은 용적률 산정용 연면적에서만 빠지 바닥면적 불산입항목이 아님을 몰랐다."
+        }
+      ],
+      "missedKeys": {},
+      "errorCauses": {
+        "함정": 1
+      },
+      "fsrs": {
+        "stability": 0.212,
+        "difficulty": 6.413,
+        "due": "2026-09-29",
+        "state": "Review",
+        "reps": 1,
+        "lapses": 1,
+        "retrievability": 0.698
       },
       "fsrsFallback": false
     },
@@ -9190,7 +9752,7 @@
         "state": "Review",
         "reps": 1,
         "lapses": 0,
-        "retrievability": 0.636
+        "retrievability": 0.625
       },
       "fsrsFallback": false,
       "orphan": true
@@ -9273,7 +9835,7 @@
         "state": "Review",
         "reps": 12,
         "lapses": 8,
-        "retrievability": 0.717
+        "retrievability": 0.677
       },
       "fsrsFallback": false
     },
@@ -9355,7 +9917,7 @@
         "state": "Review",
         "reps": 9,
         "lapses": 5,
-        "retrievability": 0.756
+        "retrievability": 0.716
       },
       "fsrsFallback": false
     },
@@ -9436,7 +9998,7 @@
         "state": "Review",
         "reps": 7,
         "lapses": 4,
-        "retrievability": 0.756
+        "retrievability": 0.717
       },
       "fsrsFallback": false
     },
@@ -9513,7 +10075,7 @@
         "state": "Review",
         "reps": 5,
         "lapses": 3,
-        "retrievability": 0.674
+        "retrievability": 0.646
       },
       "fsrsFallback": false
     },
@@ -9571,7 +10133,7 @@
         "state": "Review",
         "reps": 7,
         "lapses": 2,
-        "retrievability": 0.808
+        "retrievability": 0.791
       },
       "fsrsFallback": false
     },
@@ -9629,7 +10191,7 @@
         "state": "Review",
         "reps": 6,
         "lapses": 2,
-        "retrievability": 0.771
+        "retrievability": 0.755
       },
       "fsrsFallback": false
     },
@@ -9689,7 +10251,7 @@
         "state": "Review",
         "reps": 5,
         "lapses": 2,
-        "retrievability": 0.833
+        "retrievability": 0.808
       },
       "fsrsFallback": false
     },
@@ -9749,7 +10311,7 @@
         "state": "Review",
         "reps": 5,
         "lapses": 2,
-        "retrievability": 0.833
+        "retrievability": 0.808
       },
       "fsrsFallback": false
     },
@@ -9809,7 +10371,7 @@
         "state": "Review",
         "reps": 4,
         "lapses": 2,
-        "retrievability": 0.816
+        "retrievability": 0.778
       },
       "fsrsFallback": false
     },
@@ -9854,7 +10416,7 @@
         "state": "Review",
         "reps": 3,
         "lapses": 1,
-        "retrievability": 0.803
+        "retrievability": 0.792
       },
       "fsrsFallback": false
     },
@@ -9899,7 +10461,7 @@
         "state": "Review",
         "reps": 3,
         "lapses": 1,
-        "retrievability": 0.766
+        "retrievability": 0.754
       },
       "fsrsFallback": false
     },
@@ -9917,7 +10479,7 @@
       "lastCorrect": "2026-09-02",
       "lastResult": "correct",
       "lastDp": "2026-09-02",
-      "nextReviewDate": "2026-09-30",
+      "nextReviewDate": "2026-09-25",
       "dates": [
         "2026-06-25"
       ],
@@ -9940,11 +10502,11 @@
       "fsrs": {
         "stability": 33.34,
         "difficulty": 6.391,
-        "due": "2026-09-30",
+        "due": "2026-09-25",
         "state": "Review",
         "reps": 3,
         "lapses": 1,
-        "retrievability": 0.923
+        "retrievability": 0.912
       },
       "fsrsFallback": false
     },
@@ -9962,7 +10524,7 @@
       "lastCorrect": "2026-09-02",
       "lastResult": "correct",
       "lastDp": "2026-09-02",
-      "nextReviewDate": "2026-09-30",
+      "nextReviewDate": "2026-09-25",
       "dates": [
         "2026-06-29"
       ],
@@ -9985,11 +10547,11 @@
       "fsrs": {
         "stability": 32.48,
         "difficulty": 6.391,
-        "due": "2026-09-30",
+        "due": "2026-09-25",
         "state": "Review",
         "reps": 3,
         "lapses": 1,
-        "retrievability": 0.922
+        "retrievability": 0.91
       },
       "fsrsFallback": false
     },
@@ -10007,7 +10569,7 @@
       "lastCorrect": "2026-09-02",
       "lastResult": "correct",
       "lastDp": "2026-09-02",
-      "nextReviewDate": "2026-09-30",
+      "nextReviewDate": "2026-09-25",
       "dates": [],
       "samples": [],
       "missedKeys": {},
@@ -10015,11 +10577,11 @@
       "fsrs": {
         "stability": 32.203,
         "difficulty": 2.111,
-        "due": "2026-09-30",
+        "due": "2026-09-25",
         "state": "Review",
         "reps": 2,
         "lapses": 0,
-        "retrievability": 0.921
+        "retrievability": 0.909
       },
       "fsrsFallback": false,
       "orphan": true
@@ -10038,7 +10600,7 @@
       "lastCorrect": "2026-09-02",
       "lastResult": "correct",
       "lastDp": "2026-09-02",
-      "nextReviewDate": "2026-09-30",
+      "nextReviewDate": "2026-09-25",
       "dates": [],
       "samples": [],
       "missedKeys": {},
@@ -10046,11 +10608,11 @@
       "fsrs": {
         "stability": 32.203,
         "difficulty": 2.111,
-        "due": "2026-09-30",
+        "due": "2026-09-25",
         "state": "Review",
         "reps": 2,
         "lapses": 0,
-        "retrievability": 0.921
+        "retrievability": 0.909
       },
       "fsrsFallback": false,
       "orphan": true
@@ -10069,7 +10631,7 @@
       "lastCorrect": "2026-09-02",
       "lastResult": "correct",
       "lastDp": "2026-09-02",
-      "nextReviewDate": "2026-09-30",
+      "nextReviewDate": "2026-09-25",
       "dates": [],
       "samples": [],
       "missedKeys": {},
@@ -10077,11 +10639,11 @@
       "fsrs": {
         "stability": 32.203,
         "difficulty": 2.111,
-        "due": "2026-09-30",
+        "due": "2026-09-25",
         "state": "Review",
         "reps": 2,
         "lapses": 0,
-        "retrievability": 0.921
+        "retrievability": 0.909
       },
       "fsrsFallback": false,
       "orphan": true
@@ -10100,7 +10662,7 @@
       "lastCorrect": "2026-09-02",
       "lastResult": "correct",
       "lastDp": "2026-09-02",
-      "nextReviewDate": "2026-09-30",
+      "nextReviewDate": "2026-09-25",
       "dates": [],
       "samples": [],
       "missedKeys": {},
@@ -10108,11 +10670,11 @@
       "fsrs": {
         "stability": 32.203,
         "difficulty": 2.111,
-        "due": "2026-09-30",
+        "due": "2026-09-25",
         "state": "Review",
         "reps": 2,
         "lapses": 0,
-        "retrievability": 0.921
+        "retrievability": 0.909
       },
       "fsrsFallback": false,
       "orphan": true
@@ -10189,7 +10751,7 @@
         "state": "Review",
         "reps": 8,
         "lapses": 4,
-        "retrievability": 0.748
+        "retrievability": 0.722
       },
       "fsrsFallback": false
     },
@@ -10260,7 +10822,7 @@
         "state": "Review",
         "reps": 6,
         "lapses": 3,
-        "retrievability": 0.767
+        "retrievability": 0.747
       },
       "fsrsFallback": false
     },
@@ -10331,7 +10893,7 @@
         "state": "Review",
         "reps": 7,
         "lapses": 3,
-        "retrievability": 0.85
+        "retrievability": 0.814
       },
       "fsrsFallback": false
     },
@@ -10406,7 +10968,7 @@
         "state": "Review",
         "reps": 7,
         "lapses": 3,
-        "retrievability": 0.85
+        "retrievability": 0.814
       },
       "fsrsFallback": false
     },
@@ -10464,7 +11026,7 @@
         "state": "Review",
         "reps": 6,
         "lapses": 2,
-        "retrievability": 0.77
+        "retrievability": 0.762
       },
       "fsrsFallback": false
     },
@@ -10522,7 +11084,7 @@
         "state": "Review",
         "reps": 6,
         "lapses": 2,
-        "retrievability": 0.894
+        "retrievability": 0.872
       },
       "fsrsFallback": false
     },
@@ -10593,7 +11155,7 @@
         "state": "Review",
         "reps": 8,
         "lapses": 3,
-        "retrievability": 0.842
+        "retrievability": 0.818
       },
       "fsrsFallback": false
     },
@@ -10651,7 +11213,7 @@
         "state": "Review",
         "reps": 5,
         "lapses": 2,
-        "retrievability": 0.775
+        "retrievability": 0.764
       },
       "fsrsFallback": false
     },
@@ -10709,7 +11271,7 @@
         "state": "Review",
         "reps": 5,
         "lapses": 2,
-        "retrievability": 0.849
+        "retrievability": 0.825
       },
       "fsrsFallback": false
     },
@@ -10767,7 +11329,7 @@
         "state": "Review",
         "reps": 5,
         "lapses": 2,
-        "retrievability": 0.847
+        "retrievability": 0.823
       },
       "fsrsFallback": false
     },
@@ -10825,7 +11387,7 @@
         "state": "Review",
         "reps": 5,
         "lapses": 2,
-        "retrievability": 0.838
+        "retrievability": 0.812
       },
       "fsrsFallback": false
     },
@@ -10883,7 +11445,7 @@
         "state": "Review",
         "reps": 5,
         "lapses": 2,
-        "retrievability": 0.837
+        "retrievability": 0.811
       },
       "fsrsFallback": false
     },
@@ -10941,7 +11503,7 @@
         "state": "Review",
         "reps": 5,
         "lapses": 2,
-        "retrievability": 0.887
+        "retrievability": 0.864
       },
       "fsrsFallback": false
     },
@@ -10999,7 +11561,7 @@
         "state": "Review",
         "reps": 5,
         "lapses": 2,
-        "retrievability": 0.895
+        "retrievability": 0.864
       },
       "fsrsFallback": false
     },
@@ -11057,7 +11619,7 @@
         "state": "Review",
         "reps": 5,
         "lapses": 2,
-        "retrievability": 0.906
+        "retrievability": 0.877
       },
       "fsrsFallback": false
     },
@@ -11075,7 +11637,7 @@
       "lastCorrect": "2026-07-24",
       "lastResult": "correct",
       "lastDp": "2026-07-24",
-      "nextReviewDate": "2026-08-21",
+      "nextReviewDate": "2026-08-16",
       "dates": [
         "2026-06-15"
       ],
@@ -11098,11 +11660,11 @@
       "fsrs": {
         "stability": 32.374,
         "difficulty": 6.38,
-        "due": "2026-08-21",
+        "due": "2026-08-16",
         "state": "Review",
         "reps": 4,
         "lapses": 1,
-        "retrievability": 0.848
+        "retrievability": 0.842
       },
       "fsrsFallback": false
     },
@@ -11160,7 +11722,7 @@
         "state": "Review",
         "reps": 5,
         "lapses": 2,
-        "retrievability": 0.866
+        "retrievability": 0.849
       },
       "fsrsFallback": false
     },
@@ -11218,7 +11780,7 @@
         "state": "Review",
         "reps": 5,
         "lapses": 2,
-        "retrievability": 0.866
+        "retrievability": 0.849
       },
       "fsrsFallback": false
     },
@@ -11276,7 +11838,52 @@
         "state": "Review",
         "reps": 5,
         "lapses": 2,
-        "retrievability": 0.902
+        "retrievability": 0.883
+      },
+      "fsrsFallback": false
+    },
+    {
+      "conceptKey": "공인중개사법 §1 중개보수·업무보증",
+      "aliases": [],
+      "subject": "공인중개사법",
+      "concept": "공인중개사법 §1 중개보수·업무보증",
+      "status": "졸업",
+      "timesWrong": 1,
+      "retryMissed": 0,
+      "consecutiveCorrect": 3,
+      "firstWrong": "2026-06-15",
+      "lastWrong": "2026-06-15",
+      "lastCorrect": "2026-07-24",
+      "lastResult": "correct",
+      "lastDp": "2026-07-24",
+      "nextReviewDate": "2026-08-16",
+      "dates": [
+        "2026-06-15"
+      ],
+      "samples": [
+        {
+          "date": "2026-06-15",
+          "type": "객관식",
+          "q": "개업공인중개사 갑이 중개를 완성하고 중개보수를 받았다. 이에 관한 설명으로 옳은 것은?",
+          "myAnswer": "갑이 폐업한 경우 폐업한 날부터 1년이 지나면 손해배상책임 보장을 위해 공탁한 공탁금을 회수할 수 있다",
+          "correct": "갑이 지방자치단체 조례를 잘못 해석하여 법령상 한도를 초과한 중개보수를 받았다면 처벌대상이 된다",
+          "expl": "조례를 잘못 해석한 착오라도 한도 초과 보수 수령은 정당한 착오로 인정되지 않아 처벌대상이다. 공탁금 회수 제한은 폐업일부터 3년이고, 거래계약서는 법정 표준서식이 없으며, 단순 투자·이익분배만으로는 대여가 아니라 업무수행까지 시켜야 대여가 된다.",
+          "missedKeys": [],
+          "fixTyped": null,
+          "errorCause": null,
+          "causeNote": null
+        }
+      ],
+      "missedKeys": {},
+      "errorCauses": {},
+      "fsrs": {
+        "stability": 32.374,
+        "difficulty": 6.38,
+        "due": "2026-08-16",
+        "state": "Review",
+        "reps": 4,
+        "lapses": 1,
+        "retrievability": 0.842
       },
       "fsrsFallback": false
     },
@@ -11321,52 +11928,7 @@
         "state": "Review",
         "reps": 4,
         "lapses": 1,
-        "retrievability": 0.818
-      },
-      "fsrsFallback": false
-    },
-    {
-      "conceptKey": "공인중개사법 §1 중개보수·업무보증",
-      "aliases": [],
-      "subject": "공인중개사법",
-      "concept": "공인중개사법 §1 중개보수·업무보증",
-      "status": "졸업",
-      "timesWrong": 1,
-      "retryMissed": 0,
-      "consecutiveCorrect": 3,
-      "firstWrong": "2026-06-15",
-      "lastWrong": "2026-06-15",
-      "lastCorrect": "2026-07-24",
-      "lastResult": "correct",
-      "lastDp": "2026-07-24",
-      "nextReviewDate": "2026-08-21",
-      "dates": [
-        "2026-06-15"
-      ],
-      "samples": [
-        {
-          "date": "2026-06-15",
-          "type": "객관식",
-          "q": "개업공인중개사 갑이 중개를 완성하고 중개보수를 받았다. 이에 관한 설명으로 옳은 것은?",
-          "myAnswer": "갑이 폐업한 경우 폐업한 날부터 1년이 지나면 손해배상책임 보장을 위해 공탁한 공탁금을 회수할 수 있다",
-          "correct": "갑이 지방자치단체 조례를 잘못 해석하여 법령상 한도를 초과한 중개보수를 받았다면 처벌대상이 된다",
-          "expl": "조례를 잘못 해석한 착오라도 한도 초과 보수 수령은 정당한 착오로 인정되지 않아 처벌대상이다. 공탁금 회수 제한은 폐업일부터 3년이고, 거래계약서는 법정 표준서식이 없으며, 단순 투자·이익분배만으로는 대여가 아니라 업무수행까지 시켜야 대여가 된다.",
-          "missedKeys": [],
-          "fixTyped": null,
-          "errorCause": null,
-          "causeNote": null
-        }
-      ],
-      "missedKeys": {},
-      "errorCauses": {},
-      "fsrs": {
-        "stability": 32.374,
-        "difficulty": 6.38,
-        "due": "2026-08-21",
-        "state": "Review",
-        "reps": 4,
-        "lapses": 1,
-        "retrievability": 0.848
+        "retrievability": 0.811
       },
       "fsrsFallback": false
     },
@@ -11384,7 +11946,7 @@
       "lastCorrect": "2026-07-24",
       "lastResult": "correct",
       "lastDp": "2026-07-24",
-      "nextReviewDate": "2026-08-21",
+      "nextReviewDate": "2026-08-16",
       "dates": [
         "2026-06-15"
       ],
@@ -11407,11 +11969,11 @@
       "fsrs": {
         "stability": 33.518,
         "difficulty": 6.369,
-        "due": "2026-08-21",
+        "due": "2026-08-16",
         "state": "Review",
         "reps": 5,
         "lapses": 1,
-        "retrievability": 0.851
+        "retrievability": 0.845
       },
       "fsrsFallback": false
     },
@@ -11429,7 +11991,7 @@
       "lastCorrect": "2026-07-24",
       "lastResult": "correct",
       "lastDp": "2026-07-24",
-      "nextReviewDate": "2026-08-21",
+      "nextReviewDate": "2026-08-16",
       "dates": [
         "2026-06-17-2"
       ],
@@ -11452,11 +12014,11 @@
       "fsrs": {
         "stability": 32.277,
         "difficulty": 6.38,
-        "due": "2026-08-21",
+        "due": "2026-08-16",
         "state": "Review",
         "reps": 4,
         "lapses": 1,
-        "retrievability": 0.848
+        "retrievability": 0.841
       },
       "fsrsFallback": false
     },
@@ -11501,7 +12063,7 @@
         "state": "Review",
         "reps": 4,
         "lapses": 1,
-        "retrievability": 0.845
+        "retrievability": 0.832
       },
       "fsrsFallback": false
     },
@@ -11546,7 +12108,7 @@
         "state": "Review",
         "reps": 5,
         "lapses": 1,
-        "retrievability": 0.849
+        "retrievability": 0.836
       },
       "fsrsFallback": false
     },
@@ -11564,7 +12126,7 @@
       "lastCorrect": "2026-09-03",
       "lastResult": "correct",
       "lastDp": "2026-09-03",
-      "nextReviewDate": "2026-10-01",
+      "nextReviewDate": "2026-09-26",
       "dates": [
         "2026-06-25"
       ],
@@ -11587,11 +12149,11 @@
       "fsrs": {
         "stability": 43.327,
         "difficulty": 6.38,
-        "due": "2026-10-01",
+        "due": "2026-09-26",
         "state": "Review",
         "reps": 4,
         "lapses": 1,
-        "retrievability": 0.94
+        "retrievability": 0.929
       },
       "fsrsFallback": false
     },
@@ -11609,7 +12171,7 @@
       "lastCorrect": "2026-09-03",
       "lastResult": "correct",
       "lastDp": "2026-09-03",
-      "nextReviewDate": "2026-10-01",
+      "nextReviewDate": "2026-09-26",
       "dates": [
         "2026-07-01"
       ],
@@ -11632,11 +12194,11 @@
       "fsrs": {
         "stability": 42.305,
         "difficulty": 6.38,
-        "due": "2026-10-01",
+        "due": "2026-09-26",
         "state": "Review",
         "reps": 4,
         "lapses": 1,
-        "retrievability": 0.938
+        "retrievability": 0.928
       },
       "fsrsFallback": false
     },
@@ -11654,7 +12216,7 @@
       "lastCorrect": "2026-09-10",
       "lastResult": "correct",
       "lastDp": "2026-09-10",
-      "nextReviewDate": "2026-10-08",
+      "nextReviewDate": "2026-10-03",
       "dates": [
         "2026-06-17"
       ],
@@ -11677,11 +12239,11 @@
       "fsrs": {
         "stability": 67.836,
         "difficulty": 6.38,
-        "due": "2026-10-08",
+        "due": "2026-10-03",
         "state": "Review",
         "reps": 4,
         "lapses": 1,
-        "retrievability": 0.97
+        "retrievability": 0.962
       },
       "fsrsFallback": false
     }
