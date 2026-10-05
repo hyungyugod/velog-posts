@@ -21,6 +21,9 @@ NOTES = {
     "G": ("2026-09-29-부동산공법-(파이널 100선 문제풀이 파트1).md", "자격증::공인중개사::부동산공법", "hg-b", "공인중개사 부동산공법"),
     "J": ("2026-09-30-공인중개사법-(파이널 100선 문제풀이 파트1).md", "자격증::공인중개사::공인중개사법", "hg-b", "공인중개사 공인중개사법"),
     "S": ("2026-10-01-부동산세법-(파이널 100선 문제풀이 파트1).md", "자격증::공인중개사::부동산세법", "hg-o", "공인중개사 부동산세법"),
+    "P": ("2026-10-02-부동산공시법(파이널 100선 문제풀이 파트1).md", "자격증::공인중개사::부동산공시법", "hg-b", "공인중개사 부동산공시법"),
+    "K": ("2026-10-03-부동산학개론-(파이널 100선 계산문제 모음).md", "자격증::공인중개사::부동산학개론", "hg-o", "공인중개사 부동산학개론"),
+    "H2": ("2026-10-04-부동산학개론-(파이널 100선 문제풀이 파트1).md", "자격증::공인중개사::부동산학개론", "hg-o", "공인중개사 부동산학개론"),
 }
 for d in ["2026-03-16","2026-03-17","2026-03-18","2026-03-19","2026-03-20","2026-03-21","2026-03-22","2026-03-28","2026-03-29",
           "2026-04-04","2026-04-11","2026-04-18","2026-04-25","2026-05-02","2026-05-09","2026-05-16","2026-05-24","2026-05-30","2026-06-07","2026-06-13"]:
@@ -199,6 +202,17 @@ card(N, "T1", "권리관계 확인에 소요되는 실비는 {{c1::매도·임�
 exec(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "작성_2026-10-05_p2.py"), encoding="utf-8").read())
 exec(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "작성_2026-10-05_p3.py"), encoding="utf-8").read())
 
+# ═════════════════ 구노트 절단 — 목표(210)에 닿은 노트까지만 (노트 단위, 날짜 오름차순) ═════════════════
+TARGET = 210
+acc = sum(c["ncards"] for c in CARDS if c["lane"] != "구노트")
+keep_notes, stopped_at = [], None
+for n in [k for k in NOTES if k.startswith("2026-0")]:
+    if acc >= TARGET:
+        stopped_at = stopped_at or n; continue
+    keep_notes.append(n); acc += sum(c["ncards"] for c in CARDS if c["note"] == n)
+DROPPED_OLD = [c["key"] for c in CARDS if c["lane"] == "구노트" and c["note"] not in keep_notes]
+CARDS = [c for c in CARDS if not (c["lane"] == "구노트" and c["note"] not in keep_notes)]
+print("구노트 유지 노트:", keep_notes, "| 다음 시작점:", stopped_at, "| 절단 카드:", len(DROPPED_OLD))
 # ═════════════════ 출력 ═════════════════
 TOTAL = sum(c["ncards"] for c in CARDS)
 keys = [c["key"] for c in CARDS]

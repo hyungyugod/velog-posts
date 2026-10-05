@@ -115,6 +115,7 @@ card(N, "T1", "1세대 1주택의 비과세요건을 갖춘 대지와 건물을 
 card(N, "T1", "도시지역 밖에 있는 주택에 부수되는 토지면적은 주택정착면적의 {{c1::10배}}를 초과하지 않는 것인데, 주택 일부의 정착면적까지 포함하고 계산한다",
      "세법-주택부수토지-도시지역밖10배", "★", [119])
 
+exec(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "작성_2026-10-05_p4.py"), encoding="utf-8").read())
 MANDATORY_COUNT = sum(c["ncards"] for c in CARDS)
 
 # ═════════════════ 채우기 B-5 무표식-이번주 ═════════════════
