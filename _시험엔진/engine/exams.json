@@ -155,11 +155,12 @@
     },
     "final_phase": {
       "gongin": {
-        "from": "2026-10-17",
+        "from": "2026-10-31",
         "new_per_day": 0,
         "card_target": 0,
         "card_ceiling": 0,
-        "stop_from_days_before_exam": 14,
+        "stop_from_days_before_exam": 0,
+        "_changed_2026-10-12": "10/17(D-14) 공인중개사 신규 0·출고 0 규칙 폐지 — 사용자 결정(2026-10-12: '10/17부터 공인중개사 새 카드를 하나도 들이지 않는 규칙 바꿔'). 공인중개사는 시험일(10/31) 전까지 국면 1과 같은 평소 규칙: 신규 30/일(preset), 매주 월요일 덱은 의무 레인 전량 + 공동 목표 210/상한 240. from을 시험일로, stop_from_days_before_exam을 0으로 둔 것은 spec/앙키덱.md §0 문장('from 이후면 그 값으로, exam_date − stop_from_days_before_exam 이후면 출고 0')이 '시험일부터 출고 0'이 되게 하려는 것이다. 종전 값: from 2026-10-17 · stop_from_days_before_exam 14. 시험 후에는 exams[].status를 closed로 바꾸면 공인 수집이 멈춘다.",
         "_cancelled_2026-10-03": "10/1 국면 2의 공인중개사 Anki 급감(신규 5/일 · card_target 35 · card_ceiling 40 · 의무 레인도 그 안에서만)은 취소 — 사용자 결정(2026-10-03: '지금 하는 내용이 중요하고 시간이 부족하지 않다 — 공인중개사 Anki 개수를 그대로'). 10/1~10/16 공인중개사는 국면 1과 같다: 의무 레인(★★·★·{}·n:신규) 전량 + weekly.card_target 210 / card_ceiling 240(preset 30/일)을 법무사와 함께 채운다. 10/17(D-14)부터 공인 출고 0·신규 0은 그대로(OS §7 국면 2 · 9/23 역산표 「10/17~ 새 개념 금지」와 같은 날). from을 10/17로 옮기고 값을 0으로 둔 것은 spec/앙키덱.md §0 문장('from 이후면 그 값으로, exam_date − stop_from_days_before_exam 이후면 출고 0')이 그대로 같은 뜻이 되게 하려는 것이다. anki-weekly-deck 위임문의 '10/1 이후 급감' 문구와 2026-09-28 검수리포트의 '10/5부터 target 35' 문구보다 이 값이 우선한다.",
         "_was_2026-09-24": "from 2026-10-01 · new_per_day 5 · card_target 35 · card_ceiling 40 · stop_from_days_before_exam 14",
         "_note": "10/17(D-14)부터 공인중개사 카드 출고 0·공인 신규 0 — 법무사 덱만 계속(OS §7 국면 2의 D-14 규칙). 10/1~10/16은 평소 규칙(_cancelled_2026-10-03). 공인 전용 프리셋을 이미 만들었다면 신규 30/일로 되돌린다 — '기본'·법무사 프리셋은 그대로(preset._split_2026-09-24)."
